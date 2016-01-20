@@ -22,5 +22,5 @@ Selecting **Preset** will activate corresponding **Factory** preset.
 
 --
 
-<img src="https://raw.githubusercontent.com/vgorloff/AUHost/master/Screenshot-MediaLibrary.png" height="300" alt="Screenshot: Posts">&nbsp;
-<img src="https://raw.githubusercontent.com/vgorloff/AUHost/master/Screenshot-MainWindow.png" height="300" alt="Screenshot: Friends">
+<img src="https://raw.githubusercontent.com/vgorloff/AUHost/master/Screenshot-MediaLibrary.png" height="460" alt="Screenshot: Posts">&nbsp;
+<img src="https://raw.githubusercontent.com/vgorloff/AUHost/master/Screenshot-MainWindow.png" height="460" alt="Screenshot: Friends">
