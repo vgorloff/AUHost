@@ -5,7 +5,7 @@
 language: objective-c
 osx_image: xcode7.2
 xcode_sdk: macosx10.11
-xcode_project: FBPV.xcodeproj
-xcode_scheme: FacebookProfileViewer
+xcode_project: AUSamplePlugIn/Attenuator.xcodeproj
+xcode_scheme: AttenuatorAU
 
 script: xctool -reporter plain -project AUSamplePlugIn/Attenuator.xcodeproj -scheme AttenuatorAU -configuration Release -sdk macosx10.11 CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO clean build
