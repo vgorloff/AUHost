@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C56EEA391C52946800F8E75B /* BufferedAudioBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56EEA381C52946800F8E75B /* BufferedAudioBus.swift */; };
 		C5E335EB1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
 		C5E335EC1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
 		C5E335FF1C4FE95B00CD42BB /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335CE1C4FE95B00CD42BB /* NonRecursiveLocking.swift */; };
@@ -49,6 +50,7 @@
 		80313D281C417BC400647A93 /* WLSharediOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WLSharediOS-Info.plist"; sourceTree = "<group>"; };
 		8032941F1C425DDF001D15D6 /* WLShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		803294271C425E2E001D15D6 /* WLSharedOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WLSharedOSX-Info.plist"; sourceTree = "<group>"; };
+		C56EEA381C52946800F8E75B /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
 		C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		C5E335B61C4FE95B00CD42BB /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		C5E335B71C4FE95B00CD42BB /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		80313C861C4179F300647A93 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
+				C56EEA381C52946800F8E75B /* BufferedAudioBus.swift */,
 				C5E336291C4FEB8E00CD42BB /* OSX */,
 				C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */,
 				C5E335B61C4FE95B00CD42BB /* Dispatch.swift */,
@@ -304,6 +307,7 @@
 			files = (
 				C5E336201C4FEA5E00CD42BB /* SpinLock.swift in Sources */,
 				C5E335EB1C4FE95B00CD42BB /* StateMachine.swift in Sources */,
+				C56EEA391C52946800F8E75B /* BufferedAudioBus.swift in Sources */,
 				C5E336161C4FEA5E00CD42BB /* Dispatch.swift in Sources */,
 				C5E3361F1C4FEA5E00CD42BB /* Property.swift in Sources */,
 				C5E336181C4FEA5E00CD42BB /* Enumerations.swift in Sources */,

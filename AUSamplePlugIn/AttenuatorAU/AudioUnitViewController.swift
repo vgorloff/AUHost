@@ -7,9 +7,10 @@
 //
 
 import CoreAudioKit
+import AVFoundation
 
 public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
-    var audioUnit: AUAudioUnit?
+    var audioUnit: AUAudioUnit!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +23,8 @@ public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
     }
     
     public func createAudioUnitWithComponentDescription(componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
-        audioUnit = try MyAudioUnit(componentDescription: componentDescription, options: [])
-        
-        return audioUnit!
+        audioUnit = try AttenuatorAudioUnit(componentDescription: componentDescription, options: [])
+        return audioUnit
     }
     
 }
