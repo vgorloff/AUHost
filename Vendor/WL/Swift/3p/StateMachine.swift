@@ -1,9 +1,7 @@
-//
-//  StateMachine.swift
-//  SwiftyStateMachine (https://github.com/macoscope/SwiftyStateMachine/blob/develop/StateMachine/StateMachine.swift)
-//	Published under the MIT License. Copyright (c) 2015 Macoscope sp. z o.o.
-//  This version of original source by Macoscope sp. z o.o. was modified by Vlad Gorlov on 16.01.16.
-//
+//!  StateMachine.swift
+//!  SwiftyStateMachine (https://github.com/macoscope/SwiftyStateMachine/blob/develop/StateMachine/StateMachine.swift)
+//!  Published under the MIT License. Copyright (c) 2015 Macoscope sp. z o.o.
+//!  This version of original source by Macoscope sp. z o.o. was modified by Vlad Gorlov on 16.01.16.
 
 public protocol StateMachineGraphType {
 	typealias State

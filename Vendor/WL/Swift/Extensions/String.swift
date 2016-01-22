@@ -61,6 +61,7 @@ public extension String {
 		return s
 	}
 
+	// swiftlint:disable variable_name
 	var OSTypeValue: OSType {
 		let chars = utf8
 		var result: UInt32 = 0
@@ -69,4 +70,5 @@ public extension String {
 		}
 		return result
 	}
+	// swiftlint:enable variable_name
 }

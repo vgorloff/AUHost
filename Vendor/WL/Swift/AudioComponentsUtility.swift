@@ -1,6 +1,6 @@
 //
 //  AudioComponentsUtility.swift
-//  AudioUnitExtensionDemo
+//  WaveLabs
 //
 //  Created by User on 6/25/15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
@@ -33,7 +33,9 @@ public final class AudioComponentsUtility {
 		log.logDeinit()
 	}
 
-	///Always returns on main queue
+	/// **Note** Always calls completion handler on main queue
+	/// - parameter queue: Queue used to query components.
+	/// - parameter completion: Result completion handler.
 	public func updateEffectList(queue: dispatch_queue_t = DispatchQueue.Utility, completion: [AVAudioUnitComponent] -> Void) {
 		// Locating components can be a little slow, especially the first time.
 		// Do this work on a separate dispatch thread.

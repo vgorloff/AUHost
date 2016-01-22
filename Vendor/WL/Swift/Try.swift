@@ -1,6 +1,6 @@
 //
 //  Try.swift
-//  AUHost
+//  WaveLabs
 //
 //  Created by Volodymyr Gorlov on 20.01.16.
 //  Copyright © 2016 WaveLabs. All rights reserved.
