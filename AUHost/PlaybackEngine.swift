@@ -189,25 +189,28 @@ final class PlaybackEngine {
 
 	// MARK: - Private
 
-	private func selectEffectWithComponentDescription(componentDescription: AudioComponentDescription?, completionHandler: (PlaybackEngineEffectSelectionResult -> Void)?) {
-		let sema = Dispatch.Semaphore()
-		let event = PlaybackEngineEvent.SetEffect(componentDescription, {result in
-			completionHandler?(result)
-			sema.signal()
-			})
-		var possibleRelaunchEvent: PlaybackEngineEvent?
-		switch stateID {
-		case .SettingEffect, .SettingFile: break
-		case .Stopped: possibleRelaunchEvent = .Stop
-		case .Paused: possibleRelaunchEvent = .Pause
-		case .Playing: possibleRelaunchEvent = .Play
-		}
-		trythrow(try sm.handleEvent(event))
-		sema.wait {
-			guard let relaunchEvent = possibleRelaunchEvent else {
-				return
+	private func selectEffectWithComponentDescription(componentDescription: AudioComponentDescription?,
+		completionHandler: (PlaybackEngineEffectSelectionResult -> Void)?) {
+			var possibleRelaunchEvent: PlaybackEngineEvent?
+			switch stateID {
+			case .SettingEffect, .SettingFile: break
+			case .Stopped: possibleRelaunchEvent = .Stop
+			case .Paused: possibleRelaunchEvent = .Pause
+			case .Playing: possibleRelaunchEvent = .Play
 			}
-			trythrow({try sm.handleEvent(relaunchEvent)})
-		}
+			let sema = Dispatch.Semaphore()
+			let event = PlaybackEngineEvent.SetEffect(componentDescription, {result in
+				completionHandler?(result)
+				sema.signal()
+			})
+			Dispatch.Async.UserInitiated { [weak self] in guard let s = self else { return }
+				trythrow({try s.sm.handleEvent(event)})
+				sema.wait() {
+					guard let relaunchEvent = possibleRelaunchEvent else {
+						return
+					}
+					trythrow({try s.sm.handleEvent(relaunchEvent)})
+				}
+			}
 	}
 }
