@@ -106,26 +106,30 @@ final class PlaybackEngineContext {
 
 	func selectEffect(componentDescription: AudioComponentDescription?,
 		completionHandler: (PlaybackEngineEffectSelectionResult -> Void)) {
-		guard let desc = componentDescription else {
-			clearEffect()
-			completionHandler(.EffectCleared)
-			return
-		}
-		let flags = AudioComponentFlags(rawValue: desc.componentFlags)
-		let canLoadInProcess = flags.contains(AudioComponentFlags.CanLoadInProcess)
-		let loadOptions: AudioComponentInstantiationOptions = canLoadInProcess ? .LoadInProcess : .LoadOutOfProcess
-		AVAudioUnit.instantiateWithComponentDescription(desc, options: loadOptions) { [weak self] (avAudioUnit, error) in
-			guard let s = self else { return }
-			if let e = error {
-				completionHandler(.Failure(e))
+			guard let desc = componentDescription else {
+				Dispatch.Async.Main { [weak self] in
+					self?.clearEffect()
+					completionHandler(.EffectCleared)
+				}
+				return
 			}
-			else if let effect = avAudioUnit {
-				s.assignEffect(effect)
-				completionHandler(.Success(effect))
-			} else {
-				fatalError()
+			let flags = AudioComponentFlags(rawValue: desc.componentFlags)
+			let canLoadInProcess = flags.contains(AudioComponentFlags.CanLoadInProcess)
+			let loadOptions: AudioComponentInstantiationOptions = canLoadInProcess ? .LoadInProcess : .LoadOutOfProcess
+			AVAudioUnit.instantiateWithComponentDescription(desc, options: loadOptions) {[weak self] (avAudioUnit, error) in
+				if let e = error {
+					completionHandler(.Failure(e))
+				}
+				else if let effect = avAudioUnit {
+					Dispatch.Async.Main { [weak self] in
+						self?.assignEffect(effect)
+						completionHandler(.Success(effect))
+					}
+
+				} else {
+					fatalError()
+				}
 			}
-		}
 	}
 
 	// MARK: - Private
@@ -174,12 +178,12 @@ final class PlaybackEngineContext {
 		guard framesToPlay > 0 else {
 			log.logWarn("Nothing to play. Check value of 'playbackOffset' property.")
 			return
-			}
+		}
 
-			/// If there will be problems with playback status, then see this workaround
-			/// [ios8 - completionHandler of AVAudioPlayerNode.scheduleFile() is called too early - Stack Overflow]
-			/// (http://stackoverflow.com/questions/29427253/completionhandler-of-avaudioplayernode-schedulefile-is-called-too-early)
-			player.scheduleSegment(file, startingFrame: offset, frameCount: framesToPlay, atTime: nil) { [weak self] in
+		/// If there will be problems with playback status, then see this workaround
+		/// [ios8 - completionHandler of AVAudioPlayerNode.scheduleFile() is called too early - Stack Overflow]
+		/// (http://stackoverflow.com/questions/29427253/completionhandler-of-avaudioplayernode-schedulefile-is-called-too-early)
+		player.scheduleSegment(file, startingFrame: offset, frameCount: framesToPlay, atTime: nil) { [weak self] in
 			self?.filePlaybackCompleted?()
 		}
 	}
