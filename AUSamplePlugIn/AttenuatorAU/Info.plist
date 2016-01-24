@@ -34,7 +34,7 @@
 					<key>description</key>
 					<string>Attenuator</string>
 					<key>factoryFunction</key>
-					<string>$(PRODUCT_MODULE_NAME).AudioUnitViewController</string>
+					<string>$(PRODUCT_MODULE_NAME).AttenuatorAU</string>
 					<key>manufacturer</key>
 					<string>wlUA</string>
 					<key>name</key>
@@ -57,7 +57,7 @@
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.AudioUnit-UI</string>
 		<key>NSExtensionPrincipalClass</key>
-		<string>$(PRODUCT_MODULE_NAME).AudioUnitViewController</string>
+		<string>$(PRODUCT_MODULE_NAME).AttenuatorAU</string>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2016 WaveLabs. All rights reserved.</string>
