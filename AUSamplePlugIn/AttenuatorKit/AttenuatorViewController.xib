@@ -5,28 +5,43 @@
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10089"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="AttenuatorViewController" customModule="AttenuatorAU" customModuleProvider="target"/>
+        <customObject id="-2" userLabel="File's Owner" customClass="AttenuatorViewController" customModule="AttenuatorKit" customModuleProvider="target"/>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="381" height="195"/>
+        <customView id="c22-O7-iKe" customClass="AttenuatorView" customModule="AttenuatorKit" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="240" height="96"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="dke-Mr-T21">
-                    <rect key="frame" x="80" y="65" width="163" height="96"/>
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="96"/>
+                    <subviews>
+                        <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PQy-1n-Eae">
+                            <rect key="frame" x="13" y="35" width="214" height="25"/>
+                            <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="10" sliderType="linear" id="mpn-L3-ixp"/>
+                            <connections>
+                                <action selector="handleGainChange:" target="c22-O7-iKe" id="ame-mG-cS4"/>
+                            </connections>
+                        </slider>
+                    </subviews>
                     <constraints>
-                        <constraint firstAttribute="height" constant="96" id="gTW-Mg-mxr"/>
-                        <constraint firstAttribute="width" constant="163" id="vG6-ml-yAI"/>
+                        <constraint firstItem="PQy-1n-Eae" firstAttribute="centerY" secondItem="dke-Mr-T21" secondAttribute="centerY" id="CCf-aZ-QJI"/>
+                        <constraint firstItem="PQy-1n-Eae" firstAttribute="leading" secondItem="dke-Mr-T21" secondAttribute="leading" constant="15" id="fJq-ze-kRc"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="96" id="gTW-Mg-mxr"/>
+                        <constraint firstAttribute="trailing" secondItem="PQy-1n-Eae" secondAttribute="trailing" constant="15" id="iz5-jJ-PGW"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="vG6-ml-yAI"/>
                     </constraints>
                 </customView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="dke-Mr-T21" secondAttribute="bottom" constant="65" id="5hO-ET-QBJ"/>
-                <constraint firstItem="dke-Mr-T21" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="34" id="OMO-rh-9K0"/>
-                <constraint firstAttribute="trailing" secondItem="dke-Mr-T21" secondAttribute="trailing" constant="138" id="d2S-tf-Vzo"/>
-                <constraint firstItem="dke-Mr-T21" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="80" id="dZN-yT-f49"/>
+                <constraint firstAttribute="bottom" secondItem="dke-Mr-T21" secondAttribute="bottom" id="5hO-ET-QBJ"/>
+                <constraint firstItem="dke-Mr-T21" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="OMO-rh-9K0"/>
+                <constraint firstAttribute="trailing" secondItem="dke-Mr-T21" secondAttribute="trailing" id="d2S-tf-Vzo"/>
+                <constraint firstItem="dke-Mr-T21" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="dZN-yT-f49"/>
             </constraints>
-            <point key="canvasLocation" x="273.5" y="337.5"/>
+            <connections>
+                <outlet property="sliderGain" destination="PQy-1n-Eae" id="TiR-jU-O8j"/>
+            </connections>
+            <point key="canvasLocation" x="273" y="337"/>
         </customView>
     </objects>
 </document>
