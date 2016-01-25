@@ -16,6 +16,10 @@
 		8044ABCF1C52E24000FA3DA3 /* AttenuatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */; };
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
+		80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6A1C568A6800BF812A /* AttenuatorView.swift */; };
+		80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */; };
+		80A21A791C56A93600BF812A /* WLExtShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A21A781C56A92500BF812A /* WLExtShared.framework */; };
+		80A21A7D1C56A96100BF812A /* WLExtShared.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80A21A781C56A92500BF812A /* WLExtShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A5A1001C47E75F00F9864E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */; };
 		C5A5A1021C47E75F00F9864E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A1011C47E75F00F9864E /* ViewController.swift */; };
 		C5A5A1041C47E75F00F9864E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5A5A1031C47E75F00F9864E /* Assets.xcassets */; };
@@ -24,6 +28,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		80A21A751C56A92500BF812A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80313C7B1C4178F100647A93;
+			remoteInfo = WLExtSharediOS;
+		};
+		80A21A771C56A92500BF812A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8032941F1C425DDF001D15D6;
+			remoteInfo = WLExtSharedOSX;
+		};
+		80A21A7A1C56A94600BF812A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8032941E1C425DDF001D15D6;
+			remoteInfo = WLExtSharedOSX;
+		};
 		C5A5A1201C47EB5300F9864E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5A5A0F41C47E75F00F9864E /* Project object */;
@@ -48,6 +73,16 @@
 			dstSubfolderSpec = 10;
 			files = (
 				801E7E411C544E000064126C /* AttenuatorKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80A21A7C1C56A95300BF812A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80A21A7D1C56A96100BF812A /* WLExtShared.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +112,9 @@
 		8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		80A21A6A1C568A6800BF812A /* AttenuatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
+		80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
+		80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WLExtShared.xcodeproj; path = ../Vendor/WLExtShared.xcodeproj; sourceTree = "<group>"; };
 		C5A5A0FC1C47E75F00F9864E /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5A5A1011C47E75F00F9864E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +133,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80A21A791C56A93600BF812A /* WLExtShared.framework in Frameworks */,
 				8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -120,12 +159,14 @@
 		8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */ = {
 			isa = PBXGroup;
 			children = (
-				801E7E3A1C544A680064126C /* AttenuatorViewController.swift */,
-				801E7E3B1C544A680064126C /* AttenuatorViewController.xib */,
-				801E7E351C5444CB0064126C /* AttenuatorAudioUnit.swift */,
-				801E7E361C5444CB0064126C /* AttenuatorParameter.swift */,
 				8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */,
 				8044ABD01C52E24000FA3DA3 /* Info.plist */,
+				801E7E351C5444CB0064126C /* AttenuatorAudioUnit.swift */,
+				801E7E361C5444CB0064126C /* AttenuatorParameter.swift */,
+				80A21A6A1C568A6800BF812A /* AttenuatorView.swift */,
+				801E7E3A1C544A680064126C /* AttenuatorViewController.swift */,
+				801E7E3B1C544A680064126C /* AttenuatorViewController.xib */,
+				80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */,
 			);
 			path = AttenuatorKit;
 			sourceTree = "<group>";
@@ -141,12 +182,30 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		80A21A6F1C56A85800BF812A /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		80A21A711C56A92500BF812A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80A21A761C56A92500BF812A /* WLExtShared.framework */,
+				80A21A781C56A92500BF812A /* WLExtShared.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C5A5A0F31C47E75F00F9864E = {
 			isa = PBXGroup;
 			children = (
 				C5E336301C4FED2C00CD42BB /* AUHost.xcodeproj */,
 				C5A5A0FE1C47E75F00F9864E /* Attenuator */,
 				C5A5A1131C47EB5300F9864E /* AttenuatorAU */,
+				80A21A6F1C56A85800BF812A /* Vendor */,
 				8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */,
 				8044ABDE1C52E4B700FA3DA3 /* Frameworks */,
 				C5A5A0FD1C47E75F00F9864E /* Products */,
@@ -216,10 +275,12 @@
 				8044ABC81C52E24000FA3DA3 /* Frameworks */,
 				8044ABC91C52E24000FA3DA3 /* Headers */,
 				8044ABCA1C52E24000FA3DA3 /* Resources */,
+				80A21A7C1C56A95300BF812A /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				80A21A7B1C56A94600BF812A /* PBXTargetDependency */,
 			);
 			name = AttenuatorKit;
 			productName = AttenuatorKit;
@@ -306,6 +367,10 @@
 					ProductGroup = C5E336311C4FED2C00CD42BB /* Products */;
 					ProjectRef = C5E336301C4FED2C00CD42BB /* AUHost.xcodeproj */;
 				},
+				{
+					ProductGroup = 80A21A711C56A92500BF812A /* Products */;
+					ProjectRef = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -317,6 +382,20 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		80A21A761C56A92500BF812A /* WLExtShared.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WLExtShared.framework;
+			remoteRef = 80A21A751C56A92500BF812A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80A21A781C56A92500BF812A /* WLExtShared.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WLExtShared.framework;
+			remoteRef = 80A21A771C56A92500BF812A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		C5E336361C4FED2C00CD42BB /* AUHost.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -376,6 +455,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				801E7E381C5444CB0064126C /* AttenuatorParameter.swift in Sources */,
+				80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */,
+				80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */,
 				801E7E371C5444CB0064126C /* AttenuatorAudioUnit.swift in Sources */,
 				801E7E3C1C544A680064126C /* AttenuatorViewController.swift in Sources */,
 			);
@@ -401,6 +482,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		80A21A7B1C56A94600BF812A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WLExtSharedOSX;
+			targetProxy = 80A21A7A1C56A94600BF812A /* PBXContainerItemProxy */;
+		};
 		C5A5A1211C47EB5300F9864E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C5A5A1111C47EB5300F9864E /* AttenuatorAU */;
