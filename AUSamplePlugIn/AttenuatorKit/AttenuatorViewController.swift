@@ -10,7 +10,7 @@ import CoreAudioKit
 import AVFoundation
 
 public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
-	private var audioUnit: AUAudioUnit? {
+	private var audioUnit: AttenuatorAudioUnit? {
 		didSet {
 			dispatch_async(dispatch_get_main_queue()) { [weak self] in guard let s = self else { return }
 				if s.viewLoaded {
@@ -52,6 +52,18 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 			}
 			s.parameterGain?.setValue(value, originator: token)
 		}
+	}
+
+	override public func viewDidAppear() {
+		super.viewDidAppear()
+		auView.startMetering { [weak self] in
+			return self?.audioUnit?.dsp.maximumMagnitude
+		}
+	}
+
+	override public func viewWillDisappear() {
+		super.viewWillDisappear()
+		auView.stopMetering()
 	}
 
 	public func createAudioUnitWithComponentDescription(componentDescription: AudioComponentDescription) throws -> AUAudioUnit {

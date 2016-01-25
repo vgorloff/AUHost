@@ -14,4 +14,20 @@ public struct Try {
 			return ResultType.Failure(error)
 		}
 	}
+	public static func log<T>(@autoclosure closure: () throws -> T) -> T? {
+		do {
+			return try closure()
+		} catch {
+			print(error)
+			return nil
+		}
+	}
+	public static func log<T>(@noescape closure: () throws -> T) -> T? {
+		do {
+			return try closure()
+		} catch {
+			print(error)
+			return nil
+		}
+	}
 }

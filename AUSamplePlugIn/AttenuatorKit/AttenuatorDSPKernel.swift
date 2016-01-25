@@ -10,6 +10,7 @@ import Foundation
 import AudioUnit
 import AVFoundation
 import WLExtShared
+import Accelerate
 
 struct AttenuatorDSPKernel {
 
@@ -19,7 +20,14 @@ struct AttenuatorDSPKernel {
 	private var dspValueGain: AUValue = AttenuatorParameter.Gain.defaultValue / AttenuatorParameter.Gain.max
 	private let valueGainLock: NonRecursiveLocking = SpinLock()
 
-	init() {
+	private var _maximumMagnitude: [SampleType]
+	public var maximumMagnitude: [SampleType] {
+		return maximumMagnitudeLock.synchronized { return _maximumMagnitude }
+	}
+	private let maximumMagnitudeLock: NonRecursiveLocking = SpinLock()
+
+	init(maxChannels: UInt32) {
+		_maximumMagnitude = Array<SampleType>(count: Int(maxChannels), repeatedValue: 0)
 	}
 
 	func getParameter(parameter: AttenuatorParameter) -> AUValue {
@@ -43,7 +51,7 @@ struct AttenuatorDSPKernel {
 		setParameter(AttenuatorParameter.Gain, value:  AttenuatorParameter.Gain.defaultValue)
 	}
 
-	func processInputBufferList(inAudioBufferList: UnsafeMutablePointer<AudioBufferList>,
+	mutating func processInputBufferList(inAudioBufferList: UnsafeMutablePointer<AudioBufferList>,
 		outputBufferList: UnsafeMutablePointer<AudioBufferList>, frameCount: AVAudioFrameCount) -> AUAudioUnitStatus {
 
 			// 2. Now we have PCM buffer filled with some data. Lets process it.
@@ -62,15 +70,24 @@ struct AttenuatorDSPKernel {
 				assert(bI.mDataByteSize == bO.mDataByteSize)
 				let samplesBI = UnsafePointer<SampleType>(bI.mData)
 				let samplesBO = UnsafeMutablePointer<SampleType>(bO.mData)
-				// Now we chould copy the data.
-				let numSamples = Int(bO.mDataByteSize / UInt32(sizeof(SampleType.self)))
-				let samplesI = UnsafeBufferPointer<SampleType>(start: samplesBI, count: numSamples)
-				let samplesO = UnsafeMutableBufferPointer<SampleType>(start: samplesBO, count: numSamples)
-				for sampleIndex in 0 ..< samplesI.count {
-					samplesO[sampleIndex] = dspValueGain * samplesI[sampleIndex]
-				}
+				#if true
+					var gain = dspValueGain
+					var maximumMagnitudeValue: Float = 0
+					let numElementsToProcess = vDSP_Length(frameCount)
+					vDSP_vsmul(samplesBI, 1, &gain, samplesBO, 1, numElementsToProcess)
+					vDSP_maxmgv(samplesBO, 1, &maximumMagnitudeValue, numElementsToProcess)
+					_maximumMagnitude[index] = maximumMagnitudeLock.synchronized{ return maximumMagnitudeValue }
+				#else
+					// Applying gain by math
+					let numSamples = Int(bO.mDataByteSize / UInt32(sizeof(SampleType.self)))
+					let samplesI = UnsafeBufferPointer<SampleType>(start: samplesBI, count: numSamples)
+					let samplesO = UnsafeMutableBufferPointer<SampleType>(start: samplesBO, count: numSamples)
+					for sampleIndex in 0 ..< samplesI.count {
+						samplesO[sampleIndex] = dspValueGain * samplesI[sampleIndex]
+					}
+				#endif
 			}
 			return noErr
 	}
-
+	
 }

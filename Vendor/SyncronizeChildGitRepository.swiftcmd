@@ -56,3 +56,4 @@ private func getFilesFromProjectAtURL(projectURL: NSURL) {
 
 removeFilesFromParentGitRepository()
 getFilesFromProjectAtURL(NSURL(fileURLWithPath: projectRootDirectoryPath + "/Vendor/WLShared.xcodeproj/project.pbxproj"))
+getFilesFromProjectAtURL(NSURL(fileURLWithPath: projectRootDirectoryPath + "/Vendor/WLExtShared.xcodeproj/project.pbxproj"))
