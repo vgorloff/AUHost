@@ -8,12 +8,25 @@
 
 import Cocoa
 import AudioUnit
+import WLExtShared
 
 class AttenuatorView: NSView {
 
 	@IBOutlet private weak var sliderGain: NSSlider!
+	private var displayLinkUtility: CVDisplayLinkHelper?
 
 	var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
+	private var meterRefreshCallback: (Void -> [AttenuatorDSPKernel.SampleType]?)?
+
+	override func awakeFromNib() {
+		super.awakeFromNib()
+		displayLinkUtility = Try.log { return try CVDisplayLinkHelper(frameRateDevider: 60/10) }
+		displayLinkUtility?.displayLinkCallback = { [weak self] in
+			if let value = self?.meterRefreshCallback?() {
+				Swift.print(value)
+			}
+		}
+	}
 
 	func updateParameter(parameter: AttenuatorParameter, withValue: AUValue) {
 		sliderGain.floatValue = withValue
@@ -21,5 +34,15 @@ class AttenuatorView: NSView {
 
 	@IBAction private func handleGainChange(sender: NSSlider) {
 		handlerParameterDidChaned?(AttenuatorParameter.Gain, sender.floatValue)
+	}
+
+	public func startMetering(callback: (Void -> [AttenuatorDSPKernel.SampleType]?)) {
+		meterRefreshCallback = callback
+		displayLinkUtility?.start()
+	}
+
+	public func stopMetering() {
+		displayLinkUtility?.stop()
+		meterRefreshCallback = nil
 	}
 }

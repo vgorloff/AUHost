@@ -14,14 +14,14 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 	public enum Error: ErrorType {
 		case StatusError(OSStatus)
 	}
-
+	private let maxChannels = UInt32(8)
 	private var _parameterTree: AUParameterTree!
 	private var _inputBusses: AUAudioUnitBusArray!
 	private var _outputBusses: AUAudioUnitBusArray!
 	private var _inputBus: AUAudioUnitBus!
 	private var _outputBus: AUAudioUnitBus!
 	private var _pcmBuffer: AVAudioPCMBuffer?
-	private var _dsp = AttenuatorDSPKernel()
+	private(set) var dsp: AttenuatorDSPKernel
 
 	// MARK: -
 	override public var parameterTree: AUParameterTree? {
@@ -39,7 +39,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 			guard status == noErr else {
 				return status
 			}
-			return s._dsp.processInputBufferList(buffer, outputBufferList: outputData, frameCount: frameCount)
+			return s.dsp.processInputBufferList(buffer, outputBufferList: outputData, frameCount: frameCount)
 		}
 	}
 
@@ -52,6 +52,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 	}
 
 	public override init(componentDescription: AudioComponentDescription, options: AudioComponentInstantiationOptions) throws {
+		dsp = AttenuatorDSPKernel(maxChannels: maxChannels)
 		try super.init(componentDescription: componentDescription, options: options)
 		_parameterTree = setUpParametersTree()
 		try setUpBusses()
@@ -65,7 +66,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 			throw Error.StatusError(kAudioUnitErr_FailedInitialization)
 		}
 		_pcmBuffer = AVAudioPCMBuffer(PCMFormat: _inputBus.format, frameCapacity: maximumFramesToRender)
-		_dsp.reset()
+		dsp.reset()
 	}
 
 	public override func deallocateRenderResources() {
@@ -79,7 +80,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 		let defaultFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)
 		_inputBus = try AUAudioUnitBus(format: defaultFormat)
 		_outputBus = try AUAudioUnitBus(format: defaultFormat)
-		_outputBus.maximumChannelCount = 8 // Use supportedChannelCounts.
+		_outputBus.maximumChannelCount = maxChannels // Use supportedChannelCounts.
 		_inputBusses = AUAudioUnitBusArray(audioUnit: self, busType: AUAudioUnitBusType.Input, busses: [_inputBus])
 		_outputBusses = AUAudioUnitBusArray(audioUnit: self, busType: AUAudioUnitBusType.Output, busses: [_outputBus])
 	}
@@ -98,11 +99,11 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 		}
 		tree.implementorValueObserver = { [weak self] param, value in guard let s = self else { return }
 			let param = AttenuatorParameter.fromRawValue(param.address)
-			return s._dsp.setParameter(param, value: value)
+			return s.dsp.setParameter(param, value: value)
 		}
 		tree.implementorValueProvider = { [weak self] param in guard let s = self else { return AUValue() }
 			let param = AttenuatorParameter.fromRawValue(param.address)
-			return s._dsp.getParameter(param)
+			return s.dsp.getParameter(param)
 		}
 		return tree
 	}
