@@ -130,6 +130,8 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 		mediaItemView.onCompleteDragWithObjects = { [weak self] results in
 			guard let s = self else { return }
 			switch results {
+			case .None:
+				break
 			case .MediaObjects(let mediaObjectsDict):
 				let mediaObjects = NSApplication.sharedApplication().applicationDelegate
 					.mediaLibraryLoader.mediaObjectsFromPlist(mediaObjectsDict)
