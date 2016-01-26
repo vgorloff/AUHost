@@ -18,7 +18,7 @@ class AttenuatorView: NSView {
 	private var displayLinkUtility: CVDisplayLinkHelper?
 
 	var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
-	private var meterRefreshCallback: (Void -> [AttenuatorDSPKernel.SampleType]?)?
+	var meterRefreshCallback: (Void -> [AttenuatorDSPKernel.SampleType]?)?
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -38,13 +38,11 @@ class AttenuatorView: NSView {
 		handlerParameterDidChaned?(AttenuatorParameter.Gain, sender.floatValue)
 	}
 
-	public func startMetering(callback: (Void -> [AttenuatorDSPKernel.SampleType]?)) {
-		meterRefreshCallback = callback
+	public func startMetering() {
 		displayLinkUtility?.start()
 	}
 
 	public func stopMetering() {
 		displayLinkUtility?.stop()
-		meterRefreshCallback = nil
 	}
 }

@@ -9,9 +9,18 @@
 import AppKit
 import WLShared
 
-class EffectWindowController: NSWindowController {
+class EffectWindowController: NSWindowController, NSWindowDelegate {
+
+	var handlerWindowWillClose: (Void -> Void)?
+
 	override func awakeFromNib() {
 		super.awakeFromNib()
 		windowFrameAutosaveName = StringFromClass(EffectWindowController.self) + ":WindowFrame"
+	}
+
+	// MARK: - NSWindowDelegate
+
+	func windowWillClose(notification: NSNotification) {
+		handlerWindowWillClose?()
 	}
 }

@@ -20,10 +20,6 @@ public final class VULevelMeter: NSView {
 		}
 	}
 
-//	public override var intrinsicContentSize: NSSize {
-//		return NSSize(width: 100, height: 24)
-//	}
-
 	public override func drawRect(dirtyRect: NSRect) {
 		let levelL = min(1, level[0]).CGFloatValue
 		let rect = NSRect(origin: CGPoint.zero, size: CGSize(width: bounds.width * levelL, height: bounds.height))
