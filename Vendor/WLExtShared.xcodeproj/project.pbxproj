@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		803FE9FE1C56C71F0006B4A1 /* CVDisplayLinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803FE9FD1C56C71F0006B4A1 /* CVDisplayLinkHelper.swift */; };
+		803FEA001C56DAAA0006B4A1 /* VULevelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803FE9FF1C56DAAA0006B4A1 /* VULevelMeter.swift */; };
 		C5E335EB1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
 		C5E335EC1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
 		C5E335FF1C4FE95B00CD42BB /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335CE1C4FE95B00CD42BB /* NonRecursiveLocking.swift */; };
@@ -51,6 +52,7 @@
 		8032941F1C425DDF001D15D6 /* WLExtShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLExtShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		803294271C425E2E001D15D6 /* WLSharedOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WLSharedOSX-Info.plist"; sourceTree = "<group>"; };
 		803FE9FD1C56C71F0006B4A1 /* CVDisplayLinkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVDisplayLinkHelper.swift; sourceTree = "<group>"; };
+		803FE9FF1C56DAAA0006B4A1 /* VULevelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
 		C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		C5E335B61C4FE95B00CD42BB /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		C5E335B71C4FE95B00CD42BB /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				803FE9FD1C56C71F0006B4A1 /* CVDisplayLinkHelper.swift */,
 				C5E3362D1C4FEB8E00CD42BB /* MediaLibraryUtility.swift */,
+				803FE9FF1C56DAAA0006B4A1 /* VULevelMeter.swift */,
 			);
 			path = OSX;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5E335EC1C4FE95B00CD42BB /* StateMachine.swift in Sources */,
+				803FEA001C56DAAA0006B4A1 /* VULevelMeter.swift in Sources */,
 				C5E336121C4FEA5D00CD42BB /* SpinLock.swift in Sources */,
 				C5E3360A1C4FEA5D00CD42BB /* Enumerations.swift in Sources */,
 				C5E3360B1C4FEA5D00CD42BB /* Functions.swift in Sources */,

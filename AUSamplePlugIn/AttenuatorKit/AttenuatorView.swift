@@ -13,6 +13,8 @@ import WLExtShared
 class AttenuatorView: NSView {
 
 	@IBOutlet private weak var sliderGain: NSSlider!
+	@IBOutlet private(set) weak var viewLevelMeter: VULevelMeter!
+
 	private var displayLinkUtility: CVDisplayLinkHelper?
 
 	var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
@@ -23,7 +25,7 @@ class AttenuatorView: NSView {
 		displayLinkUtility = Try.log { return try CVDisplayLinkHelper(frameRateDevider: 60/10) }
 		displayLinkUtility?.displayLinkCallback = { [weak self] in
 			if let value = self?.meterRefreshCallback?() {
-				Swift.print(value)
+				self?.viewLevelMeter.level = value
 			}
 		}
 	}
