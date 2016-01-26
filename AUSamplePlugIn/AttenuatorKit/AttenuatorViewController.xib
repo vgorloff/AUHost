@@ -17,7 +17,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="240" height="96"/>
                     <subviews>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-h2-ebA">
-                            <rect key="frame" x="8" y="21.5" width="224" height="53"/>
+                            <rect key="frame" x="8" y="21" width="224" height="53"/>
                             <subviews>
                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hby-7F-7Bx" customClass="VULevelMeter" customModule="WLExtShared">
                                     <rect key="frame" x="0.0" y="31" width="224" height="22"/>

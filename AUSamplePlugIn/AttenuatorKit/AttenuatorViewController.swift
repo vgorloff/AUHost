@@ -8,24 +8,11 @@
 
 import CoreAudioKit
 import AVFoundation
+import WLExtShared
 
 public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
-	private var audioUnit: AttenuatorAudioUnit? {
-		didSet {
-			dispatch_async(dispatch_get_main_queue()) { [weak self] in guard let s = self else { return }
-				if s.viewLoaded {
-					s.connectViewWithAU(s.audioUnit)
-				}
-			}
-		}
-	}
-	private var parameterObserverToken: AUParameterObserverToken?
-	private var parameterGain: AUParameter?
-	private var auView: AttenuatorView! {
-		return view as! AttenuatorView
-	}
-
-	// MARK: - Private
+	private var audioUnit: AttenuatorAudioUnit?
+	// MARK: -
 
 	public override func loadView() {
 		var topLevelObjects: NSArray?
@@ -43,54 +30,25 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 		fatalError()
 	}
 
-	public override func viewDidLoad() {
+	override public func viewDidLoad() {
 		super.viewDidLoad()
-		connectViewWithAU(audioUnit)
-		auView.handlerParameterDidChaned = {[weak self] parameter, value in guard let s = self else { return }
-			guard let token = s.parameterObserverToken else {
-				return
-			}
-			s.parameterGain?.setValue(value, originator: token)
-		}
 	}
 
 	override public func viewDidAppear() {
 		super.viewDidAppear()
-		auView.startMetering { [weak self] in
-			return self?.audioUnit?.dsp.maximumMagnitude
-		}
+		audioUnit?.view?.startMetering()
 	}
 
 	override public func viewWillDisappear() {
 		super.viewWillDisappear()
-		auView.stopMetering()
+		audioUnit?.view?.stopMetering()
 	}
 
 	public func createAudioUnitWithComponentDescription(componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
 		let au = try AttenuatorAudioUnit(componentDescription: componentDescription, options: [])
 		audioUnit = au
+		audioUnit?.view = view as? AttenuatorView
 		return au
 	}
 
-	// MARK: - Private
-
-	private func connectViewWithAU(au: AttenuatorAudioUnit?) {
-		guard let paramTree = au?.parameterTree else { return }
-		parameterGain = paramTree.valueForKey(AttenuatorParameter.Gain.parameterID) as? AUParameter
-		parameterObserverToken = paramTree.tokenByAddingParameterObserver { address, value in
-			dispatch_async(dispatch_get_main_queue()) { [weak self] in guard let s = self else { return }
-				let paramType = AttenuatorParameter.fromRawValue(address)
-				s.auView.updateParameter(paramType, withValue: value)
-			}
-		}
-		if let param = parameterGain {
-			auView.updateParameter(AttenuatorParameter.Gain, withValue: param.value)
-		}
-		if let audioUnit = au, let audioUnitView = auView {
-			audioUnitView.viewLevelMeter.numberOfChannels = audioUnit.outputBus.format.channelCount
-		}
-		audioUnit?.handleResourcesDidAllocated = { [weak self] (inBus:AUAudioUnitBus, outBus: AUAudioUnitBus) in
-			self?.auView.viewLevelMeter.numberOfChannels = outBus.format.channelCount
-		}
-	}
 }

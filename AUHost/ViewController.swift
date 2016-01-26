@@ -29,11 +29,20 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 	private var availableEffects = [AVAudioUnitComponent]()
 	private var availablePresets = [AUAudioUnitPreset]()
 	private weak var effectViewController: NSViewController? // Temporary store
-	private weak var effectWindowController: NSWindowController?
+	private weak var effectWindowController: EffectWindowController?
 	private var playbackEngine: PlaybackEngine {
 		return NSApplication.sharedApplication().applicationDelegate.playbackEngine
 	}
 	private var audioUnitDatasource = AudioComponentsUtility()
+	private var selectedAUComponent: AVAudioUnitComponent?
+	private var canOpenEffectView: Bool {
+		guard let component = selectedAUComponent where effectWindowController == nil else {
+			return false
+		}
+		let flags = AudioComponentFlags(rawValue: component.audioComponentDescription.componentFlags)
+		let v3AU = flags.contains(AudioComponentFlags.IsV3AudioUnit)
+		return component.hasCustomView || v3AU
+	}
 
 	// MARK: -
 	override func viewDidLoad() {
@@ -47,11 +56,17 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 	}
 
 	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
-		if let segueID = segue.identifier, let ctrl = segue.destinationController as? NSWindowController
+		if let segueID = segue.identifier, let ctrl = segue.destinationController as? EffectWindowController
 			where segueID == "S:OpenEffectView" {
 				ctrl.contentViewController = effectViewController
 				effectWindowController = ctrl
 				effectViewController = nil
+				buttonOpenEffectView.enabled = false
+				ctrl.handlerWindowWillClose = { [weak self] in guard let s = self else { return }
+						s.effectWindowController?.contentViewController = nil
+						s.effectWindowController = nil
+					s.buttonOpenEffectView.enabled = s.canOpenEffectView
+				}
 		}
 	}
 
@@ -85,8 +100,10 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 	}
 
 	@IBAction private func actionToggleEffectView(sender: AnyObject?) {
-		playbackEngine.openEffectView { [weak self] controller in
-			guard let s = self else { return }
+		guard canOpenEffectView && effectWindowController == nil else {
+			return
+		}
+		playbackEngine.openEffectView { [weak self] controller in guard let s = self else { return }
 			s.effectViewController = controller
 			if controller != nil {
 				s.performSegueWithIdentifier("S:OpenEffectView", sender: s)
@@ -104,6 +121,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			case .AudioComponentInstanceInvalidated(_, _):
 				s.playbackEngine.selectEffectComponent(nil, completionHandler: nil)
 				s.tableEffects.reloadData()
+				s.selectedAUComponent = nil
 			}
 		}
 	}
@@ -136,12 +154,18 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 				case .Playing:
 					s.buttonPlay.enabled = true
 					s.buttonPlay.title = "Pause"
+					s.buttonOpenEffectView.enabled = s.canOpenEffectView
 				case .Stopped:
+					s.buttonPlay.enabled = true
 					s.buttonPlay.title = "Play"
+					s.buttonOpenEffectView.enabled = s.canOpenEffectView
 				case .Paused:
+					s.buttonPlay.enabled = true
 					s.buttonPlay.title = "Resume"
+					s.buttonOpenEffectView.enabled = s.canOpenEffectView
 				case .SettingEffect, .SettingFile:
 					s.buttonPlay.enabled = false
+					s.buttonOpenEffectView.enabled = false
 					break
 				}
 			}
@@ -204,24 +228,23 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			return
 		}
 		func handleTableEffects() {
-			let shouldOpenEffectView = (effectWindowController != nil)
+			let shouldReopenEffectView = (effectWindowController != nil)
 			effectWindowController?.close()
 			if tableView.selectedRow == 0 {
 				log.logVerbose("Clearing effect")
-				buttonOpenEffectView.enabled = false
 				playbackEngine.selectEffectComponent(nil) { [weak self] _ in
 					guard let s = self else { return }
 					s.availablePresets.removeAll()
 					s.tablePresets.reloadData()
 					s.tablePresets.enabled = s.availablePresets.count > 0
 				}
+				selectedAUComponent = nil
 			} else {
-				buttonOpenEffectView.enabled = true
 				let row = tableView.selectedRow - 1
 				if row < availableEffects.count {
 					let component = availableEffects[row]
 					log.logVerbose("Selecting effect: \"\(component.name)\"")
-					playbackEngine.selectEffectComponent(component) { [weak self] result in
+					playbackEngine.selectEffectComponent(component) { [weak self, weak component] result in
 						guard let s = self else { return }
 						switch result {
 						case .EffectCleared: break
@@ -231,12 +254,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 							s.availablePresets = effect.AUAudioUnit.factoryPresets ?? []
 							s.tablePresets.reloadData()
 							s.tablePresets.enabled = s.availablePresets.count > 0
+							s.selectedAUComponent = component
+							if shouldReopenEffectView {
+								Dispatch.Async.Main { [weak self] in
+									self?.actionToggleEffectView(nil)
+								}
+							}
 						}
-					}
-				}
-				if shouldOpenEffectView {
-					Dispatch.Async.Main { [weak self] in
-						self?.actionToggleEffectView(nil)
 					}
 				}
 			}
