@@ -18,10 +18,11 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 	private var _parameterTree: AUParameterTree!
 	private var _inputBusses: AUAudioUnitBusArray!
 	private var _outputBusses: AUAudioUnitBusArray!
-	private var _inputBus: AUAudioUnitBus!
-	private var _outputBus: AUAudioUnitBus!
+	internal private(set) var inputBus: AUAudioUnitBus!
+	internal private(set) var outputBus: AUAudioUnitBus!
 	private var _pcmBuffer: AVAudioPCMBuffer?
 	private(set) var dsp: AttenuatorDSPKernel
+	var handleResourcesDidAllocated: ((AUAudioUnitBus, AUAudioUnitBus) -> Void)?
 
 	// MARK: -
 	override public var parameterTree: AUParameterTree? {
@@ -61,12 +62,13 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 
 	public override func allocateRenderResources() throws {
 		try super.allocateRenderResources()
-		guard _outputBus.format.channelCount == _inputBus.format.channelCount else {
+		guard outputBus.format.channelCount == inputBus.format.channelCount else {
 			setRenderResourcesAllocated(false)
 			throw Error.StatusError(kAudioUnitErr_FailedInitialization)
 		}
-		_pcmBuffer = AVAudioPCMBuffer(PCMFormat: _inputBus.format, frameCapacity: maximumFramesToRender)
+		_pcmBuffer = AVAudioPCMBuffer(PCMFormat: inputBus.format, frameCapacity: maximumFramesToRender)
 		dsp.reset()
+		handleResourcesDidAllocated?(inputBus, outputBus)
 	}
 
 	public override func deallocateRenderResources() {
@@ -78,11 +80,11 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 
 	private func setUpBusses() throws {
 		let defaultFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)
-		_inputBus = try AUAudioUnitBus(format: defaultFormat)
-		_outputBus = try AUAudioUnitBus(format: defaultFormat)
-		_outputBus.maximumChannelCount = maxChannels // Use supportedChannelCounts.
-		_inputBusses = AUAudioUnitBusArray(audioUnit: self, busType: AUAudioUnitBusType.Input, busses: [_inputBus])
-		_outputBusses = AUAudioUnitBusArray(audioUnit: self, busType: AUAudioUnitBusType.Output, busses: [_outputBus])
+		inputBus = try AUAudioUnitBus(format: defaultFormat)
+		outputBus = try AUAudioUnitBus(format: defaultFormat)
+		outputBus.maximumChannelCount = maxChannels // Use supportedChannelCounts.
+		_inputBusses = AUAudioUnitBusArray(audioUnit: self, busType: AUAudioUnitBusType.Input, busses: [inputBus])
+		_outputBusses = AUAudioUnitBusArray(audioUnit: self, busType: AUAudioUnitBusType.Output, busses: [outputBus])
 	}
 
 	private func setUpParametersTree() -> AUParameterTree {

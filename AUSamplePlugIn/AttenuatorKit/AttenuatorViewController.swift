@@ -74,7 +74,7 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 
 	// MARK: - Private
 
-	private func connectViewWithAU(au: AUAudioUnit?) {
+	private func connectViewWithAU(au: AttenuatorAudioUnit?) {
 		guard let paramTree = au?.parameterTree else { return }
 		parameterGain = paramTree.valueForKey(AttenuatorParameter.Gain.parameterID) as? AUParameter
 		parameterObserverToken = paramTree.tokenByAddingParameterObserver { address, value in
@@ -85,6 +85,12 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 		}
 		if let param = parameterGain {
 			auView.updateParameter(AttenuatorParameter.Gain, withValue: param.value)
+		}
+		if let audioUnit = au, let audioUnitView = auView {
+			audioUnitView.viewLevelMeter.numberOfChannels = audioUnit.outputBus.format.channelCount
+		}
+		audioUnit?.handleResourcesDidAllocated = { [weak self] (inBus:AUAudioUnitBus, outBus: AUAudioUnitBus) in
+			self?.auView.viewLevelMeter.numberOfChannels = outBus.format.channelCount
 		}
 	}
 }
