@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80B492BA1C58E93700599F07 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492B91C58E93700599F07 /* Math.swift */; };
+		80B492BB1C58E93700599F07 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492B91C58E93700599F07 /* Math.swift */; };
+		80B492C01C59342D00599F07 /* CacheCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492BF1C59342D00599F07 /* CacheCentre.swift */; };
+		80B492C11C59342D00599F07 /* CacheCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492BF1C59342D00599F07 /* CacheCentre.swift */; };
+		80B492C61C59478700599F07 /* NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492C21C59476600599F07 /* NSCache.swift */; };
+		80B492C71C59478800599F07 /* NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492C21C59476600599F07 /* NSCache.swift */; };
+		80B492C91C595C2F00599F07 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492C81C595C2F00599F07 /* ColorType.swift */; };
+		80B492CA1C595C2F00599F07 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492C81C595C2F00599F07 /* ColorType.swift */; };
+		80B492CC1C595E6E00599F07 /* UtilityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492CB1C595E6E00599F07 /* UtilityTypes.swift */; };
+		80B492CD1C595E6E00599F07 /* UtilityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492CB1C595E6E00599F07 /* UtilityTypes.swift */; };
 		80FC20D51C57C91C00A1D90D /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC20D41C57C91C00A1D90D /* MediaObjectPasteboardUtility.swift */; };
 		C5E335EB1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
 		C5E335EC1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
@@ -50,6 +60,11 @@
 		80313D281C417BC400647A93 /* WLSharediOS-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WLSharediOS-Info.plist"; sourceTree = "<group>"; };
 		8032941F1C425DDF001D15D6 /* WLShared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLShared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		803294271C425E2E001D15D6 /* WLSharedOSX-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WLSharedOSX-Info.plist"; sourceTree = "<group>"; };
+		80B492B91C58E93700599F07 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		80B492BF1C59342D00599F07 /* CacheCentre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheCentre.swift; sourceTree = "<group>"; };
+		80B492C21C59476600599F07 /* NSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCache.swift; sourceTree = "<group>"; };
+		80B492C81C595C2F00599F07 /* ColorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
+		80B492CB1C595E6E00599F07 /* UtilityTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityTypes.swift; sourceTree = "<group>"; };
 		80FC20D41C57C91C00A1D90D /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
 		C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		C5E335B61C4FE95B00CD42BB /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
@@ -116,6 +131,7 @@
 		80313C861C4179F300647A93 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
+				80B492BF1C59342D00599F07 /* CacheCentre.swift */,
 				C5E336291C4FEB8E00CD42BB /* OSX */,
 				C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */,
 				C5E335B61C4FE95B00CD42BB /* Dispatch.swift */,
@@ -136,6 +152,8 @@
 				C5E335C31C4FE95B00CD42BB /* 3p */,
 				C5E335C91C4FE95B00CD42BB /* Extensions */,
 				C5E335CF1C4FE95B00CD42BB /* Protocols */,
+				80B492B91C58E93700599F07 /* Math.swift */,
+				80B492CB1C595E6E00599F07 /* UtilityTypes.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -167,6 +185,8 @@
 		C5E335C91C4FE95B00CD42BB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				80B492C81C595C2F00599F07 /* ColorType.swift */,
+				80B492C21C59476600599F07 /* NSCache.swift */,
 				C5E335C51C4FE95B00CD42BB /* NSOperationQueue.swift */,
 				C5E335C61C4FE95B00CD42BB /* Float.swift */,
 				C5E335C71C4FE95B00CD42BB /* String.swift */,
@@ -306,6 +326,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5E336201C4FEA5E00CD42BB /* SpinLock.swift in Sources */,
+				80B492C91C595C2F00599F07 /* ColorType.swift in Sources */,
+				80B492CC1C595E6E00599F07 /* UtilityTypes.swift in Sources */,
 				C5E335EB1C4FE95B00CD42BB /* StateMachine.swift in Sources */,
 				C5E336161C4FEA5E00CD42BB /* Dispatch.swift in Sources */,
 				C5E3361F1C4FEA5E00CD42BB /* Property.swift in Sources */,
@@ -314,8 +336,11 @@
 				C5E3361A1C4FEA5E00CD42BB /* KVOHelper.swift in Sources */,
 				C5E336221C4FEA6700CD42BB /* NSOperationQueue.swift in Sources */,
 				C5E336211C4FEA5E00CD42BB /* Try.swift in Sources */,
+				80B492C71C59478800599F07 /* NSCache.swift in Sources */,
 				C5E3361B1C4FEA5E00CD42BB /* Logger.swift in Sources */,
 				C5E336251C4FEA6700CD42BB /* AudioComponent.swift in Sources */,
+				80B492BA1C58E93700599F07 /* Math.swift in Sources */,
+				80B492C01C59342D00599F07 /* CacheCentre.swift in Sources */,
 				C5E336231C4FEA6700CD42BB /* Float.swift in Sources */,
 				C5E336241C4FEA6700CD42BB /* String.swift in Sources */,
 				C5E335FF1C4FE95B00CD42BB /* NonRecursiveLocking.swift in Sources */,
@@ -330,16 +355,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				80FC20D51C57C91C00A1D90D /* MediaObjectPasteboardUtility.swift in Sources */,
+				80B492C11C59342D00599F07 /* CacheCentre.swift in Sources */,
 				C5E335EC1C4FE95B00CD42BB /* StateMachine.swift in Sources */,
 				C5E336121C4FEA5D00CD42BB /* SpinLock.swift in Sources */,
 				C5E3360A1C4FEA5D00CD42BB /* Enumerations.swift in Sources */,
+				80B492CA1C595C2F00599F07 /* ColorType.swift in Sources */,
 				C5E3360B1C4FEA5D00CD42BB /* Functions.swift in Sources */,
 				C5E336091C4FEA5D00CD42BB /* DispatchQueue.swift in Sources */,
+				80B492C61C59478700599F07 /* NSCache.swift in Sources */,
 				C5E3360F1C4FEA5D00CD42BB /* NotificationObserver.swift in Sources */,
 				C5E3360D1C4FEA5D00CD42BB /* Logger.swift in Sources */,
 				C5E336271C4FEA6700CD42BB /* Float.swift in Sources */,
 				C5E336141C4FEA5D00CD42BB /* Try.swift in Sources */,
 				C5E3360C1C4FEA5D00CD42BB /* KVOHelper.swift in Sources */,
+				80B492CD1C595E6E00599F07 /* UtilityTypes.swift in Sources */,
 				C5E336281C4FEA6700CD42BB /* AudioComponent.swift in Sources */,
 				C5E336131C4FEA5D00CD42BB /* String.swift in Sources */,
 				C5E336001C4FE95B00CD42BB /* NonRecursiveLocking.swift in Sources */,
@@ -348,6 +377,7 @@
 				C5E336111C4FEA5D00CD42BB /* Property.swift in Sources */,
 				C5E336081C4FEA5D00CD42BB /* Dispatch.swift in Sources */,
 				C5E3362E1C4FEB9600CD42BB /* MediaLibraryUtility.swift in Sources */,
+				80B492BB1C58E93700599F07 /* Math.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
