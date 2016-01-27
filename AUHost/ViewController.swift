@@ -181,6 +181,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			}
 			url.startAccessingSecurityScopedResource() // Seems working fine without this line
 			let f = try AVAudioFile(forReading: url)
+			mediaItemView.mediaFileURL = url
 			try playbackEngine.setFileToPlay(f)
 			if playbackEngine.stateID == .Stopped {
 				try playbackEngine.play()
