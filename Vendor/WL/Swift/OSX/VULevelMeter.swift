@@ -7,7 +7,6 @@
 //
 
 import Cocoa
-import WLExtShared
 
 @IBDesignable
 public final class VULevelMeter: NSView {
