@@ -7,17 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		801E7E371C5444CB0064126C /* AttenuatorAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801E7E351C5444CB0064126C /* AttenuatorAudioUnit.swift */; };
+		801E7E381C5444CB0064126C /* AttenuatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801E7E361C5444CB0064126C /* AttenuatorParameter.swift */; };
+		801E7E3C1C544A680064126C /* AttenuatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801E7E3A1C544A680064126C /* AttenuatorViewController.swift */; };
+		801E7E3F1C544B1B0064126C /* AttenuatorAU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801E7E3E1C544B1B0064126C /* AttenuatorAU.swift */; };
+		801E7E411C544E000064126C /* AttenuatorKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		801E7E431C5451530064126C /* AttenuatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 801E7E3B1C544A680064126C /* AttenuatorViewController.xib */; };
+		8044ABCF1C52E24000FA3DA3 /* AttenuatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */; };
+		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
+		80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6A1C568A6800BF812A /* AttenuatorView.swift */; };
+		80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */; };
+		80A21A791C56A93600BF812A /* WLExtShared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A21A781C56A92500BF812A /* WLExtShared.framework */; };
+		80A21A7D1C56A96100BF812A /* WLExtShared.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80A21A781C56A92500BF812A /* WLExtShared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A5A1001C47E75F00F9864E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */; };
 		C5A5A1021C47E75F00F9864E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A1011C47E75F00F9864E /* ViewController.swift */; };
 		C5A5A1041C47E75F00F9864E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5A5A1031C47E75F00F9864E /* Assets.xcassets */; };
 		C5A5A1071C47E75F00F9864E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A5A1051C47E75F00F9864E /* Main.storyboard */; };
-		C5A5A1161C47EB5300F9864E /* MyAudioUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A1151C47EB5300F9864E /* MyAudioUnit.m */; };
-		C5A5A11A1C47EB5300F9864E /* AudioUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A1191C47EB5300F9864E /* AudioUnitViewController.swift */; };
-		C5A5A11D1C47EB5300F9864E /* AudioUnitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C5A5A11B1C47EB5300F9864E /* AudioUnitViewController.xib */; };
 		C5A5A1221C47EB5300F9864E /* AttenuatorAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C5A5A1121C47EB5300F9864E /* AttenuatorAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		80A21A751C56A92500BF812A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 80313C7B1C4178F100647A93;
+			remoteInfo = WLExtSharediOS;
+		};
+		80A21A771C56A92500BF812A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8032941F1C425DDF001D15D6;
+			remoteInfo = WLExtSharedOSX;
+		};
+		80A21A7A1C56A94600BF812A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8032941E1C425DDF001D15D6;
+			remoteInfo = WLExtSharedOSX;
+		};
 		C5A5A1201C47EB5300F9864E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C5A5A0F41C47E75F00F9864E /* Project object */;
@@ -35,6 +66,26 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		801E7E401C544DF30064126C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				801E7E411C544E000064126C /* AttenuatorKit.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80A21A7C1C56A95300BF812A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				80A21A7D1C56A96100BF812A /* WLExtShared.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5A5A1261C47EB5300F9864E /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -49,6 +100,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		801E7E351C5444CB0064126C /* AttenuatorAudioUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorAudioUnit.swift; sourceTree = "<group>"; };
+		801E7E361C5444CB0064126C /* AttenuatorParameter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorParameter.swift; sourceTree = "<group>"; };
+		801E7E3A1C544A680064126C /* AttenuatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorViewController.swift; sourceTree = "<group>"; };
+		801E7E3B1C544A680064126C /* AttenuatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttenuatorViewController.xib; sourceTree = "<group>"; };
+		801E7E3E1C544B1B0064126C /* AttenuatorAU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorAU.swift; sourceTree = "<group>"; };
+		8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttenuatorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttenuatorKit.h; sourceTree = "<group>"; };
+		8044ABD01C52E24000FA3DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
+		8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		80A21A6A1C568A6800BF812A /* AttenuatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
+		80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
+		80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = WLExtShared.xcodeproj; path = ../Vendor/WLExtShared.xcodeproj; sourceTree = "<group>"; };
 		C5A5A0FC1C47E75F00F9864E /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5A5A1011C47E75F00F9864E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,18 +122,22 @@
 		C5A5A1061C47E75F00F9864E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C5A5A1081C47E75F00F9864E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5A5A1121C47EB5300F9864E /* AttenuatorAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AttenuatorAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		C5A5A1141C47EB5300F9864E /* MyAudioUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyAudioUnit.h; sourceTree = "<group>"; };
-		C5A5A1151C47EB5300F9864E /* MyAudioUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAudioUnit.m; sourceTree = "<group>"; };
 		C5A5A1181C47EB5300F9864E /* AttenuatorAU.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AttenuatorAU.entitlements; sourceTree = "<group>"; };
-		C5A5A1191C47EB5300F9864E /* AudioUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUnitViewController.swift; sourceTree = "<group>"; };
-		C5A5A11C1C47EB5300F9864E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AudioUnitViewController.xib; sourceTree = "<group>"; };
 		C5A5A11E1C47EB5300F9864E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C5A5A11F1C47EB5300F9864E /* AttenuatorAU-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AttenuatorAU-Bridging-Header.h"; sourceTree = "<group>"; };
 		C5A5A1271C47EF2D00F9864E /* Attenuator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Attenuator.entitlements; sourceTree = "<group>"; };
 		C5E336301C4FED2C00CD42BB /* AUHost.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = AUHost.xcodeproj; path = ../AUHost.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8044ABC81C52E24000FA3DA3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80A21A791C56A93600BF812A /* WLExtShared.framework in Frameworks */,
+				8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5A5A0F91C47E75F00F9864E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -79,18 +149,65 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */ = {
+			isa = PBXGroup;
+			children = (
+				8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */,
+				8044ABD01C52E24000FA3DA3 /* Info.plist */,
+				801E7E351C5444CB0064126C /* AttenuatorAudioUnit.swift */,
+				801E7E361C5444CB0064126C /* AttenuatorParameter.swift */,
+				80A21A6A1C568A6800BF812A /* AttenuatorView.swift */,
+				801E7E3A1C544A680064126C /* AttenuatorViewController.swift */,
+				801E7E3B1C544A680064126C /* AttenuatorViewController.xib */,
+				80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */,
+			);
+			path = AttenuatorKit;
+			sourceTree = "<group>";
+		};
+		8044ABDE1C52E4B700FA3DA3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */,
+				8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */,
+				8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */,
+				8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80A21A6F1C56A85800BF812A /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		80A21A711C56A92500BF812A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80A21A761C56A92500BF812A /* WLExtShared.framework */,
+				80A21A781C56A92500BF812A /* WLExtShared.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C5A5A0F31C47E75F00F9864E = {
 			isa = PBXGroup;
 			children = (
 				C5E336301C4FED2C00CD42BB /* AUHost.xcodeproj */,
 				C5A5A0FE1C47E75F00F9864E /* Attenuator */,
 				C5A5A1131C47EB5300F9864E /* AttenuatorAU */,
+				80A21A6F1C56A85800BF812A /* Vendor */,
+				8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */,
+				8044ABDE1C52E4B700FA3DA3 /* Frameworks */,
 				C5A5A0FD1C47E75F00F9864E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -100,6 +217,7 @@
 			children = (
 				C5A5A0FC1C47E75F00F9864E /* Attenuator.app */,
 				C5A5A1121C47EB5300F9864E /* AttenuatorAU.appex */,
+				8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,23 +238,11 @@
 		C5A5A1131C47EB5300F9864E /* AttenuatorAU */ = {
 			isa = PBXGroup;
 			children = (
-				C5A5A1141C47EB5300F9864E /* MyAudioUnit.h */,
-				C5A5A1151C47EB5300F9864E /* MyAudioUnit.m */,
-				C5A5A1191C47EB5300F9864E /* AudioUnitViewController.swift */,
-				C5A5A11B1C47EB5300F9864E /* AudioUnitViewController.xib */,
 				C5A5A11E1C47EB5300F9864E /* Info.plist */,
-				C5A5A11F1C47EB5300F9864E /* AttenuatorAU-Bridging-Header.h */,
-				C5A5A1171C47EB5300F9864E /* Supporting Files */,
+				C5A5A1181C47EB5300F9864E /* AttenuatorAU.entitlements */,
+				801E7E3E1C544B1B0064126C /* AttenuatorAU.swift */,
 			);
 			path = AttenuatorAU;
-			sourceTree = "<group>";
-		};
-		C5A5A1171C47EB5300F9864E /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				C5A5A1181C47EB5300F9864E /* AttenuatorAU.entitlements */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		C5E336311C4FED2C00CD42BB /* Products */ = {
@@ -149,7 +255,38 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		8044ABC91C52E24000FA3DA3 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8044ABCF1C52E24000FA3DA3 /* AttenuatorKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		8044ABCB1C52E24000FA3DA3 /* AttenuatorKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8044ABD51C52E24000FA3DA3 /* Build configuration list for PBXNativeTarget "AttenuatorKit" */;
+			buildPhases = (
+				8044ABC71C52E24000FA3DA3 /* Sources */,
+				8044ABC81C52E24000FA3DA3 /* Frameworks */,
+				8044ABC91C52E24000FA3DA3 /* Headers */,
+				8044ABCA1C52E24000FA3DA3 /* Resources */,
+				80A21A7C1C56A95300BF812A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				80A21A7B1C56A94600BF812A /* PBXTargetDependency */,
+			);
+			name = AttenuatorKit;
+			productName = AttenuatorKit;
+			productReference = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		C5A5A0FB1C47E75F00F9864E /* Attenuator */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5A5A10B1C47E75F00F9864E /* Build configuration list for PBXNativeTarget "Attenuator" */;
@@ -177,6 +314,7 @@
 				C5A5A10E1C47EB5300F9864E /* Sources */,
 				C5A5A10F1C47EB5300F9864E /* Frameworks */,
 				C5A5A1101C47EB5300F9864E /* Resources */,
+				801E7E401C544DF30064126C /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -197,6 +335,9 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = WaveLabs;
 				TargetAttributes = {
+					8044ABCB1C52E24000FA3DA3 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					C5A5A0FB1C47E75F00F9864E = {
 						CreatedOnToolsVersion = 7.2;
 						SystemCapabilities = {
@@ -226,16 +367,35 @@
 					ProductGroup = C5E336311C4FED2C00CD42BB /* Products */;
 					ProjectRef = C5E336301C4FED2C00CD42BB /* AUHost.xcodeproj */;
 				},
+				{
+					ProductGroup = 80A21A711C56A92500BF812A /* Products */;
+					ProjectRef = 80A21A701C56A92500BF812A /* WLExtShared.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
 				C5A5A0FB1C47E75F00F9864E /* Attenuator */,
 				C5A5A1111C47EB5300F9864E /* AttenuatorAU */,
+				8044ABCB1C52E24000FA3DA3 /* AttenuatorKit */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		80A21A761C56A92500BF812A /* WLExtShared.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WLExtShared.framework;
+			remoteRef = 80A21A751C56A92500BF812A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		80A21A781C56A92500BF812A /* WLExtShared.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = WLExtShared.framework;
+			remoteRef = 80A21A771C56A92500BF812A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		C5E336361C4FED2C00CD42BB /* AUHost.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -246,6 +406,14 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8044ABCA1C52E24000FA3DA3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				801E7E431C5451530064126C /* AttenuatorViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5A5A0FA1C47E75F00F9864E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,7 +427,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A5A11D1C47EB5300F9864E /* AudioUnitViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,11 +445,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -a \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"";
+			shellScript = "#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -r \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\npluginkit -a \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\nsleep 2";
 		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8044ABC71C52E24000FA3DA3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				801E7E381C5444CB0064126C /* AttenuatorParameter.swift in Sources */,
+				80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */,
+				80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */,
+				801E7E371C5444CB0064126C /* AttenuatorAudioUnit.swift in Sources */,
+				801E7E3C1C544A680064126C /* AttenuatorViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C5A5A0F81C47E75F00F9864E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -296,14 +475,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5A5A1161C47EB5300F9864E /* MyAudioUnit.m in Sources */,
-				C5A5A11A1C47EB5300F9864E /* AudioUnitViewController.swift in Sources */,
+				801E7E3F1C544B1B0064126C /* AttenuatorAU.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		80A21A7B1C56A94600BF812A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = WLExtSharedOSX;
+			targetProxy = 80A21A7A1C56A94600BF812A /* PBXContainerItemProxy */;
+		};
 		C5A5A1211C47EB5300F9864E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C5A5A1111C47EB5300F9864E /* AttenuatorAU */;
@@ -320,17 +503,111 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		C5A5A11B1C47EB5300F9864E /* AudioUnitViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C5A5A11C1C47EB5300F9864E /* Base */,
-			);
-			name = AudioUnitViewController.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8044ABD61C52E24000FA3DA3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = AttenuatorKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AttenuatorAU.AttenuatorKit;
+				PRODUCT_NAME = AttenuatorKit;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		8044ABD71C52E24000FA3DA3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = AttenuatorKit/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AttenuatorAU.AttenuatorKit;
+				PRODUCT_NAME = AttenuatorKit;
+				SKIP_INSTALL = YES;
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		C5A5A1091C47E75F00F9864E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -353,7 +630,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -397,7 +674,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -446,34 +723,46 @@
 		C5A5A1241C47EB5300F9864E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = AttenuatorAU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator.AttenuatorAU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AttenuatorAU/AttenuatorAU-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		C5A5A1251C47EB5300F9864E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = AttenuatorAU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator.AttenuatorAU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AttenuatorAU/AttenuatorAU-Bridging-Header.h";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8044ABD51C52E24000FA3DA3 /* Build configuration list for PBXNativeTarget "AttenuatorKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8044ABD61C52E24000FA3DA3 /* Debug */,
+				8044ABD71C52E24000FA3DA3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C5A5A0F71C47E75F00F9864E /* Build configuration list for PBXProject "Attenuator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -81,9 +81,9 @@ public func StringFromClass(aClass: AnyClass) -> String {
 	return NSStringFromClass(aClass.self)
 }
 
-func map<A, B>(x: A?, f: A -> B) -> B? {
-	if let x1 = x {
-		return f(x1)
+func map<A, B>(arg: A?, closure: A -> B) -> B? {
+	if let value = arg {
+		return closure(value)
 	}
 	return nil
 }

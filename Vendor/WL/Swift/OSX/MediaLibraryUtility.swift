@@ -1,6 +1,6 @@
 //
 //  MediaLibraryUtility.swift
-//  AudioUnitExtensionDemo
+//  WaveLabs
 //
 //  Created by User on 6/24/15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
@@ -17,7 +17,7 @@ public final class MediaLibraryUtility: NSObject {
 
 	private lazy var log: Logger = {[unowned self] in return Logger(sender: self, context: .Model)}()
 	private lazy var _mediaLibrary: MLMediaLibrary = self.setUpMediaLibrary()
-	private var KVOObserverOfMediaSources: KVOHelper<[String : MLMediaSource]>?
+	private var kvoObserverOfMediaSources: KVOHelper<[String : MLMediaSource]>?
 	private var mediaLibraryLoadCallback: (Void -> Void)?
 	private var mediaLibraryIsLoaded = false
 
@@ -26,7 +26,7 @@ public final class MediaLibraryUtility: NSObject {
 	public override init() {
 		super.init()
 		log.logInit()
-		KVOObserverOfMediaSources = KVOHelper(object: _mediaLibrary, keyPath: "mediaSources") { [weak self] result in
+		kvoObserverOfMediaSources = KVOHelper(object: _mediaLibrary, keyPath: "mediaSources") { [weak self] result in
 			guard let s = self else { return }
 			if let value = result.valueNew {
 				s.log.logVerbose("Found \(value.count) media sources: \(Array(value.keys))")
@@ -42,7 +42,7 @@ public final class MediaLibraryUtility: NSObject {
 	}
 
 	deinit {
-		KVOObserverOfMediaSources = nil
+		kvoObserverOfMediaSources = nil
 		log.logDeinit()
 	}
 
