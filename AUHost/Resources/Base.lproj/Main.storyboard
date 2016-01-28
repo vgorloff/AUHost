@@ -890,14 +890,17 @@
             <objects>
                 <windowController id="wHA-WJ-aB5" customClass="EffectWindowController" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bS9-uo-X1t" customClass="NSPanel">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" nonactivatingPanel="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" nonactivatingPanel="YES"/>
                         <rect key="contentRect" x="1118" y="286" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <connections>
+                            <outlet property="delegate" destination="wHA-WJ-aB5" id="of1-Oc-Y0c"/>
+                        </connections>
                     </window>
                 </windowController>
                 <customObject id="ljy-g7-XlA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="758" y="823"/>
+            <point key="canvasLocation" x="758" y="829"/>
         </scene>
     </scenes>
     <resources>
