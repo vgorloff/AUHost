@@ -23,7 +23,7 @@ public struct MinMax<T: Comparable> {
 
 public struct Math {
 
-	public static func avarage(a: Float, _ b: Float) -> Float {
+	public static func average(a: Float, _ b: Float) -> Float {
 		return 0.5 * (a + b)
 	}
 
