@@ -11,97 +11,6 @@ import AVFoundation
 import WLShared
 import Accelerate
 
-public struct WaveformCacheUtility {
-
-	private static let cache: NSCache = CacheCentre.cacheForIdentifier("WaveformCacheUtility")
-
-	private static let defaultBufferFrameCapacity: UInt64 = 1024 * 8
-	init() {
-	}
-
-	func cachedWaveformForResolution(url: NSURL, resolution: UInt64) -> [MinMax<Float>]? {
-		let existedWaveform: [MinMax<Float>]? = WaveformCacheUtility.cache.objectValueForKey(WaveformCacheUtility.cacheID(url, resolution: resolution))
-		if let wf = existedWaveform {
-			return wf
-		}
-		return nil
-	}
-
-	func buildWaveformForResolution(fileURL url: NSURL, resolution: UInt64, callback: ResultType<[MinMax<Float>]> -> Void) {
-		assert(resolution > 0)
-		Dispatch.Async.UserInitiated {
-			do {
-				defer {
-					url.stopAccessingSecurityScopedResource() // Seems working fine without this line
-				}
-				url.startAccessingSecurityScopedResource() // Seems working fine without this line
-				let audioFile = try AVAudioFile(forReading: url, commonFormat: .PCMFormatFloat32, interleaved: false)
-				let optimalBufferSettings = Math.optimalBufferSizeForResolution(resolution, dataSize: UInt64(audioFile.length),
-					maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
-				let buffer = AVAudioPCMBuffer(PCMFormat: audioFile.processingFormat,
-					frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize))
-
-				var waveformCache = Array<MinMax<Float>>()
-				var groupingBuffer = Array<MinMax<Float>>()
-				while audioFile.framePosition < audioFile.length {
-					try audioFile.readIntoBuffer(buffer)
-					let data = WaveformCacheUtility.processBuffer(buffer)
-					groupingBuffer.append(data)
-					if groupingBuffer.count >= Int(optimalBufferSettings.numberOfBuffers) {
-						assert(groupingBuffer.count > 0)
-						let waveformValue = groupingBuffer.suffixFrom(1).reduce(groupingBuffer[0]) { prev, el in
-							return MinMax(min: prev.min + el.min, max: prev.max + el.max)
-						}
-						let avarageValue = MinMax(min: waveformValue.min / Float(groupingBuffer.count),
-							max: waveformValue.max / Float(groupingBuffer.count))
-						waveformCache.append(avarageValue)
-						groupingBuffer.removeAll(keepCapacity: true)
-					}
-				}
-				assert(UInt64(waveformCache.count) == resolution)
-				WaveformCacheUtility.cache.setObjectValue(waveformCache, forKey: WaveformCacheUtility.cacheID(url, resolution: resolution))
-				callback(.Success(waveformCache))
-			} catch {
-				callback(.Failure(error))
-			}
-		}
-	}
-
-	private static func cacheID(url: NSURL, resolution: UInt64) -> String {
-		return "WaveForm:\(resolution):\(url.absoluteString)"
-	}
-
-	private static func processBuffer(buffer: AVAudioPCMBuffer) -> MinMax<Float> {
-
-		//		let numElementsToProcess = vDSP_Length(buffer.frameLength * buffer.format.channelCount)
-		//		var maximumMagnitudeValue: Float = 0
-		//		var minimumMagnitudeValue: Float = 0
-		//		vDSP_maxv(buffer.floatChannelData.memory, 1, &maximumMagnitudeValue, numElementsToProcess)
-		//		vDSP_minv(buffer.floatChannelData.memory, 1, &minimumMagnitudeValue, numElementsToProcess)
-		//		Swift.print(minimumMagnitudeValue, maximumMagnitudeValue, "\n")
-
-		//Swift.print(buffer.frameLength)
-		var channelValues = [MinMax<Float>]()
-		let mbl = UnsafeMutableAudioBufferListPointer(buffer.mutableAudioBufferList)
-		for index in 0 ..< mbl.count {
-			let bl = mbl[index]
-			let samplesBI = UnsafePointer<Float>(bl.mData)
-			let numElementsToProcess = vDSP_Length(buffer.frameLength)
-			var maximumMagnitudeValue: Float = 0
-			var minimumMagnitudeValue: Float = 0
-			vDSP_maxv(samplesBI, 1, &maximumMagnitudeValue, numElementsToProcess)
-			vDSP_minv(samplesBI, 1, &minimumMagnitudeValue, numElementsToProcess)
-			//Swift.print(minimumMagnitudeValue, maximumMagnitudeValue)
-			channelValues.append(MinMax(min: minimumMagnitudeValue, max: maximumMagnitudeValue))
-		}
-		assert(channelValues.count > 0)
-		let result = channelValues.suffixFrom(1).reduce(channelValues[0]) { prev, el in
-			return MinMax(min: prev.min + el.min, max: prev.max + el.max)
-		}
-		return MinMax(min: result.min / Float(channelValues.count), max: result.max / Float(channelValues.count))
-	}
-}
-
 public final class MediaItemView: NSView {
 	private var isHighlighted = false {
 		didSet {
@@ -126,30 +35,9 @@ public final class MediaItemView: NSView {
 		}
 	}
 
-	private func rebuildWaveform() {
-		guard let mf = mediaFileURL else {
-			return
-		}
-		wfCache.buildWaveformForResolution(fileURL: mf, resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
-			switch result {
-			case .Failure(let e):
-				Swift.print(e)
-			case .Success(_):
-				Dispatch.Async.Main { [weak self] in
-					self?.needsDisplay = true
-				}
-			}
-		}
-	}
-
-	private func cachedWaveform() -> [MinMax<Float>]? {
-		guard let mf = mediaFileURL else {
-			return nil
-		}
-		return wfCache.cachedWaveformForResolution(mf, resolution: UInt64(bounds.width * getScaleFactor()))
-	}
-
 	public var onCompleteDragWithObjects: (MediaObjectPasteboardUtility.PasteboardObjects -> Void)?
+
+	// MARK: -
 
 	required public init?(coder: NSCoder) {
 		super.init(coder: coder)
@@ -274,107 +162,27 @@ public final class MediaItemView: NSView {
 		textDragAndDropMessage.drawInRect(bounds.insetBy(dx: 8, dy: offsetX * 0.5), withAttributes: attributes)
 	}
 
+	private func rebuildWaveform() {
+		guard let mf = mediaFileURL else {
+			return
+		}
+		wfCache.buildWaveformForResolution(fileURL: mf, resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
+			switch result {
+			case .Failure(let e):
+				Swift.print(e)
+			case .Success(_):
+				Dispatch.Async.Main { [weak self] in
+					self?.needsDisplay = true
+				}
+			}
+		}
+	}
+
+	private func cachedWaveform() -> [MinMax<Float>]? {
+		guard let mf = mediaFileURL else {
+			return nil
+		}
+		return wfCache.cachedWaveformForResolution(mf, resolution: UInt64(bounds.width * getScaleFactor()))
+	}
+
 }
-
-
-
-
-public final class WaveformDrawingDataProvider {
-
-	public enum ModelDataType: Int {
-		case CGPoint
-		case IntVertice
-		case FloatVertice
-	}
-
-	private var _points = [CGPoint]()
-	private var _verticesI = [Int32]()
-	private var _verticesF = [Float]()
-	private var dataType: ModelDataType
-	private var width: CGFloat = 0
-	private var height: CGFloat = 0
-	private var xOffset: CGFloat = 0
-	private var yOffset: CGFloat = 0
-
-	public init(dataType aDataType: ModelDataType) {
-		dataType = aDataType
-	}
-
-	public func addHorizontalLine(yPosition: CGFloat) {
-		switch dataType {
-		case .CGPoint:
-			fatalError("Not up to date")
-			_points.append(CGPoint(x: xOffset, y: yPosition))
-			_points.append(CGPoint(x: xOffset + width, y: yPosition))
-		case .IntVertice:
-			fatalError("Not up to date")
-			_verticesI.appendContentsOf([Int32(xOffset), Int32(yPosition),
-				Int32(xOffset + width), Int32(yPosition)])
-		case .FloatVertice:
-			fatalError("Not up to date")
-			_verticesF.appendContentsOf([Float(xOffset), Float(yPosition),
-				Float(xOffset + width), Float(yPosition)])
-		}
-	}
-
-	public func addVerticalLineAtXPosition(xPosition: CGFloat, valueMin: CGFloat, valueMax: CGFloat) {
-		switch dataType {
-		case .CGPoint:
-			let middleY = 0.5 * height
-			let halfAmplitude = middleY
-			_points.append(CGPoint(x: xPosition, y: yOffset + middleY - halfAmplitude * valueMin))
-			_points.append(CGPoint(x: xPosition, y: yOffset + middleY - halfAmplitude * valueMax))
-		case .IntVertice:
-			fatalError("Not up to date")
-			_verticesI.appendContentsOf([Int32(xPosition), Int32(yOffset),
-				Int32(xPosition), Int32(yOffset + height)])
-		case .FloatVertice:
-			fatalError("Not up to date")
-			_verticesF.appendContentsOf([Float(xPosition), Float(yOffset),
-				Float(xPosition), Float(yOffset + height)])
-		}
-	}
-
-	public var points: UnsafePointer<CGPoint> {
-		let result = _points.withUnsafeBufferPointer({pointerVal -> UnsafePointer<CGPoint> in
-			return pointerVal.baseAddress}
-		)
-		return result
-	}
-
-	public var numberOfPoints: Int {
-		return _points.count
-	}
-
-	public var verticesI: UnsafePointer<Int32> {
-		let result = _verticesI.withUnsafeBufferPointer({pointerVal -> UnsafePointer<Int32> in
-			return pointerVal.baseAddress}
-		)
-		return result
-	}
-
-	public var numberOfIntVertices: Int {
-		return _verticesI.count
-	}
-
-	public var verticesF: [Float] {
-		return _verticesF
-	}
-
-	public func reset(xOffset anXOffset: CGFloat, yOffset anYOffset: CGFloat, width aWidth: CGFloat, height aHeight: CGFloat) {
-		xOffset = anXOffset
-		yOffset = anYOffset
-		width = aWidth
-		height = aHeight
-		switch dataType {
-		case .CGPoint:
-			_points.removeAll(keepCapacity: true)
-		case .IntVertice:
-			_verticesI.removeAll(keepCapacity: true)
-		case .FloatVertice:
-			_verticesF.removeAll(keepCapacity: true)
-		}
-	}
-	
-}
-

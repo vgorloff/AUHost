@@ -18,6 +18,10 @@
 		80B492CC1C595E6E00599F07 /* UtilityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492CB1C595E6E00599F07 /* UtilityTypes.swift */; };
 		80B492CD1C595E6E00599F07 /* UtilityTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B492CB1C595E6E00599F07 /* UtilityTypes.swift */; };
 		80FC20D51C57C91C00A1D90D /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FC20D41C57C91C00A1D90D /* MediaObjectPasteboardUtility.swift */; };
+		C5DE283B1C5A405400BBFCF0 /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DE283A1C5A405400BBFCF0 /* WaveformCacheUtility.swift */; };
+		C5DE283C1C5A405400BBFCF0 /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DE283A1C5A405400BBFCF0 /* WaveformCacheUtility.swift */; };
+		C5DE283E1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DE283D1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift */; };
+		C5DE283F1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DE283D1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift */; };
 		C5E335EB1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
 		C5E335EC1C4FE95B00CD42BB /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335C21C4FE95B00CD42BB /* StateMachine.swift */; };
 		C5E335FF1C4FE95B00CD42BB /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E335CE1C4FE95B00CD42BB /* NonRecursiveLocking.swift */; };
@@ -66,6 +70,8 @@
 		80B492C81C595C2F00599F07 /* ColorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
 		80B492CB1C595E6E00599F07 /* UtilityTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityTypes.swift; sourceTree = "<group>"; };
 		80FC20D41C57C91C00A1D90D /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
+		C5DE283A1C5A405400BBFCF0 /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
+		C5DE283D1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		C5E335B61C4FE95B00CD42BB /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		C5E335B71C4FE95B00CD42BB /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
@@ -131,9 +137,8 @@
 		80313C861C4179F300647A93 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				80B492BF1C59342D00599F07 /* CacheCentre.swift */,
-				C5E336291C4FEB8E00CD42BB /* OSX */,
 				C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */,
+				80B492BF1C59342D00599F07 /* CacheCentre.swift */,
 				C5E335B61C4FE95B00CD42BB /* Dispatch.swift */,
 				C5E335B71C4FE95B00CD42BB /* DispatchQueue.swift */,
 				C5E335B81C4FE95B00CD42BB /* Enumerations.swift */,
@@ -141,6 +146,7 @@
 				C5E335B91C4FE95B00CD42BB /* Functions.swift */,
 				C5E335BA1C4FE95B00CD42BB /* KVOHelper.swift */,
 				C5E335BB1C4FE95B00CD42BB /* Logger.swift */,
+				80B492B91C58E93700599F07 /* Math.swift */,
 				C5E335D01C4FE95B00CD42BB /* NonRecursiveLocking.swift */,
 				C5E335BD1C4FE95B00CD42BB /* NotificationObserver.swift */,
 				C5E335CA1C4FE95B00CD42BB /* NSOperationQueue.swift */,
@@ -149,11 +155,13 @@
 				C5E335C41C4FE95B00CD42BB /* StateMachine.swift */,
 				C5E335CC1C4FE95B00CD42BB /* String.swift */,
 				C5E335C11C4FE95B00CD42BB /* Try.swift */,
+				80B492CB1C595E6E00599F07 /* UtilityTypes.swift */,
 				C5E335C31C4FE95B00CD42BB /* 3p */,
 				C5E335C91C4FE95B00CD42BB /* Extensions */,
+				C5E336291C4FEB8E00CD42BB /* OSX */,
 				C5E335CF1C4FE95B00CD42BB /* Protocols */,
-				80B492B91C58E93700599F07 /* Math.swift */,
-				80B492CB1C595E6E00599F07 /* UtilityTypes.swift */,
+				C5DE283A1C5A405400BBFCF0 /* WaveformCacheUtility.swift */,
+				C5DE283D1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift */,
 			);
 			path = Swift;
 			sourceTree = "<group>";
@@ -337,9 +345,11 @@
 				C5E336221C4FEA6700CD42BB /* NSOperationQueue.swift in Sources */,
 				C5E336211C4FEA5E00CD42BB /* Try.swift in Sources */,
 				80B492C71C59478800599F07 /* NSCache.swift in Sources */,
+				C5DE283E1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift in Sources */,
 				C5E3361B1C4FEA5E00CD42BB /* Logger.swift in Sources */,
 				C5E336251C4FEA6700CD42BB /* AudioComponent.swift in Sources */,
 				80B492BA1C58E93700599F07 /* Math.swift in Sources */,
+				C5DE283B1C5A405400BBFCF0 /* WaveformCacheUtility.swift in Sources */,
 				80B492C01C59342D00599F07 /* CacheCentre.swift in Sources */,
 				C5E336231C4FEA6700CD42BB /* Float.swift in Sources */,
 				C5E336241C4FEA6700CD42BB /* String.swift in Sources */,
@@ -358,6 +368,7 @@
 				80B492C11C59342D00599F07 /* CacheCentre.swift in Sources */,
 				C5E335EC1C4FE95B00CD42BB /* StateMachine.swift in Sources */,
 				C5E336121C4FEA5D00CD42BB /* SpinLock.swift in Sources */,
+				C5DE283C1C5A405400BBFCF0 /* WaveformCacheUtility.swift in Sources */,
 				C5E3360A1C4FEA5D00CD42BB /* Enumerations.swift in Sources */,
 				80B492CA1C595C2F00599F07 /* ColorType.swift in Sources */,
 				C5E3360B1C4FEA5D00CD42BB /* Functions.swift in Sources */,
@@ -367,6 +378,7 @@
 				C5E3360D1C4FEA5D00CD42BB /* Logger.swift in Sources */,
 				C5E336271C4FEA6700CD42BB /* Float.swift in Sources */,
 				C5E336141C4FEA5D00CD42BB /* Try.swift in Sources */,
+				C5DE283F1C5A40F000BBFCF0 /* WaveformDrawingDataProvider.swift in Sources */,
 				C5E3360C1C4FEA5D00CD42BB /* KVOHelper.swift in Sources */,
 				80B492CD1C595E6E00599F07 /* UtilityTypes.swift in Sources */,
 				C5E336281C4FEA6700CD42BB /* AudioComponent.swift in Sources */,

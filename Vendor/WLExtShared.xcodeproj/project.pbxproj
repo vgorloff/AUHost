@@ -118,7 +118,6 @@
 		80313C861C4179F300647A93 /* Swift */ = {
 			isa = PBXGroup;
 			children = (
-				C5E336291C4FEB8E00CD42BB /* OSX */,
 				C5E335B51C4FE95B00CD42BB /* AudioComponentsUtility.swift */,
 				C5E335B61C4FE95B00CD42BB /* Dispatch.swift */,
 				C5E335B71C4FE95B00CD42BB /* DispatchQueue.swift */,
@@ -137,6 +136,7 @@
 				C5E335C11C4FE95B00CD42BB /* Try.swift */,
 				C5E335C31C4FE95B00CD42BB /* 3p */,
 				C5E335C91C4FE95B00CD42BB /* Extensions */,
+				C5E336291C4FEB8E00CD42BB /* OSX */,
 				C5E335CF1C4FE95B00CD42BB /* Protocols */,
 			);
 			path = Swift;

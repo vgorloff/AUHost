@@ -128,8 +128,6 @@
 		8035EF2C1B3752030026AD7D /* AUHost */ = {
 			isa = PBXGroup;
 			children = (
-				C5E335AB1C4FE7B000CD42BB /* Resources */,
-				C5E335AA1C4FE73300CD42BB /* Supporting Files */,
 				8035EF2D1B3752030026AD7D /* AppDelegate.swift */,
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
@@ -138,6 +136,8 @@
 				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
 				8035EF2F1B3752030026AD7D /* ViewController.swift */,
 				802C3D5C1C492A65002295AD /* Extensions */,
+				C5E335AB1C4FE7B000CD42BB /* Resources */,
+				C5E335AA1C4FE73300CD42BB /* Supporting Files */,
 			);
 			path = AUHost;
 			sourceTree = "<group>";
