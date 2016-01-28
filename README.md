@@ -5,7 +5,7 @@
 ## Application for hosting AudioUnits v3 using AVFoundation API
 
 **Note**: AVFoundation API for using AudioUnits v3 available starting from `iOS 9` and `OS X 10.11`.  
-**Note**: In order to use make custom build and use sandboxed application (with underlying PlugIn and XPC subsystem) it is required to sign it with code sign certificate. If you have no Apple Developer ID (and code sign certificate), then download and use existing [binary](https://github.com/vgorloff/AUHost/releases).
+**Note**: In order to make custom build and use sandboxed application (with underlying PlugIn and XPC subsystem) it is required to sign it with code sign certificate. If you have no Apple Developer ID (and code sign certificate), then download and use existing [binary](https://github.com/vgorloff/AUHost/releases).
 
 ## Playback engine Graph
 
