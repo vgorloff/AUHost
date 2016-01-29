@@ -445,7 +445,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -r \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\npluginkit -a \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\nsleep 2";
+			shellScript = "if [ -n \"$AWLBuildSkipAuxiliaryScripts\" ]; then\n\techo \"Auxiliary script skipped.\" && exit 0\nfi\n\n#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -r \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\npluginkit -a \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\nsleep 2";
 		};
 /* End PBXShellScriptBuildPhase section */
 
