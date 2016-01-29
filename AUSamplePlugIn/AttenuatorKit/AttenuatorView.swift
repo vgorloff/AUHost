@@ -38,11 +38,11 @@ class AttenuatorView: NSView {
 		handlerParameterDidChaned?(AttenuatorParameter.Gain, sender.floatValue)
 	}
 
-	public func startMetering() {
+	func startMetering() {
 		displayLinkUtility?.start()
 	}
 
-	public func stopMetering() {
+	func stopMetering() {
 		displayLinkUtility?.stop()
 	}
 }
