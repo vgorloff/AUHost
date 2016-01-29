@@ -21,7 +21,7 @@ struct AttenuatorDSPKernel {
 	private let valueGainLock: NonRecursiveLocking = SpinLock()
 
 	private var _maximumMagnitude: [SampleType]
-	public var maximumMagnitude: [SampleType] {
+	var maximumMagnitude: [SampleType] {
 		return maximumMagnitudeLock.synchronized { return _maximumMagnitude }
 	}
 	private let maximumMagnitudeLock: NonRecursiveLocking = SpinLock()
