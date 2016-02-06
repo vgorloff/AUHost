@@ -8,7 +8,9 @@
 
 import Cocoa
 import AudioUnit
-import WLExtShared
+import WLCore
+import WLMedia
+import WLUI
 
 class AttenuatorView: NSView {
 

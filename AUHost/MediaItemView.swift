@@ -8,8 +8,10 @@
 
 import Cocoa
 import AVFoundation
-import WLShared
 import Accelerate
+import WLCore
+import WLMedia
+import WLUI
 
 public final class MediaItemView: NSView {
 	private var isHighlighted = false {

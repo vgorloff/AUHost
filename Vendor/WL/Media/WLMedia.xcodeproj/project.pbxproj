@@ -1,0 +1,708 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		806BACDB1C6546D0001E6B60 /* WLMedia */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 806BACDC1C6546D0001E6B60 /* Build configuration list for PBXAggregateTarget "WLMedia" */;
+			buildPhases = (
+				806BACE31C654713001E6B60 /* Run Script: SwiftLint */,
+				806BACE41C654732001E6B60 /* Run Script: Headers */,
+			);
+			dependencies = (
+				806BACE01C6546DD001E6B60 /* PBXTargetDependency */,
+				806BACE21C6546DD001E6B60 /* PBXTargetDependency */,
+			);
+			name = WLMedia;
+			productName = WLCore;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		803A43B81C10EF3F00A34D79 /* WLMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80DD4CF81C0F97BC00EC88AD /* WLMedia.framework */; };
+		803A43CD1C10FC0400A34D79 /* WLMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 803A437D1C1094ED00A34D79 /* WLMedia.framework */; };
+		806BACC61C653DD0001E6B60 /* WLMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = 806BACC21C653D42001E6B60 /* WLMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		806BACD71C65452A001E6B60 /* WLMedia.h in Headers */ = {isa = PBXBuildFile; fileRef = 806BACC21C653D42001E6B60 /* WLMedia.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		806BAE381C6569F4001E6B60 /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE311C6569F4001E6B60 /* AudioComponentsUtility.swift */; };
+		806BAE391C6569F4001E6B60 /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE311C6569F4001E6B60 /* AudioComponentsUtility.swift */; };
+		806BAE401C6569F4001E6B60 /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE361C6569F4001E6B60 /* WaveformCacheUtility.swift */; };
+		806BAE411C6569F4001E6B60 /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE361C6569F4001E6B60 /* WaveformCacheUtility.swift */; };
+		806BAE421C6569F4001E6B60 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE371C6569F4001E6B60 /* WaveformDrawingDataProvider.swift */; };
+		806BAE431C6569F4001E6B60 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE371C6569F4001E6B60 /* WaveformDrawingDataProvider.swift */; };
+		806BAE441C6569F9001E6B60 /* CVDisplayLinkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE331C6569F4001E6B60 /* CVDisplayLinkHelper.swift */; };
+		806BAE451C6569F9001E6B60 /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE341C6569F4001E6B60 /* MediaLibraryUtility.swift */; };
+		806BAE461C6569F9001E6B60 /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE351C6569F4001E6B60 /* MediaObjectPasteboardUtility.swift */; };
+		806BAE481C656A0F001E6B60 /* AudioComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE471C656A0F001E6B60 /* AudioComponent.swift */; };
+		806BAE491C656A0F001E6B60 /* AudioComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAE471C656A0F001E6B60 /* AudioComponent.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		803A43B91C10EF3F00A34D79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A3EA091BDD5F92009497EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80DD4CF71C0F97BC00EC88AD;
+			remoteInfo = WaveLabsOSX;
+		};
+		803A43CE1C10FC0400A34D79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A3EA091BDD5F92009497EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 803A437C1C1094ED00A34D79;
+			remoteInfo = WaveLabsiOS;
+		};
+		806BACDF1C6546DD001E6B60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A3EA091BDD5F92009497EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80DD4CF71C0F97BC00EC88AD;
+			remoteInfo = WLCoreOSX;
+		};
+		806BACE11C6546DD001E6B60 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80A3EA091BDD5F92009497EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 803A437C1C1094ED00A34D79;
+			remoteInfo = WLCoreiOS;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		803A437D1C1094ED00A34D79 /* WLMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		803A43B31C10EF3F00A34D79 /* WLMedia.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WLMedia.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		803A43C81C10FC0400A34D79 /* WLMedia.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WLMedia.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		806BACAD1C653981001E6B60 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		806BACAE1C653981001E6B60 /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
+		806BACAF1C653981001E6B60 /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
+		806BACC21C653D42001E6B60 /* WLMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WLMedia.h; sourceTree = "<group>"; };
+		806BACD81C6545B4001E6B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		806BACDA1C6545C9001E6B60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		806BAE311C6569F4001E6B60 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
+		806BAE331C6569F4001E6B60 /* CVDisplayLinkHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CVDisplayLinkHelper.swift; sourceTree = "<group>"; };
+		806BAE341C6569F4001E6B60 /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
+		806BAE351C6569F4001E6B60 /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
+		806BAE361C6569F4001E6B60 /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
+		806BAE371C6569F4001E6B60 /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
+		806BAE471C656A0F001E6B60 /* AudioComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponent.swift; sourceTree = "<group>"; };
+		80DD4CF81C0F97BC00EC88AD /* WLMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		803A43791C1094ED00A34D79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803A43B01C10EF3F00A34D79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				803A43B81C10EF3F00A34D79 /* WLMedia.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803A43C51C10FC0400A34D79 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				803A43CD1C10FC0400A34D79 /* WLMedia.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80DD4CF41C0F97BC00EC88AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		806BACAC1C653981001E6B60 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				806BACAD1C653981001E6B60 /* Common.xcconfig */,
+				806BACAE1C653981001E6B60 /* Debug.xcconfig */,
+				806BACAF1C653981001E6B60 /* Release.xcconfig */,
+			);
+			name = Configuration;
+			path = ../../Common/Configuration;
+			sourceTree = "<group>";
+		};
+		806BACD91C6545C9001E6B60 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				806BACDA1C6545C9001E6B60 /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		806BACE51C6547B3001E6B60 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				806BAE471C656A0F001E6B60 /* AudioComponent.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		806BAD2A1C6547BC001E6B60 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				806BAE311C6569F4001E6B60 /* AudioComponentsUtility.swift */,
+				806BAE321C6569F4001E6B60 /* OSX */,
+				806BAE361C6569F4001E6B60 /* WaveformCacheUtility.swift */,
+				806BAE371C6569F4001E6B60 /* WaveformDrawingDataProvider.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		806BAE321C6569F4001E6B60 /* OSX */ = {
+			isa = PBXGroup;
+			children = (
+				806BAE331C6569F4001E6B60 /* CVDisplayLinkHelper.swift */,
+				806BAE341C6569F4001E6B60 /* MediaLibraryUtility.swift */,
+				806BAE351C6569F4001E6B60 /* MediaObjectPasteboardUtility.swift */,
+			);
+			path = OSX;
+			sourceTree = "<group>";
+		};
+		808928081C1A2D8000223ABF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				806BACC21C653D42001E6B60 /* WLMedia.h */,
+				806BACD81C6545B4001E6B60 /* Info.plist */,
+				806BACAC1C653981001E6B60 /* Configuration */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		80A3EA081BDD5F92009497EE = {
+			isa = PBXGroup;
+			children = (
+				806BAD2A1C6547BC001E6B60 /* Classes */,
+				806BACE51C6547B3001E6B60 /* Extensions */,
+				808928081C1A2D8000223ABF /* Supporting Files */,
+				806BACD91C6545C9001E6B60 /* Tests */,
+				80A3EA131BDD5F93009497EE /* Products */,
+			);
+			indentWidth = 3;
+			sourceTree = "<group>";
+			tabWidth = 3;
+		};
+		80A3EA131BDD5F93009497EE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				80DD4CF81C0F97BC00EC88AD /* WLMedia.framework */,
+				803A437D1C1094ED00A34D79 /* WLMedia.framework */,
+				803A43B31C10EF3F00A34D79 /* WLMedia.xctest */,
+				803A43C81C10FC0400A34D79 /* WLMedia.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		803A437A1C1094ED00A34D79 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				806BACC61C653DD0001E6B60 /* WLMedia.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80DD4CF51C0F97BC00EC88AD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				806BACD71C65452A001E6B60 /* WLMedia.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		803A437C1C1094ED00A34D79 /* WLMediaiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 803A43821C1094ED00A34D79 /* Build configuration list for PBXNativeTarget "WLMediaiOS" */;
+			buildPhases = (
+				803A43781C1094ED00A34D79 /* Sources */,
+				803A43791C1094ED00A34D79 /* Frameworks */,
+				803A437A1C1094ED00A34D79 /* Headers */,
+				803A437B1C1094ED00A34D79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WLMediaiOS;
+			productName = WaveLabsiOS;
+			productReference = 803A437D1C1094ED00A34D79 /* WLMedia.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		803A43B21C10EF3F00A34D79 /* WLMediaOSXTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 803A43BB1C10EF3F00A34D79 /* Build configuration list for PBXNativeTarget "WLMediaOSXTests" */;
+			buildPhases = (
+				803A43AF1C10EF3F00A34D79 /* Sources */,
+				803A43B01C10EF3F00A34D79 /* Frameworks */,
+				803A43B11C10EF3F00A34D79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				803A43BA1C10EF3F00A34D79 /* PBXTargetDependency */,
+			);
+			name = WLMediaOSXTests;
+			productName = WaveLabsOSXTests;
+			productReference = 803A43B31C10EF3F00A34D79 /* WLMedia.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		803A43C71C10FC0400A34D79 /* WLMediaiOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 803A43D01C10FC0400A34D79 /* Build configuration list for PBXNativeTarget "WLMediaiOSTests" */;
+			buildPhases = (
+				803A43C41C10FC0400A34D79 /* Sources */,
+				803A43C51C10FC0400A34D79 /* Frameworks */,
+				803A43C61C10FC0400A34D79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				803A43CF1C10FC0400A34D79 /* PBXTargetDependency */,
+			);
+			name = WLMediaiOSTests;
+			productName = WaveLabsiOSTests;
+			productReference = 803A43C81C10FC0400A34D79 /* WLMedia.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		80DD4CF71C0F97BC00EC88AD /* WLMediaOSX */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80DD4CFD1C0F97BC00EC88AD /* Build configuration list for PBXNativeTarget "WLMediaOSX" */;
+			buildPhases = (
+				80DD4CF31C0F97BC00EC88AD /* Sources */,
+				80DD4CF41C0F97BC00EC88AD /* Frameworks */,
+				80DD4CF51C0F97BC00EC88AD /* Headers */,
+				80DD4CF61C0F97BC00EC88AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WLMediaOSX;
+			productName = "Reusable-OSX";
+			productReference = 80DD4CF81C0F97BC00EC88AD /* WLMedia.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		80A3EA091BDD5F92009497EE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = WaveLabs;
+				TargetAttributes = {
+					803A437C1C1094ED00A34D79 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					803A43B21C10EF3F00A34D79 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					803A43C71C10FC0400A34D79 = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					806BACDB1C6546D0001E6B60 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					80DD4CF71C0F97BC00EC88AD = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+				};
+			};
+			buildConfigurationList = 80A3EA0C1BDD5F92009497EE /* Build configuration list for PBXProject "WLMedia" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ru,
+			);
+			mainGroup = 80A3EA081BDD5F92009497EE;
+			productRefGroup = 80A3EA131BDD5F93009497EE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				806BACDB1C6546D0001E6B60 /* WLMedia */,
+				80DD4CF71C0F97BC00EC88AD /* WLMediaOSX */,
+				803A43B21C10EF3F00A34D79 /* WLMediaOSXTests */,
+				803A437C1C1094ED00A34D79 /* WLMediaiOS */,
+				803A43C71C10FC0400A34D79 /* WLMediaiOSTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		803A437B1C1094ED00A34D79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803A43B11C10EF3F00A34D79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803A43C61C10FC0400A34D79 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80DD4CF61C0F97BC00EC88AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		806BACE31C654713001E6B60 /* Run Script: SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: SwiftLint";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/bash -l";
+			shellScript = "\"$SRCROOT/../Common/Scripts/Build/BuildPhase_SwiftLint.sh\" \"$SRCROOT\" \"$SRCROOT/../Common/swiftlint.yml\"";
+		};
+		806BACE41C654732001E6B60 /* Run Script: Headers */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: Headers";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/bash -l";
+			shellScript = "\"$SRCROOT/../Common/Scripts/Build/BuildPhase_CheckHeaders.swiftcmd\" \"$SRCROOT\" WLMedia";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		803A43781C1094ED00A34D79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				806BAE491C656A0F001E6B60 /* AudioComponent.swift in Sources */,
+				806BAE431C6569F4001E6B60 /* WaveformDrawingDataProvider.swift in Sources */,
+				806BAE391C6569F4001E6B60 /* AudioComponentsUtility.swift in Sources */,
+				806BAE411C6569F4001E6B60 /* WaveformCacheUtility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803A43AF1C10EF3F00A34D79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		803A43C41C10FC0400A34D79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		80DD4CF31C0F97BC00EC88AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				806BAE421C6569F4001E6B60 /* WaveformDrawingDataProvider.swift in Sources */,
+				806BAE441C6569F9001E6B60 /* CVDisplayLinkHelper.swift in Sources */,
+				806BAE381C6569F4001E6B60 /* AudioComponentsUtility.swift in Sources */,
+				806BAE401C6569F4001E6B60 /* WaveformCacheUtility.swift in Sources */,
+				806BAE481C656A0F001E6B60 /* AudioComponent.swift in Sources */,
+				806BAE451C6569F9001E6B60 /* MediaLibraryUtility.swift in Sources */,
+				806BAE461C6569F9001E6B60 /* MediaObjectPasteboardUtility.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		803A43BA1C10EF3F00A34D79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80DD4CF71C0F97BC00EC88AD /* WLMediaOSX */;
+			targetProxy = 803A43B91C10EF3F00A34D79 /* PBXContainerItemProxy */;
+		};
+		803A43CF1C10FC0400A34D79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 803A437C1C1094ED00A34D79 /* WLMediaiOS */;
+			targetProxy = 803A43CE1C10FC0400A34D79 /* PBXContainerItemProxy */;
+		};
+		806BACE01C6546DD001E6B60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80DD4CF71C0F97BC00EC88AD /* WLMediaOSX */;
+			targetProxy = 806BACDF1C6546DD001E6B60 /* PBXContainerItemProxy */;
+		};
+		806BACE21C6546DD001E6B60 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 803A437C1C1094ED00A34D79 /* WLMediaiOS */;
+			targetProxy = 806BACE11C6546DD001E6B60 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		803A43831C1094ED00A34D79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMedia;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		803A43841C1094ED00A34D79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMedia;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		803A43BC1C10EF3F00A34D79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMediaOSXTests;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		803A43BD1C10EF3F00A34D79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMediaOSXTests;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		803A43D11C10FC0400A34D79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMediaiOSTests;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		803A43D21C10FC0400A34D79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMediaiOSTests;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		806BACDD1C6546D0001E6B60 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = WLMedia;
+			};
+			name = Debug;
+		};
+		806BACDE1C6546D0001E6B60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = WLMedia;
+			};
+			name = Release;
+		};
+		80A3EA241BDD5F93009497EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 806BACAE1C653981001E6B60 /* Debug.xcconfig */;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+				ONLY_ACTIVE_ARCH = YES;
+			};
+			name = Debug;
+		};
+		80A3EA251BDD5F93009497EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 806BACAF1C653981001E6B60 /* Release.xcconfig */;
+			buildSettings = {
+				CURRENT_PROJECT_VERSION = 1;
+			};
+			name = Release;
+		};
+		80DD4CFE1C0F97BC00EC88AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMedia;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		80DD4CFF1C0F97BC00EC88AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Supporting Files/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLMedia;
+				PRODUCT_NAME = WLMedia;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		803A43821C1094ED00A34D79 /* Build configuration list for PBXNativeTarget "WLMediaiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803A43831C1094ED00A34D79 /* Debug */,
+				803A43841C1094ED00A34D79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		803A43BB1C10EF3F00A34D79 /* Build configuration list for PBXNativeTarget "WLMediaOSXTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803A43BC1C10EF3F00A34D79 /* Debug */,
+				803A43BD1C10EF3F00A34D79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		803A43D01C10FC0400A34D79 /* Build configuration list for PBXNativeTarget "WLMediaiOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				803A43D11C10FC0400A34D79 /* Debug */,
+				803A43D21C10FC0400A34D79 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		806BACDC1C6546D0001E6B60 /* Build configuration list for PBXAggregateTarget "WLMedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				806BACDD1C6546D0001E6B60 /* Debug */,
+				806BACDE1C6546D0001E6B60 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80A3EA0C1BDD5F92009497EE /* Build configuration list for PBXProject "WLMedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80A3EA241BDD5F93009497EE /* Debug */,
+				80A3EA251BDD5F93009497EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80DD4CFD1C0F97BC00EC88AD /* Build configuration list for PBXNativeTarget "WLMediaOSX" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80DD4CFE1C0F97BC00EC88AD /* Debug */,
+				80DD4CFF1C0F97BC00EC88AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 80A3EA091BDD5F92009497EE /* Project object */;
+}
