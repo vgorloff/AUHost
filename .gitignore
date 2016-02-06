@@ -6,7 +6,13 @@
 .DS_Store
 
 ## Child Git
-Vendor/WL
+!Vendor/WL
+Vendor/WL/*
+!Vendor/WL/Common
+!Vendor/WL/Core
+!Vendor/WL/Media
+!Vendor/WL/UI
+
 
 ## Build generated
 build/
