@@ -10,7 +10,8 @@ import Cocoa
 import AVFoundation
 import MediaLibrary
 import CoreAudioKit
-import WLShared
+import WLCore
+import WLMedia
 
 /**
 Links:

@@ -8,7 +8,7 @@
 
 import AVFoundation
 import CoreAudioKit
-import WLShared
+import WLCore
 
 final class PlaybackEngineContext {
 
