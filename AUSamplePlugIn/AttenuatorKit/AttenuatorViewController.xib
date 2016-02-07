@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10089" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
@@ -19,7 +19,7 @@
                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-h2-ebA">
                             <rect key="frame" x="8" y="21" width="224" height="53"/>
                             <subviews>
-                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hby-7F-7Bx" customClass="VULevelMeter" customModule="WLExtShared">
+                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hby-7F-7Bx" customClass="VULevelMeter" customModule="WLUI">
                                     <rect key="frame" x="0.0" y="31" width="224" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="22" id="dyw-bm-Bb5"/>

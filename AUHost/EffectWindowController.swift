@@ -7,7 +7,7 @@
 //
 
 import AppKit
-import WLShared
+import WLCore
 
 class EffectWindowController: NSWindowController, NSWindowDelegate {
 
