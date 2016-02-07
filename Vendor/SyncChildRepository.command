@@ -12,3 +12,5 @@ git add -v -f $AWLGitDir/Media
 git add -v -f $AWLGitDir/UI
 git rm --cached -r $AWLGitDir/\*.DS_Store
 git rm --cached -r $AWLGitDir/\*/xcuserdata/\*
+git rm --cached -r $AWLGitDir/\*/xcbaselines/\*
+git rm --cached -r $AWLGitDir/\*/project.xcworkspace/\*
