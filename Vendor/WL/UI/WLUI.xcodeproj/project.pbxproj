@@ -63,6 +63,8 @@
 		806BADE61C655FB8001E6B60 /* UIConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADE41C655FB8001E6B60 /* UIConfigurable.swift */; };
 		806BAE901C657142001E6B60 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADEF1C656351001E6B60 /* ColorType.swift */; };
 		806BAE941C657142001E6B60 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADEF1C656351001E6B60 /* ColorType.swift */; };
+		80D510A81C66AE9100C53608 /* SketchStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D510A71C66AE8B00C53608 /* SketchStyleKit.swift */; };
+		80D510A91C66AE9200C53608 /* SketchStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D510A71C66AE8B00C53608 /* SketchStyleKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +136,7 @@
 		806BADE11C655F95001E6B60 /* UIUpdatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIUpdatable.swift; sourceTree = "<group>"; };
 		806BADE41C655FB8001E6B60 /* UIConfigurable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIConfigurable.swift; sourceTree = "<group>"; };
 		806BADEF1C656351001E6B60 /* ColorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
+		80D510A71C66AE8B00C53608 /* SketchStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SketchStyleKit.swift; sourceTree = "<group>"; };
 		80DD4CF81C0F97BC00EC88AD /* WLUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -214,6 +217,7 @@
 		806BAD2A1C6547BC001E6B60 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				80D510A71C66AE8B00C53608 /* SketchStyleKit.swift */,
 				806BAD6F1C654CFB001E6B60 /* iOS */,
 				806BAD6A1C654CE7001E6B60 /* OSX */,
 				806BAD561C654CA5001E6B60 /* NSLayoutConstraintUtility.swift */,
@@ -534,6 +538,7 @@
 				806BAD661C654CD8001E6B60 /* UIImageView.swift in Sources */,
 				806BAD681C654CD8001E6B60 /* UISegmentedControl.swift in Sources */,
 				806BAE901C657142001E6B60 /* ColorType.swift in Sources */,
+				80D510A81C66AE9100C53608 /* SketchStyleKit.swift in Sources */,
 				806BAD631C654CD8001E6B60 /* UIButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80D510A91C66AE9200C53608 /* SketchStyleKit.swift in Sources */,
 				806BAD6E1C654CE7001E6B60 /* VULevelMeter.swift in Sources */,
 				806BADDC1C655F7C001E6B60 /* NSCache.swift in Sources */,
 				806BAD571C654CA5001E6B60 /* NSLayoutConstraintUtility.swift in Sources */,
@@ -605,7 +611,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLUI;
 				PRODUCT_NAME = WLUI;
@@ -627,7 +633,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.WLUI;
 				PRODUCT_NAME = WLUI;
