@@ -11,7 +11,7 @@ public final class CPULoadCalculator {
    private var lastTime: timeval
    private var lastCpuUsage: rusage
 
-   init() {
+   public init() {
       let lLastTime = UnsafeMutablePointer<timeval>.alloc(1)
       gettimeofday(lLastTime, nil)
       lastTime = lLastTime.memory
