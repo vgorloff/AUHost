@@ -618,7 +618,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/bash -l";
-			shellScript = "\"$SRCROOT/../Common/Scripts/Build/BuildPhase_SwiftLint.sh\" \"$SRCROOT\" \"$SRCROOT/../Common/swiftlint.yml\"";
+			shellScript = "if [ -n \"$AWLBuildSkipAuxiliaryScripts\" ]; then echo \"Auxiliary script skipped.\" && exit 0; fi\n\"$SRCROOT/../Common/Scripts/Build/BuildPhase_SwiftLint.sh\" \"$SRCROOT\" \"$SRCROOT/../Common/swiftlint.yml\"";
 		};
 		806BACE41C654732001E6B60 /* Run Script: Headers */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -632,7 +632,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/bash -l";
-			shellScript = "\"$SRCROOT/../Common/Scripts/Build/BuildPhase_CheckHeaders.swiftcmd\" \"$SRCROOT\" WLCore";
+			shellScript = "if [ -n \"$AWLBuildSkipAuxiliaryScripts\" ]; then echo \"Auxiliary script skipped.\" && exit 0; fi\n\"$SRCROOT/../Common/Scripts/Build/BuildPhase_CheckHeaders.swiftcmd\" \"$SRCROOT\" WLCore";
 		};
 /* End PBXShellScriptBuildPhase section */
 
