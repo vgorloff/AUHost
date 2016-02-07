@@ -20,6 +20,8 @@ AWLArgsDebug = -configuration Debug
 AWLBuildConfigAUPlugIn = -project AUSamplePlugIn/Attenuator.xcodeproj -scheme AttenuatorAU
 AWLArgsEnvVariables = AWLBuildSkipAuxiliaryScripts=YES
 
+AWLReleaseVersion=$(shell git rev-parse --abbrev-ref HEAD | perl -ne '/(\d\.\d\.\d$$)/; print "$$1"')
+
 ifneq ($(AWLBuildToolAvailable),YES)
 $(error "$(AWLBuildToolName)" does not exist. Solution: brew install $(AWLBuildToolName))
 endif
@@ -51,3 +53,9 @@ build_release_auplugin_codesign:
 		AWLArchiveDirPath=`dirname "$$AWLAppPath"`; AWLArchiveName=`basename "$$AWLAppPath"`; cd "$$AWLArchiveDirPath"; rm "$$AWLArchiveName.zip"; zip -r "$$AWLArchiveName.zip" "$$AWLArchiveName"; \
 	done
 	find "$(AWLBuildDirPath)" -type d -iname *.app | xargs -I{} sh -c 'xcrun spctl -a -t exec -vv "{}"; xcrun codesign --verify "{}"'
+
+increment_build_version:
+	agvtool bump -all
+	agvtool new-marketing-version $(AWLReleaseVersion)
+	cd AUSamplePlugIn && agvtool bump -all
+	cd AUSamplePlugIn && agvtool new-marketing-version $(AWLReleaseVersion)
