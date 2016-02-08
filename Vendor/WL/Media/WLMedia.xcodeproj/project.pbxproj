@@ -157,9 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				806BAE311C6569F4001E6B60 /* AudioComponentsUtility.swift */,
-				806BAE321C6569F4001E6B60 /* OSX */,
 				806BAE361C6569F4001E6B60 /* WaveformCacheUtility.swift */,
 				806BAE371C6569F4001E6B60 /* WaveformDrawingDataProvider.swift */,
+				806BAE321C6569F4001E6B60 /* OSX */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

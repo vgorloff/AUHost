@@ -10,11 +10,10 @@ import QuartzCore
 import CoreVideo
 import WLCore
 
-private func AWLCVDisplayLinkHelperCallback(_:CVDisplayLink, _:UnsafePointer<CVTimeStamp>,
-	_:UnsafePointer<CVTimeStamp>, _:CVOptionFlags, _:UnsafeMutablePointer<CVOptionFlags>, context: UnsafeMutablePointer<Void>)
-	-> CVReturn {
-		let dispatchSource = unsafeBitCast(context, dispatch_source_t.self)
-		dispatch_source_merge_data(dispatchSource, 1)
+private func AWLCVDisplayLinkHelperCallback(_:CVDisplayLink, _:UnsafePointer<CVTimeStamp>, _:UnsafePointer<CVTimeStamp>,
+	_:CVOptionFlags, _:UnsafeMutablePointer<CVOptionFlags>, context: UnsafeMutablePointer<Void>) -> CVReturn {
+		let dispatchSource = unsafeBitCast(context, DispatchSourceData.self)
+		dispatchSource.mergeData(1)
 		return kCVReturnSuccess
 }
 
@@ -26,9 +25,9 @@ public final class CVDisplayLinkHelper {
 	}
 
 	private var displayLink: CVDisplayLink!
-	private var dispatchSource: dispatch_source_t
 	private let frameRateDevider: UInt
 	private var frameCounter: UInt
+	private var dispatchSource: DispatchSourceData!
 
 	public var displayLinkCallback: (Void -> Void)?
 	private lazy var log: Logger = {return Logger(sender: self, context: .Media)}()
@@ -38,8 +37,8 @@ public final class CVDisplayLinkHelper {
 	public init(frameRateDevider devider: UInt = 1) throws {
 		frameRateDevider = devider
 		frameCounter = devider // Force immediate draw.
-		dispatchSource = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_main_queue())
-		dispatch_source_set_event_handler(dispatchSource) { [weak self] in guard let s = self else { return }
+		dispatchSource = try DispatchSourceData(type: .Add)
+		dispatchSource.mergeDataCallback = { [weak self] in guard let s = self else { return }
 			s.frameCounter++
 			if s.frameCounter >= s.frameRateDevider {
 				s.displayLinkCallback?()
@@ -64,13 +63,13 @@ public final class CVDisplayLinkHelper {
 		if resetFrameCounter {
 			frameCounter = 0
 		}
-		dispatch_resume(dispatchSource)
+		dispatchSource.resume()
 		return CVDisplayLinkStart(displayLink)
 	}
 
 	public func stop() -> CVReturn {
 		log.logVerbose("Stopping")
-		dispatch_source_cancel(dispatchSource)
+		dispatchSource.cancel()
 		return CVDisplayLinkStop(displayLink)
 	}
 

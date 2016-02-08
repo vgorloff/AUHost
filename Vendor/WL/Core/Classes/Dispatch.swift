@@ -56,5 +56,11 @@ public struct Dispatch {
 		public static func time(when: dispatch_time_t = DISPATCH_TIME_NOW, deltaSeconds: Int64) -> dispatch_time_t {
 			return dispatch_time(when, Int64(NSEC_PER_SEC) * deltaSeconds)
 		}
+		public static func time(when: dispatch_time_t = DISPATCH_TIME_NOW, deltaSeconds: NSTimeInterval) -> dispatch_time_t {
+			return dispatch_time(when, Int64(NSEC_PER_SEC) * Int64(deltaSeconds))
+		}
+		public static var now: dispatch_time_t {
+			return dispatch_time(DISPATCH_TIME_NOW, 0)
+		}
 	}
 }

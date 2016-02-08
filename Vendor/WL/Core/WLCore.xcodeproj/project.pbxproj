@@ -97,8 +97,8 @@
 		806BADA11C65514F001E6B60 /* DispatchLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BAD9D1C65514F001E6B60 /* DispatchLock.swift */; };
 		806BADA41C6551D8001E6B60 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA21C6551D8001E6B60 /* DispatchQueue.swift */; };
 		806BADA51C6551D8001E6B60 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA21C6551D8001E6B60 /* DispatchQueue.swift */; };
-		806BADA61C6551D8001E6B60 /* DispatchSourceTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA31C6551D8001E6B60 /* DispatchSourceTimer.swift */; };
-		806BADA71C6551D8001E6B60 /* DispatchSourceTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA31C6551D8001E6B60 /* DispatchSourceTimer.swift */; };
+		806BADA61C6551D8001E6B60 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA31C6551D8001E6B60 /* DispatchSource.swift */; };
+		806BADA71C6551D8001E6B60 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA31C6551D8001E6B60 /* DispatchSource.swift */; };
 		806BADAA1C65530A001E6B60 /* ThreeStateFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA91C65530A001E6B60 /* ThreeStateFlag.swift */; };
 		806BADAB1C65530A001E6B60 /* ThreeStateFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADA91C65530A001E6B60 /* ThreeStateFlag.swift */; };
 		806BADAD1C655347001E6B60 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806BADAC1C655347001E6B60 /* ResultType.swift */; };
@@ -217,7 +217,7 @@
 		806BAD9C1C65514F001E6B60 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
 		806BAD9D1C65514F001E6B60 /* DispatchLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchLock.swift; sourceTree = "<group>"; };
 		806BADA21C6551D8001E6B60 /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
-		806BADA31C6551D8001E6B60 /* DispatchSourceTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSourceTimer.swift; sourceTree = "<group>"; };
+		806BADA31C6551D8001E6B60 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		806BADA91C65530A001E6B60 /* ThreeStateFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeStateFlag.swift; sourceTree = "<group>"; };
 		806BADAC1C655347001E6B60 /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		806BADB21C6554DA001E6B60 /* StateError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateError.swift; sourceTree = "<group>"; };
@@ -354,7 +354,7 @@
 				806BAD9C1C65514F001E6B60 /* Dispatch.swift */,
 				806BAD9D1C65514F001E6B60 /* DispatchLock.swift */,
 				806BADA21C6551D8001E6B60 /* DispatchQueue.swift */,
-				806BADA31C6551D8001E6B60 /* DispatchSourceTimer.swift */,
+				806BADA31C6551D8001E6B60 /* DispatchSource.swift */,
 				806BAD2F1C6547BC001E6B60 /* Functions.swift */,
 				806BADF31C656531001E6B60 /* KVOHelper.swift */,
 				806BADF41C656531001E6B60 /* Logger.swift */,
@@ -366,8 +366,8 @@
 				806BAD341C6547BC001E6B60 /* ObjCSync.swift */,
 				806BAD351C6547BC001E6B60 /* Property.swift */,
 				806BAD361C6547BC001E6B60 /* SpinLock.swift */,
-				806BAD371C6547BC001E6B60 /* Try.swift */,
 				80D50FC41C6658DB00C53608 /* TerminalStyleStringFormatter.swift */,
+				806BAD371C6547BC001E6B60 /* Try.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -661,7 +661,7 @@
 				806BADAB1C65530A001E6B60 /* ThreeStateFlag.swift in Sources */,
 				806BADC61C655BA2001E6B60 /* Int.swift in Sources */,
 				806BAE081C65655D001E6B60 /* CPULoadCalculator.swift in Sources */,
-				806BADA71C6551D8001E6B60 /* DispatchSourceTimer.swift in Sources */,
+				806BADA71C6551D8001E6B60 /* DispatchSource.swift in Sources */,
 				806BADA11C65514F001E6B60 /* DispatchLock.swift in Sources */,
 				806BAD211C6547B3001E6B60 /* NSURL.swift in Sources */,
 				806BACD21C654220001E6B60 /* ObjectAssociation.swift in Sources */,
@@ -736,7 +736,7 @@
 				806BADAA1C65530A001E6B60 /* ThreeStateFlag.swift in Sources */,
 				806BADC51C655BA2001E6B60 /* Int.swift in Sources */,
 				806BAE001C656531001E6B60 /* Logger.swift in Sources */,
-				806BADA61C6551D8001E6B60 /* DispatchSourceTimer.swift in Sources */,
+				806BADA61C6551D8001E6B60 /* DispatchSource.swift in Sources */,
 				806BADA01C65514F001E6B60 /* DispatchLock.swift in Sources */,
 				806BAD201C6547B3001E6B60 /* NSURL.swift in Sources */,
 				806BACD11C654220001E6B60 /* ObjectAssociation.swift in Sources */,

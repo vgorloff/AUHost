@@ -28,4 +28,20 @@ public struct DispatchQueue {
 	public static var Background: dispatch_queue_t {
 		return dispatch_get_global_queue(Int(QOS_CLASS_BACKGROUND.rawValue), 0)
 	}
+
+	public static var Serial: dispatch_queue_t {
+		return dispatch_queue_create(nil, DISPATCH_QUEUE_SERIAL)
+	}
+
+	public static var Concurrent: dispatch_queue_t {
+		return dispatch_queue_create(nil, DISPATCH_QUEUE_CONCURRENT)
+	}
+
+	public static func serial(label: String) -> dispatch_queue_t {
+		return dispatch_queue_create(label, DISPATCH_QUEUE_SERIAL)
+	}
+
+	public static func concurrent(label: String) -> dispatch_queue_t {
+		return dispatch_queue_create(label, DISPATCH_QUEUE_CONCURRENT)
+	}
 }
