@@ -8,8 +8,6 @@
 
 public enum DictionaryError: ErrorType {
 	case MissedRequiredKey(String)
-	case MultipleElementsForKey(String, CollectionType)
-	case UnexpectedNumberOfComponents(Int, CollectionType)
 }
 
 public extension Dictionary {
