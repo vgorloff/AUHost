@@ -8,6 +8,6 @@ AWLReleaseVersion=1.0.3
 AWLBinaryArchiveName=WL.framework.zip
 AWLBinaryArchivePath=$AWLScriptDirPath/$AWLBinaryArchiveName
 curl -L https://github.com/vgorloff/WL/releases/download/$AWLReleaseVersion/$AWLBinaryArchiveName > "$AWLBinaryArchivePath" \
-	&& rm -rv "$AWLScriptDirPath/WL" \
+	&& if [ -d "$AWLScriptDirPath/WL" ]; then rm -rv "$AWLScriptDirPath/WL"; fi \
 	&& unzip "$AWLBinaryArchivePath" \
 	&& rm -v "$AWLBinaryArchivePath"
