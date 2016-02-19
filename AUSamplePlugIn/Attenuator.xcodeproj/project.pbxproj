@@ -18,17 +18,17 @@
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6A1C568A6800BF812A /* AttenuatorView.swift */; };
 		80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */; };
+		80CCD7971C77CFF700D61DBF /* WLCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD78D1C77CF8F00D61DBF /* WLCore.framework */; };
+		80CCD7981C77CFF700D61DBF /* WLMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7911C77CF8F00D61DBF /* WLMedia.framework */; };
+		80CCD7991C77CFF700D61DBF /* WLUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7951C77CF8F00D61DBF /* WLUI.framework */; };
+		80CCD79E1C77D20100D61DBF /* WLCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD78D1C77CF8F00D61DBF /* WLCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80CCD7A01C77D20100D61DBF /* WLMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7911C77CF8F00D61DBF /* WLMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80CCD7A21C77D20100D61DBF /* WLUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7951C77CF8F00D61DBF /* WLUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80CCD7A31C77D25000D61DBF /* WLCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80CCD78D1C77CF8F00D61DBF /* WLCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80CCD7A41C77D25000D61DBF /* WLMedia.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80CCD7911C77CF8F00D61DBF /* WLMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		80CCD7A51C77D25000D61DBF /* WLUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80CCD7951C77CF8F00D61DBF /* WLUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80D5104A1C6697D000C53608 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80D5104B1C6697D000C53608 /* AttenuatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80D5104E1C66980000C53608 /* WLUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D5104D1C66980000C53608 /* WLUI.framework */; };
-		80D5104F1C66980000C53608 /* WLUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80D5104D1C66980000C53608 /* WLUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80D510511C66980000C53608 /* WLMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D510501C66980000C53608 /* WLMedia.framework */; };
-		80D510521C66980000C53608 /* WLMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80D510501C66980000C53608 /* WLMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80D510541C66980000C53608 /* WLCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D510531C66980000C53608 /* WLCore.framework */; };
-		80D510551C66980000C53608 /* WLCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80D510531C66980000C53608 /* WLCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80D510581C6698C700C53608 /* WLCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80D510531C66980000C53608 /* WLCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80D510591C6698C700C53608 /* WLMedia.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80D510501C66980000C53608 /* WLMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80D5105A1C6698C700C53608 /* WLUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80D5104D1C66980000C53608 /* WLUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A5A1001C47E75F00F9864E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */; };
 		C5A5A1021C47E75F00F9864E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A1011C47E75F00F9864E /* ViewController.swift */; };
 		C5A5A1041C47E75F00F9864E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C5A5A1031C47E75F00F9864E /* Assets.xcassets */; };
@@ -74,10 +74,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80D510581C6698C700C53608 /* WLCore.framework in CopyFiles */,
-				80D510591C6698C700C53608 /* WLMedia.framework in CopyFiles */,
-				80D5105A1C6698C700C53608 /* WLUI.framework in CopyFiles */,
 				801E7E411C544E000064126C /* AttenuatorKit.framework in CopyFiles */,
+				80CCD7A31C77D25000D61DBF /* WLCore.framework in CopyFiles */,
+				80CCD7A41C77D25000D61DBF /* WLMedia.framework in CopyFiles */,
+				80CCD7A51C77D25000D61DBF /* WLUI.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,10 +96,10 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80D510551C66980000C53608 /* WLCore.framework in Embed Frameworks */,
+				80CCD79E1C77D20100D61DBF /* WLCore.framework in Embed Frameworks */,
 				80D5104B1C6697D000C53608 /* AttenuatorKit.framework in Embed Frameworks */,
-				80D5104F1C66980000C53608 /* WLUI.framework in Embed Frameworks */,
-				80D510521C66980000C53608 /* WLMedia.framework in Embed Frameworks */,
+				80CCD7A01C77D20100D61DBF /* WLMedia.framework in Embed Frameworks */,
+				80CCD7A21C77D20100D61DBF /* WLUI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,9 +132,9 @@
 		8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		80A21A6A1C568A6800BF812A /* AttenuatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
 		80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
-		80D5104D1C66980000C53608 /* WLUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WLUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80D510501C66980000C53608 /* WLMedia.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WLMedia.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		80D510531C66980000C53608 /* WLCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WLCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		80CCD78D1C77CF8F00D61DBF /* WLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WLCore.framework; sourceTree = "<group>"; };
+		80CCD7911C77CF8F00D61DBF /* WLMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WLMedia.framework; sourceTree = "<group>"; };
+		80CCD7951C77CF8F00D61DBF /* WLUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WLUI.framework; sourceTree = "<group>"; };
 		C5A5A0FC1C47E75F00F9864E /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5A5A1011C47E75F00F9864E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,7 +153,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80CCD7971C77CFF700D61DBF /* WLCore.framework in Frameworks */,
 				8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */,
+				80CCD7981C77CFF700D61DBF /* WLMedia.framework in Frameworks */,
+				80CCD7991C77CFF700D61DBF /* WLUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,10 +164,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80D510541C66980000C53608 /* WLCore.framework in Frameworks */,
 				80D5104A1C6697D000C53608 /* AttenuatorKit.framework in Frameworks */,
-				80D5104E1C66980000C53608 /* WLUI.framework in Frameworks */,
-				80D510511C66980000C53608 /* WLMedia.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +197,7 @@
 		8044ABDE1C52E4B700FA3DA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				80D510571C66985900C53608 /* Build Products */,
+				80D510571C66985900C53608 /* Vendor */,
 				8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */,
 				8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */,
 				8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */,
@@ -206,14 +206,31 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		80D510571C66985900C53608 /* Build Products */ = {
+		80CCD7801C77CF8F00D61DBF /* WL */ = {
 			isa = PBXGroup;
 			children = (
-				80D510531C66980000C53608 /* WLCore.framework */,
-				80D510501C66980000C53608 /* WLMedia.framework */,
-				80D5104D1C66980000C53608 /* WLUI.framework */,
+				80CCD78C1C77CF8F00D61DBF /* Mac */,
 			);
-			name = "Build Products";
+			path = WL;
+			sourceTree = "<group>";
+		};
+		80CCD78C1C77CF8F00D61DBF /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				80CCD78D1C77CF8F00D61DBF /* WLCore.framework */,
+				80CCD7911C77CF8F00D61DBF /* WLMedia.framework */,
+				80CCD7951C77CF8F00D61DBF /* WLUI.framework */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		80D510571C66985900C53608 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				80CCD7801C77CF8F00D61DBF /* WL */,
+			);
+			name = Vendor;
+			path = ../Vendor;
 			sourceTree = "<group>";
 		};
 		C5A5A0F31C47E75F00F9864E = {
@@ -633,6 +650,10 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"../Vendor/WL/Mac/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -677,6 +698,10 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"../Vendor/WL/Mac/**",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
