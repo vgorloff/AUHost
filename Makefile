@@ -39,8 +39,8 @@ all: \
 clean:
 	rm -rf "$(AWLBuildDirPath)"
 	
-build: build_release_auplugin_nocodesign
-build-ci: download-binaries build
+build: download-binaries build-nodl
+build-nodl: build_release_auplugin_nocodesign
 	
 download-binaries:
 	for SwiftVersion in `xcrun swift -version | perl -wnE'print /version\s+([-\w\.]+)\s+\(/'`; do \
