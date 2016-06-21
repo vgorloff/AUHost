@@ -7,8 +7,6 @@
 //
 
 import Cocoa
-import WLCore
-import WLMedia
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

@@ -9,7 +9,6 @@
 import Foundation
 import AudioUnit
 import AVFoundation
-import WLCore
 import Accelerate
 
 struct AttenuatorDSPKernel {

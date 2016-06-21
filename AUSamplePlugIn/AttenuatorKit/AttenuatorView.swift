@@ -8,9 +8,6 @@
 
 import Cocoa
 import AudioUnit
-import WLCore
-import WLMedia
-import WLUI
 
 class AttenuatorView: NSView {
 
@@ -24,7 +21,7 @@ class AttenuatorView: NSView {
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		displayLinkUtility = Try.log { return try CVDisplayLinkHelper(frameRateDevider: 60/10) }
+		displayLinkUtility = trythrow { return try CVDisplayLinkHelper(frameRateDevider: 60/10) }
 		displayLinkUtility?.displayLinkCallback = { [weak self] in
 			if let value = self?.meterRefreshCallback?() {
 				self?.viewLevelMeter.level = value
@@ -41,10 +38,10 @@ class AttenuatorView: NSView {
 	}
 
 	func startMetering() {
-		displayLinkUtility?.start()
+		trythrow {try displayLinkUtility?.start()}
 	}
 
 	func stopMetering() {
-		displayLinkUtility?.stop()
+		trythrow {try displayLinkUtility?.stop()}
 	}
 }

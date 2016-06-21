@@ -8,7 +8,6 @@
 
 import CoreAudioKit
 import AVFoundation
-import WLCore
 
 public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 	private var audioUnit: AttenuatorAudioUnit?

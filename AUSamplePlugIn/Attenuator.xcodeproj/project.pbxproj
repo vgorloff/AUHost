@@ -15,18 +15,44 @@
 		801E7E431C5451530064126C /* AttenuatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 801E7E3B1C544A680064126C /* AttenuatorViewController.xib */; };
 		8044ABCF1C52E24000FA3DA3 /* AttenuatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */; };
+		8050DBB91D19F8FE007216D2 /* CacheCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB861D19F8C5007216D2 /* CacheCentre.swift */; };
+		8050DBBA1D19F8FE007216D2 /* CPULoadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB871D19F8C5007216D2 /* CPULoadCalculator.swift */; };
+		8050DBBB1D19F8FE007216D2 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB881D19F8C5007216D2 /* DispatchSource.swift */; };
+		8050DBBC1D19F8FE007216D2 /* KVOHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB891D19F8C5007216D2 /* KVOHelper.swift */; };
+		8050DBBD1D19F8FE007216D2 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB8A1D19F8C5007216D2 /* Logger.swift */; };
+		8050DBBE1D19F8FE007216D2 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB8B1D19F8C5007216D2 /* NotificationObserver.swift */; };
+		8050DBBF1D19F8FE007216D2 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB8C1D19F8C5007216D2 /* Property.swift */; };
+		8050DBC01D19F8FE007216D2 /* SpinLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB8D1D19F8C5007216D2 /* SpinLock.swift */; };
+		8050DBC31D19F92F007216D2 /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA01D19F8C5007216D2 /* AlternativeValue.swift */; };
+		8050DBC41D19F92F007216D2 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA11D19F8C5007216D2 /* Dispatch.swift */; };
+		8050DBC51D19F92F007216D2 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA21D19F8C5007216D2 /* DispatchQueue.swift */; };
+		8050DBC61D19F92F007216D2 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA31D19F8C5007216D2 /* Math.swift */; };
+		8050DBC71D19F92F007216D2 /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA41D19F8C5007216D2 /* MinMax.swift */; };
+		8050DBC81D19F92F007216D2 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA51D19F8C5007216D2 /* StateMachine.swift */; };
+		8050DBC91D19F93B007216D2 /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB991D19F8C5007216D2 /* CGFloatRepresentable.swift */; };
+		8050DBCA1D19F93B007216D2 /* DoubleRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB9A1D19F8C5007216D2 /* DoubleRepresentable.swift */; };
+		8050DBCB1D19F93B007216D2 /* Int64Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB9B1D19F8C5007216D2 /* Int64Representable.swift */; };
+		8050DBCC1D19F93B007216D2 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB9C1D19F8C5007216D2 /* NonRecursiveLocking.swift */; };
+		8050DBCD1D19F93B007216D2 /* UInt64Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB9D1D19F8C5007216D2 /* UInt64Representable.swift */; };
+		8050DBCE1D19F93E007216D2 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB961D19F8C5007216D2 /* Functions.swift */; };
+		8050DBCF1D19F942007216D2 /* NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB921D19F8C5007216D2 /* NSCache.swift */; };
+		8050DBD01D19F942007216D2 /* NSOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB931D19F8C5007216D2 /* NSOperationQueue.swift */; };
+		8050DBD11D19F942007216D2 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB941D19F8C5007216D2 /* String.swift */; };
+		8050DBD21D19F945007216D2 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB8F1D19F8C5007216D2 /* ResultType.swift */; };
+		8050DBD31D19F945007216D2 /* StateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB901D19F8C5007216D2 /* StateError.swift */; };
+		8050DBD41D19F97A007216D2 /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA91D19F8C5007216D2 /* AudioComponentsUtility.swift */; };
+		8050DBD51D19F97A007216D2 /* CARingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAA1D19F8C5007216D2 /* CARingBuffer.swift */; };
+		8050DBD61D19F985007216D2 /* DisplayLinkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAC1D19F8C5007216D2 /* DisplayLinkUtility.swift */; };
+		8050DBD71D19F985007216D2 /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAD1D19F8C5007216D2 /* MediaLibraryUtility.swift */; };
+		8050DBD81D19F985007216D2 /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAE1D19F8C5007216D2 /* MediaObjectPasteboardUtility.swift */; };
+		8050DBD91D19F989007216D2 /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAF1D19F8C5007216D2 /* WaveformCacheUtility.swift */; };
+		8050DBDA1D19F989007216D2 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBB01D19F8C5007216D2 /* WaveformDrawingDataProvider.swift */; };
+		8050DBDB1D19F98D007216D2 /* AudioBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBB21D19F8C5007216D2 /* AudioBuffer.swift */; };
+		8050DBDC1D19F98D007216D2 /* UnsafeMutableAudioBufferListPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBB31D19F8C5007216D2 /* UnsafeMutableAudioBufferListPointer.swift */; };
+		8050DBE01D19F9CC007216D2 /* VULevelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBDF1D19F9CC007216D2 /* VULevelMeter.swift */; };
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6A1C568A6800BF812A /* AttenuatorView.swift */; };
 		80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */; };
-		80CCD7971C77CFF700D61DBF /* WLCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD78D1C77CF8F00D61DBF /* WLCore.framework */; };
-		80CCD7981C77CFF700D61DBF /* WLMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7911C77CF8F00D61DBF /* WLMedia.framework */; };
-		80CCD7991C77CFF700D61DBF /* WLUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7951C77CF8F00D61DBF /* WLUI.framework */; };
-		80CCD79E1C77D20100D61DBF /* WLCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD78D1C77CF8F00D61DBF /* WLCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80CCD7A01C77D20100D61DBF /* WLMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7911C77CF8F00D61DBF /* WLMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80CCD7A21C77D20100D61DBF /* WLUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 80CCD7951C77CF8F00D61DBF /* WLUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80CCD7A31C77D25000D61DBF /* WLCore.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80CCD78D1C77CF8F00D61DBF /* WLCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80CCD7A41C77D25000D61DBF /* WLMedia.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80CCD7911C77CF8F00D61DBF /* WLMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		80CCD7A51C77D25000D61DBF /* WLUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 80CCD7951C77CF8F00D61DBF /* WLUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80D5104A1C6697D000C53608 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80D5104B1C6697D000C53608 /* AttenuatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A5A1001C47E75F00F9864E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */; };
@@ -75,9 +101,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				801E7E411C544E000064126C /* AttenuatorKit.framework in CopyFiles */,
-				80CCD7A31C77D25000D61DBF /* WLCore.framework in CopyFiles */,
-				80CCD7A41C77D25000D61DBF /* WLMedia.framework in CopyFiles */,
-				80CCD7A51C77D25000D61DBF /* WLUI.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,10 +119,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				80CCD79E1C77D20100D61DBF /* WLCore.framework in Embed Frameworks */,
 				80D5104B1C6697D000C53608 /* AttenuatorKit.framework in Embed Frameworks */,
-				80CCD7A01C77D20100D61DBF /* WLMedia.framework in Embed Frameworks */,
-				80CCD7A21C77D20100D61DBF /* WLUI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -130,11 +150,44 @@
 		8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		8050DB861D19F8C5007216D2 /* CacheCentre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheCentre.swift; sourceTree = "<group>"; };
+		8050DB871D19F8C5007216D2 /* CPULoadCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPULoadCalculator.swift; sourceTree = "<group>"; };
+		8050DB881D19F8C5007216D2 /* DispatchSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
+		8050DB891D19F8C5007216D2 /* KVOHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVOHelper.swift; sourceTree = "<group>"; };
+		8050DB8A1D19F8C5007216D2 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		8050DB8B1D19F8C5007216D2 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
+		8050DB8C1D19F8C5007216D2 /* Property.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		8050DB8D1D19F8C5007216D2 /* SpinLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinLock.swift; sourceTree = "<group>"; };
+		8050DB8F1D19F8C5007216D2 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
+		8050DB901D19F8C5007216D2 /* StateError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateError.swift; sourceTree = "<group>"; };
+		8050DB921D19F8C5007216D2 /* NSCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSCache.swift; sourceTree = "<group>"; };
+		8050DB931D19F8C5007216D2 /* NSOperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSOperationQueue.swift; sourceTree = "<group>"; };
+		8050DB941D19F8C5007216D2 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		8050DB961D19F8C5007216D2 /* Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		8050DB991D19F8C5007216D2 /* CGFloatRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGFloatRepresentable.swift; sourceTree = "<group>"; };
+		8050DB9A1D19F8C5007216D2 /* DoubleRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRepresentable.swift; sourceTree = "<group>"; };
+		8050DB9B1D19F8C5007216D2 /* Int64Representable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int64Representable.swift; sourceTree = "<group>"; };
+		8050DB9C1D19F8C5007216D2 /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
+		8050DB9D1D19F8C5007216D2 /* UInt64Representable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UInt64Representable.swift; sourceTree = "<group>"; };
+		8050DBA01D19F8C5007216D2 /* AlternativeValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
+		8050DBA11D19F8C5007216D2 /* Dispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
+		8050DBA21D19F8C5007216D2 /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		8050DBA31D19F8C5007216D2 /* Math.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		8050DBA41D19F8C5007216D2 /* MinMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
+		8050DBA51D19F8C5007216D2 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		8050DBA91D19F8C5007216D2 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
+		8050DBAA1D19F8C5007216D2 /* CARingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARingBuffer.swift; sourceTree = "<group>"; };
+		8050DBAC1D19F8C5007216D2 /* DisplayLinkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkUtility.swift; sourceTree = "<group>"; };
+		8050DBAD1D19F8C5007216D2 /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
+		8050DBAE1D19F8C5007216D2 /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
+		8050DBAF1D19F8C5007216D2 /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
+		8050DBB01D19F8C5007216D2 /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
+		8050DBB21D19F8C5007216D2 /* AudioBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBuffer.swift; sourceTree = "<group>"; };
+		8050DBB31D19F8C5007216D2 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
+		8050DBB81D19F8C5007216D2 /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
+		8050DBDF1D19F9CC007216D2 /* VULevelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
 		80A21A6A1C568A6800BF812A /* AttenuatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
 		80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
-		80CCD78D1C77CF8F00D61DBF /* WLCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WLCore.framework; sourceTree = "<group>"; };
-		80CCD7911C77CF8F00D61DBF /* WLMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WLMedia.framework; sourceTree = "<group>"; };
-		80CCD7951C77CF8F00D61DBF /* WLUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WLUI.framework; sourceTree = "<group>"; };
 		C5A5A0FC1C47E75F00F9864E /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A5A0FF1C47E75F00F9864E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C5A5A1011C47E75F00F9864E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -153,10 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80CCD7971C77CFF700D61DBF /* WLCore.framework in Frameworks */,
 				8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */,
-				80CCD7981C77CFF700D61DBF /* WLMedia.framework in Frameworks */,
-				80CCD7991C77CFF700D61DBF /* WLUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +247,6 @@
 		8044ABDE1C52E4B700FA3DA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				80D510571C66985900C53608 /* Vendor */,
 				8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */,
 				8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */,
 				8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */,
@@ -206,31 +255,171 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		80CCD7801C77CF8F00D61DBF /* WL */ = {
+		8050DB821D19F89B007216D2 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				80CCD78C1C77CF8F00D61DBF /* Mac */,
-			);
-			path = WL;
-			sourceTree = "<group>";
-		};
-		80CCD78C1C77CF8F00D61DBF /* Mac */ = {
-			isa = PBXGroup;
-			children = (
-				80CCD78D1C77CF8F00D61DBF /* WLCore.framework */,
-				80CCD7911C77CF8F00D61DBF /* WLMedia.framework */,
-				80CCD7951C77CF8F00D61DBF /* WLUI.framework */,
-			);
-			path = Mac;
-			sourceTree = "<group>";
-		};
-		80D510571C66985900C53608 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				80CCD7801C77CF8F00D61DBF /* WL */,
+				8050DB831D19F8C5007216D2 /* WLCoreOpen */,
+				8050DBA61D19F8C5007216D2 /* WLMediaOpen */,
+				8050DBB61D19F8C5007216D2 /* WLUIOpen */,
 			);
 			name = Vendor;
 			path = ../Vendor;
+			sourceTree = "<group>";
+		};
+		8050DB831D19F8C5007216D2 /* WLCoreOpen */ = {
+			isa = PBXGroup;
+			children = (
+				8050DB851D19F8C5007216D2 /* Classes */,
+				8050DB8E1D19F8C5007216D2 /* Enumerations */,
+				8050DB911D19F8C5007216D2 /* Extensions */,
+				8050DB951D19F8C5007216D2 /* Functions */,
+				8050DB981D19F8C5007216D2 /* Protocols */,
+				8050DB9F1D19F8C5007216D2 /* Types */,
+			);
+			name = WLCoreOpen;
+			path = ../../WLCoreOpen;
+			sourceTree = "<group>";
+		};
+		8050DB851D19F8C5007216D2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8050DB861D19F8C5007216D2 /* CacheCentre.swift */,
+				8050DB871D19F8C5007216D2 /* CPULoadCalculator.swift */,
+				8050DB881D19F8C5007216D2 /* DispatchSource.swift */,
+				8050DB891D19F8C5007216D2 /* KVOHelper.swift */,
+				8050DB8A1D19F8C5007216D2 /* Logger.swift */,
+				8050DB8B1D19F8C5007216D2 /* NotificationObserver.swift */,
+				8050DB8C1D19F8C5007216D2 /* Property.swift */,
+				8050DB8D1D19F8C5007216D2 /* SpinLock.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8050DB8E1D19F8C5007216D2 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				8050DB8F1D19F8C5007216D2 /* ResultType.swift */,
+				8050DB901D19F8C5007216D2 /* StateError.swift */,
+			);
+			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		8050DB911D19F8C5007216D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8050DB921D19F8C5007216D2 /* NSCache.swift */,
+				8050DB931D19F8C5007216D2 /* NSOperationQueue.swift */,
+				8050DB941D19F8C5007216D2 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8050DB951D19F8C5007216D2 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				8050DB961D19F8C5007216D2 /* Functions.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		8050DB981D19F8C5007216D2 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8050DB991D19F8C5007216D2 /* CGFloatRepresentable.swift */,
+				8050DB9A1D19F8C5007216D2 /* DoubleRepresentable.swift */,
+				8050DB9B1D19F8C5007216D2 /* Int64Representable.swift */,
+				8050DB9C1D19F8C5007216D2 /* NonRecursiveLocking.swift */,
+				8050DB9D1D19F8C5007216D2 /* UInt64Representable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8050DB9F1D19F8C5007216D2 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBA01D19F8C5007216D2 /* AlternativeValue.swift */,
+				8050DBA11D19F8C5007216D2 /* Dispatch.swift */,
+				8050DBA21D19F8C5007216D2 /* DispatchQueue.swift */,
+				8050DBA31D19F8C5007216D2 /* Math.swift */,
+				8050DBA41D19F8C5007216D2 /* MinMax.swift */,
+				8050DBA51D19F8C5007216D2 /* StateMachine.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		8050DBA61D19F8C5007216D2 /* WLMediaOpen */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBA81D19F8C5007216D2 /* Classes */,
+				8050DBB11D19F8C5007216D2 /* Extensions */,
+			);
+			name = WLMediaOpen;
+			path = ../../WLMediaOpen;
+			sourceTree = "<group>";
+		};
+		8050DBA81D19F8C5007216D2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBA91D19F8C5007216D2 /* AudioComponentsUtility.swift */,
+				8050DBAA1D19F8C5007216D2 /* CARingBuffer.swift */,
+				8050DBAB1D19F8C5007216D2 /* macOS */,
+				8050DBAF1D19F8C5007216D2 /* WaveformCacheUtility.swift */,
+				8050DBB01D19F8C5007216D2 /* WaveformDrawingDataProvider.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8050DBAB1D19F8C5007216D2 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBAC1D19F8C5007216D2 /* DisplayLinkUtility.swift */,
+				8050DBAD1D19F8C5007216D2 /* MediaLibraryUtility.swift */,
+				8050DBAE1D19F8C5007216D2 /* MediaObjectPasteboardUtility.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		8050DBB11D19F8C5007216D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBB21D19F8C5007216D2 /* AudioBuffer.swift */,
+				8050DBB31D19F8C5007216D2 /* UnsafeMutableAudioBufferListPointer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8050DBB61D19F8C5007216D2 /* WLUIOpen */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBDD1D19F9CC007216D2 /* Classes */,
+				8050DBB71D19F8C5007216D2 /* Extensions */,
+			);
+			name = WLUIOpen;
+			path = ../../WLUIOpen;
+			sourceTree = "<group>";
+		};
+		8050DBB71D19F8C5007216D2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBB81D19F8C5007216D2 /* ColorType.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8050DBDD1D19F9CC007216D2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBDE1D19F9CC007216D2 /* macOS */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8050DBDE1D19F9CC007216D2 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8050DBDF1D19F9CC007216D2 /* VULevelMeter.swift */,
+			);
+			path = macOS;
 			sourceTree = "<group>";
 		};
 		C5A5A0F31C47E75F00F9864E = {
@@ -240,6 +429,7 @@
 				C5A5A0FE1C47E75F00F9864E /* Attenuator */,
 				C5A5A1131C47EB5300F9864E /* AttenuatorAU */,
 				8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */,
+				8050DB821D19F89B007216D2 /* Vendor */,
 				8044ABDE1C52E4B700FA3DA3 /* Frameworks */,
 				C5A5A0FD1C47E75F00F9864E /* Products */,
 			);
@@ -471,11 +661,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8050DBD91D19F989007216D2 /* WaveformCacheUtility.swift in Sources */,
+				8050DBBB1D19F8FE007216D2 /* DispatchSource.swift in Sources */,
 				801E7E381C5444CB0064126C /* AttenuatorParameter.swift in Sources */,
+				8050DBD21D19F945007216D2 /* ResultType.swift in Sources */,
+				8050DBB91D19F8FE007216D2 /* CacheCentre.swift in Sources */,
+				8050DBC51D19F92F007216D2 /* DispatchQueue.swift in Sources */,
 				80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */,
+				8050DBBA1D19F8FE007216D2 /* CPULoadCalculator.swift in Sources */,
+				8050DBC31D19F92F007216D2 /* AlternativeValue.swift in Sources */,
+				8050DBD81D19F985007216D2 /* MediaObjectPasteboardUtility.swift in Sources */,
+				8050DBC71D19F92F007216D2 /* MinMax.swift in Sources */,
+				8050DBD71D19F985007216D2 /* MediaLibraryUtility.swift in Sources */,
+				8050DBBD1D19F8FE007216D2 /* Logger.swift in Sources */,
+				8050DBC81D19F92F007216D2 /* StateMachine.swift in Sources */,
+				8050DBCB1D19F93B007216D2 /* Int64Representable.swift in Sources */,
+				8050DBCF1D19F942007216D2 /* NSCache.swift in Sources */,
+				8050DBD01D19F942007216D2 /* NSOperationQueue.swift in Sources */,
+				8050DBBF1D19F8FE007216D2 /* Property.swift in Sources */,
 				80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */,
+				8050DBCE1D19F93E007216D2 /* Functions.swift in Sources */,
+				8050DBDA1D19F989007216D2 /* WaveformDrawingDataProvider.swift in Sources */,
+				8050DBE01D19F9CC007216D2 /* VULevelMeter.swift in Sources */,
+				8050DBC61D19F92F007216D2 /* Math.swift in Sources */,
+				8050DBCA1D19F93B007216D2 /* DoubleRepresentable.swift in Sources */,
+				8050DBD11D19F942007216D2 /* String.swift in Sources */,
+				8050DBC01D19F8FE007216D2 /* SpinLock.swift in Sources */,
+				8050DBBC1D19F8FE007216D2 /* KVOHelper.swift in Sources */,
+				8050DBDC1D19F98D007216D2 /* UnsafeMutableAudioBufferListPointer.swift in Sources */,
+				8050DBDB1D19F98D007216D2 /* AudioBuffer.swift in Sources */,
+				8050DBD61D19F985007216D2 /* DisplayLinkUtility.swift in Sources */,
+				8050DBCC1D19F93B007216D2 /* NonRecursiveLocking.swift in Sources */,
+				8050DBCD1D19F93B007216D2 /* UInt64Representable.swift in Sources */,
 				801E7E371C5444CB0064126C /* AttenuatorAudioUnit.swift in Sources */,
+				8050DBC41D19F92F007216D2 /* Dispatch.swift in Sources */,
+				8050DBD31D19F945007216D2 /* StateError.swift in Sources */,
+				8050DBD51D19F97A007216D2 /* CARingBuffer.swift in Sources */,
+				8050DBC91D19F93B007216D2 /* CGFloatRepresentable.swift in Sources */,
 				801E7E3C1C544A680064126C /* AttenuatorViewController.swift in Sources */,
+				8050DBD41D19F97A007216D2 /* AudioComponentsUtility.swift in Sources */,
+				8050DBBE1D19F8FE007216D2 /* NotificationObserver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -650,10 +875,6 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"../Vendor/WL/Mac/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -698,10 +919,6 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"../Vendor/WL/Mac/**",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

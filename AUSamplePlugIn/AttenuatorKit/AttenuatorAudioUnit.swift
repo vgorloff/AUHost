@@ -8,7 +8,6 @@
 
 import AudioUnit
 import AVFoundation
-import WLCore
 
 public final class AttenuatorAudioUnit: AUAudioUnit {
 
