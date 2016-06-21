@@ -6,11 +6,13 @@
 .DS_Store
 
 ## Child Git
-Vendor/WL
+/Vendor/*
+!/Vendor/*.txt
+!/Vendor/*.command
 
 ## Build generated
-build/
-DerivedData
+/Build
+/DerivedData
 
 ## Various settings
 *.pbxuser
@@ -22,6 +24,7 @@ DerivedData
 *.perspectivev3
 !default.perspectivev3
 xcuserdata
+xcbaselines
 
 ## Other
 *.xccheckout
@@ -33,8 +36,3 @@ xcuserdata
 *.hmap
 *.ipa
 
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-# Packages/
-.build/

@@ -8,7 +8,6 @@
 
 import AVFoundation
 import CoreAudioKit
-import WLCore
 
 enum PlaybackEngineStateError: ErrorType {
 	case FileIsNotSet

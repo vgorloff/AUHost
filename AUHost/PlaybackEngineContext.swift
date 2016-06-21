@@ -8,7 +8,6 @@
 
 import AVFoundation
 import CoreAudioKit
-import WLCore
 
 final class PlaybackEngineContext {
 
