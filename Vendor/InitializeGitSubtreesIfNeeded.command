@@ -13,3 +13,4 @@ function AWLCheckFolderAndReportWarning {
 
 AWLCheckFolderAndReportWarning "WLCoreOpen"
 AWLCheckFolderAndReportWarning "WLMediaOpen"
+AWLCheckFolderAndReportWarning "WLUIOpen"
