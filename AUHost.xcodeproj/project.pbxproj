@@ -354,6 +354,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8035EF391B3752030026AD7D /* Build configuration list for PBXNativeTarget "AUHost" */;
 			buildPhases = (
+				8050DBE21D19FF76007216D2 /* Run Script: Set Up Git Subtree If Needed */,
 				8035EF261B3752030026AD7D /* Sources */,
 				8035EF271B3752030026AD7D /* Frameworks */,
 				8035EF281B3752030026AD7D /* Resources */,
@@ -418,6 +419,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8050DBE21D19FF76007216D2 /* Run Script: Set Up Git Subtree If Needed */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: Set Up Git Subtree If Needed";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"$SRCROOT/Vendor/InitializeGitSubtreesIfNeeded.command\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8035EF261B3752030026AD7D /* Sources */ = {
