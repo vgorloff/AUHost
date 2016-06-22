@@ -1,0 +1,17 @@
+## OS X
+.DS_Store
+
+## Build generated
+/Build
+/DerivedData
+/Carthage/Build
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+
+## IDE
+.idea
+xcuserdata
