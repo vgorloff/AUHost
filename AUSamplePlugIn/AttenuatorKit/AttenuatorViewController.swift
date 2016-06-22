@@ -16,7 +16,8 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 	public override func loadView() {
 		var topLevelObjects: NSArray?
 		guard
-			let nib = NSNib(nibNamed: String(AttenuatorViewController.self), bundle: NSBundle(forClass: AttenuatorViewController.self)) where
+			let nib = NSNib(nibNamed: String(AttenuatorViewController.self),
+			                bundle: NSBundle(forClass: AttenuatorViewController.self)) where
 			nib.instantiateWithOwner(self, topLevelObjects: &topLevelObjects), let objects = topLevelObjects else {
 				fatalError()
 		}

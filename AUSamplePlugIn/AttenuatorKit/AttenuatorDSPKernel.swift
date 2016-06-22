@@ -75,7 +75,7 @@ struct AttenuatorDSPKernel {
 					let numElementsToProcess = vDSP_Length(frameCount)
 					vDSP_vsmul(samplesBI, 1, &gain, samplesBO, 1, numElementsToProcess)
 					vDSP_maxmgv(samplesBO, 1, &maximumMagnitudeValue, numElementsToProcess)
-					_maximumMagnitude[index] = maximumMagnitudeLock.synchronized{ return maximumMagnitudeValue }
+					_maximumMagnitude[index] = maximumMagnitudeLock.synchronized { return maximumMagnitudeValue }
 				#else
 					// Applying gain by math
 					let numSamples = Int(bO.mDataByteSize / UInt32(sizeof(SampleType.self)))
@@ -88,5 +88,5 @@ struct AttenuatorDSPKernel {
 			}
 			return noErr
 	}
-	
+
 }
