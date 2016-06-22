@@ -354,6 +354,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8035EF391B3752030026AD7D /* Build configuration list for PBXNativeTarget "AUHost" */;
 			buildPhases = (
+				80B940361D1B4ED40013FE1C /* Run Script: Pre-Build */,
 				8035EF261B3752030026AD7D /* Sources */,
 				8035EF271B3752030026AD7D /* Frameworks */,
 				8035EF281B3752030026AD7D /* Resources */,
@@ -418,6 +419,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		80B940361D1B4ED40013FE1C /* Run Script: Pre-Build */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script: Pre-Build";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/Vendor/WLConfigOpen/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\" ";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8035EF261B3752030026AD7D /* Sources */ = {
