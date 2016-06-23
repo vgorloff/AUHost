@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  AudioUnitExtensionDemo
+//  AUHost
 //
 //  Created by Vlad Gorlov on 21.06.15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
@@ -291,5 +291,5 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			fatalError("Unknown tableView: \(tableView)")
 		}
 	}
-	
+
 }

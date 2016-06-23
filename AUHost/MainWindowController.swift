@@ -1,6 +1,6 @@
 //
 //  MainWindowController.swift
-//  AudioUnitExtensionDemo
+//  AUHost
 //
 //  Created by Vlad Gorlov on 22.06.15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
