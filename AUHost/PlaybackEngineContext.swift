@@ -1,5 +1,5 @@
 //
-//  PlaybackEngineStateMachine.swift
+//  PlaybackEngineContext.swift
 //  AUHost
 //
 //  Created by Vlad Gorlov on 18.01.16.
@@ -118,13 +118,11 @@ final class PlaybackEngineContext {
 			AVAudioUnit.instantiateWithComponentDescription(desc, options: loadOptions) {[weak self] (avAudioUnit, error) in
 				if let e = error {
 					completionHandler(.Failure(e))
-				}
-				else if let effect = avAudioUnit {
+				} else if let effect = avAudioUnit {
 					Dispatch.Async.Main { [weak self] in
 						self?.assignEffect(effect)
 						completionHandler(.Success(effect))
 					}
-
 				} else {
 					fatalError()
 				}
@@ -186,5 +184,5 @@ final class PlaybackEngineContext {
 			self?.filePlaybackCompleted?()
 		}
 	}
-	
+
 }

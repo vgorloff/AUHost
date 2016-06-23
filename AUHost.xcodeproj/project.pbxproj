@@ -433,7 +433,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/Vendor/WLConfigOpen/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\" ";
+			shellScript = "\"$SRCROOT/Vendor/WLConfigOpen/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Vendor/WLConfigOpen/Scripts/BuildPhase_CheckHeaders.sh\" \"$SRCROOT/AUHost\" \"AUHost\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
