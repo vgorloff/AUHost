@@ -6,11 +6,6 @@ sudo gem install fastlane
 ```
 # Available Actions
 ## Mac
-### mac test
-```
-fastlane mac test
-```
-Runs all the tests (C++ and Swift).
 ### mac build
 ```
 fastlane mac build

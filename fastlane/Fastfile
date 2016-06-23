@@ -13,29 +13,21 @@ platform :mac do
     "CODE_SIGNING_REQUIRED" => "NO",
     "CODE_SIGN_ENTITLEMENTS" => ""
   }
-  
-  desc "Runs all the tests (C++ and Swift)."
-  lane :test do
-    scan(scheme: "CARBTestsCpp", output_directory: "fastlane/test_output/cpp")
-    scan(scheme: "CARBTestsSwift", output_directory: "fastlane/test_output/swift")
-  end
+  xargs = "-configuration Release -project AUSamplePlugIn/Attenuator.xcodeproj"
 
   desc "Builds project."
   lane :build do
-    xcodebuild(scheme: "CARBMeasure", build_settings: buildSettingsNoCodesign)
+    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: xargs)
   end
   
   desc "Builds when under CI (i.e. Travis)."
   lane :ci do
-    xcodebuild(scheme: "CARBMeasure", build_settings: buildSettingsNoCodesign)
-    scan(scheme: "CARBTestsSwift", output_directory: "fastlane/test_output/swift")
+    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: xargs)
   end
   
   desc "Cleans project."
   lane :clean do
-    xcclean
-    pwd = ENV['PWD']
-    sh "rm -r \"#{pwd}/build\""
+    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: "#{xargs} clean")
   end
   
 end

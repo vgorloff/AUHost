@@ -39,13 +39,7 @@ all: \
 clean:
 	rm -rf "$(AWLBuildDirPath)"
 	
-build: build_release_auplugin_nocodesign
-
-build_release_auplugin_nocodesign:
-	$(AWLArgsEnvVariables) $(AWLBuildToolName) $(AWLArgsBuildReporter) $(AWLArgsCommon) $(AWLArgsNoCodesign) $(AWLArgsRelease) $(AWLBuildConfigAUPlugIn) build
-
-clean_release_auplugin_nocodesign:
-	$(AWLArgsEnvVariables) $(AWLBuildToolName) $(AWLArgsBuildReporter) $(AWLArgsCommon) $(AWLArgsNoCodesign) $(AWLArgsRelease) $(AWLBuildConfigAUPlugIn) clean
+build: build_release_auplugin_codesign
 
 build_release_auplugin_codesign: 
 	$(AWLArgsEnvVariables) $(AWLBuildToolName) $(AWLArgsBuildReporter) $(AWLArgsCommon) $(AWLArgsDevIDCodesign) $(AWLArgsRelease) $(AWLBuildConfigAUPlugIn) build
