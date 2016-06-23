@@ -1,0 +1,41 @@
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.95.0"
+default_platform :mac
+
+platform :mac do
+  
+  buildSettingsNoCodesign = {
+    "CODE_SIGN_IDENTITY" => "",
+    "CODE_SIGNING_REQUIRED" => "NO",
+    "CODE_SIGN_ENTITLEMENTS" => ""
+  }
+  
+  desc "Runs all the tests (C++ and Swift)."
+  lane :test do
+    scan(scheme: "CARBTestsCpp", output_directory: "fastlane/test_output/cpp")
+    scan(scheme: "CARBTestsSwift", output_directory: "fastlane/test_output/swift")
+  end
+
+  desc "Builds project."
+  lane :build do
+    xcodebuild(scheme: "CARBMeasure", build_settings: buildSettingsNoCodesign)
+  end
+  
+  desc "Builds when under CI (i.e. Travis)."
+  lane :ci do
+    xcodebuild(scheme: "CARBMeasure", build_settings: buildSettingsNoCodesign)
+    scan(scheme: "CARBTestsSwift", output_directory: "fastlane/test_output/swift")
+  end
+  
+  desc "Cleans project."
+  lane :clean do
+    xcclean
+    pwd = ENV['PWD']
+    sh "rm -r \"#{pwd}/build\""
+  end
+  
+end

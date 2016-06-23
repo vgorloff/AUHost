@@ -4,4 +4,5 @@
 
 language: objective-c
 osx_image: xcode7.3
-script: make build
+before_install: gem update fastlane --no-ri --no-rdoc --no-document
+script: Scripts/travis.sh
