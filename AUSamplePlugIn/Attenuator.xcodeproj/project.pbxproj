@@ -267,8 +267,7 @@
 				8050DB981D19F8C5007216D2 /* Protocols */,
 				8050DB9F1D19F8C5007216D2 /* Types */,
 			);
-			name = WLCoreOpen;
-			path = ../../WLCoreOpen;
+			path = WLCoreOpen;
 			sourceTree = "<group>";
 		};
 		8050DB851D19F8C5007216D2 /* Classes */ = {
@@ -344,8 +343,7 @@
 				8050DBA81D19F8C5007216D2 /* Classes */,
 				8050DBB11D19F8C5007216D2 /* Extensions */,
 			);
-			name = WLMediaOpen;
-			path = ../../WLMediaOpen;
+			path = WLMediaOpen;
 			sourceTree = "<group>";
 		};
 		8050DBA81D19F8C5007216D2 /* Classes */ = {
@@ -385,8 +383,7 @@
 				8050DBDD1D19F9CC007216D2 /* Classes */,
 				8050DBB71D19F8C5007216D2 /* Extensions */,
 			);
-			name = WLUIOpen;
-			path = ../../WLUIOpen;
+			path = WLUIOpen;
 			sourceTree = "<group>";
 		};
 		8050DBB71D19F8C5007216D2 /* Extensions */ = {
@@ -643,7 +640,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ../\n\"$SRCROOT/../Vendor/WLConfigOpen/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT\"";
+			shellScript = "cd ../\n\"$SRCROOT/../Vendor/WLConfigOpen/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT\"\n\"$SRCROOT/../Vendor/WLConfigOpen/Scripts/BuildPhase_CheckHeaders.sh\" \"$SRCROOT\" \"Attenuator\"";
 		};
 		C51A63701C4FD1650016F291 /* Force PlugIn Registration */ = {
 			isa = PBXShellScriptBuildPhase;
