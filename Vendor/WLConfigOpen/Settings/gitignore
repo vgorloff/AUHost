@@ -31,3 +31,6 @@ xcbaselines
 *.hmap
 *.ipa
 
+## Fastlane
+/fastlane/report.xml
+/fastlane/test_output
