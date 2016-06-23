@@ -1,6 +1,5 @@
 #!/bin/bash -l
 
-#swiftlint autocorrect --config "$2" --path "$1" 2>/dev/null
 # Run in inly modified files: https://swifting.io/blog/2016/03/29/11-swiftlint/
 
 [[ -r ~/.bashrc ]] && . ~/.bashrc # Or set /bin/bash -l as shell in Xcode
