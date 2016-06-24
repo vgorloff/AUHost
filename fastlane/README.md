@@ -27,6 +27,13 @@ fastlane mac bump
 ```
 Increment version number.
 
+Usually should be runned after finishing release in Git Flow.
+### mac release
+```
+fastlane mac release
+```
+Build codesigned release foe GitHub.
+
 ----
 
 This README.md is auto-generated and will be re-generated every time to run [fastlane](https://fastlane.tools).
