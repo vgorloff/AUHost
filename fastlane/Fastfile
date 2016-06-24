@@ -8,8 +8,8 @@ default_platform :mac
 
 platform :mac do
 
-  AWLXcodeProjectFileName = "Attenuator.xcodeproj"
-  AWLXcodeProjectFilePath = "#{ENV['PWD']}/AUSamplePlugIn/#{AWLXcodeProjectFileName}"
+  AWLAuHostProjectRelativeFilePath = "AUHost.xcodeproj"
+  AWLAttenuatorProjectRelativeFilePath = "AUSamplePlugIn/Attenuator.xcodeproj"
   
   buildSettingsNoCodesign = {
     "CODE_SIGN_IDENTITY" => "",
@@ -35,9 +35,11 @@ platform :mac do
   
   desc "Increment version number."
   lane :bump do
-    ensure_git_status_clean
-    increment_build_number
-    increment_build_number(xcodeproj: "#{AWLXcodeProjectFilePath}")
+    # ensure_git_status_clean
+    increment_build_number(xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
+    commit_version_bump(xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
+    increment_build_number(xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
+    commit_version_bump(xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
   end
   
 end
