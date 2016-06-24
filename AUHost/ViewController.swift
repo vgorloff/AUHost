@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  AudioUnitExtensionDemo
+//  AUHost
 //
 //  Created by Vlad Gorlov on 21.06.15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
@@ -10,8 +10,6 @@ import Cocoa
 import AVFoundation
 import MediaLibrary
 import CoreAudioKit
-import WLCore
-import WLMedia
 
 /**
 Links:
@@ -293,5 +291,5 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			fatalError("Unknown tableView: \(tableView)")
 		}
 	}
-	
+
 }

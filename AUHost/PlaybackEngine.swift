@@ -8,7 +8,6 @@
 
 import AVFoundation
 import CoreAudioKit
-import WLCore
 
 enum PlaybackEngineStateError: ErrorType {
 	case FileIsNotSet
@@ -36,7 +35,7 @@ private let gStateMachineGraph = SMGraphType(initialState: .Stopped) { (state, e
 	switch state {
 	case .Stopped:
 		switch event {
-		case .Play: return (.Playing, { ctx in try ctx.play() } )
+		case .Play: return (.Playing, { ctx in try ctx.play() })
 		case .SetFile(let file): return (.SettingFile, { ctx in ctx.setFileToPlay(file) })
 		case .SetEffect(let component, let callback): return (.SettingEffect, { ctx in
 			ctx.selectEffect(component, completionHandler: callback)
@@ -67,8 +66,8 @@ private let gStateMachineGraph = SMGraphType(initialState: .Stopped) { (state, e
 		switch event {
 		case .SetEffect, .SetFile, .Resume: return nil
 		case .Stop: return (.Stopped, nil)
-		case .Play: return (.Playing, { ctx in try ctx.startPlayer() } )
-		case .Pause: return (.Paused, { ctx in try ctx.scheduleFile() } )
+		case .Play: return (.Playing, { ctx in try ctx.startPlayer() })
+		case .Pause: return (.Paused, { ctx in try ctx.scheduleFile() })
 		}
 	case .SettingFile:
 		switch event {
@@ -95,7 +94,7 @@ final class PlaybackEngine {
 
 	var changeHandler: (Change -> Void)?
 	var stateID: PlaybackEngineState {
-		return _stateAccessLock.synchronized{
+		return _stateAccessLock.synchronized {
 			return sm.state
 		}
 	}
@@ -175,7 +174,7 @@ final class PlaybackEngine {
 			return
 		}
 		let presetList = avau.AUAudioUnit.factoryPresets ?? []
-		let matchedPresets = presetList.filter{ $0.number == p.number }
+		let matchedPresets = presetList.filter { $0.number == p.number }
 		guard let matchedPreset = matchedPresets.first else {
 			avau.AUAudioUnit.currentPreset = nil
 			return

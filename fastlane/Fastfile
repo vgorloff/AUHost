@@ -1,0 +1,49 @@
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.95.0"
+default_platform :mac
+
+platform :mac do
+
+  AWLAuHostProjectRelativeFilePath = "AUHost.xcodeproj"
+  AWLAttenuatorProjectRelativeFilePath = "AUSamplePlugIn/Attenuator.xcodeproj"
+  
+  buildSettingsNoCodesign = {
+    "CODE_SIGN_IDENTITY" => "",
+    "CODE_SIGNING_REQUIRED" => "NO",
+    "CODE_SIGN_ENTITLEMENTS" => ""
+  }
+  xargs = "-configuration Release -project AUSamplePlugIn/Attenuator.xcodeproj"
+
+  desc "Builds project."
+  lane :build do
+    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: xargs)
+  end
+  
+  desc "Builds when under CI (i.e. Travis)."
+  lane :ci do
+    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: xargs)
+  end
+  
+  desc "Cleans project."
+  lane :clean do
+    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: "#{xargs} clean")
+  end
+  
+  desc "Increment version number."
+  lane :bump do
+    ensure_git_status_clean
+    increment_build_number(xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
+    # commit_version_bump(xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
+    increment_build_number(xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
+    # commit_version_bump(xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
+    awl_versionFromTag = last_git_tag
+    increment_version_number(version_number: awl_versionFromTag, xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
+    increment_version_number(version_number: awl_versionFromTag, xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
+    git_commit(path: "./", message: "Version Bump")
+  end
+  
+end

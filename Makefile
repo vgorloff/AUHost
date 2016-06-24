@@ -39,19 +39,7 @@ all: \
 clean:
 	rm -rf "$(AWLBuildDirPath)"
 	
-build: download-binaries build-nodl
-build-nodl: build_release_auplugin_nocodesign
-	
-download-binaries:
-	for SwiftVersion in `xcrun swift -version | perl -wnE'print /version\s+([-\w\.]+)\s+\(/'`; do \
-		"$(AWLBuildRootDirPath)/Vendor/download-binaries-(Swift-$$SwiftVersion).command" ;\
-	done
-
-build_release_auplugin_nocodesign:
-	$(AWLArgsEnvVariables) $(AWLBuildToolName) $(AWLArgsBuildReporter) $(AWLArgsCommon) $(AWLArgsNoCodesign) $(AWLArgsRelease) $(AWLBuildConfigAUPlugIn) build
-
-clean_release_auplugin_nocodesign:
-	$(AWLArgsEnvVariables) $(AWLBuildToolName) $(AWLArgsBuildReporter) $(AWLArgsCommon) $(AWLArgsNoCodesign) $(AWLArgsRelease) $(AWLBuildConfigAUPlugIn) clean
+build: build_release_auplugin_codesign
 
 build_release_auplugin_codesign: 
 	$(AWLArgsEnvVariables) $(AWLBuildToolName) $(AWLArgsBuildReporter) $(AWLArgsCommon) $(AWLArgsDevIDCodesign) $(AWLArgsRelease) $(AWLBuildConfigAUPlugIn) build

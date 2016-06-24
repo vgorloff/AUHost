@@ -1,6 +1,6 @@
 //
 //  MediaItemView.swift
-//  AudioUnitExtensionDemo
+//  AUHost
 //
 //  Created by Vlad Gorlov on 22.06.15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
@@ -9,9 +9,6 @@
 import Cocoa
 import AVFoundation
 import Accelerate
-import WLCore
-import WLMedia
-import WLUI
 
 public final class MediaItemView: NSView {
 	private var isHighlighted = false {
@@ -127,7 +124,8 @@ public final class MediaItemView: NSView {
 	private func drawWaveform() {
 
 		// !inLiveResize,
-		guard !inLiveResize, let context = NSGraphicsContext.currentContext()?.CGContext, let waveform = cachedWaveform() else {
+		guard !inLiveResize, let context = NSGraphicsContext.currentContext()?.CGContext,
+			let waveform = cachedWaveform() else {
 			return // FIXME: Implement interpolation for live resize and while waiting for waveform cashe arrival. By Vlad Gorlov, Jan 27, 2016.
 		}
 		let scaleFactor = getScaleFactor()
@@ -141,14 +139,14 @@ public final class MediaItemView: NSView {
 			wfDrawingProvider.addVerticalLineAtXPosition(index.CGFloatValue / scaleFactor, valueMin: waveformValue.min.CGFloatValue,
 				valueMax: waveformValue.max.CGFloatValue)
 		}
-		CGContextSetShouldAntialias(context, false);
+		CGContextSetShouldAntialias(context, false)
 //		CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor)
 		CGContextTranslateCTM(context, 0.5 / scaleFactor, 0.5 / scaleFactor); // Center the origin at center of a pixel
 
 		CGContextSaveGState(context)
 //		CGContextFillRect(context, bounds)
 		CGContextSetStrokeColorWithColor(context, waveformColor.CGColor)
-		CGContextSetLineWidth(context, lineWidth);
+		CGContextSetLineWidth(context, lineWidth)
 		CGContextStrokeLineSegments(context, wfDrawingProvider.points, wfDrawingProvider.numberOfPoints)
 		CGContextRestoreGState(context)
 	}

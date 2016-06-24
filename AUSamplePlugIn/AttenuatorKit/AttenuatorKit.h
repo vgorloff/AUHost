@@ -1,6 +1,6 @@
 //
 //  AttenuatorKit.h
-//  AttenuatorKit
+//  Attenuator
 //
 //  Created by Vlad Gorlov on 23.01.16.
 //  Copyright © 2016 WaveLabs. All rights reserved.
