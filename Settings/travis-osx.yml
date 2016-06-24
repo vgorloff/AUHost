@@ -1,0 +1,8 @@
+# Info:
+# - [ Travis CI for iOS · objc.io ]( https://www.objc.io/issues/6-build-tools/travis-ci/ )
+# - [ Travis CI Tutorial: Getting Started - Ray Wenderlich ]( http://www.raywenderlich.com/109418/travis-ci-tutorial )
+
+language: objective-c
+osx_image: xcode7.3
+before_install: gem update fastlane --no-ri --no-rdoc --no-document
+script: Vendor/WLConfigOpen/Scripts/travis.sh
