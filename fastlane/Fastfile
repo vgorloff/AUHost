@@ -43,7 +43,7 @@ platform :mac do
     awl_versionFromTag = last_git_tag
     increment_version_number(version_number: awl_versionFromTag, xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
     increment_version_number(version_number: awl_versionFromTag, xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
-    git_commit(message: "Version Bump")
+    git_commit(path: "./", message: "Version Bump")
   end
   
 end
