@@ -1,6 +1,6 @@
 //
 //  AttenuatorViewController.swift
-//  AttenuatorAU
+//  Attenuator
 //
 //  Created by Volodymyr Gorlov on 14.01.16.
 //  Copyright © 2016 WaveLabs. All rights reserved.
@@ -8,7 +8,6 @@
 
 import CoreAudioKit
 import AVFoundation
-import WLCore
 
 public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 	private var audioUnit: AttenuatorAudioUnit?
@@ -17,7 +16,8 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 	public override func loadView() {
 		var topLevelObjects: NSArray?
 		guard
-			let nib = NSNib(nibNamed: String(AttenuatorViewController.self), bundle: NSBundle(forClass: AttenuatorViewController.self)) where
+			let nib = NSNib(nibNamed: String(AttenuatorViewController.self),
+			                bundle: NSBundle(forClass: AttenuatorViewController.self)) where
 			nib.instantiateWithOwner(self, topLevelObjects: &topLevelObjects), let objects = topLevelObjects else {
 				fatalError()
 		}

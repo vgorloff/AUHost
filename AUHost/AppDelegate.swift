@@ -1,14 +1,12 @@
 //
 //  AppDelegate.swift
-//  AudioUnitExtensionDemo
+//  AUHost
 //
 //  Created by Vlad Gorlov on 21.06.15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
 import Cocoa
-import WLCore
-import WLMedia
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -27,7 +25,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
     return true
   }
-  
+
 
 }
-
