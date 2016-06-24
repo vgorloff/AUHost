@@ -7,6 +7,9 @@ fastlane_version "1.95.0"
 default_platform :mac
 
 platform :mac do
+
+  AWLXcodeProjectFileName = "Attenuator.xcodeproj"
+  AWLXcodeProjectFilePath = "#{ENV['PWD']}/AUSamplePlugIn/#{AWLXcodeProjectFileName}"
   
   buildSettingsNoCodesign = {
     "CODE_SIGN_IDENTITY" => "",
@@ -28,6 +31,13 @@ platform :mac do
   desc "Cleans project."
   lane :clean do
     xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: "#{xargs} clean")
+  end
+  
+  desc "Increment version number."
+  lane :bump do
+    ensure_git_status_clean
+    increment_build_number
+    increment_build_number(xcodeproj: "#{AWLXcodeProjectFilePath}")
   end
   
 end

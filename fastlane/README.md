@@ -21,6 +21,11 @@ Builds when under CI (i.e. Travis).
 fastlane mac clean
 ```
 Cleans project.
+### mac bump
+```
+fastlane mac bump
+```
+Increment version number.
 
 ----
 
