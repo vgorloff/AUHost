@@ -1,0 +1,1135 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		802C98961D201AD8005ED110 /* WLOpen-iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 802C97ED1D201AD8005ED110 /* WLOpen-iOS.h */; };
+		802C98991D201AD8005ED110 /* WLOpen-macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 802C97F01D201AD8005ED110 /* WLOpen-macOS.h */; };
+		802C99461D201B13005ED110 /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D21D201B12005ED110 /* AsynchronousOperation.swift */; };
+		802C99471D201B13005ED110 /* AsynchronousOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D21D201B12005ED110 /* AsynchronousOperation.swift */; };
+		802C99481D201B13005ED110 /* CacheCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D31D201B12005ED110 /* CacheCentre.swift */; };
+		802C99491D201B13005ED110 /* CacheCentre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D31D201B12005ED110 /* CacheCentre.swift */; };
+		802C994A1D201B13005ED110 /* CPULoadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D41D201B12005ED110 /* CPULoadCalculator.swift */; };
+		802C994B1D201B13005ED110 /* CPULoadCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D41D201B12005ED110 /* CPULoadCalculator.swift */; };
+		802C994C1D201B13005ED110 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D51D201B12005ED110 /* DispatchSource.swift */; };
+		802C994D1D201B13005ED110 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D51D201B12005ED110 /* DispatchSource.swift */; };
+		802C994E1D201B13005ED110 /* KVOHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D61D201B12005ED110 /* KVOHelper.swift */; };
+		802C994F1D201B13005ED110 /* KVOHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D61D201B12005ED110 /* KVOHelper.swift */; };
+		802C99501D201B13005ED110 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D71D201B12005ED110 /* Logger.swift */; };
+		802C99511D201B13005ED110 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D71D201B12005ED110 /* Logger.swift */; };
+		802C99521D201B13005ED110 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D81D201B12005ED110 /* NotificationObserver.swift */; };
+		802C99531D201B13005ED110 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D81D201B12005ED110 /* NotificationObserver.swift */; };
+		802C99541D201B13005ED110 /* ObjCAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D91D201B12005ED110 /* ObjCAssociation.swift */; };
+		802C99551D201B13005ED110 /* ObjCAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98D91D201B12005ED110 /* ObjCAssociation.swift */; };
+		802C99561D201B13005ED110 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DA1D201B12005ED110 /* Property.swift */; };
+		802C99571D201B13005ED110 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DA1D201B12005ED110 /* Property.swift */; };
+		802C99581D201B13005ED110 /* SpinLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DB1D201B12005ED110 /* SpinLock.swift */; };
+		802C99591D201B13005ED110 /* SpinLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DB1D201B12005ED110 /* SpinLock.swift */; };
+		802C995A1D201B13005ED110 /* ValueHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DC1D201B12005ED110 /* ValueHistory.swift */; };
+		802C995B1D201B13005ED110 /* ValueHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DC1D201B12005ED110 /* ValueHistory.swift */; };
+		802C995C1D201B13005ED110 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DE1D201B12005ED110 /* ResultType.swift */; };
+		802C995D1D201B13005ED110 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DE1D201B12005ED110 /* ResultType.swift */; };
+		802C995E1D201B13005ED110 /* StateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DF1D201B12005ED110 /* StateError.swift */; };
+		802C995F1D201B13005ED110 /* StateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98DF1D201B12005ED110 /* StateError.swift */; };
+		802C99601D201B13005ED110 /* ThreeStateFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E01D201B12005ED110 /* ThreeStateFlag.swift */; };
+		802C99611D201B13005ED110 /* ThreeStateFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E01D201B12005ED110 /* ThreeStateFlag.swift */; };
+		802C99621D201B13005ED110 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E21D201B12005ED110 /* CGFloat.swift */; };
+		802C99631D201B13005ED110 /* CGFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E21D201B12005ED110 /* CGFloat.swift */; };
+		802C99641D201B13005ED110 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E31D201B12005ED110 /* CGPoint.swift */; };
+		802C99651D201B13005ED110 /* CGPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E31D201B12005ED110 /* CGPoint.swift */; };
+		802C99661D201B13005ED110 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E41D201B12005ED110 /* CGSize.swift */; };
+		802C99671D201B13005ED110 /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E41D201B12005ED110 /* CGSize.swift */; };
+		802C99681D201B13005ED110 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E51D201B12005ED110 /* Dictionary.swift */; };
+		802C99691D201B13005ED110 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E51D201B12005ED110 /* Dictionary.swift */; };
+		802C996A1D201B13005ED110 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E61D201B12005ED110 /* NSBundle.swift */; };
+		802C996B1D201B13005ED110 /* NSBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E61D201B12005ED110 /* NSBundle.swift */; };
+		802C996C1D201B13005ED110 /* NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E71D201B12005ED110 /* NSCache.swift */; };
+		802C996D1D201B13005ED110 /* NSCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E71D201B12005ED110 /* NSCache.swift */; };
+		802C996E1D201B13005ED110 /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E81D201B12005ED110 /* NSDictionary.swift */; };
+		802C996F1D201B13005ED110 /* NSDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E81D201B12005ED110 /* NSDictionary.swift */; };
+		802C99701D201B13005ED110 /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E91D201B12005ED110 /* NSFileManager.swift */; };
+		802C99711D201B13005ED110 /* NSFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98E91D201B12005ED110 /* NSFileManager.swift */; };
+		802C99721D201B13005ED110 /* NSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EA1D201B12005ED110 /* NSOperation.swift */; };
+		802C99731D201B13005ED110 /* NSOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EA1D201B12005ED110 /* NSOperation.swift */; };
+		802C99741D201B13005ED110 /* NSOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EB1D201B12005ED110 /* NSOperationQueue.swift */; };
+		802C99751D201B13005ED110 /* NSOperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EB1D201B12005ED110 /* NSOperationQueue.swift */; };
+		802C99761D201B13005ED110 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EC1D201B12005ED110 /* NSURL.swift */; };
+		802C99771D201B13005ED110 /* NSURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EC1D201B12005ED110 /* NSURL.swift */; };
+		802C99781D201B13005ED110 /* NSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98ED1D201B12005ED110 /* NSUserDefaults.swift */; };
+		802C99791D201B13005ED110 /* NSUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98ED1D201B12005ED110 /* NSUserDefaults.swift */; };
+		802C997A1D201B13005ED110 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EE1D201B12005ED110 /* String.swift */; };
+		802C997B1D201B13005ED110 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98EE1D201B12005ED110 /* String.swift */; };
+		802C997C1D201B13005ED110 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F01D201B12005ED110 /* Functions.swift */; };
+		802C997D1D201B13005ED110 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F01D201B12005ED110 /* Functions.swift */; };
+		802C997E1D201B13005ED110 /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F21D201B12005ED110 /* CGFloatRepresentable.swift */; };
+		802C997F1D201B13005ED110 /* CGFloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F21D201B12005ED110 /* CGFloatRepresentable.swift */; };
+		802C99801D201B13005ED110 /* DoubleRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F31D201B12005ED110 /* DoubleRepresentable.swift */; };
+		802C99811D201B13005ED110 /* DoubleRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F31D201B12005ED110 /* DoubleRepresentable.swift */; };
+		802C99821D201B13005ED110 /* FloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F41D201B12005ED110 /* FloatRepresentable.swift */; };
+		802C99831D201B13005ED110 /* FloatRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F41D201B12005ED110 /* FloatRepresentable.swift */; };
+		802C99841D201B13005ED110 /* Int64Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F51D201B12005ED110 /* Int64Representable.swift */; };
+		802C99851D201B13005ED110 /* Int64Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F51D201B12005ED110 /* Int64Representable.swift */; };
+		802C99861D201B13005ED110 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F61D201B12005ED110 /* NonRecursiveLocking.swift */; };
+		802C99871D201B13005ED110 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F61D201B12005ED110 /* NonRecursiveLocking.swift */; };
+		802C99881D201B13005ED110 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F71D201B12005ED110 /* ObjectAssociation.swift */; };
+		802C99891D201B13005ED110 /* ObjectAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F71D201B12005ED110 /* ObjectAssociation.swift */; };
+		802C998A1D201B13005ED110 /* StringRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F81D201B12005ED110 /* StringRepresentable.swift */; };
+		802C998B1D201B13005ED110 /* StringRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F81D201B12005ED110 /* StringRepresentable.swift */; };
+		802C998C1D201B13005ED110 /* UInt64Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F91D201B12005ED110 /* UInt64Representable.swift */; };
+		802C998D1D201B13005ED110 /* UInt64Representable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98F91D201B12005ED110 /* UInt64Representable.swift */; };
+		802C998E1D201B13005ED110 /* UniqueByString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FA1D201B12005ED110 /* UniqueByString.swift */; };
+		802C998F1D201B13005ED110 /* UniqueByString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FA1D201B12005ED110 /* UniqueByString.swift */; };
+		802C99901D201B13005ED110 /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FC1D201B12005ED110 /* AlternativeValue.swift */; };
+		802C99911D201B13005ED110 /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FC1D201B12005ED110 /* AlternativeValue.swift */; };
+		802C99921D201B13005ED110 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FD1D201B12005ED110 /* Dispatch.swift */; };
+		802C99931D201B13005ED110 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FD1D201B12005ED110 /* Dispatch.swift */; };
+		802C99941D201B13005ED110 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FE1D201B12005ED110 /* DispatchQueue.swift */; };
+		802C99951D201B13005ED110 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FE1D201B12005ED110 /* DispatchQueue.swift */; };
+		802C99961D201B13005ED110 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FF1D201B12005ED110 /* Math.swift */; };
+		802C99971D201B13005ED110 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C98FF1D201B12005ED110 /* Math.swift */; };
+		802C99981D201B13005ED110 /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99001D201B12005ED110 /* MinMax.swift */; };
+		802C99991D201B13005ED110 /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99001D201B12005ED110 /* MinMax.swift */; };
+		802C999A1D201B13005ED110 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99011D201B12005ED110 /* StateMachine.swift */; };
+		802C999B1D201B13005ED110 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99011D201B12005ED110 /* StateMachine.swift */; };
+		802C999C1D201B13005ED110 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99041D201B12005ED110 /* CoreDataHelper.swift */; };
+		802C999D1D201B13005ED110 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99041D201B12005ED110 /* CoreDataHelper.swift */; };
+		802C999F1D201B13005ED110 /* FetchedResultsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99061D201B12005ED110 /* FetchedResultsTableViewDataSource.swift */; };
+		802C99A01D201B13005ED110 /* UITableViewContentsChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99081D201B12005ED110 /* UITableViewContentsChangeEvent.swift */; };
+		802C99A11D201B13005ED110 /* UITableViewContentsChangeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99081D201B12005ED110 /* UITableViewContentsChangeEvent.swift */; };
+		802C99A21D201B13005ED110 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C990A1D201B12005ED110 /* NSManagedObjectContext.swift */; };
+		802C99A31D201B13005ED110 /* NSManagedObjectContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C990A1D201B12005ED110 /* NSManagedObjectContext.swift */; };
+		802C99A51D201B13005ED110 /* NSFetchedResultsChangeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C990C1D201B12005ED110 /* NSFetchedResultsChangeType.swift */; };
+		802C99A61D201B13005ED110 /* MergableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C990E1D201B12005ED110 /* MergableEntity.swift */; };
+		802C99A71D201B13005ED110 /* MergableEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C990E1D201B12005ED110 /* MergableEntity.swift */; };
+		802C99A81D201B13005ED110 /* DisplayLinkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99121D201B12005ED110 /* DisplayLinkUtility.swift */; };
+		802C99AA1D201B13005ED110 /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99131D201B12005ED110 /* MediaLibraryUtility.swift */; };
+		802C99AC1D201B13005ED110 /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99141D201B12005ED110 /* MediaObjectPasteboardUtility.swift */; };
+		802C99AE1D201B13005ED110 /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99151D201B12005ED110 /* AudioComponentsUtility.swift */; };
+		802C99AF1D201B13005ED110 /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99151D201B12005ED110 /* AudioComponentsUtility.swift */; };
+		802C99B01D201B13005ED110 /* CARingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99161D201B12005ED110 /* CARingBuffer.swift */; };
+		802C99B11D201B13005ED110 /* CARingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99161D201B12005ED110 /* CARingBuffer.swift */; };
+		802C99B21D201B13005ED110 /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99171D201B12005ED110 /* WaveformCacheUtility.swift */; };
+		802C99B31D201B13005ED110 /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99171D201B12005ED110 /* WaveformCacheUtility.swift */; };
+		802C99B41D201B13005ED110 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99181D201B12005ED110 /* WaveformDrawingDataProvider.swift */; };
+		802C99B51D201B13005ED110 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99181D201B12005ED110 /* WaveformDrawingDataProvider.swift */; };
+		802C99B61D201B13005ED110 /* AudioBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991A1D201B12005ED110 /* AudioBuffer.swift */; };
+		802C99B71D201B13005ED110 /* AudioBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991A1D201B12005ED110 /* AudioBuffer.swift */; };
+		802C99B81D201B13005ED110 /* UnsafeMutableAudioBufferListPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991B1D201B12005ED110 /* UnsafeMutableAudioBufferListPointer.swift */; };
+		802C99B91D201B13005ED110 /* UnsafeMutableAudioBufferListPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991B1D201B12005ED110 /* UnsafeMutableAudioBufferListPointer.swift */; };
+		802C99BA1D201B13005ED110 /* DataAsynchronousHTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991E1D201B12005ED110 /* DataAsynchronousHTTPOperation.swift */; };
+		802C99BB1D201B13005ED110 /* DataAsynchronousHTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991E1D201B12005ED110 /* DataAsynchronousHTTPOperation.swift */; };
+		802C99BC1D201B13005ED110 /* IOStreamHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991F1D201B12005ED110 /* IOStreamHelper.swift */; };
+		802C99BD1D201B13005ED110 /* IOStreamHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C991F1D201B12005ED110 /* IOStreamHelper.swift */; };
+		802C99BE1D201B13005ED110 /* JSONAsynchronousHTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99201D201B12005ED110 /* JSONAsynchronousHTTPOperation.swift */; };
+		802C99BF1D201B13005ED110 /* JSONAsynchronousHTTPOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99201D201B12005ED110 /* JSONAsynchronousHTTPOperation.swift */; };
+		802C99C01D201B13005ED110 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99211D201B12005ED110 /* NetworkReachability.swift */; };
+		802C99C11D201B13005ED110 /* NetworkReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99211D201B12005ED110 /* NetworkReachability.swift */; };
+		802C99C21D201B13005ED110 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99231D201B12005ED110 /* NetworkError.swift */; };
+		802C99C31D201B13005ED110 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99231D201B12005ED110 /* NetworkError.swift */; };
+		802C99C41D201B13005ED110 /* NetworkOperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99241D201B12005ED110 /* NetworkOperationError.swift */; };
+		802C99C51D201B13005ED110 /* NetworkOperationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99241D201B12005ED110 /* NetworkOperationError.swift */; };
+		802C99C61D201B13005ED110 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99251D201B12005ED110 /* SerializationError.swift */; };
+		802C99C71D201B13005ED110 /* SerializationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99251D201B12005ED110 /* SerializationError.swift */; };
+		802C99C81D201B13005ED110 /* SCNetworkReachabilityFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99271D201B12005ED110 /* SCNetworkReachabilityFlags.swift */; };
+		802C99C91D201B13005ED110 /* SCNetworkReachabilityFlags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99271D201B12005ED110 /* SCNetworkReachabilityFlags.swift */; };
+		802C99CA1D201B13005ED110 /* VULevelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C992B1D201B12005ED110 /* VULevelMeter.swift */; };
+		802C99CC1D201B13005ED110 /* NSLayoutConstraintUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C992C1D201B12005ED110 /* NSLayoutConstraintUtility.swift */; };
+		802C99CD1D201B13005ED110 /* NSLayoutConstraintUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C992C1D201B12005ED110 /* NSLayoutConstraintUtility.swift */; };
+		802C99CE1D201B13005ED110 /* SketchStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C992D1D201B12005ED110 /* SketchStyleKit.swift */; };
+		802C99CF1D201B13005ED110 /* SketchStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C992D1D201B12005ED110 /* SketchStyleKit.swift */; };
+		802C99D11D201B13005ED110 /* IBDesignableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C992F1D201B12005ED110 /* IBDesignableButton.swift */; };
+		802C99D31D201B13005ED110 /* IBDesignableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99301D201B12005ED110 /* IBDesignableImageView.swift */; };
+		802C99D51D201B13005ED110 /* IBDesignableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99311D201B12005ED110 /* IBDesignableLabel.swift */; };
+		802C99D71D201B13005ED110 /* IBDesignableSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99321D201B12005ED110 /* IBDesignableSegmentedControl.swift */; };
+		802C99D91D201B13005ED110 /* IBDesignableSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99331D201B12005ED110 /* IBDesignableSlider.swift */; };
+		802C99DB1D201B13005ED110 /* IBDesignableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99341D201B12005ED110 /* IBDesignableTableViewCell.swift */; };
+		802C99DD1D201B13005ED110 /* IBDesignableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99351D201B12005ED110 /* IBDesignableView.swift */; };
+		802C99DF1D201B13005ED110 /* NibDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99361D201B13005ED110 /* NibDesignable.swift */; };
+		802C99E11D201B13005ED110 /* RoundedCornersImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99371D201B13005ED110 /* RoundedCornersImageView.swift */; };
+		802C99E31D201B13005ED110 /* StoryboardSegues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99381D201B13005ED110 /* StoryboardSegues.swift */; };
+		802C99E51D201B13005ED110 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99391D201B13005ED110 /* TestViewController.swift */; };
+		802C99E71D201B13005ED110 /* UIControlStateSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C993A1D201B13005ED110 /* UIControlStateSet.swift */; };
+		802C99E91D201B13005ED110 /* UIPanGestureRecognizerUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C993B1D201B13005ED110 /* UIPanGestureRecognizerUtility.swift */; };
+		802C99EB1D201B13005ED110 /* UIViewLayoutAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C993C1D201B13005ED110 /* UIViewLayoutAnimator.swift */; };
+		802C99EC1D201B13005ED110 /* CGSize+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C993E1D201B13005ED110 /* CGSize+UI.swift */; };
+		802C99ED1D201B13005ED110 /* CGSize+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C993E1D201B13005ED110 /* CGSize+UI.swift */; };
+		802C99EE1D201B13005ED110 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C993F1D201B13005ED110 /* ColorType.swift */; };
+		802C99EF1D201B13005ED110 /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C993F1D201B13005ED110 /* ColorType.swift */; };
+		802C9A031D201C1B005ED110 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99FD1D201C1B005ED110 /* UIButton.swift */; };
+		802C9A041D201C1B005ED110 /* UIControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99FE1D201C1B005ED110 /* UIControlState.swift */; };
+		802C9A051D201C1B005ED110 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C99FF1D201C1B005ED110 /* UIImage.swift */; };
+		802C9A061D201C1B005ED110 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C9A001D201C1B005ED110 /* UIImageView.swift */; };
+		802C9A071D201C1B005ED110 /* UINib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C9A011D201C1B005ED110 /* UINib.swift */; };
+		802C9A081D201C1B005ED110 /* UISegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C9A021D201C1B005ED110 /* UISegmentedControl.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		802C977D1D201A3F005ED110 /* WLOpen_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLOpen_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		802C978A1D201A5C005ED110 /* WLOpen_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WLOpen_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		802C97EC1D201AD8005ED110 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		802C97ED1D201AD8005ED110 /* WLOpen-iOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WLOpen-iOS.h"; sourceTree = "<group>"; };
+		802C97EF1D201AD8005ED110 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		802C97F01D201AD8005ED110 /* WLOpen-macOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "WLOpen-macOS.h"; sourceTree = "<group>"; };
+		802C98D21D201B12005ED110 /* AsynchronousOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsynchronousOperation.swift; sourceTree = "<group>"; };
+		802C98D31D201B12005ED110 /* CacheCentre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheCentre.swift; sourceTree = "<group>"; };
+		802C98D41D201B12005ED110 /* CPULoadCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CPULoadCalculator.swift; sourceTree = "<group>"; };
+		802C98D51D201B12005ED110 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
+		802C98D61D201B12005ED110 /* KVOHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOHelper.swift; sourceTree = "<group>"; };
+		802C98D71D201B12005ED110 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		802C98D81D201B12005ED110 /* NotificationObserver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
+		802C98D91D201B12005ED110 /* ObjCAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjCAssociation.swift; sourceTree = "<group>"; };
+		802C98DA1D201B12005ED110 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
+		802C98DB1D201B12005ED110 /* SpinLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinLock.swift; sourceTree = "<group>"; };
+		802C98DC1D201B12005ED110 /* ValueHistory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueHistory.swift; sourceTree = "<group>"; };
+		802C98DE1D201B12005ED110 /* ResultType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
+		802C98DF1D201B12005ED110 /* StateError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateError.swift; sourceTree = "<group>"; };
+		802C98E01D201B12005ED110 /* ThreeStateFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeStateFlag.swift; sourceTree = "<group>"; };
+		802C98E21D201B12005ED110 /* CGFloat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
+		802C98E31D201B12005ED110 /* CGPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPoint.swift; sourceTree = "<group>"; };
+		802C98E41D201B12005ED110 /* CGSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
+		802C98E51D201B12005ED110 /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		802C98E61D201B12005ED110 /* NSBundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBundle.swift; sourceTree = "<group>"; };
+		802C98E71D201B12005ED110 /* NSCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSCache.swift; sourceTree = "<group>"; };
+		802C98E81D201B12005ED110 /* NSDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
+		802C98E91D201B12005ED110 /* NSFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFileManager.swift; sourceTree = "<group>"; };
+		802C98EA1D201B12005ED110 /* NSOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOperation.swift; sourceTree = "<group>"; };
+		802C98EB1D201B12005ED110 /* NSOperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSOperationQueue.swift; sourceTree = "<group>"; };
+		802C98EC1D201B12005ED110 /* NSURL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSURL.swift; sourceTree = "<group>"; };
+		802C98ED1D201B12005ED110 /* NSUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSUserDefaults.swift; sourceTree = "<group>"; };
+		802C98EE1D201B12005ED110 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		802C98F01D201B12005ED110 /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
+		802C98F21D201B12005ED110 /* CGFloatRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGFloatRepresentable.swift; sourceTree = "<group>"; };
+		802C98F31D201B12005ED110 /* DoubleRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoubleRepresentable.swift; sourceTree = "<group>"; };
+		802C98F41D201B12005ED110 /* FloatRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRepresentable.swift; sourceTree = "<group>"; };
+		802C98F51D201B12005ED110 /* Int64Representable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Int64Representable.swift; sourceTree = "<group>"; };
+		802C98F61D201B12005ED110 /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
+		802C98F71D201B12005ED110 /* ObjectAssociation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectAssociation.swift; sourceTree = "<group>"; };
+		802C98F81D201B12005ED110 /* StringRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRepresentable.swift; sourceTree = "<group>"; };
+		802C98F91D201B12005ED110 /* UInt64Representable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UInt64Representable.swift; sourceTree = "<group>"; };
+		802C98FA1D201B12005ED110 /* UniqueByString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniqueByString.swift; sourceTree = "<group>"; };
+		802C98FC1D201B12005ED110 /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
+		802C98FD1D201B12005ED110 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
+		802C98FE1D201B12005ED110 /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		802C98FF1D201B12005ED110 /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		802C99001D201B12005ED110 /* MinMax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
+		802C99011D201B12005ED110 /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
+		802C99041D201B12005ED110 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		802C99061D201B12005ED110 /* FetchedResultsTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsTableViewDataSource.swift; sourceTree = "<group>"; };
+		802C99081D201B12005ED110 /* UITableViewContentsChangeEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewContentsChangeEvent.swift; sourceTree = "<group>"; };
+		802C990A1D201B12005ED110 /* NSManagedObjectContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSManagedObjectContext.swift; sourceTree = "<group>"; };
+		802C990C1D201B12005ED110 /* NSFetchedResultsChangeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSFetchedResultsChangeType.swift; sourceTree = "<group>"; };
+		802C990E1D201B12005ED110 /* MergableEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergableEntity.swift; sourceTree = "<group>"; };
+		802C99121D201B12005ED110 /* DisplayLinkUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLinkUtility.swift; sourceTree = "<group>"; };
+		802C99131D201B12005ED110 /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
+		802C99141D201B12005ED110 /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
+		802C99151D201B12005ED110 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
+		802C99161D201B12005ED110 /* CARingBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CARingBuffer.swift; sourceTree = "<group>"; };
+		802C99171D201B12005ED110 /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
+		802C99181D201B12005ED110 /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
+		802C991A1D201B12005ED110 /* AudioBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBuffer.swift; sourceTree = "<group>"; };
+		802C991B1D201B12005ED110 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
+		802C991E1D201B12005ED110 /* DataAsynchronousHTTPOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataAsynchronousHTTPOperation.swift; sourceTree = "<group>"; };
+		802C991F1D201B12005ED110 /* IOStreamHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IOStreamHelper.swift; sourceTree = "<group>"; };
+		802C99201D201B12005ED110 /* JSONAsynchronousHTTPOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONAsynchronousHTTPOperation.swift; sourceTree = "<group>"; };
+		802C99211D201B12005ED110 /* NetworkReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachability.swift; sourceTree = "<group>"; };
+		802C99231D201B12005ED110 /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		802C99241D201B12005ED110 /* NetworkOperationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkOperationError.swift; sourceTree = "<group>"; };
+		802C99251D201B12005ED110 /* SerializationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializationError.swift; sourceTree = "<group>"; };
+		802C99271D201B12005ED110 /* SCNetworkReachabilityFlags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNetworkReachabilityFlags.swift; sourceTree = "<group>"; };
+		802C992B1D201B12005ED110 /* VULevelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
+		802C992C1D201B12005ED110 /* NSLayoutConstraintUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtility.swift; sourceTree = "<group>"; };
+		802C992D1D201B12005ED110 /* SketchStyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SketchStyleKit.swift; sourceTree = "<group>"; };
+		802C992F1D201B12005ED110 /* IBDesignableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableButton.swift; sourceTree = "<group>"; };
+		802C99301D201B12005ED110 /* IBDesignableImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableImageView.swift; sourceTree = "<group>"; };
+		802C99311D201B12005ED110 /* IBDesignableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableLabel.swift; sourceTree = "<group>"; };
+		802C99321D201B12005ED110 /* IBDesignableSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableSegmentedControl.swift; sourceTree = "<group>"; };
+		802C99331D201B12005ED110 /* IBDesignableSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableSlider.swift; sourceTree = "<group>"; };
+		802C99341D201B12005ED110 /* IBDesignableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableTableViewCell.swift; sourceTree = "<group>"; };
+		802C99351D201B12005ED110 /* IBDesignableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IBDesignableView.swift; sourceTree = "<group>"; };
+		802C99361D201B13005ED110 /* NibDesignable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibDesignable.swift; sourceTree = "<group>"; };
+		802C99371D201B13005ED110 /* RoundedCornersImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedCornersImageView.swift; sourceTree = "<group>"; };
+		802C99381D201B13005ED110 /* StoryboardSegues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSegues.swift; sourceTree = "<group>"; };
+		802C99391D201B13005ED110 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
+		802C993A1D201B13005ED110 /* UIControlStateSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlStateSet.swift; sourceTree = "<group>"; };
+		802C993B1D201B13005ED110 /* UIPanGestureRecognizerUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPanGestureRecognizerUtility.swift; sourceTree = "<group>"; };
+		802C993C1D201B13005ED110 /* UIViewLayoutAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewLayoutAnimator.swift; sourceTree = "<group>"; };
+		802C993E1D201B13005ED110 /* CGSize+UI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+UI.swift"; sourceTree = "<group>"; };
+		802C993F1D201B13005ED110 /* ColorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
+		802C99FD1D201C1B005ED110 /* UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		802C99FE1D201C1B005ED110 /* UIControlState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIControlState.swift; sourceTree = "<group>"; };
+		802C99FF1D201C1B005ED110 /* UIImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		802C9A001D201C1B005ED110 /* UIImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		802C9A011D201C1B005ED110 /* UINib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINib.swift; sourceTree = "<group>"; };
+		802C9A021D201C1B005ED110 /* UISegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISegmentedControl.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		802C97791D201A3F005ED110 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802C97861D201A5C005ED110 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		802C97561D2019A4005ED110 = {
+			isa = PBXGroup;
+			children = (
+				802C98D01D201B12005ED110 /* Core */,
+				802C99021D201B12005ED110 /* DB */,
+				802C990F1D201B12005ED110 /* Media  */,
+				802C991C1D201B12005ED110 /* Net */,
+				802C99281D201B12005ED110 /* UI */,
+				802C97EA1D201AD8005ED110 /* Supporting Files */,
+				802C97611D2019A4005ED110 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		802C97611D2019A4005ED110 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				802C977D1D201A3F005ED110 /* WLOpen_macOS.framework */,
+				802C978A1D201A5C005ED110 /* WLOpen_iOS.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		802C97EA1D201AD8005ED110 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				802C97EB1D201AD8005ED110 /* iOS */,
+				802C97EE1D201AD8005ED110 /* macOS */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		802C97EB1D201AD8005ED110 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				802C97EC1D201AD8005ED110 /* Info.plist */,
+				802C97ED1D201AD8005ED110 /* WLOpen-iOS.h */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		802C97EE1D201AD8005ED110 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				802C97EF1D201AD8005ED110 /* Info.plist */,
+				802C97F01D201AD8005ED110 /* WLOpen-macOS.h */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		802C98D01D201B12005ED110 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				802C98D11D201B12005ED110 /* Classes */,
+				802C98DD1D201B12005ED110 /* Enumerations */,
+				802C98E11D201B12005ED110 /* Extensions */,
+				802C98EF1D201B12005ED110 /* Functions */,
+				802C98F11D201B12005ED110 /* Protocols */,
+				802C98FB1D201B12005ED110 /* Types */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		802C98D11D201B12005ED110 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				802C98D21D201B12005ED110 /* AsynchronousOperation.swift */,
+				802C98D31D201B12005ED110 /* CacheCentre.swift */,
+				802C98D41D201B12005ED110 /* CPULoadCalculator.swift */,
+				802C98D51D201B12005ED110 /* DispatchSource.swift */,
+				802C98D61D201B12005ED110 /* KVOHelper.swift */,
+				802C98D71D201B12005ED110 /* Logger.swift */,
+				802C98D81D201B12005ED110 /* NotificationObserver.swift */,
+				802C98D91D201B12005ED110 /* ObjCAssociation.swift */,
+				802C98DA1D201B12005ED110 /* Property.swift */,
+				802C98DB1D201B12005ED110 /* SpinLock.swift */,
+				802C98DC1D201B12005ED110 /* ValueHistory.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		802C98DD1D201B12005ED110 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				802C98DE1D201B12005ED110 /* ResultType.swift */,
+				802C98DF1D201B12005ED110 /* StateError.swift */,
+				802C98E01D201B12005ED110 /* ThreeStateFlag.swift */,
+			);
+			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		802C98E11D201B12005ED110 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				802C98E21D201B12005ED110 /* CGFloat.swift */,
+				802C98E31D201B12005ED110 /* CGPoint.swift */,
+				802C98E41D201B12005ED110 /* CGSize.swift */,
+				802C98E51D201B12005ED110 /* Dictionary.swift */,
+				802C98E61D201B12005ED110 /* NSBundle.swift */,
+				802C98E71D201B12005ED110 /* NSCache.swift */,
+				802C98E81D201B12005ED110 /* NSDictionary.swift */,
+				802C98E91D201B12005ED110 /* NSFileManager.swift */,
+				802C98EA1D201B12005ED110 /* NSOperation.swift */,
+				802C98EB1D201B12005ED110 /* NSOperationQueue.swift */,
+				802C98EC1D201B12005ED110 /* NSURL.swift */,
+				802C98ED1D201B12005ED110 /* NSUserDefaults.swift */,
+				802C98EE1D201B12005ED110 /* String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		802C98EF1D201B12005ED110 /* Functions */ = {
+			isa = PBXGroup;
+			children = (
+				802C98F01D201B12005ED110 /* Functions.swift */,
+			);
+			path = Functions;
+			sourceTree = "<group>";
+		};
+		802C98F11D201B12005ED110 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				802C98F21D201B12005ED110 /* CGFloatRepresentable.swift */,
+				802C98F31D201B12005ED110 /* DoubleRepresentable.swift */,
+				802C98F41D201B12005ED110 /* FloatRepresentable.swift */,
+				802C98F51D201B12005ED110 /* Int64Representable.swift */,
+				802C98F61D201B12005ED110 /* NonRecursiveLocking.swift */,
+				802C98F71D201B12005ED110 /* ObjectAssociation.swift */,
+				802C98F81D201B12005ED110 /* StringRepresentable.swift */,
+				802C98F91D201B12005ED110 /* UInt64Representable.swift */,
+				802C98FA1D201B12005ED110 /* UniqueByString.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		802C98FB1D201B12005ED110 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				802C98FC1D201B12005ED110 /* AlternativeValue.swift */,
+				802C98FD1D201B12005ED110 /* Dispatch.swift */,
+				802C98FE1D201B12005ED110 /* DispatchQueue.swift */,
+				802C98FF1D201B12005ED110 /* Math.swift */,
+				802C99001D201B12005ED110 /* MinMax.swift */,
+				802C99011D201B12005ED110 /* StateMachine.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		802C99021D201B12005ED110 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				802C99031D201B12005ED110 /* Classes */,
+				802C99071D201B12005ED110 /* Enumerations */,
+				802C99091D201B12005ED110 /* Extensions */,
+				802C990D1D201B12005ED110 /* Protocols */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		802C99031D201B12005ED110 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				802C99041D201B12005ED110 /* CoreDataHelper.swift */,
+				802C99051D201B12005ED110 /* UIKit */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		802C99051D201B12005ED110 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				802C99061D201B12005ED110 /* FetchedResultsTableViewDataSource.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		802C99071D201B12005ED110 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				802C99081D201B12005ED110 /* UITableViewContentsChangeEvent.swift */,
+			);
+			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		802C99091D201B12005ED110 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				802C990A1D201B12005ED110 /* NSManagedObjectContext.swift */,
+				802C990B1D201B12005ED110 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		802C990B1D201B12005ED110 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				802C990C1D201B12005ED110 /* NSFetchedResultsChangeType.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		802C990D1D201B12005ED110 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				802C990E1D201B12005ED110 /* MergableEntity.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		802C990F1D201B12005ED110 /* Media  */ = {
+			isa = PBXGroup;
+			children = (
+				802C99101D201B12005ED110 /* Classes */,
+				802C99191D201B12005ED110 /* Extensions */,
+			);
+			path = "Media ";
+			sourceTree = "<group>";
+		};
+		802C99101D201B12005ED110 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				802C99111D201B12005ED110 /* AppKit */,
+				802C99151D201B12005ED110 /* AudioComponentsUtility.swift */,
+				802C99161D201B12005ED110 /* CARingBuffer.swift */,
+				802C99171D201B12005ED110 /* WaveformCacheUtility.swift */,
+				802C99181D201B12005ED110 /* WaveformDrawingDataProvider.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		802C99111D201B12005ED110 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				802C99121D201B12005ED110 /* DisplayLinkUtility.swift */,
+				802C99131D201B12005ED110 /* MediaLibraryUtility.swift */,
+				802C99141D201B12005ED110 /* MediaObjectPasteboardUtility.swift */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		802C99191D201B12005ED110 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				802C991A1D201B12005ED110 /* AudioBuffer.swift */,
+				802C991B1D201B12005ED110 /* UnsafeMutableAudioBufferListPointer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		802C991C1D201B12005ED110 /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				802C991D1D201B12005ED110 /* Classes */,
+				802C99221D201B12005ED110 /* Enumerations */,
+				802C99261D201B12005ED110 /* Extensions */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
+		802C991D1D201B12005ED110 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				802C991E1D201B12005ED110 /* DataAsynchronousHTTPOperation.swift */,
+				802C991F1D201B12005ED110 /* IOStreamHelper.swift */,
+				802C99201D201B12005ED110 /* JSONAsynchronousHTTPOperation.swift */,
+				802C99211D201B12005ED110 /* NetworkReachability.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		802C99221D201B12005ED110 /* Enumerations */ = {
+			isa = PBXGroup;
+			children = (
+				802C99231D201B12005ED110 /* NetworkError.swift */,
+				802C99241D201B12005ED110 /* NetworkOperationError.swift */,
+				802C99251D201B12005ED110 /* SerializationError.swift */,
+			);
+			path = Enumerations;
+			sourceTree = "<group>";
+		};
+		802C99261D201B12005ED110 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				802C99271D201B12005ED110 /* SCNetworkReachabilityFlags.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		802C99281D201B12005ED110 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				802C99291D201B12005ED110 /* Classes */,
+				802C993D1D201B13005ED110 /* Extensions */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		802C99291D201B12005ED110 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				802C992A1D201B12005ED110 /* AppKit */,
+				802C992C1D201B12005ED110 /* NSLayoutConstraintUtility.swift */,
+				802C992D1D201B12005ED110 /* SketchStyleKit.swift */,
+				802C992E1D201B12005ED110 /* UIKit */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		802C992A1D201B12005ED110 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				802C992B1D201B12005ED110 /* VULevelMeter.swift */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		802C992E1D201B12005ED110 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				802C992F1D201B12005ED110 /* IBDesignableButton.swift */,
+				802C99301D201B12005ED110 /* IBDesignableImageView.swift */,
+				802C99311D201B12005ED110 /* IBDesignableLabel.swift */,
+				802C99321D201B12005ED110 /* IBDesignableSegmentedControl.swift */,
+				802C99331D201B12005ED110 /* IBDesignableSlider.swift */,
+				802C99341D201B12005ED110 /* IBDesignableTableViewCell.swift */,
+				802C99351D201B12005ED110 /* IBDesignableView.swift */,
+				802C99361D201B13005ED110 /* NibDesignable.swift */,
+				802C99371D201B13005ED110 /* RoundedCornersImageView.swift */,
+				802C99381D201B13005ED110 /* StoryboardSegues.swift */,
+				802C99391D201B13005ED110 /* TestViewController.swift */,
+				802C993A1D201B13005ED110 /* UIControlStateSet.swift */,
+				802C993B1D201B13005ED110 /* UIPanGestureRecognizerUtility.swift */,
+				802C993C1D201B13005ED110 /* UIViewLayoutAnimator.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		802C993D1D201B13005ED110 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				802C99FC1D201C1B005ED110 /* UIKit */,
+				802C993E1D201B13005ED110 /* CGSize+UI.swift */,
+				802C993F1D201B13005ED110 /* ColorType.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		802C99FC1D201C1B005ED110 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				802C99FD1D201C1B005ED110 /* UIButton.swift */,
+				802C99FE1D201C1B005ED110 /* UIControlState.swift */,
+				802C99FF1D201C1B005ED110 /* UIImage.swift */,
+				802C9A001D201C1B005ED110 /* UIImageView.swift */,
+				802C9A011D201C1B005ED110 /* UINib.swift */,
+				802C9A021D201C1B005ED110 /* UISegmentedControl.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		802C977A1D201A3F005ED110 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802C98991D201AD8005ED110 /* WLOpen-macOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802C97871D201A5C005ED110 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802C98961D201AD8005ED110 /* WLOpen-iOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		802C977C1D201A3F005ED110 /* WLOpen_macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802C97821D201A40005ED110 /* Build configuration list for PBXNativeTarget "WLOpen_macOS" */;
+			buildPhases = (
+				802C97781D201A3F005ED110 /* Sources */,
+				802C97791D201A3F005ED110 /* Frameworks */,
+				802C977A1D201A3F005ED110 /* Headers */,
+				802C977B1D201A3F005ED110 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WLOpen_macOS;
+			productName = "WLOpen-macOS";
+			productReference = 802C977D1D201A3F005ED110 /* WLOpen_macOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		802C97891D201A5C005ED110 /* WLOpen_iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 802C978F1D201A5C005ED110 /* Build configuration list for PBXNativeTarget "WLOpen_iOS" */;
+			buildPhases = (
+				802C97851D201A5C005ED110 /* Sources */,
+				802C97861D201A5C005ED110 /* Frameworks */,
+				802C97871D201A5C005ED110 /* Headers */,
+				802C97881D201A5C005ED110 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WLOpen_iOS;
+			productName = "WLOpen-iOS";
+			productReference = 802C978A1D201A5C005ED110 /* WLOpen_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		802C97571D2019A4005ED110 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = WaveLabs;
+				TargetAttributes = {
+					802C977C1D201A3F005ED110 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					802C97891D201A5C005ED110 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 802C975A1D2019A4005ED110 /* Build configuration list for PBXProject "WLOpen" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 802C97561D2019A4005ED110;
+			productRefGroup = 802C97611D2019A4005ED110 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				802C977C1D201A3F005ED110 /* WLOpen_macOS */,
+				802C97891D201A5C005ED110 /* WLOpen_iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		802C977B1D201A3F005ED110 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802C97881D201A5C005ED110 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		802C97781D201A3F005ED110 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802C998E1D201B13005ED110 /* UniqueByString.swift in Sources */,
+				802C99981D201B13005ED110 /* MinMax.swift in Sources */,
+				802C99AE1D201B13005ED110 /* AudioComponentsUtility.swift in Sources */,
+				802C99761D201B13005ED110 /* NSURL.swift in Sources */,
+				802C99741D201B13005ED110 /* NSOperationQueue.swift in Sources */,
+				802C99A81D201B13005ED110 /* DisplayLinkUtility.swift in Sources */,
+				802C99941D201B13005ED110 /* DispatchQueue.swift in Sources */,
+				802C99661D201B13005ED110 /* CGSize.swift in Sources */,
+				802C997C1D201B13005ED110 /* Functions.swift in Sources */,
+				802C99861D201B13005ED110 /* NonRecursiveLocking.swift in Sources */,
+				802C99BC1D201B13005ED110 /* IOStreamHelper.swift in Sources */,
+				802C997A1D201B13005ED110 /* String.swift in Sources */,
+				802C99621D201B13005ED110 /* CGFloat.swift in Sources */,
+				802C99721D201B13005ED110 /* NSOperation.swift in Sources */,
+				802C99C21D201B13005ED110 /* NetworkError.swift in Sources */,
+				802C99801D201B13005ED110 /* DoubleRepresentable.swift in Sources */,
+				802C996E1D201B13005ED110 /* NSDictionary.swift in Sources */,
+				802C995E1D201B13005ED110 /* StateError.swift in Sources */,
+				802C99921D201B13005ED110 /* Dispatch.swift in Sources */,
+				802C99701D201B13005ED110 /* NSFileManager.swift in Sources */,
+				802C99581D201B13005ED110 /* SpinLock.swift in Sources */,
+				802C99CC1D201B13005ED110 /* NSLayoutConstraintUtility.swift in Sources */,
+				802C99561D201B13005ED110 /* Property.swift in Sources */,
+				802C99B01D201B13005ED110 /* CARingBuffer.swift in Sources */,
+				802C99681D201B13005ED110 /* Dictionary.swift in Sources */,
+				802C99B81D201B13005ED110 /* UnsafeMutableAudioBufferListPointer.swift in Sources */,
+				802C994E1D201B13005ED110 /* KVOHelper.swift in Sources */,
+				802C99C41D201B13005ED110 /* NetworkOperationError.swift in Sources */,
+				802C99B21D201B13005ED110 /* WaveformCacheUtility.swift in Sources */,
+				802C99881D201B13005ED110 /* ObjectAssociation.swift in Sources */,
+				802C99B61D201B13005ED110 /* AudioBuffer.swift in Sources */,
+				802C99601D201B13005ED110 /* ThreeStateFlag.swift in Sources */,
+				802C998C1D201B13005ED110 /* UInt64Representable.swift in Sources */,
+				802C99521D201B13005ED110 /* NotificationObserver.swift in Sources */,
+				802C99BE1D201B13005ED110 /* JSONAsynchronousHTTPOperation.swift in Sources */,
+				802C99BA1D201B13005ED110 /* DataAsynchronousHTTPOperation.swift in Sources */,
+				802C99AA1D201B13005ED110 /* MediaLibraryUtility.swift in Sources */,
+				802C99901D201B13005ED110 /* AlternativeValue.swift in Sources */,
+				802C996C1D201B13005ED110 /* NSCache.swift in Sources */,
+				802C99C81D201B13005ED110 /* SCNetworkReachabilityFlags.swift in Sources */,
+				802C99821D201B13005ED110 /* FloatRepresentable.swift in Sources */,
+				802C996A1D201B13005ED110 /* NSBundle.swift in Sources */,
+				802C99EC1D201B13005ED110 /* CGSize+UI.swift in Sources */,
+				802C99A61D201B13005ED110 /* MergableEntity.swift in Sources */,
+				802C99A21D201B13005ED110 /* NSManagedObjectContext.swift in Sources */,
+				802C99CE1D201B13005ED110 /* SketchStyleKit.swift in Sources */,
+				802C99841D201B13005ED110 /* Int64Representable.swift in Sources */,
+				802C995C1D201B13005ED110 /* ResultType.swift in Sources */,
+				802C99CA1D201B13005ED110 /* VULevelMeter.swift in Sources */,
+				802C999C1D201B13005ED110 /* CoreDataHelper.swift in Sources */,
+				802C99AC1D201B13005ED110 /* MediaObjectPasteboardUtility.swift in Sources */,
+				802C99A01D201B13005ED110 /* UITableViewContentsChangeEvent.swift in Sources */,
+				802C99EE1D201B13005ED110 /* ColorType.swift in Sources */,
+				802C99501D201B13005ED110 /* Logger.swift in Sources */,
+				802C995A1D201B13005ED110 /* ValueHistory.swift in Sources */,
+				802C99961D201B13005ED110 /* Math.swift in Sources */,
+				802C99541D201B13005ED110 /* ObjCAssociation.swift in Sources */,
+				802C999A1D201B13005ED110 /* StateMachine.swift in Sources */,
+				802C994C1D201B13005ED110 /* DispatchSource.swift in Sources */,
+				802C99C61D201B13005ED110 /* SerializationError.swift in Sources */,
+				802C99641D201B13005ED110 /* CGPoint.swift in Sources */,
+				802C994A1D201B13005ED110 /* CPULoadCalculator.swift in Sources */,
+				802C99781D201B13005ED110 /* NSUserDefaults.swift in Sources */,
+				802C99461D201B13005ED110 /* AsynchronousOperation.swift in Sources */,
+				802C99B41D201B13005ED110 /* WaveformDrawingDataProvider.swift in Sources */,
+				802C99481D201B13005ED110 /* CacheCentre.swift in Sources */,
+				802C998A1D201B13005ED110 /* StringRepresentable.swift in Sources */,
+				802C997E1D201B13005ED110 /* CGFloatRepresentable.swift in Sources */,
+				802C99C01D201B13005ED110 /* NetworkReachability.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		802C97851D201A5C005ED110 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				802C998F1D201B13005ED110 /* UniqueByString.swift in Sources */,
+				802C9A051D201C1B005ED110 /* UIImage.swift in Sources */,
+				802C99991D201B13005ED110 /* MinMax.swift in Sources */,
+				802C99A51D201B13005ED110 /* NSFetchedResultsChangeType.swift in Sources */,
+				802C99AF1D201B13005ED110 /* AudioComponentsUtility.swift in Sources */,
+				802C99771D201B13005ED110 /* NSURL.swift in Sources */,
+				802C99751D201B13005ED110 /* NSOperationQueue.swift in Sources */,
+				802C99951D201B13005ED110 /* DispatchQueue.swift in Sources */,
+				802C99DF1D201B13005ED110 /* NibDesignable.swift in Sources */,
+				802C99671D201B13005ED110 /* CGSize.swift in Sources */,
+				802C997D1D201B13005ED110 /* Functions.swift in Sources */,
+				802C99871D201B13005ED110 /* NonRecursiveLocking.swift in Sources */,
+				802C99BD1D201B13005ED110 /* IOStreamHelper.swift in Sources */,
+				802C997B1D201B13005ED110 /* String.swift in Sources */,
+				802C9A041D201C1B005ED110 /* UIControlState.swift in Sources */,
+				802C99631D201B13005ED110 /* CGFloat.swift in Sources */,
+				802C99731D201B13005ED110 /* NSOperation.swift in Sources */,
+				802C99C31D201B13005ED110 /* NetworkError.swift in Sources */,
+				802C99811D201B13005ED110 /* DoubleRepresentable.swift in Sources */,
+				802C99D91D201B13005ED110 /* IBDesignableSlider.swift in Sources */,
+				802C996F1D201B13005ED110 /* NSDictionary.swift in Sources */,
+				802C995F1D201B13005ED110 /* StateError.swift in Sources */,
+				802C99931D201B13005ED110 /* Dispatch.swift in Sources */,
+				802C99711D201B13005ED110 /* NSFileManager.swift in Sources */,
+				802C99591D201B13005ED110 /* SpinLock.swift in Sources */,
+				802C99CD1D201B13005ED110 /* NSLayoutConstraintUtility.swift in Sources */,
+				802C99571D201B13005ED110 /* Property.swift in Sources */,
+				802C99B11D201B13005ED110 /* CARingBuffer.swift in Sources */,
+				802C9A071D201C1B005ED110 /* UINib.swift in Sources */,
+				802C99691D201B13005ED110 /* Dictionary.swift in Sources */,
+				802C99B91D201B13005ED110 /* UnsafeMutableAudioBufferListPointer.swift in Sources */,
+				802C99D51D201B13005ED110 /* IBDesignableLabel.swift in Sources */,
+				802C994F1D201B13005ED110 /* KVOHelper.swift in Sources */,
+				802C99C51D201B13005ED110 /* NetworkOperationError.swift in Sources */,
+				802C99B31D201B13005ED110 /* WaveformCacheUtility.swift in Sources */,
+				802C99891D201B13005ED110 /* ObjectAssociation.swift in Sources */,
+				802C99B71D201B13005ED110 /* AudioBuffer.swift in Sources */,
+				802C9A031D201C1B005ED110 /* UIButton.swift in Sources */,
+				802C99611D201B13005ED110 /* ThreeStateFlag.swift in Sources */,
+				802C99DB1D201B13005ED110 /* IBDesignableTableViewCell.swift in Sources */,
+				802C998D1D201B13005ED110 /* UInt64Representable.swift in Sources */,
+				802C99531D201B13005ED110 /* NotificationObserver.swift in Sources */,
+				802C99E31D201B13005ED110 /* StoryboardSegues.swift in Sources */,
+				802C99BF1D201B13005ED110 /* JSONAsynchronousHTTPOperation.swift in Sources */,
+				802C99D71D201B13005ED110 /* IBDesignableSegmentedControl.swift in Sources */,
+				802C99BB1D201B13005ED110 /* DataAsynchronousHTTPOperation.swift in Sources */,
+				802C99911D201B13005ED110 /* AlternativeValue.swift in Sources */,
+				802C999F1D201B13005ED110 /* FetchedResultsTableViewDataSource.swift in Sources */,
+				802C99E11D201B13005ED110 /* RoundedCornersImageView.swift in Sources */,
+				802C996D1D201B13005ED110 /* NSCache.swift in Sources */,
+				802C99C91D201B13005ED110 /* SCNetworkReachabilityFlags.swift in Sources */,
+				802C99831D201B13005ED110 /* FloatRepresentable.swift in Sources */,
+				802C99E51D201B13005ED110 /* TestViewController.swift in Sources */,
+				802C996B1D201B13005ED110 /* NSBundle.swift in Sources */,
+				802C99ED1D201B13005ED110 /* CGSize+UI.swift in Sources */,
+				802C99E91D201B13005ED110 /* UIPanGestureRecognizerUtility.swift in Sources */,
+				802C99D11D201B13005ED110 /* IBDesignableButton.swift in Sources */,
+				802C99E71D201B13005ED110 /* UIControlStateSet.swift in Sources */,
+				802C99A71D201B13005ED110 /* MergableEntity.swift in Sources */,
+				802C99A31D201B13005ED110 /* NSManagedObjectContext.swift in Sources */,
+				802C99CF1D201B13005ED110 /* SketchStyleKit.swift in Sources */,
+				802C99851D201B13005ED110 /* Int64Representable.swift in Sources */,
+				802C99DD1D201B13005ED110 /* IBDesignableView.swift in Sources */,
+				802C995D1D201B13005ED110 /* ResultType.swift in Sources */,
+				802C999D1D201B13005ED110 /* CoreDataHelper.swift in Sources */,
+				802C99A11D201B13005ED110 /* UITableViewContentsChangeEvent.swift in Sources */,
+				802C99EF1D201B13005ED110 /* ColorType.swift in Sources */,
+				802C99511D201B13005ED110 /* Logger.swift in Sources */,
+				802C99EB1D201B13005ED110 /* UIViewLayoutAnimator.swift in Sources */,
+				802C995B1D201B13005ED110 /* ValueHistory.swift in Sources */,
+				802C99971D201B13005ED110 /* Math.swift in Sources */,
+				802C99551D201B13005ED110 /* ObjCAssociation.swift in Sources */,
+				802C999B1D201B13005ED110 /* StateMachine.swift in Sources */,
+				802C994D1D201B13005ED110 /* DispatchSource.swift in Sources */,
+				802C99D31D201B13005ED110 /* IBDesignableImageView.swift in Sources */,
+				802C99C71D201B13005ED110 /* SerializationError.swift in Sources */,
+				802C99651D201B13005ED110 /* CGPoint.swift in Sources */,
+				802C994B1D201B13005ED110 /* CPULoadCalculator.swift in Sources */,
+				802C99791D201B13005ED110 /* NSUserDefaults.swift in Sources */,
+				802C9A081D201C1B005ED110 /* UISegmentedControl.swift in Sources */,
+				802C9A061D201C1B005ED110 /* UIImageView.swift in Sources */,
+				802C99471D201B13005ED110 /* AsynchronousOperation.swift in Sources */,
+				802C99B51D201B13005ED110 /* WaveformDrawingDataProvider.swift in Sources */,
+				802C99491D201B13005ED110 /* CacheCentre.swift in Sources */,
+				802C998B1D201B13005ED110 /* StringRepresentable.swift in Sources */,
+				802C997F1D201B13005ED110 /* CGFloatRepresentable.swift in Sources */,
+				802C99C11D201B13005ED110 /* NetworkReachability.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		802C97661D2019A4005ED110 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		802C97671D2019A4005ED110 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		802C97831D201A40005ED110 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Supporting Files/macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "ua.com.wavelabs.WLOpen-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		802C97841D201A40005ED110 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Supporting Files/macOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "ua.com.wavelabs.WLOpen-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		802C97901D201A5C005ED110 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Supporting Files/iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "ua.com.wavelabs.WLOpen-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		802C97911D201A5C005ED110 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Supporting Files/iOS/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				PRODUCT_BUNDLE_IDENTIFIER = "ua.com.wavelabs.WLOpen-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		802C975A1D2019A4005ED110 /* Build configuration list for PBXProject "WLOpen" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802C97661D2019A4005ED110 /* Debug */,
+				802C97671D2019A4005ED110 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		802C97821D201A40005ED110 /* Build configuration list for PBXNativeTarget "WLOpen_macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802C97831D201A40005ED110 /* Debug */,
+				802C97841D201A40005ED110 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		802C978F1D201A5C005ED110 /* Build configuration list for PBXNativeTarget "WLOpen_iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				802C97901D201A5C005ED110 /* Debug */,
+				802C97911D201A5C005ED110 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 802C97571D2019A4005ED110 /* Project object */;
+}
