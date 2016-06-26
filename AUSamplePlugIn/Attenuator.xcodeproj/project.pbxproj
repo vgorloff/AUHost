@@ -41,7 +41,6 @@
 		8050DBD21D19F945007216D2 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB8F1D19F8C5007216D2 /* ResultType.swift */; };
 		8050DBD31D19F945007216D2 /* StateError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DB901D19F8C5007216D2 /* StateError.swift */; };
 		8050DBD41D19F97A007216D2 /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBA91D19F8C5007216D2 /* AudioComponentsUtility.swift */; };
-		8050DBD51D19F97A007216D2 /* CARingBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAA1D19F8C5007216D2 /* CARingBuffer.swift */; };
 		8050DBD61D19F985007216D2 /* DisplayLinkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAC1D19F8C5007216D2 /* DisplayLinkUtility.swift */; };
 		8050DBD71D19F985007216D2 /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAD1D19F8C5007216D2 /* MediaLibraryUtility.swift */; };
 		8050DBD81D19F985007216D2 /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8050DBAE1D19F8C5007216D2 /* MediaObjectPasteboardUtility.swift */; };
@@ -167,7 +166,6 @@
 		8050DBA41D19F8C5007216D2 /* MinMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
 		8050DBA51D19F8C5007216D2 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		8050DBA91D19F8C5007216D2 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
-		8050DBAA1D19F8C5007216D2 /* CARingBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CARingBuffer.swift; sourceTree = "<group>"; };
 		8050DBAC1D19F8C5007216D2 /* DisplayLinkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLinkUtility.swift; sourceTree = "<group>"; };
 		8050DBAD1D19F8C5007216D2 /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
 		8050DBAE1D19F8C5007216D2 /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
@@ -267,7 +265,8 @@
 				8050DB981D19F8C5007216D2 /* Protocols */,
 				8050DB9F1D19F8C5007216D2 /* Types */,
 			);
-			path = WLCoreOpen;
+			name = WLCoreOpen;
+			path = WLOpen/Core;
 			sourceTree = "<group>";
 		};
 		8050DB851D19F8C5007216D2 /* Classes */ = {
@@ -343,29 +342,29 @@
 				8050DBA81D19F8C5007216D2 /* Classes */,
 				8050DBB11D19F8C5007216D2 /* Extensions */,
 			);
-			path = WLMediaOpen;
+			name = WLMediaOpen;
+			path = "WLOpen/Media ";
 			sourceTree = "<group>";
 		};
 		8050DBA81D19F8C5007216D2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				8050DBA91D19F8C5007216D2 /* AudioComponentsUtility.swift */,
-				8050DBAA1D19F8C5007216D2 /* CARingBuffer.swift */,
-				8050DBAB1D19F8C5007216D2 /* macOS */,
+				8050DBAB1D19F8C5007216D2 /* AppKit */,
 				8050DBAF1D19F8C5007216D2 /* WaveformCacheUtility.swift */,
 				8050DBB01D19F8C5007216D2 /* WaveformDrawingDataProvider.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		8050DBAB1D19F8C5007216D2 /* macOS */ = {
+		8050DBAB1D19F8C5007216D2 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
 				8050DBAC1D19F8C5007216D2 /* DisplayLinkUtility.swift */,
 				8050DBAD1D19F8C5007216D2 /* MediaLibraryUtility.swift */,
 				8050DBAE1D19F8C5007216D2 /* MediaObjectPasteboardUtility.swift */,
 			);
-			path = macOS;
+			path = AppKit;
 			sourceTree = "<group>";
 		};
 		8050DBB11D19F8C5007216D2 /* Extensions */ = {
@@ -383,7 +382,8 @@
 				8050DBDD1D19F9CC007216D2 /* Classes */,
 				8050DBB71D19F8C5007216D2 /* Extensions */,
 			);
-			path = WLUIOpen;
+			name = WLUIOpen;
+			path = WLOpen/UI;
 			sourceTree = "<group>";
 		};
 		8050DBB71D19F8C5007216D2 /* Extensions */ = {
@@ -397,17 +397,17 @@
 		8050DBDD1D19F9CC007216D2 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				8050DBDE1D19F9CC007216D2 /* macOS */,
+				8050DBDE1D19F9CC007216D2 /* AppKit */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		8050DBDE1D19F9CC007216D2 /* macOS */ = {
+		8050DBDE1D19F9CC007216D2 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
 				8050DBDF1D19F9CC007216D2 /* VULevelMeter.swift */,
 			);
-			path = macOS;
+			path = AppKit;
 			sourceTree = "<group>";
 		};
 		C5A5A0F31C47E75F00F9864E = {
@@ -640,7 +640,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ../\n\"$SRCROOT/../Vendor/WLConfigOpen/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT\"\n\"$SRCROOT/../Vendor/WLConfigOpen/Scripts/BuildPhase_CheckHeaders.sh\" \"$SRCROOT\" \"Attenuator\"";
+			shellScript = "cd ../\n\"Vendor/WLOpen/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT\"\n\"Vendor/WLOpen/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"$SRCROOT\" \"Attenuator\"";
 		};
 		C51A63701C4FD1650016F291 /* Force PlugIn Registration */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -698,7 +698,6 @@
 				801E7E371C5444CB0064126C /* AttenuatorAudioUnit.swift in Sources */,
 				8050DBC41D19F92F007216D2 /* Dispatch.swift in Sources */,
 				8050DBD31D19F945007216D2 /* StateError.swift in Sources */,
-				8050DBD51D19F97A007216D2 /* CARingBuffer.swift in Sources */,
 				8050DBC91D19F93B007216D2 /* CGFloatRepresentable.swift in Sources */,
 				801E7E3C1C544A680064126C /* AttenuatorViewController.swift in Sources */,
 				8050DBD41D19F97A007216D2 /* AudioComponentsUtility.swift in Sources */,

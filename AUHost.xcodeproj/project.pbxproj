@@ -193,7 +193,8 @@
 				8050DB311D19F294007216D2 /* Protocols */,
 				8050DB371D19F294007216D2 /* Types */,
 			);
-			path = WLCoreOpen;
+			name = WLCoreOpen;
+			path = WLOpen/Core;
 			sourceTree = "<group>";
 		};
 		8050DB231D19F294007216D2 /* Classes */ = {
@@ -269,7 +270,8 @@
 				8050DB3C1D19F294007216D2 /* Classes */,
 				8050DB401D19F294007216D2 /* Extensions */,
 			);
-			path = WLMediaOpen;
+			name = WLMediaOpen;
+			path = "WLOpen/Media ";
 			sourceTree = "<group>";
 		};
 		8050DB3C1D19F294007216D2 /* Classes */ = {
@@ -279,19 +281,19 @@
 				8050DB6F1D19F575007216D2 /* WaveformDrawingDataProvider.swift */,
 				8050DB661D19F435007216D2 /* AudioComponentsUtility.swift */,
 				8050DB3D1D19F294007216D2 /* CARingBuffer.swift */,
-				8050DB3E1D19F294007216D2 /* macOS */,
+				8050DB3E1D19F294007216D2 /* AppKit */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		8050DB3E1D19F294007216D2 /* macOS */ = {
+		8050DB3E1D19F294007216D2 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
 				8050DB6C1D19F524007216D2 /* MediaObjectPasteboardUtility.swift */,
 				8050DB601D19F389007216D2 /* MediaLibraryUtility.swift */,
 				8050DB3F1D19F294007216D2 /* DisplayLinkUtility.swift */,
 			);
-			path = macOS;
+			path = AppKit;
 			sourceTree = "<group>";
 		};
 		8050DB401D19F294007216D2 /* Extensions */ = {
@@ -308,7 +310,8 @@
 			children = (
 				8050DB7B1D19F6D6007216D2 /* Extensions */,
 			);
-			path = WLUIOpen;
+			name = WLUIOpen;
+			path = WLOpen/UI;
 			sourceTree = "<group>";
 		};
 		8050DB7B1D19F6D6007216D2 /* Extensions */ = {
@@ -433,7 +436,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/Vendor/WLConfigOpen/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Vendor/WLConfigOpen/Scripts/BuildPhase_CheckHeaders.sh\" \"$SRCROOT/AUHost\" \"AUHost\"";
+			shellScript = "\"$SRCROOT/Vendor/WLOpen/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Vendor/WLOpen/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"$SRCROOT/AUHost\" \"AUHost\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
