@@ -32,9 +32,7 @@ platform :mac do
   lane :bump do
     ensure_git_status_clean
     increment_build_number(xcodeproj: AWLAuHostProjectRelativeFilePath)
-    # commit_version_bump(xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
     increment_build_number(xcodeproj: AWLAttenuatorProjectRelativeFilePath)
-    # commit_version_bump(xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
     awl_versionFromTag = last_git_tag
     increment_version_number(version_number: awl_versionFromTag, xcodeproj: AWLAuHostProjectRelativeFilePath)
     increment_version_number(version_number: awl_versionFromTag, xcodeproj: AWLAttenuatorProjectRelativeFilePath)
@@ -45,8 +43,8 @@ platform :mac do
   lane :release do
     ensure_git_status_clean
     XcodeBuildProjectCodesign("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
-    awl_AuHostAppPath = GetPropertyCodesignFolderPath(AWLAuHostProjectRelativeFilePath)
-    awl_AttenuatorAppPath = GetPropertyCodesignFolderPath(GetPropertyCodesignFolderPath)
+    awl_AuHostAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAuHostProjectRelativeFilePath}")
+    awl_AttenuatorAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAttenuatorProjectRelativeFilePath}")
     zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")
     zip(path: awl_AttenuatorAppPath, output_path: "#{awl_AttenuatorAppPath}.zip")
     ValidateApp(awl_AuHostAppPath)
