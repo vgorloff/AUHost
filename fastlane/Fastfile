@@ -31,13 +31,13 @@ platform :mac do
   desc "Usually should be runned after finishing release in Git Flow."
   lane :bump do
     ensure_git_status_clean
-    increment_build_number(xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
+    increment_build_number(xcodeproj: AWLAuHostProjectRelativeFilePath)
     # commit_version_bump(xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
-    increment_build_number(xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
+    increment_build_number(xcodeproj: AWLAttenuatorProjectRelativeFilePath)
     # commit_version_bump(xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
     awl_versionFromTag = last_git_tag
-    increment_version_number(version_number: awl_versionFromTag, xcodeproj: "#{AWLAuHostProjectRelativeFilePath}")
-    increment_version_number(version_number: awl_versionFromTag, xcodeproj: "#{AWLAttenuatorProjectRelativeFilePath}")
+    increment_version_number(version_number: awl_versionFromTag, xcodeproj: AWLAuHostProjectRelativeFilePath)
+    increment_version_number(version_number: awl_versionFromTag, xcodeproj: AWLAttenuatorProjectRelativeFilePath)
     git_commit(path: "./", message: "Version Bump")
   end
   
