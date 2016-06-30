@@ -1,0 +1,26 @@
+#!/usr/bin/env swift-osx
+
+import Foundation
+import WL
+
+if Process.arguments.count < 3 {
+   print("Usage: ProjectName1;ProjectName2 Path1 Path2 ...")
+   exit(0)
+}
+
+let projectNames = Process.arguments[1].componentsSeparatedByString(";").map {
+   $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+}
+let filesToAnalyze = Process.arguments[2..<Process.arguments.count]
+
+do {
+let checker = FileHeaderChecker(projectNames: projectNames)
+   for fileToAnalyze in filesToAnalyze {
+      let results = try checker.performAnalysis(fileToAnalyze)
+      for result in results {
+         print("\(result.filePath):1: warning: \(result.issueReason)")
+      }
+   }
+} catch {
+   print("Error: \(error)")
+}

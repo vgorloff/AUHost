@@ -126,7 +126,7 @@ public final class MediaItemView: NSView {
 		// !inLiveResize,
 		guard !inLiveResize, let context = NSGraphicsContext.currentContext()?.CGContext,
 			let waveform = cachedWaveform() else {
-			return // FIXME: Implement interpolation for live resize and while waiting for waveform cashe arrival. By Vlad Gorlov, Jan 27, 2016.
+			return // FIXME: Implement interpolation for live resize and while waiting for waveform cashe arrival.
 		}
 		let scaleFactor = getScaleFactor()
 		let lineWidth = 1 / scaleFactor

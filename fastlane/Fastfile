@@ -5,36 +5,26 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.95.0"
 default_platform :mac
+import '../Shared/Conf/Scripts/fastlane.rb'
 
 platform :mac do
 
   AWLAuHostProjectRelativeFilePath = "AUHost.xcodeproj"
   AWLAttenuatorProjectRelativeFilePath = "AUSamplePlugIn/Attenuator.xcodeproj"
   
-  buildSettingsNoCodesign = {
-    "CODE_SIGN_IDENTITY" => "",
-    "CODE_SIGNING_REQUIRED" => "NO",
-    "CODE_SIGN_ENTITLEMENTS" => ""
-  }
-  buildSettingsCodesign = {
-    "CODE_SIGN_IDENTITY" => "Developer ID Application",
-    "CODE_SIGNING_REQUIRED" => "YES"
-  }
-  xargs = "-configuration Release -project AUSamplePlugIn/Attenuator.xcodeproj"
-
   desc "Builds project."
   lane :build do
-    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: xargs)
+    XcodeBuildProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
   end
   
   desc "Builds when under CI (i.e. Travis)."
   lane :ci do
-    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: xargs)
+    XcodeBuildProjectRelease("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
   end
   
   desc "Cleans project."
   lane :clean do
-    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsNoCodesign, xcargs: "#{xargs} clean")
+    XcodeCleanProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
   end
   
   desc "Increment version number."
@@ -54,13 +44,13 @@ platform :mac do
   desc "Build codesigned release foe GitHub."
   lane :release do
     ensure_git_status_clean
-    xcodebuild(scheme: "AttenuatorAU", build_settings: buildSettingsCodesign, xcargs: "#{xargs}")
-    awl_AuHostAppPath = (sh "xcodebuild -project #{ENV['PWD']}/#{AWLAuHostProjectRelativeFilePath} -showBuildSettings -configuration Release | grep CODESIGNING_FOLDER_PATH | grep -oEi \"\/.*\"").strip
-    awl_AttenuatorAppPath = (sh "xcodebuild -project #{ENV['PWD']}/#{AWLAttenuatorProjectRelativeFilePath} -showBuildSettings -configuration Release | grep CODESIGNING_FOLDER_PATH | grep -oEi \"\/.*\"").strip
+    XcodeBuildProjectCodesign("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+    awl_AuHostAppPath = GetPropertyCodesignFolderPath(AWLAuHostProjectRelativeFilePath)
+    awl_AttenuatorAppPath = GetPropertyCodesignFolderPath(GetPropertyCodesignFolderPath)
     zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")
     zip(path: awl_AttenuatorAppPath, output_path: "#{awl_AttenuatorAppPath}.zip")
-    sh "xcrun spctl -a -t exec -vv \"#{awl_AuHostAppPath}\"; xcrun codesign --verify \"#{awl_AuHostAppPath}\""
-    sh "xcrun spctl -a -t exec -vv \"#{awl_AttenuatorAppPath}\"; xcrun codesign --verify \"#{awl_AttenuatorAppPath}\""
+    ValidateApp(awl_AuHostAppPath)
+    ValidateApp(awl_AttenuatorAppPath)
     sh "mkdir -p #{ENV['PWD']}/build"
     sh "mv \"#{awl_AuHostAppPath}.zip\" \"#{ENV['PWD']}/build\""
     sh "mv \"#{awl_AttenuatorAppPath}.zip\" \"#{ENV['PWD']}/build\""
