@@ -8,15 +8,15 @@ if Process.arguments.count < 3 {
    exit(0)
 }
 
-let projectNames = Process.arguments[1].componentsSeparatedByString(";").map {
-   $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+let projectNames = Process.arguments[1].components(separatedBy: ";").map {
+   $0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 }
 let filesToAnalyze = Process.arguments[2..<Process.arguments.count]
 
 do {
 let checker = FileHeaderChecker(projectNames: projectNames)
    for fileToAnalyze in filesToAnalyze {
-      let results = try checker.performAnalysis(fileToAnalyze)
+      let results = try checker.performAnalysis(fileOrDirectoryPath: fileToAnalyze)
       for result in results {
          print("\(result.filePath):1: warning: \(result.issueReason)")
       }

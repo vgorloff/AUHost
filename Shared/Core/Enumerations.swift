@@ -8,23 +8,23 @@
 
 public enum ResultType<T> {
 	case Success(T)
-	case Failure(ErrorType)
+	case Failure(ErrorProtocol)
 }
 
-public enum StateError: ErrorType {
+public enum StateError: ErrorProtocol {
 	case UnableToInitialize(String)
 	case NotInitialized(String)
 	case ResourceIsNotAvailable(String)
 }
 
-public enum ThreeStateFlag: Int {
-	case FladUndefined = -1
-	case FladOn = 1
-	case FladOff = 0
+public enum TripleStateSwitch: Int {
+	case Undefined = -1
+	case On = 1
+	case Off = 0
 	public init(fromBool: Bool) {
-		self = fromBool ? FladOn : FladOff
+		self = fromBool ? On : Off
 	}
 	public var boolValue: Bool {
-		return self == FladOn ? true : false
+		return self == On ? true : false
 	}
 }

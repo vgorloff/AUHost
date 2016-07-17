@@ -10,7 +10,7 @@ import AppKit
 
 class EffectWindowController: NSWindowController, NSWindowDelegate {
 
-	var handlerWindowWillClose: (Void -> Void)?
+	var handlerWindowWillClose: ((Void) -> Void)?
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
@@ -19,7 +19,7 @@ class EffectWindowController: NSWindowController, NSWindowDelegate {
 
 	// MARK: - NSWindowDelegate
 
-	func windowWillClose(notification: NSNotification) {
+	func windowWillClose(_ notification: Notification) {
 		handlerWindowWillClose?()
 	}
 }

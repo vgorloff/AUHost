@@ -11,54 +11,53 @@ import AVFoundation
 
 public struct WaveformCacheUtility {
 
-	private static let cache: NSCache = CacheCentre.cacheForIdentifier("WaveformCacheUtility")
+  private static var cache = [String: [MinMax<Float>]]()
 
 	private static let defaultBufferFrameCapacity: UInt64 = 1024 * 8
 	public init() {
 	}
 
-	public func cachedWaveformForResolution(url: NSURL, resolution: UInt64) -> [MinMax<Float>]? {
-		let existedWaveform: [MinMax<Float>]? = WaveformCacheUtility.cache.objectValueForKey(
-			WaveformCacheUtility.cacheID(url, resolution: resolution))
+	public func cachedWaveformForResolution(url: URL, resolution: UInt64) -> [MinMax<Float>]? {
+		let existedWaveform = WaveformCacheUtility.cache[WaveformCacheUtility.cacheID(url: url, resolution: resolution)]
 		if let wf = existedWaveform {
 			return wf
 		}
 		return nil
 	}
 
-	public func buildWaveformForResolution(fileURL url: NSURL, resolution: UInt64, callback: ResultType<[MinMax<Float>]> -> Void) {
+	public func buildWaveformForResolution(fileURL url: URL, resolution: UInt64, callback: (ResultType<[MinMax<Float>]>) -> Void) {
 		assert(resolution > 0)
-		Dispatch.Async.UserInitiated {
+		DispatchQueue.UserInitiated.async {
 			do {
 				defer {
 					url.stopAccessingSecurityScopedResource() // Seems working fine without this line
 				}
-				url.startAccessingSecurityScopedResource() // Seems working fine without this line
-				let audioFile = try AVAudioFile(forReading: url, commonFormat: .PCMFormatFloat32, interleaved: false)
-				let optimalBufferSettings = Math.optimalBufferSizeForResolution(resolution, dataSize: UInt64(audioFile.length),
+				_ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
+				let audioFile = try AVAudioFile(forReading: url, commonFormat: .pcmFormatFloat32, interleaved: false)
+				let optimalBufferSettings = Math.optimalBufferSizeForResolution(resolution: resolution, dataSize: UInt64(audioFile.length),
 					maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
-				let buffer = AVAudioPCMBuffer(PCMFormat: audioFile.processingFormat,
+				let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
 					frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize))
 
-				var waveformCache = Array<MinMax<Float>>()
+				var waveformCache = [MinMax<Float>]()
 				var groupingBuffer = Array<MinMax<Float>>()
 				while audioFile.framePosition < audioFile.length {
-					try audioFile.readIntoBuffer(buffer)
-					let data = WaveformCacheUtility.processBuffer(buffer)
+					try audioFile.read(into: buffer)
+					let data = WaveformCacheUtility.processBuffer(buffer: buffer)
 					groupingBuffer.append(data)
 					if groupingBuffer.count >= Int(optimalBufferSettings.numberOfBuffers) {
 						assert(groupingBuffer.count > 0)
-						let waveformValue = groupingBuffer.suffixFrom(1).reduce(groupingBuffer[0]) { prev, el in
+            let waveformValue = groupingBuffer.suffix(from: 1).reduce(groupingBuffer[0]) { prev, el in
 							return MinMax(min: prev.min + el.min, max: prev.max + el.max)
 						}
 						let avarageValue = MinMax(min: waveformValue.min / Float(groupingBuffer.count),
 							max: waveformValue.max / Float(groupingBuffer.count))
 						waveformCache.append(avarageValue)
-						groupingBuffer.removeAll(keepCapacity: true)
+						groupingBuffer.removeAll(keepingCapacity: true)
 					}
 				}
 				assert(UInt64(waveformCache.count) == resolution)
-				WaveformCacheUtility.cache.setObjectValue(waveformCache, forKey: WaveformCacheUtility.cacheID(url, resolution: resolution))
+				WaveformCacheUtility.cache[WaveformCacheUtility.cacheID(url: url, resolution: resolution)] = waveformCache
 				callback(.Success(waveformCache))
 			} catch {
 				callback(.Failure(error))
@@ -66,7 +65,7 @@ public struct WaveformCacheUtility {
 		}
 	}
 
-	private static func cacheID(url: NSURL, resolution: UInt64) -> String {
+	private static func cacheID(url: URL, resolution: UInt64) -> String {
 		return "WaveForm:\(resolution):\(url.absoluteString)"
 	}
 
@@ -84,7 +83,9 @@ public struct WaveformCacheUtility {
 		let mbl = UnsafeMutableAudioBufferListPointer(buffer.mutableAudioBufferList)
 		for index in 0 ..< mbl.count {
 			let bl = mbl[index]
-			let samplesBI = UnsafePointer<Float>(bl.mData)
+      guard let samplesBI = UnsafePointer<Float>(bl.mData) else {
+				continue
+      }
 			let numElementsToProcess = vDSP_Length(buffer.frameLength)
 			var maximumMagnitudeValue: Float = 0
 			var minimumMagnitudeValue: Float = 0
@@ -94,7 +95,7 @@ public struct WaveformCacheUtility {
 			channelValues.append(MinMax(min: minimumMagnitudeValue, max: maximumMagnitudeValue))
 		}
 		assert(channelValues.count > 0)
-		let result = channelValues.suffixFrom(1).reduce(channelValues[0]) { prev, el in
+    let result = channelValues.suffix(from: 1).reduce(channelValues[0]) { prev, el in
 			return MinMax(min: prev.min + el.min, max: prev.max + el.max)
 		}
 		return MinMax(min: result.min / Float(channelValues.count), max: result.max / Float(channelValues.count))
