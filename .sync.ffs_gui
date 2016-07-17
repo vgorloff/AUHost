@@ -40,7 +40,7 @@
         <FolderPairs>
             <Pair>
                 <Left>%GV_VCS_HOME%/GitHub/AUHost/Shared</Left>
-                <Right>%GV_VCS_HOME%/GitHub/WLOpen</Right>
+                <Right>%GV_VCS_HOME%/BitBucket/WL</Right>
             </Pair>
         </FolderPairs>
         <OnCompletion/>

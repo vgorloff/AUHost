@@ -18,10 +18,10 @@ public final class MediaLibraryUtility: NSObject {
 	private lazy var log: Logger = {[unowned self] in return Logger(sender: self, context: .Model)}()
 	private lazy var _mediaLibrary: MLMediaLibrary = self.setUpMediaLibrary()
 	private var kvoObserverOfMediaSources: KVOHelper<[String : MLMediaSource]>?
-	private var mediaLibraryLoadCallback: (Void -> Void)?
+	private var mediaLibraryLoadCallback: ((Void) -> Void)?
 	private var mediaLibraryIsLoaded = false
 
-	public var onMediaLibraryChange: (MediaLibraryChangeEvent -> Void)?
+	public var onMediaLibraryChange: ((MediaLibraryChangeEvent) -> Void)?
 
 	public override init() {
 		super.init()
@@ -31,7 +31,7 @@ public final class MediaLibraryUtility: NSObject {
 			if let value = result.valueNew {
 				s.log.logVerbose("Found \(value.count) media sources: \(Array(value.keys))")
 				for mediaSource in value.values {
-					mediaSource.rootMediaGroup // Triggering lazy initialization
+					_ = mediaSource.rootMediaGroup // Triggering lazy initialization
 					// TODO: It is better to setup another KVO roundtrip. By Vlad Gorlov, Jan 15, 2016.
 				}
 			}
@@ -46,12 +46,12 @@ public final class MediaLibraryUtility: NSObject {
 		log.logDeinit()
 	}
 
-	public func loadMediaLibrary(completion: (Void -> Void)?) {
+	public func loadMediaLibrary(completion: ((Void) -> Void)?) {
 		if mediaLibraryIsLoaded {
 			completion?()
 		} else {
 			mediaLibraryLoadCallback = completion
-			_mediaLibrary.mediaSources // Triggering lazy initialization
+			_ = _mediaLibrary.mediaSources // Triggering lazy initialization
 		}
 	}
 
@@ -61,10 +61,10 @@ public final class MediaLibraryUtility: NSObject {
 			return results
 		}
 		for key in keys {
-			guard let mediaSource = mediaSources[key], let mediaObjectIDs = pasteboardPlist.objectForKey(key) as? [String] else {
+			guard let mediaSource = mediaSources[key], let mediaObjectIDs = pasteboardPlist.object(forKey: key) as? [String] else {
 				continue
 			}
-			results[key] = mediaSource.mediaObjectsForIdentifiers(mediaObjectIDs)
+			results[key] = mediaSource.mediaObjects(forIdentifiers: mediaObjectIDs)
 		}
 		return results
 	}
@@ -72,7 +72,7 @@ public final class MediaLibraryUtility: NSObject {
 	// MARK: -
 
 	private func setUpMediaLibrary() -> MLMediaLibrary {
-		let o = [MLMediaLoadSourceTypesKey : MLMediaSourceType.Audio.rawValue]
+		let o = [MLMediaLoadSourceTypesKey : MLMediaSourceType.audio.rawValue]
 		return MLMediaLibrary(options: o)
 	}
 

@@ -9,14 +9,14 @@
 import AVFoundation
 import CoreAudioKit
 
-enum PlaybackEngineStateError: ErrorType {
+enum PlaybackEngineStateError: ErrorProtocol {
 	case FileIsNotSet
 }
 
 enum PlaybackEngineEffectSelectionResult {
 	case EffectCleared
 	case Success(AVAudioUnit)
-	case Failure(ErrorType)
+	case Failure(ErrorProtocol)
 }
 
 enum PlaybackEngineState {
@@ -26,48 +26,48 @@ enum PlaybackEngineState {
 enum PlaybackEngineEvent {
 	case Play, Pause, Resume, Stop
 	case SetFile(AVAudioFile?)
-	case SetEffect(AudioComponentDescription?, (PlaybackEngineEffectSelectionResult -> Void))
+	case SetEffect(AudioComponentDescription?, ((PlaybackEngineEffectSelectionResult) -> Void))
 }
 
-typealias SMGraphType = StateMachineGraph<PlaybackEngineState,
-	PlaybackEngineEvent, PlaybackEngineContext>
+typealias SMGraphType = StateMachineGraph<PlaybackEngineState, PlaybackEngineEvent, PlaybackEngineContext>
+
 private let gStateMachineGraph = SMGraphType(initialState: .Stopped) { (state, event) in
 	switch state {
 	case .Stopped:
 		switch event {
-		case .Play: return (.Playing, { ctx in try ctx.play() })
-		case .SetFile(let file): return (.SettingFile, { ctx in ctx.setFileToPlay(file) })
+		case .Play: return (.Playing, { try $0.play() })
+    case .SetFile(let file): return (.SettingFile, { $0.setFileToPlay(file) })
 		case .SetEffect(let component, let callback): return (.SettingEffect, { ctx in
-			ctx.selectEffect(component, completionHandler: callback)
+			ctx.selectEffect(componentDescription: component, completionHandler: callback)
 		})
 		case .Pause, .Resume, .Stop: return nil
 		}
 	case .Playing:
 		switch event {
-		case .Pause: return (.Paused, { ctx in ctx.pause() })
-		case .Stop: return (.Stopped, { ctx in ctx.stop() })
+		case .Pause: return (.Paused, { $0.pause() })
+		case .Stop: return (.Stopped, { $0.stop() })
 		case .SetFile, .Play, .Resume: return nil
-		case .SetEffect(let component, let callback): return (.SettingEffect, { ctx in
-			ctx.stopPlayer()
-			ctx.selectEffect(component, completionHandler: callback)
+		case .SetEffect(let component, let callback): return (.SettingEffect, {
+			$0.stopPlayer()
+			$0.selectEffect(componentDescription: component, completionHandler: callback)
 		})
 		}
 	case .Paused:
 		switch event {
-		case .Resume: return (.Playing, { ctx in try ctx.resume() })
-		case .Stop: return (.Stopped, { ctx in ctx.stop() })
+		case .Resume: return (.Playing, { try $0.resume() })
+		case .Stop: return (.Stopped, { $0.stop() })
 		case .SetFile, .Play, .Pause: return nil
-		case .SetEffect(let component, let callback): return (.SettingEffect, { ctx in
-			ctx.stopPlayer()
-			ctx.selectEffect(component, completionHandler: callback)
+		case .SetEffect(let component, let callback): return (.SettingEffect, {
+			$0.stopPlayer()
+			$0.selectEffect(componentDescription: component, completionHandler: callback)
 		})
 		}
 	case .SettingEffect:
 		switch event {
 		case .SetEffect, .SetFile, .Resume: return nil
 		case .Stop: return (.Stopped, nil)
-		case .Play: return (.Playing, { ctx in try ctx.startPlayer() })
-		case .Pause: return (.Paused, { ctx in try ctx.scheduleFile() })
+		case .Play: return (.Playing, { try $0.startPlayer() })
+		case .Pause: return (.Paused, { try $0.scheduleFile() })
 		}
 	case .SettingFile:
 		switch event {
@@ -83,29 +83,29 @@ final class PlaybackEngine {
 		case EngineStateChanged(old: PlaybackEngineState, new: PlaybackEngineState)
 	}
 
-	// MARK: -
+	// MARK:
 
 	private lazy var log: Logger = {return Logger(sender: self, context: .Media)}()
 	private var sm: StateMachine<SMGraphType>
 	private let context = PlaybackEngineContext()
 	private let _stateAccessLock: NonRecursiveLocking = SpinLock()
 
-	// MARK: -
+	// MARK:
 
-	var changeHandler: (Change -> Void)?
+	var changeHandler: ((Change) -> Void)?
 	var stateID: PlaybackEngineState {
 		return _stateAccessLock.synchronized {
 			return sm.state
 		}
 	}
 
-	// MARK: -
+	// MARK:
 
 	init() {
 		sm = StateMachine(context: context, graph: gStateMachineGraph)
 		sm.stateChangeHandler = { [weak self] oldState, event, newState in
 			self?.log.logVerbose("State changed: \(oldState) => \(newState)")
-			Dispatch.Async.Main { [weak self] in
+			DispatchQueue.main.async { [weak self] in
 				self?.changeHandler?(Change.EngineStateChanged(old: oldState, new: newState))
 			}
 		}
@@ -114,9 +114,9 @@ final class PlaybackEngine {
 			guard s.stateID == .Playing else {
 				return
 			}
-			Dispatch.Async.Main { [weak self] in guard let s = self else { return }
+			DispatchQueue.main.async { [weak self] in guard let s = self else { return }
 				do {
-					try s.sm.handleEvent(.Stop)
+					try s.sm.handleEvent(event: .Stop)
 				} catch {
 					s.log.logError(error)
 				}
@@ -129,37 +129,37 @@ final class PlaybackEngine {
 		log.logDeinit()
 	}
 
-	// MARK: -
+	// MARK:
 
-	func setFileToPlay(fileToPlay: AVAudioFile) throws {
+	func setFileToPlay(_ fileToPlay: AVAudioFile) throws {
 		switch stateID {
 		case .SettingEffect, .SettingFile, .Stopped: break
 		case .Playing, .Paused:
-			try sm.handleEvent(.Stop)
+			try sm.handleEvent(event: .Stop)
 		}
-		try sm.handleEvent(.SetFile(fileToPlay))
-		try sm.handleEvent(.Stop)
+		try sm.handleEvent(event: .SetFile(fileToPlay))
+		try sm.handleEvent(event: .Stop)
 	}
 
 	func stop() {
-		trythrow(try sm.handleEvent(.Stop))
+    tryOrWarn {try sm.handleEvent(event: .Stop)}
 	}
 
 	func pause() {
-		trythrow(try sm.handleEvent(.Pause))
+    tryOrWarn {try sm.handleEvent(event: .Pause)}
 	}
 
 	func resume() throws {
-		try sm.handleEvent(.Resume)
+		try sm.handleEvent(event: .Resume)
 	}
 
 	func play() throws {
-		try sm.handleEvent(.Play)
+		try sm.handleEvent(event: .Play)
 	}
 
 	func openEffectView(completionHandler: (NSViewController?) -> Void) {
-		if let au = context.effect?.AUAudioUnit {
-			au.requestViewControllerWithCompletionHandler(completionHandler)
+		if let au = context.effect?.auAudioUnit {
+			au.requestViewController(completionHandler: completionHandler)
 		} else {
 			completionHandler(nil)
 		}
@@ -170,26 +170,27 @@ final class PlaybackEngine {
 			return
 		}
 		guard let p = preset else {
-			avau.AUAudioUnit.currentPreset = nil
+			avau.auAudioUnit.currentPreset = nil
 			return
 		}
-		let presetList = avau.AUAudioUnit.factoryPresets ?? []
+		let presetList = avau.auAudioUnit.factoryPresets ?? []
 		let matchedPresets = presetList.filter { $0.number == p.number }
 		guard let matchedPreset = matchedPresets.first else {
-			avau.AUAudioUnit.currentPreset = nil
+			avau.auAudioUnit.currentPreset = nil
 			return
 		}
-		avau.AUAudioUnit.currentPreset = matchedPreset
+		avau.auAudioUnit.currentPreset = matchedPreset
 	}
 
-	func selectEffectComponent(component: AVAudioUnitComponent?, completionHandler: (PlaybackEngineEffectSelectionResult -> Void)?) {
+	func selectEffectComponent(component: AVAudioUnitComponent?,
+	                           completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)?) {
 		selectEffectWithComponentDescription(component?.audioComponentDescription, completionHandler: completionHandler)
 	}
 
-	// MARK: - Private
+	// MARK: Private
 
-	private func selectEffectWithComponentDescription(componentDescription: AudioComponentDescription?,
-		completionHandler: (PlaybackEngineEffectSelectionResult -> Void)?) {
+	private func selectEffectWithComponentDescription(_ componentDescription: AudioComponentDescription?,
+		completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)?) {
 			var possibleRelaunchEvent: PlaybackEngineEvent?
 			switch stateID {
 			case .SettingEffect, .SettingFile: break
@@ -197,18 +198,18 @@ final class PlaybackEngine {
 			case .Paused: possibleRelaunchEvent = .Pause
 			case .Playing: possibleRelaunchEvent = .Play
 			}
-			let sema = Dispatch.Semaphore()
+    let sema = DispatchSemaphore(value: 0)
 			let event = PlaybackEngineEvent.SetEffect(componentDescription, {result in
 				completionHandler?(result)
 				sema.signal()
 			})
-			Dispatch.Async.UserInitiated { [weak self] in guard let s = self else { return }
-				trythrow({try s.sm.handleEvent(event)})
+			DispatchQueue.UserInitiated.async { [weak self] in guard let s = self else { return }
+				tryOrWarn {try s.sm.handleEvent(event: event)}
 				sema.wait() {
 					guard let relaunchEvent = possibleRelaunchEvent else {
 						return
 					}
-					trythrow({try s.sm.handleEvent(relaunchEvent)})
+					tryOrWarn {try s.sm.handleEvent(event: relaunchEvent)}
 				}
 			}
 	}

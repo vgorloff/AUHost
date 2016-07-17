@@ -26,16 +26,16 @@ public extension ColorType {
 	}
 
 	public convenience init?(hexString: String) {
-		let scanner = NSScanner(string:
-			hexString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()))
-		guard scanner.scanString("#", intoString: nil) else {
+		let scanner = Scanner(string:
+      hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines))
+		guard scanner.scanString("#", into: nil) else {
 			return nil
 		}
 		guard (scanner.string.characters.count - scanner.scanLocation) == 6 else {
 			return nil
 		}
 		var hexNumber: UInt64 = 0
-		if scanner.scanHexLongLong(&hexNumber) {
+		if scanner.scanHexInt64(&hexNumber) {
 			self.init(hexValue: hexNumber)
 			return
 		}
@@ -43,10 +43,10 @@ public extension ColorType {
 	}
 
 	public convenience init?(rgba: String, rgbCompomentsIn256Range: Bool = false) {
-		var rgbaValue = rgba.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-		rgbaValue = rgbaValue.lowercaseString
-		let scanner = NSScanner(string: rgbaValue)
-		guard scanner.scanString("rgba(", intoString: nil) else {
+		var rgbaValue = rgba.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+		rgbaValue = rgbaValue.lowercased()
+		let scanner = Scanner(string: rgbaValue)
+		guard scanner.scanString("rgba(", into: nil) else {
 			return nil
 		}
 		var r: Float = 0
@@ -54,10 +54,10 @@ public extension ColorType {
 		var b: Float = 0
 		var a: Float = 0
 		guard
-			scanner.scanFloat(&r) && scanner.scanString(",", intoString: nil) &&
-				scanner.scanFloat(&g) && scanner.scanString(",", intoString: nil) &&
-				scanner.scanFloat(&b) && scanner.scanString(",", intoString: nil) &&
-				scanner.scanFloat(&a) && scanner.scanString(")", intoString: nil) else {
+			scanner.scanFloat(&r) && scanner.scanString(",", into: nil) &&
+				scanner.scanFloat(&g) && scanner.scanString(",", into: nil) &&
+				scanner.scanFloat(&b) && scanner.scanString(",", into: nil) &&
+				scanner.scanFloat(&a) && scanner.scanString(")", into: nil) else {
 					return nil
 		}
 		if rgbCompomentsIn256Range {

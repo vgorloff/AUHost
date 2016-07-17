@@ -30,7 +30,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 	private weak var effectViewController: NSViewController? // Temporary store
 	private weak var effectWindowController: EffectWindowController?
 	private var playbackEngine: PlaybackEngine {
-		return NSApplication.sharedApplication().applicationDelegate.playbackEngine
+		return NSApplication.shared().applicationDelegate.playbackEngine
 	}
 	private var audioUnitDatasource = AudioComponentsUtility()
 	private var selectedAUComponent: AVAudioUnitComponent?
@@ -39,14 +39,14 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			return false
 		}
 		let flags = AudioComponentFlags(rawValue: component.audioComponentDescription.componentFlags)
-		let v3AU = flags.contains(AudioComponentFlags.IsV3AudioUnit)
+		let v3AU = flags.contains(AudioComponentFlags.isV3AudioUnit)
 		return component.hasCustomView || v3AU
 	}
 
 	// MARK: -
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		Dispatch.Async.Main { [weak self] in guard let s = self else { return }
+		DispatchQueue.main.async { [weak self] in guard let s = self else { return }
 			s.setUpPlaybackHelper()
 			s.setUpMediaItemView()
 			s.setUpAudioComponentsUtility()
@@ -54,17 +54,17 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 		}
 	}
 
-	override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+	override func prepare(for segue: NSStoryboardSegue, sender: AnyObject?) {
 		if let segueID = segue.identifier, let ctrl = segue.destinationController as? EffectWindowController
 			where segueID == "S:OpenEffectView" {
 				ctrl.contentViewController = effectViewController
 				effectWindowController = ctrl
 				effectViewController = nil
-				buttonOpenEffectView.enabled = false
+				buttonOpenEffectView.isEnabled = false
 				ctrl.handlerWindowWillClose = { [weak self] in guard let s = self else { return }
 						s.effectWindowController?.contentViewController = nil
 						s.effectWindowController = nil
-					s.buttonOpenEffectView.enabled = s.canOpenEffectView
+					s.buttonOpenEffectView.isEnabled = s.canOpenEffectView
 				}
 		}
 	}
@@ -72,17 +72,17 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 	// MARK: -
 
 	func reloadEffectsList() {
-		tableEffects.enabled = false
+		tableEffects.isEnabled = false
 		audioUnitDatasource.updateEffectList { [weak self] effects in guard let s = self else { return }
 			s.availableEffects = effects
 			s.tableEffects.reloadData()
-			s.tableEffects.enabled = true
+			s.tableEffects.isEnabled = true
 		}
 	}
 
 	// MARK: -
 
-	@IBAction private func actionTogglePlayAudio(sender: AnyObject) {
+	@IBAction private func actionTogglePlayAudio(_ sender: AnyObject) {
 		do {
 			switch playbackEngine.stateID {
 			case .Playing:
@@ -98,14 +98,14 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 		}
 	}
 
-	@IBAction private func actionToggleEffectView(sender: AnyObject?) {
+	@IBAction private func actionToggleEffectView(_ sender: AnyObject?) {
 		guard canOpenEffectView && effectWindowController == nil else {
 			return
 		}
 		playbackEngine.openEffectView { [weak self] controller in guard let s = self else { return }
 			s.effectViewController = controller
 			if controller != nil {
-				s.performSegueWithIdentifier("S:OpenEffectView", sender: s)
+				s.performSegue(withIdentifier: "S:OpenEffectView", sender: s)
 			}
 		}
 	}
@@ -118,7 +118,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			case .AudioComponentRegistered:
 				s.tableEffects.reloadData()
 			case .AudioComponentInstanceInvalidated(_, _):
-				s.playbackEngine.selectEffectComponent(nil, completionHandler: nil)
+				s.playbackEngine.selectEffectComponent(component: nil, completionHandler: nil)
 				s.tableEffects.reloadData()
 				s.selectedAUComponent = nil
 			}
@@ -132,15 +132,15 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			case .None:
 				break
 			case .MediaObjects(let mediaObjectsDict):
-				let mediaObjects = NSApplication.sharedApplication().applicationDelegate
-					.mediaLibraryLoader.mediaObjectsFromPlist(mediaObjectsDict)
-				if let firstMediaObject = mediaObjects.first?.1.first?.1, let url = firstMediaObject.URL {
+				let mediaObjects = NSApplication.shared().applicationDelegate
+					.mediaLibraryLoader.mediaObjectsFromPlist(pasteboardPlist: mediaObjectsDict)
+				if let firstMediaObject = mediaObjects.first?.1.first?.1, let url = firstMediaObject.url {
 					s.processFileAtURL(url)
 				}
 			case .FilePaths(let filePaths):
 				if let firstFilePath = filePaths.first {
 					let url = NSURL(fileURLWithPath: firstFilePath)
-					s.processFileAtURL(url)
+					s.processFileAtURL(url as URL)
 				}
 			}
 		}
@@ -153,32 +153,32 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			case .EngineStateChanged(_, _):
 				switch engine.stateID {
 				case .Playing:
-					s.buttonPlay.enabled = true
+					s.buttonPlay.isEnabled = true
 					s.buttonPlay.title = "Pause"
-					s.buttonOpenEffectView.enabled = s.canOpenEffectView
+					s.buttonOpenEffectView.isEnabled = s.canOpenEffectView
 				case .Stopped:
-					s.buttonPlay.enabled = true
+					s.buttonPlay.isEnabled = true
 					s.buttonPlay.title = "Play"
-					s.buttonOpenEffectView.enabled = s.canOpenEffectView
+					s.buttonOpenEffectView.isEnabled = s.canOpenEffectView
 				case .Paused:
-					s.buttonPlay.enabled = true
+					s.buttonPlay.isEnabled = true
 					s.buttonPlay.title = "Resume"
-					s.buttonOpenEffectView.enabled = s.canOpenEffectView
+					s.buttonOpenEffectView.isEnabled = s.canOpenEffectView
 				case .SettingEffect, .SettingFile:
-					s.buttonPlay.enabled = false
-					s.buttonOpenEffectView.enabled = false
+					s.buttonPlay.isEnabled = false
+					s.buttonOpenEffectView.isEnabled = false
 					break
 				}
 			}
 		}
 	}
 
-	private func processFileAtURL(url: NSURL) {
+	private func processFileAtURL(_ url: URL) {
 		do {
 			defer {
 				url.stopAccessingSecurityScopedResource() // Seems working fine without this line
 			}
-			url.startAccessingSecurityScopedResource() // Seems working fine without this line
+			_ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
 			let f = try AVAudioFile(forReading: url)
 			mediaItemView.mediaFileURL = url
 			try playbackEngine.setFileToPlay(f)
@@ -193,7 +193,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
 	// MARK: - NSTableViewDataSource
 
-	func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+	func numberOfRows(in tableView: NSTableView) -> Int {
 		switch tableView {
 		case tableEffects:
 			return availableEffects.count + 1
@@ -204,7 +204,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 		}
 	}
 
-	func tableView(tableView: NSTableView, objectValueForTableColumn tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+	func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
 		switch tableView {
 		case tableEffects:
 			if row == 0 {
@@ -225,7 +225,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
 	// MARK: - NSTableViewDelegate
 
-	func tableViewSelectionDidChange(aNotification: NSNotification) {
+	func tableViewSelectionDidChange(_ aNotification: Notification) {
 		guard let tableView = aNotification.object as? NSTableView where tableView.selectedRow >= 0 else {
 			return
 		}
@@ -234,11 +234,11 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 			effectWindowController?.close()
 			if tableView.selectedRow == 0 {
 				log.logVerbose("Clearing effect")
-				playbackEngine.selectEffectComponent(nil) { [weak self] _ in
+				playbackEngine.selectEffectComponent(component: nil) { [weak self] _ in
 					guard let s = self else { return }
 					s.availablePresets.removeAll()
 					s.tablePresets.reloadData()
-					s.tablePresets.enabled = s.availablePresets.count > 0
+					s.tablePresets.isEnabled = s.availablePresets.count > 0
 				}
 				selectedAUComponent = nil
 			} else {
@@ -246,19 +246,19 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 				if row < availableEffects.count {
 					let component = availableEffects[row]
 					log.logVerbose("Selecting effect: \"\(component.name)\"")
-					playbackEngine.selectEffectComponent(component) { [weak self, weak component] result in
+					playbackEngine.selectEffectComponent(component: component) { [weak self, weak component] result in
 						guard let s = self else { return }
 						switch result {
 						case .EffectCleared: break
 						case .Failure(let e):
 							s.log.logError(e)
 						case .Success(let effect):
-							s.availablePresets = effect.AUAudioUnit.factoryPresets ?? []
+							s.availablePresets = effect.auAudioUnit.factoryPresets ?? []
 							s.tablePresets.reloadData()
-							s.tablePresets.enabled = s.availablePresets.count > 0
+							s.tablePresets.isEnabled = s.availablePresets.count > 0
 							s.selectedAUComponent = component
 							if shouldReopenEffectView {
-								Dispatch.Async.Main { [weak self] in
+								DispatchQueue.main.async { [weak self] in
 									self?.actionToggleEffectView(nil)
 								}
 							}
@@ -271,13 +271,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 		func handleTablePresets() {
 			if tableView.selectedRow == 0 {
 				log.logVerbose("Clearing preset")
-				playbackEngine.selectPreset(nil)
+				playbackEngine.selectPreset(preset: nil)
 			} else {
 				let row = tableView.selectedRow - 1
 				if row < availablePresets.count {
 					let preset = availablePresets[row]
-					log.logMarker("Selecting preset: \"\(preset.name)\"")
-					playbackEngine.selectPreset(preset)
+          log.log(marker: "Selecting preset: \"\(preset.name)\"")
+					playbackEngine.selectPreset(preset: preset)
 				}
 			}
 		}

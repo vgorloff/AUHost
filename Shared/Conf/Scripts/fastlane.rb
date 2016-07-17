@@ -7,7 +7,8 @@ class BuildSettings
   }
   @@Codesign = {
     "CODE_SIGN_IDENTITY" => "Developer ID Application",
-    "CODE_SIGNING_REQUIRED" => "YES"
+    "CODE_SIGNING_REQUIRED" => "YES",
+    "PROVISIONING_PROFILE_SPECIFIER" => "E27KE6VTF6/"
   }
   def self.NoCodesign
     @@NoCodesign
@@ -36,6 +37,12 @@ end
 def XcodeTest(*schemes)
   schemes.each { |schema|
     scan(scheme: schema, output_directory: "fastlane/test_output/#{schema}")
+  }
+end
+
+def XcodeMacOSTest(*schemes)
+  schemes.each { |schema|
+    scan(scheme: schema, output_directory: "fastlane/test_output/#{schema}", destination: "platform=macOS")
   }
 end
 
@@ -78,11 +85,19 @@ def ValidateApp(path)
   sh "xcrun spctl -a -t exec -vv \"#{path}\"; xcrun codesign --verify \"#{path}\""
 end
 
-def Bump(relativePath)
-  awl_buildNumber = increment_build_number(xcodeproj: relativePath)
+def Bump(*relativePaths)
   awl_versionFromTag = last_git_tag
-  increment_version_number(version_number: awl_versionFromTag, xcodeproj: relativePath)
-  git_commit(path: "./", message: "Version Bump #{awl_versionFromTag}x#{awl_buildNumber}")
+  values = git_branch.split("/")
+  values.each do |value|
+      if ( value =~ /\d+\.\d+\.\d+/ )
+        awl_versionFromTag = value
+      end
+  end
+  relativePaths.each { |relativePath|
+    awl_buildNumber = increment_build_number(xcodeproj: relativePath)
+    increment_version_number(version_number: awl_versionFromTag, xcodeproj: relativePath)
+    git_commit(path: "./", message: "Version Bump #{awl_versionFromTag}x#{awl_buildNumber}")
+  }
 end
 
 # class XcodeBuild

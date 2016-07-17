@@ -11,8 +11,8 @@ import Cocoa
 class MainWindowController: NSWindowController {
 
 	private lazy var mediaLibraryController: NSMediaLibraryBrowserController = {
-		let c = NSMediaLibraryBrowserController.sharedMediaLibraryBrowserController()
-		c.mediaLibraries = [NSMediaLibrary.Audio]
+		let c = NSMediaLibraryBrowserController.shared()
+		c.mediaLibraries = [NSMediaLibrary.audio]
 		return c
 	}()
 
@@ -25,16 +25,16 @@ class MainWindowController: NSWindowController {
 
 	override func windowDidLoad() {
 		super.windowDidLoad()
-		NSApplication.sharedApplication().applicationDelegate.mediaLibraryLoader.loadMediaLibrary { [weak self] in
-			self?.mediaLibraryController.visible = true
+		NSApplication.shared().applicationDelegate.mediaLibraryLoader.loadMediaLibrary { [weak self] in
+			self?.mediaLibraryController.isVisible = true
 		}
 	}
 
-	@IBAction private func actionToggleMediaLibraryBrowser(sender: AnyObject?) {
+	@IBAction private func actionToggleMediaLibraryBrowser(_ sender: AnyObject?) {
 		mediaLibraryController.togglePanel(sender)
 	}
 
-	@IBAction private func actionReloadPlugIns(sender: AnyObject?) {
+	@IBAction private func actionReloadPlugIns(_ sender: AnyObject?) {
 		mainController.reloadEffectsList()
 	}
 }

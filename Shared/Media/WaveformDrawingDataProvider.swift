@@ -37,11 +37,11 @@ public final class WaveformDrawingDataProvider {
 			_points.append(CGPoint(x: xOffset + width, y: yPosition))
 		case .IntVertice:
 			fatalError("Not up to date")
-			_verticesI.appendContentsOf([Int32(xOffset), Int32(yPosition),
+			_verticesI.append(contentsOf: [Int32(xOffset), Int32(yPosition),
 				Int32(xOffset + width), Int32(yPosition)])
 		case .FloatVertice:
 			fatalError("Not up to date")
-			_verticesF.appendContentsOf([Float(xOffset), Float(yPosition),
+			_verticesF.append(contentsOf: [Float(xOffset), Float(yPosition),
 				Float(xOffset + width), Float(yPosition)])
 		}
 	}
@@ -55,18 +55,18 @@ public final class WaveformDrawingDataProvider {
 			_points.append(CGPoint(x: xPosition, y: yOffset + middleY - halfAmplitude * valueMax))
 		case .IntVertice:
 			fatalError("Not up to date")
-			_verticesI.appendContentsOf([Int32(xPosition), Int32(yOffset),
+			_verticesI.append(contentsOf: [Int32(xPosition), Int32(yOffset),
 				Int32(xPosition), Int32(yOffset + height)])
 		case .FloatVertice:
 			fatalError("Not up to date")
-			_verticesF.appendContentsOf([Float(xPosition), Float(yOffset),
+			_verticesF.append(contentsOf: [Float(xPosition), Float(yOffset),
 				Float(xPosition), Float(yOffset + height)])
 		}
 	}
 
 	public var points: UnsafePointer<CGPoint> {
 		let result = _points.withUnsafeBufferPointer({pointerVal -> UnsafePointer<CGPoint> in
-			return pointerVal.baseAddress
+			return pointerVal.baseAddress!
 		})
 		return result
 	}
@@ -77,7 +77,7 @@ public final class WaveformDrawingDataProvider {
 
 	public var verticesI: UnsafePointer<Int32> {
 		let result = _verticesI.withUnsafeBufferPointer({pointerVal -> UnsafePointer<Int32> in
-			return pointerVal.baseAddress
+			return pointerVal.baseAddress!
 		})
 		return result
 	}
@@ -97,11 +97,11 @@ public final class WaveformDrawingDataProvider {
 		height = aHeight
 		switch dataType {
 		case .CGPoint:
-			_points.removeAll(keepCapacity: true)
+			_points.removeAll(keepingCapacity: true)
 		case .IntVertice:
-			_verticesI.removeAll(keepCapacity: true)
+			_verticesI.removeAll(keepingCapacity: true)
 		case .FloatVertice:
-			_verticesF.removeAll(keepCapacity: true)
+			_verticesF.removeAll(keepingCapacity: true)
 		}
 	}
 

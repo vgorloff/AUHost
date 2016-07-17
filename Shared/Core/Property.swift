@@ -8,30 +8,34 @@
 
 /// Provides atomic access to Property.value from different threads.
 public final class Property<T>: CustomReflectable {
-	private var _value: T
-	private let _lock: NonRecursiveLocking
+	private var valueStorage: T
+	private let lock: NonRecursiveLocking
 
 	/// Locks getter/setter using NSLock while reading/writing operations.
 	public var value: T {
 		get {
-			return _lock.synchronized {
-				return _value
+			return lock.synchronized {
+				return valueStorage
 			}
 		}
 		set {
-			_lock.synchronized {
-				_value = newValue
+			lock.synchronized {
+				valueStorage = newValue
 			}
 		}
 	}
 
 	public init(_ initialValue: T, lock: NonRecursiveLocking = SpinLock()) {
-		_value = initialValue
-		_lock = lock
+		valueStorage = initialValue
+      if #available(OSX 10.12, *) {
+         self.lock = UnfairLock()
+      } else {
+         self.lock = lock
+      }
 	}
 
-	public func customMirror() -> Mirror {
-		let children = DictionaryLiteral<String, Any>(dictionaryLiteral: ("value", _value), ("lock", _lock))
+	public var customMirror: Mirror {
+		let children = DictionaryLiteral<String, Any>(dictionaryLiteral: ("value", valueStorage), ("lock", lock))
 		return Mirror(self, children: children)
 	}
 }
