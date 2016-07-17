@@ -12,17 +12,17 @@ import AppKit
 public final class VULevelMeter: NSView {
 
 	public var numberOfChannels: UInt32 = 1
-	public var level = Array<Float>(count: 1, repeatedValue: 0) {
+	public var level = Array<Float>(repeating: 0, count: 1) {
 		didSet {
 			needsDisplay = true
 			assert(UInt32(level.count) >= numberOfChannels)
 		}
 	}
 
-	public override func drawRect(dirtyRect: NSRect) {
+	public override func draw(_ dirtyRect: NSRect) {
 		let levelL = min(1, level[0]).CGFloatValue
 		let rect = NSRect(origin: CGPoint.zero, size: CGSize(width: bounds.width * levelL, height: bounds.height))
-		NSColor.redColor().setFill()
+		NSColor.red().setFill()
 		NSRectFill(rect)
 	}
 

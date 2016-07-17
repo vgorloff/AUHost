@@ -26,7 +26,7 @@ struct AttenuatorDSPKernel {
 	private let maximumMagnitudeLock: NonRecursiveLocking = SpinLock()
 
 	init(maxChannels: UInt32) {
-		_maximumMagnitude = Array<SampleType>(count: Int(maxChannels), repeatedValue: 0)
+		_maximumMagnitude = Array<SampleType>(repeating: 0, count: Int(maxChannels))
 	}
 
 	func getParameter(parameter: AttenuatorParameter) -> AUValue {
@@ -36,7 +36,7 @@ struct AttenuatorDSPKernel {
 		}
 	}
 
-	mutating func setParameter(parameter: AttenuatorParameter, value: AUValue) {
+	mutating func setParameter(_ parameter: AttenuatorParameter, value: AUValue) {
 		switch parameter {
 		case .Gain:
 			valueGainLock.synchronized {
@@ -47,7 +47,7 @@ struct AttenuatorDSPKernel {
 	}
 
 	mutating func reset() {
-		setParameter(AttenuatorParameter.Gain, value:  AttenuatorParameter.Gain.defaultValue)
+		setParameter(AttenuatorParameter.Gain, value: AttenuatorParameter.Gain.defaultValue)
 	}
 
 	mutating func processInputBufferList(inAudioBufferList: UnsafeMutablePointer<AudioBufferList>,
@@ -58,24 +58,33 @@ struct AttenuatorDSPKernel {
 			let blI = UnsafeMutableAudioBufferListPointer(inAudioBufferList)
 			let blO = UnsafeMutableAudioBufferListPointer(outputBufferList)
 			for index in 0 ..< blO.count {
-				let bO = blO[index]
+				var bO = blO[index]
 				let bI = blI[index]
-				if bO.mData == nil { // Might be a nil
-					bO.mData.memory = bI.mData.memory
-					assert(false)
-				}
+            guard let inputData = bI.mData else {
+               continue
+            }
+            let outputData: UnsafeMutablePointer<Void>
+            if let bOData = bO.mData { // Might be a nil?
+					outputData = bOData
+            } else {
+					outputData = UnsafeMutablePointer<Void>(inputData)
+               bO.mData = outputData
+               assert(false)
+            }
 				// We are expecting one buffer per channel.
 				assert(bI.mNumberChannels == bO.mNumberChannels && bI.mNumberChannels == 1)
 				assert(bI.mDataByteSize == bO.mDataByteSize)
-				let samplesBI = UnsafePointer<SampleType>(bI.mData)
-				let samplesBO = UnsafeMutablePointer<SampleType>(bO.mData)
+				let samplesBI = UnsafePointer<SampleType>(inputData)
+				let samplesBO = UnsafeMutablePointer<SampleType>(outputData)
 				#if true
 					var gain = dspValueGain
 					var maximumMagnitudeValue: Float = 0
 					let numElementsToProcess = vDSP_Length(frameCount)
 					vDSP_vsmul(samplesBI, 1, &gain, samplesBO, 1, numElementsToProcess)
 					vDSP_maxmgv(samplesBO, 1, &maximumMagnitudeValue, numElementsToProcess)
-					_maximumMagnitude[index] = maximumMagnitudeLock.synchronized { return maximumMagnitudeValue }
+					_maximumMagnitude[index] = maximumMagnitudeLock.synchronized {
+                  return maximumMagnitudeValue
+               }
 				#else
 					// Applying gain by math
 					let numSamples = Int(bO.mDataByteSize / UInt32(sizeof(SampleType.self)))
