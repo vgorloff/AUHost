@@ -17,13 +17,13 @@ public final class MediaItemView: NSView {
 		}
 	}
 	private let textDragAndDropMessage: NSString = "Drop media file here..."
-	private var textDragAndDropColor = AlternativeValue<NSColor>(NSColor.grayColor(), altValue: NSColor.whiteColor())
-	private let textDragAndDropFont = NSFont.labelFontOfSize(17)
-	private let waveformColor = NSColor(hexString: "#51A2F3") ?? NSColor.redColor()
+	private var textDragAndDropColor = AlternativeValue<NSColor>(NSColor.gray(), altValue: NSColor.white())
+	private let textDragAndDropFont = NSFont.labelFont(ofSize: 17)
+	private let waveformColor = NSColor(hexString: "#51A2F3") ?? NSColor.red()
 	private let pbUtil = MediaObjectPasteboardUtility()
 	private lazy var wfCache = WaveformCacheUtility()
 	private lazy var wfDrawingProvider = WaveformDrawingDataProvider(dataType: .CGPoint)
-	var mediaFileURL: NSURL? {
+	var mediaFileURL: URL? {
 		didSet {
 			rebuildWaveform()
 		}
@@ -34,31 +34,31 @@ public final class MediaItemView: NSView {
 		}
 	}
 
-	public var onCompleteDragWithObjects: (MediaObjectPasteboardUtility.PasteboardObjects -> Void)?
+	public var onCompleteDragWithObjects: ((MediaObjectPasteboardUtility.PasteboardObjects) -> Void)?
 
 	// MARK: -
 
 	required public init?(coder: NSCoder) {
 		super.init(coder: coder)
-		registerForDraggedTypes(pbUtil.draggedTypes)
+		register(forDraggedTypes: pbUtil.draggedTypes)
 	}
 
 	public override init(frame frameRect: NSRect) {
 		super.init(frame: frameRect)
-		registerForDraggedTypes(pbUtil.draggedTypes)
+		register(forDraggedTypes: pbUtil.draggedTypes)
 	}
 
 	deinit {
 		unregisterDraggedTypes()
 	}
 
-	public override func drawRect(dirtyRect: NSRect) {
-		NSColor.whiteColor().setFill()
+	public override func draw(_ dirtyRect: NSRect) {
+		NSColor.white().setFill()
 		NSRectFill(dirtyRect)
 		(isHighlighted ? NSColor.keyboardFocusIndicatorColor() : NSColor.gridColor()).setStroke()
 		let borderWidth = isHighlighted ? 2.CGFloatValue : 1.CGFloatValue
 		NSBezierPath.setDefaultLineWidth(borderWidth)
-		NSBezierPath.strokeRect(bounds.insetBy(dx: 0.5 * borderWidth, dy: 0.5 * borderWidth))
+		NSBezierPath.stroke(bounds.insetBy(dx: 0.5 * borderWidth, dy: 0.5 * borderWidth))
 
 		textDragAndDropColor.useAltValue = cachedWaveform() != nil
 		drawWaveform()
@@ -67,64 +67,64 @@ public final class MediaItemView: NSView {
 
 	// MARK: - NSDraggingDestination
 
-	public override func draggingEntered(sender: NSDraggingInfo) -> NSDragOperation {
-		let result = pbUtil.objectsFromPasteboard(sender.draggingPasteboard())
+	public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
+		let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard())
 		switch result {
 		case .None:
 			isHighlighted = false
-			return NSDragOperation.None
+			return []
 		case .FilePaths, .MediaObjects:
 			isHighlighted = true
-			return NSDragOperation.Every
+			return NSDragOperation.every
 		}
 	}
 
-	public override func draggingUpdated(sender: NSDraggingInfo) -> NSDragOperation {
-		return NSDragOperation.Every
+	public override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
+		return NSDragOperation.every
 	}
 
-	public override func draggingExited(sender: NSDraggingInfo?) {
+	public override func draggingExited(_ sender: NSDraggingInfo?) {
 		isHighlighted = false
 	}
 
-	public override func prepareForDragOperation(sender: NSDraggingInfo) -> Bool {
+	public override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
 		return true
 	}
 
-	public override func performDragOperation(sender: NSDraggingInfo) -> Bool {
-		let result = pbUtil.objectsFromPasteboard(sender.draggingPasteboard())
+	public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
+		let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard())
 		switch result {
 		case .None:
 			isHighlighted = false
 			return false
 		case .MediaObjects(let dict):
-			Dispatch.Async.Main { [weak self] in
+			DispatchQueue.main.async { [weak self] in
 				self?.onCompleteDragWithObjects?(.MediaObjects(dict))
 			}
 			return true
 		case .FilePaths(let acceptedFilePaths):
-			Dispatch.Async.Main { [weak self] in
+			DispatchQueue.main.async { [weak self] in
 				self?.onCompleteDragWithObjects?(.FilePaths(acceptedFilePaths))
 			}
 			return true
 		}
 	}
 
-	public override func concludeDragOperation(sender: NSDraggingInfo?) {
+	public override func concludeDragOperation(_ sender: NSDraggingInfo?) {
 		isHighlighted = false
 	}
 
 	// MARK: - Private
 
 	private func getScaleFactor() -> CGFloat {
-		let backingSize = convertSizeToBacking(bounds.size)
+		let backingSize = convertToBacking(bounds.size)
 		return backingSize.width / bounds.size.width
 	}
 
 	private func drawWaveform() {
 
 		// !inLiveResize,
-		guard !inLiveResize, let context = NSGraphicsContext.currentContext()?.CGContext,
+		guard !inLiveResize, let context = NSGraphicsContext.current()?.cgContext,
 			let waveform = cachedWaveform() else {
 			return // FIXME: Implement interpolation for live resize and while waiting for waveform cashe arrival.
 		}
@@ -136,42 +136,44 @@ public final class MediaItemView: NSView {
 			height: bounds.height - lineWidth)
 		for index in 0..<waveform.count {
 			let waveformValue = waveform[index]
-			wfDrawingProvider.addVerticalLineAtXPosition(index.CGFloatValue / scaleFactor, valueMin: waveformValue.min.CGFloatValue,
+			wfDrawingProvider.addVerticalLineAtXPosition(xPosition: index.CGFloatValue / scaleFactor,
+			                                             valueMin: waveformValue.min.CGFloatValue,
 				valueMax: waveformValue.max.CGFloatValue)
 		}
-		CGContextSetShouldAntialias(context, false)
+		context.setShouldAntialias(false)
 //		CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor)
-		CGContextTranslateCTM(context, 0.5 / scaleFactor, 0.5 / scaleFactor); // Center the origin at center of a pixel
+		context.translate(x: 0.5 / scaleFactor, y: 0.5 / scaleFactor); // Center the origin at center of a pixel
 
-		CGContextSaveGState(context)
+		context.saveGState()
 //		CGContextFillRect(context, bounds)
-		CGContextSetStrokeColorWithColor(context, waveformColor.CGColor)
-		CGContextSetLineWidth(context, lineWidth)
-		CGContextStrokeLineSegments(context, wfDrawingProvider.points, wfDrawingProvider.numberOfPoints)
-		CGContextRestoreGState(context)
+		context.setStrokeColor(waveformColor.cgColor)
+		context.setLineWidth(lineWidth)
+		context.strokeLineSegments(between: wfDrawingProvider.points, count: wfDrawingProvider.numberOfPoints)
+		context.restoreGState()
 	}
 
 	private func drawTextMessage() {
 		let paragraphStyle = NSMutableParagraphStyle()
-		paragraphStyle.alignment = NSTextAlignment.Center
+		paragraphStyle.alignment = NSTextAlignment.center
 		let attributes = [NSParagraphStyleAttributeName: paragraphStyle,
 			NSForegroundColorAttributeName: textDragAndDropColor.currentValue,
 			NSFontAttributeName: textDragAndDropFont]
-		let textSize = textDragAndDropMessage.sizeWithAttributes(attributes)
+    let textSize = textDragAndDropMessage.size(withAttributes: attributes)
 		let offsetX = bounds.height - textSize.height
-		textDragAndDropMessage.drawInRect(bounds.insetBy(dx: 8, dy: offsetX * 0.5), withAttributes: attributes)
+    textDragAndDropMessage.draw(in: bounds.insetBy(dx: 8, dy: offsetX * 0.5), withAttributes: attributes)
 	}
 
 	private func rebuildWaveform() {
 		guard let mf = mediaFileURL else {
 			return
 		}
-		wfCache.buildWaveformForResolution(fileURL: mf, resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
+		wfCache.buildWaveformForResolution(fileURL: mf as URL,
+		                                   resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
 			switch result {
 			case .Failure(let e):
 				Swift.print(e)
 			case .Success(_):
-				Dispatch.Async.Main { [weak self] in
+				DispatchQueue.main.async { [weak self] in
 					self?.needsDisplay = true
 				}
 			}
@@ -182,7 +184,7 @@ public final class MediaItemView: NSView {
 		guard let mf = mediaFileURL else {
 			return nil
 		}
-		return wfCache.cachedWaveformForResolution(mf, resolution: UInt64(bounds.width * getScaleFactor()))
+		return wfCache.cachedWaveformForResolution(url: mf, resolution: UInt64(bounds.width * getScaleFactor()))
 	}
 
 }

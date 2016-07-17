@@ -16,10 +16,10 @@ public class NotificationObserver {
 
 	public init(notificationName: String,
 		object: AnyObject? = nil,
-		queue: NSOperationQueue = NSOperationQueue.mainQueue(),
+		queue: OperationQueue = OperationQueue.main,
 		usingBlock: HandleNotificationBlock? = nil) {
 			notificationCallbackBlock = usingBlock
-			notificationObserver = NSNotificationCenter.defaultCenter().addObserverForName(notificationName,
+			notificationObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: notificationName),
 				object: object, queue: queue) { [weak self] n in
 					self?.handleNotification(n)
 			}
@@ -27,13 +27,13 @@ public class NotificationObserver {
 
 	deinit {
 		notificationCallbackBlock = nil
-		NSNotificationCenter.defaultCenter().removeObserver(notificationObserver)
+		NotificationCenter.default.removeObserver(notificationObserver)
 	}
 
 	/// Calls block which was passed as *usingBlock* parameter.
 	/// Child classes may override to change default behaviour.
 	/// - parameter notification: Notification to handle.
-	public func handleNotification(notification: NSNotification) {
+	public func handleNotification(_ notification: NSNotification) {
 		if let callbackBlock = notificationCallbackBlock {
 			callbackBlock(notification)
 		}

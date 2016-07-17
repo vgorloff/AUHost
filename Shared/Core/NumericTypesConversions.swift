@@ -50,16 +50,19 @@ public protocol CGFloatRepresentable {
 
 //region MARK: Implementations
 
-extension Int: UInt32Representable {
+extension Int: UInt32Representable, CGFloatRepresentable, DoubleRepresentable, Int32Representable {
 	public var uint32Value: UInt32 {
 		return UInt32(self)
 	}
-}
-
-extension Int: CGFloatRepresentable {
 	public var CGFloatValue: CGFloat { // swiftlint:disable:this variable_name
 		return CGFloat(self)
 	}
+   public var doubleValue: Double {
+      return Double(self)
+   }
+   public var int32Value: Int32 {
+      return Int32(self)
+   }
 }
 
 extension Int32: UInt32Representable {
@@ -74,82 +77,76 @@ extension Int64: DoubleRepresentable {
 	}
 }
 
-extension UInt: IntRepresentable {
+extension UInt: IntRepresentable, UInt32Representable {
 	public var intValue: Int {
 		return Int(self)
 	}
-}
-
-extension UInt: UInt32Representable {
 	public var uint32Value: UInt32 {
 		return UInt32(self)
 	}
 }
 
-extension UInt32: IntRepresentable {
-	public var intValue: Int {
-		return Int(self)
-	}
-}
-
-extension UInt32: Int32Representable {
+extension UInt32: IntRepresentable, Int32Representable, UIntRepresentable, DoubleRepresentable {
+   public var intValue: Int {
+      return Int(self)
+   }
 	public var int32Value: Int32 {
 		return Int32(self)
 	}
-}
-
-extension UInt32: UIntRepresentable {
 	public var uintValue: UInt {
 		return UInt(self)
 	}
-}
-
-extension UInt32: DoubleRepresentable {
 	public var doubleValue: Double {
 		return Double(self)
 	}
 }
 
-extension UInt64: DoubleRepresentable {
+extension UInt64: DoubleRepresentable, Int64Representable {
 	public var doubleValue: Double {
 		return Double(self)
 	}
-}
-
-extension UInt64: Int64Representable {
 	public var int64Value: Int64 {
 		return Int64(self)
 	}
 }
 
-extension Float: CGFloatRepresentable {
+extension Float: CGFloatRepresentable, IntRepresentable {
 	public var CGFloatValue: CGFloat { // swiftlint:disable:this variable_name
 		return CGFloat(self)
 	}
+   public var intValue: Int {
+      return Int(self)
+   }
 }
 
-extension Double: CGFloatRepresentable {
+extension Double: CGFloatRepresentable, FloatRepresentable, Int64Representable, UInt64Representable {
 	public var CGFloatValue: CGFloat { // swiftlint:disable:this variable_name
 		return CGFloat(self)
 	}
-}
-
-extension Double: FloatRepresentable {
 	public var floatValue: Float {
 		return Float(self)
 	}
-}
-
-extension Double: Int64Representable {
 	public var int64Value: Int64 {
 		return Int64(self)
 	}
-}
-
-extension Double: UInt64Representable {
 	public var uint64Value: UInt64 {
 		return UInt64(self)
 	}
+}
+
+extension CGFloat: FloatRepresentable, DoubleRepresentable, IntRepresentable, Int32Representable {
+	public var floatValue: Float {
+		return Float(self)
+	}
+   public var doubleValue: Double {
+		return Double(self)
+   }
+   public var intValue: Int {
+      return Int(self)
+   }
+   public var int32Value: Int32 {
+      return Int32(self)
+   }
 }
 
 //endregion

@@ -28,11 +28,11 @@ public struct MediaObjectPasteboardUtility {
 			return .None
 		}
 		if pasteboardTypes.contains(mediaLibraryPasteboardType),
-			let dict = pasteboard.propertyListForType(mediaLibraryPasteboardType) as? NSDictionary {
+			let dict = pasteboard.propertyList(forType: mediaLibraryPasteboardType) as? NSDictionary {
 				return .MediaObjects(dict)
 		} else if pasteboardTypes.contains(NSFilenamesPboardType),
-			let filePaths = pasteboard.propertyListForType(NSFilenamesPboardType) as? [String] {
-				let acceptedFilePaths = filteredFilePaths(filePaths)
+			let filePaths = pasteboard.propertyList(forType: NSFilenamesPboardType) as? [String] {
+				let acceptedFilePaths = filteredFilePaths(pasteboardFilePaths: filePaths)
 				return acceptedFilePaths.count > 0 ? .FilePaths(acceptedFilePaths) : .None
 		} else {
 			return .None
@@ -40,9 +40,10 @@ public struct MediaObjectPasteboardUtility {
 	}
 
 	private func filteredFilePaths(pasteboardFilePaths: [String]) -> [String] {
-		let ws = NSWorkspace.sharedWorkspace()
+		let ws = NSWorkspace.shared()
 		let result = pasteboardFilePaths.filter { element in
-			if let fileType = trythrow({try ws.typeOfFile(element)}) {
+      let fileType: String? = tryOrWarn {try ws.type(ofFile: element)}
+			if let fileType = fileType {
 				return UTTypeConformsTo(fileType, kUTTypeAudio)
 			}
 			return false
