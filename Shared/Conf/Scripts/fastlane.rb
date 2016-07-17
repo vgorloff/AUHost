@@ -85,8 +85,7 @@ def ValidateApp(path)
   sh "xcrun spctl -a -t exec -vv \"#{path}\"; xcrun codesign --verify \"#{path}\""
 end
 
-def Bump(relativePath)
-  awl_buildNumber = increment_build_number(xcodeproj: relativePath)
+def Bump(*relativePaths)
   awl_versionFromTag = last_git_tag
   values = git_branch.split("/")
   values.each do |value|
@@ -94,8 +93,11 @@ def Bump(relativePath)
         awl_versionFromTag = value
       end
   end
-  increment_version_number(version_number: awl_versionFromTag, xcodeproj: relativePath)
-  git_commit(path: "./", message: "Version Bump #{awl_versionFromTag}x#{awl_buildNumber}")
+  relativePaths.each { |relativePath|
+    awl_buildNumber = increment_build_number(xcodeproj: relativePath)
+    increment_version_number(version_number: awl_versionFromTag, xcodeproj: relativePath)
+    git_commit(path: "./", message: "Version Bump #{awl_versionFromTag}x#{awl_buildNumber}")
+  }
 end
 
 # class XcodeBuild
