@@ -23,7 +23,7 @@ final class PlaybackEngineContext {
 	// MARK: -
 	init() {
 		log.logInit()
-		engine.attachNode(player)
+		engine.attach(player)
 	}
 
 	deinit {
@@ -38,7 +38,7 @@ final class PlaybackEngineContext {
 	}
 
 	func pause() {
-		if let renderTime = player.lastRenderTime, let playerTime = player.playerTimeForNodeTime(renderTime) {
+		if let renderTime = player.lastRenderTime, let playerTime = player.playerTime(forNodeTime: renderTime) {
 			playbackOffset += playerTime.sampleTime
 		}
 		player.pause()
@@ -46,7 +46,7 @@ final class PlaybackEngineContext {
 	}
 
 	func stopPlayer() {
-		if let renderTime = player.lastRenderTime, let playerTime = player.playerTimeForNodeTime(renderTime) {
+		if let renderTime = player.lastRenderTime, let playerTime = player.playerTime(forNodeTime: renderTime) {
 			playbackOffset += playerTime.sampleTime
 		}
 		player.stop()
@@ -56,7 +56,7 @@ final class PlaybackEngineContext {
 		guard let file = file else {
 			throw PlaybackEngineStateError.FileIsNotSet
 		}
-		scheduleFile(file, offset: playbackOffset)
+		scheduleFile(file: file, offset: playbackOffset)
 		player.play()
 	}
 
@@ -64,7 +64,7 @@ final class PlaybackEngineContext {
 		guard let file = file else {
 			throw PlaybackEngineStateError.FileIsNotSet
 		}
-		scheduleFile(file, offset: playbackOffset)
+		scheduleFile(file: file, offset: playbackOffset)
 	}
 
 	func stop() {
@@ -79,7 +79,7 @@ final class PlaybackEngineContext {
 		player.play()
 	}
 
-	func setFileToPlay(aFile: AVAudioFile?) {
+	func setFileToPlay(_ aFile: AVAudioFile?) {
 		defer {
 			file = aFile
 		}
@@ -104,22 +104,22 @@ final class PlaybackEngineContext {
 	}
 
 	func selectEffect(componentDescription: AudioComponentDescription?,
-		completionHandler: (PlaybackEngineEffectSelectionResult -> Void)) {
+		completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)) {
 			guard let desc = componentDescription else {
-				Dispatch.Async.Main { [weak self] in
+				DispatchQueue.main.async { [weak self] in
 					self?.clearEffect()
 					completionHandler(.EffectCleared)
 				}
 				return
 			}
 			let flags = AudioComponentFlags(rawValue: desc.componentFlags)
-			let canLoadInProcess = flags.contains(AudioComponentFlags.CanLoadInProcess)
-			let loadOptions: AudioComponentInstantiationOptions = canLoadInProcess ? .LoadInProcess : .LoadOutOfProcess
-			AVAudioUnit.instantiateWithComponentDescription(desc, options: loadOptions) {[weak self] (avAudioUnit, error) in
+			let canLoadInProcess = flags.contains(AudioComponentFlags.canLoadInProcess)
+			let loadOptions: AudioComponentInstantiationOptions = canLoadInProcess ? .loadInProcess : .loadOutOfProcess
+			AVAudioUnit.instantiate(with: desc, options: loadOptions) {[weak self] (avAudioUnit, error) in
 				if let e = error {
 					completionHandler(.Failure(e))
 				} else if let effect = avAudioUnit {
-					Dispatch.Async.Main { [weak self] in
+					DispatchQueue.main.async { [weak self] in
 						self?.assignEffect(effect)
 						completionHandler(.Success(effect))
 					}
@@ -136,7 +136,7 @@ final class PlaybackEngineContext {
 			effect = nil
 		}
 		if let existedEffect = effect {
-			engine.detachNode(existedEffect) // Will dissconnect node as well
+			engine.detach(existedEffect) // Will dissconnect node as well
 		}
 		if let file = file {
 			engine.connect(player, to: engine.mainMixerNode, format: file.processingFormat)
@@ -145,14 +145,14 @@ final class PlaybackEngineContext {
 		}
 	}
 
-	private func assignEffect(anEffect: AVAudioUnit) {
+	private func assignEffect(_ anEffect: AVAudioUnit) {
 		defer {
 			effect = anEffect
 		}
 		if let existedEffect = effect {
-			engine.detachNode(existedEffect) // Will dissconnect node as well
+			engine.detach(existedEffect) // Will dissconnect node as well
 		}
-		engine.attachNode(anEffect)
+		engine.attach(anEffect)
 		guard let existedFile = file else {
 			return
 		}
@@ -171,7 +171,7 @@ final class PlaybackEngineContext {
 		statistics.append("File samplerate: \(file.fileFormat.sampleRate)")
 		statistics.append("File playback offset: \(offset)")
 		statistics.append("Frames to play: \(framesToPlay)")
-		log.logDebug(statistics.joinWithSeparator("; "))
+		log.logDebug(statistics.joined(separator: "; "))
 		guard framesToPlay > 0 else {
 			log.logWarn("Nothing to play. Check value of 'playbackOffset' property.")
 			return
@@ -180,7 +180,7 @@ final class PlaybackEngineContext {
 		/// If there will be problems with playback status, then see this workaround
 		/// [ios8 - completionHandler of AVAudioPlayerNode.scheduleFile() is called too early - Stack Overflow]
 		/// (http://stackoverflow.com/questions/29427253/completionhandler-of-avaudioplayernode-schedulefile-is-called-too-early)
-		player.scheduleSegment(file, startingFrame: offset, frameCount: framesToPlay, atTime: nil) { [weak self] in
+		player.scheduleSegment(file, startingFrame: offset, frameCount: framesToPlay, at: nil) { [weak self] in
 			self?.filePlaybackCompleted?()
 		}
 	}

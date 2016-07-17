@@ -9,31 +9,31 @@
 import Foundation
 
 public struct KVOHelperResult<T: Any> {
-	private var _kind: NSKeyValueChange
-	public var change: [String : AnyObject]
+	private var changeKind: NSKeyValueChange
+	public var change: [NSKeyValueChangeKey: AnyObject]
 	public var kind: NSKeyValueChange {
-		return _kind
+		return changeKind
 	}
 	public var valueNew: T? {
-		return change[NSKeyValueChangeNewKey] as? T
+		return change[.newKey] as? T
 	}
 	public var valueOld: T? {
-		return change[NSKeyValueChangeOldKey] as? T
+		return change[.oldKey] as? T
 	}
 	var isPrior: Bool {
-		return (change[NSKeyValueChangeNotificationIsPriorKey] as? NSNumber)?.boolValue ?? false
+		return (change[.notificationIsPriorKey] as? NSNumber)?.boolValue ?? false
 	}
 	var indexes: NSIndexSet? {
-		return change[NSKeyValueChangeIndexesKey] as? NSIndexSet
+		return change[.indexesKey] as? NSIndexSet
 	}
-	init?(change aChange: [String : AnyObject]) {
+	init?(change aChange: [NSKeyValueChangeKey: AnyObject]) {
 		change = aChange
 		guard
-			let changeKind = change[NSKeyValueChangeKindKey] as? NSNumber,
-			let lKind = NSKeyValueChange.init(rawValue: changeKind.unsignedIntegerValue) else {
+			let changeKindNumberValue = change[.kindKey] as? NSNumber,
+			let changeKindEnumValue = NSKeyValueChange.init(rawValue: changeKindNumberValue.uintValue) else {
 				return nil
 		}
-		_kind = lKind
+		changeKind = changeKindEnumValue
 	}
 }
 
@@ -46,7 +46,7 @@ public struct KVOHelperResult<T: Any> {
 ///~~~
 public final class KVOHelper<T: Any>: NSObject {
 
-	public typealias ChangeCallback = KVOHelperResult<T> -> Void
+	public typealias ChangeCallback = (KVOHelperResult<T>) -> Void
 
 	private var context = 0
 	private var object: NSObject
@@ -56,7 +56,7 @@ public final class KVOHelper<T: Any>: NSObject {
 
 	public var suspended = false // TODO: Maybe there is needed Thread-Safe implementation. By Vlad Gorlov, Jan 13, 2016.
 
-	public init(object anObject: NSObject, keyPath aKeyPath: String, options anOptions: NSKeyValueObservingOptions = .New,
+	public init(object anObject: NSObject, keyPath aKeyPath: String, options anOptions: NSKeyValueObservingOptions = .new,
 		changeCallback aCallback: ChangeCallback) {
 		object = anObject
 		keyPath = aKeyPath
@@ -70,14 +70,14 @@ public final class KVOHelper<T: Any>: NSObject {
 		object.removeObserver(self, forKeyPath: keyPath, context: &context)
 	}
 
-	override public func observeValueForKeyPath(aKeyPath: String?, ofObject object: AnyObject?,
-		change aChange: [String : AnyObject]?, context aContext: UnsafeMutablePointer<Void>) {
+	override public func observeValue(forKeyPath aKeyPath: String?, of object: AnyObject?,
+		change aChange: [NSKeyValueChangeKey : AnyObject]?, context aContext: UnsafeMutablePointer<Void>?) {
 			if aContext == &context && aKeyPath == keyPath {
 				if !suspended, let change = aChange, let result = KVOHelperResult<T>(change: change) {
 					changeCallback(result)
 				}
 			} else {
-				super.observeValueForKeyPath(keyPath, ofObject: object, change: aChange, context: aContext)
+				super.observeValue(forKeyPath: keyPath, of: object, change: aChange, context: aContext)
 			}
 	}
 }

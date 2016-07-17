@@ -14,15 +14,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var mediaLibraryLoader = MediaLibraryUtility()
 	var playbackEngine = PlaybackEngine()
 
-  func applicationDidFinishLaunching(aNotification: NSNotification) {
-		Logger.sharedLoggerProperties.logAsynchroniously.value = false
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
+		Logger.sharedLoggerProperties.logAsynchronously.value = false
   }
 
-  func applicationWillTerminate(aNotification: NSNotification) {
+  func applicationWillTerminate(aNotification: Notification) {
     // Insert code here to tear down your application
   }
 
-  func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
+  func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
     return true
   }
 

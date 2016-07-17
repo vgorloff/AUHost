@@ -8,17 +8,19 @@ public protocol StateMachineGraphType {
 	associatedtype Event
 	associatedtype Context
 	var initialState: State { get }
-	var transitionGraph: (State, Event) -> (State, (Context throws -> Void)?)? { get }
-	init(initialState: State, transitionGraph: (State, Event) -> (State, (Context throws -> Void)?)?)
+	var transitionGraph: (State, Event) -> (State, ((Context) throws -> Void)?)? { get }
+	init(initialState: State, transitionGraph: (State, Event) -> (State, ((Context) throws -> Void)?)?)
 }
 
 public struct StateMachineGraph<State, Event, Context>: StateMachineGraphType {
+  public typealias Action = (Context) throws -> Void
+  public typealias Request = (State, Event)
+  public typealias Response = (State, Action?)
 	public let initialState: State
-	public let transitionGraph: (State, Event) -> (State, (Context throws -> Void)?)?
-	public init(initialState aInitialState: State,
-		transitionGraph aTransitionGraph: (State, Event) -> (State, (Context throws -> Void)?)?) {
-		initialState = aInitialState
-		transitionGraph = aTransitionGraph
+	public let transitionGraph: (Request) -> Response?
+	public init(initialState: State, transitionGraph: (Request) -> Response?) {
+		self.initialState = initialState
+		self.transitionGraph = transitionGraph
 	}
 }
 
@@ -30,10 +32,10 @@ public struct StateMachine<T: StateMachineGraphType> {
 	private let graph: T
 	public private(set) var state: T.State
 	public var stateChangeHandler: ((old: T.State, event: T.Event, new: T.State) -> ())?
-	public init(context aContext: T.Context, graph aGraph: T) {
-		context = aContext
-		graph = aGraph
-		state = aGraph.initialState
+	public init(context: T.Context, graph: T) {
+		self.context = context
+		self.graph = graph
+		self.state = graph.initialState
 	}
 	public mutating func handleEvent(event: T.Event) throws {
 		if let (newState, transition) = graph.transitionGraph(state, event) {

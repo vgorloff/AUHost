@@ -8,6 +8,29 @@
 
 import Darwin
 
+/// - SeeAlso: [ How does one generate a random number in Apple's Swift language? - Stack Overflow ]
+/// (http://stackoverflow.com/questions/24007129/how-does-one-generate-a-random-number-in-apples-swift-language)
+protocol RandomInRangeValueType: Comparable {
+   static func randomValue(in: Range<Self>) -> Self
+}
+
+extension UInt32: RandomInRangeValueType {
+   static func randomValue(in range: Range<UInt32>) -> UInt32 {
+      let upperBound = (range.upperBound - range.lowerBound)
+      let randomNumber = arc4random_uniform(upperBound)
+      return range.lowerBound + randomNumber
+   }
+}
+
+extension Float: RandomInRangeValueType {
+   static func randomValue(in range: Range<Float>) -> Float {
+      var randomValue: UInt32 = 0
+      arc4random_buf(&randomValue, sizeof(UInt32.self))
+      let randomValueFloat = Float(randomValue) / Float(UInt32.max)
+      return (randomValueFloat * (range.upperBound - range.lowerBound)) + range.lowerBound
+   }
+}
+
 public struct Math {
 
 	public static func PlaceValueInRange<T: Comparable>(value: T, min: T, max: T) -> T {
@@ -46,7 +69,7 @@ public struct Math {
 		return true
 	}
 
-	public static func gcd<T: IntegerType>(valueA: T, _ valueB: T) -> T {
+	public static func gcd<T: Integer>(valueA: T, _ valueB: T) -> T {
 		var divisor = max(valueA, valueB)
 		repeat {
 			if valueA % divisor == 0 && valueB % divisor == 0 {
@@ -64,13 +87,13 @@ public struct Math {
 		(optimalBufferSize: UInt64, numberOfBuffers: UInt) {
 		assert(resolution > 0)
 		let scaleCoefficient = Double(dataSize) / Double(resolution)
-		var devider: Double = 1
+		var divider: Double = 1
 		var result = scaleCoefficient
 		while result > Double(maxBufferSize) {
-			devider += 1
-			result = scaleCoefficient / devider
+			divider += 1
+			result = scaleCoefficient / divider
 		}
-			return (optimalBufferSize: UInt64(ceil(result)), numberOfBuffers: UInt(devider) )
+			return (optimalBufferSize: UInt64(ceil(result)), numberOfBuffers: UInt(divider) )
 	}
 
 }

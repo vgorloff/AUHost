@@ -14,15 +14,15 @@ class AttenuatorView: NSView {
 	@IBOutlet private weak var sliderGain: NSSlider!
 	@IBOutlet private(set) weak var viewLevelMeter: VULevelMeter!
 
-	private var displayLinkUtility: CVDisplayLinkHelper?
+	private var displayLinkUtility: DisplayLinkRenderer?
 
 	var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
-	var meterRefreshCallback: (Void -> [AttenuatorDSPKernel.SampleType]?)?
+	var meterRefreshCallback: ((Void) -> [AttenuatorDSPKernel.SampleType]?)?
 
 	override func awakeFromNib() {
 		super.awakeFromNib()
-		displayLinkUtility = trythrow { return try CVDisplayLinkHelper(frameRateDevider: 60/10) }
-		displayLinkUtility?.displayLinkCallback = { [weak self] in
+		displayLinkUtility = tryOrWarn { return try DisplayLinkRenderer(frameRateDivider: 60/10) }
+		displayLinkUtility?.renderCallback = { [weak self] in
 			if let value = self?.meterRefreshCallback?() {
 				self?.viewLevelMeter.level = value
 			}
@@ -33,15 +33,15 @@ class AttenuatorView: NSView {
 		sliderGain.floatValue = withValue
 	}
 
-	@IBAction private func handleGainChange(sender: NSSlider) {
+	@IBAction private func handleGainChange(_ sender: NSSlider) {
 		handlerParameterDidChaned?(AttenuatorParameter.Gain, sender.floatValue)
 	}
 
 	func startMetering() {
-		trythrow {try displayLinkUtility?.start()}
+		_ = tryOrWarn {try displayLinkUtility?.start()}
 	}
 
 	func stopMetering() {
-		trythrow {try displayLinkUtility?.stop()}
+		_ = tryOrWarn {try displayLinkUtility?.stop()}
 	}
 }

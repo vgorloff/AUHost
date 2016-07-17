@@ -19,10 +19,10 @@ public final class AudioComponentsUtility {
 	private var observerOfComponentChange: NotificationObserver?
 	private var observerOfComponentInvalidate: NotificationObserver?
 	private lazy var log: Logger = Logger(sender: self, context: .Media)
-	private lazy var notificationsQueue = NSOperationQueue.Concurrent.Utility()
+	private lazy var notificationsQueue = OperationQueue.Concurrent.Utility()
 
-	public var handlerStateChange: (StateChange -> Void)?
-	public var completionHandlerQueue = DispatchQueue.Main
+	public var handlerStateChange: ((StateChange) -> Void)?
+	public var completionHandlerQueue = DispatchQueue.main
 
 	public init() {
 		setUpObservers()
@@ -37,20 +37,19 @@ public final class AudioComponentsUtility {
 	/// **Note** Always calls completion handler on main queue
 	/// - parameter queue: Queue used to query components.
 	/// - parameter completion: Result completion handler.
-	public func updateEffectList(queue: dispatch_queue_t = DispatchQueue.Utility, completion: [AVAudioUnitComponent] -> Void) {
+	public func updateEffectList(queue: DispatchQueue = DispatchQueue.Utility, completion: ([AVAudioUnitComponent]) -> Void) {
 		// Locating components can be a little slow, especially the first time.
 		// Do this work on a separate dispatch thread.
-		dispatch_async(queue) { [weak self] in guard let s = self else { return }
+		queue.async { [weak self] in guard let s = self else { return }
 			var anyEffectDescription = AudioComponentDescription()
 			anyEffectDescription.componentType = kAudioUnitType_Effect
 			anyEffectDescription.componentSubType = 0
 			anyEffectDescription.componentManufacturer = 0
 			anyEffectDescription.componentFlags = 0
 			anyEffectDescription.componentFlagsMask = 0
-			let effects = AVAudioUnitComponentManager.sharedAudioUnitComponentManager()
-				.componentsMatchingDescription(anyEffectDescription)
+			let effects = AVAudioUnitComponentManager.shared().components(matching: anyEffectDescription)
 
-			dispatch_async(s.completionHandlerQueue) {
+			s.completionHandlerQueue.async {
 				completion(effects)
 			}
 		}
@@ -64,7 +63,7 @@ public final class AudioComponentsUtility {
 				guard let s1 = self else {
 					return
 				}
-				dispatch_async(s1.completionHandlerQueue) { [weak s1] in
+				s1.completionHandlerQueue.async { [weak s1] in
 					guard let s2 = s1 else {
 						return
 					}
@@ -82,10 +81,10 @@ public final class AudioComponentsUtility {
 				}
 				var audioUnit: AudioUnit?
 				if let value = notification.userInfo?["audioUnit"] as? NSValue {
-					let pointer = unsafeBitCast(value.pointerValue, UnsafeMutablePointer<AudioUnit>.self)
-					audioUnit = pointer.memory
+          let pointer = unsafeBitCast(value.pointerValue, to: UnsafeMutablePointer<AudioUnit>.self)
+					audioUnit = pointer.pointee
 				}
-				dispatch_async(s1.completionHandlerQueue) { [weak s1] in
+				s1.completionHandlerQueue.async { [weak s1] in
 					guard let s2 = s1 else {
 						return
 					}
