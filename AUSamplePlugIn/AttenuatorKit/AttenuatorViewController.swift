@@ -14,14 +14,12 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 	// MARK: -
 
 	public override func loadView() {
-		var topLevelObjects: NSArray?
-		guard
-			let nib = NSNib(nibNamed: String(AttenuatorViewController.self),
-			                bundle: NSBundle(forClass: AttenuatorViewController.self)) where
-			nib.instantiateWithOwner(self, topLevelObjects: &topLevelObjects), let objects = topLevelObjects else {
+		var topLevelObjects = NSArray()
+		guard let nib = NSNib(nibNamed: String(AttenuatorViewController.self), bundle: Bundle(for: AttenuatorViewController.self))
+         where nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects) else {
 				fatalError()
 		}
-		for object in objects {
+		for object in topLevelObjects {
 			if let v = object as? AttenuatorView {
 				view = v
 				return
@@ -44,7 +42,7 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 		audioUnit?.view?.stopMetering()
 	}
 
-	public func createAudioUnitWithComponentDescription(componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
+	public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
 		let au = try AttenuatorAudioUnit(componentDescription: componentDescription, options: [])
 		audioUnit = au
 		audioUnit?.view = view as? AttenuatorView

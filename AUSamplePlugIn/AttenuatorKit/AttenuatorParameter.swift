@@ -10,7 +10,7 @@ import AudioUnit
 
 enum AttenuatorParameter: UInt64 {
 	case Gain = 1000
-	static func fromRawValue(rawValue: UInt64) -> AttenuatorParameter {
+	static func fromRawValue(_ rawValue: UInt64) -> AttenuatorParameter {
 		if let value = AttenuatorParameter.init(rawValue: rawValue) {
 			return value
 		}
