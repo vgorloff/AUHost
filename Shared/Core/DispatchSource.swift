@@ -66,7 +66,7 @@ public protocol SmartDispatchSourceType: class {
    func setEventHandler(qos: DispatchQoS, flags: DispatchWorkItemFlags, handler: ((Void) -> Void)?)
 }
 
-public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType {
+public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType, CustomReflectable {
 
    private var dispatchSource: DispatchSourceType? = nil
    private var dispatchSourceSuspendCount = 1
@@ -88,7 +88,7 @@ public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceT
       _deinit()
    }
 
-   public func customMirror() -> Mirror {
+	public var customMirror: Mirror {
       let children = DictionaryLiteral<String, Any>(dictionaryLiteral: ("dispatchSourceSuspendCount", dispatchSourceSuspendCount))
       return Mirror(self, children: children)
    }

@@ -15,7 +15,7 @@ public final class MediaLibraryUtility: NSObject {
 		case MediaSourceChanged([String : MLMediaSource]?)
 	}
 
-	private lazy var log: Logger = {[unowned self] in return Logger(sender: self, context: .Model)}()
+	private lazy var log: Logger = Logger(sender: self, context: .Model)
 	private lazy var _mediaLibrary: MLMediaLibrary = self.setUpMediaLibrary()
 	private var kvoObserverOfMediaSources: KVOHelper<[String : MLMediaSource]>?
 	private var mediaLibraryLoadCallback: ((Void) -> Void)?
@@ -25,11 +25,11 @@ public final class MediaLibraryUtility: NSObject {
 
 	public override init() {
 		super.init()
-		log.logInit()
+		log.initialize()
 		kvoObserverOfMediaSources = KVOHelper(object: _mediaLibrary, keyPath: "mediaSources") { [weak self] result in
 			guard let s = self else { return }
 			if let value = result.valueNew {
-				s.log.logVerbose("Found \(value.count) media sources: \(Array(value.keys))")
+				s.log.verbose("Found \(value.count) media sources: \(Array(value.keys))")
 				for mediaSource in value.values {
 					_ = mediaSource.rootMediaGroup // Triggering lazy initialization
 					// TODO: It is better to setup another KVO roundtrip. By Vlad Gorlov, Jan 15, 2016.
@@ -43,7 +43,7 @@ public final class MediaLibraryUtility: NSObject {
 
 	deinit {
 		kvoObserverOfMediaSources = nil
-		log.logDeinit()
+		log.deinitialize()
 	}
 
 	public func loadMediaLibrary(completion: ((Void) -> Void)?) {

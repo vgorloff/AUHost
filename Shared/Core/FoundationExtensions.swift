@@ -172,7 +172,7 @@ public enum BundleError: ErrorProtocol {
 
 public extension Bundle {
 
-	public func urlForResource(resourceName: String, resourceExtension: String) throws -> NSURL {
+	public func urlForResource(resourceName: String, resourceExtension: String) throws -> URL {
 		guard let url = urlForResource(resourceName, withExtension: resourceExtension) else {
 			throw BundleError.MissedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
 		}
@@ -184,7 +184,8 @@ public extension Bundle {
 
 public enum NSDictionaryError: ErrorProtocol {
 	case UnableToWriteToFile(String)
-	case UnableToReadFromURL(NSURL)
+	case UnableToReadFromURL(URL)
+	case MissedRequiredKey(String)
 }
 
 public extension NSDictionary {
@@ -192,12 +193,33 @@ public extension NSDictionary {
 	public func hasKey<T: AnyObject where T: Equatable>(key: T) -> Bool {
 		return allKeys.filter { element in return (element as? T) == key }.count == 1
 	}
+	public func value<T>(forRequiredKey key: AnyObject) throws -> T {
+		guard let value = object(forKey: key) as? T else {
+			throw NSDictionaryError.MissedRequiredKey(String(key))
+		}
+		return value
+	}
+
+	public func value<T>(forOptionalKey key: AnyObject) -> T? {
+		if let value = object(forKey: key) as? T {
+			return value
+		}
+		return nil
+	}
+
+	public func value<T>(forOptionalKey key: String) -> T? {
+		if let value = object(forKey: key) as? T {
+			return value
+		}
+		return nil
+	}
+
 	public func writePlistToFile(path: String, atomically: Bool) throws {
 		if !write(toFile: path, atomically: atomically) {
 			throw NSDictionaryError.UnableToWriteToFile(path)
 		}
 	}
-	public static func readPlistFromURL(plistURL: URL) throws -> NSDictionary {
+	public static func readPlist(fromURL plistURL: URL) throws -> NSDictionary {
 		guard let plist = NSDictionary(contentsOf: plistURL) else {
 			throw NSDictionaryError.UnableToReadFromURL(plistURL)
 		}
@@ -236,6 +258,10 @@ public extension DispatchQueue {
 		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosBackground)
 	}
 
+	public static func serial(label: String) -> DispatchQueue {
+		return DispatchQueue(label: label, attributes: .serial)
+	}
+
 	public func smartSync<T>(execute work: @noescape () throws -> T) rethrows -> T {
 		if Thread.isMainThread {
 			return try work()
@@ -257,7 +283,7 @@ public enum FileManagerError: ErrorProtocol {
 
 public extension FileManager {
 
-	public class var applicationDocumentsDirectory: NSURL {
+	public class var applicationDocumentsDirectory: URL {
 		let urls = self.default.urlsForDirectory(.documentDirectory, inDomains: .userDomainMask)
 		return urls[urls.count-1]
 	}
@@ -276,10 +302,10 @@ public extension FileManager {
 
 }
 
-public extension NSURL {
+public extension URL {
 
 	// Every element is a string in key=value format
-	public class func requestQueryFromParameters(elements: [String]) -> String {
+	public static func requestQueryFromParameters(elements: [String]) -> String {
 		if elements.count > 0 {
 			return elements[1..<elements.count].reduce(elements[0], combine: {$0 + "&" + $1})
 		} else {
@@ -290,7 +316,7 @@ public extension NSURL {
 
 public extension UserDefaults {
 
-	public func setDate(value: NSDate?, forKey key: String) {
+	public func setDate(_ value: NSDate?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -298,7 +324,7 @@ public extension UserDefaults {
 		}
 	}
 
-	public func setString(value: String?, forKey key: String) {
+	public func setString(_ value: String?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -306,7 +332,7 @@ public extension UserDefaults {
 		}
 	}
 
-	public func setBool(value: Bool?, forKey key: String) {
+	public func setBool(_ value: Bool?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -314,7 +340,7 @@ public extension UserDefaults {
 		}
 	}
 
-	public func setInteger(value: Int?, forKey key: String) {
+	public func setInteger(_ value: Int?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -344,5 +370,11 @@ public extension UserDefaults {
 
 	public func stringValue(key: String) -> String? {
 		return string(forKey: key)
+	}
+}
+
+public extension ProcessInfo {
+	public static var isUnderTesting: Bool {
+		 return NSClassFromString("XCTestCase") != nil
 	}
 }

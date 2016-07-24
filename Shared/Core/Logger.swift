@@ -5,7 +5,7 @@
 
 import Foundation
 
-private let loggingQueue = DispatchQueue(label: "ua.com.wavelabs.LoggingQueue", attributes: .serial)
+private let loggingQueue = DispatchQueue(label: "ua.com.wavelabs.LoggingQueue", attributes: [.serial, .qosUtility])
 
 /// Sample usage:
 ///~~~
@@ -13,26 +13,49 @@ private let loggingQueue = DispatchQueue(label: "ua.com.wavelabs.LoggingQueue", 
 ///~~~
 public struct Logger {
 
-   public enum Context: String {
-      case Global		 = "GLB"
-      case Network	 = "NET"
-      case Data		 = "DAT"
-      case Model		 = "MOD"
-      case View		 = "VIE"
-      case Controller = "CTL"
-      case Media		 = "MED"
-      case System		 = "SYS"
-      case Delegate	 = "DLG"
+   public enum Context {
+      case Global
+      case Network
+      case Data
+      case Model
+      case View
+      case Controller
+      case Media
+      case System
+      case Delegate
+
+      var stringValue: String {
+         switch self {
+         case Global		 : return "GLB"
+         case Network	 : return "NET"
+         case Data		 : return "DAT"
+         case Model		 : return "MOD"
+         case View		 : return "VIE"
+         case Controller : return "CTL"
+         case Media		 : return "MED"
+         case System		 : return "SYS"
+         case Delegate	 : return "DLG"
+         }
+      }
    }
 
-   private enum Level: String {
-      case Error	 = "E"
-      case Warn	 = "W"
-      case Info	 = "I"
-      case Debug	 = "D"
-      case Verbose = "V"
+   private enum Level {
+      case Error
+      case Warn
+      case Info
+      case Debug
+      case Verbose
       static var allLevels: [Level] {
          return [.Verbose, .Debug, .Info, .Warn, .Error]
+      }
+      var stringValue: String {
+         switch self {
+         case Error:	 return "E"
+         case Warn:	 return "W"
+         case Info:	 return "I"
+         case Debug:	 return "D"
+         case Verbose: return "V"
+         }
       }
    }
 
@@ -45,43 +68,75 @@ public struct Logger {
       var context: Context
    }
 
-   public enum MessageFilter: String {
-      case AllMessages = "AllMessages"
-      case InitDeinitMethodsOnly = "InitDeinitMethodsOnly"
-      case AllExceptInitDeinitMethods = "AllExceptInitDeinitMethods"
+   public enum MessageFilter: CustomReflectable {
+
+      case AllMessages
+      case InitDeinitMethodsOnly
+      case AllExceptInitDeinitMethods
+
       private var shouldLogInitDeinitMethods: Bool {
          return self == .AllMessages || self == .InitDeinitMethodsOnly
       }
+
       private var shouldLogMessage: Bool {
          return self == .AllMessages || self == .AllExceptInitDeinitMethods
       }
-      public static func fromRaw(rawValue: String) -> MessageFilter {
-         return MessageFilter(rawValue: rawValue) ?? .AllMessages
+
+      public static func from(string value: String) -> MessageFilter {
+         switch value {
+         case AllMessages.stringValue: return AllMessages
+         case InitDeinitMethodsOnly.stringValue: return InitDeinitMethodsOnly
+         case AllExceptInitDeinitMethods.stringValue: return AllExceptInitDeinitMethods
+         default: return AllMessages
+         }
+      }
+
+      var stringValue: String {
+         switch self {
+         case AllMessages: return "AllMessages"
+         case InitDeinitMethodsOnly: return "InitDeinitMethodsOnly"
+         case AllExceptInitDeinitMethods: return "AllExceptInitDeinitMethods"
+         }
+      }
+
+      public var customMirror: Mirror {
+         let children = DictionaryLiteral<String, Any>(dictionaryLiteral: ("value", stringValue))
+         return Mirror(self, children: children)
       }
    }
 
-   public struct LoggerProperties {
-      public var logAsynchronously = Property(true)
-      public var logMessageFilter = Property(MessageFilter.AllMessages)
+   public class Properties {
+      private var logAsynchronouslyStorage = WriteSynchronizedProperty(true)
+      public var logAsynchronously: Bool {
+         get { return logAsynchronouslyStorage.value }
+         set { logAsynchronouslyStorage.value = newValue }
+      }
+      private var logMessageFilterStorage = WriteSynchronizedProperty(MessageFilter.AllMessages)
+      public var logMessageFilter: MessageFilter {
+         get { return logMessageFilterStorage.value }
+         set { logMessageFilterStorage.value = newValue }
+      }
    }
 
    private var senderProperties: SenderProperties
    private var loggerProperties: LoggerPropertiesInternal
-   public static var sharedLoggerProperties: LoggerProperties {
+   public static var sharedProperties: Properties {
       return _sharedLoggerProperties
    }
-   private static var _sharedLoggerProperties = LoggerProperties()
-   private static let dateFormatter: DateFormatter = {
-      let f = DateFormatter()
-      f.dateFormat = "HH:mm:ss.SSSS"
-      return f
-   }()
+   private static var _sharedLoggerProperties = Properties()
+   private static let dateFormatter = g.configure(DateFormatter()) {
+      $0.dateFormat = "HH:mm:ss.SSSS"
+   }
+
+   #if DEBUG
+   static var debuggingCallabck: ((String) -> Void)?
+   #endif
 
    // MARK:
 
-   // -param sender: Logging source. **Note** Used only to retrieve properties and immediately releases.
+   /// - parameter sender: Logging source. **Note** Used only to retrieve properties without keeping references.
    public init(sender: AnyObject, context: Context = .Global) {
-      senderProperties = SenderProperties(pointerAddress: String(format: "%p", pointerAddress(of: sender)),
+      senderProperties = SenderProperties(pointerAddress: String(format: "%p", g.pointerAddress(of: sender)),
                                           typeName: String(sender.dynamicType))
       loggerProperties = LoggerPropertiesInternal(context: context)
    }
@@ -91,14 +146,14 @@ public struct Logger {
    // swiftlint:disable:next function_parameter_count
    private static func format<T>(message: T, level: Level, context: Context, function: String, file aFile: String,
                               line: Int32, typeName aTypeName: String?, objectPointerAddress: String?) -> String {
-      let prefix = "\(level.rawValue):\(context.rawValue)"
+      let prefix = "\(level.stringValue):\(context.stringValue)"
       let location = "\(aFile.lastPathComponent):\(line) ⋆ \(function.clip(toLength: 42))"
       let defaultMessage = "\(prefix) ⋆ \(location) → \(message)"
       guard let typeName = aTypeName else {
-			return defaultMessage
+         return defaultMessage
       }
       guard let pointer = objectPointerAddress else {
-			return defaultMessage
+         return defaultMessage
       }
       return "\(prefix) ⋆ \(pointer) \(typeName.clip(toLength: 32)) ⋆ \(location) → \(message)"
    }
@@ -115,7 +170,7 @@ public struct Logger {
    }
 
    private static func executeBlock(block: (Void) -> Void) {
-      if Logger.sharedLoggerProperties.logAsynchronously.value { // TODO: Avoid locking
+      if Logger.sharedProperties.logAsynchronously {
          loggingQueue.async(execute: block)
       } else {
          loggingQueue.sync(execute: block)
@@ -137,74 +192,85 @@ public struct Logger {
    }
 
    private static func log(message: String) {
-      if let buffer = message.cString(using: String.Encoding.utf8) {
-         puts(buffer)
-      } else {
-         print(message)
+      func writeMessageToOutput() {
+         if let buffer = message.cString(using: String.Encoding.utf8) {
+            puts(buffer)
+         } else {
+            print(message)
+         }
+         // fflush(stdout)
       }
-      // fflush(stdout)
+      #if DEBUG
+         if let cb = debuggingCallabck {
+            cb(message)
+         } else {
+            writeMessageToOutput()
+         }
+      #else
+         writeMessageToOutput()
+      #endif
    }
 
    // MARK: - Public
 
-   public func log(marker: String) {
+   public func marker(_ marker: String) {
       Logger.log(marker: marker)
    }
 
-   public func log(text: String) {
+   public func text(_ text: String) {
       Logger.log(text: text)
    }
 
-   public func logInit(function: String = #function, file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogInitDeinitMethods else {
+   public func initialize(function: String = #function, file: String = #file, line: Int32 = #line) {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogInitDeinitMethods else {
          return
       }
       Logger.log(message: "{+++}", level: .Verbose, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logDeinit(function: String = #function, file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogInitDeinitMethods else {
+   public func deinitialize(function: String = #function, file: String = #file, line: Int32 = #line) {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogInitDeinitMethods else {
          return
       }
       Logger.log(message: "{~~~}", level: .Verbose, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logError<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+   public func error<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
          return
       }
       Logger.log(message: message, level: .Error, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logWarn<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+   public func warn<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
          return
       }
       Logger.log(message: message, level: .Warn, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logInfo<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+   public func info<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
          return
       }
       Logger.log(message: message, level: .Info, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logDebug<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+   public func debug<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
          return
       }
       Logger.log(message: message, level: .Debug, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logVerbose<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+   public func verbose<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
          return
       }
       Logger.log(message: message, level: .Verbose, context: loggerProperties.context, function: function, file: file, line: line,
@@ -212,52 +278,50 @@ public struct Logger {
    }
 
    // MARK:
-   public func logErrorIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+   public func log<T>(error message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                           file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
          return
       }
       Logger.log(message: message, level: .Error, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logWarnIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+   public func log<T>(warn message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                          file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
          return
       }
       Logger.log(message: message, level: .Warn, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logInfoIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+   public func log<T>(info message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                          file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
          return
       }
       Logger.log(message: message, level: .Info, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logDebugIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+   public func log<T>(debug message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                           file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
          return
       }
       Logger.log(message: message, level: .Debug, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
 
-   public func logVerboseIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+   public func log<T>(verbose message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                             file: String = #file, line: Int32 = #line) {
-      guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+      guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
          return
       }
       Logger.log(message: message, level: .Verbose, context: loggerProperties.context, function: function, file: file, line: line,
                  typeName: senderProperties.typeName, objectPointerAddress: senderProperties.pointerAddress)
    }
-
-
 }
 
 // MARK: - Global
@@ -270,90 +334,90 @@ public func log(text: String) {
 }
 
 public func logInit(function: String = #function, file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogInitDeinitMethods else {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogInitDeinitMethods else {
       return
    }
    Logger.log(message: "+++", level: .Verbose, context: .Global, function: function, file: file, line: line)
 }
 
 public func logDeinit(function: String = #function, file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogInitDeinitMethods else {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogInitDeinitMethods else {
       return
    }
    Logger.log(message: "~~~", level: .Verbose, context: .Global, function: function, file: file, line: line)
 }
 
-public func logError<T> (_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+public func log<T> (error message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
       return
    }
    Logger.log(message: message, level: .Error, context: .Global, function: function, file: file, line: line)
 }
 
-public func logWarn<T>	(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+public func log<T>	(warn message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
       return
    }
    Logger.log(message: message, level: .Warn, context: .Global, function: function, file: file, line: line)
 }
 
-public func logInfo<T>	(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+public func log<T>	(info message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
       return
    }
    Logger.log(message: message, level: .Info, context: .Global, function: function, file: file, line: line)
 }
 
-public func logDebug<T> (_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+public func log<T> (debug message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
       return
    }
    Logger.log(message: message, level: .Debug, context: .Global, function: function, file: file, line: line)
 }
 
-public func logVerbose<T> (_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage else {
+public func log<T> (verbose message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage else {
       return
    }
    Logger.log(message: message, level: .Verbose, context: .Global, function: function, file: file, line: line)
 }
 
 // MARK: -
-public func logErrorIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+public func log<T>(error message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                        file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
       return
    }
    Logger.log(message: message, level: .Error, context: .Global, function: function, file: file, line: line)
 }
 
-public func logWarnIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+public func log<T>(warn message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                       file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
       return
    }
    Logger.log(message: message, level: .Warn, context: .Global, function: function, file: file, line: line)
 }
 
-public func logInfoIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+public func log<T>(info message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                       file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
       return
    }
    Logger.log(message: message, level: .Info, context: .Global, function: function, file: file, line: line)
 }
 
-public func logDebugIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+public func log<T>(debug message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                        file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
       return
    }
    Logger.log(message: message, level: .Debug, context: .Global, function: function, file: file, line: line)
 }
 
-public func logVerboseIf<T>( expression: @autoclosure() -> Boolean, _ message: T, function: String = #function,
+public func log<T>(verbose message: T, if expression: @autoclosure() -> Boolean, function: String = #function,
                          file: String = #file, line: Int32 = #line) {
-   guard Logger.sharedLoggerProperties.logMessageFilter.value.shouldLogMessage && expression().boolValue else {
+   guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression().boolValue else {
       return
    }
    Logger.log(message: message, level: .Verbose, context: .Global, function: function, file: file, line: line)

@@ -8,85 +8,91 @@
 
 import Foundation
 
-/// Executes throwing expression and prints error if happens. **Note** Version can not be used inside blocks.
-/// - parameter closure: Expression to execute.
-/// - returns: nil if error happens, otherwise returns some value.
-public func tryOrWarn<T>( closure: @autoclosure() throws -> T?) -> T? {
-	do {
-		return try closure()
-	} catch {
-		print(error)
-		return nil
-	}
+public struct g { // swiftlint:disable:this type_name
 }
 
-public func tryOrWarn( closure: @autoclosure() throws -> Void) {
-	do {
-		try closure()
-	} catch {
-		print(error)
-	}
+extension g {
+
+   public static func perform<T>(_ closure: @noescape (Void) throws -> T?, failure: @noescape (ErrorProtocol) -> Void) -> T? {
+      do {
+         return try closure()
+      } catch {
+         failure(error)
+         return nil
+      }
+   }
+
+   public static func perform<T>(_ closure: @autoclosure (Void) throws -> T?, failure: (ErrorProtocol) -> Void) -> T? {
+      do {
+         return try closure()
+      } catch {
+         failure(error)
+         return nil
+      }
+   }
+
+   public static func perform(_ closure: @noescape (Void) throws -> Void, failure: @noescape (ErrorProtocol) -> Void) {
+      do {
+         try closure()
+      } catch {
+         failure(error)
+      }
+   }
+
+   public static func perform(_ closure: @autoclosure (Void) throws -> Void, failure: (ErrorProtocol) -> Void) {
+      do {
+         try closure()
+      } catch {
+         failure(error)
+      }
+   }
+
+   public static func configure<T>(_ element: T, _ closure: @noescape (T) -> Void) -> T {
+      closure(element)
+      return element
+   }
+
+   public static func configureEach<T>(_ elements: [T], _ closure: @noescape (T) -> Void) {
+      elements.forEach { closure($0) }
+   }
+
 }
 
-/// Executes throwing expression and prints error if happens. **Note** Version can be used inside blocks.
-/// - parameter closure: Expression to execute.
-/// - returns: nil if error happens, otherwise returns some value.
-public func tryOrWarn<T>( closure: @noescape() throws -> T?) -> T? {
-	do {
-		return try closure()
-	} catch {
-      print(error)
-		return nil
-	}
-}
 
-public func tryOrWarn( closure: @noescape() throws -> Void) {
-	do {
-		try closure()
-	} catch {
-		print(error)
-	}
-}
+// MARK:
 
-public func tryAndReturn<T>( closure: @noescape() throws -> T) -> ResultType<T> {
-	do {
-		return ResultType.Success(try closure())
-	} catch {
-		return ResultType.Failure(error)
-	}
-}
+extension g {
+   /// - parameter object: Object instance.
+   /// - returns: Object address pointer as Int.
+   /// - SeeAlso: [ Printing a variable memory address in swift - Stack Overflow ]
+   ///            (http://stackoverflow.com/questions/24058906/printing-a-variable-memory-address-in-swift)
+   public static func pointerAddress(of object: AnyObject) -> Int {
+      return unsafeBitCast(object, to: Int.self)
+   }
 
-// MARK: -
+   /// Function for debug purpose which does nothing, but not stripped by compiler during optimization.
+   public static func noop() {
+   }
 
-/// - parameter object: Object instance.
-/// - returns: Object address pointer as Int.
-/// - SeeAlso: [ Printing a variable memory address in swift - Stack Overflow ]
-///            (http://stackoverflow.com/questions/24058906/printing-a-variable-memory-address-in-swift)
-public func pointerAddress(of object: AnyObject) -> Int {
-	return unsafeBitCast(object, to: Int.self)
-}
+   /// - returns: Time interval in seconds.
+   /// - parameter closure: Code block to measure performance.
+   public static func benchmark(_ closure: @noescape (Void) -> Void) -> CFTimeInterval {
+      let startTime = CFAbsoluteTimeGetCurrent()
+      closure()
+      return CFAbsoluteTimeGetCurrent() - startTime
+   }
 
-/// Function for debug purpose which does nothing, but not stripped by compiler during optimization.
-public func noop() {
-}
+   public static func string(fromClass cls: AnyClass) -> String {
+      return NSStringFromClass(cls)
+   }
 
-/// - returns: Time interval in seconds.
-/// - parameter closure: Code block to measure performance.
-public func benchmark(closure: @noescape (Void) -> Void) -> CFTimeInterval {
-	let startTime = CFAbsoluteTimeGetCurrent()
-	closure()
-	return CFAbsoluteTimeGetCurrent() - startTime
-}
+   // MARK:
 
-public func StringFromClass(_ cls: AnyClass) -> String {
-	return NSStringFromClass(cls.self)
-}
+   public static func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
+      if let value = arg {
+         return closure(value)
+      }
+      return nil
+   }
 
-// MARK: -
-
-func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
-	if let value = arg {
-		return closure(value)
-	}
-	return nil
 }
