@@ -10,11 +10,9 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-	private lazy var mediaLibraryController: NSMediaLibraryBrowserController = {
-		let c = NSMediaLibraryBrowserController.shared()
-		c.mediaLibraries = [NSMediaLibrary.audio]
-		return c
-	}()
+	private lazy var mediaLibraryController = g.configure(NSMediaLibraryBrowserController.shared()) {
+		$0.mediaLibraries = [NSMediaLibrary.audio]
+	}
 
 	private var mainController: ViewController {
 		guard let c = contentViewController as? ViewController else {

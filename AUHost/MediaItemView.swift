@@ -124,8 +124,7 @@ public final class MediaItemView: NSView {
 	private func drawWaveform() {
 
 		// !inLiveResize,
-		guard !inLiveResize, let context = NSGraphicsContext.current()?.cgContext,
-			let waveform = cachedWaveform() else {
+		guard !inLiveResize, let context = NSGraphicsContext.current()?.cgContext, let waveform = cachedWaveform() else {
 			return // FIXME: Implement interpolation for live resize and while waiting for waveform cashe arrival.
 		}
 		let scaleFactor = getScaleFactor()

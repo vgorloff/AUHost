@@ -100,10 +100,19 @@ public extension Dictionary {
 		return nil
 	}
 
-	public func hasKey(key: Key) -> Bool {
+	public func hasKey(_ key: Key) -> Bool {
 		return Array(keys).filter { $0 == key }.count == 1
 	}
 
+}
+
+extension Array {
+   func element(at index: Index) -> Element? {
+      if index < startIndex || index >= endIndex {
+         return nil
+      }
+      return self[index]
+   }
 }
 
 public extension Process {
