@@ -318,7 +318,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/Shared\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"AUHost\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"WaveLabs\" \"$SRCROOT/Shared\"";
+			shellScript = "\"Shared/Conf/Scripts/BuildPhase_Whitespace.sh\" \"$SRCROOT\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/Shared\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"AUHost\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"WaveLabs\" \"$SRCROOT/Shared\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
