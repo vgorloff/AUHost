@@ -78,7 +78,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 		}
 		_pcmBuffer = AVAudioPCMBuffer(pcmFormat: inputBus.format, frameCapacity: maximumFramesToRender)
 		dsp.reset()
-		DispatchQueue.main.async { [weak self, weak outputBus] in guard let v = self?.view, outBus = outputBus else { return }
+		DispatchQueue.main.async { [weak self, weak outputBus] in guard let v = self?.view, let outBus = outputBus else { return }
 			v.viewLevelMeter.numberOfChannels = outBus.format.channelCount
 		}
 	}
@@ -119,7 +119,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 		}
 		tree.implementorValueProvider = { [weak self] param in guard let s = self else { return AUValue() }
 			let param = AttenuatorParameter.fromRawValue(param.address)
-			return s.dsp.getParameter(parameter: param)
+			return s.dsp.getParameter(param)
 		}
 		return tree
 	}

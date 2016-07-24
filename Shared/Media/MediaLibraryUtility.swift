@@ -57,7 +57,7 @@ public final class MediaLibraryUtility: NSObject {
 
 	public func mediaObjectsFromPlist(pasteboardPlist: NSDictionary) -> [String: [String : MLMediaObject]] {
 		var results = [String: [String : MLMediaObject]]()
-		guard let keys = pasteboardPlist.allKeys as? [String], mediaSources = _mediaLibrary.mediaSources else {
+		guard let keys = pasteboardPlist.allKeys as? [String], let mediaSources = _mediaLibrary.mediaSources else {
 			return results
 		}
 		for key in keys {
