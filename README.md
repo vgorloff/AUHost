@@ -20,6 +20,10 @@ You are using **Media Library** panel to drag and drop media filed into **Main**
 Selecting **Effect** will insert it into playback graph.  
 Selecting **Preset** will activate corresponding **Factory** preset.
 
+## Build system minimum requirements
+
+- Xcode 8 (Swift 3)
+
 --
 
 <img src="https://raw.githubusercontent.com/vgorloff/AUHost/master/Screenshot-MediaLibrary.png" height="460" alt="Screenshot: Posts">&nbsp;
