@@ -11,7 +11,7 @@ import AVFoundation
 
 public final class AttenuatorAudioUnit: AUAudioUnit {
 
-	public enum Error: ErrorProtocol {
+	public enum Errors: Error {
 		case StatusError(OSStatus)
 	}
 	private let maxChannels = UInt32(8)
@@ -74,7 +74,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 		try super.allocateRenderResources()
 		guard outputBus.format.channelCount == inputBus.format.channelCount else {
 			setRenderResourcesAllocated(false)
-			throw Error.StatusError(kAudioUnitErr_FailedInitialization)
+			throw Errors.StatusError(kAudioUnitErr_FailedInitialization)
 		}
 		_pcmBuffer = AVAudioPCMBuffer(pcmFormat: inputBus.format, frameCapacity: maximumFramesToRender)
 		dsp.reset()

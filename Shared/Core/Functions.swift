@@ -11,9 +11,21 @@ import Foundation
 public struct g { // swiftlint:disable:this type_name
 }
 
+public struct a { // swiftlint:disable:this type_name
+}
+
+extension a {
+	public static func map<A, B>(arg: A?, closure: @noescape (A) -> B) -> B? {
+		if let value = arg {
+			return closure(value)
+		}
+		return nil
+	}
+}
+
 extension g {
 
-   public static func perform<T>(_ closure: @noescape (Void) throws -> T?, failure: @noescape (ErrorProtocol) -> Void) -> T? {
+   public static func perform<T>(_ closure: @noescape (Void) throws -> T?, failure: @noescape (Error) -> Void) -> T? {
       do {
          return try closure()
       } catch {
@@ -22,7 +34,7 @@ extension g {
       }
    }
 
-   public static func perform<T>(_ closure: @autoclosure (Void) throws -> T?, failure: (ErrorProtocol) -> Void) -> T? {
+   public static func perform<T>(_ closure: @autoclosure (Void) throws -> T?, failure: (Error) -> Void) -> T? {
       do {
          return try closure()
       } catch {
@@ -31,7 +43,7 @@ extension g {
       }
    }
 
-   public static func perform(_ closure: @noescape (Void) throws -> Void, failure: @noescape (ErrorProtocol) -> Void) {
+   public static func perform(_ closure: @noescape (Void) throws -> Void, failure: @noescape (Error) -> Void) {
       do {
          try closure()
       } catch {
@@ -39,7 +51,7 @@ extension g {
       }
    }
 
-   public static func perform(_ closure: @autoclosure (Void) throws -> Void, failure: (ErrorProtocol) -> Void) {
+   public static func perform(_ closure: @autoclosure (Void) throws -> Void, failure: (Error) -> Void) {
       do {
          try closure()
       } catch {
@@ -57,7 +69,6 @@ extension g {
    }
 
 }
-
 
 // MARK:
 
@@ -86,13 +97,53 @@ extension g {
       return NSStringFromClass(cls)
    }
 
-   // MARK:
-
-   public static func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
-      if let value = arg {
-         return closure(value)
-      }
-      return nil
-   }
-
 }
+
+public protocol MergeableType {
+   func compare(with: Self) -> ComparisonResult
+   mutating func mergeIfNeeded(with: Self) -> Bool
+}
+
+public struct c { // swiftlint:disable:this type_name
+
+   public static func merge<T: MergeableType>(_ a: [T], with b: inout [T]) -> [T] {
+      var insertedOrUpdated = Array<T>()
+      var processed = Array<T>()
+
+      var iteratorEx = a.makeIterator()
+      var iteratorNew = b.makeIterator()
+      var entityOrNilEx = iteratorEx.next()
+      var entityOrNilNew = iteratorNew.next()
+      repeat {
+         guard var entityEx = entityOrNilEx, let entityNew = entityOrNilNew else {
+            break
+         }
+         let result = entityEx.compare(with: entityNew)
+         switch result {
+         case .orderedAscending:
+            entityOrNilEx = iteratorEx.next()
+         case .orderedDescending:
+            entityOrNilNew = iteratorNew.next()
+            insertedOrUpdated.append(entityNew)
+         case .orderedSame:
+            processed.append(entityNew)
+            if entityEx.mergeIfNeeded(with: entityNew) {
+               insertedOrUpdated.append(entityEx)
+            }
+            entityOrNilEx = iteratorEx.next()
+            entityOrNilNew = iteratorNew.next()
+         }
+
+      } while (true)
+
+      // Continue inserting if there are still available new entries from server
+      while let entityNew = entityOrNilNew {
+         insertedOrUpdated.append(entityNew)
+         entityOrNilNew = iteratorNew.next()
+      }
+      b = processed
+
+      return insertedOrUpdated
+   }
+}
+

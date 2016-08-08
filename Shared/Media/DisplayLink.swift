@@ -23,7 +23,7 @@ private func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,
 
 public final class DisplayLink {
 
-   public enum Error: ErrorProtocol {
+   public enum Errors: Error {
       case CVReturnError(CVReturn)
    }
    private let displayLink: CVDisplayLink
@@ -42,7 +42,7 @@ public final class DisplayLink {
       status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
       try verifyStatusCode(status)
       guard let displayLinkInstance = displayLink else {
-         throw Error.CVReturnError(kCVReturnError)
+         throw Errors.CVReturnError(kCVReturnError)
       }
       return DisplayLink(displayLink: displayLinkInstance)
    }
@@ -68,13 +68,13 @@ public final class DisplayLink {
 
    private func verifyStatusCode(_ statusCode: CVReturn) throws {
       if statusCode != kCVReturnSuccess {
-         throw Error.CVReturnError(statusCode)
+         throw Errors.CVReturnError(statusCode)
       }
    }
 
    private static func verifyStatusCode(_ statusCode: CVReturn) throws {
       if statusCode != kCVReturnSuccess {
-         throw Error.CVReturnError(statusCode)
+         throw Errors.CVReturnError(statusCode)
       }
    }
 }
