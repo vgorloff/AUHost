@@ -80,7 +80,7 @@ public extension String {
 	}
 }
 
-public enum DictionaryError: ErrorProtocol {
+public enum DictionaryError: Error {
 	case MissedRequiredKey(String)
 }
 

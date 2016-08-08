@@ -9,14 +9,14 @@
 import AVFoundation
 import CoreAudioKit
 
-enum PlaybackEngineStateError: ErrorProtocol {
+enum PlaybackEngineStateError: Error {
    case FileIsNotSet
 }
 
 enum PlaybackEngineEffectSelectionResult {
    case EffectCleared
    case Success(AVAudioUnit)
-   case Failure(ErrorProtocol)
+   case Failure(Error)
 }
 
 enum PlaybackEngineState {

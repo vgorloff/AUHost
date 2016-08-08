@@ -9,7 +9,7 @@
 import Foundation
 
 private protocol _SmartDispatchSourceType: class {
-   var dispatchSource: DispatchSourceType? { get set }
+   var dispatchSource: DispatchSourceProtocol? { get set }
    // To prevent issue related to "BUG IN CLIENT OF LIBDISPATCH: Release of a suspended object"
    var dispatchSourceSuspendCount: Int { get set }
    func _resume()
@@ -68,7 +68,7 @@ public protocol SmartDispatchSourceType: class {
 
 public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType, CustomReflectable {
 
-   private var dispatchSource: DispatchSourceType? = nil
+   private var dispatchSource: DispatchSourceProtocol? = nil
    private var dispatchSourceSuspendCount = 1
 
    public func setEventHandler(qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = .inheritQoS,
@@ -98,7 +98,7 @@ public final class SmartDispatchSourceTimer: SmartDispatchSource {
 
    init(flags: DispatchSource.TimerFlags = [], queue: DispatchQueue? = nil) {
       super.init()
-      dispatchSource = DispatchSource.timer(flags: flags, queue: queue)
+      dispatchSource = DispatchSource.makeTimerSource(flags: flags, queue: queue)
    }
 
    public func scheduleRepeating(deadline: DispatchTime, interval: DispatchTimeInterval,
@@ -113,25 +113,25 @@ public final class SmartDispatchSourceTimer: SmartDispatchSource {
 public final class SmartDispatchSourceUserDataAdd: SmartDispatchSource {
 	public init(queue: DispatchQueue? = nil) {
       super.init()
-		dispatchSource = DispatchSource.userDataAdd(queue: queue)
+		dispatchSource = DispatchSource.makeUserDataAddSource(queue: queue)
 	}
 	public func mergeData(value: UInt) {
 		guard let dispatchSourceInstance = dispatchSource as? DispatchSourceUserDataAdd else {
 			return
 		}
-		dispatchSourceInstance.mergeData(value: value)
+		dispatchSourceInstance.add(data: value)
 	}
 }
 
 public final class SmartDispatchSourceUserDataOr: SmartDispatchSource {
    public init(queue: DispatchQueue? = nil) {
       super.init()
-      dispatchSource = DispatchSource.userDataOr(queue: queue)
+      dispatchSource = DispatchSource.makeUserDataOrSource(queue: queue)
    }
    public func mergeData(value: UInt) {
       guard let dispatchSourceInstance = dispatchSource as? DispatchSourceUserDataOr else {
          return
       }
-      dispatchSourceInstance.mergeData(value: value)
+      dispatchSourceInstance.or(data: value)
    }
 }

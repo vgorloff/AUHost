@@ -10,13 +10,7 @@ import Foundation
 
 public enum ResultType<T> {
 	case Success(T)
-	case Failure(ErrorProtocol)
-}
-
-public enum StateError: ErrorProtocol {
-	case UnableToInitialize(String)
-	case NotInitialized(String)
-	case ResourceIsNotAvailable(String)
+	case Failure(Error)
 }
 
 public enum TripleStateSwitch: Int {
@@ -24,10 +18,10 @@ public enum TripleStateSwitch: Int {
 	case On = 1
 	case Off = 0
 	public init(fromBool: Bool) {
-		self = fromBool ? On : Off
+		self = fromBool ? .On : .Off
 	}
 	public var boolValue: Bool {
-		return self == On ? true : false
+		return self == .On ? true : false
 	}
 }
 

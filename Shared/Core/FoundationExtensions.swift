@@ -8,29 +8,6 @@
 
 import Foundation
 
-#if os(OSX)
-
-public extension Task {
-	public static func findExecutablePath(_ executableName: String) -> String? {
-		if executableName.isEmpty {
-			return nil
-		}
-		let task = Task()
-		task.launchPath = "/bin/bash"
-		task.arguments = ["-l", "-c", "which \(executableName)"]
-
-		let outPipe = Pipe()
-		task.standardOutput = outPipe
-
-		task.launch()
-		task.waitUntilExit()
-
-		return outPipe.readIntoString()
-	}
-}
-
-#endif
-
 public extension DateFormatter {
 	public static func localizedStringFromDate(date: Date, dateFormat: String) -> String {
 		let f = DateFormatter()
@@ -53,6 +30,29 @@ public extension Pipe {
    }
 
 }
+
+#if os(OSX)
+
+public extension Task {
+	public static func findExecutablePath(_ executableName: String) -> String? {
+		if executableName.isEmpty {
+			return nil
+		}
+		let task = Task()
+		task.launchPath = "/bin/bash"
+		task.arguments = ["-l", "-c", "which \(executableName)"]
+
+		let outPipe = Pipe()
+		task.standardOutput = outPipe
+
+		task.launch()
+		task.waitUntilExit()
+
+		return outPipe.readIntoString()
+	}
+}
+
+#endif
 
 public extension OperationQueue {
 
@@ -166,14 +166,14 @@ public extension OperationQueue {
 
 // MARK:
 
-public enum BundleError: ErrorProtocol {
+public enum BundleError: Error {
 	case MissedURLForResource(resourceName: String, resourceExtension: String)
 }
 
 public extension Bundle {
 
 	public func urlForResource(resourceName: String, resourceExtension: String) throws -> URL {
-		guard let url = urlForResource(resourceName, withExtension: resourceExtension) else {
+		guard let url = url(forResource: resourceName, withExtension: resourceExtension) else {
 			throw BundleError.MissedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
 		}
 		return url
@@ -182,7 +182,7 @@ public extension Bundle {
 
 // MARK:
 
-public enum NSDictionaryError: ErrorProtocol {
+public enum NSDictionaryError: Error {
 	case UnableToWriteToFile(String)
 	case UnableToReadFromURL(URL)
 	case MissedRequiredKey(String)
@@ -239,27 +239,27 @@ public extension DispatchSemaphore {
 public extension DispatchQueue {
 
 	public static var Default: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault)
+		return DispatchQueue.global(qos: .default)
 	}
 
 	public static var UserInteractive: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUserInteractive)
+		return DispatchQueue.global(qos: .userInteractive)
 	}
 
 	public static var UserInitiated: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUserInitiated)
+		return DispatchQueue.global(qos: .userInitiated)
 	}
 
 	public static var Utility: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUtility)
+		return DispatchQueue.global(qos: .utility)
 	}
 
 	public static var Background: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosBackground)
+		return DispatchQueue.global(qos: .background)
 	}
 
 	public static func serial(label: String) -> DispatchQueue {
-		return DispatchQueue(label: label, attributes: .serial)
+		return DispatchQueue(label: label)
 	}
 
 	public func smartSync<T>(execute work: @noescape () throws -> T) rethrows -> T {
@@ -274,7 +274,7 @@ public extension DispatchQueue {
 
 // MARK:
 
-public enum FileManagerError: ErrorProtocol {
+public enum FileManagerError: Error {
 	case DirectoryIsNotAvailable(String)
 	case RegularFileIsNotAvailable(String)
 	case CanNotOpenFileAtPath(String)
@@ -284,7 +284,7 @@ public enum FileManagerError: ErrorProtocol {
 public extension FileManager {
 
 	public class var applicationDocumentsDirectory: URL {
-		let urls = self.default.urlsForDirectory(.documentDirectory, inDomains: .userDomainMask)
+		let urls = self.default.urls(for: .documentDirectory, in: .userDomainMask)
 		return urls[urls.count-1]
 	}
 
@@ -305,9 +305,9 @@ public extension FileManager {
 public extension URL {
 
 	// Every element is a string in key=value format
-	public static func requestQueryFromParameters(elements: [String]) -> String {
+	public static func requestQuery(fromParameters elements: [String]) -> String {
 		if elements.count > 0 {
-			return elements[1..<elements.count].reduce(elements[0], combine: {$0 + "&" + $1})
+			return elements[1..<elements.count].reduce(elements[0], {$0 + "&" + $1})
 		} else {
 			return elements[0]
 		}
