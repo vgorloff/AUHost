@@ -453,7 +453,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEPLOYMENT_LOCATION = YES;
 				INFOPLIST_FILE = "AUHost/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -473,7 +473,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEPLOYMENT_LOCATION = YES;
 				INFOPLIST_FILE = "AUHost/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
