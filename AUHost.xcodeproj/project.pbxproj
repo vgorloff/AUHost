@@ -164,11 +164,11 @@
 		807E3C031D25D9330033629F /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */,
 				807E3C041D25D9330033629F /* AlternativeValue.swift */,
 				8064764B1D45376200AF72B9 /* DispatchSource.swift */,
 				8046741E1D25DA66000989CA /* Enumerations.swift */,
 				803F76051D3BC17C000A76DB /* FoundationExtensions.swift */,
+				8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */,
 				807E3C0C1D25D9670033629F /* Functions.swift */,
 				804674211D25DA66000989CA /* KVOHelper.swift */,
 				807E3C051D25D9330033629F /* Logger.swift */,
@@ -310,7 +310,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"Shared/Conf/Scripts/BuildPhase_Whitespace.sh\" \"$SRCROOT\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/Shared\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"AUHost\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"WaveLabs\" \"$SRCROOT/Shared\"";
+			shellScript = "exit 0\n\"Shared/Conf/Scripts/BuildPhase_Whitespace.sh\" \"$SRCROOT\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT/Shared\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"AUHost\" \"$SRCROOT/AUHost\"\n\"$SRCROOT/Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"WaveLabs\" \"$SRCROOT/Shared\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

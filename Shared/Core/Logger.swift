@@ -82,11 +82,11 @@ public struct Logger {
       case InitDeinitMethodsOnly
       case AllExceptInitDeinitMethods
 
-      private var shouldLogInitDeinitMethods: Bool {
+      fileprivate var shouldLogInitDeinitMethods: Bool {
          return self == .AllMessages || self == .InitDeinitMethodsOnly
       }
 
-      private var shouldLogMessage: Bool {
+      fileprivate var shouldLogMessage: Bool {
          return self == .AllMessages || self == .AllExceptInitDeinitMethods
       }
 
@@ -145,7 +145,7 @@ public struct Logger {
 	/// - parameter sender: Logging source. **Note** Used only to retrieve properties without keeping references.
 	public init(sender: AnyObject? = nil, context: Context = .Global) {
 		if let senderValue = sender {
-			var componentNames = g.string(fromClass: senderValue.dynamicType).components(separatedBy: ".")
+			var componentNames = g.string(fromClass: type(of: senderValue)).components(separatedBy: ".")
 			if componentNames.count > 1 {
 				componentNames.removeFirst()
 			}
@@ -184,7 +184,7 @@ public struct Logger {
       }
    }
 
-   private static func executeBlock(block: (Void) -> Void) {
+   private static func executeBlock(block: @escaping (Void) -> Void) {
       if Logger.sharedProperties.logAsynchronously {
          loggingQueue.async(execute: block)
       } else {

@@ -64,19 +64,19 @@ struct AttenuatorDSPKernel {
          guard let inputData = bI.mData else {
             continue
          }
-         let outputData: UnsafeMutablePointer<Void>
+         let outputData: UnsafeMutableRawPointer
          if let bOData = bO.mData { // Might be a nil?
             outputData = bOData
          } else {
-            outputData = UnsafeMutablePointer<Void>(inputData)
-            bO.mData = outputData
+            outputData = inputData
+            bO.mData = inputData
             assert(false)
          }
          // We are expecting one buffer per channel.
          assert(bI.mNumberChannels == bO.mNumberChannels && bI.mNumberChannels == 1)
          assert(bI.mDataByteSize == bO.mDataByteSize)
-         let samplesBI = UnsafePointer<SampleType>(inputData)
-         let samplesBO = UnsafeMutablePointer<SampleType>(outputData)
+         let samplesBI = UnsafePointer<SampleType>(inputData.assumingMemoryBound(to: SampleType.self))
+         let samplesBO = outputData.assumingMemoryBound(to: SampleType.self)
          #if true
             var gain = dspValueGain
             var maximumMagnitudeValue: Float = 0

@@ -147,7 +147,7 @@ public final class MediaItemView: NSView {
 //		CGContextFillRect(context, bounds)
 		context.setStrokeColor(waveformColor.cgColor)
 		context.setLineWidth(lineWidth)
-		context.strokeLineSegments(between: wfDrawingProvider.points, count: wfDrawingProvider.numberOfPoints)
+		context.strokeLineSegments(between: wfDrawingProvider.points)
 		context.restoreGState()
 	}
 

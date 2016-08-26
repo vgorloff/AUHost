@@ -46,7 +46,7 @@ public struct MediaObjectPasteboardUtility {
             print($0)
          }
          if let fileType = fileType {
-            return UTTypeConformsTo(fileType, kUTTypeAudio)
+            return UTTypeConformsTo(fileType as CFString, kUTTypeAudio)
          }
          return false
       }

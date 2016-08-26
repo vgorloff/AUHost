@@ -127,10 +127,10 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 	private final func prepareInputBuffer(buffer: AVAudioPCMBuffer, frameCount: AUAudioFrameCount) {
 		let mbl = buffer.mutableAudioBufferList
 		let abl = buffer.audioBufferList
-		let byteSize = frameCount * UInt32(sizeof(AttenuatorDSPKernel.SampleType.self))
+		let byteSize = frameCount * UInt32(MemoryLayout<AttenuatorDSPKernel.SampleType>.size)
 		mbl.pointee.mNumberBuffers = abl.pointee.mNumberBuffers
 		let mblPointer = UnsafeMutableAudioBufferListPointer(mbl)
-		let ablPointer = UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer<AudioBufferList>(abl))
+      let ablPointer = UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer<AudioBufferList>(mutating: abl))
 		for index in 0 ..< ablPointer.count {
 			var mB = mblPointer[index]
 			let aB = ablPointer[index]

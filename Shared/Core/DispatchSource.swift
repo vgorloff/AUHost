@@ -68,8 +68,8 @@ public protocol SmartDispatchSourceType: class {
 
 public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType, CustomReflectable {
 
-   private var dispatchSource: DispatchSourceProtocol? = nil
-   private var dispatchSourceSuspendCount = 1
+   fileprivate var dispatchSource: DispatchSourceProtocol? = nil
+   fileprivate var dispatchSourceSuspendCount = 1
 
    public func setEventHandler(qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = .inheritQoS,
                                handler: ((Void) -> Void)?) {

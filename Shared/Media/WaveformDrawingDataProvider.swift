@@ -64,15 +64,8 @@ public final class WaveformDrawingDataProvider {
 		}
 	}
 
-	public var points: UnsafePointer<CGPoint> {
-		let result = _points.withUnsafeBufferPointer({pointerVal -> UnsafePointer<CGPoint> in
-			return pointerVal.baseAddress!
-		})
-		return result
-	}
-
-	public var numberOfPoints: Int {
-		return _points.count
+	public var points: [CGPoint] {
+		return _points
 	}
 
 	public var verticesI: UnsafePointer<Int32> {

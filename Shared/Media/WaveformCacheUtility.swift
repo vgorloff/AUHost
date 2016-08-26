@@ -11,93 +11,93 @@ import AVFoundation
 
 public struct WaveformCacheUtility {
 
-  private static var cache = [String: [MinMax<Float>]]()
+   private static var cache = [String: [MinMax<Float>]]()
 
-	private static let defaultBufferFrameCapacity: UInt64 = 1024 * 8
-	public init() {
-	}
+   private static let defaultBufferFrameCapacity: UInt64 = 1024 * 8
+   public init() {
+   }
 
-	public func cachedWaveformForResolution(url: URL, resolution: UInt64) -> [MinMax<Float>]? {
-		let existedWaveform = WaveformCacheUtility.cache[WaveformCacheUtility.cacheID(url: url, resolution: resolution)]
-		if let wf = existedWaveform {
-			return wf
-		}
-		return nil
-	}
-
-	public func buildWaveformForResolution(fileURL url: URL, resolution: UInt64, callback: (ResultType<[MinMax<Float>]>) -> Void) {
-		assert(resolution > 0)
-		DispatchQueue.UserInitiated.async {
-			do {
-				defer {
-					url.stopAccessingSecurityScopedResource() // Seems working fine without this line
-				}
-				_ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
-				let audioFile = try AVAudioFile(forReading: url, commonFormat: .pcmFormatFloat32, interleaved: false)
-				let optimalBufferSettings = Math.optimalBufferSizeForResolution(resolution: resolution, dataSize: UInt64(audioFile.length),
-					maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
-				let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
-					frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize))
-
-				var waveformCache = [MinMax<Float>]()
-				var groupingBuffer = Array<MinMax<Float>>()
-				while audioFile.framePosition < audioFile.length {
-					try audioFile.read(into: buffer)
-					let data = WaveformCacheUtility.processBuffer(buffer: buffer)
-					groupingBuffer.append(data)
-					if groupingBuffer.count >= Int(optimalBufferSettings.numberOfBuffers) {
-						assert(groupingBuffer.count > 0)
-            let waveformValue = groupingBuffer.suffix(from: 1).reduce(groupingBuffer[0]) { prev, el in
-							return MinMax(min: prev.min + el.min, max: prev.max + el.max)
-						}
-						let avarageValue = MinMax(min: waveformValue.min / Float(groupingBuffer.count),
-							max: waveformValue.max / Float(groupingBuffer.count))
-						waveformCache.append(avarageValue)
-						groupingBuffer.removeAll(keepingCapacity: true)
-					}
-				}
-				assert(UInt64(waveformCache.count) == resolution)
-				WaveformCacheUtility.cache[WaveformCacheUtility.cacheID(url: url, resolution: resolution)] = waveformCache
-				callback(.Success(waveformCache))
-			} catch {
-				callback(.Failure(error))
-			}
-		}
-	}
-
-	private static func cacheID(url: URL, resolution: UInt64) -> String {
-		return "WaveForm:\(resolution):\(url.absoluteString)"
-	}
-
-	private static func processBuffer(buffer: AVAudioPCMBuffer) -> MinMax<Float> {
-
-		//		let numElementsToProcess = vDSP_Length(buffer.frameLength * buffer.format.channelCount)
-		//		var maximumMagnitudeValue: Float = 0
-		//		var minimumMagnitudeValue: Float = 0
-		//		vDSP_maxv(buffer.floatChannelData.memory, 1, &maximumMagnitudeValue, numElementsToProcess)
-		//		vDSP_minv(buffer.floatChannelData.memory, 1, &minimumMagnitudeValue, numElementsToProcess)
-		//		Swift.print(minimumMagnitudeValue, maximumMagnitudeValue, "\n")
-
-		//Swift.print(buffer.frameLength)
-		var channelValues = [MinMax<Float>]()
-		let mbl = UnsafeMutableAudioBufferListPointer(buffer.mutableAudioBufferList)
-		for index in 0 ..< mbl.count {
-			let bl = mbl[index]
-      guard let samplesBI = UnsafePointer<Float>(bl.mData) else {
-				continue
+   public func cachedWaveformForResolution(url: URL, resolution: UInt64) -> [MinMax<Float>]? {
+      let existedWaveform = WaveformCacheUtility.cache[WaveformCacheUtility.cacheID(url: url, resolution: resolution)]
+      if let wf = existedWaveform {
+         return wf
       }
-			let numElementsToProcess = vDSP_Length(buffer.frameLength)
-			var maximumMagnitudeValue: Float = 0
-			var minimumMagnitudeValue: Float = 0
-			vDSP_maxv(samplesBI, 1, &maximumMagnitudeValue, numElementsToProcess)
-			vDSP_minv(samplesBI, 1, &minimumMagnitudeValue, numElementsToProcess)
-			//Swift.print(minimumMagnitudeValue, maximumMagnitudeValue)
-			channelValues.append(MinMax(min: minimumMagnitudeValue, max: maximumMagnitudeValue))
-		}
-		assert(channelValues.count > 0)
-    let result = channelValues.suffix(from: 1).reduce(channelValues[0]) { prev, el in
-			return MinMax(min: prev.min + el.min, max: prev.max + el.max)
-		}
-		return MinMax(min: result.min / Float(channelValues.count), max: result.max / Float(channelValues.count))
-	}
+      return nil
+   }
+
+   public func buildWaveformForResolution(fileURL url: URL, resolution: UInt64, callback: @escaping (ResultType<[MinMax<Float>]>) -> Void) {
+      assert(resolution > 0)
+      DispatchQueue.UserInitiated.async {
+         do {
+            defer {
+               url.stopAccessingSecurityScopedResource() // Seems working fine without this line
+            }
+            _ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
+            let audioFile = try AVAudioFile(forReading: url, commonFormat: .pcmFormatFloat32, interleaved: false)
+            let optimalBufferSettings = Math.optimalBufferSizeForResolution(resolution: resolution, dataSize: UInt64(audioFile.length),
+                                                                            maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
+            let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
+                                          frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize))
+
+            var waveformCache = [MinMax<Float>]()
+            var groupingBuffer = Array<MinMax<Float>>()
+            while audioFile.framePosition < audioFile.length {
+               try audioFile.read(into: buffer)
+               let data = WaveformCacheUtility.processBuffer(buffer: buffer)
+               groupingBuffer.append(data)
+               if groupingBuffer.count >= Int(optimalBufferSettings.numberOfBuffers) {
+                  assert(groupingBuffer.count > 0)
+                  let waveformValue = groupingBuffer.suffix(from: 1).reduce(groupingBuffer[0]) { prev, el in
+                     return MinMax(min: prev.min + el.min, max: prev.max + el.max)
+                  }
+                  let avarageValue = MinMax(min: waveformValue.min / Float(groupingBuffer.count),
+                                            max: waveformValue.max / Float(groupingBuffer.count))
+                  waveformCache.append(avarageValue)
+                  groupingBuffer.removeAll(keepingCapacity: true)
+               }
+            }
+            assert(UInt64(waveformCache.count) == resolution)
+            WaveformCacheUtility.cache[WaveformCacheUtility.cacheID(url: url, resolution: resolution)] = waveformCache
+            callback(.Success(waveformCache))
+         } catch {
+            callback(.Failure(error))
+         }
+      }
+   }
+
+   private static func cacheID(url: URL, resolution: UInt64) -> String {
+      return "WaveForm:\(resolution):\(url.absoluteString)"
+   }
+
+   private static func processBuffer(buffer: AVAudioPCMBuffer) -> MinMax<Float> {
+
+      //		let numElementsToProcess = vDSP_Length(buffer.frameLength * buffer.format.channelCount)
+      //		var maximumMagnitudeValue: Float = 0
+      //		var minimumMagnitudeValue: Float = 0
+      //		vDSP_maxv(buffer.floatChannelData.memory, 1, &maximumMagnitudeValue, numElementsToProcess)
+      //		vDSP_minv(buffer.floatChannelData.memory, 1, &minimumMagnitudeValue, numElementsToProcess)
+      //		Swift.print(minimumMagnitudeValue, maximumMagnitudeValue, "\n")
+
+      //Swift.print(buffer.frameLength)
+      var channelValues = [MinMax<Float>]()
+      let mbl = UnsafeMutableAudioBufferListPointer(buffer.mutableAudioBufferList)
+      for index in 0 ..< mbl.count {
+         let bl = mbl[index]
+         guard let samplesBI = bl.mData?.assumingMemoryBound(to: Float.self) else {
+            continue
+         }
+         let numElementsToProcess = vDSP_Length(buffer.frameLength)
+         var maximumMagnitudeValue: Float = 0
+         var minimumMagnitudeValue: Float = 0
+         vDSP_maxv(samplesBI, 1, &maximumMagnitudeValue, numElementsToProcess)
+         vDSP_minv(samplesBI, 1, &minimumMagnitudeValue, numElementsToProcess)
+         //Swift.print(minimumMagnitudeValue, maximumMagnitudeValue)
+         channelValues.append(MinMax(min: minimumMagnitudeValue, max: maximumMagnitudeValue))
+      }
+      assert(channelValues.count > 0)
+      let result = channelValues.suffix(from: 1).reduce(channelValues[0]) { prev, el in
+         return MinMax(min: prev.min + el.min, max: prev.max + el.max)
+      }
+      return MinMax(min: result.min / Float(channelValues.count), max: result.max / Float(channelValues.count))
+   }
 }
