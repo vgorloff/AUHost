@@ -22,7 +22,7 @@ public final class VULevelMeter: NSView {
 	public override func draw(_ dirtyRect: NSRect) {
 		let levelL = min(1, level[0]).CGFloatValue
 		let rect = NSRect(origin: CGPoint.zero, size: CGSize(width: bounds.width * levelL, height: bounds.height))
-		NSColor.red().setFill()
+		NSColor.red.setFill()
 		NSRectFill(rect)
 	}
 

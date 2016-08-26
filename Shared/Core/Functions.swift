@@ -8,85 +8,145 @@
 
 import Foundation
 
-/// Executes throwing expression and prints error if happens. **Note** Version can not be used inside blocks.
-/// - parameter closure: Expression to execute.
-/// - returns: nil if error happens, otherwise returns some value.
-public func tryOrWarn<T>( closure: @autoclosure() throws -> T?) -> T? {
-	do {
-		return try closure()
-	} catch {
-		print(error)
+public struct g { // swiftlint:disable:this type_name
+}
+
+public struct a { // swiftlint:disable:this type_name
+}
+
+public struct c { // swiftlint:disable:this type_name
+}
+
+extension a {
+	public static func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
+		if let value = arg {
+			return closure(value)
+		}
 		return nil
 	}
 }
 
-public func tryOrWarn( closure: @autoclosure() throws -> Void) {
-	do {
-		try closure()
-	} catch {
-		print(error)
-	}
+extension g {
+
+   public static func perform<T>(_ closure: (Void) throws -> T?, failure: (Error) -> Void) -> T? {
+      do {
+         return try closure()
+      } catch {
+         failure(error)
+         return nil
+      }
+   }
+
+   public static func perform<T>(_ closure: @autoclosure (Void) throws -> T?, failure: (Error) -> Void) -> T? {
+      do {
+         return try closure()
+      } catch {
+         failure(error)
+         return nil
+      }
+   }
+
+   public static func perform(_ closure: (Void) throws -> Void, failure: (Error) -> Void) {
+      do {
+         try closure()
+      } catch {
+         failure(error)
+      }
+   }
+
+   public static func perform(_ closure: @autoclosure (Void) throws -> Void, failure: (Error) -> Void) {
+      do {
+         try closure()
+      } catch {
+         failure(error)
+      }
+   }
+
+   public static func configure<T>(_ element: T, _ closure: (T) -> Void) -> T {
+      closure(element)
+      return element
+   }
+
+   public static func configureEach<T>(_ elements: [T], _ closure: (T) -> Void) {
+      elements.forEach { closure($0) }
+   }
+
 }
 
-/// Executes throwing expression and prints error if happens. **Note** Version can be used inside blocks.
-/// - parameter closure: Expression to execute.
-/// - returns: nil if error happens, otherwise returns some value.
-public func tryOrWarn<T>( closure: @noescape() throws -> T?) -> T? {
-	do {
-		return try closure()
-	} catch {
-      print(error)
-		return nil
-	}
+// MARK:
+
+extension g {
+   /// - parameter object: Object instance.
+   /// - returns: Object address pointer as Int.
+   /// - SeeAlso: [ Printing a variable memory address in swift - Stack Overflow ]
+   ///            (http://stackoverflow.com/questions/24058906/printing-a-variable-memory-address-in-swift)
+   public static func pointerAddress(of object: AnyObject) -> Int {
+      return unsafeBitCast(object, to: Int.self)
+   }
+
+   /// Function for debug purpose which does nothing, but not stripped by compiler during optimization.
+   public static func noop() {
+   }
+
+   /// - returns: Time interval in seconds.
+   /// - parameter closure: Code block to measure performance.
+   public static func benchmark(_ closure: (Void) -> Void) -> CFTimeInterval {
+      let startTime = CFAbsoluteTimeGetCurrent()
+      closure()
+      return CFAbsoluteTimeGetCurrent() - startTime
+   }
+
+   public static func string(fromClass cls: AnyClass) -> String {
+      return NSStringFromClass(cls)
+   }
+
 }
 
-public func tryOrWarn( closure: @noescape() throws -> Void) {
-	do {
-		try closure()
-	} catch {
-		print(error)
-	}
+public protocol MergeableType {
+   func compare(with: Self) -> ComparisonResult
+   mutating func mergeIfNeeded(with: Self) -> Bool
 }
 
-public func tryAndReturn<T>( closure: @noescape() throws -> T) -> ResultType<T> {
-	do {
-		return ResultType.Success(try closure())
-	} catch {
-		return ResultType.Failure(error)
-	}
+extension c {
+
+   public static func merge<T: MergeableType>(_ a: [T], with b: inout [T]) -> [T] {
+      var insertedOrUpdated = Array<T>()
+      var processed = Array<T>()
+
+      var iteratorEx = a.makeIterator()
+      var iteratorNew = b.makeIterator()
+      var entityOrNilEx = iteratorEx.next()
+      var entityOrNilNew = iteratorNew.next()
+      repeat {
+         guard var entityEx = entityOrNilEx, let entityNew = entityOrNilNew else {
+            break
+         }
+         let result = entityEx.compare(with: entityNew)
+         switch result {
+         case .orderedAscending:
+            entityOrNilEx = iteratorEx.next()
+         case .orderedDescending:
+            entityOrNilNew = iteratorNew.next()
+            insertedOrUpdated.append(entityNew)
+         case .orderedSame:
+            processed.append(entityNew)
+            if entityEx.mergeIfNeeded(with: entityNew) {
+               insertedOrUpdated.append(entityEx)
+            }
+            entityOrNilEx = iteratorEx.next()
+            entityOrNilNew = iteratorNew.next()
+         }
+
+      } while (true)
+
+      // Continue inserting if there are still available new entries from server
+      while let entityNew = entityOrNilNew {
+         insertedOrUpdated.append(entityNew)
+         entityOrNilNew = iteratorNew.next()
+      }
+      b = processed
+
+      return insertedOrUpdated
+   }
 }
 
-// MARK: -
-
-/// - parameter object: Object instance.
-/// - returns: Object address pointer as Int.
-/// - SeeAlso: [ Printing a variable memory address in swift - Stack Overflow ]
-///            (http://stackoverflow.com/questions/24058906/printing-a-variable-memory-address-in-swift)
-public func pointerAddress(of object: AnyObject) -> Int {
-	return unsafeBitCast(object, to: Int.self)
-}
-
-/// Function for debug purpose which does nothing, but not stripped by compiler during optimization.
-public func noop() {
-}
-
-/// - returns: Time interval in seconds.
-/// - parameter closure: Code block to measure performance.
-public func benchmark(closure: @noescape (Void) -> Void) -> CFTimeInterval {
-	let startTime = CFAbsoluteTimeGetCurrent()
-	closure()
-	return CFAbsoluteTimeGetCurrent() - startTime
-}
-
-public func StringFromClass(_ cls: AnyClass) -> String {
-	return NSStringFromClass(cls.self)
-}
-
-// MARK: -
-
-func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
-	if let value = arg {
-		return closure(value)
-	}
-	return nil
-}

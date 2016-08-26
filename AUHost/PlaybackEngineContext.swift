@@ -11,7 +11,7 @@ import CoreAudioKit
 
 final class PlaybackEngineContext {
 
-	private lazy var log: Logger = {return Logger(sender: self, context: .Media)}()
+	private lazy var log: Logger = Logger(sender: self, context: .Media)
 	internal private(set) var effect: AVAudioUnit?
 	private let engine = AVAudioEngine()
 	private let player = AVAudioPlayerNode()
@@ -22,12 +22,12 @@ final class PlaybackEngineContext {
 
 	// MARK: -
 	init() {
-		log.logInit()
+		log.initialize()
 		engine.attach(player)
 	}
 
 	deinit {
-		log.logDeinit()
+		log.deinitialize()
 	}
 
 	// MARK: -
@@ -129,7 +129,7 @@ final class PlaybackEngineContext {
 			}
 	}
 
-	// MARK: - Private
+	// MARK: -> Private
 
 	private func clearEffect() {
 		defer {
@@ -171,9 +171,9 @@ final class PlaybackEngineContext {
 		statistics.append("File samplerate: \(file.fileFormat.sampleRate)")
 		statistics.append("File playback offset: \(offset)")
 		statistics.append("Frames to play: \(framesToPlay)")
-		log.logDebug(statistics.joined(separator: "; "))
+		log.debug(statistics.joined(separator: "; "))
 		guard framesToPlay > 0 else {
-			log.logWarn("Nothing to play. Check value of 'playbackOffset' property.")
+			log.warn("Nothing to play. Check value of 'playbackOffset' property.")
 			return
 		}
 

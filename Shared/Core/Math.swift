@@ -25,7 +25,7 @@ extension UInt32: RandomInRangeValueType {
 extension Float: RandomInRangeValueType {
    static func randomValue(in range: Range<Float>) -> Float {
       var randomValue: UInt32 = 0
-      arc4random_buf(&randomValue, sizeof(UInt32.self))
+      arc4random_buf(&randomValue, MemoryLayout<UInt32>.size)
       let randomValueFloat = Float(randomValue) / Float(UInt32.max)
       return (randomValueFloat * (range.upperBound - range.lowerBound)) + range.lowerBound
    }

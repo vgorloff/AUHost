@@ -15,7 +15,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 	var playbackEngine = PlaybackEngine()
 
   func applicationDidFinishLaunching(_ aNotification: Notification) {
-		Logger.sharedLoggerProperties.logAsynchronously.value = false
+		Logger.sharedProperties.logAsynchronously = false
   }
 
   func applicationWillTerminate(aNotification: Notification) {
@@ -25,6 +25,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
     return true
   }
-
 
 }
