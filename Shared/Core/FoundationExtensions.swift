@@ -33,12 +33,12 @@ public extension Pipe {
 
 #if os(OSX)
 
-public extension Task {
+public extension Process {
 	public static func findExecutablePath(_ executableName: String) -> String? {
 		if executableName.isEmpty {
 			return nil
 		}
-		let task = Task()
+		let task = Process()
 		task.launchPath = "/bin/bash"
 		task.arguments = ["-l", "-c", "which \(executableName)"]
 
@@ -190,12 +190,12 @@ public enum NSDictionaryError: Error {
 
 public extension NSDictionary {
 
-	public func hasKey<T: AnyObject where T: Equatable>(key: T) -> Bool {
+	public func hasKey<T: AnyObject>(key: T) -> Bool where T: Equatable {
 		return allKeys.filter { element in return (element as? T) == key }.count == 1
 	}
 	public func value<T>(forRequiredKey key: AnyObject) throws -> T {
 		guard let value = object(forKey: key) as? T else {
-			throw NSDictionaryError.MissedRequiredKey(String(key))
+         throw NSDictionaryError.MissedRequiredKey(String(describing: key))
 		}
 		return value
 	}
@@ -230,7 +230,7 @@ public extension NSDictionary {
 // MARK:
 
 public extension DispatchSemaphore {
-  public func wait( completion: @noescape (Void) -> Void) {
+  public func wait( completion: (Void) -> Void) {
     wait()
     completion()
   }
@@ -262,7 +262,7 @@ public extension DispatchQueue {
 		return DispatchQueue(label: label)
 	}
 
-	public func smartSync<T>(execute work: @noescape () throws -> T) rethrows -> T {
+	public func smartSync<T>(execute work: () throws -> T) rethrows -> T {
 		if Thread.isMainThread {
 			return try work()
 		} else {

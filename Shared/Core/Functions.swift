@@ -14,8 +14,11 @@ public struct g { // swiftlint:disable:this type_name
 public struct a { // swiftlint:disable:this type_name
 }
 
+public struct c { // swiftlint:disable:this type_name
+}
+
 extension a {
-	public static func map<A, B>(arg: A?, closure: @noescape (A) -> B) -> B? {
+	public static func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
 		if let value = arg {
 			return closure(value)
 		}
@@ -25,7 +28,7 @@ extension a {
 
 extension g {
 
-   public static func perform<T>(_ closure: @noescape (Void) throws -> T?, failure: @noescape (Error) -> Void) -> T? {
+   public static func perform<T>(_ closure: (Void) throws -> T?, failure: (Error) -> Void) -> T? {
       do {
          return try closure()
       } catch {
@@ -43,7 +46,7 @@ extension g {
       }
    }
 
-   public static func perform(_ closure: @noescape (Void) throws -> Void, failure: @noescape (Error) -> Void) {
+   public static func perform(_ closure: (Void) throws -> Void, failure: (Error) -> Void) {
       do {
          try closure()
       } catch {
@@ -59,12 +62,12 @@ extension g {
       }
    }
 
-   public static func configure<T>(_ element: T, _ closure: @noescape (T) -> Void) -> T {
+   public static func configure<T>(_ element: T, _ closure: (T) -> Void) -> T {
       closure(element)
       return element
    }
 
-   public static func configureEach<T>(_ elements: [T], _ closure: @noescape (T) -> Void) {
+   public static func configureEach<T>(_ elements: [T], _ closure: (T) -> Void) {
       elements.forEach { closure($0) }
    }
 
@@ -87,7 +90,7 @@ extension g {
 
    /// - returns: Time interval in seconds.
    /// - parameter closure: Code block to measure performance.
-   public static func benchmark(_ closure: @noescape (Void) -> Void) -> CFTimeInterval {
+   public static func benchmark(_ closure: (Void) -> Void) -> CFTimeInterval {
       let startTime = CFAbsoluteTimeGetCurrent()
       closure()
       return CFAbsoluteTimeGetCurrent() - startTime
@@ -104,7 +107,7 @@ public protocol MergeableType {
    mutating func mergeIfNeeded(with: Self) -> Bool
 }
 
-public struct c { // swiftlint:disable:this type_name
+extension c {
 
    public static func merge<T: MergeableType>(_ a: [T], with b: inout [T]) -> [T] {
       var insertedOrUpdated = Array<T>()

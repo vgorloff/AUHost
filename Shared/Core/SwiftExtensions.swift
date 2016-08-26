@@ -88,7 +88,7 @@ public extension Dictionary {
 
 	public func value<T>(forRequiredKey key: Key) throws -> T {
 		guard let value = self[key] as? T else {
-			throw DictionaryError.MissedRequiredKey(String(key))
+         throw DictionaryError.MissedRequiredKey(String(describing: key))
 		}
 		return value
 	}
@@ -115,17 +115,27 @@ extension Array {
    }
 }
 
-public extension Process {
+public extension ProcessInfo {
+
+   struct Static {
+      static var scriptFilePath: String?
+   }
 
 	/// Path to original script before compilation
-	public static var scriptFilePath: String?
+   public static var scriptFilePath: String? {
+      get {
+         return Static.scriptFilePath
+      } set {
+         Static.scriptFilePath = newValue
+      }
+   }
 
 	public static var executableFilePath: String {
-		return scriptFilePath ?? arguments[0]
+		return scriptFilePath ?? ProcessInfo.processInfo.arguments[0]
 	}
 
 	public static var executableFileName: String {
-		return (scriptFilePath ?? arguments[0]).lastPathComponent
+		return (scriptFilePath ?? ProcessInfo.processInfo.arguments[0]).lastPathComponent
 	}
 
 	public static var executableDirectoryPath: String {

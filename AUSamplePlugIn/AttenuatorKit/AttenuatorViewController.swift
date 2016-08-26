@@ -9,13 +9,13 @@
 import CoreAudioKit
 import AVFoundation
 
-public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
+open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
    private var audioUnit: AttenuatorAudioUnit?
    // MARK: -
 
-   public override func loadView() {
+   open override func loadView() {
       var topLevelObjects = NSArray()
-      guard let nib = NSNib(nibNamed: String(AttenuatorViewController.self), bundle: Bundle(for: AttenuatorViewController.self)),
+      guard let nib = NSNib(nibNamed: String(describing: AttenuatorViewController.self), bundle: Bundle(for: AttenuatorViewController.self)),
          nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects) else {
             fatalError()
       }
@@ -28,16 +28,16 @@ public class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
       fatalError()
    }
 
-   override public func viewDidLoad() {
+   override open func viewDidLoad() {
       super.viewDidLoad()
    }
 
-   override public func viewDidAppear() {
+   override open func viewDidAppear() {
       super.viewDidAppear()
       audioUnit?.view?.startMetering()
    }
 
-   override public func viewWillDisappear() {
+   override open func viewWillDisappear() {
       super.viewWillDisappear()
       audioUnit?.view?.stopMetering()
    }

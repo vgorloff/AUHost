@@ -54,7 +54,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
-   override func prepare(for segue: NSStoryboardSegue, sender: AnyObject?) {
+   override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
       if let segueID = segue.identifier, let ctrl = segue.destinationController as? EffectWindowController,
          segueID == "S:OpenEffectView" {
          ctrl.contentViewController = effectViewController
@@ -204,7 +204,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
-   func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> AnyObject? {
+   func tableView(_ tableView: NSTableView, objectValueFor tableColumn: NSTableColumn?, row: Int) -> Any? {
       switch tableView {
       case tableEffects:
          if row == 0 {
