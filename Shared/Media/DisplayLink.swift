@@ -9,6 +9,18 @@
 import QuartzCore
 import CoreVideo
 
+// swiftlint:disable:next function_parameter_count
+private func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,
+                                            _: UnsafePointer<CVTimeStamp>,
+                                            _: UnsafePointer<CVTimeStamp>,
+                                            _: CVOptionFlags,
+                                            _: UnsafeMutablePointer<CVOptionFlags>,
+                                            _ context: UnsafeMutableRawPointer?) -> CVReturn {
+   let dispatchSource = unsafeBitCast(context, to: SmartDispatchSourceUserDataAdd.self)
+   dispatchSource.mergeData(value: 1)
+   return kCVReturnSuccess
+}
+
 public final class DisplayLink {
 
    public enum Errors: Error {
@@ -39,8 +51,9 @@ public final class DisplayLink {
       try verifyStatusCode(CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID))
    }
 
-   public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputHandler) throws {
-      try verifyStatusCode(CVDisplayLinkSetOutputHandler(displayLink, callback))
+   public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputCallback?,
+                                 userInfo: UnsafeMutableRawPointer?) throws {
+      try verifyStatusCode(CVDisplayLinkSetOutputCallback(displayLink, callback, userInfo))
    }
 
    public func stop() throws {
@@ -131,12 +144,9 @@ extension DisplayLink {
 
 
       // MARK: Private
-
       private func setUpDisplayLink() throws {
-         try displayLink.setOutputCallback { [weak self] _ in
-            self?.dispatchSource.mergeData(value: 1)
-            return kCVReturnSuccess
-         }
+         let context = Unmanaged.passUnretained(dispatchSource).toOpaque()
+         try displayLink.setOutputCallback(AWLCVDisplayLinkHelperCallback, userInfo: context)
          let displayID = CGMainDisplayID()
          try displayLink.setCurrentCGDisplay(displayID: displayID)
       }
