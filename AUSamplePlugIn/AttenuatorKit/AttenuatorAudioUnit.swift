@@ -11,7 +11,7 @@ import AVFoundation
 
 public final class AttenuatorAudioUnit: AUAudioUnit {
 
-	public enum Error: ErrorProtocol {
+	public enum Errors: Error {
 		case StatusError(OSStatus)
 	}
 	private let maxChannels = UInt32(8)
@@ -74,11 +74,11 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 		try super.allocateRenderResources()
 		guard outputBus.format.channelCount == inputBus.format.channelCount else {
 			setRenderResourcesAllocated(false)
-			throw Error.StatusError(kAudioUnitErr_FailedInitialization)
+			throw Errors.StatusError(kAudioUnitErr_FailedInitialization)
 		}
 		_pcmBuffer = AVAudioPCMBuffer(pcmFormat: inputBus.format, frameCapacity: maximumFramesToRender)
 		dsp.reset()
-		DispatchQueue.main.async { [weak self, weak outputBus] in guard let v = self?.view, outBus = outputBus else { return }
+		DispatchQueue.main.async { [weak self, weak outputBus] in guard let v = self?.view, let outBus = outputBus else { return }
 			v.viewLevelMeter.numberOfChannels = outBus.format.channelCount
 		}
 	}
@@ -119,7 +119,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 		}
 		tree.implementorValueProvider = { [weak self] param in guard let s = self else { return AUValue() }
 			let param = AttenuatorParameter.fromRawValue(param.address)
-			return s.dsp.getParameter(parameter: param)
+			return s.dsp.getParameter(param)
 		}
 		return tree
 	}
@@ -127,10 +127,10 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 	private final func prepareInputBuffer(buffer: AVAudioPCMBuffer, frameCount: AUAudioFrameCount) {
 		let mbl = buffer.mutableAudioBufferList
 		let abl = buffer.audioBufferList
-		let byteSize = frameCount * UInt32(sizeof(AttenuatorDSPKernel.SampleType.self))
+		let byteSize = frameCount * UInt32(MemoryLayout<AttenuatorDSPKernel.SampleType>.size)
 		mbl.pointee.mNumberBuffers = abl.pointee.mNumberBuffers
 		let mblPointer = UnsafeMutableAudioBufferListPointer(mbl)
-		let ablPointer = UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer<AudioBufferList>(abl))
+      let ablPointer = UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer<AudioBufferList>(mutating: abl))
 		for index in 0 ..< ablPointer.count {
 			var mB = mblPointer[index]
 			let aB = ablPointer[index]

@@ -9,21 +9,9 @@
 import QuartzCore
 import CoreVideo
 
-// swiftlint:disable:next function_parameter_count
-private func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,
-                                            _: UnsafePointer<CVTimeStamp>,
-                                            _: UnsafePointer<CVTimeStamp>,
-                                            _: CVOptionFlags,
-                                            _: UnsafeMutablePointer<CVOptionFlags>,
-                                            _ context: UnsafeMutablePointer<Void>?) -> CVReturn {
-	let dispatchSource = unsafeBitCast(context, to: SmartDispatchSourceUserDataAdd.self)
-	dispatchSource.mergeData(value: 1)
-	return kCVReturnSuccess
-}
-
 public final class DisplayLink {
 
-   public enum Error: ErrorProtocol {
+   public enum Errors: Error {
       case CVReturnError(CVReturn)
    }
    private let displayLink: CVDisplayLink
@@ -42,22 +30,21 @@ public final class DisplayLink {
       status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
       try verifyStatusCode(status)
       guard let displayLinkInstance = displayLink else {
-         throw Error.CVReturnError(kCVReturnError)
+         throw Errors.CVReturnError(kCVReturnError)
       }
-		return DisplayLink(displayLink: displayLinkInstance)
+      return DisplayLink(displayLink: displayLinkInstance)
    }
 
    public func setCurrentCGDisplay(displayID: CGDirectDisplayID) throws {
-   	try verifyStatusCode(CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID))
+      try verifyStatusCode(CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID))
    }
 
-   public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputCallback?,
-                                 userInfo: UnsafeMutablePointer<Swift.Void>?) throws {
-      try verifyStatusCode(CVDisplayLinkSetOutputCallback(displayLink, callback, userInfo))
+   public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputHandler) throws {
+      try verifyStatusCode(CVDisplayLinkSetOutputHandler(displayLink, callback))
    }
 
    public func stop() throws {
-   	try verifyStatusCode(CVDisplayLinkStop(displayLink))
+      try verifyStatusCode(CVDisplayLinkStop(displayLink))
    }
 
    public func start() throws {
@@ -68,86 +55,92 @@ public final class DisplayLink {
 
    private func verifyStatusCode(_ statusCode: CVReturn) throws {
       if statusCode != kCVReturnSuccess {
-         throw Error.CVReturnError(statusCode)
+         throw Errors.CVReturnError(statusCode)
       }
    }
 
    private static func verifyStatusCode(_ statusCode: CVReturn) throws {
       if statusCode != kCVReturnSuccess {
-         throw Error.CVReturnError(statusCode)
+         throw Errors.CVReturnError(statusCode)
       }
    }
 }
 
 // MARK:
 
-/// Method `stop()` will be called in `deinit` automatically if `CVDisplayLink` is running.
-public final class DisplayLinkRenderer: CustomReflectable {
+extension DisplayLink {
 
-	private var displayLink: DisplayLink
-	private let frameRateDivider: UInt
-	private var frameCounter: UInt
-	private var dispatchSource: SmartDispatchSourceUserDataAdd
+   /// Method `stop()` will be called in `deinit` automatically if `CVDisplayLink` is running.
+   public final class GenericRenderer: CustomReflectable {
 
-	public var renderCallback: ((Void) -> Void)?
-	private lazy var log: Logger = { return Logger(sender: self, context: .Media) }()
+      private var displayLink: DisplayLink
+      private let frameRateDivider: UInt
+      private var frameCounter: UInt
+      private var dispatchSource: SmartDispatchSourceUserDataAdd
 
-	// MARK: Init / Deinit
+      public var renderCallback: ((Void) -> Void)?
+      private lazy var log: Logger = Logger(sender: self, context: .Media)
 
-	public init(frameRateDivider divider: UInt = 1, renderCallbackQueue: DispatchQueue? = nil) throws {
-		frameRateDivider = divider
-		frameCounter = divider // Force immediate draw.
-      displayLink = try DisplayLink.createWithActiveCGDisplays()
-      dispatchSource = SmartDispatchSourceUserDataAdd(queue: renderCallbackQueue)
-		try setUpDisplayLink()
-      dispatchSource.setEventHandler { [weak self] in guard let s = self else { return }
-			s.frameCounter += 1
-			if s.frameCounter >= s.frameRateDivider {
-				s.renderCallback?()
-				s.frameCounter = 0
-			}
-		}
-		log.logInit()
-	}
+      // MARK: Init / Deinit
 
-	deinit {
-		if displayLink.isRunning {
-			_ = try? stop()
-		}
-		log.logDeinit()
-	}
+      public init(frameRateDivider divider: UInt = 1, renderCallbackQueue: DispatchQueue? = nil) throws {
+         frameRateDivider = divider
+         frameCounter = divider // Force immediate draw.
+         displayLink = try DisplayLink.createWithActiveCGDisplays()
+         dispatchSource = SmartDispatchSourceUserDataAdd(queue: renderCallbackQueue)
+         try setUpDisplayLink()
+         dispatchSource.setEventHandler { [weak self] in guard let s = self else { return }
+            s.frameCounter += 1
+            if s.frameCounter >= s.frameRateDivider {
+               s.renderCallback?()
+               s.frameCounter = 0
+            }
+         }
+         log.initialize()
+      }
 
-	public var customMirror: Mirror {
-		let children = DictionaryLiteral<String, Any>(dictionaryLiteral:
-			("displayLink", displayLink), ("frameRateDivider", frameRateDivider), ("frameCounter", frameCounter))
-		return Mirror(self, children: children)
-	}
+      deinit {
+         if displayLink.isRunning {
+            _ = try? stop()
+         }
+         log.deinitialize()
+      }
 
-	// MARK: Public
+      public var customMirror: Mirror {
+         let children = DictionaryLiteral<String, Any>(dictionaryLiteral:
+            ("displayLink", displayLink), ("frameRateDivider", frameRateDivider), ("frameCounter", frameCounter))
+         return Mirror(self, children: children)
+      }
 
-	public func start(shouldResetFrameCounter: Bool = false) throws {
-		log.logVerbose("Starting")
-		if shouldResetFrameCounter {
-			frameCounter = 0
-		}
-		dispatchSource.resume()
-		try displayLink.start()
-	}
+      // MARK: Public
 
-	public func stop() throws {
-		log.logVerbose("Stopping")
-		dispatchSource.suspend()
-		try displayLink.stop()
-	}
+      public func start(shouldResetFrameCounter: Bool = false) throws {
+         log.verbose("Starting")
+         if shouldResetFrameCounter {
+            frameCounter = 0
+         }
+         dispatchSource.resume()
+         try displayLink.start()
+      }
+
+      public func stop() throws {
+         log.verbose("Stopping")
+         dispatchSource.suspend()
+         try displayLink.stop()
+      }
 
 
-	// MARK: Private
+      // MARK: Private
 
-	private func setUpDisplayLink() throws {
-      let context = UnsafeMutablePointer<Void>(unsafeAddress(of: dispatchSource))
-      try displayLink.setOutputCallback(AWLCVDisplayLinkHelperCallback, userInfo: context)
-      let displayID = CGMainDisplayID()
-      try displayLink.setCurrentCGDisplay(displayID: displayID)
-	}
+      private func setUpDisplayLink() throws {
+         try displayLink.setOutputCallback { [weak self] _ in
+            self?.dispatchSource.mergeData(value: 1)
+            return kCVReturnSuccess
+         }
+         let displayID = CGMainDisplayID()
+         try displayLink.setCurrentCGDisplay(displayID: displayID)
+      }
+
+   }
 
 }

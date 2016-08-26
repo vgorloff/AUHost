@@ -6,9 +6,7 @@ if [ -n "$CLANG_COVERAGE_MAPPING" ]; then echo "Script \"$0\" skipped in testing
 if [[ ${BUILT_PRODUCTS_DIR} == *"IBDesignables"* ]]; then echo "Script \"$0\" skipped in IBDesignables mode." && exit 0; fi
 
 [[ -r ~/.bashrc ]] && . ~/.bashrc # Or set /bin/bash -l as shell in Xcode
-hash swift-osx 2>/dev/null || { echo "swift-osx does not exist. Skipping."; exit 0; }
-
-AWLScriptDirPath=$(cd "$(dirname "$0")"; pwd)
-AWLScriptName="$(echo `basename $0` | cut -f 1 -d '.').swiftcmd"
-
-"$AWLScriptDirPath/$AWLScriptName" $@
+hash swiftlint 2>/dev/null || { echo "swiftlint does not exist. Solution: brew install swiftlint"; exit 0; }
+for file_path in $@; do
+   find ${file_path} -iname '*.swift' -type f -exec sed -i '' 's/[[:space:]]\{1,\}$//' {} \+
+done

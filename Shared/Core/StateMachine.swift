@@ -9,7 +9,7 @@ public protocol StateMachineGraphType {
 	associatedtype Context
 	var initialState: State { get }
 	var transitionGraph: (State, Event) -> (State, ((Context) throws -> Void)?)? { get }
-	init(initialState: State, transitionGraph: (State, Event) -> (State, ((Context) throws -> Void)?)?)
+	init(initialState: State, transitionGraph: @escaping (State, Event) -> (State, ((Context) throws -> Void)?)?)
 }
 
 public struct StateMachineGraph<State, Event, Context>: StateMachineGraphType {
@@ -18,7 +18,7 @@ public struct StateMachineGraph<State, Event, Context>: StateMachineGraphType {
   public typealias Response = (State, Action?)
 	public let initialState: State
 	public let transitionGraph: (Request) -> Response?
-	public init(initialState: State, transitionGraph: (Request) -> Response?) {
+	public init(initialState: State, transitionGraph: @escaping (Request) -> Response?) {
 		self.initialState = initialState
 		self.transitionGraph = transitionGraph
 	}
@@ -30,8 +30,10 @@ public struct StateMachineGraph<State, Event, Context>: StateMachineGraphType {
 public struct StateMachine<T: StateMachineGraphType> {
 	private let context: T.Context
 	private let graph: T
+   public typealias OldState = T.State
+   public typealias NewState = T.State
 	public private(set) var state: T.State
-	public var stateChangeHandler: ((old: T.State, event: T.Event, new: T.State) -> ())?
+	public var stateChangeHandler: ((OldState, T.Event, NewState) -> Void)?
 	public init(context: T.Context, graph: T) {
 		self.context = context
 		self.graph = graph
@@ -42,7 +44,7 @@ public struct StateMachine<T: StateMachineGraphType> {
 			let oldState = state
 			state = newState
 			try transition?(context)
-			stateChangeHandler?(old: oldState, event: event, new: newState)
+			stateChangeHandler?(oldState, event, newState)
 		} else {
 			fatalError("Unable to process event \"\(event)\" for state \"\(state)\"")
 		}

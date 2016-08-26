@@ -80,7 +80,7 @@ public extension String {
 	}
 }
 
-public enum DictionaryError: ErrorProtocol {
+public enum DictionaryError: Error {
 	case MissedRequiredKey(String)
 }
 
@@ -88,7 +88,7 @@ public extension Dictionary {
 
 	public func value<T>(forRequiredKey key: Key) throws -> T {
 		guard let value = self[key] as? T else {
-			throw DictionaryError.MissedRequiredKey(String(key))
+         throw DictionaryError.MissedRequiredKey(String(describing: key))
 		}
 		return value
 	}
@@ -100,23 +100,42 @@ public extension Dictionary {
 		return nil
 	}
 
-	public func hasKey(key: Key) -> Bool {
+	public func hasKey(_ key: Key) -> Bool {
 		return Array(keys).filter { $0 == key }.count == 1
 	}
 
 }
 
-public extension Process {
+extension Array {
+   func element(at index: Index) -> Element? {
+      if index < startIndex || index >= endIndex {
+         return nil
+      }
+      return self[index]
+   }
+}
+
+public extension ProcessInfo {
+
+   struct Static {
+      static var scriptFilePath: String?
+   }
 
 	/// Path to original script before compilation
-	public static var scriptFilePath: String?
+   public static var scriptFilePath: String? {
+      get {
+         return Static.scriptFilePath
+      } set {
+         Static.scriptFilePath = newValue
+      }
+   }
 
 	public static var executableFilePath: String {
-		return scriptFilePath ?? arguments[0]
+		return scriptFilePath ?? ProcessInfo.processInfo.arguments[0]
 	}
 
 	public static var executableFileName: String {
-		return (scriptFilePath ?? arguments[0]).lastPathComponent
+		return (scriptFilePath ?? ProcessInfo.processInfo.arguments[0]).lastPathComponent
 	}
 
 	public static var executableDirectoryPath: String {

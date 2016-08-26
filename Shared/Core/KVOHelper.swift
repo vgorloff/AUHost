@@ -10,7 +10,7 @@ import Foundation
 
 public struct KVOHelperResult<T: Any> {
 	private var changeKind: NSKeyValueChange
-	public var change: [NSKeyValueChangeKey: AnyObject]
+	public var change: [NSKeyValueChangeKey: Any]
 	public var kind: NSKeyValueChange {
 		return changeKind
 	}
@@ -26,7 +26,7 @@ public struct KVOHelperResult<T: Any> {
 	var indexes: NSIndexSet? {
 		return change[.indexesKey] as? NSIndexSet
 	}
-	init?(change aChange: [NSKeyValueChangeKey: AnyObject]) {
+	init?(change aChange: [NSKeyValueChangeKey: Any]) {
 		change = aChange
 		guard
 			let changeKindNumberValue = change[.kindKey] as? NSNumber,
@@ -70,8 +70,8 @@ public final class KVOHelper<T: Any>: NSObject {
 		object.removeObserver(self, forKeyPath: keyPath, context: &context)
 	}
 
-	override public func observeValue(forKeyPath aKeyPath: String?, of object: AnyObject?,
-		change aChange: [NSKeyValueChangeKey : AnyObject]?, context aContext: UnsafeMutablePointer<Void>?) {
+	override public func observeValue(forKeyPath aKeyPath: String?, of object: Any?,
+		change aChange: [NSKeyValueChangeKey : Any]?, context aContext: UnsafeMutableRawPointer?) {
 			if aContext == &context && aKeyPath == keyPath {
 				if !suspended, let change = aChange, let result = KVOHelperResult<T>(change: change) {
 					changeCallback(result)

@@ -17,9 +17,9 @@ public final class MediaItemView: NSView {
 		}
 	}
 	private let textDragAndDropMessage: NSString = "Drop media file here..."
-	private var textDragAndDropColor = AlternativeValue<NSColor>(NSColor.gray(), altValue: NSColor.white())
+	private var textDragAndDropColor = AlternativeValue<NSColor>(NSColor.gray, altValue: NSColor.white)
 	private let textDragAndDropFont = NSFont.labelFont(ofSize: 17)
-	private let waveformColor = NSColor(hexString: "#51A2F3") ?? NSColor.red()
+	private let waveformColor = NSColor(hexString: "#51A2F3") ?? NSColor.red
 	private let pbUtil = MediaObjectPasteboardUtility()
 	private lazy var wfCache = WaveformCacheUtility()
 	private lazy var wfDrawingProvider = WaveformDrawingDataProvider(dataType: .CGPoint)
@@ -53,9 +53,9 @@ public final class MediaItemView: NSView {
 	}
 
 	public override func draw(_ dirtyRect: NSRect) {
-		NSColor.white().setFill()
+		NSColor.white.setFill()
 		NSRectFill(dirtyRect)
-		(isHighlighted ? NSColor.keyboardFocusIndicatorColor() : NSColor.gridColor()).setStroke()
+		(isHighlighted ? NSColor.keyboardFocusIndicatorColor : NSColor.gridColor).setStroke()
 		let borderWidth = isHighlighted ? 2.CGFloatValue : 1.CGFloatValue
 		NSBezierPath.setDefaultLineWidth(borderWidth)
 		NSBezierPath.stroke(bounds.insetBy(dx: 0.5 * borderWidth, dy: 0.5 * borderWidth))
@@ -124,8 +124,7 @@ public final class MediaItemView: NSView {
 	private func drawWaveform() {
 
 		// !inLiveResize,
-		guard !inLiveResize, let context = NSGraphicsContext.current()?.cgContext,
-			let waveform = cachedWaveform() else {
+		guard !inLiveResize, let context = NSGraphicsContext.current()?.cgContext, let waveform = cachedWaveform() else {
 			return // FIXME: Implement interpolation for live resize and while waiting for waveform cashe arrival.
 		}
 		let scaleFactor = getScaleFactor()
@@ -142,13 +141,13 @@ public final class MediaItemView: NSView {
 		}
 		context.setShouldAntialias(false)
 //		CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor)
-		context.translate(x: 0.5 / scaleFactor, y: 0.5 / scaleFactor); // Center the origin at center of a pixel
+		context.translateBy(x: 0.5 / scaleFactor, y: 0.5 / scaleFactor); // Center the origin at center of a pixel
 
 		context.saveGState()
 //		CGContextFillRect(context, bounds)
 		context.setStrokeColor(waveformColor.cgColor)
 		context.setLineWidth(lineWidth)
-		context.strokeLineSegments(between: wfDrawingProvider.points, count: wfDrawingProvider.numberOfPoints)
+		context.strokeLineSegments(between: wfDrawingProvider.points)
 		context.restoreGState()
 	}
 

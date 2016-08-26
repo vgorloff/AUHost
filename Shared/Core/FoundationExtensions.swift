@@ -8,29 +8,6 @@
 
 import Foundation
 
-#if os(OSX)
-
-public extension Task {
-	public static func findExecutablePath(_ executableName: String) -> String? {
-		if executableName.isEmpty {
-			return nil
-		}
-		let task = Task()
-		task.launchPath = "/bin/bash"
-		task.arguments = ["-l", "-c", "which \(executableName)"]
-
-		let outPipe = Pipe()
-		task.standardOutput = outPipe
-
-		task.launch()
-		task.waitUntilExit()
-
-		return outPipe.readIntoString()
-	}
-}
-
-#endif
-
 public extension DateFormatter {
 	public static func localizedStringFromDate(date: Date, dateFormat: String) -> String {
 		let f = DateFormatter()
@@ -53,6 +30,29 @@ public extension Pipe {
    }
 
 }
+
+#if os(OSX)
+
+public extension Process {
+	public static func findExecutablePath(_ executableName: String) -> String? {
+		if executableName.isEmpty {
+			return nil
+		}
+		let task = Process()
+		task.launchPath = "/bin/bash"
+		task.arguments = ["-l", "-c", "which \(executableName)"]
+
+		let outPipe = Pipe()
+		task.standardOutput = outPipe
+
+		task.launch()
+		task.waitUntilExit()
+
+		return outPipe.readIntoString()
+	}
+}
+
+#endif
 
 public extension OperationQueue {
 
@@ -166,14 +166,14 @@ public extension OperationQueue {
 
 // MARK:
 
-public enum BundleError: ErrorProtocol {
+public enum BundleError: Error {
 	case MissedURLForResource(resourceName: String, resourceExtension: String)
 }
 
 public extension Bundle {
 
-	public func urlForResource(resourceName: String, resourceExtension: String) throws -> NSURL {
-		guard let url = urlForResource(resourceName, withExtension: resourceExtension) else {
+	public func urlForResource(resourceName: String, resourceExtension: String) throws -> URL {
+		guard let url = url(forResource: resourceName, withExtension: resourceExtension) else {
 			throw BundleError.MissedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
 		}
 		return url
@@ -182,22 +182,44 @@ public extension Bundle {
 
 // MARK:
 
-public enum NSDictionaryError: ErrorProtocol {
+public enum NSDictionaryError: Error {
 	case UnableToWriteToFile(String)
-	case UnableToReadFromURL(NSURL)
+	case UnableToReadFromURL(URL)
+	case MissedRequiredKey(String)
 }
 
 public extension NSDictionary {
 
-	public func hasKey<T: AnyObject where T: Equatable>(key: T) -> Bool {
+	public func hasKey<T: AnyObject>(key: T) -> Bool where T: Equatable {
 		return allKeys.filter { element in return (element as? T) == key }.count == 1
 	}
+	public func value<T>(forRequiredKey key: AnyObject) throws -> T {
+		guard let value = object(forKey: key) as? T else {
+         throw NSDictionaryError.MissedRequiredKey(String(describing: key))
+		}
+		return value
+	}
+
+	public func value<T>(forOptionalKey key: AnyObject) -> T? {
+		if let value = object(forKey: key) as? T {
+			return value
+		}
+		return nil
+	}
+
+	public func value<T>(forOptionalKey key: String) -> T? {
+		if let value = object(forKey: key) as? T {
+			return value
+		}
+		return nil
+	}
+
 	public func writePlistToFile(path: String, atomically: Bool) throws {
 		if !write(toFile: path, atomically: atomically) {
 			throw NSDictionaryError.UnableToWriteToFile(path)
 		}
 	}
-	public static func readPlistFromURL(plistURL: URL) throws -> NSDictionary {
+	public static func readPlist(fromURL plistURL: URL) throws -> NSDictionary {
 		guard let plist = NSDictionary(contentsOf: plistURL) else {
 			throw NSDictionaryError.UnableToReadFromURL(plistURL)
 		}
@@ -208,7 +230,7 @@ public extension NSDictionary {
 // MARK:
 
 public extension DispatchSemaphore {
-  public func wait( completion: @noescape (Void) -> Void) {
+  public func wait( completion: (Void) -> Void) {
     wait()
     completion()
   }
@@ -217,26 +239,30 @@ public extension DispatchSemaphore {
 public extension DispatchQueue {
 
 	public static var Default: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosDefault)
+		return DispatchQueue.global(qos: .default)
 	}
 
 	public static var UserInteractive: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUserInteractive)
+		return DispatchQueue.global(qos: .userInteractive)
 	}
 
 	public static var UserInitiated: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUserInitiated)
+		return DispatchQueue.global(qos: .userInitiated)
 	}
 
 	public static var Utility: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosUtility)
+		return DispatchQueue.global(qos: .utility)
 	}
 
 	public static var Background: DispatchQueue {
-		return DispatchQueue.global(attributes: DispatchQueue.GlobalAttributes.qosBackground)
+		return DispatchQueue.global(qos: .background)
 	}
 
-	public func smartSync<T>(execute work: @noescape () throws -> T) rethrows -> T {
+	public static func serial(label: String) -> DispatchQueue {
+		return DispatchQueue(label: label)
+	}
+
+	public func smartSync<T>(execute work: () throws -> T) rethrows -> T {
 		if Thread.isMainThread {
 			return try work()
 		} else {
@@ -248,7 +274,7 @@ public extension DispatchQueue {
 
 // MARK:
 
-public enum FileManagerError: ErrorProtocol {
+public enum FileManagerError: Error {
 	case DirectoryIsNotAvailable(String)
 	case RegularFileIsNotAvailable(String)
 	case CanNotOpenFileAtPath(String)
@@ -257,8 +283,8 @@ public enum FileManagerError: ErrorProtocol {
 
 public extension FileManager {
 
-	public class var applicationDocumentsDirectory: NSURL {
-		let urls = self.default.urlsForDirectory(.documentDirectory, inDomains: .userDomainMask)
+	public class var applicationDocumentsDirectory: URL {
+		let urls = self.default.urls(for: .documentDirectory, in: .userDomainMask)
 		return urls[urls.count-1]
 	}
 
@@ -276,12 +302,12 @@ public extension FileManager {
 
 }
 
-public extension NSURL {
+public extension URL {
 
 	// Every element is a string in key=value format
-	public class func requestQueryFromParameters(elements: [String]) -> String {
+	public static func requestQuery(fromParameters elements: [String]) -> String {
 		if elements.count > 0 {
-			return elements[1..<elements.count].reduce(elements[0], combine: {$0 + "&" + $1})
+			return elements[1..<elements.count].reduce(elements[0], {$0 + "&" + $1})
 		} else {
 			return elements[0]
 		}
@@ -290,7 +316,7 @@ public extension NSURL {
 
 public extension UserDefaults {
 
-	public func setDate(value: NSDate?, forKey key: String) {
+	public func setDate(_ value: NSDate?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -298,7 +324,7 @@ public extension UserDefaults {
 		}
 	}
 
-	public func setString(value: String?, forKey key: String) {
+	public func setString(_ value: String?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -306,7 +332,7 @@ public extension UserDefaults {
 		}
 	}
 
-	public func setBool(value: Bool?, forKey key: String) {
+	public func setBool(_ value: Bool?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -314,7 +340,7 @@ public extension UserDefaults {
 		}
 	}
 
-	public func setInteger(value: Int?, forKey key: String) {
+	public func setInteger(_ value: Int?, forKey key: String) {
 		if let v = value {
 			set(v, forKey: key)
 		} else {
@@ -344,5 +370,11 @@ public extension UserDefaults {
 
 	public func stringValue(key: String) -> String? {
 		return string(forKey: key)
+	}
+}
+
+public extension ProcessInfo {
+	public static var isUnderTesting: Bool {
+		 return NSClassFromString("XCTestCase") != nil
 	}
 }

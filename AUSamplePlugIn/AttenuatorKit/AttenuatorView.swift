@@ -11,37 +11,43 @@ import AudioUnit
 
 class AttenuatorView: NSView {
 
-	@IBOutlet private weak var sliderGain: NSSlider!
-	@IBOutlet private(set) weak var viewLevelMeter: VULevelMeter!
+   @IBOutlet private weak var sliderGain: NSSlider!
+   @IBOutlet private(set) weak var viewLevelMeter: VULevelMeter!
 
-	private var displayLinkUtility: DisplayLinkRenderer?
+   private var displayLinkUtility: DisplayLink.GenericRenderer?
 
-	var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
-	var meterRefreshCallback: ((Void) -> [AttenuatorDSPKernel.SampleType]?)?
+   var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
+   var meterRefreshCallback: ((Void) -> [AttenuatorDSPKernel.SampleType]?)?
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
-		displayLinkUtility = tryOrWarn { return try DisplayLinkRenderer(frameRateDivider: 60/10) }
-		displayLinkUtility?.renderCallback = { [weak self] in
-			if let value = self?.meterRefreshCallback?() {
-				self?.viewLevelMeter.level = value
-			}
-		}
-	}
+   override func awakeFromNib() {
+      super.awakeFromNib()
+      displayLinkUtility = g.perform(try DisplayLink.GenericRenderer(frameRateDivider: 60/10)) {
+         Swift.print($0)
+      }
+      displayLinkUtility?.renderCallback = { [weak self] in
+         if let value = self?.meterRefreshCallback?() {
+            self?.viewLevelMeter.level = value
+         }
+      }
+   }
 
-	func updateParameter(parameter: AttenuatorParameter, withValue: AUValue) {
-		sliderGain.floatValue = withValue
-	}
+   func updateParameter(parameter: AttenuatorParameter, withValue: AUValue) {
+      sliderGain.floatValue = withValue
+   }
 
-	@IBAction private func handleGainChange(_ sender: NSSlider) {
-		handlerParameterDidChaned?(AttenuatorParameter.Gain, sender.floatValue)
-	}
+   @IBAction private func handleGainChange(_ sender: NSSlider) {
+      handlerParameterDidChaned?(AttenuatorParameter.Gain, sender.floatValue)
+   }
 
-	func startMetering() {
-		_ = tryOrWarn {try displayLinkUtility?.start()}
-	}
+   func startMetering() {
+      _ = g.perform (try displayLinkUtility?.start()) {
+         Swift.print($0)
+      }
+   }
 
-	func stopMetering() {
-		_ = tryOrWarn {try displayLinkUtility?.stop()}
-	}
+   func stopMetering() {
+      _ = g.perform (try displayLinkUtility?.stop()) {
+         Swift.print($0)
+      }
+   }
 }
