@@ -34,7 +34,7 @@ platform :mac do
     Bump(AWLAuHostProjectRelativeFilePath, AWLAttenuatorProjectRelativeFilePath)
   end
   
-  desc "Build codesigned release foe GitHub."
+  desc "Build codesigned release for GitHub."
   lane :release do
     ensure_git_status_clean
     XcodeBuildProjectCodesign("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
