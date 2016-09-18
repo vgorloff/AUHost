@@ -83,8 +83,12 @@ def GetPropertyCodesignFolderPath(project)
   return awl_AppPath
 end
 
-def ValidateApp(path)
-  sh "xcrun spctl -a -t exec -vv \"#{path}\"; xcrun codesign --verify \"#{path}\""
+def ValidateApp(*paths)
+   paths.each { |path|
+      sh "xcrun codesign --verify --deep --strict --verbose=1 \"#{path}\""
+      sh "xcrun check-signature \"#{path}\""
+      # sh "xcrun spctl -a -t exec -vv \"#{path}\"" # DIsabled due siims bug in El Capitan
+   }
 end
 
 def Bump(*relativePaths)
