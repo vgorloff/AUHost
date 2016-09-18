@@ -511,7 +511,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "exit 0\ncd ../\n\"Shared/Conf/Scripts/BuildPhase_Whitespace.sh\" \"$SRCROOT\"\n\"Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT\"\n\"Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"Attenuator\" \"$SRCROOT\"";
+			shellScript = "cd ../\n#\"Shared/Conf/Scripts/BuildPhase_Whitespace.sh\" \"$SRCROOT\"\n\"Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT\"\n\"Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"Attenuator\" \"$SRCROOT\"";
 		};
 		C51A63701C4FD1650016F291 /* Force PlugIn Registration */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -525,7 +525,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -n \"$AWLBuildSkipAuxiliaryScripts\" ]; then\n\techo \"Auxiliary script skipped.\" && exit 0\nfi\n\n#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -r \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\npluginkit -a \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\nsleep 2";
+			shellScript = "#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -r \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\npluginkit -a \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\nsleep 2";
 		};
 /* End PBXShellScriptBuildPhase section */
 

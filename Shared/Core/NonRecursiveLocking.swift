@@ -7,6 +7,7 @@
 //
 
 import Darwin
+import Foundation
 
 public protocol NonRecursiveLocking {
 	func synchronized<T>( closure: (Void) -> T) -> T
@@ -47,6 +48,44 @@ public final class SpinLock: NonRecursiveLocking {
 		return result
 	}
 }
+
+public final class NSLocker: NonRecursiveLocking {
+   private let lock = NSLock()
+   public init () {
+   }
+   public final func synchronized<T>(closure: (Void) -> T) -> T {
+      lock.lock()
+      let result = closure()
+      lock.unlock()
+      return result
+   }
+}
+
+/// Wrapper class for locking block of code. Uses non-recursive pthread_mutex_t for locking.
+/// ~~~
+/// let s = NonRecursiveMutex()
+/// let value = s.synchronized {
+///     return "XYZ"
+/// }
+/// ~~~
+public final class NonRecursiveMutex: NonRecursiveLocking {
+   private let _mutex: UnsafeMutablePointer<pthread_mutex_t>
+   public init() {
+      _mutex = UnsafeMutablePointer.allocate(capacity: 1)
+      pthread_mutex_init(_mutex, nil)
+   }
+   public final func synchronized<T>(closure: (Void) -> T) -> T {
+      pthread_mutex_lock(_mutex)
+      let result = closure()
+      pthread_mutex_unlock(_mutex)
+      return result
+   }
+   deinit {
+      pthread_mutex_destroy(_mutex)
+      _mutex.deallocate(capacity: 1)
+   }
+}
+
 
 /// Provides atomic access to Property.value from different threads.
 public final class Property<T>: CustomReflectable {
