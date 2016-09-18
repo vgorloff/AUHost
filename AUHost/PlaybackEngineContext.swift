@@ -104,7 +104,7 @@ final class PlaybackEngineContext {
 	}
 
 	func selectEffect(componentDescription: AudioComponentDescription?,
-		completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)) {
+		completionHandler: @escaping ((PlaybackEngineEffectSelectionResult) -> Void)) {
 			guard let desc = componentDescription else {
 				DispatchQueue.main.async { [weak self] in
 					self?.clearEffect()

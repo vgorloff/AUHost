@@ -96,7 +96,7 @@ public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceT
 
 public final class SmartDispatchSourceTimer: SmartDispatchSource {
 
-   init(flags: DispatchSource.TimerFlags = [], queue: DispatchQueue? = nil) {
+   public init(flags: DispatchSource.TimerFlags = [], queue: DispatchQueue? = nil) {
       super.init()
       dispatchSource = DispatchSource.makeTimerSource(flags: flags, queue: queue)
    }

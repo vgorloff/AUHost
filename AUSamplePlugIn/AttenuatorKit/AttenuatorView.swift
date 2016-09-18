@@ -30,7 +30,7 @@ class AttenuatorView: NSView {
          }
       }
       wantsLayer = true
-      layer?.backgroundColor = CGColor(red: 0.6, green: 1, blue: 0.6, alpha: 1);
+      layer?.backgroundColor = CGColor(red: 0.6, green: 1, blue: 0.6, alpha: 1)
    }
 
    func updateParameter(parameter: AttenuatorParameter, withValue: AUValue) {
