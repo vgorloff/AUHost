@@ -7,9 +7,7 @@ class BuildSettings
     "AWLSkipBuildScripts" => "true"
   }
   @@Codesign = {
-    "CODE_SIGN_IDENTITY" => "Developer ID Application",
     "CODE_SIGNING_REQUIRED" => "YES",
-    "PROVISIONING_PROFILE_SPECIFIER" => "E27KE6VTF6/",
     "AWLSkipBuildScripts" => "true"
   }
   def self.NoCodesign
@@ -87,7 +85,7 @@ def ValidateApp(*paths)
    paths.each { |path|
       sh "xcrun codesign --verify --deep --strict --verbose=1 \"#{path}\""
       sh "xcrun check-signature \"#{path}\""
-      # sh "xcrun spctl -a -t exec -vv \"#{path}\"" # DIsabled due siims bug in El Capitan
+      sh "xcrun spctl -a -t exec -vv \"#{path}\""
    }
 end
 
