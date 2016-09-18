@@ -3,59 +3,60 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.95.0"
-default_platform :mac
+fastlane_version "1.103.0"
+
 import '../Shared/Conf/Scripts/fastlane.rb'
 
-platform :mac do
+AWLAuHostProjectRelativeFilePath = "AUHost.xcodeproj"
+AWLAttenuatorProjectRelativeFilePath = "AUSamplePlugIn/Attenuator.xcodeproj"
 
-  AWLAuHostProjectRelativeFilePath = "AUHost.xcodeproj"
-  AWLAttenuatorProjectRelativeFilePath = "AUSamplePlugIn/Attenuator.xcodeproj"
-  
-  desc "Builds project."
-  lane :build do
-    XcodeBuildProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
-  end
-  
-  desc "Builds when under CI (i.e. Travis)."
-  lane :ci do
-    XcodeBuildProjectRelease("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
-  end
-  
-  desc "Cleans project."
-  lane :clean do
-    XcodeCleanProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
-  end
-  
-  desc "Increment version number."
-  desc "Usually should be runned after finishing release in Git Flow."
-  lane :bump do
-    ensure_git_status_clean
-    Bump(AWLAuHostProjectRelativeFilePath, AWLAttenuatorProjectRelativeFilePath)
-  end
-  
-  desc "Build codesigned release foe GitHub."
-  lane :release do
-    ensure_git_status_clean
-    XcodeBuildProjectCodesign("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
-    awl_AuHostAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAuHostProjectRelativeFilePath}")
-    awl_AttenuatorAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAttenuatorProjectRelativeFilePath}")
-    zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")
-    zip(path: awl_AttenuatorAppPath, output_path: "#{awl_AttenuatorAppPath}.zip")
-    ValidateApp(awl_AuHostAppPath)
-    ValidateApp(awl_AttenuatorAppPath)
-    sh "mkdir -p #{ENV['PWD']}/build"
-    sh "mv \"#{awl_AuHostAppPath}.zip\" \"#{ENV['PWD']}/build\""
-    sh "mv \"#{awl_AttenuatorAppPath}.zip\" \"#{ENV['PWD']}/build\""
-    # github_release = set_github_release(
-    #   repository_name: "fastlane/fastlane",
-    #   api_token: ENV['GITHUB_TOKEN'],
-    #   name: "Super New actions",
-    #   tag_name: last_git_tag,
-    #   description: File.read("changelog"),
-    #   commitish: "master",
-    #   upload_assets: ["#{awl_AuHostAppPath}.zip", "#{awl_AttenuatorAppPath}.zip"]
-    # )
-  end
-  
+desc "Builds project."
+lane :build do
+  XcodeBuildProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+end
+
+desc "Builds when under CI (i.e. Travis)."
+lane :ci do
+  XcodeBuildProjectRelease("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+end
+
+desc "Cleans project."
+lane :clean do
+  XcodeCleanProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+end
+
+desc "Increment version number."
+desc "Usually should be runned after finishing release in Git Flow."
+lane :bump do
+  ensure_git_status_clean
+  Bump(AWLAuHostProjectRelativeFilePath, AWLAttenuatorProjectRelativeFilePath)
+end
+
+desc "Build codesigned release for GitHub."
+lane :release do
+  ensure_git_status_clean
+  XcodeBuildProjectCodesign("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+  awl_AuHostAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAuHostProjectRelativeFilePath}")
+  awl_AttenuatorAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAttenuatorProjectRelativeFilePath}")
+  zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")
+  zip(path: awl_AttenuatorAppPath, output_path: "#{awl_AttenuatorAppPath}.zip")
+  ValidateApp(awl_AuHostAppPath)
+  ValidateApp(awl_AttenuatorAppPath)
+  sh "mkdir -p #{ENV['PWD']}/build"
+  sh "mv \"#{awl_AuHostAppPath}.zip\" \"#{ENV['PWD']}/build\""
+  sh "mv \"#{awl_AttenuatorAppPath}.zip\" \"#{ENV['PWD']}/build\""
+  # github_release = set_github_release(
+  #   repository_name: "fastlane/fastlane",
+  #   api_token: ENV['GITHUB_TOKEN'],
+  #   name: "Super New actions",
+  #   tag_name: last_git_tag,
+  #   description: File.read("changelog"),
+  #   commitish: "master",
+  #   upload_assets: ["#{awl_AuHostAppPath}.zip", "#{awl_AttenuatorAppPath}.zip"]
+  # )
+end
+
+desc "Service: Update Fastlane and other Tools."
+lane :update do
+  SelfUpdate()
 end

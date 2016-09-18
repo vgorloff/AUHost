@@ -1,17 +1,20 @@
-#!/usr/bin/env swift-osx
+//
+//  BuildPhase_CheckHeaders.swift
+//  WaveLabs
+//
+//  Created by Vlad Gorlov on 09.11.15.
+//  Copyright © 2015 WaveLabs. All rights reserved.
+//
 
-import Foundation
-import WL
-
-if Process.arguments.count < 3 {
+if ProcessInfo.processInfo.arguments.count < 3 {
    print("Usage: ProjectName1;ProjectName2 Path1 Path2 ...")
    exit(0)
 }
 
-let projectNames = Process.arguments[1].components(separatedBy: ";").map {
+let projectNames = ProcessInfo.processInfo.arguments[1].components(separatedBy: ";").map {
    $0.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
 }
-let filesToAnalyze = Process.arguments[2..<Process.arguments.count]
+let filesToAnalyze = ProcessInfo.processInfo.arguments[2..<ProcessInfo.processInfo.arguments.count]
 
 do {
 let checker = FileHeaderChecker(projectNames: projectNames)

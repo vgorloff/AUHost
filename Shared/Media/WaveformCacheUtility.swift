@@ -25,7 +25,8 @@ public struct WaveformCacheUtility {
       return nil
    }
 
-   public func buildWaveformForResolution(fileURL url: URL, resolution: UInt64, callback: @escaping (ResultType<[MinMax<Float>]>) -> Void) {
+   public func buildWaveformForResolution(fileURL url: URL, resolution: UInt64,
+                                          callback: @escaping (ResultType<[MinMax<Float>]>) -> Void) {
       assert(resolution > 0)
       DispatchQueue.UserInitiated.async {
          do {
@@ -34,8 +35,9 @@ public struct WaveformCacheUtility {
             }
             _ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
             let audioFile = try AVAudioFile(forReading: url, commonFormat: .pcmFormatFloat32, interleaved: false)
-            let optimalBufferSettings = Math.optimalBufferSizeForResolution(resolution: resolution, dataSize: UInt64(audioFile.length),
-                                                                            maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
+            let optimalBufferSettings = Math.optimalBufferSizeForResolution(
+               resolution: resolution, dataSize: UInt64(audioFile.length),
+               maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
             let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
                                           frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize))
 
