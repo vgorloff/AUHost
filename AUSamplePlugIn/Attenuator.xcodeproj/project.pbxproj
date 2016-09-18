@@ -511,7 +511,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "cd ../\n#\"Shared/Conf/Scripts/BuildPhase_Whitespace.sh\" \"$SRCROOT\"\n\"Shared/Conf/Scripts/BuildPhase_SwiftLint.sh\" \"$SRCROOT\"\n\"Shared/Conf/Scripts/BuildPhase_CheckHeaders.sh\" \"Attenuator\" \"$SRCROOT\"";
+			shellScript = "sh \"$SRCROOT/Scripts/BuildPhase-Validate.sh\"";
 		};
 		C51A63701C4FD1650016F291 /* Force PlugIn Registration */ = {
 			isa = PBXShellScriptBuildPhase;
