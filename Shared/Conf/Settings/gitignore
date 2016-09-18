@@ -30,6 +30,7 @@ xcbaselines
 *.xccheckout
 *.moved-aside
 *.xcscmblueprint
+.tmp
 
 ## Obj-C/Swift specific
 *.hmap

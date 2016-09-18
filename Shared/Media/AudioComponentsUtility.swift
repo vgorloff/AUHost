@@ -44,7 +44,8 @@ public final class AudioComponentsUtility {
    /// **Note** Always calls completion handler on main queue
    /// - parameter queue: Queue used to query components.
    /// - parameter completion: Result completion handler.
-   public func updateEffectList(queue: DispatchQueue = DispatchQueue.Utility, completion: @escaping ([AVAudioUnitComponent]) -> Void) {
+   public func updateEffectList(queue: DispatchQueue = DispatchQueue.Utility,
+                                completion: @escaping ([AVAudioUnitComponent]) -> Void) {
       // Locating components can be a little slow, especially the first time.
       // Do this work on a separate dispatch thread.
       queue.async { [weak self] in guard let s = self else { return }

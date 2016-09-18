@@ -3,12 +3,14 @@ class BuildSettings
   @@NoCodesign = {
     "CODE_SIGN_IDENTITY" => "",
     "CODE_SIGNING_REQUIRED" => "NO",
-    "CODE_SIGN_ENTITLEMENTS" => ""
+    "CODE_SIGN_ENTITLEMENTS" => "",
+    "AWLSkipBuildScripts" => "true"
   }
   @@Codesign = {
     "CODE_SIGN_IDENTITY" => "Developer ID Application",
     "CODE_SIGNING_REQUIRED" => "YES",
-    "PROVISIONING_PROFILE_SPECIFIER" => "E27KE6VTF6/"
+    "PROVISIONING_PROFILE_SPECIFIER" => "E27KE6VTF6/",
+    "AWLSkipBuildScripts" => "true"
   }
   def self.NoCodesign
     @@NoCodesign
@@ -42,7 +44,7 @@ end
 
 def XcodeMacOSTest(*schemes)
   schemes.each { |schema|
-    scan(scheme: schema, output_directory: "fastlane/test_output/#{schema}", destination: "platform=macOS")
+    scan(scheme: schema, output_directory: "fastlane/test_output/#{schema}", device: "macOS")
   }
 end
 
@@ -98,6 +100,17 @@ def Bump(*relativePaths)
     increment_version_number(version_number: awl_versionFromTag, xcodeproj: relativePath)
     git_commit(path: "./", message: "Version Bump #{awl_versionFromTag}x#{awl_buildNumber}")
   }
+end
+
+def SelfUpdate
+   sh "gem cleanup && gem update --user-install fastlane scan --no-ri --no-rdoc --no-document && fastlane --version"
+end
+
+def ValidateSources
+   scriptFileName = "#{ENV['PWD']}/Scripts/BuildPhase-Validate.sh"
+   if File.file?(scriptFileName)
+      sh "\"#{scriptFileName}\""
+   end
 end
 
 # class XcodeBuild
