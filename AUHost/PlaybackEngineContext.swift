@@ -20,7 +20,7 @@ final class PlaybackEngineContext {
 
 	var filePlaybackCompleted: AVAudioNodeCompletionHandler?
 
-	// MARK: -
+	// MARK: - Init | Deinit
 	init() {
 		log.initialize()
 		engine.attach(player)
@@ -30,7 +30,7 @@ final class PlaybackEngineContext {
 		log.deinitialize()
 	}
 
-	// MARK: -
+	// MARK: - Actions
 
 	func play() throws {
 		try engine.start()
@@ -129,7 +129,7 @@ final class PlaybackEngineContext {
 			}
 	}
 
-	// MARK: -> Private
+	// MARK: - Private
 
 	private func clearEffect() {
 		defer {

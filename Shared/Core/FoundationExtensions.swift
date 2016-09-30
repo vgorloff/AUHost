@@ -164,8 +164,6 @@ public extension OperationQueue {
 
 }
 
-// MARK:
-
 public enum BundleError: Error {
 	case MissedURLForResource(resourceName: String, resourceExtension: String)
 }
@@ -179,8 +177,6 @@ public extension Bundle {
 		return url
 	}
 }
-
-// MARK:
 
 public enum NSDictionaryError: Error {
 	case UnableToWriteToFile(String)
@@ -227,8 +223,6 @@ public extension NSDictionary {
 	}
 }
 
-// MARK:
-
 public extension DispatchSemaphore {
   public func wait( completion: (Void) -> Void) {
     wait()
@@ -271,8 +265,6 @@ public extension DispatchQueue {
 	}
 
 }
-
-// MARK:
 
 public enum FileManagerError: Error {
 	case DirectoryIsNotAvailable(String)

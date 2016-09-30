@@ -23,7 +23,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
    @IBOutlet private weak var tablePresets: NSTableView!
    @IBOutlet private weak var mediaItemView: MediaItemView!
 
-   // MARK: -
+   // MARK: - Private
    private lazy var log: Logger = Logger(sender: self, context: .Controller)
    private var availableEffects = [AVAudioUnitComponent]()
    private var availablePresets = [AUAudioUnitPreset]()
@@ -43,7 +43,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       return component.hasCustomView || v3AU
    }
 
-   // MARK: -
+   // MARK: - Overrides
    override func viewDidLoad() {
       super.viewDidLoad()
       DispatchQueue.main.async { [weak self] in guard let s = self else { return }
@@ -69,7 +69,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
-   // MARK: -
+   // MARK: - Internal
 
    func reloadEffectsList() {
       tableEffects.isEnabled = false
@@ -80,7 +80,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
-   // MARK: -
+   // MARK: - Actions
 
    @IBAction private func actionTogglePlayAudio(_ sender: AnyObject) {
       do {

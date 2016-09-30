@@ -73,7 +73,7 @@ extension g {
 
 }
 
-// MARK:
+// MARK: - Global
 
 extension g {
    /// - parameter object: Object instance.
