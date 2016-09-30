@@ -140,7 +140,7 @@ public struct Logger {
    static var debuggingCallabck: ((String) -> Void)?
    #endif
 
-   // MARK:
+   // MARK: Init / Deinit
 
 	/// - parameter sender: Logging source. **Note** Used only to retrieve properties without keeping references.
 	public init(sender: AnyObject? = nil, context: Context = .Global) {
@@ -292,7 +292,6 @@ public struct Logger {
                  typeName: senderProperties?.typeName, objectPointerAddress: senderProperties?.pointerAddress)
    }
 
-   // MARK:
    public func error<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
                           file: String = #file, line: Int32 = #line) {
       guard Logger.sharedProperties.logMessageFilter.shouldLogMessage && expression() else {

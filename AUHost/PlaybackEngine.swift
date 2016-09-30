@@ -83,14 +83,14 @@ final class PlaybackEngine {
       case EngineStateChanged(old: PlaybackEngineState, new: PlaybackEngineState)
    }
 
-   // MARK:
+   // MARK: Private
 
    private lazy var log: Logger = Logger(sender: self, context: .Media)
    private var sm: StateMachine<SMGraphType>
    private let context = PlaybackEngineContext()
    private let _stateAccessLock: NonRecursiveLocking = SpinLock()
 
-   // MARK:
+   // MARK: Internal
 
    var changeHandler: ((Change) -> Void)?
    var stateID: PlaybackEngineState {
@@ -99,7 +99,7 @@ final class PlaybackEngine {
       }
    }
 
-   // MARK:
+   // MARK: Internal
 
    init() {
       sm = StateMachine(context: context, graph: gStateMachineGraph)
@@ -129,7 +129,7 @@ final class PlaybackEngine {
       log.deinitialize()
    }
 
-   // MARK:
+   // MARK: - Internal
 
    func setFileToPlay(_ fileToPlay: AVAudioFile) throws {
       switch stateID {

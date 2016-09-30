@@ -69,7 +69,7 @@ public final class MediaLibraryUtility: NSObject {
 		return results
 	}
 
-	// MARK: -
+	// MARK: - Private
 
 	private func setUpMediaLibrary() -> MLMediaLibrary {
 		let o = [MLMediaLoadSourceTypesKey : MLMediaSourceType.audio.rawValue]

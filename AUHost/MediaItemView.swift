@@ -36,7 +36,7 @@ public final class MediaItemView: NSView {
 
 	public var onCompleteDragWithObjects: ((MediaObjectPasteboardUtility.PasteboardObjects) -> Void)?
 
-	// MARK: -
+	// MARK: - Public
 
 	required public init?(coder: NSCoder) {
 		super.init(coder: coder)

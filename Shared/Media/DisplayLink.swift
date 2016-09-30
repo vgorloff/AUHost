@@ -79,7 +79,7 @@ public final class DisplayLink {
    }
 }
 
-// MARK:
+// MARK: - Extensions
 
 extension DisplayLink {
 
