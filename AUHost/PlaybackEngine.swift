@@ -19,14 +19,33 @@ enum PlaybackEngineEffectSelectionResult {
    case Failure(Error)
 }
 
-enum PlaybackEngineState {
+enum PlaybackEngineState: Int {
    case Stopped, Playing, Paused, SettingFile, SettingEffect
+   var stringValue: String {
+      switch self {
+      case .Stopped: return "Stopped"
+      case .Playing: return "Playing"
+      case .Paused: return "Paused"
+      case .SettingFile: return "SettingFile"
+      case .SettingEffect: return "SettingEffect"
+      }
+   }
 }
 
 enum PlaybackEngineEvent {
    case Play, Pause, Resume, Stop
    case SetFile(AVAudioFile?)
    case SetEffect(AudioComponentDescription?, ((PlaybackEngineEffectSelectionResult) -> Void))
+   var intValue: Int {
+      switch self {
+      case .Play: return 0
+      case .Pause: return 1
+      case .Resume: return 2
+      case .Stop: return 3
+      case .SetEffect: return 4
+      case .SetFile: return 5
+      }
+   }
 }
 
 typealias SMGraphType = StateMachineGraph<PlaybackEngineState, PlaybackEngineEvent, PlaybackEngineContext>
