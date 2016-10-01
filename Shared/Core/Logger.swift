@@ -13,6 +13,22 @@ extension g {
    }
 }
 
+struct Log {
+
+   struct Category {
+      static var Global     = "Global"
+      static var Network    = "Network"
+      static var Data       = "Data"
+      static var Model      = "Model"
+      static var View       = "View"
+      static var Controller = "Controller"
+      static var Media      = "Media"
+      static var System     = "System"
+      static var Delegate   = "Delegate"
+   }
+
+}
+
 private let loggingQueue = DispatchQueue(label: "ua.com.wavelabs.LoggingQueue", qos: .utility)
 
 /// Sample usage:
@@ -34,15 +50,15 @@ public struct Logger {
 
       var stringValue: String {
          switch self {
-         case .Global		 : return "GLB"
-         case .Network	 : return "NET"
-         case .Data		 : return "DAT"
-         case .Model		 : return "MOD"
-         case .View		 : return "VIE"
+         case .Global    : return "GLB"
+         case .Network   : return "NET"
+         case .Data      : return "DAT"
+         case .Model     : return "MOD"
+         case .View      : return "VIE"
          case .Controller : return "CTL"
-         case .Media		 : return "MED"
-         case .System		 : return "SYS"
-         case .Delegate	 : return "DLG"
+         case .Media     : return "MED"
+         case .System       : return "SYS"
+         case .Delegate  : return "DLG"
          }
       }
    }
@@ -58,10 +74,10 @@ public struct Logger {
       }
       var stringValue: String {
          switch self {
-         case .Error:	 return "E"
-         case .Warn:	 return "W"
-         case .Info:	 return "I"
-         case .Debug:	 return "D"
+         case .Error:    return "E"
+         case .Warn:  return "W"
+         case .Info:  return "I"
+         case .Debug:    return "D"
          case .Verbose: return "V"
          }
       }
@@ -142,19 +158,19 @@ public struct Logger {
 
    // MARK: Init / Deinit
 
-	/// - parameter sender: Logging source. **Note** Used only to retrieve properties without keeping references.
-	public init(sender: AnyObject? = nil, context: Context = .Global) {
-		if let senderValue = sender {
-			var componentNames = g.string(fromClass: type(of: senderValue)).components(separatedBy: ".")
-			if componentNames.count > 1 {
-				componentNames.removeFirst()
-			}
-			let senderName = componentNames.joined(separator: ".")
-			senderProperties = SenderProperties(pointerAddress: String(format: "%p", g.pointerAddress(of: senderValue)),
-			                                    typeName: senderName)
-		}
-		loggerProperties = LoggerPropertiesInternal(context: context)
-	}
+   /// - parameter sender: Logging source. **Note** Used only to retrieve properties without keeping references.
+   public init(sender: AnyObject? = nil, context: Context = .Global) {
+      if let senderValue = sender {
+         var componentNames = g.string(fromClass: type(of: senderValue)).components(separatedBy: ".")
+         if componentNames.count > 1 {
+            componentNames.removeFirst()
+         }
+         let senderName = componentNames.joined(separator: ".")
+         senderProperties = SenderProperties(pointerAddress: String(format: "%p", g.pointerAddress(of: senderValue)),
+                                             typeName: senderName)
+      }
+      loggerProperties = LoggerPropertiesInternal(context: context)
+   }
 
    // MARK: Private
 
