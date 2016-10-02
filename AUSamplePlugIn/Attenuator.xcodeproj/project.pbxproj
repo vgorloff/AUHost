@@ -366,6 +366,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5A5A10B1C47E75F00F9864E /* Build configuration list for PBXNativeTarget "Attenuator" */;
 			buildPhases = (
+				801176711DA1758F004AB73F /* ShellScript */,
 				C5A5A0F81C47E75F00F9864E /* Sources */,
 				C5A5A0F91C47E75F00F9864E /* Frameworks */,
 				C5A5A0FA1C47E75F00F9864E /* Resources */,
@@ -502,6 +503,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		801176711DA1758F004AB73F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "pluginkit -r \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\nexit 0";
+		};
 		80B9403A1D1B50D50013FE1C /* Run Script: Pre-Build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -528,7 +542,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -r \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\npluginkit -a \"$DSTROOT/Applications/Attenuator.app/Contents/PlugIns/AttenuatorAU.appex\"\nsleep 2";
+			shellScript = "#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" 2>/dev/null\nexit 0";
 		};
 /* End PBXShellScriptBuildPhase section */
 

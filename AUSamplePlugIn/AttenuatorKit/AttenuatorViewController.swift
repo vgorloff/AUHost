@@ -11,7 +11,6 @@ import AVFoundation
 
 open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
    private var audioUnit: AttenuatorAudioUnit?
-   // MARK: -
 
    open override func loadView() {
       var topLevelObjects = NSArray()

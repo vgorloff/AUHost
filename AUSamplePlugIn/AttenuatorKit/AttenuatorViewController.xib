@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11198.2" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11198.2"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <objects>
@@ -10,23 +10,23 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="c22-O7-iKe" customClass="AttenuatorView" customModule="AttenuatorKit" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="96"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="dke-Mr-T21" userLabel="Container View">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="96"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                     <subviews>
                         <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Ye-h2-ebA">
-                            <rect key="frame" x="8" y="21" width="224" height="53"/>
+                            <rect key="frame" x="8" y="74" width="304" height="52"/>
                             <subviews>
                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hby-7F-7Bx" customClass="VULevelMeter" customModule="AttenuatorKit" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="31" width="224" height="22"/>
+                                    <rect key="frame" x="0.0" y="30" width="304" height="22"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="22" id="dyw-bm-Bb5"/>
                                     </constraints>
                                 </customView>
                                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PQy-1n-Eae">
-                                    <rect key="frame" x="-2" y="-2" width="228" height="25"/>
+                                    <rect key="frame" x="-2" y="-2" width="308" height="24"/>
                                     <sliderCell key="cell" continuous="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" numberOfTickMarks="10" sliderType="linear" id="mpn-L3-ixp"/>
                                     <connections>
                                         <action selector="handleGainChange:" target="c22-O7-iKe" id="ame-mG-cS4"/>
@@ -45,10 +45,10 @@
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="1Ye-h2-ebA" secondAttribute="trailing" constant="8" id="RPi-cH-xVI"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="96" id="gTW-Mg-mxr"/>
+                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="gTW-Mg-mxr"/>
                         <constraint firstItem="1Ye-h2-ebA" firstAttribute="leading" secondItem="dke-Mr-T21" secondAttribute="leading" constant="8" id="hvQ-mj-Vr5"/>
                         <constraint firstItem="1Ye-h2-ebA" firstAttribute="centerY" secondItem="dke-Mr-T21" secondAttribute="centerY" id="olz-Pt-hSe"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="240" id="vG6-ml-yAI"/>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="320" id="vG6-ml-yAI"/>
                     </constraints>
                 </customView>
             </subviews>
