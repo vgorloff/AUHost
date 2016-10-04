@@ -25,7 +25,7 @@ public final class AudioComponentsUtility {
 
    private var observerOfComponentChange: Notification.SmartObserver?
    private var observerOfComponentInvalidate: Notification.SmartObserver?
-   private lazy var log: Logger = Logger(sender: self, context: .Media)
+   private lazy var log = Logger(subsystem: .Media, category: .Utility)
    private lazy var notificationsQueue = OperationQueue.Concurrent.Utility()
 
    public var handlerStateChange: ((StateChange) -> Void)?

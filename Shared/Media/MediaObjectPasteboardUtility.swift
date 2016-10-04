@@ -42,11 +42,11 @@ public struct MediaObjectPasteboardUtility {
    private func filteredFilePaths(pasteboardFilePaths: [String]) -> [String] {
       let ws = NSWorkspace.shared()
       let result = pasteboardFilePaths.filter { element in
-         let fileType: String? = g.perform ({try ws.type(ofFile: element)}) {
-            print($0)
-         }
-         if let fileType = fileType {
+         do {
+            let fileType = try ws.type(ofFile: element)
             return UTTypeConformsTo(fileType as CFString, kUTTypeAudio)
+         } catch {
+            print("\(error)")
          }
          return false
       }

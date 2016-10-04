@@ -256,14 +256,6 @@ public extension DispatchQueue {
 		return DispatchQueue(label: label)
 	}
 
-	public func smartSync<T>(execute work: () throws -> T) rethrows -> T {
-		if Thread.isMainThread {
-			return try work()
-		} else {
-			return try sync(execute: work)
-		}
-	}
-
 }
 
 public enum FileManagerError: Error {
