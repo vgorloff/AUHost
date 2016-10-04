@@ -6,17 +6,14 @@
 import Foundation
 import os.log
 
-@available(OSX 10.12, *)
 private let globalLogger = Logger(subsystem: .Default, category: .Global)
 
-@available(OSX 10.12, *)
 extension g {
    public static var log: Logger {
       return globalLogger
    }
 }
 
-@available(OSX 10.12, *)
 public struct Logger {
 
    public enum Category {
@@ -71,16 +68,19 @@ public struct Logger {
       }
    }
 
-   private let oslog: OSLog
+   private var oslog: OSLog! = nil
 
    // MARK: Init / Deinit
 
    public init(subsystem: Subsystem, category: Category) {
-      oslog = OSLog(subsystem: subsystem.stringValue, category: category.stringValue)
+      if #available(OSX 10.12, *) {
+         oslog = OSLog(subsystem: subsystem.stringValue, category: category.stringValue)
+      }
    }
 
    // MARK: Private
 
+   @available(OSX 10.12, *)
    private func log<T>(message: T, level: OSLogType, function: String, file: String, line: Int32) {
       let msg = "\(message) → \(function) ⋆ \(file.lastPathComponent):\(line)"
       switch level {
@@ -102,64 +102,90 @@ public struct Logger {
    // MARK: - Public
 
    public func marker(_ title: String) {
-      log_public(oslog, .debug, " ––––– ⋆ " + title)
+      if #available(OSX 10.12, *) {
+         log_public(oslog, .debug, " ––––– ⋆ " + title)
+      }
    }
 
    public func initialize(function: String = #function, file: String = #file, line: Int32 = #line) {
-      log(message: "+++", level: .debug, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: "+++", level: .debug, function: function, file: file, line: line)
+      }
    }
 
    public func deinitialize(function: String = #function, file: String = #file, line: Int32 = #line) {
-      log(message: "~~~", level: .debug, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: "~~~", level: .debug, function: function, file: file, line: line)
+      }
    }
 
    public func fault<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      log(message: message, level: .fault, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .fault, function: function, file: file, line: line)
+      }
    }
 
    public func error<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      log(message: message, level: .error, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .error, function: function, file: file, line: line)
+      }
    }
 
    public func info<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      log(message: message, level: .info, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .info, function: function, file: file, line: line)
+      }
    }
 
    public func debug<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      log(message: message, level: .debug, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .debug, function: function, file: file, line: line)
+      }
    }
 
    public func `default`<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      log(message: message, level: .default, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .default, function: function, file: file, line: line)
+      }
    }
 
    public func fault<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
                      file: String = #file, line: Int32 = #line) {
       guard expression() else { return }
-      log(message: message, level: .fault, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .fault, function: function, file: file, line: line)
+      }
    }
 
    public func error<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
                      file: String = #file, line: Int32 = #line) {
       guard expression() else { return }
-      log(message: message, level: .error, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .error, function: function, file: file, line: line)
+      }
    }
 
    public func info<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
                     file: String = #file, line: Int32 = #line) {
       guard expression() else { return }
-      log(message: message, level: .info, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .info, function: function, file: file, line: line)
+      }
    }
 
    public func debug<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
                      file: String = #file, line: Int32 = #line) {
       guard expression() else { return }
-      log(message: message, level: .debug, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .debug, function: function, file: file, line: line)
+      }
    }
 
    public func `default`<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
                          file: String = #file, line: Int32 = #line) {
       guard expression() else { return }
-      log(message: message, level: .default, function: function, file: file, line: line)
+      if #available(OSX 10.12, *) {
+         log(message: message, level: .default, function: function, file: file, line: line)
+      }
    }
 }
