@@ -24,7 +24,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
    @IBOutlet private weak var mediaItemView: MediaItemView!
 
    // MARK: - Private
-   private lazy var log: Logger = Logger(sender: self, context: .Controller)
+   private lazy var log = Logger(subsystem: .Media, category: .Controller)
    private var availableEffects = [AVAudioUnitComponent]()
    private var availablePresets = [AUAudioUnitPreset]()
    private weak var effectViewController: NSViewController? // Temporary store
@@ -185,7 +185,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          if playbackEngine.stateID == .Stopped {
             try playbackEngine.play()
          }
-         log.verbose("File assigned: \(url.absoluteString)")
+         log.debug("File assigned: \(url.absoluteString)")
       } catch {
          log.error(error)
       }
@@ -233,7 +233,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          let shouldReopenEffectView = (effectWindowController != nil)
          effectWindowController?.close()
          if tableView.selectedRow == 0 {
-            log.verbose("Clearing effect")
+            log.debug("Clearing effect")
             playbackEngine.selectEffectComponent(component: nil) { [weak self] _ in
                guard let s = self else { return }
                s.availablePresets.removeAll()
@@ -245,7 +245,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             let row = tableView.selectedRow - 1
             if row < availableEffects.count {
                let component = availableEffects[row]
-               log.verbose("Selecting effect: \"\(component.name)\"")
+               log.debug("Selecting effect: \"\(component.name)\"")
                playbackEngine.selectEffectComponent(component: component) { [weak self, weak component] result in
                   guard let s = self else { return }
                   switch result {
@@ -270,7 +270,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
       func handleTablePresets() {
          if tableView.selectedRow == 0 {
-            log.verbose("Clearing preset")
+            log.debug("Clearing preset")
             playbackEngine.selectPreset(preset: nil)
          } else {
             let row = tableView.selectedRow - 1

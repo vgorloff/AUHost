@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -23,6 +23,7 @@
 		804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */; };
 		8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */; };
 		804674361D25DC92000989CA /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674341D25DC92000989CA /* Math.swift */; };
+		80485FA31DA2F337004EFA32 /* rdar28599032.m in Sources */ = {isa = PBXBuildFile; fileRef = 80485FA21DA2F337004EFA32 /* rdar28599032.m */; };
 		8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064764B1D45376200AF72B9 /* DispatchSource.swift */; };
 		8064764E1D45399B00AF72B9 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */; };
 		807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C041D25D9330033629F /* AlternativeValue.swift */; };
@@ -81,6 +82,10 @@
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		804674341D25DC92000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
+		80485FA01DA2F336004EFA32 /* Core-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Core-Bridging-Header.h"; sourceTree = "<group>"; };
+		80485FA11DA2F337004EFA32 /* rdar28599032.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdar28599032.h; sourceTree = "<group>"; };
+		80485FA21DA2F337004EFA32 /* rdar28599032.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdar28599032.m; sourceTree = "<group>"; };
+		80485FA41DA2F3E2004EFA32 /* AUHost-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AUHost-Bridging-Header.h"; sourceTree = "<group>"; };
 		8064764B1D45376200AF72B9 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; tabWidth = 3; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
@@ -139,6 +144,7 @@
 		8035EF2C1B3752030026AD7D /* AUHost */ = {
 			isa = PBXGroup;
 			children = (
+				80485FA41DA2F3E2004EFA32 /* AUHost-Bridging-Header.h */,
 				8035EF2D1B3752030026AD7D /* AppDelegate.swift */,
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
@@ -178,6 +184,9 @@
 				807E3C071D25D9330033629F /* NumericTypesConversions.swift */,
 				807E3C161D25D9B30033629F /* StateMachine.swift */,
 				803F76061D3BC17C000A76DB /* SwiftExtensions.swift */,
+				80485FA11DA2F337004EFA32 /* rdar28599032.h */,
+				80485FA21DA2F337004EFA32 /* rdar28599032.m */,
+				80485FA01DA2F336004EFA32 /* Core-Bridging-Header.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -269,7 +278,7 @@
 				};
 			};
 			buildConfigurationList = 8035EF251B3752030026AD7D /* Build configuration list for PBXProject "AUHost" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -329,6 +338,7 @@
 				803F76071D3BC17C000A76DB /* FoundationExtensions.swift in Sources */,
 				80A94FFF1D59300F0044ED2C /* CommonExtensions.swift in Sources */,
 				807E3C0A1D25D9330033629F /* MinMax.swift in Sources */,
+				80485FA31DA2F337004EFA32 /* rdar28599032.m in Sources */,
 				802C3D5B1C492453002295AD /* NSApplication.swift in Sources */,
 				8035EF301B3752030026AD7D /* ViewController.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
@@ -401,7 +411,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_SWIFT_FLAGS = "-D DEBUG";
@@ -440,7 +450,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -451,6 +461,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -463,6 +474,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AUHost/AUHost-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -473,6 +486,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -485,6 +499,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "AUHost/AUHost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";

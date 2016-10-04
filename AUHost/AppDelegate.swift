@@ -11,19 +11,18 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-	var mediaLibraryLoader = MediaLibraryUtility()
-	var playbackEngine = PlaybackEngine()
+   var mediaLibraryLoader = MediaLibraryUtility()
+   var playbackEngine = PlaybackEngine()
 
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-		Logger.sharedProperties.logAsynchronously = false
-  }
+   func applicationDidFinishLaunching(_ aNotification: Notification) {
+   }
 
-  func applicationWillTerminate(aNotification: Notification) {
-    // Insert code here to tear down your application
-  }
+   func applicationWillTerminate(aNotification: Notification) {
+      // Insert code here to tear down your application
+   }
 
-  func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
-    return true
-  }
+   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+      return true
+   }
 
 }

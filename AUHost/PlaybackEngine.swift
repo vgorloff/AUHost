@@ -104,7 +104,7 @@ final class PlaybackEngine {
 
    // MARK: Private
 
-   private lazy var log: Logger = Logger(sender: self, context: .Media)
+   private lazy var log = Logger(subsystem: .Media, category: .Playback)
    private var sm: StateMachine<SMGraphType>
    private let context = PlaybackEngineContext()
    private let _stateAccessLock: NonRecursiveLocking = SpinLock()
@@ -123,13 +123,13 @@ final class PlaybackEngine {
    init() {
       sm = StateMachine(context: context, graph: gStateMachineGraph)
       sm.stateChangeHandler = { [weak self] oldState, event, newState in
-         self?.log.verbose("State changed: \(oldState) => \(newState)")
+         self?.log.debug("State changed: \(oldState) => \(newState)")
          DispatchQueue.main.async { [weak self] in
             self?.changeHandler?(Change.EngineStateChanged(old: oldState, new: newState))
          }
       }
       context.filePlaybackCompleted = { [weak self] in guard let s = self else { return }
-         s.log.verbose("Playback stopped or file finished playing. Current state: \(s.stateID)")
+         s.log.debug("Playback stopped or file finished playing. Current state: \(s.stateID)")
          guard s.stateID == .Playing else {
             return
          }
@@ -161,14 +161,18 @@ final class PlaybackEngine {
    }
 
    func stop() {
-      g.perform ({try sm.handleEvent(event: .Stop)}) {
-         log.error($0)
+      do {
+         try sm.handleEvent(event: .Stop)
+      } catch {
+         log.error(error)
       }
    }
 
    func pause() {
-      g.perform ({try sm.handleEvent(event: .Pause)}) {
-         log.error($0)
+      do {
+         try sm.handleEvent(event: .Pause)
+      } catch {
+         log.error(error)
       }
    }
 
@@ -222,20 +226,24 @@ final class PlaybackEngine {
       case .Playing: possibleRelaunchEvent = .Play
       }
       let sema = DispatchSemaphore(value: 0)
-      let event = PlaybackEngineEvent.SetEffect(componentDescription, {result in
+      let event = PlaybackEngineEvent.SetEffect(componentDescription, { result in
          completionHandler?(result)
          sema.signal()
       })
       DispatchQueue.UserInitiated.async { [weak self] in guard let s = self else { return }
-         g.perform ({try s.sm.handleEvent(event: event)}) {
-            self?.log.error($0)
+         do {
+            try s.sm.handleEvent(event: event)
+         } catch {
+            s.log.error(error)
          }
          sema.wait() {
             guard let relaunchEvent = possibleRelaunchEvent else {
                return
             }
-            g.perform ({try s.sm.handleEvent(event: relaunchEvent)}) {
-               self?.log.error($0)
+            do {
+               try s.sm.handleEvent(event: relaunchEvent)
+            } catch {
+               s.log.error(error)
             }
          }
       }

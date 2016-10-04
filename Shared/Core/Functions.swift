@@ -28,40 +28,6 @@ extension a {
 
 extension g {
 
-   public static func perform<T>(_ closure: (Void) throws -> T?, failure: (Error) -> Void) -> T? {
-      do {
-         return try closure()
-      } catch {
-         failure(error)
-         return nil
-      }
-   }
-
-   public static func perform<T>(_ closure: @autoclosure (Void) throws -> T?, failure: (Error) -> Void) -> T? {
-      do {
-         return try closure()
-      } catch {
-         failure(error)
-         return nil
-      }
-   }
-
-   public static func perform(_ closure: (Void) throws -> Void, failure: (Error) -> Void) {
-      do {
-         try closure()
-      } catch {
-         failure(error)
-      }
-   }
-
-   public static func perform(_ closure: @autoclosure (Void) throws -> Void, failure: (Error) -> Void) {
-      do {
-         try closure()
-      } catch {
-         failure(error)
-      }
-   }
-
    public static func configure<T>(_ element: T, _ closure: (T) -> Void) -> T {
       closure(element)
       return element
@@ -149,4 +115,3 @@ extension c {
       return insertedOrUpdated
    }
 }
-
