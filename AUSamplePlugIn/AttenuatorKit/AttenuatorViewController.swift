@@ -11,6 +11,23 @@ import AVFoundation
 
 open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
    private var audioUnit: AttenuatorAudioUnit?
+   private var parameterObserverToken: AUParameterObserverToken?
+
+   convenience public init?(au: AttenuatorAudioUnit) {
+      self.init(nibName: nil, bundle: nil)
+      audioUnit = au
+      if let auView = auView {
+         setUpView(au: au, auView: auView)
+      }
+   }
+
+   public override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+      super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+   }
+
+   public required init?(coder: NSCoder) {
+      super.init(coder: coder)
+   }
 
    open override func loadView() {
       var topLevelObjects = NSArray()
@@ -28,25 +45,67 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
       fatalError()
    }
 
+   var auView: AttenuatorView? {
+      return view as? AttenuatorView
+   }
+
    override open func viewDidLoad() {
       super.viewDidLoad()
    }
 
    override open func viewDidAppear() {
       super.viewDidAppear()
-      audioUnit?.view?.startMetering()
+      auView?.startMetering()
    }
 
    override open func viewWillDisappear() {
       super.viewWillDisappear()
-      audioUnit?.view?.stopMetering()
+      auView?.stopMetering()
    }
 
    public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
       let au = try AttenuatorAudioUnit(componentDescription: componentDescription, options: [])
       audioUnit = au
-      audioUnit?.view = view as? AttenuatorView
+      if let auView = auView {
+         DispatchQueue.main.async { [weak self] in
+            self?.setUpView(au: au, auView: auView)
+         }
+      }
       return au
+   }
+
+   private func setUpView(au: AttenuatorAudioUnit, auView: AttenuatorView) {
+      auView.viewLevelMeter.numberOfChannels = au.outputBus.format.channelCount
+      auView.updateParameter(parameter: AttenuatorParameter.Gain, withValue: au.parameterGain.value)
+      parameterObserverToken = au.parameterTree.token(byAddingParameterObserver: { address, value in
+         DispatchQueue.main.async { [weak self] in guard let s = self else { return }
+            let paramType = AttenuatorParameter.fromRawValue(address)
+            s.auView?.updateParameter(parameter: paramType, withValue: value)
+         }
+      })
+      auView.handlerParameterDidChaned = {[weak self] parameter, value in guard let s = self else { return }
+         guard let token = s.parameterObserverToken else {
+            return
+         }
+         s.audioUnit?.parameterGain?.setValue(value, originator: token)
+      }
+      auView.meterRefreshCallback = { [weak self] in
+         if let dsp = self?.audioUnit?.dsp {
+            return dsp.maximumMagnitude
+         }
+         return nil
+      }
+      au.eventHandler = {
+         switch $0 {
+         case .allocateRenderResources:
+            DispatchQueue.main.async { [weak self] in guard let s = self else { return }
+               if let outBus = self?.audioUnit?.outputBus {
+                  s.auView?.viewLevelMeter.numberOfChannels = outBus.format.channelCount
+               }
+            }
+         }
+      }
+      auView.viewLevelMeter.numberOfChannels = au.outputBus.format.channelCount
    }
 
 }

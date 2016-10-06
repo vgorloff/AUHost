@@ -178,12 +178,12 @@ public final class MediaItemView: NSView {
                                           }
       }
    }
-   
+
    private func cachedWaveform() -> [MinMax<Float>]? {
       guard let mf = mediaFileURL else {
          return nil
       }
       return wfCache.cachedWaveformForResolution(url: mf, resolution: UInt64(bounds.width * getScaleFactor()))
    }
-   
+
 }

@@ -30,7 +30,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
    private weak var effectViewController: NSViewController? // Temporary store
    private weak var effectWindowController: EffectWindowController?
    private var playbackEngine: PlaybackEngine {
-      return NSApplication.shared().applicationDelegate.playbackEngine
+      return Application.sharedInstance.playbackEngine
    }
    private var audioUnitDatasource = AudioComponentsUtility()
    private var selectedAUComponent: AVAudioUnitComponent?
@@ -118,7 +118,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          case .AudioComponentRegistered:
             s.tableEffects.reloadData()
          case .AudioComponentInstanceInvalidated(_, _):
-            s.playbackEngine.selectEffectComponent(component: nil, completionHandler: nil)
+            s.playbackEngine.selectEffect(component: nil, completionHandler: nil)
             s.tableEffects.reloadData()
             s.selectedAUComponent = nil
          }
@@ -132,8 +132,8 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          case .None:
             break
          case .MediaObjects(let mediaObjectsDict):
-            let mediaObjects = NSApplication.shared().applicationDelegate
-               .mediaLibraryLoader.mediaObjectsFromPlist(pasteboardPlist: mediaObjectsDict)
+            let mediaObjects = Application.sharedInstance.mediaLibraryLoader.mediaObjectsFromPlist(
+               pasteboardPlist: mediaObjectsDict)
             if let firstMediaObject = mediaObjects.first?.1.first?.1, let url = firstMediaObject.url {
                s.processFileAtURL(url)
             }
@@ -167,7 +167,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             case .SettingEffect, .SettingFile:
                s.buttonPlay.isEnabled = false
                s.buttonOpenEffectView.isEnabled = false
-               break
             }
          }
       }
@@ -234,7 +233,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          effectWindowController?.close()
          if tableView.selectedRow == 0 {
             log.debug("Clearing effect")
-            playbackEngine.selectEffectComponent(component: nil) { [weak self] _ in
+            playbackEngine.selectEffect(component: nil) { [weak self] _ in
                guard let s = self else { return }
                s.availablePresets.removeAll()
                s.tablePresets.reloadData()
@@ -246,7 +245,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             if row < availableEffects.count {
                let component = availableEffects[row]
                log.debug("Selecting effect: \"\(component.name)\"")
-               playbackEngine.selectEffectComponent(component: component) { [weak self, weak component] result in
+               playbackEngine.selectEffect(component: component) { [weak self, weak component] result in
                   guard let s = self else { return }
                   switch result {
                   case .EffectCleared: break

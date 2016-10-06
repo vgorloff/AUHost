@@ -1,14 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
-                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                <application id="hnw-xV-0zn" customClass="Application" customModule="Attenuator" customModuleProvider="target" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
                             <menuItem title="Attenuator" id="1Xt-HY-uBw">
@@ -638,19 +639,15 @@
                             </menuItem>
                         </items>
                     </menu>
-                    <connections>
-                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
-                    </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Attenuator" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="67" y="-27"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="Attenuator" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -671,28 +668,81 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Attenuator" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="332" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="307"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="OUi-pP-6h1">
-                                <rect key="frame" x="6" y="118" width="320" height="34"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="center" title="Nothing is here. It is just a host application for the app extension." id="nUp-L1-g8N">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <stackView distribution="fillProportionally" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dTI-mp-km1">
+                                <rect key="frame" x="10" y="10" width="323" height="287"/>
+                                <subviews>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pps-ZJ-1Dv">
+                                        <rect key="frame" x="64" y="266" width="196" height="21"/>
+                                        <subviews>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DZD-pw-DVE">
+                                                <rect key="frame" x="-6" y="-7" width="106" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Play" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HoB-bs-hlS">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="t6w-vf-D1l">
+                                                <rect key="frame" x="96" y="-7" width="106" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Load AU" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="mMX-vO-Ejr">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="196" id="gFV-dL-HSn"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="Xns-Gd-d2V" customClass="MediaItemView" customModule="Attenuator" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="138" width="323" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="UJ0-lj-zU8"/>
+                                        </constraints>
+                                    </customView>
+                                    <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Xyc-F1-kdY">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="130"/>
+                                    </containerView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="OUi-pP-6h1" firstAttribute="centerY" secondItem="m2S-Jp-Qdl" secondAttribute="centerY" id="Arq-8F-iZM"/>
-                            <constraint firstItem="OUi-pP-6h1" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="8" id="Dk6-bu-PnF"/>
-                            <constraint firstAttribute="trailing" secondItem="OUi-pP-6h1" secondAttribute="trailing" constant="8" id="Q4R-Kf-f56"/>
+                            <constraint firstAttribute="trailing" secondItem="dTI-mp-km1" secondAttribute="trailing" constant="10" id="I9a-8X-0bN"/>
+                            <constraint firstItem="dTI-mp-km1" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="10" id="M1B-jk-qCF"/>
+                            <constraint firstItem="dTI-mp-km1" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="10" id="dHh-w3-M0x"/>
+                            <constraint firstAttribute="bottom" secondItem="dTI-mp-km1" secondAttribute="bottom" constant="10" id="uTz-xW-HmQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonLoadAU" destination="t6w-vf-D1l" id="5pF-mJ-hef"/>
+                        <outlet property="buttonPlay" destination="DZD-pw-DVE" id="dcm-1s-HOX"/>
+                        <outlet property="containerView" destination="Xyc-F1-kdY" id="JGK-fd-Thm"/>
+                        <outlet property="mediaItemView" destination="Xns-Gd-d2V" id="YLU-eo-O1O"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="690"/>
+            <point key="canvasLocation" x="80.5" y="708.5"/>
         </scene>
     </scenes>
 </document>

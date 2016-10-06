@@ -68,16 +68,16 @@ struct AttenuatorDSPKernel {
          if let bOData = bO.mData { // Might be a nil?
             outputData = bOData
          } else {
+            bO.mData = bI.mData
             outputData = inputData
-            bO.mData = inputData
-            assert(false)
+            //assert(false)
          }
          // We are expecting one buffer per channel.
          assert(bI.mNumberChannels == bO.mNumberChannels && bI.mNumberChannels == 1)
          assert(bI.mDataByteSize == bO.mDataByteSize)
          let samplesBI = UnsafePointer<SampleType>(inputData.assumingMemoryBound(to: SampleType.self))
          let samplesBO = outputData.assumingMemoryBound(to: SampleType.self)
-         #if true
+         #if false
             var gain = dspValueGain
             var maximumMagnitudeValue: Float = 0
             let numElementsToProcess = vDSP_Length(frameCount)
@@ -88,11 +88,20 @@ struct AttenuatorDSPKernel {
             }
          #else
             // Applying gain by math
-            let numSamples = Int(bO.mDataByteSize / UInt32(sizeof(SampleType.self)))
+            let numSamples = Int(bO.mDataByteSize / UInt32(MemoryLayout<SampleType>.stride))
+            assert(AVAudioFrameCount(numSamples) == frameCount)
             let samplesI = UnsafeBufferPointer<SampleType>(start: samplesBI, count: numSamples)
             let samplesO = UnsafeMutableBufferPointer<SampleType>(start: samplesBO, count: numSamples)
+            var maximumMagnitudeValue: SampleType = 0
             for sampleIndex in 0 ..< samplesI.count {
-               samplesO[sampleIndex] = dspValueGain * samplesI[sampleIndex]
+               let sampleValue = samplesI[sampleIndex]
+               samplesO[sampleIndex] = dspValueGain * sampleValue
+               if sampleValue > maximumMagnitudeValue {
+                  maximumMagnitudeValue = sampleValue
+               }
+            }
+            _maximumMagnitude[index] = maximumMagnitudeLock.synchronized {
+               return maximumMagnitudeValue
             }
          #endif
       }

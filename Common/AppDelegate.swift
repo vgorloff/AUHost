@@ -8,16 +8,19 @@
 
 import Cocoa
 
-@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-   var mediaLibraryLoader = MediaLibraryUtility()
-   var playbackEngine = PlaybackEngine()
+   override init() {
+      super.init()
+   }
+
+   deinit {
+   }
 
    func applicationDidFinishLaunching(_ aNotification: Notification) {
    }
 
-   func applicationWillTerminate(aNotification: Notification) {
+   func applicationWillTerminate(_ aNotification: Notification) {
       // Insert code here to tear down your application
    }
 
