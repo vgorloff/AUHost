@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		80130BA61C4C538800D6DDAC /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */; };
-		802C3D5B1C492453002295AD /* NSApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802C3D5A1C492453002295AD /* NSApplication.swift */; };
 		8035EF2E1B3752030026AD7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF2D1B3752030026AD7D /* AppDelegate.swift */; };
 		8035EF301B3752030026AD7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF2F1B3752030026AD7D /* ViewController.swift */; };
 		8035EF321B3752030026AD7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF311B3752030026AD7D /* Assets.xcassets */; };
@@ -24,6 +23,11 @@
 		8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */; };
 		804674361D25DC92000989CA /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674341D25DC92000989CA /* Math.swift */; };
 		80485FA31DA2F337004EFA32 /* rdar28599032.m in Sources */ = {isa = PBXBuildFile; fileRef = 80485FA21DA2F337004EFA32 /* rdar28599032.m */; };
+		80485FB21DA591AB004EFA32 /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB11DA591AB004EFA32 /* NSToolbar.swift */; };
+		80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB41DA591CE004EFA32 /* MainToolbar.swift */; };
+		80485FB71DA59386004EFA32 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB61DA59386004EFA32 /* main.swift */; };
+		80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE11DA6C6F6004EFA32 /* Application.swift */; };
+		80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */; };
 		8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064764B1D45376200AF72B9 /* DispatchSource.swift */; };
 		8064764E1D45399B00AF72B9 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */; };
 		807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C041D25D9330033629F /* AlternativeValue.swift */; };
@@ -37,7 +41,6 @@
 		80A94FFF1D59300F0044ED2C /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A94FFE1D59300F0044ED2C /* CommonExtensions.swift */; };
 		80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B331C4AA78E00308D83 /* EffectWindowController.swift */; };
 		80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B491C4B035E00308D83 /* PlaybackEngine.swift */; };
-		80C97B4C1C4C0CDC00308D83 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B4B1C4C0CDC00308D83 /* MediaItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -65,7 +68,6 @@
 
 /* Begin PBXFileReference section */
 		80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
-		802C3D5A1C492453002295AD /* NSApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSApplication.swift; sourceTree = "<group>"; };
 		8035EF2A1B3752030026AD7D /* AUHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8035EF2D1B3752030026AD7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8035EF2F1B3752030026AD7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,10 +84,14 @@
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		804674341D25DC92000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		80485FA01DA2F336004EFA32 /* Core-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Core-Bridging-Header.h"; sourceTree = "<group>"; };
 		80485FA11DA2F337004EFA32 /* rdar28599032.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdar28599032.h; sourceTree = "<group>"; };
 		80485FA21DA2F337004EFA32 /* rdar28599032.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdar28599032.m; sourceTree = "<group>"; };
 		80485FA41DA2F3E2004EFA32 /* AUHost-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AUHost-Bridging-Header.h"; sourceTree = "<group>"; };
+		80485FB11DA591AB004EFA32 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
+		80485FB41DA591CE004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
+		80485FB61DA59386004EFA32 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		80485FE11DA6C6F6004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 		8064764B1D45376200AF72B9 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; tabWidth = 3; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
@@ -100,7 +106,6 @@
 		80C620881B378A5C00D58E68 /* AUHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AUHost.entitlements; sourceTree = "<group>"; };
 		80C97B331C4AA78E00308D83 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80C97B491C4B035E00308D83 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
-		80C97B4B1C4C0CDC00308D83 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,17 +119,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		802C3D5C1C492A65002295AD /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				802C3D5A1C492453002295AD /* NSApplication.swift */,
-			);
-			name = Extensions;
-			sourceTree = "<group>";
-		};
 		8035EF211B3752030026AD7D = {
 			isa = PBXGroup;
 			children = (
+				80485FB31DA591CE004EFA32 /* Common */,
 				8035EF2C1B3752030026AD7D /* AUHost */,
 				80C422891C46C3F700B5CCF1 /* Shared */,
 				8035EF2B1B3752030026AD7D /* Products */,
@@ -145,14 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				80485FA41DA2F3E2004EFA32 /* AUHost-Bridging-Header.h */,
-				8035EF2D1B3752030026AD7D /* AppDelegate.swift */,
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
-				80C97B4B1C4C0CDC00308D83 /* MediaItemView.swift */,
-				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
-				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
 				8035EF2F1B3752030026AD7D /* ViewController.swift */,
-				802C3D5C1C492A65002295AD /* Extensions */,
 				C5E335AB1C4FE7B000CD42BB /* Resources */,
 				C5E335AA1C4FE73300CD42BB /* Supporting Files */,
 			);
@@ -163,8 +156,23 @@
 			isa = PBXGroup;
 			children = (
 				80A94FFE1D59300F0044ED2C /* CommonExtensions.swift */,
+				80485FB11DA591AB004EFA32 /* NSToolbar.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		80485FB31DA591CE004EFA32 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				8035EF2D1B3752030026AD7D /* AppDelegate.swift */,
+				80485FE11DA6C6F6004EFA32 /* Application.swift */,
+				80485FB61DA59386004EFA32 /* main.swift */,
+				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
+				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
+				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
+				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		807E3C031D25D9330033629F /* Core */ = {
@@ -186,7 +194,6 @@
 				803F76061D3BC17C000A76DB /* SwiftExtensions.swift */,
 				80485FA11DA2F337004EFA32 /* rdar28599032.h */,
 				80485FA21DA2F337004EFA32 /* rdar28599032.m */,
-				80485FA01DA2F336004EFA32 /* Core-Bridging-Header.h */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -329,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */,
 				804674361D25DC92000989CA /* Math.swift in Sources */,
 				804674241D25DA66000989CA /* KVOHelper.swift in Sources */,
 				807E3C141D25D9880033629F /* MediaObjectPasteboardUtility.swift in Sources */,
@@ -339,23 +347,25 @@
 				80A94FFF1D59300F0044ED2C /* CommonExtensions.swift in Sources */,
 				807E3C0A1D25D9330033629F /* MinMax.swift in Sources */,
 				80485FA31DA2F337004EFA32 /* rdar28599032.m in Sources */,
-				802C3D5B1C492453002295AD /* NSApplication.swift in Sources */,
+				80485FB71DA59386004EFA32 /* main.swift in Sources */,
 				8035EF301B3752030026AD7D /* ViewController.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
 				803F76081D3BC17C000A76DB /* SwiftExtensions.swift in Sources */,
 				807E3C0F1D25D9670033629F /* Functions.swift in Sources */,
 				804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */,
+				80485FB21DA591AB004EFA32 /* NSToolbar.swift in Sources */,
 				807E3C0B1D25D9330033629F /* NumericTypesConversions.swift in Sources */,
 				8064764E1D45399B00AF72B9 /* FoundationUtilities.swift in Sources */,
 				80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */,
 				807E3C091D25D9330033629F /* Logger.swift in Sources */,
 				8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */,
 				804674221D25DA66000989CA /* Enumerations.swift in Sources */,
+				80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */,
 				807E3C181D25D9B30033629F /* StateMachine.swift in Sources */,
 				8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */,
+				80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */,
 				80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */,
 				8035EF2E1B3752030026AD7D /* AppDelegate.swift in Sources */,
-				80C97B4C1C4C0CDC00308D83 /* MediaItemView.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
 				8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */,
 			);

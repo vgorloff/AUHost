@@ -209,15 +209,14 @@ final class PlaybackEngine {
       avau.auAudioUnit.currentPreset = matchedPreset
    }
 
-   func selectEffectComponent(component: AVAudioUnitComponent?,
-                              completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)?) {
-      selectEffectWithComponentDescription(component?.audioComponentDescription, completionHandler: completionHandler)
+   func selectEffect(component: AVAudioUnitComponent?, completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)?) {
+      selectEffect(componentDescription: component?.audioComponentDescription, completionHandler: completionHandler)
    }
 
    // MARK: Private
 
-   private func selectEffectWithComponentDescription(_ componentDescription: AudioComponentDescription?,
-                                                     completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)?) {
+   func selectEffect(componentDescription: AudioComponentDescription?,
+                             completionHandler: ((PlaybackEngineEffectSelectionResult) -> Void)?) {
       var possibleRelaunchEvent: PlaybackEngineEvent?
       switch stateID {
       case .SettingEffect, .SettingFile: break

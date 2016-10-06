@@ -21,14 +21,17 @@ class AttenuatorView: NSView {
 
    override func awakeFromNib() {
       super.awakeFromNib()
-      displayLinkUtility = g.perform(try DisplayLink.GenericRenderer(frameRateDivider: 60/10)) {
-         Swift.print($0)
-      }
-      displayLinkUtility?.renderCallback = { [weak self] in
-         if let value = self?.meterRefreshCallback?() {
-            self?.viewLevelMeter.level = value
+      do {
+         displayLinkUtility = try DisplayLink.GenericRenderer(frameRateDivider: 60/10)
+         displayLinkUtility?.renderCallback = { [weak self] in
+            if let value = self?.meterRefreshCallback?() {
+               self?.viewLevelMeter.level = value
+            }
          }
+      } catch {
+         Swift.print(error)
       }
+
       wantsLayer = true
       layer?.backgroundColor = CGColor(red: 0.6, green: 1, blue: 0.6, alpha: 1)
    }
@@ -42,14 +45,18 @@ class AttenuatorView: NSView {
    }
 
    func startMetering() {
-      _ = g.perform (try displayLinkUtility?.start()) {
-         Swift.print($0)
+      do {
+         try displayLinkUtility?.start()
+      } catch {
+         Swift.print(error)
       }
    }
 
    func stopMetering() {
-      _ = g.perform (try displayLinkUtility?.stop()) {
-         Swift.print($0)
+      do {
+         try displayLinkUtility?.stop()
+      } catch {
+         Swift.print(error)
       }
    }
 }

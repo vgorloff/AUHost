@@ -15,9 +15,16 @@ public final class VULevelMeter: NSView {
 	public var level = Array<Float>(repeating: 0, count: 1) {
 		didSet {
 			needsDisplay = true
+         displayIfNeeded()
 			assert(UInt32(level.count) >= numberOfChannels)
 		}
 	}
+
+
+   public required init?(coder: NSCoder) {
+      super.init(coder: coder)
+      wantsLayer = true
+   }
 
 	public override func draw(_ dirtyRect: NSRect) {
 		let levelL = min(1, level[0]).CGFloatValue

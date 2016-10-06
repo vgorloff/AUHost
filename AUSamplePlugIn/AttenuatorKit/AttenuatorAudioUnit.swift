@@ -22,18 +22,16 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
    internal private(set) var outputBus: AUAudioUnitBus!
    private var _pcmBuffer: AVAudioPCMBuffer?
    private(set) var dsp: AttenuatorDSPKernel
-   weak var view: AttenuatorView? {
-      didSet {
-         DispatchQueue.main.smartSync { [weak self] in guard let s = self, let v = s.view else { return }
-            s.setUpView(au: s, auView: v)
-         }
-      }
+   internal private(set) var parameterGain: AUParameter!
+
+   enum Event {
+      case allocateRenderResources
    }
-   private var parameterObserverToken: AUParameterObserverToken?
-   private var parameterGain: AUParameter!
+
+   var eventHandler: ((Event) -> Void)?
 
    // MARK: - Public
-   override public var parameterTree: AUParameterTree? {
+   override public var parameterTree: AUParameterTree {
       return _parameterTree
    }
    override public var internalRenderBlock: AUInternalRenderBlock {
@@ -42,14 +40,28 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
          guard let s = self, let pullBlock = pullInputBlock, let pcmBuffer = s._pcmBuffer else {
             return kAudioUnitErr_NoConnection
          }
+
+         let renderFlags = actionFlags.pointee
+//         let bl = UnsafeMutableAudioBufferListPointer(UnsafeMutablePointer(mutating: pcmBuffer.audioBufferList))
+//         let mbl = UnsafeMutableAudioBufferListPointer(pcmBuffer.mutableAudioBufferList)
+//         pcmBuffer.mutableAudioBufferList.pointee.mNumberBuffers = pcmBuffer.audioBufferList.pointee.mNumberBuffers
+//         for index in 0 ..< bl.count {
+//            let b = bl[index]
+//            var mb = mbl[index]
+//            mb.mNumberChannels = b.mNumberChannels
+//            mb.mData = b.mData
+//            mb.mDataByteSize = s.maximumFramesToRender * UInt32(MemoryLayout<Float>.stride)
+//         }
+
          pcmBuffer.frameLength = frameCount
          let buffer = pcmBuffer.mutableAudioBufferList
-         var flags: AudioUnitRenderActionFlags = []
-         let status = pullBlock(&flags, timestamp, frameCount, 0, buffer)
+         var pullFlags: AudioUnitRenderActionFlags = []
+         var status = pullBlock(&pullFlags, timestamp, frameCount, 0, buffer)
          guard status == noErr else {
             return status
          }
-         return s.dsp.processInputBufferList(inAudioBufferList: buffer, outputBufferList: outputData, frameCount: frameCount)
+         status = s.dsp.processInputBufferList(inAudioBufferList: buffer, outputBufferList: outputData, frameCount: frameCount)
+         return status
       }
    }
 
@@ -79,9 +91,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       }
       _pcmBuffer = AVAudioPCMBuffer(pcmFormat: inputBus.format, frameCapacity: maximumFramesToRender)
       dsp.reset()
-      DispatchQueue.main.async { [weak self, weak outputBus] in guard let v = self?.view, let outBus = outputBus else { return }
-         v.viewLevelMeter.numberOfChannels = outBus.format.channelCount
-      }
+      eventHandler?(.allocateRenderResources)
    }
 
    public override func deallocateRenderResources() {
@@ -104,7 +114,8 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       let pGain = AttenuatorParameter.Gain
       parameterGain = AUParameterTree.createParameter(withIdentifier: pGain.parameterID,
                                                       name: pGain.name, address: pGain.rawValue, min: pGain.min, max: pGain.max,
-                                                      unit: AudioUnitParameterUnit.percent, unitName: nil, flags: [], valueStrings: nil, dependentParameters: nil)
+                                                      unit: AudioUnitParameterUnit.percent, unitName: nil, flags: [],
+                                                      valueStrings: nil, dependentParameters: nil)
       parameterGain.value = pGain.defaultValue
       let tree = AUParameterTree.createTree(withChildren: [parameterGain])
       tree.implementorStringFromValueCallback = { param, value in
@@ -125,23 +136,4 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       return tree
    }
 
-   private func setUpView(au: AttenuatorAudioUnit, auView: AttenuatorView) {
-      auView.viewLevelMeter.numberOfChannels = au.outputBus.format.channelCount
-      auView.updateParameter(parameter: AttenuatorParameter.Gain, withValue: parameterGain.value)
-      parameterObserverToken = _parameterTree.token(byAddingParameterObserver: { address, value in
-         DispatchQueue.main.async { [weak self] in guard let s = self else { return }
-            let paramType = AttenuatorParameter.fromRawValue(address)
-            s.view?.updateParameter(parameter: paramType, withValue: value)
-         }
-      })
-      auView.handlerParameterDidChaned = {[weak self] parameter, value in guard let s = self else { return }
-         guard let token = s.parameterObserverToken else {
-            return
-         }
-         s.parameterGain?.setValue(value, originator: token)
-      }
-      auView.meterRefreshCallback = { [weak self] in
-         return self?.dsp.maximumMagnitude
-      }
-   }
 }

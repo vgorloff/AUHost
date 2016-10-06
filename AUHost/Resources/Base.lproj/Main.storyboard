@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
         <scene sceneID="JPo-4y-FX3">
             <objects>
-                <application id="hnw-xV-0zn" sceneMemberID="viewController">
+                <application id="hnw-xV-0zn" customClass="Application" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
                             <menuItem title="AUHost" id="1Xt-HY-uBw">
@@ -639,11 +639,7 @@
                             </menuItem>
                         </items>
                     </menu>
-                    <connections>
-                        <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
-                    </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="AUHost" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -652,31 +648,10 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
-                        <toolbar key="toolbar" implicitIdentifier="08CBE1CD-3E1A-4A4D-B79F-8B881049ADDC" displayMode="iconAndLabel" sizeMode="regular" id="T0c-xy-gMZ">
-                            <allowedToolbarItems>
-                                <toolbarItem implicitItemIdentifier="E3330076-543A-4EC4-B179-18EA947D2031" explicitItemIdentifier="WLMediaLibrary" label="Media Library" paletteLabel="Media Library" tag="1" image="NSFolder" id="K92-6W-rcu">
-                                    <connections>
-                                        <action selector="actionToggleMediaLibraryBrowser:" target="B8D-0N-5wS" id="le9-ba-xGH"/>
-                                    </connections>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="E8349239-C236-4B3C-9525-552D23197D7A" explicitItemIdentifier="WLReloadPlugIns" label="Reload PlugIns" paletteLabel="Reload PlugIns" tag="2" image="NSNetwork" id="wsf-pP-dgj">
-                                    <connections>
-                                        <action selector="actionReloadPlugIns:" target="B8D-0N-5wS" id="lwa-jW-MPd"/>
-                                    </connections>
-                                </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="oWX-Wt-kpC"/>
-                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="98k-re-Pgr"/>
-                            </allowedToolbarItems>
-                            <defaultToolbarItems>
-                                <toolbarItem reference="K92-6W-rcu"/>
-                                <toolbarItem reference="wsf-pP-dgj"/>
-                                <toolbarItem reference="oWX-Wt-kpC"/>
-                            </defaultToolbarItems>
-                        </toolbar>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
@@ -695,10 +670,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="fDS-uT-9RV">
-                                <rect key="frame" x="0.0" y="0.0" width="653" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="654" height="487"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NHN-KG-mxd">
-                                        <rect key="frame" x="288" y="451" width="77" height="32"/>
+                                        <rect key="frame" x="289" y="451" width="77" height="32"/>
                                         <buttonCell key="cell" type="push" title="Pause" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x8W-OT-gRF">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -708,22 +683,22 @@
                                         </connections>
                                     </button>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sLj-0G-iyc" customClass="MediaItemView" customModule="AUHost" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="352" width="637" height="98"/>
+                                        <rect key="frame" x="8" y="352" width="638" height="98"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="98" id="LQk-SQ-OSH"/>
                                         </constraints>
                                     </customView>
                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="30H-mh-T68">
-                                        <rect key="frame" x="8" y="8" width="637" height="336"/>
+                                        <rect key="frame" x="8" y="8" width="638" height="336"/>
                                         <subviews>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nu-Mk-IWq">
-                                                <rect key="frame" x="0.0" y="0.0" width="292.5" height="336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="293" height="336"/>
                                                 <clipView key="contentView" id="wp3-rL-Kpu">
-                                                    <rect key="frame" x="1" y="0.0" width="290.5" height="335"/>
+                                                    <rect key="frame" x="1" y="0.0" width="291" height="335"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="kWa-DB-nyu" id="eph-K0-hUQ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="290.5" height="312"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="291" height="312"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -749,7 +724,6 @@
                                                             </connections>
                                                         </tableView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="kjJ-Ob-Y0i">
                                                     <rect key="frame" x="1" y="319" width="290.5" height="16"/>
@@ -760,12 +734,12 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <tableHeaderView key="headerView" id="kWa-DB-nyu">
-                                                    <rect key="frame" x="0.0" y="0.0" width="290.5" height="23"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="291" height="23"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableHeaderView>
                                             </scrollView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FSJ-w4-ti7">
-                                                <rect key="frame" x="294" y="308" width="48" height="32"/>
+                                                <rect key="frame" x="295" y="308" width="48" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="36" id="9sQ-yX-QZE"/>
                                                 </constraints>
@@ -778,13 +752,13 @@
                                                 </connections>
                                             </button>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ige-jU-ReU">
-                                                <rect key="frame" x="344" y="0.0" width="292.5" height="336"/>
+                                                <rect key="frame" x="345" y="0.0" width="293" height="336"/>
                                                 <clipView key="contentView" id="mfQ-Gx-htG">
-                                                    <rect key="frame" x="1" y="0.0" width="290.5" height="335"/>
+                                                    <rect key="frame" x="1" y="0.0" width="291" height="335"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" headerView="3MP-0i-tHg" id="U9p-NH-boP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="290.5" height="312"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="291" height="312"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <size key="intercellSpacing" width="3" height="2"/>
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -810,7 +784,6 @@
                                                             </connections>
                                                         </tableView>
                                                     </subviews>
-                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </clipView>
                                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="H9d-s7-Evj">
                                                     <rect key="frame" x="1" y="319" width="291" height="16"/>
@@ -903,8 +876,4 @@
             <point key="canvasLocation" x="758" y="829"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="NSFolder" width="32" height="32"/>
-        <image name="NSNetwork" width="32" height="32"/>
-    </resources>
 </document>

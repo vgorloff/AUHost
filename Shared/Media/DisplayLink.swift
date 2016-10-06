@@ -92,7 +92,7 @@ extension DisplayLink {
       private var dispatchSource: SmartDispatchSourceUserDataAdd
 
       public var renderCallback: ((Void) -> Void)?
-      private lazy var log: Logger = Logger(sender: self, context: .Media)
+      private lazy var log = Logger(subsystem: .Media, category: .Utility)
 
       // MARK: Init / Deinit
 
@@ -128,7 +128,7 @@ extension DisplayLink {
       // MARK: Public
 
       public func start(shouldResetFrameCounter: Bool = false) throws {
-         log.verbose("Starting")
+         log.debug("Starting")
          if shouldResetFrameCounter {
             frameCounter = 0
          }
@@ -137,7 +137,7 @@ extension DisplayLink {
       }
 
       public func stop() throws {
-         log.verbose("Stopping")
+         log.debug("Stopping")
          dispatchSource.suspend()
          try displayLink.stop()
       }
