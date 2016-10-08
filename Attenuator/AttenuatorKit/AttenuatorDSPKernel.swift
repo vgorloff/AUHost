@@ -59,25 +59,19 @@ struct AttenuatorDSPKernel {
       let blI = UnsafeMutableAudioBufferListPointer(inAudioBufferList)
       let blO = UnsafeMutableAudioBufferListPointer(outputBufferList)
       for index in 0 ..< blO.count {
-         var bO = blO[index]
          let bI = blI[index]
-         guard let inputData = bI.mData else {
-            continue
+         var bO = blO[index]
+         guard let inputData = bI.mData, let outputData = bO.mData else {
+            assert(false)
+            return kAudioUnitErr_Uninitialized
          }
-         let outputData: UnsafeMutableRawPointer
-         if let bOData = bO.mData { // Might be a nil?
-            outputData = bOData
-         } else {
-            bO.mData = bI.mData
-            outputData = inputData
-            //assert(false)
-         }
+
          // We are expecting one buffer per channel.
          assert(bI.mNumberChannels == bO.mNumberChannels && bI.mNumberChannels == 1)
          assert(bI.mDataByteSize == bO.mDataByteSize)
          let samplesBI = UnsafePointer<SampleType>(inputData.assumingMemoryBound(to: SampleType.self))
          let samplesBO = outputData.assumingMemoryBound(to: SampleType.self)
-         #if false
+         #if true
             var gain = dspValueGain
             var maximumMagnitudeValue: Float = 0
             let numElementsToProcess = vDSP_Length(frameCount)

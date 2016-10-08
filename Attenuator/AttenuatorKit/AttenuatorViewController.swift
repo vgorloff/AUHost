@@ -75,7 +75,7 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
    }
 
    private func setUpView(au: AttenuatorAudioUnit, auView: AttenuatorView) {
-      auView.viewLevelMeter.numberOfChannels = au.outputBus.format.channelCount
+      auView.viewLevelMeter.numberOfChannels = au.outputBus.bus.format.channelCount
       auView.updateParameter(parameter: AttenuatorParameter.Gain, withValue: au.parameterGain.value)
       parameterObserverToken = au.parameterTree.token(byAddingParameterObserver: { address, value in
          DispatchQueue.main.async { [weak self] in guard let s = self else { return }
@@ -100,12 +100,12 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
          case .allocateRenderResources:
             DispatchQueue.main.async { [weak self] in guard let s = self else { return }
                if let outBus = self?.audioUnit?.outputBus {
-                  s.auView?.viewLevelMeter.numberOfChannels = outBus.format.channelCount
+                  s.auView?.viewLevelMeter.numberOfChannels = outBus.bus.format.channelCount
                }
             }
          }
       }
-      auView.viewLevelMeter.numberOfChannels = au.outputBus.format.channelCount
+      auView.viewLevelMeter.numberOfChannels = au.outputBus.bus.format.channelCount
    }
 
 }
