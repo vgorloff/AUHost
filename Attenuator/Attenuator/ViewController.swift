@@ -24,11 +24,11 @@ class ViewController: NSViewController {
    fileprivate var audioUnitController: AttenuatorViewController?
 
    fileprivate lazy var acd: AudioComponentDescription = {
-      //      let flags = AudioComponentFlags.sandboxSafe.rawValue
-      let flags = AudioComponentFlags.isV3AudioUnit.rawValue
-         | AudioComponentFlags.requiresAsyncInstantiation.rawValue
-         | AudioComponentFlags.sandboxSafe.rawValue
-         | AudioComponentFlags.canLoadInProcess.rawValue
+      let flags = AudioComponentFlags.sandboxSafe.rawValue
+//      let flags = AudioComponentFlags.isV3AudioUnit.rawValue
+//         | AudioComponentFlags.requiresAsyncInstantiation.rawValue
+//         | AudioComponentFlags.sandboxSafe.rawValue
+//         | AudioComponentFlags.canLoadInProcess.rawValue
       let acd = AudioComponentDescription(componentType: kAudioUnitType_Effect, componentSubType: "attr".OSTypeValue,
                                           componentManufacturer: "wlUA".OSTypeValue,
                                           componentFlags: flags, componentFlagsMask: 0)
@@ -39,7 +39,7 @@ class ViewController: NSViewController {
       setUpPlaybackHelper()
       setUpMediaItemView()
       setUpActions()
-      AUAudioUnit.registerSubclass(AttenuatorAudioUnit.self, as: acd, name: "WaveLabs: Attenuator (Local)", version: 2)
+      AUAudioUnit.registerSubclass(AttenuatorAudioUnit.self, as: acd, name: "WaveLabs: Attenuator (Local)", version: UInt32.max)
    }
 }
 

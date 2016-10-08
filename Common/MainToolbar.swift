@@ -91,7 +91,7 @@ extension MainToolbar.Event {
    }
 
    var paletteLabel: String {
-      return label;
+      return label
    }
 
    static var allValues: [MainToolbar.Event] {
