@@ -37,7 +37,8 @@ end
 
 desc "Build codesigned release for GitHub."
 lane :release do
-  XcodeBuildProjectCodesign("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+  XcodeBuildProjectGitHub("AUHost", AWLAuHostProjectRelativeFilePath)
+  XcodeBuildProjectGitHub("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
   awl_AuHostAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAuHostProjectRelativeFilePath}")
   awl_AttenuatorAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAttenuatorProjectRelativeFilePath}")
   zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")

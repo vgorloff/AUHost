@@ -61,6 +61,10 @@ def XcodeBuildProjectCI(schema, project)
    sh "set -o pipefail && xcrun xcodebuild -project \"#{ENV['PWD']}/#{project}\" -scheme \"#{schema}\" -configuration Release CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' AWLSkipBuildScripts=true build | xcpretty --color --simple"
 end
 
+def XcodeBuildProjectGitHub(schema, project)
+   sh "set -o pipefail && xcrun xcodebuild -project \"#{ENV['PWD']}/#{project}\" -scheme \"#{schema}\" -configuration Release AWLSkipBuildScripts=true build | xcpretty --color --simple"
+end
+
 def XcodeBuildCodesign(*schemes)
    schemes.each { |schema|
       xcodebuild(scheme: schema, build_settings: BuildSettings.Codesign, xcargs: "-configuration Release")

@@ -1,1 +1,1 @@
-Xcode 8 / Swift 3 compatibility update
+Attenuator.app now Hosts Sample PlugIn
