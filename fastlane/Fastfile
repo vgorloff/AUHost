@@ -8,21 +8,24 @@ fastlane_version "1.103.0"
 import '../Shared/Conf/Scripts/fastlane.rb'
 
 AWLAuHostProjectRelativeFilePath = "AUHost.xcodeproj"
-AWLAttenuatorProjectRelativeFilePath = "AUSamplePlugIn/Attenuator.xcodeproj"
+AWLAttenuatorProjectRelativeFilePath = "Attenuator.xcodeproj"
 
 desc "Builds project."
 lane :build do
+  XcodeBuildProject("AUHost", AWLAuHostProjectRelativeFilePath)
   XcodeBuildProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
 end
 
 desc "Builds when under CI (i.e. Travis)."
 lane :ci do
-  XcodeBuildProjectRelease("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+   XcodeBuildProjectCI("AUHost", AWLAuHostProjectRelativeFilePath)
+   XcodeBuildProjectCI("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
 end
 
 desc "Cleans project."
 lane :clean do
-  XcodeCleanProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+   XcodeCleanProject("AUHost", AWLAuHostProjectRelativeFilePath)
+   XcodeCleanProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
 end
 
 desc "Increment version number."
