@@ -1,1 +1,1 @@
-* Xcode 8 / Swift 3 compatibility update
+* Attenuator.app now able to register and load Sample plugin.
