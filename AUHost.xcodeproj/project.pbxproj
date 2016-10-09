@@ -92,6 +92,7 @@
 		80485FB61DA59386004EFA32 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		80485FE11DA6C6F6004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
+		804860401DAAF94A004EFA32 /* AUHost.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = AUHost.xcconfig; sourceTree = "<group>"; };
 		8064764B1D45376200AF72B9 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; tabWidth = 3; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
@@ -142,6 +143,7 @@
 		8035EF2C1B3752030026AD7D /* AUHost */ = {
 			isa = PBXGroup;
 			children = (
+				804860401DAAF94A004EFA32 /* AUHost.xcconfig */,
 				80485FA41DA2F3E2004EFA32 /* AUHost-Bridging-Header.h */,
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
@@ -387,6 +389,7 @@
 /* Begin XCBuildConfiguration section */
 		8035EF371B3752030026AD7D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 804860401DAAF94A004EFA32 /* AUHost.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -432,6 +435,7 @@
 		};
 		8035EF381B3752030026AD7D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 804860401DAAF94A004EFA32 /* AUHost.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -475,7 +479,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = "AUHost/Supporting Files/Info.plist";
@@ -487,7 +491,6 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "AUHost/AUHost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -500,7 +503,7 @@
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = "AUHost/Supporting Files/Info.plist";
@@ -512,7 +515,6 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "AUHost/AUHost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
-				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
