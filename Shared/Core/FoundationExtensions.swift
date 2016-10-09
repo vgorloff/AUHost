@@ -164,8 +164,6 @@ public extension OperationQueue {
 
 }
 
-// MARK:
-
 public enum BundleError: Error {
 	case MissedURLForResource(resourceName: String, resourceExtension: String)
 }
@@ -179,8 +177,6 @@ public extension Bundle {
 		return url
 	}
 }
-
-// MARK:
 
 public enum NSDictionaryError: Error {
 	case UnableToWriteToFile(String)
@@ -227,8 +223,6 @@ public extension NSDictionary {
 	}
 }
 
-// MARK:
-
 public extension DispatchSemaphore {
   public func wait( completion: (Void) -> Void) {
     wait()
@@ -262,17 +256,7 @@ public extension DispatchQueue {
 		return DispatchQueue(label: label)
 	}
 
-	public func smartSync<T>(execute work: () throws -> T) rethrows -> T {
-		if Thread.isMainThread {
-			return try work()
-		} else {
-			return try sync(execute: work)
-		}
-	}
-
 }
-
-// MARK:
 
 public enum FileManagerError: Error {
 	case DirectoryIsNotAvailable(String)

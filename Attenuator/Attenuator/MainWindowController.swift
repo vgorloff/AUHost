@@ -1,9 +1,9 @@
 //
 //  MainWindowController.swift
-//  AUHost
+//  Attenuator
 //
-//  Created by Vlad Gorlov on 22.06.15.
-//  Copyright © 2015 WaveLabs. All rights reserved.
+//  Created by Vlad Gorlov on 06/10/2016.
+//  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
 import Cocoa
@@ -16,13 +16,13 @@ class MainWindowController: NSWindowController {
 
    override func awakeFromNib() {
       super.awakeFromNib()
-      let mainToolbar = MainToolbar(identifier: "ua.com.wavelabs.AUHost:mainToolbar")
+      let mainToolbar = MainToolbar(identifier: "ua.com.wavelabs.Attenuator:mainToolbar", showsReloadPlugInsItem: false)
       mainToolbar.eventHandler = { [unowned self] in
          switch $0 {
          case .toggleMediaLibrary:
             self.mediaLibraryController.togglePanel(self)
          case .reloadPlugIns:
-            self.mainController.reloadEffectsList()
+            break
          }
       }
       window?.toolbar = mainToolbar

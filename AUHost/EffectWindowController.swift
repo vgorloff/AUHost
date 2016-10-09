@@ -10,16 +10,16 @@ import AppKit
 
 class EffectWindowController: NSWindowController, NSWindowDelegate {
 
-	var handlerWindowWillClose: ((Void) -> Void)?
+   var handlerWindowWillClose: ((Void) -> Void)?
 
-	override func awakeFromNib() {
-		super.awakeFromNib()
+   override func awakeFromNib() {
+      super.awakeFromNib()
       windowFrameAutosaveName = g.string(fromClass: EffectWindowController.self) + ":WindowFrame"
-	}
+   }
 
-	// MARK: - NSWindowDelegate
+   // MARK: - NSWindowDelegate
 
-	func windowWillClose(_ notification: Notification) {
-		handlerWindowWillClose?()
-	}
+   func windowWillClose(_ notification: Notification) {
+      handlerWindowWillClose?()
+   }
 }
