@@ -170,6 +170,7 @@
 		80485FEF1DA82CD1004EFA32 /* AVFoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVFoundationExtensions.swift; sourceTree = "<group>"; };
 		80485FF31DA857E0004EFA32 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
 		8048603D1DAAE5CA004EFA32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8048603F1DAAF748004EFA32 /* Attenuator.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Attenuator.xcconfig; sourceTree = "<group>"; };
 		806476511D454A8A00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; };
 		80A21A6A1C568A6800BF812A /* AttenuatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
 		80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
@@ -225,8 +226,7 @@
 				801E7E3A1C544A680064126C /* AttenuatorViewController.swift */,
 				801E7E3B1C544A680064126C /* AttenuatorViewController.xib */,
 			);
-			name = AttenuatorKit;
-			path = Attenuator/AttenuatorKit;
+			path = AttenuatorKit;
 			sourceTree = "<group>";
 		};
 		8044ABDE1C52E4B700FA3DA3 /* Frameworks */ = {
@@ -302,6 +302,17 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		8048603E1DAAF6EC004EFA32 /* Attenuator */ = {
+			isa = PBXGroup;
+			children = (
+				C5A5A0FE1C47E75F00F9864E /* Attenuator */,
+				C5A5A1131C47EB5300F9864E /* AttenuatorAU */,
+				8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */,
+				8048603F1DAAF748004EFA32 /* Attenuator.xcconfig */,
+			);
+			path = Attenuator;
+			sourceTree = "<group>";
+		};
 		8050DB821D19F89B007216D2 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -316,9 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				80485FAE1DA46551004EFA32 /* Common */,
-				C5A5A0FE1C47E75F00F9864E /* Attenuator */,
-				C5A5A1131C47EB5300F9864E /* AttenuatorAU */,
-				8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */,
+				8048603E1DAAF6EC004EFA32 /* Attenuator */,
 				8050DB821D19F89B007216D2 /* Shared */,
 				8044ABDE1C52E4B700FA3DA3 /* Frameworks */,
 				C5A5A0FD1C47E75F00F9864E /* Products */,
@@ -346,8 +355,7 @@
 				C5A5A1031C47E75F00F9864E /* Assets.xcassets */,
 				C5A5A1051C47E75F00F9864E /* Main.storyboard */,
 			);
-			name = Attenuator;
-			path = Attenuator/Attenuator;
+			path = Attenuator;
 			sourceTree = "<group>";
 		};
 		C5A5A1131C47EB5300F9864E /* AttenuatorAU */ = {
@@ -357,8 +365,7 @@
 				C5A5A1181C47EB5300F9864E /* AttenuatorAU.entitlements */,
 				801E7E3E1C544B1B0064126C /* AttenuatorAU.swift */,
 			);
-			name = AttenuatorAU;
-			path = Attenuator/AttenuatorAU;
+			path = AttenuatorAU;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -682,12 +689,12 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 14;
+				DYLIB_CURRENT_VERSION = "$(AWL_BUILD_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -710,8 +717,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
@@ -736,12 +741,12 @@
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 14;
+				DYLIB_CURRENT_VERSION = "$(AWL_BUILD_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -763,13 +768,12 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
 		C5A5A1091C47E75F00F9864E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8048603F1DAAF748004EFA32 /* Attenuator.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -814,6 +818,7 @@
 		};
 		C5A5A10A1C47E75F00F9864E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8048603F1DAAF748004EFA32 /* Attenuator.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -856,7 +861,7 @@
 				CODE_SIGN_ENTITLEMENTS = Attenuator/Attenuator/Attenuator.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = Attenuator/Attenuator/Info.plist;
@@ -878,7 +883,7 @@
 				CODE_SIGN_ENTITLEMENTS = Attenuator/Attenuator/Attenuator.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = Attenuator/Attenuator/Info.plist;
@@ -901,7 +906,7 @@
 				CODE_SIGN_ENTITLEMENTS = Attenuator/AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = Attenuator/AttenuatorAU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
@@ -923,7 +928,7 @@
 				CODE_SIGN_ENTITLEMENTS = Attenuator/AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = Attenuator/AttenuatorAU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
