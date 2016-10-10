@@ -6,44 +6,10 @@
 import Foundation
 import os.log
 
-private let globalLogger = Logger(subsystem: .Default, category: .Global)
-
-extension g {
-   public static var log: Logger {
-      return globalLogger
-   }
-}
-
 public struct Logger {
 
-   public enum Category {
-      case Global
-      case Network
-      case Data
-      case Model
-      case View
-      case Controller
-      case Playback
-      case Utility
-      case Delegate
-
-      var stringValue: String {
-         switch self {
-         case .Global: return "GLB"
-         case .Network: return "NET"
-         case .Data: return "DAT"
-         case .Model: return "MOD"
-         case .View: return "VIE"
-         case .Controller: return "CRL"
-         case .Playback: return "PBK"
-         case .Utility: return "UTL"
-         case .Delegate: return "DLG"
-         }
-      }
-   }
-
-   public enum Subsystem {
-      case Default
+   public enum Subsystem: Int {
+      case Default = 1000
       case Network
       case Data
       case Model
@@ -55,137 +21,172 @@ public struct Logger {
 
       var stringValue: String {
          switch self {
-         case .Default    : return "ua.com.wavelabs.default"
-         case .Network   : return "NET"
-         case .Data      : return "DAT"
-         case .Model     : return "MOD"
-         case .View      : return "VIE"
-         case .Controller : return "CTL"
-         case .Media     : return "ua.com.wavelabs.media"
-         case .System       : return "SYS"
-         case .Delegate  : return "DLG"
+         case .Default: return "ua.com.wavelabs.default"
+         case .Network: return "ua.com.wavelabs.network"
+         case .Data: return "ua.com.wavelabs.data"
+         case .Model: return "ua.com.wavelabs.model"
+         case .View: return "ua.com.wavelabs.view"
+         case .Controller: return "ua.com.wavelabs.controller"
+         case .Media: return "ua.com.wavelabs.media"
+         case .System: return "ua.com.wavelabs.system"
+         case .Delegate: return "ua.com.wavelabs.delegate"
          }
       }
    }
 
-   private var oslog: OSLog! = nil
+   public enum Category: Int {
+      case Generic = 1
+      case Fetch, Create, Push
+      case Encode, Decode
+      case Save, Delete
+      case Init, Deinit, SetUp
+      case Handle, Register, Diagnostics, Request
+      case Lifecycle
+      case Open, Close, Reload
 
-   // MARK: Init / Deinit
-
-   public init(subsystem: Subsystem, category: Category) {
-      if #available(OSX 10.12, *) {
-         oslog = OSLog(subsystem: subsystem.stringValue, category: category.stringValue)
+      var stringValue: String {
+         switch self {
+         case .Generic: return "Generic"
+         case .Fetch: return "Fetch"
+         case .Create: return "Create"
+         case .Push: return "Push"
+         case .Encode: return "Encode"
+         case .Decode: return "Decode"
+         case .Save: return "Save"
+         case .Delete: return "Delete"
+         case .Init: return "Init"
+         case .Deinit: return "Deinit"
+         case .SetUp: return "SetUp"
+         case .Handle: return "Handle"
+         case .Register: return "Register"
+         case .Diagnostics: return "Diagnostics"
+         case .Lifecycle: return "Lifecycle"
+         case .Request: return "Request"
+         case .Open: return "Open"
+         case .Close: return "Close"
+         case .Reload: return "Reload"
+         }
       }
    }
+
+   private static var loggers = [Int: OSLog]()
 
    // MARK: Private
 
    @available(OSX 10.12, *)
-   private func log<T>(message: T, level: OSLogType, function: String, file: String, line: Int32) {
-      let msg = "\(message) → \(function) ⋆ \(file.lastPathComponent):\(line)"
-      switch level {
-      case OSLogType.default:
-         log_public(oslog, .default, msg)
-      case OSLogType.debug:
-         log_public(oslog, .debug, msg)
-      case OSLogType.info:
-         log_public(oslog, .info, msg)
-      case OSLogType.error:
-         log_public(oslog, .error, msg)
-      case OSLogType.fault:
-         log_public(oslog, .fault, msg)
-      default:
-         log_public(oslog, .default, msg)
+   private static func getLogger(subsystem: Subsystem, category: Category) -> OSLog {
+      let key = subsystem.rawValue + category.rawValue
+      if let logger = loggers[key] {
+         return logger
+      } else {
+         let logger = OSLog(subsystem: subsystem.stringValue, category: category.stringValue)
+         loggers[key] = logger
+         return logger
       }
+   }
+
+   @available(OSX 10.12, *)
+   private static func format<T>(_ message: T, function: String, file: String, line: Int32) -> String {
+      return "\(message) → \(function) ⋆ \(file.lastPathComponent):\(line)"
    }
 
    // MARK: - Public
 
-   public func marker(_ title: String) {
+   public static func initialize(subsystem: Subsystem,
+                                 function: String = #function, file: String = #file, line: Int32 = #line) {
       if #available(OSX 10.12, *) {
-         log_public(oslog, .debug, " ––––– ⋆ " + title)
+         let logger = getLogger(subsystem: subsystem, category: .Init)
+         let message = format("+++", function: function, file: file, line: line)
+         log_public(logger, .debug, message)
       }
    }
 
-   public func initialize(function: String = #function, file: String = #file, line: Int32 = #line) {
+   public static func deinitialize(subsystem: Subsystem,
+                                   function: String = #function, file: String = #file, line: Int32 = #line) {
       if #available(OSX 10.12, *) {
-         log(message: "+++", level: .debug, function: function, file: file, line: line)
+         let logger = getLogger(subsystem: subsystem, category: .Deinit)
+         let message = format("~~~", function: function, file: file, line: line)
+         log_public(logger, .debug, message)
       }
    }
 
-   public func deinitialize(function: String = #function, file: String = #file, line: Int32 = #line) {
+   public static func fault<T>(subsystem: Subsystem, category: Category, message: T,
+                            function: String = #function, file: String = #file, line: Int32 = #line) {
       if #available(OSX 10.12, *) {
-         log(message: "~~~", level: .debug, function: function, file: file, line: line)
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         log_public(logger, .fault, message)
       }
    }
 
-   public func fault<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   public static func error<T>(subsystem: Subsystem, category: Category, message: T,
+                            function: String = #function, file: String = #file, line: Int32 = #line) {
       if #available(OSX 10.12, *) {
-         log(message: message, level: .fault, function: function, file: file, line: line)
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         log_public(logger, .error, message)
       }
    }
 
-   public func error<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   public static func info<T>(subsystem: Subsystem, category: Category, message: T,
+                           function: String = #function, file: String = #file, line: Int32 = #line) {
       if #available(OSX 10.12, *) {
-         log(message: message, level: .error, function: function, file: file, line: line)
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         log_public(logger, .info, message)
       }
    }
 
-   public func info<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   public static func debug<T>(subsystem: Subsystem, category: Category, message: T,
+                            function: String = #function, file: String = #file, line: Int32 = #line) {
       if #available(OSX 10.12, *) {
-         log(message: message, level: .info, function: function, file: file, line: line)
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         log_public(logger, .debug, message)
       }
    }
 
-   public func debug<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
+   public static func `default`<T>(subsystem: Subsystem, category: Category, message: T,
+                                function: String = #function, file: String = #file, line: Int32 = #line) {
       if #available(OSX 10.12, *) {
-         log(message: message, level: .debug, function: function, file: file, line: line)
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         log_public(logger, .default, message)
       }
    }
 
-   public func `default`<T>(_ message: T, function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         log(message: message, level: .default, function: function, file: file, line: line)
-      }
-   }
-
-   public func fault<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
-                     file: String = #file, line: Int32 = #line) {
+   public static func fault<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
       guard expression() else { return }
       if #available(OSX 10.12, *) {
-         log(message: message, level: .fault, function: function, file: file, line: line)
+         fault(subsystem: subsystem, category: category, message: message)
       }
    }
 
-   public func error<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
-                     file: String = #file, line: Int32 = #line) {
+   public static func error<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
       guard expression() else { return }
       if #available(OSX 10.12, *) {
-         log(message: message, level: .error, function: function, file: file, line: line)
+         error(subsystem: subsystem, category: category, message: message)
       }
    }
 
-   public func info<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
-                    file: String = #file, line: Int32 = #line) {
+   public static func info<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
       guard expression() else { return }
       if #available(OSX 10.12, *) {
-         log(message: message, level: .info, function: function, file: file, line: line)
+         info(subsystem: subsystem, category: category, message: message)
       }
    }
 
-   public func debug<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
-                     file: String = #file, line: Int32 = #line) {
+   public static func debug<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
       guard expression() else { return }
       if #available(OSX 10.12, *) {
-         log(message: message, level: .debug, function: function, file: file, line: line)
+         debug(subsystem: subsystem, category: category, message: message)
       }
    }
 
-   public func `default`<T>(_ message: T, if expression: @autoclosure() -> Bool, function: String = #function,
-                         file: String = #file, line: Int32 = #line) {
+   public static func `default`<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
       guard expression() else { return }
       if #available(OSX 10.12, *) {
-         log(message: message, level: .default, function: function, file: file, line: line)
+         `default`(subsystem: subsystem, category: category, message: message)
       }
    }
 }
