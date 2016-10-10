@@ -24,7 +24,6 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
    @IBOutlet private weak var mediaItemView: MediaItemView!
 
    // MARK: - Private
-   private lazy var log = Logger(subsystem: .Media, category: .Controller)
    private var availableEffects = [AVAudioUnitComponent]()
    private var availablePresets = [AUAudioUnitPreset]()
    private weak var effectViewController: NSViewController? // Temporary store
@@ -94,7 +93,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          case .SettingEffect, .SettingFile: break
          }
       } catch {
-         log.error(error)
+         Logger.error(subsystem: .Controller, category: .Handle, message: error)
       }
    }
 
@@ -184,9 +183,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          if playbackEngine.stateID == .Stopped {
             try playbackEngine.play()
          }
-         log.debug("File assigned: \(url.absoluteString)")
+         Logger.debug(subsystem: .Controller, category: .Open, message: "File assigned: \(url.absoluteString)")
       } catch {
-         log.error(error)
+         Logger.error(subsystem: .Controller, category: .Open, message: error)
       }
    }
 
@@ -232,7 +231,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          let shouldReopenEffectView = (effectWindowController != nil)
          effectWindowController?.close()
          if tableView.selectedRow == 0 {
-            log.debug("Clearing effect")
+            Logger.debug(subsystem: .Controller, category: .Handle, message: "Clearing effect")
             playbackEngine.selectEffect(component: nil) { [weak self] _ in
                guard let s = self else { return }
                s.availablePresets.removeAll()
@@ -244,13 +243,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             let row = tableView.selectedRow - 1
             if row < availableEffects.count {
                let component = availableEffects[row]
-               log.debug("Selecting effect: \"\(component.name)\"")
+               Logger.debug(subsystem: .Controller, category: .Handle, message: "Selecting effect: \"\(component.name)\"")
                playbackEngine.selectEffect(component: component) { [weak self, weak component] result in
                   guard let s = self else { return }
                   switch result {
                   case .EffectCleared: break
                   case .Failure(let e):
-                     s.log.error(e)
+                     Logger.error(subsystem: .Controller, category: .Handle, message: e)
                   case .Success(let effect):
                      s.availablePresets = effect.auAudioUnit.factoryPresets ?? []
                      s.tablePresets.reloadData()
@@ -269,13 +268,13 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
       func handleTablePresets() {
          if tableView.selectedRow == 0 {
-            log.debug("Clearing preset")
+            Logger.debug(subsystem: .Controller, category: .Lifecycle, message: "Clearing preset")
             playbackEngine.selectPreset(preset: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < availablePresets.count {
                let preset = availablePresets[row]
-               log.marker("Selecting preset: \"\(preset.name)\"")
+               Logger.debug(subsystem: .Controller, category: .Lifecycle, message: "Selecting preset: \"\(preset.name)\"")
                playbackEngine.selectPreset(preset: preset)
             }
          }

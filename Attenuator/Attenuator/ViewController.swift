@@ -16,7 +16,6 @@ class ViewController: NSViewController {
    @IBOutlet fileprivate weak var mediaItemView: MediaItemView!
    @IBOutlet fileprivate weak var buttonPlay: NSButton!
    @IBOutlet fileprivate weak var buttonLoadAU: NSButton!
-   fileprivate lazy var log = Logger(subsystem: .Media, category: .Controller)
    fileprivate var playbackEngine: PlaybackEngine {
       return Application.sharedInstance.playbackEngine
    }
@@ -108,7 +107,7 @@ extension ViewController {
             self?.audioUnit = nil
             self?.closeEffectView()
          case .Failure(let error):
-            self?.log.error(error)
+            Logger.error(subsystem: .Controller, category: .Handle, message: error)
          case .Success(let au):
             if let au = au.auAudioUnit as? AttenuatorAudioUnit {
                self?.audioUnit = au
@@ -131,7 +130,7 @@ extension ViewController {
          case .SettingEffect, .SettingFile: break
          }
       } catch {
-         log.error(error)
+         Logger.error(subsystem: .Controller, category: .Handle, message: error)
       }
    }
 
@@ -147,9 +146,9 @@ extension ViewController {
          if playbackEngine.stateID == .Stopped {
             try playbackEngine.play()
          }
-         log.debug("File assigned: \(url.absoluteString)")
+         Logger.debug(subsystem: .Controller, category: .Lifecycle, message: "File assigned: \(url.absoluteString)")
       } catch {
-         log.error(error)
+         Logger.error(subsystem: .Controller, category: .Lifecycle, message: error)
       }
    }
 

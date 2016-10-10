@@ -15,6 +15,10 @@
 		801E7E431C5451530064126C /* AttenuatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 801E7E3B1C544A680064126C /* AttenuatorViewController.xib */; };
 		803F760F1D3BC87B000A76DB /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F760B1D3BC3DB000A76DB /* FoundationExtensions.swift */; };
 		803F76101D3BCA6B000A76DB /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F760C1D3BC3DB000A76DB /* SwiftExtensions.swift */; };
+		804416331DAC2DF000B84BEF /* BufferDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804416321DAC2DF000B84BEF /* BufferDatasource.swift */; };
+		804416351DAC30F400B84BEF /* VULevelMeter.DrawingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804416341DAC30F400B84BEF /* VULevelMeter.DrawingData.swift */; };
+		804416371DAC324D00B84BEF /* GLKMatrix4.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804416361DAC324D00B84BEF /* GLKMatrix4.Ext.swift */; };
+		804416391DAC32E600B84BEF /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 804416381DAC32E600B84BEF /* VULevelMeter.Shaders.metal */; };
 		8044ABCF1C52E24000FA3DA3 /* AttenuatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */; };
 		804674611D25DE77000989CA /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674471D25DE77000989CA /* NonRecursiveLocking.swift */; };
@@ -131,6 +135,10 @@
 		801E7E3E1C544B1B0064126C /* AttenuatorAU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorAU.swift; sourceTree = "<group>"; };
 		803F760B1D3BC3DB000A76DB /* FoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
 		803F760C1D3BC3DB000A76DB /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
+		804416321DAC2DF000B84BEF /* BufferDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
+		804416341DAC30F400B84BEF /* VULevelMeter.DrawingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.DrawingData.swift; sourceTree = "<group>"; };
+		804416361DAC324D00B84BEF /* GLKMatrix4.Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKMatrix4.Ext.swift; sourceTree = "<group>"; };
+		804416381DAC32E600B84BEF /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
 		8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttenuatorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttenuatorKit.h; sourceTree = "<group>"; };
 		8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -266,6 +274,7 @@
 		8046744C1D25DE77000989CA /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				804416321DAC2DF000B84BEF /* BufferDatasource.swift */,
 				80485FEF1DA82CD1004EFA32 /* AVFoundationExtensions.swift */,
 				8046746E1D25DF10000989CA /* DisplayLink.swift */,
 				8046744D1D25DE77000989CA /* AudioComponentsUtility.swift */,
@@ -274,6 +283,7 @@
 				804674501D25DE77000989CA /* WaveformCacheUtility.swift */,
 				804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */,
 				80485FF31DA857E0004EFA32 /* BufferedAudioBus.swift */,
+				804416361DAC324D00B84BEF /* GLKMatrix4.Ext.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -281,8 +291,10 @@
 		804674521D25DE77000989CA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				80485FBB1DA6C04F004EFA32 /* NSToolbar.swift */,
 				80A950011D5930A50044ED2C /* CommonExtensions.swift */,
+				80485FBB1DA6C04F004EFA32 /* NSToolbar.swift */,
+				804416341DAC30F400B84BEF /* VULevelMeter.DrawingData.swift */,
+				804416381DAC32E600B84BEF /* VULevelMeter.Shaders.metal */,
 				8046746C1D25DF04000989CA /* VULevelMeter.swift */,
 			);
 			path = UI;
@@ -582,12 +594,16 @@
 				80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */,
 				801E7E371C5444CB0064126C /* AttenuatorAudioUnit.swift in Sources */,
 				80485FD21DA6C472004EFA32 /* Logger.swift in Sources */,
+				804416351DAC30F400B84BEF /* VULevelMeter.DrawingData.swift in Sources */,
 				8046746D1D25DF04000989CA /* VULevelMeter.swift in Sources */,
 				804860381DAABD82004EFA32 /* BufferedAudioBus.swift in Sources */,
 				80A950041D5930A80044ED2C /* CommonExtensions.swift in Sources */,
+				804416371DAC324D00B84BEF /* GLKMatrix4.Ext.swift in Sources */,
+				804416331DAC2DF000B84BEF /* BufferDatasource.swift in Sources */,
 				80485FF21DA82CE7004EFA32 /* AVFoundationExtensions.swift in Sources */,
 				803F760F1D3BC87B000A76DB /* FoundationExtensions.swift in Sources */,
 				803F76101D3BCA6B000A76DB /* SwiftExtensions.swift in Sources */,
+				804416391DAC32E600B84BEF /* VULevelMeter.Shaders.metal in Sources */,
 				80485FAB1DA45711004EFA32 /* rdar28599032.m in Sources */,
 				80485FD41DA6C493004EFA32 /* Functions.swift in Sources */,
 				806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */,

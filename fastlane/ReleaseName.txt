@@ -1,1 +1,1 @@
-Attenuator.app now Hosts Sample PlugIn
+AttenuatorAU.appex + Metal
