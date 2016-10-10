@@ -170,9 +170,9 @@ public enum BundleError: Error {
 
 public extension Bundle {
 
-	public func urlForResource(resourceName: String, resourceExtension: String) throws -> URL {
-		guard let url = url(forResource: resourceName, withExtension: resourceExtension) else {
-			throw BundleError.MissedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
+	public func url(forResourceName resourceName: String, withExtension: String) throws -> URL {
+		guard let url = url(forResource: resourceName, withExtension: withExtension) else {
+			throw BundleError.MissedURLForResource(resourceName: resourceName, resourceExtension: withExtension)
 		}
 		return url
 	}
