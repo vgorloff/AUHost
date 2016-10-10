@@ -25,7 +25,6 @@ public final class AudioComponentsUtility {
 
    private var observerOfComponentChange: Notification.SmartObserver?
    private var observerOfComponentInvalidate: Notification.SmartObserver?
-   private lazy var log = Logger(subsystem: .Media, category: .Utility)
    private lazy var notificationsQueue = OperationQueue.Concurrent.Utility()
 
    public var handlerStateChange: ((StateChange) -> Void)?
@@ -33,12 +32,12 @@ public final class AudioComponentsUtility {
 
    public init() {
       setUpObservers()
-      log.initialize()
+      Logger.initialize(subsystem: .Media)
    }
 
    deinit {
       tearDownObservers()
-      log.deinitialize()
+      Logger.deinitialize(subsystem: .Media)
    }
 
    /// **Note** Always calls completion handler on main queue

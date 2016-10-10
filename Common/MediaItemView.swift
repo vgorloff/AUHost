@@ -22,7 +22,7 @@ public final class MediaItemView: NSView {
    private let waveformColor = NSColor(hexString: "#51A2F3") ?? NSColor.red
    private let pbUtil = MediaObjectPasteboardUtility()
    private lazy var wfCache = WaveformCacheUtility()
-   private lazy var wfDrawingProvider = WaveformDrawingDataProvider(dataType: .CGPoint)
+   private lazy var wfDrawingProvider = WaveformDrawingDataProvider()
    var mediaFileURL: URL? {
       didSet {
          rebuildWaveform()
