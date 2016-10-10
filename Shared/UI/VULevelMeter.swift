@@ -119,12 +119,12 @@ extension VULevelMeter {
 
       modelDatasource.reset(xOffset: 0, yOffset: 0, width: Double(w), height: Double(h))
       for x in 0 ..< Int(w) {
-         if x % 2 != 0 {
+         if x % 4 != 0 {
             modelDatasource.addVerticalLine(xPosition: Double(x))
          }
       }
       for y in 0 ..< Int(h) {
-         if y % 2 != 0 {
+         if y % 4 != 0 {
             modelDatasource.addHorizontalLine(yPosition: Double(y))
          }
       }
