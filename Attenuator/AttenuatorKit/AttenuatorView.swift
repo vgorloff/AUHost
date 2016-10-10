@@ -22,7 +22,7 @@ class AttenuatorView: NSView {
    override func awakeFromNib() {
       super.awakeFromNib()
       do {
-         displayLinkUtility = try DisplayLink.GenericRenderer(frameRateDivider: 60/10)
+         displayLinkUtility = try DisplayLink.GenericRenderer(frameRateDivider: 60/10, renderCallbackQueue: DispatchQueue.main)
          displayLinkUtility?.renderCallback = { [weak self] in
             if let value = self?.meterRefreshCallback?() {
                self?.viewLevelMeter.level = value

@@ -41,7 +41,7 @@ public struct Logger {
       case Save, Delete
       case Init, Deinit, SetUp
       case Handle, Register, Diagnostics, Request
-      case Lifecycle
+      case Lifecycle, Render
       case Open, Close, Reload
 
       var stringValue: String {
@@ -65,6 +65,7 @@ public struct Logger {
          case .Open: return "Open"
          case .Close: return "Close"
          case .Reload: return "Reload"
+         case .Render: return "Render"
          }
       }
    }
