@@ -34,6 +34,8 @@ Selecting **Preset** will activate corresponding **Factory** preset.
 
 This is a Hosting application with embedded Extension. Hosting application dynamically registers AttenuatorAU AudioUnit and loads it In-Process.   AttenuatorAU extension registered by the system and available for any AudioUnit v3 hosts (such as AUHost.app).
 
+**Note**: You must move application to `/Applications` folder in order to inform system to perform `AttenuatorAU.appex` registration.
+
 #### Playback engine Graph
 
 Playback graph quite simple: `AudioFile > AttenuatorAU Effect (unloadable) > Main Output`.
