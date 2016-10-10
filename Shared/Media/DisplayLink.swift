@@ -92,7 +92,6 @@ extension DisplayLink {
       private var dispatchSource: SmartDispatchSourceUserDataAdd
 
       public var renderCallback: ((Void) -> Void)?
-      private lazy var log = Logger(subsystem: .Media, category: .Utility)
 
       // MARK: Init / Deinit
 
@@ -109,14 +108,14 @@ extension DisplayLink {
                s.frameCounter = 0
             }
          }
-         log.initialize()
+         Logger.initialize(subsystem: .Media)
       }
 
       deinit {
          if displayLink.isRunning {
             _ = try? stop()
          }
-         log.deinitialize()
+         Logger.deinitialize(subsystem: .Media)
       }
 
       public var customMirror: Mirror {
@@ -128,7 +127,7 @@ extension DisplayLink {
       // MARK: Public
 
       public func start(shouldResetFrameCounter: Bool = false) throws {
-         log.debug("Starting")
+         Logger.debug(subsystem: .Media, category: .Lifecycle, message: "Starting")
          if shouldResetFrameCounter {
             frameCounter = 0
          }
@@ -137,7 +136,7 @@ extension DisplayLink {
       }
 
       public func stop() throws {
-         log.debug("Stopping")
+         Logger.debug(subsystem: .Media, category: .Lifecycle, message: "Stopping")
          dispatchSource.suspend()
          try displayLink.stop()
       }
