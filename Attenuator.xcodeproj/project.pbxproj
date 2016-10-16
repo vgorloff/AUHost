@@ -303,13 +303,13 @@
 		80485FAE1DA46551004EFA32 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */,
-				80485FE31DA6C700004EFA32 /* Application.swift */,
-				80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */,
-				80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */,
 				80485FC01DA6C26F004EFA32 /* AppDelegate.swift */,
+				80485FE31DA6C700004EFA32 /* Application.swift */,
 				80485FC21DA6C26F004EFA32 /* main.swift */,
 				80485FAF1DA4657A004EFA32 /* MainToolbar.swift */,
+				80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */,
+				80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */,
+				80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
