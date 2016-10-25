@@ -1,6 +1,6 @@
 //
 //  BufferDatasource.swift
-//  AWLGraphicsPerformance
+//  WaveLabs
 //
 //  Created by Vlad Gorlov on 22.11.15.
 //  Copyright (c) 2015 Vlad Gorlov. All rights reserved.

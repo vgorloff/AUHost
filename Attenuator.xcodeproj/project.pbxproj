@@ -24,8 +24,6 @@
 		804674611D25DE77000989CA /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674471D25DE77000989CA /* NonRecursiveLocking.swift */; };
 		8046746D1D25DF04000989CA /* VULevelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046746C1D25DF04000989CA /* VULevelMeter.swift */; };
 		8046746F1D25DF10000989CA /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046746E1D25DF10000989CA /* DisplayLink.swift */; };
-		80485FAA1DA45711004EFA32 /* rdar28599032.h in Headers */ = {isa = PBXBuildFile; fileRef = 80485FA71DA45709004EFA32 /* rdar28599032.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		80485FAB1DA45711004EFA32 /* rdar28599032.m in Sources */ = {isa = PBXBuildFile; fileRef = 80485FA81DA45709004EFA32 /* rdar28599032.m */; };
 		80485FAD1DA45961004EFA32 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A5A1051C47E75F00F9864E /* Main.storyboard */; };
 		80485FB01DA4657A004EFA32 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FAF1DA4657A004EFA32 /* MainToolbar.swift */; };
 		80485FBE1DA6C054004EFA32 /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FBB1DA6C04F004EFA32 /* NSToolbar.swift */; };
@@ -43,7 +41,6 @@
 		80485FD31DA6C491004EFA32 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674421D25DE77000989CA /* Functions.swift */; };
 		80485FD41DA6C493004EFA32 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674421D25DE77000989CA /* Functions.swift */; };
 		80485FD51DA6C4B4004EFA32 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674471D25DE77000989CA /* NonRecursiveLocking.swift */; };
-		80485FD61DA6C4BF004EFA32 /* rdar28599032.m in Sources */ = {isa = PBXBuildFile; fileRef = 80485FA81DA45709004EFA32 /* rdar28599032.m */; };
 		80485FD81DA6C55A004EFA32 /* KVOHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674431D25DE77000989CA /* KVOHelper.swift */; };
 		80485FD91DA6C572004EFA32 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674451D25DE77000989CA /* Math.swift */; };
 		80485FDA1DA6C579004EFA32 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046743E1D25DE77000989CA /* Enumerations.swift */; };
@@ -163,15 +160,12 @@
 		8046746C1D25DF04000989CA /* VULevelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
 		8046746E1D25DF10000989CA /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		804674701D25DF2A000989CA /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
-		80485FA71DA45709004EFA32 /* rdar28599032.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = rdar28599032.h; sourceTree = "<group>"; };
-		80485FA81DA45709004EFA32 /* rdar28599032.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = rdar28599032.m; sourceTree = "<group>"; };
 		80485FAF1DA4657A004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
 		80485FBB1DA6C04F004EFA32 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
 		80485FC01DA6C26F004EFA32 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80485FC21DA6C26F004EFA32 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
 		80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
-		80485FD71DA6C50F004EFA32 /* Attenuator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Attenuator-Bridging-Header.h"; sourceTree = "<group>"; };
 		80485FE31DA6C700004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FE61DA6C7B8004EFA32 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
@@ -251,8 +245,6 @@
 		804674391D25DE77000989CA /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				80485FA71DA45709004EFA32 /* rdar28599032.h */,
-				80485FA81DA45709004EFA32 /* rdar28599032.m */,
 				8046743A1D25DE77000989CA /* AlternativeValue.swift */,
 				804674701D25DF2A000989CA /* DispatchSource.swift */,
 				8046743E1D25DE77000989CA /* Enumerations.swift */,
@@ -360,7 +352,6 @@
 			isa = PBXGroup;
 			children = (
 				C5A5A1271C47EF2D00F9864E /* Attenuator.entitlements */,
-				80485FD71DA6C50F004EFA32 /* Attenuator-Bridging-Header.h */,
 				C5A5A1081C47E75F00F9864E /* Info.plist */,
 				80485FE61DA6C7B8004EFA32 /* MainWindowController.swift */,
 				C5A5A1011C47E75F00F9864E /* ViewController.swift */,
@@ -388,7 +379,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8044ABCF1C52E24000FA3DA3 /* AttenuatorKit.h in Headers */,
-				80485FAA1DA45711004EFA32 /* rdar28599032.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,12 +453,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = WaveLabs;
 				TargetAttributes = {
 					8044ABCB1C52E24000FA3DA3 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = E27KE6VTF6;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 					};
@@ -485,7 +474,6 @@
 					};
 					C5A5A1111C47EB5300F9864E = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = E27KE6VTF6;
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Manual;
 					};
@@ -604,7 +592,6 @@
 				803F760F1D3BC87B000A76DB /* FoundationExtensions.swift in Sources */,
 				803F76101D3BCA6B000A76DB /* SwiftExtensions.swift in Sources */,
 				804416391DAC32E600B84BEF /* VULevelMeter.Shaders.metal in Sources */,
-				80485FAB1DA45711004EFA32 /* rdar28599032.m in Sources */,
 				80485FD41DA6C493004EFA32 /* Functions.swift in Sources */,
 				806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */,
 				80485FDC1DA6C603004EFA32 /* NumericTypesConversions.swift in Sources */,
@@ -623,7 +610,6 @@
 				80485FD81DA6C55A004EFA32 /* KVOHelper.swift in Sources */,
 				80485FCA1DA6C343004EFA32 /* MinMax.swift in Sources */,
 				80485FE51DA6C735004EFA32 /* MediaLibraryUtility.swift in Sources */,
-				80485FD61DA6C4BF004EFA32 /* rdar28599032.m in Sources */,
 				80485FD31DA6C491004EFA32 /* Functions.swift in Sources */,
 				80485FE71DA6C7B8004EFA32 /* MainWindowController.swift in Sources */,
 				80485FC71DA6C2E6004EFA32 /* MediaObjectPasteboardUtility.swift in Sources */,
@@ -702,13 +688,13 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = E27KE6VTF6;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = "$(AWL_BUILD_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -754,13 +740,13 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "";
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = E27KE6VTF6;
+				DEVELOPMENT_TEAM = "";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = "$(AWL_BUILD_VERSION)";
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -801,8 +787,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -846,8 +834,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
@@ -886,7 +876,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Attenuator/Attenuator/Attenuator-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -908,7 +897,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "Attenuator/Attenuator/Attenuator-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};

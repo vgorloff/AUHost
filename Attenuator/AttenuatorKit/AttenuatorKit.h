@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double AttenuatorKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char AttenuatorKitVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <AttenuatorKit/PublicHeader.h>
-
-#import <AttenuatorKit/rdar28599032.h>
