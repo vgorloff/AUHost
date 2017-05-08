@@ -16,11 +16,6 @@ extension NSToolbar {
       var defaultItemIdentifiers = [String]()
       var allowedItemIdentifiers = [String]()
 
-      enum Event {
-         case willAddItem(item: NSToolbarItem, index: Int)
-         case didRemoveItem(item: NSToolbarItem)
-      }
-
       var eventHandler: ((Event) -> Void)?
       var makeItemCallback: ((_ itemIdentifier: String, _ willBeInserted: Bool) -> NSToolbarItem?)?
 
@@ -41,7 +36,6 @@ extension NSToolbar {
          return selectableItemIdentifiers
       }
 
-
       // MARK: Notifications
 
       func toolbarWillAddItem(_ notification: Notification) {
@@ -58,4 +52,12 @@ extension NSToolbar {
       }
    }
 
+}
+
+extension NSToolbar.GenericDelegate {
+
+   enum Event {
+      case willAddItem(item: NSToolbarItem, index: Int)
+      case didRemoveItem(item: NSToolbarItem)
+   }
 }

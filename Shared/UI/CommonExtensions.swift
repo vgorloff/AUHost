@@ -15,7 +15,6 @@ import CoreGraphics
 	public typealias ColorType = NSColor
 #endif
 
-
 public extension ColorType {
 
 	public convenience init(hexValue hex: UInt64) {

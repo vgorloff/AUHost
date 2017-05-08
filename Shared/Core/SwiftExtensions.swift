@@ -81,14 +81,14 @@ public extension String {
 }
 
 public enum DictionaryError: Error {
-	case MissedRequiredKey(String)
+	case missedRequiredKey(String)
 }
 
 public extension Dictionary {
 
 	public func value<T>(forRequiredKey key: Key) throws -> T {
 		guard let value = self[key] as? T else {
-         throw DictionaryError.MissedRequiredKey(String(describing: key))
+         throw DictionaryError.missedRequiredKey(String(describing: key))
 		}
 		return value
 	}

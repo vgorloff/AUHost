@@ -19,7 +19,7 @@ private protocol _SmartDispatchSourceType: class {
 }
 
 extension _SmartDispatchSourceType {
-   func _resume() {
+   func _resume() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
       }
@@ -29,7 +29,7 @@ extension _SmartDispatchSourceType {
       }
    }
 
-   func _suspend() {
+   func _suspend() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
       }
@@ -37,7 +37,7 @@ extension _SmartDispatchSourceType {
       dispatchSourceSuspendCount += 1
    }
 
-   func _cancel() {
+   func _cancel() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
       }
@@ -46,7 +46,7 @@ extension _SmartDispatchSourceType {
       }
    }
 
-   func _deinit() {
+   func _deinit() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
       }
@@ -68,7 +68,7 @@ public protocol SmartDispatchSourceType: class {
 
 public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType, CustomReflectable {
 
-   fileprivate var dispatchSource: DispatchSourceProtocol? = nil
+   fileprivate var dispatchSource: DispatchSourceProtocol?
    fileprivate var dispatchSourceSuspendCount = 1
 
    public func setEventHandler(qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = .inheritQoS,

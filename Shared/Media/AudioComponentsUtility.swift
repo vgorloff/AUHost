@@ -19,25 +19,25 @@ extension Notification.Name {
 public final class AudioComponentsUtility {
 
    public enum StateChange {
-      case AudioComponentRegistered
-      case AudioComponentInstanceInvalidated(AUAudioUnit, AudioUnit?)
+      case audioComponentRegistered
+      case audioComponentInstanceInvalidated(AUAudioUnit, AudioUnit?)
    }
 
    private var observerOfComponentChange: Notification.SmartObserver?
    private var observerOfComponentInvalidate: Notification.SmartObserver?
-   private lazy var notificationsQueue = OperationQueue.Concurrent.Utility()
+   private lazy var notificationsQueue = OperationQueue.Concurrent.utility()
 
    public var handlerStateChange: ((StateChange) -> Void)?
    public var completionHandlerQueue = DispatchQueue.main
 
    public init() {
       setUpObservers()
-      Logger.initialize(subsystem: .Media)
+      Logger.initialize(subsystem: .media)
    }
 
    deinit {
       tearDownObservers()
-      Logger.deinitialize(subsystem: .Media)
+      Logger.deinitialize(subsystem: .media)
    }
 
    /// **Note** Always calls completion handler on main queue
@@ -74,7 +74,7 @@ public final class AudioComponentsUtility {
             guard let s2 = s1 else {
                return
             }
-            s2.handlerStateChange?(.AudioComponentRegistered)
+            s2.handlerStateChange?(.audioComponentRegistered)
          }
       }
 
@@ -95,7 +95,7 @@ public final class AudioComponentsUtility {
             guard let s2 = s1 else {
                return
             }
-            s2.handlerStateChange?(.AudioComponentInstanceInvalidated(crashedAU, audioUnit))
+            s2.handlerStateChange?(.audioComponentInstanceInvalidated(crashedAU, audioUnit))
          }
       }
    }

@@ -86,7 +86,6 @@ public final class NonRecursiveMutex: NonRecursiveLocking {
    }
 }
 
-
 /// Provides atomic access to Property.value from different threads.
 public final class Property<T>: CustomReflectable {
 	private var valueStorage: T

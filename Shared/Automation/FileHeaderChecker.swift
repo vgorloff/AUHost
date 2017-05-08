@@ -20,7 +20,7 @@ public struct FileHeaderCheckerIssue {
 }
 
 private enum FHCError: Error {
-   case FileHeaderCheckerIssue(String)
+   case fileHeaderCheckerIssue(String)
 }
 
 struct FileHeaderContents {
@@ -100,7 +100,6 @@ public final class FileHeaderChecker {
    private var knownExtensions: [String]
    private var projectNames: [String]
 
-   //  MARK: Public
    public init(projectNames names: [String], fileExtensions: [String] = ["h", "m", "mm", "swift", "metal"]) {
       projectNames = names
       knownExtensions = fileExtensions
@@ -133,8 +132,6 @@ public final class FileHeaderChecker {
       }
       return issues
    }
-
-   // MARK: Private
 
    private func readFileHeader(_ filePath: String) throws -> String {
       if let fh = FileHandle(forReadingAtPath: filePath) {

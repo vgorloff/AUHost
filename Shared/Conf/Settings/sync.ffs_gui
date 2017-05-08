@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<FreeFileSync XmlFormat="5" XmlType="GUI">
+<FreeFileSync XmlFormat="7" XmlType="GUI">
     <MainConfig>
         <Comparison>
             <Variant>Content</Variant>
@@ -39,6 +39,12 @@
             <SizeMin Unit="None">0</SizeMin>
             <SizeMax Unit="None">0</SizeMax>
         </GlobalFilter>
+        <FolderPairs>
+            <Pair>
+                <Left/>
+                <Right/>
+            </Pair>
+        </FolderPairs>
         <OnCompletion/>
     </MainConfig>
     <GuiConfig>

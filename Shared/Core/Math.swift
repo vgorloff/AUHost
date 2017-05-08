@@ -33,7 +33,7 @@ extension Float: RandomInRangeValueType {
 
 public struct Math {
 
-	public static func PlaceValueInRange<T: Comparable>(value: T, min: T, max: T) -> T {
+	public static func placeValueInRange<T: Comparable>(value: T, min: T, max: T) -> T {
 		var result = value
 		if value < min {
 			result = min
@@ -75,7 +75,7 @@ public struct Math {
 			if valueA % divisor == 0 && valueB % divisor == 0 {
 				return divisor
 			}
-			divisor = divisor - 1
+			divisor = divisor - 1 // swiftlint:disable:this shorthand_operator
 		}
 		while (divisor >= 2)
 		return 1

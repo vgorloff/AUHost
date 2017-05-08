@@ -22,10 +22,10 @@ extension AudioBuffer {
       return UnsafeMutableBufferPointer<Double>(start: mDoubleData, count: Int(mDataByteSize) / MemoryLayout<Double>.stride)
    }
    public var mFloatArray: [Float] {
-      return Array<Float>(mFloatBuffer)
+      return Array(mFloatBuffer)
    }
    public var mDoubleArray: [Double] {
-      return Array<Double>(mDoubleBuffer)
+      return Array(mDoubleBuffer)
    }
    public func fillWithZeros() {
       memset(mData, 0, Int(mDataByteSize))
