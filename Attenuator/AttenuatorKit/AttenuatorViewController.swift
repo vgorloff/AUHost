@@ -76,7 +76,7 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 
    private func setUpView(au: AttenuatorAudioUnit, auView: AttenuatorView) {
       auView.viewLevelMeter.numberOfChannels = au.outputBus.bus.format.channelCount
-      auView.updateParameter(parameter: AttenuatorParameter.Gain, withValue: au.parameterGain.value)
+      auView.updateParameter(parameter: AttenuatorParameter.gain, withValue: au.parameterGain.value)
       parameterObserverToken = au.parameterTree.token(byAddingParameterObserver: { address, value in
          DispatchQueue.main.async { [weak self] in guard let s = self else { return }
             let paramType = AttenuatorParameter.fromRawValue(address)

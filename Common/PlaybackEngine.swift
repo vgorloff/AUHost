@@ -122,13 +122,13 @@ final class PlaybackEngine {
    init() {
       sm = StateMachine(context: context, graph: gStateMachineGraph)
       sm.stateChangeHandler = { [weak self] oldState, event, newState in
-         Logger.debug(subsystem: .Media, category: .Handle, message: "State changed: \(oldState) => \(newState)")
+         Logger.debug(subsystem: .media, category: .handle, message: "State changed: \(oldState) => \(newState)")
          DispatchQueue.main.async { [weak self] in
             self?.changeHandler?(Change.EngineStateChanged(old: oldState, new: newState))
          }
       }
       context.filePlaybackCompleted = { [weak self] in guard let s = self else { return }
-         Logger.debug(subsystem: .Media, category: .Handle, message: "Playback stopped or file finished playing. Current state: \(s.stateID)")
+         Logger.debug(subsystem: .media, category: .handle, message: "Playback stopped or file finished playing. Current state: \(s.stateID)")
          guard s.stateID == .Playing else {
             return
          }
@@ -136,15 +136,15 @@ final class PlaybackEngine {
             do {
                try s.sm.handleEvent(event: .Stop)
             } catch {
-               Logger.error(subsystem: .Media, category: .Handle, message: error)
+               Logger.error(subsystem: .media, category: .handle, message: error)
             }
          }
       }
-      Logger.initialize(subsystem: .Media)
+      Logger.initialize(subsystem: .media)
    }
 
    deinit {
-      Logger.deinitialize(subsystem: .Media)
+      Logger.deinitialize(subsystem: .media)
    }
 
    // MARK: - Internal
@@ -163,7 +163,7 @@ final class PlaybackEngine {
       do {
          try sm.handleEvent(event: .Stop)
       } catch {
-         Logger.error(subsystem: .Media, category: .Lifecycle, message: error)
+         Logger.error(subsystem: .media, category: .lifecycle, message: error)
       }
    }
 
@@ -171,7 +171,7 @@ final class PlaybackEngine {
       do {
          try sm.handleEvent(event: .Pause)
       } catch {
-         Logger.error(subsystem: .Media, category: .Lifecycle, message: error)
+         Logger.error(subsystem: .media, category: .lifecycle, message: error)
       }
    }
 
@@ -232,7 +232,7 @@ final class PlaybackEngine {
          do {
             try s.sm.handleEvent(event: event)
          } catch {
-            Logger.error(subsystem: .Media, category: .Request, message: error)
+            Logger.error(subsystem: .media, category: .request, message: error)
          }
          sema.wait() {
             guard let relaunchEvent = possibleRelaunchEvent else {
@@ -241,7 +241,7 @@ final class PlaybackEngine {
             do {
                try s.sm.handleEvent(event: relaunchEvent)
             } catch {
-               Logger.error(subsystem: .Media, category: .Request, message: error)
+               Logger.error(subsystem: .media, category: .request, message: error)
             }
          }
       }

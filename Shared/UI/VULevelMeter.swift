@@ -15,11 +15,11 @@ private let gUseInternalCustomDrawTimer = false
 public final class VULevelMeter: MTKView {
 
    enum Errors: Error {
-      case UnableToInitialize(String)
+      case unableToInitialize(String)
    }
 
    public var numberOfChannels: UInt32 = 1
-   public var level = Array<Float>(repeating: 0, count: 1) {
+   public var level = Array(repeating: Float(0), count: 1) {
       didSet {
          if gUseInternalCustomDrawTimer {
             needsDisplay = true
@@ -53,17 +53,17 @@ public final class VULevelMeter: MTKView {
       do {
          try initializeMetal()
       } catch {
-         Logger.error(subsystem: .Media, category: .Init, message: error)
+         Logger.error(subsystem: .media, category: .initialise, message: error)
       }
    }
 
    private func initializeMetal() throws {
       guard let metalDevice = MTLCreateSystemDefaultDevice() else {
-         throw Errors.UnableToInitialize(String(describing: MTLDevice.self))
+         throw Errors.unableToInitialize(String(describing: MTLDevice.self))
       }
       device = metalDevice
       commandQueue = metalDevice.makeCommandQueue()
-      let metalLibraryURL = try Bundle(for: SelfClass.self).url(forResourceName: "default", withExtension: "metallib")
+      let metalLibraryURL = try Bundle(for: SelfClass.self).urlForResource(resourceName: "default", resourceExtension: "metallib")
       let library = try metalDevice.makeLibrary(filepath: metalLibraryURL.path)
       defaultLibrary = library
       pipelineState = try setUpPipeline(metalDevice: metalDevice, pixelFormat: pixelFormat)
@@ -77,10 +77,10 @@ public final class VULevelMeter: MTKView {
 
    private func setUpPipeline(metalDevice: MTLDevice, pixelFormat: MTLPixelFormat) throws -> MTLRenderPipelineState {
       guard let vertexProgram = defaultLibrary.makeFunction(name: "vertex_line") else {
-         throw Errors.UnableToInitialize(String(describing: MTLFunction.self))
+         throw Errors.unableToInitialize(String(describing: MTLFunction.self))
       }
       guard let fragmentProgram = defaultLibrary.makeFunction(name: "fragment_line") else {
-         throw Errors.UnableToInitialize(String(describing: MTLFunction.self))
+         throw Errors.unableToInitialize(String(describing: MTLFunction.self))
       }
 
       let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
@@ -100,7 +100,7 @@ extension VULevelMeter {
             do {
                try self.render()
             } catch let error {
-               Logger.error(subsystem: .Media, category: .Init, message: error)
+               Logger.error(subsystem: .media, category: .initialise, message: error)
             }
          }
       }
@@ -118,15 +118,11 @@ extension VULevelMeter {
       let projectionMatrix = GLKMatrix4MakeOrtho(0, w, h, 0, -1, 1)
 
       modelDatasource.reset(xOffset: 0, yOffset: 0, width: Double(w), height: Double(h))
-      for x in 0 ..< Int(w) {
-         if x % 4 != 0 {
-            modelDatasource.addVerticalLine(xPosition: Double(x))
-         }
+      for x in 0 ..< Int(w) where x % 4 != 0 {
+         modelDatasource.addVerticalLine(xPosition: Double(x))
       }
-      for y in 0 ..< Int(h) {
-         if y % 4 != 0 {
-            modelDatasource.addHorizontalLine(yPosition: Double(y))
-         }
+      for y in 0 ..< Int(h) where y % 4 != 0 {
+         modelDatasource.addHorizontalLine(yPosition: Double(y))
       }
 
       guard modelDatasource.floatVertices.count > 0 else {
@@ -151,10 +147,10 @@ extension VULevelMeter {
    private func render() throws {
       dataBufferProvider.dispatchWait()
       guard let currentDrawable = currentDrawable else {
-         throw Errors.UnableToInitialize(String(describing: CAMetalDrawable.self))
+         throw Errors.unableToInitialize(String(describing: CAMetalDrawable.self))
       }
       guard let renderPassDescriptor = currentRenderPassDescriptor else {
-         throw Errors.UnableToInitialize(String(describing: MTLRenderPassDescriptor.self))
+         throw Errors.unableToInitialize(String(describing: MTLRenderPassDescriptor.self))
       }
 
       let commandBuffer = commandQueue.makeCommandBuffer()

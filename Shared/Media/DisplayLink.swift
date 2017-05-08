@@ -108,14 +108,14 @@ extension DisplayLink {
                s.frameCounter = 0
             }
          }
-         Logger.initialize(subsystem: .Media)
+         Logger.initialize(subsystem: .media)
       }
 
       deinit {
          if displayLink.isRunning {
             _ = try? stop()
          }
-         Logger.deinitialize(subsystem: .Media)
+         Logger.deinitialize(subsystem: .media)
       }
 
       public var customMirror: Mirror {
@@ -127,7 +127,7 @@ extension DisplayLink {
       // MARK: Public
 
       public func start(shouldResetFrameCounter: Bool = false) throws {
-         Logger.debug(subsystem: .Media, category: .Lifecycle, message: "Starting")
+         Logger.debug(subsystem: .media, category: .lifecycle, message: "Starting")
          if shouldResetFrameCounter {
             frameCounter = 0
          }
@@ -136,11 +136,10 @@ extension DisplayLink {
       }
 
       public func stop() throws {
-         Logger.debug(subsystem: .Media, category: .Lifecycle, message: "Stopping")
+         Logger.debug(subsystem: .media, category: .lifecycle, message: "Stopping")
          dispatchSource.suspend()
          try displayLink.stop()
       }
-
 
       // MARK: Private
       private func setUpDisplayLink() throws {
