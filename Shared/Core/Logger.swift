@@ -163,7 +163,7 @@ extension Logger {
 
    @available(OSX 10.12, *)
    fileprivate static func format<T>(_ message: T, function: String, file: String, line: Int32) -> String {
-      return "\(message) → \(function) ⋆ \(file.lastPathComponent):\(line)"
+      return "\(String(describing: message)) → \(function) ⋆ \(file.lastPathComponent):\(line)"
    }
 }
 
