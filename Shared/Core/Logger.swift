@@ -39,7 +39,7 @@ extension Logger {
 
    public static func initialize(subsystem: Subsystem, function: String = #function, file: String = #file, line: Int32 = #line,
                                  dso: UnsafeRawPointer? = #dsohandle) {
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: .initialise)
          let message = format("+++", function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
@@ -48,7 +48,7 @@ extension Logger {
 
    public static func deinitialize(subsystem: Subsystem, function: String = #function, file: String = #file, line: Int32 = #line,
                                    dso: UnsafeRawPointer? = #dsohandle) {
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: .deinitialize)
          let message = format("~~~", function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
@@ -57,7 +57,7 @@ extension Logger {
 
    public static func fault<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
                                file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: category)
          let message = format(message, function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .fault, message)
@@ -66,7 +66,7 @@ extension Logger {
 
    public static func error<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
                                file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: category)
          let message = format(message, function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .error, message)
@@ -75,7 +75,7 @@ extension Logger {
 
    public static func info<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
                               file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: category)
          let message = format(message, function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .info, message)
@@ -84,7 +84,7 @@ extension Logger {
 
    public static func debug<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
                                file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: category)
          let message = format(message, function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
@@ -93,7 +93,7 @@ extension Logger {
 
    public static func `default`<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
                                    file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: category)
          let message = format(message, function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .default, message)
@@ -104,7 +104,7 @@ extension Logger {
                                function: String = #function, file: String = #file, line: Int32 = #line,
                                dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          fault(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
       }
    }
@@ -113,7 +113,7 @@ extension Logger {
                                function: String = #function, file: String = #file, line: Int32 = #line,
                                dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          error(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
       }
    }
@@ -122,7 +122,7 @@ extension Logger {
                               function: String = #function, file: String = #file, line: Int32 = #line,
                               dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          info(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
       }
    }
@@ -131,7 +131,7 @@ extension Logger {
                                function: String = #function, file: String = #file, line: Int32 = #line,
                                dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          debug(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
       }
    }
@@ -140,7 +140,7 @@ extension Logger {
                                    function: String = #function, file: String = #file, line: Int32 = #line,
                                    dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
-      if #available(OSX 10.12, *) {
+      if #available(OSX 10.12, iOS 10.0, *) {
          `default`(subsystem: subsystem, category: category, message: message, function: function,
                    file: file, line: line, dso: dso)
       }
@@ -149,7 +149,7 @@ extension Logger {
 
 extension Logger {
 
-   @available(OSX 10.12, *)
+   @available(OSX 10.12, iOS 10.0, *)
    fileprivate static func getLogger(subsystem: Subsystem, category: Category) -> OSLog {
       let key = subsystem.rawValue + category.rawValue
       if let logger = loggers[key] {
