@@ -48,15 +48,15 @@ extension ViewController {
       mediaItemView.onCompleteDragWithObjects = { [weak self] results in
          guard let s = self else { return }
          switch results {
-         case .None:
+         case .none:
             break
-         case .MediaObjects(let mediaObjectsDict):
+         case .mediaObjects(let mediaObjectsDict):
             let mediaObjects = Application.sharedInstance.mediaLibraryLoader.mediaObjectsFromPlist(
                pasteboardPlist: mediaObjectsDict)
             if let firstMediaObject = mediaObjects.first?.1.first?.1, let url = firstMediaObject.url {
                s.processFileAtURL(url)
             }
-         case .FilePaths(let filePaths):
+         case .filePaths(let filePaths):
             if let firstFilePath = filePaths.first {
                let url = NSURL(fileURLWithPath: firstFilePath)
                s.processFileAtURL(url as URL)
@@ -107,7 +107,7 @@ extension ViewController {
             self?.audioUnit = nil
             self?.closeEffectView()
          case .Failure(let error):
-            Logger.error(subsystem: .Controller, category: .Handle, message: error)
+            Logger.error(subsystem: .controller, category: .handle, message: error)
          case .Success(let au):
             if let au = au.auAudioUnit as? AttenuatorAudioUnit {
                self?.audioUnit = au
@@ -130,7 +130,7 @@ extension ViewController {
          case .SettingEffect, .SettingFile: break
          }
       } catch {
-         Logger.error(subsystem: .Controller, category: .Handle, message: error)
+         Logger.error(subsystem: .controller, category: .handle, message: error)
       }
    }
 
@@ -146,9 +146,9 @@ extension ViewController {
          if playbackEngine.stateID == .Stopped {
             try playbackEngine.play()
          }
-         Logger.debug(subsystem: .Controller, category: .Lifecycle, message: "File assigned: \(url.absoluteString)")
+         Logger.debug(subsystem: .controller, category: .lifecycle, message: "File assigned: \(url.absoluteString)")
       } catch {
-         Logger.error(subsystem: .Controller, category: .Lifecycle, message: error)
+         Logger.error(subsystem: .controller, category: .lifecycle, message: error)
       }
    }
 

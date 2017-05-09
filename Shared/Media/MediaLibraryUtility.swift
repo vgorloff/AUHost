@@ -12,7 +12,7 @@ import MediaLibrary
 public final class MediaLibraryUtility: NSObject {
 
 	public enum MediaLibraryChangeEvent {
-		case MediaSourceChanged([String : MLMediaSource]?)
+		case mediaSourceChanged([String : MLMediaSource]?)
 	}
 
 	private lazy var _mediaLibrary: MLMediaLibrary = self.setUpMediaLibrary()
@@ -24,11 +24,11 @@ public final class MediaLibraryUtility: NSObject {
 
 	public override init() {
 		super.init()
-		Logger.initialize(subsystem: .Media)
+		Logger.initialize(subsystem: .media)
 		kvoObserverOfMediaSources = KVOHelper(object: _mediaLibrary, keyPath: "mediaSources") { [weak self] result in
 			guard let s = self else { return }
 			if let value = result.valueNew {
-            Logger.debug(subsystem: .Media, category: .Handle,
+            Logger.debug(subsystem: .media, category: .handle,
                          message: "Found \(value.count) media sources: \(Array(value.keys))")
 				for mediaSource in value.values {
 					_ = mediaSource.rootMediaGroup // Triggering lazy initialization
@@ -36,14 +36,14 @@ public final class MediaLibraryUtility: NSObject {
 				}
 			}
 			s.mediaLibraryIsLoaded = true
-			s.onMediaLibraryChange?(.MediaSourceChanged(result.valueNew))
+			s.onMediaLibraryChange?(.mediaSourceChanged(result.valueNew))
 			s.mediaLibraryLoadCallback?()
 		}
 	}
 
 	deinit {
 		kvoObserverOfMediaSources = nil
-		Logger.deinitialize(subsystem: .Media)
+		Logger.deinitialize(subsystem: .media)
 	}
 
 	public func loadMediaLibrary(completion: ((Void) -> Void)?) {
@@ -56,7 +56,7 @@ public final class MediaLibraryUtility: NSObject {
 	}
 
 	public func mediaObjectsFromPlist(pasteboardPlist: NSDictionary) -> [String: [String : MLMediaObject]] {
-		var results = [String: [String : MLMediaObject]]()
+		var results = [String: [String: MLMediaObject]]()
 		guard let keys = pasteboardPlist.allKeys as? [String], let mediaSources = _mediaLibrary.mediaSources else {
 			return results
 		}
@@ -72,7 +72,7 @@ public final class MediaLibraryUtility: NSObject {
 	// MARK: - Private
 
 	private func setUpMediaLibrary() -> MLMediaLibrary {
-		let o = [MLMediaLoadSourceTypesKey : MLMediaSourceType.audio.rawValue]
+		let o = [MLMediaLoadSourceTypesKey: MLMediaSourceType.audio.rawValue]
 		return MLMediaLibrary(options: o)
 	}
 

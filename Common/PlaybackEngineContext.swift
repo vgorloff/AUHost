@@ -21,12 +21,12 @@ final class PlaybackEngineContext {
 
    // MARK: - Init | Deinit
    init() {
-      Logger.initialize(subsystem: .Media)
+      Logger.initialize(subsystem: .media)
       engine.attach(player)
    }
 
    deinit {
-      Logger.deinitialize(subsystem: .Media)
+      Logger.deinitialize(subsystem: .media)
    }
 
    // MARK: - Actions
@@ -170,9 +170,9 @@ final class PlaybackEngineContext {
       statistics.append("File samplerate: \(file.fileFormat.sampleRate)")
       statistics.append("File playback offset: \(offset)")
       statistics.append("Frames to play: \(framesToPlay)")
-      Logger.debug(subsystem: .Media, category: .Diagnostics, message: statistics.joined(separator: "; "))
+      Logger.debug(subsystem: .media, category: .diagnostics, message: statistics.joined(separator: "; "))
       guard framesToPlay > 0 else {
-         Logger.default(subsystem: .Media, category: .Lifecycle,
+         Logger.default(subsystem: .media, category: .lifecycle,
                         message: "Nothing to play. Check value of 'playbackOffset' property.")
          return
       }

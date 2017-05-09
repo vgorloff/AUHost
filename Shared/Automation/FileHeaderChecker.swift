@@ -20,7 +20,7 @@ public struct FileHeaderCheckerIssue {
 }
 
 private enum FHCError: Error {
-   case FileHeaderCheckerIssue(String)
+   case fileHeaderCheckerIssue(String)
 }
 
 struct FileHeaderContents {
@@ -100,7 +100,6 @@ public final class FileHeaderChecker {
    private var knownExtensions: [String]
    private var projectNames: [String]
 
-   //  MARK: Public
    public init(projectNames names: [String], fileExtensions: [String] = ["h", "m", "mm", "swift", "metal"]) {
       projectNames = names
       knownExtensions = fileExtensions
@@ -121,7 +120,7 @@ public final class FileHeaderChecker {
             }
          }
       } else {
-         throw FileManagerError.CanNotOpenFileAtPath(fileOrDirectoryPath)
+         throw FileManagerError.canNotOpenFileAtPath(fileOrDirectoryPath)
       }
 
       var issues = [FileHeaderCheckerIssue]()
@@ -134,18 +133,16 @@ public final class FileHeaderChecker {
       return issues
    }
 
-   // MARK: Private
-
    private func readFileHeader(_ filePath: String) throws -> String {
       if let fh = FileHandle(forReadingAtPath: filePath) {
          let headerData = fh.readData(ofLength: 256)
-         if let headerContents = NSString(data: headerData, encoding: String.Encoding.utf8.rawValue) as? String {
+         if let headerContents = String(data: headerData, encoding: .utf8) {
             return headerContents
          } else {
-            throw FileManagerError.CanNotOpenFileAtPath(filePath)
+            throw FileManagerError.canNotOpenFileAtPath(filePath)
          }
       } else {
-         throw FileManagerError.CanNotOpenFileAtPath(filePath)
+         throw FileManagerError.canNotOpenFileAtPath(filePath)
       }
    }
 
@@ -165,7 +162,7 @@ public final class FileHeaderChecker {
             fileHeader = try analyzeHeaderType3(filePath, headerContents: headerContents)
 
          }
-      } catch FHCError.FileHeaderCheckerIssue(let reason) {
+      } catch FHCError.fileHeaderCheckerIssue(let reason) {
          return FileHeaderCheckerIssue(filePath: filePath, issueReason: reason)
       }
 
@@ -207,7 +204,7 @@ public final class FileHeaderChecker {
       }
 
       if components.count != 4 {
-         throw FHCError.FileHeaderCheckerIssue("Unexpected header structure. Should be 4 lines starting from \"/// \".")
+         throw FHCError.fileHeaderCheckerIssue("Unexpected header structure. Should be 4 lines starting from \"/// \".")
       }
 
       let fileHeader = FileHeaderContents(fileName: components[0], projectName: components[1],
@@ -228,7 +225,7 @@ public final class FileHeaderChecker {
       }
 
       if componentsFiltered.count != 7 {
-         throw FHCError.FileHeaderCheckerIssue("Unexpected header structure. Should be 7 lines for this header type.")
+         throw FHCError.fileHeaderCheckerIssue("Unexpected header structure. Should be 7 lines for this header type.")
       }
 
       let componentsToProcess = [componentsFiltered[1], componentsFiltered[2], componentsFiltered[4], componentsFiltered[5]]
@@ -256,7 +253,7 @@ public final class FileHeaderChecker {
       }
 
       if components.count != 7 {
-         throw FHCError.FileHeaderCheckerIssue("Unexpected header structure. Should be 7 lines starting from \"//\".")
+         throw FHCError.fileHeaderCheckerIssue("Unexpected header structure. Should be 7 lines starting from \"//\".")
       }
 
       let fileHeader = FileHeaderContents(fileName: components[1], projectName: components[2],

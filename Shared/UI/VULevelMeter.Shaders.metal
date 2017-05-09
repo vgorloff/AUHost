@@ -1,6 +1,6 @@
 //
-//  Shaders.metal
-//  AWLGraphicsPerformance
+//  VULevelMeter.Shaders.metal
+//  WaveLabs
 //
 //  Created by Volodymyr Gorlov on 20.11.15.
 //	 Copyright (c) 2012 Vlad Gorlov. All rights reserved.

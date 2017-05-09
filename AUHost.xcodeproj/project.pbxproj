@@ -22,7 +22,6 @@
 		804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */; };
 		8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */; };
 		804674361D25DC92000989CA /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674341D25DC92000989CA /* Math.swift */; };
-		80485FA31DA2F337004EFA32 /* rdar28599032.m in Sources */ = {isa = PBXBuildFile; fileRef = 80485FA21DA2F337004EFA32 /* rdar28599032.m */; };
 		80485FB21DA591AB004EFA32 /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB11DA591AB004EFA32 /* NSToolbar.swift */; };
 		80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB41DA591CE004EFA32 /* MainToolbar.swift */; };
 		80485FB71DA59386004EFA32 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB61DA59386004EFA32 /* main.swift */; };
@@ -84,9 +83,6 @@
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		804674341D25DC92000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		80485FA11DA2F337004EFA32 /* rdar28599032.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rdar28599032.h; sourceTree = "<group>"; };
-		80485FA21DA2F337004EFA32 /* rdar28599032.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = rdar28599032.m; sourceTree = "<group>"; };
-		80485FA41DA2F3E2004EFA32 /* AUHost-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AUHost-Bridging-Header.h"; sourceTree = "<group>"; };
 		80485FB11DA591AB004EFA32 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
 		80485FB41DA591CE004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
 		80485FB61DA59386004EFA32 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -144,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				804860401DAAF94A004EFA32 /* AUHost.xcconfig */,
-				80485FA41DA2F3E2004EFA32 /* AUHost-Bridging-Header.h */,
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
 				8035EF2F1B3752030026AD7D /* ViewController.swift */,
@@ -194,8 +189,6 @@
 				807E3C071D25D9330033629F /* NumericTypesConversions.swift */,
 				807E3C161D25D9B30033629F /* StateMachine.swift */,
 				803F76061D3BC17C000A76DB /* SwiftExtensions.swift */,
-				80485FA11DA2F337004EFA32 /* rdar28599032.h */,
-				80485FA21DA2F337004EFA32 /* rdar28599032.m */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -270,7 +263,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = WaveLabs;
 				TargetAttributes = {
 					8035EF291B3752030026AD7D = {
@@ -348,7 +341,6 @@
 				803F76071D3BC17C000A76DB /* FoundationExtensions.swift in Sources */,
 				80A94FFF1D59300F0044ED2C /* CommonExtensions.swift in Sources */,
 				807E3C0A1D25D9330033629F /* MinMax.swift in Sources */,
-				80485FA31DA2F337004EFA32 /* rdar28599032.m in Sources */,
 				80485FB71DA59386004EFA32 /* main.swift in Sources */,
 				8035EF301B3752030026AD7D /* ViewController.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
@@ -402,8 +394,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -448,8 +442,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -488,7 +484,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "AUHost/AUHost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -512,7 +507,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "AUHost/AUHost-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};

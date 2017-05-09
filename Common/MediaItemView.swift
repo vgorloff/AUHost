@@ -70,10 +70,10 @@ public final class MediaItemView: NSView {
    public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
       let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard())
       switch result {
-      case .None:
+      case .none:
          isHighlighted = false
          return []
-      case .FilePaths, .MediaObjects:
+      case .filePaths, .mediaObjects:
          isHighlighted = true
          return NSDragOperation.every
       }
@@ -94,17 +94,17 @@ public final class MediaItemView: NSView {
    public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
       let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard())
       switch result {
-      case .None:
+      case .none:
          isHighlighted = false
          return false
-      case .MediaObjects(let dict):
+      case .mediaObjects(let dict):
          DispatchQueue.main.async { [weak self] in
-            self?.onCompleteDragWithObjects?(.MediaObjects(dict))
+            self?.onCompleteDragWithObjects?(.mediaObjects(dict))
          }
          return true
-      case .FilePaths(let acceptedFilePaths):
+      case .filePaths(let acceptedFilePaths):
          DispatchQueue.main.async { [weak self] in
-            self?.onCompleteDragWithObjects?(.FilePaths(acceptedFilePaths))
+            self?.onCompleteDragWithObjects?(.filePaths(acceptedFilePaths))
          }
          return true
       }
@@ -169,9 +169,9 @@ public final class MediaItemView: NSView {
       wfCache.buildWaveformForResolution(fileURL: mf as URL,
                                          resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
                                           switch result {
-                                          case .Failure(let e):
+                                          case .failure(let e):
                                              Swift.print(e)
-                                          case .Success(_):
+                                          case .success(_):
                                              DispatchQueue.main.async { [weak self] in
                                                 self?.needsDisplay = true
                                              }

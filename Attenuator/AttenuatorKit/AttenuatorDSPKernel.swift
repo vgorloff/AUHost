@@ -15,8 +15,8 @@ struct AttenuatorDSPKernel {
 
    typealias SampleType = Float32
 
-   private var valueGain: AUValue = AttenuatorParameter.Gain.defaultValue
-   private var dspValueGain: AUValue = AttenuatorParameter.Gain.defaultValue / AttenuatorParameter.Gain.max
+   private var valueGain: AUValue = AttenuatorParameter.gain.defaultValue
+   private var dspValueGain: AUValue = AttenuatorParameter.gain.defaultValue / AttenuatorParameter.gain.max
    private let valueGainLock: NonRecursiveLocking = SpinLock()
 
    private var _maximumMagnitude: [SampleType]
@@ -26,28 +26,28 @@ struct AttenuatorDSPKernel {
    private let maximumMagnitudeLock: NonRecursiveLocking = SpinLock()
 
    init(maxChannels: UInt32) {
-      _maximumMagnitude = Array<SampleType>(repeating: 0, count: Int(maxChannels))
+      _maximumMagnitude = Array(repeating: 0, count: Int(maxChannels))
    }
 
    func getParameter(_ parameter: AttenuatorParameter) -> AUValue {
       switch parameter {
-      case .Gain:
+      case .gain:
          return valueGainLock.synchronized { return valueGain }
       }
    }
 
    mutating func setParameter(_ parameter: AttenuatorParameter, value: AUValue) {
       switch parameter {
-      case .Gain:
+      case .gain:
          valueGainLock.synchronized {
             valueGain = value
-            dspValueGain = value / AttenuatorParameter.Gain.max
+            dspValueGain = value / AttenuatorParameter.gain.max
          }
       }
    }
 
    mutating func reset() {
-      setParameter(.Gain, value: AttenuatorParameter.Gain.defaultValue)
+      setParameter(.gain, value: AttenuatorParameter.gain.defaultValue)
    }
 
    mutating func processInputBufferList(inAudioBufferList: UnsafeMutablePointer<AudioBufferList>,

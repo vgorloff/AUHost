@@ -75,12 +75,12 @@ public protocol MergeableType {
 
 extension c {
 
-   public static func merge<T: MergeableType>(_ a: [T], with b: inout [T]) -> [T] {
-      var insertedOrUpdated = Array<T>()
-      var processed = Array<T>()
+   public static func merge<T: MergeableType>(_ existing: [T], with newElements: inout [T]) -> [T] {
+      var insertedOrUpdated = [T]()
+      var processed = [T]()
 
-      var iteratorEx = a.makeIterator()
-      var iteratorNew = b.makeIterator()
+      var iteratorEx = existing.makeIterator()
+      var iteratorNew = newElements.makeIterator()
       var entityOrNilEx = iteratorEx.next()
       var entityOrNilNew = iteratorNew.next()
       repeat {
@@ -110,7 +110,7 @@ extension c {
          insertedOrUpdated.append(entityNew)
          entityOrNilNew = iteratorNew.next()
       }
-      b = processed
+      newElements = processed
 
       return insertedOrUpdated
    }
