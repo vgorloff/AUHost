@@ -7,9 +7,7 @@ class BuildSettings
     "AWLSkipBuildScripts" => "true"
   }
   @@Codesign = {
-    "CODE_SIGN_IDENTITY" => "Developer ID Application",
     "CODE_SIGNING_REQUIRED" => "YES",
-    "PROVISIONING_PROFILE_SPECIFIER" => "E27KE6VTF6/",
     "AWLSkipBuildScripts" => "true"
   }
   def self.NoCodesign
@@ -30,8 +28,8 @@ def XcodeClean(*schemes)
 end
 
 def XcodeCleanProject(schema, project)
-  xcodebuild(scheme: schema, build_settings: BuildSettings.NoCodesign, xcargs: "-project #{project} -configuration Debug clean")
-  xcodebuild(scheme: schema, build_settings: BuildSettings.NoCodesign, xcargs: "-project #{project} -configuration Release clean")
+   sh "set -o pipefail && xcrun xcodebuild -project \"#{ENV['PWD']}/#{project}\" -scheme \"#{schema}\" -configuration Debug clean | xcpretty --color --simple"
+   sh "set -o pipefail && xcrun xcodebuild -project \"#{ENV['PWD']}/#{project}\" -scheme \"#{schema}\" -configuration Release clean | xcpretty --color --simple"
   awl_buildDir = "#{ENV['PWD']}/build"
   sh "if [ -d \"#{awl_buildDir}\" ]; then rm -rfv \"#{awl_buildDir}\"; fi"
 end
@@ -54,16 +52,17 @@ def XcodeBuild(*schemes)
   }
 end
 
-def XcodeBuildProject(schema, project)
-  xcodebuild(scheme: schema, build_settings: BuildSettings.NoCodesign, xcargs: "-project #{project}")
+def XcodeBuildProject(schema, project, configuration = nil)
+   configurationValue = configuration == nil ? "" : "-configuration #{configuration}"
+   sh "set -o pipefail && xcrun xcodebuild -project \"#{ENV['PWD']}/#{project}\" -scheme \"#{schema}\" #{configurationValue} build | xcpretty --color --simple"
 end
 
-def XcodeBuildProjectRelease(schema, project)
-  xcodebuild(scheme: schema, build_settings: BuildSettings.NoCodesign, xcargs: "-project #{project} -configuration Release")
+def XcodeBuildProjectCI(schema, project)
+   sh "set -o pipefail && xcrun xcodebuild -project \"#{ENV['PWD']}/#{project}\" -scheme \"#{schema}\" -configuration Release CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY='' AWLSkipBuildScripts=true build | xcpretty --color --simple"
 end
 
-def XcodeBuildProjectCodesign(schema, project)
-  xcodebuild(scheme: schema, build_settings: BuildSettings.Codesign, xcargs: "-project #{project} -configuration Release")
+def XcodeBuildProjectGitHub(schema, project)
+   sh "set -o pipefail && xcrun xcodebuild -project \"#{ENV['PWD']}/#{project}\" -scheme \"#{schema}\" -configuration Release AWLSkipBuildScripts=true build | xcpretty --color --simple"
 end
 
 def XcodeBuildCodesign(*schemes)
@@ -83,8 +82,12 @@ def GetPropertyCodesignFolderPath(project)
   return awl_AppPath
 end
 
-def ValidateApp(path)
-  sh "xcrun spctl -a -t exec -vv \"#{path}\"; xcrun codesign --verify \"#{path}\""
+def ValidateApp(*paths)
+   paths.each { |path|
+      sh "xcrun codesign --verify --deep --strict --verbose=1 \"#{path}\""
+      sh "xcrun check-signature \"#{path}\""
+      sh "xcrun spctl -a -t exec -vv \"#{path}\""
+   }
 end
 
 def Bump(*relativePaths)
