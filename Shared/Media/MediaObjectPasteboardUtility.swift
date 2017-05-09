@@ -11,9 +11,9 @@ import AppKit
 public struct MediaObjectPasteboardUtility {
 
    public enum PasteboardObjects {
-      case MediaObjects(NSDictionary)
-      case FilePaths([String])
-      case None
+      case mediaObjects(NSDictionary)
+      case filePaths([String])
+      case none
    }
 
    private let mediaLibraryPasteboardType = "com.apple.MediaLibrary.PBoardType.MediaObjectIdentifiersPlist"
@@ -25,17 +25,17 @@ public struct MediaObjectPasteboardUtility {
 
    public func objectsFromPasteboard(pasteboard: NSPasteboard) -> PasteboardObjects {
       guard let pasteboardTypes = pasteboard.types else {
-         return .None
+         return .none
       }
       if pasteboardTypes.contains(mediaLibraryPasteboardType),
          let dict = pasteboard.propertyList(forType: mediaLibraryPasteboardType) as? NSDictionary {
-         return .MediaObjects(dict)
+         return .mediaObjects(dict)
       } else if pasteboardTypes.contains(NSFilenamesPboardType),
          let filePaths = pasteboard.propertyList(forType: NSFilenamesPboardType) as? [String] {
          let acceptedFilePaths = filteredFilePaths(pasteboardFilePaths: filePaths)
-         return acceptedFilePaths.count > 0 ? .FilePaths(acceptedFilePaths) : .None
+         return acceptedFilePaths.count > 0 ? .filePaths(acceptedFilePaths) : .none
       } else {
-         return .None
+         return .none
       }
    }
 

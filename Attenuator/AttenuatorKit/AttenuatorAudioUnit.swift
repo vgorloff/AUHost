@@ -12,7 +12,7 @@ import AVFoundation
 public final class AttenuatorAudioUnit: AUAudioUnit {
 
    public enum Errors: Error {
-      case StatusError(OSStatus)
+      case statusError(OSStatus)
    }
    private let maxChannels = UInt32(8)
    private var _parameterTree: AUParameterTree!
@@ -80,7 +80,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       try super.allocateRenderResources()
       guard outputBus.bus.format.channelCount == inputBus.bus.format.channelCount else {
          setRenderResourcesAllocated(false)
-         throw Errors.StatusError(kAudioUnitErr_FailedInitialization)
+         throw Errors.statusError(kAudioUnitErr_FailedInitialization)
       }
       inputBus.allocateRenderResources(maxFrames: maximumFramesToRender)
       outputBus.allocateRenderResources(maxFrames: maximumFramesToRender)
@@ -105,7 +105,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
    }
 
    private func setUpParametersTree() -> AUParameterTree {
-      let pGain = AttenuatorParameter.Gain
+      let pGain = AttenuatorParameter.gain
       parameterGain = AUParameterTree.createParameter(withIdentifier: pGain.parameterID,
                                                       name: pGain.name, address: pGain.rawValue, min: pGain.min, max: pGain.max,
                                                       unit: AudioUnitParameterUnit.percent, unitName: nil, flags: [],

@@ -9,73 +9,148 @@ import os.log
 public struct Logger {
 
    public enum Subsystem: Int {
-      case Default = 1000
-      case Network
-      case Data
-      case Model
-      case View
-      case Controller
-      case Media
-      case System
-      case Delegate
-
-      var stringValue: String {
-         switch self {
-         case .Default: return "ua.com.wavelabs.default"
-         case .Network: return "ua.com.wavelabs.network"
-         case .Data: return "ua.com.wavelabs.data"
-         case .Model: return "ua.com.wavelabs.model"
-         case .View: return "ua.com.wavelabs.view"
-         case .Controller: return "ua.com.wavelabs.controller"
-         case .Media: return "ua.com.wavelabs.media"
-         case .System: return "ua.com.wavelabs.system"
-         case .Delegate: return "ua.com.wavelabs.delegate"
-         }
-      }
+      case `default` = 1000
+      case network
+      case data
+      case model
+      case view
+      case controller
+      case media
+      case system
+      case delegate
    }
 
    public enum Category: Int {
-      case Generic = 1
-      case Fetch, Create, Push
-      case Encode, Decode
-      case Save, Delete
-      case Init, Deinit, SetUp
-      case Handle, Register, Diagnostics, Request
-      case Lifecycle, Render
-      case Open, Close, Reload
+      case generic = 1
+      case fetch, create, push
+      case encode, decode
+      case save, delete
+      case initialise, deinitialize, setup
+      case handle, register, diagnostics, request
+      case lifecycle, render
+      case open, close, reload
+   }
 
-      var stringValue: String {
-         switch self {
-         case .Generic: return "Generic"
-         case .Fetch: return "Fetch"
-         case .Create: return "Create"
-         case .Push: return "Push"
-         case .Encode: return "Encode"
-         case .Decode: return "Decode"
-         case .Save: return "Save"
-         case .Delete: return "Delete"
-         case .Init: return "Init"
-         case .Deinit: return "Deinit"
-         case .SetUp: return "SetUp"
-         case .Handle: return "Handle"
-         case .Register: return "Register"
-         case .Diagnostics: return "Diagnostics"
-         case .Lifecycle: return "Lifecycle"
-         case .Request: return "Request"
-         case .Open: return "Open"
-         case .Close: return "Close"
-         case .Reload: return "Reload"
-         case .Render: return "Render"
-         }
+   fileprivate static var loggers = [Int: OSLog]()
+
+}
+
+extension Logger {
+
+   public static func initialize(subsystem: Subsystem, function: String = #function, file: String = #file, line: Int32 = #line,
+                                 dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: .initialise)
+         let message = format("+++", function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
       }
    }
 
-   private static var loggers = [Int: OSLog]()
+   public static func deinitialize(subsystem: Subsystem, function: String = #function, file: String = #file, line: Int32 = #line,
+                                   dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: .deinitialize)
+         let message = format("~~~", function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
+      }
+   }
 
-   // MARK: Private
+   public static func fault<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
+                               file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .fault, message)
+      }
+   }
 
-   @available(OSX 10.12, *)
-   private static func getLogger(subsystem: Subsystem, category: Category) -> OSLog {
+   public static func error<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
+                               file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .error, message)
+      }
+   }
+
+   public static func info<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
+                              file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .info, message)
+      }
+   }
+
+   public static func debug<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
+                               file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
+      }
+   }
+
+   public static func `default`<T>(subsystem: Subsystem, category: Category, message: T, function: String = #function,
+                                   file: String = #file, line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: category)
+         let message = format(message, function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .default, message)
+      }
+   }
+
+   public static func fault<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool,
+                               function: String = #function, file: String = #file, line: Int32 = #line,
+                               dso: UnsafeRawPointer? = #dsohandle) {
+      guard expression() else { return }
+      if #available(OSX 10.12, iOS 10.0, *) {
+         fault(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
+      }
+   }
+
+   public static func error<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool,
+                               function: String = #function, file: String = #file, line: Int32 = #line,
+                               dso: UnsafeRawPointer? = #dsohandle) {
+      guard expression() else { return }
+      if #available(OSX 10.12, iOS 10.0, *) {
+         error(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
+      }
+   }
+
+   public static func info<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool,
+                              function: String = #function, file: String = #file, line: Int32 = #line,
+                              dso: UnsafeRawPointer? = #dsohandle) {
+      guard expression() else { return }
+      if #available(OSX 10.12, iOS 10.0, *) {
+         info(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
+      }
+   }
+
+   public static func debug<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool,
+                               function: String = #function, file: String = #file, line: Int32 = #line,
+                               dso: UnsafeRawPointer? = #dsohandle) {
+      guard expression() else { return }
+      if #available(OSX 10.12, iOS 10.0, *) {
+         debug(subsystem: subsystem, category: category, message: message, function: function, file: file, line: line, dso: dso)
+      }
+   }
+
+   public static func `default`<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool,
+                                   function: String = #function, file: String = #file, line: Int32 = #line,
+                                   dso: UnsafeRawPointer? = #dsohandle) {
+      guard expression() else { return }
+      if #available(OSX 10.12, iOS 10.0, *) {
+         `default`(subsystem: subsystem, category: category, message: message, function: function,
+                   file: file, line: line, dso: dso)
+      }
+   }
+}
+
+extension Logger {
+
+   @available(OSX 10.12, iOS 10.0, *)
+   fileprivate static func getLogger(subsystem: Subsystem, category: Category) -> OSLog {
       let key = subsystem.rawValue + category.rawValue
       if let logger = loggers[key] {
          return logger
@@ -87,107 +162,52 @@ public struct Logger {
    }
 
    @available(OSX 10.12, *)
-   private static func format<T>(_ message: T, function: String, file: String, line: Int32) -> String {
-      return "\(message) → \(function) ⋆ \(file.lastPathComponent):\(line)"
+   fileprivate static func format<T>(_ message: T, function: String, file: String, line: Int32) -> String {
+      return "\(String(describing: message)) → \(function) ⋆ \(file.lastPathComponent):\(line)"
    }
+}
 
-   // MARK: - Public
+extension Logger.Subsystem {
 
-   public static func initialize(subsystem: Subsystem,
-                                 function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         let logger = getLogger(subsystem: subsystem, category: .Init)
-         let message = format("+++", function: function, file: file, line: line)
-         log_public(logger, .debug, message)
+   fileprivate var stringValue: String {
+      switch self {
+      case .default: return "ua.com.wavelabs.default"
+      case .network: return "ua.com.wavelabs.network"
+      case .data: return "ua.com.wavelabs.data"
+      case .model: return "ua.com.wavelabs.model"
+      case .view: return "ua.com.wavelabs.view"
+      case .controller: return "ua.com.wavelabs.controller"
+      case .media: return "ua.com.wavelabs.media"
+      case .system: return "ua.com.wavelabs.system"
+      case .delegate: return "ua.com.wavelabs.delegate"
       }
    }
+}
 
-   public static func deinitialize(subsystem: Subsystem,
-                                   function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         let logger = getLogger(subsystem: subsystem, category: .Deinit)
-         let message = format("~~~", function: function, file: file, line: line)
-         log_public(logger, .debug, message)
-      }
-   }
+extension Logger.Category {
 
-   public static func fault<T>(subsystem: Subsystem, category: Category, message: T,
-                            function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         let logger = getLogger(subsystem: subsystem, category: category)
-         let message = format(message, function: function, file: file, line: line)
-         log_public(logger, .fault, message)
-      }
-   }
-
-   public static func error<T>(subsystem: Subsystem, category: Category, message: T,
-                            function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         let logger = getLogger(subsystem: subsystem, category: category)
-         let message = format(message, function: function, file: file, line: line)
-         log_public(logger, .error, message)
-      }
-   }
-
-   public static func info<T>(subsystem: Subsystem, category: Category, message: T,
-                           function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         let logger = getLogger(subsystem: subsystem, category: category)
-         let message = format(message, function: function, file: file, line: line)
-         log_public(logger, .info, message)
-      }
-   }
-
-   public static func debug<T>(subsystem: Subsystem, category: Category, message: T,
-                            function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         let logger = getLogger(subsystem: subsystem, category: category)
-         let message = format(message, function: function, file: file, line: line)
-         log_public(logger, .debug, message)
-      }
-   }
-
-   public static func `default`<T>(subsystem: Subsystem, category: Category, message: T,
-                                function: String = #function, file: String = #file, line: Int32 = #line) {
-      if #available(OSX 10.12, *) {
-         let logger = getLogger(subsystem: subsystem, category: category)
-         let message = format(message, function: function, file: file, line: line)
-         log_public(logger, .default, message)
-      }
-   }
-
-   public static func fault<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
-      guard expression() else { return }
-      if #available(OSX 10.12, *) {
-         fault(subsystem: subsystem, category: category, message: message)
-      }
-   }
-
-   public static func error<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
-      guard expression() else { return }
-      if #available(OSX 10.12, *) {
-         error(subsystem: subsystem, category: category, message: message)
-      }
-   }
-
-   public static func info<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
-      guard expression() else { return }
-      if #available(OSX 10.12, *) {
-         info(subsystem: subsystem, category: category, message: message)
-      }
-   }
-
-   public static func debug<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
-      guard expression() else { return }
-      if #available(OSX 10.12, *) {
-         debug(subsystem: subsystem, category: category, message: message)
-      }
-   }
-
-   public static func `default`<T>(subsystem: Subsystem, category: Category, message: T, if expression: @autoclosure() -> Bool) {
-      guard expression() else { return }
-      if #available(OSX 10.12, *) {
-         `default`(subsystem: subsystem, category: category, message: message)
+   fileprivate var stringValue: String {
+      switch self {
+      case .generic: return "Generic"
+      case .fetch: return "Fetch"
+      case .create: return "Create"
+      case .push: return "Push"
+      case .encode: return "Encode"
+      case .decode: return "Decode"
+      case .save: return "Save"
+      case .delete: return "Delete"
+      case .initialise: return "Init"
+      case .deinitialize: return "Deinit"
+      case .setup: return "SetUp"
+      case .handle: return "Handle"
+      case .register: return "Register"
+      case .diagnostics: return "Diagnostics"
+      case .lifecycle: return "Lifecycle"
+      case .request: return "Request"
+      case .open: return "Open"
+      case .close: return "Close"
+      case .reload: return "Reload"
+      case .render: return "Render"
       }
    }
 }

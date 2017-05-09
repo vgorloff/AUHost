@@ -42,7 +42,7 @@ public struct WaveformCacheUtility {
                                           frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize))
 
             var waveformCache = [MinMax<Float>]()
-            var groupingBuffer = Array<MinMax<Float>>()
+            var groupingBuffer = [MinMax<Float>]()
             while audioFile.framePosition < audioFile.length {
                try audioFile.read(into: buffer)
                let data = WaveformCacheUtility.processBuffer(buffer: buffer)
@@ -60,9 +60,9 @@ public struct WaveformCacheUtility {
             }
             assert(UInt64(waveformCache.count) == resolution)
             WaveformCacheUtility.cache[WaveformCacheUtility.cacheID(url: url, resolution: resolution)] = waveformCache
-            callback(.Success(waveformCache))
+            callback(.success(waveformCache))
          } catch {
-            callback(.Failure(error))
+            callback(.failure(error))
          }
       }
    }

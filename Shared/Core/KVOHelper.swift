@@ -56,22 +56,22 @@ public final class KVOHelper<T: Any>: NSObject {
 
 	public var suspended = false // TODO: Maybe there is needed Thread-Safe implementation. By Vlad Gorlov, Jan 13, 2016.
 
-	public init(object anObject: NSObject, keyPath aKeyPath: String, options anOptions: NSKeyValueObservingOptions = .new,
-		changeCallback aCallback: @escaping ChangeCallback) {
-		object = anObject
-		keyPath = aKeyPath
-		options = anOptions
-		changeCallback = aCallback
-		super.init()
-		object.addObserver(self, forKeyPath: keyPath, options: options, context: &context)
-	}
+   public init(object anObject: NSObject, keyPath aKeyPath: String, options anOptions: NSKeyValueObservingOptions = .new,
+               changeCallback aCallback: @escaping ChangeCallback) {
+      object = anObject
+      keyPath = aKeyPath
+      options = anOptions
+      changeCallback = aCallback
+      super.init()
+      object.addObserver(self, forKeyPath: keyPath, options: options, context: &context)
+   }
 
 	deinit {
 		object.removeObserver(self, forKeyPath: keyPath, context: &context)
 	}
 
 	override public func observeValue(forKeyPath aKeyPath: String?, of object: Any?,
-		change aChange: [NSKeyValueChangeKey : Any]?, context aContext: UnsafeMutableRawPointer?) {
+	                                  change aChange: [NSKeyValueChangeKey : Any]?, context aContext: UnsafeMutableRawPointer?) {
 			if aContext == &context && aKeyPath == keyPath {
 				if !suspended, let change = aChange, let result = KVOHelperResult<T>(change: change) {
 					changeCallback(result)

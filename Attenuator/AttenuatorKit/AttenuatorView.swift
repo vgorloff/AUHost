@@ -41,7 +41,7 @@ class AttenuatorView: NSView {
    }
 
    @IBAction private func handleGainChange(_ sender: NSSlider) {
-      handlerParameterDidChaned?(AttenuatorParameter.Gain, sender.floatValue)
+      handlerParameterDidChaned?(AttenuatorParameter.gain, sender.floatValue)
    }
 
    func startMetering() {

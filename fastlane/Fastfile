@@ -3,7 +3,7 @@
 
 # This is the minimum version number required.
 # Update this, if you use features of a newer version
-fastlane_version "1.103.0"
+fastlane_version "1.105.0"
 
 import '../Shared/Conf/Scripts/fastlane.rb'
 
@@ -37,26 +37,25 @@ end
 
 desc "Build codesigned release for GitHub."
 lane :release do
-  XcodeBuildProjectGitHub("AUHost", AWLAuHostProjectRelativeFilePath)
-  XcodeBuildProjectGitHub("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
-  awl_AuHostAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAuHostProjectRelativeFilePath}")
-  awl_AttenuatorAppPath = GetPropertyCodesignFolderPath("#{ENV['PWD']}/#{AWLAttenuatorProjectRelativeFilePath}")
-  zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")
-  zip(path: awl_AttenuatorAppPath, output_path: "#{awl_AttenuatorAppPath}.zip")
-  ValidateApp(awl_AuHostAppPath, awl_AttenuatorAppPath)
+   gym( clean: true, project: AWLAuHostProjectRelativeFilePath, scheme: "AUHost", output_directory: "#{ENV['PWD']}/build", derived_data_path: "#{ENV['PWD']}/build" )
+   gym( clean: true, project: AWLAttenuatorProjectRelativeFilePath, scheme: "AttenuatorAU", output_directory: "#{ENV['PWD']}/build", derived_data_path: "#{ENV['PWD']}/build" )
+   awl_AuHostAppPath = "#{ENV['PWD']}/build/AUHost.app"
+   awl_AttenuatorAppPath = "#{ENV['PWD']}/build/Attenuator.app"
+   zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")
+   zip(path: awl_AttenuatorAppPath, output_path: "#{awl_AttenuatorAppPath}.zip")
+   ValidateApp(awl_AuHostAppPath, awl_AttenuatorAppPath)
 
-  github_release = set_github_release(
-    repository_name: "vgorloff/AUHost",
-    api_token: ENV['AWL_GITHUB_TOKEN'],
-    name: File.read("#{ENV['PWD']}/fastlane/ReleaseName.txt"),
-    tag_name: last_git_tag,
-    description: File.read("#{ENV['PWD']}/fastlane/ReleaseNotes.txt"),
-    commitish: "master",
-    upload_assets: ["#{awl_AuHostAppPath}.zip", "#{awl_AttenuatorAppPath}.zip"]
-  )
-  
-  sh "rm #{awl_AuHostAppPath}.zip"
-  sh "rm #{awl_AttenuatorAppPath}.zip"
+   github_release = set_github_release(
+     repository_name: "vgorloff/AUHost",
+     api_token: ENV['AWL_GITHUB_TOKEN'],
+     name: File.read("#{ENV['PWD']}/fastlane/ReleaseName.txt"),
+     tag_name: last_git_tag,
+     description: File.read("#{ENV['PWD']}/fastlane/ReleaseNotes.txt"),
+     commitish: "master",
+     upload_assets: ["#{awl_AuHostAppPath}.zip", "#{awl_AttenuatorAppPath}.zip"]
+   )
+   
+   sh "rm -rf #{ENV['PWD']}/build"
   
 end
 
