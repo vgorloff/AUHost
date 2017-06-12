@@ -17,7 +17,7 @@ public final class MediaLibraryUtility: NSObject {
 
 	private lazy var _mediaLibrary: MLMediaLibrary = self.setUpMediaLibrary()
 	private var kvoObserverOfMediaSources: KVOHelper<[String : MLMediaSource]>?
-	private var mediaLibraryLoadCallback: ((Void) -> Void)?
+	private var mediaLibraryLoadCallback: (() -> Void)?
 	private var mediaLibraryIsLoaded = false
 
 	public var onMediaLibraryChange: ((MediaLibraryChangeEvent) -> Void)?
@@ -46,7 +46,7 @@ public final class MediaLibraryUtility: NSObject {
 		Logger.deinitialize(subsystem: .media)
 	}
 
-	public func loadMediaLibrary(completion: ((Void) -> Void)?) {
+	public func loadMediaLibrary(completion: (() -> Void)?) {
 		if mediaLibraryIsLoaded {
 			completion?()
 		} else {

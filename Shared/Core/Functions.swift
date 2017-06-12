@@ -56,7 +56,7 @@ extension g {
 
    /// - returns: Time interval in seconds.
    /// - parameter closure: Code block to measure performance.
-   public static func benchmark(_ closure: (Void) -> Void) -> CFTimeInterval {
+   public static func benchmark(_ closure: () -> Void) -> CFTimeInterval {
       let startTime = CFAbsoluteTimeGetCurrent()
       closure()
       return CFAbsoluteTimeGetCurrent() - startTime
