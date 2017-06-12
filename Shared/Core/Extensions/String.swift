@@ -1,5 +1,5 @@
 //
-//  SwiftExtensions.swift
+//  String.swift
 //  WaveLabs
 //
 //  Created by Vlad Gorlov on 25.10.15.
@@ -78,68 +78,4 @@ public extension String {
    public var componentsSeparatedByNewline: [String] {
       return components(separatedBy: CharacterSet.newlines)
    }
-}
-
-public enum DictionaryError: Error {
-   case missedRequiredKey(String)
-}
-
-public extension Dictionary {
-
-   public func value<T>(forRequiredKey key: Key) throws -> T {
-      guard let value = self[key] as? T else {
-         throw DictionaryError.missedRequiredKey(String(describing: key))
-      }
-      return value
-   }
-
-   public func value<T>(forOptionalKey key: Key) -> T? {
-      if let value = self[key] as? T {
-         return value
-      }
-      return nil
-   }
-
-   public func hasKey(_ key: Key) -> Bool {
-      return Array(keys).filter { $0 == key }.count == 1
-   }
-
-}
-
-extension Array {
-   func element(at index: Index) -> Element? {
-      if index < startIndex || index >= endIndex {
-         return nil
-      }
-      return self[index]
-   }
-}
-
-public extension ProcessInfo {
-
-   struct Static {
-      static var scriptFilePath: String?
-   }
-
-   /// Path to original script before compilation
-   public static var scriptFilePath: String? {
-      get {
-         return Static.scriptFilePath
-      } set {
-         Static.scriptFilePath = newValue
-      }
-   }
-
-   public static var executableFilePath: String {
-      return scriptFilePath ?? ProcessInfo.processInfo.arguments[0]
-   }
-
-   public static var executableFileName: String {
-      return (scriptFilePath ?? ProcessInfo.processInfo.arguments[0]).lastPathComponent
-   }
-
-   public static var executableDirectoryPath: String {
-      return executableFilePath.deletingLastPathComponent
-   }
-
 }

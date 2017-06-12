@@ -63,7 +63,7 @@ extension _SmartDispatchSourceType {
 public protocol SmartDispatchSourceType: class {
    func resume()
    func suspend()
-   func setEventHandler(qos: DispatchQoS, flags: DispatchWorkItemFlags, handler: ((Void) -> Void)?)
+   func setEventHandler(qos: DispatchQoS, flags: DispatchWorkItemFlags, handler: (() -> Void)?)
 }
 
 public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType, CustomReflectable {
@@ -72,7 +72,7 @@ public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceT
    fileprivate var dispatchSourceSuspendCount = 1
 
    public func setEventHandler(qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = .inheritQoS,
-                               handler: ((Void) -> Void)?) {
+                               handler: (() -> Void)?) {
       dispatchSource?.setEventHandler(qos: qos, flags: flags, handler: handler)
    }
 

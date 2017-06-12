@@ -13,8 +13,6 @@
 		8035EF321B3752030026AD7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF311B3752030026AD7D /* Assets.xcassets */; };
 		8035EF351B3752030026AD7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF331B3752030026AD7D /* Main.storyboard */; };
 		8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF3D1B375EE00026AD7D /* MainWindowController.swift */; };
-		803F76071D3BC17C000A76DB /* FoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F76051D3BC17C000A76DB /* FoundationExtensions.swift */; };
-		803F76081D3BC17C000A76DB /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 803F76061D3BC17C000A76DB /* SwiftExtensions.swift */; };
 		8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */; };
 		804674221D25DA66000989CA /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046741E1D25DA66000989CA /* Enumerations.swift */; };
 		804674241D25DA66000989CA /* KVOHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674211D25DA66000989CA /* KVOHelper.swift */; };
@@ -38,6 +36,10 @@
 		807E3C141D25D9880033629F /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */; };
 		807E3C181D25D9B30033629F /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C161D25D9B30033629F /* StateMachine.swift */; };
 		80A94FFF1D59300F0044ED2C /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A94FFE1D59300F0044ED2C /* CommonExtensions.swift */; };
+		80AC1BA31EEF36B40048151A /* OperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BA21EEF36B40048151A /* OperationQueue.swift */; };
+		80AC1BA51EEF36E10048151A /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BA41EEF36E10048151A /* DispatchQueue.swift */; };
+		80AC1BA71EEF371D0048151A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BA61EEF371D0048151A /* String.swift */; };
+		80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */; };
 		80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B331C4AA78E00308D83 /* EffectWindowController.swift */; };
 		80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B491C4B035E00308D83 /* PlaybackEngine.swift */; };
 /* End PBXBuildFile section */
@@ -74,8 +76,6 @@
 		8035EF341B3752030026AD7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8035EF361B3752030026AD7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8035EF3D1B375EE00026AD7D /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		803F76051D3BC17C000A76DB /* FoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtensions.swift; sourceTree = "<group>"; };
-		803F76061D3BC17C000A76DB /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
 		8046741E1D25DA66000989CA /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		804674211D25DA66000989CA /* KVOHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOHelper.swift; sourceTree = "<group>"; };
@@ -100,6 +100,10 @@
 		807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
 		807E3C161D25D9B30033629F /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		80A94FFE1D59300F0044ED2C /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
+		80AC1BA21EEF36B40048151A /* OperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
+		80AC1BA41EEF36E10048151A /* DispatchQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
+		80AC1BA61EEF371D0048151A /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphore.swift; sourceTree = "<group>"; };
 		80C620881B378A5C00D58E68 /* AUHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AUHost.entitlements; sourceTree = "<group>"; };
 		80C97B331C4AA78E00308D83 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80C97B491C4B035E00308D83 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
@@ -175,10 +179,10 @@
 		807E3C031D25D9330033629F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				80AC1BA11EEF36B40048151A /* Extensions */,
 				807E3C041D25D9330033629F /* AlternativeValue.swift */,
 				8064764B1D45376200AF72B9 /* DispatchSource.swift */,
 				8046741E1D25DA66000989CA /* Enumerations.swift */,
-				803F76051D3BC17C000A76DB /* FoundationExtensions.swift */,
 				8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */,
 				807E3C0C1D25D9670033629F /* Functions.swift */,
 				804674211D25DA66000989CA /* KVOHelper.swift */,
@@ -188,7 +192,6 @@
 				807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */,
 				807E3C071D25D9330033629F /* NumericTypesConversions.swift */,
 				807E3C161D25D9B30033629F /* StateMachine.swift */,
-				803F76061D3BC17C000A76DB /* SwiftExtensions.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -203,6 +206,17 @@
 				804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */,
 			);
 			path = Media;
+			sourceTree = "<group>";
+		};
+		80AC1BA11EEF36B40048151A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80AC1BA41EEF36E10048151A /* DispatchQueue.swift */,
+				80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */,
+				80AC1BA21EEF36B40048151A /* OperationQueue.swift */,
+				80AC1BA61EEF371D0048151A /* String.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		80C422891C46C3F700B5CCF1 /* Shared */ = {
@@ -334,17 +348,16 @@
 				80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */,
 				804674361D25DC92000989CA /* Math.swift in Sources */,
 				804674241D25DA66000989CA /* KVOHelper.swift in Sources */,
+				80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */,
 				807E3C141D25D9880033629F /* MediaObjectPasteboardUtility.swift in Sources */,
 				807E3C101D25D9670033629F /* NonRecursiveLocking.swift in Sources */,
 				807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */,
 				80130BA61C4C538800D6DDAC /* PlaybackEngineContext.swift in Sources */,
-				803F76071D3BC17C000A76DB /* FoundationExtensions.swift in Sources */,
 				80A94FFF1D59300F0044ED2C /* CommonExtensions.swift in Sources */,
 				807E3C0A1D25D9330033629F /* MinMax.swift in Sources */,
 				80485FB71DA59386004EFA32 /* main.swift in Sources */,
 				8035EF301B3752030026AD7D /* ViewController.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
-				803F76081D3BC17C000A76DB /* SwiftExtensions.swift in Sources */,
 				807E3C0F1D25D9670033629F /* Functions.swift in Sources */,
 				804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */,
 				80485FB21DA591AB004EFA32 /* NSToolbar.swift in Sources */,
@@ -352,15 +365,18 @@
 				8064764E1D45399B00AF72B9 /* FoundationUtilities.swift in Sources */,
 				80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */,
 				807E3C091D25D9330033629F /* Logger.swift in Sources */,
+				80AC1BA31EEF36B40048151A /* OperationQueue.swift in Sources */,
 				8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */,
 				804674221D25DA66000989CA /* Enumerations.swift in Sources */,
 				80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */,
 				807E3C181D25D9B30033629F /* StateMachine.swift in Sources */,
+				80AC1BA51EEF36E10048151A /* DispatchQueue.swift in Sources */,
 				8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */,
 				80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */,
 				80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */,
 				8035EF2E1B3752030026AD7D /* AppDelegate.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
+				80AC1BA71EEF371D0048151A /* String.swift in Sources */,
 				8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -91,7 +91,7 @@ extension DisplayLink {
       private var frameCounter: UInt
       private var dispatchSource: SmartDispatchSourceUserDataAdd
 
-      public var renderCallback: ((Void) -> Void)?
+      public var renderCallback: (() -> Void)?
 
       // MARK: Init / Deinit
 

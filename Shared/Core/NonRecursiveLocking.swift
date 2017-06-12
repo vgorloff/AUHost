@@ -10,7 +10,7 @@ import Darwin
 import Foundation
 
 public protocol NonRecursiveLocking {
-	func synchronized<T>( closure: (Void) -> T) -> T
+	func synchronized<T>( closure: () -> T) -> T
 }
 
 public struct NonRecursiveLock {
@@ -28,7 +28,7 @@ public final class UnfairLock: NonRecursiveLocking {
 	private var _lock = os_unfair_lock_s()
 	public init() {
 	}
-	public final func synchronized<T>( closure: (Void) -> T) -> T {
+	public final func synchronized<T>( closure: () -> T) -> T {
 		os_unfair_lock_lock(&_lock)
 		let result = closure()
 		os_unfair_lock_unlock(&_lock)
@@ -41,7 +41,7 @@ public final class SpinLock: NonRecursiveLocking {
 	private var lock: OSSpinLock = OS_SPINLOCK_INIT
 	public init() {
 	}
-	public final func synchronized<T>( closure: (Void) -> T) -> T {
+	public final func synchronized<T>( closure: () -> T) -> T {
 		OSSpinLockLock(&lock)
 		let result = closure()
 		OSSpinLockUnlock(&lock)
@@ -53,7 +53,7 @@ public final class NSLocker: NonRecursiveLocking {
    private let lock = NSLock()
    public init () {
    }
-   public final func synchronized<T>(closure: (Void) -> T) -> T {
+   public final func synchronized<T>(closure: () -> T) -> T {
       lock.lock()
       let result = closure()
       lock.unlock()
@@ -74,7 +74,7 @@ public final class NonRecursiveMutex: NonRecursiveLocking {
       _mutex = UnsafeMutablePointer.allocate(capacity: 1)
       pthread_mutex_init(_mutex, nil)
    }
-   public final func synchronized<T>(closure: (Void) -> T) -> T {
+   public final func synchronized<T>(closure: () -> T) -> T {
       pthread_mutex_lock(_mutex)
       let result = closure()
       pthread_mutex_unlock(_mutex)

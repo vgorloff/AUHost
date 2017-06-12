@@ -17,7 +17,7 @@ class AttenuatorView: NSView {
    private var displayLinkUtility: DisplayLink.GenericRenderer?
 
    var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
-   var meterRefreshCallback: ((Void) -> [AttenuatorDSPKernel.SampleType]?)?
+   var meterRefreshCallback: (() -> [AttenuatorDSPKernel.SampleType]?)?
 
    override func awakeFromNib() {
       super.awakeFromNib()
