@@ -30,13 +30,13 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
    }
 
    open override func loadView() {
-      var topLevelObjects = NSArray()
+      var topLevelObjects: NSArray?
       guard let nib = NSNib(nibNamed: String(describing: AttenuatorViewController.self),
                             bundle: Bundle(for: AttenuatorViewController.self)),
          nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects) else {
             fatalError()
       }
-      for object in topLevelObjects {
+      for object in topLevelObjects ?? [] {
          if let v = object as? AttenuatorView {
             view = v
             return
