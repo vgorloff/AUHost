@@ -11,6 +11,10 @@ import AVFoundation
 
 public struct WaveformCacheUtility {
 
+   private enum Error: Swift.Error {
+      case unableToInitialize(String)
+   }
+
    private static var cache = [String: [MinMax<Float>]]()
 
    private static let defaultBufferFrameCapacity: UInt64 = 1024 * 8
@@ -38,8 +42,10 @@ public struct WaveformCacheUtility {
             let optimalBufferSettings = Math.optimalBufferSizeForResolution(
                resolution: resolution, dataSize: UInt64(audioFile.length),
                maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
-            let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
-                                          frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize))
+            guard let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
+                                                frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize)) else {
+                                                   throw Error.unableToInitialize(String(describing: AVAudioPCMBuffer.self))
+            }
 
             var waveformCache = [MinMax<Float>]()
             var groupingBuffer = [MinMax<Float>]()

@@ -41,6 +41,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       let v3AU = flags.contains(AudioComponentFlags.isV3AudioUnit)
       return component.hasCustomView || v3AU
    }
+   private let segueOpenEffect = NSStoryboardSegue.Identifier("S:OpenEffectView")
 
    // MARK: - Overrides
    override func viewDidLoad() {
@@ -55,7 +56,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
       if let segueID = segue.identifier, let ctrl = segue.destinationController as? EffectWindowController,
-         segueID == "S:OpenEffectView" {
+         segueID == segueOpenEffect {
          ctrl.contentViewController = effectViewController
          effectWindowController = ctrl
          effectViewController = nil
@@ -104,7 +105,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       playbackEngine.openEffectView { [weak self] controller in guard let s = self else { return }
          s.effectViewController = controller
          if controller != nil {
-            s.performSegue(withIdentifier: "S:OpenEffectView", sender: s)
+            s.performSegue(withIdentifier: segueOpenEffect, sender: s)
          }
       }
    }
