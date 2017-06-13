@@ -10,8 +10,8 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   private lazy var mediaLibraryController = g.configure(NSMediaLibraryBrowserController.shared()) {
-      $0.mediaLibraries = [NSMediaLibrary.audio]
+   private lazy var mediaLibraryController = g.configure(NSMediaLibraryBrowserController.shared) {
+      $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
 
    override func awakeFromNib() {

@@ -21,7 +21,7 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
       }
    }
 
-   public override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+   public override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
       super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
    }
 
@@ -31,8 +31,8 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
 
    open override func loadView() {
       var topLevelObjects: NSArray?
-      guard let nib = NSNib(nibNamed: String(describing: AttenuatorViewController.self),
-                            bundle: Bundle(for: AttenuatorViewController.self)),
+      let nibName = NSNib.Name(String(describing: AttenuatorViewController.self))
+      guard let nib = NSNib(nibNamed: nibName, bundle: Bundle(for: AttenuatorViewController.self)),
          nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects) else {
             fatalError()
       }

@@ -138,9 +138,9 @@ extension VULevelMeter {
 
       let buffers = dataBufferProvider.nextBuffers(vertices: modelDatasource.floatVertices,
                                                    color: colorData, matrix: projectionMatrix.data())
-      encoder.setVertexBuffer(buffers.position, offset: 0, at: 0)
-      encoder.setVertexBuffer(buffers.color, offset: 0, at: 1)
-      encoder.setVertexBuffer(buffers.projectionMatrix, offset: 0, at: 2)
+      encoder.setVertexBuffer(buffers.position, offset: 0, index: 0)
+      encoder.setVertexBuffer(buffers.color, offset: 0, index: 1)
+      encoder.setVertexBuffer(buffers.projectionMatrix, offset: 0, index: 2)
       encoder.drawPrimitives(type: .line, vertexStart: 0, vertexCount: modelDatasource.floatVertices.count / 2)
    }
 

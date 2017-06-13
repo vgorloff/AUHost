@@ -13,6 +13,7 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 
    public enum Errors: Error {
       case statusError(OSStatus)
+      case unableToInitialize(String)
    }
    private let maxChannels = UInt32(8)
    private var _parameterTree: AUParameterTree!
@@ -97,7 +98,9 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
    // MARK: - Private
 
    private func setUpBusses() throws {
-      let defaultFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2)
+      guard let defaultFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2) else {
+         throw Errors.unableToInitialize(String(describing: AVAudioFormat.self))
+      }
       inputBus = try BufferedInputBus(format: defaultFormat, maxChannels: maxChannels)
       outputBus = try BufferedOutputBus(format: defaultFormat, maxChannels: maxChannels)
       _inputBusses = AUAudioUnitBusArray(audioUnit: self, busType: AUAudioUnitBusType.input, busses: [inputBus.bus])
