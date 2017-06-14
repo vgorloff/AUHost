@@ -69,7 +69,7 @@ public struct Math {
 		return true
 	}
 
-	public static func gcd<T: Integer>(valueA: T, _ valueB: T) -> T {
+	public static func gcd<T: BinaryInteger>(valueA: T, _ valueB: T) -> T {
 		var divisor = max(valueA, valueB)
 		repeat {
 			if valueA % divisor == 0 && valueB % divisor == 0 {

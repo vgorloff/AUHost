@@ -50,7 +50,8 @@ enum PlaybackEngineEvent {
 
 typealias SMGraphType = StateMachineGraph<PlaybackEngineState, PlaybackEngineEvent, PlaybackEngineContext>
 
-private let gStateMachineGraph = SMGraphType(initialState: .Stopped) { (state, event) in
+private let gStateMachineGraph = SMGraphType(initialState: .Stopped) {
+   let (state, event) = $0
    switch state {
    case .Stopped:
       switch event {
@@ -104,7 +105,7 @@ final class PlaybackEngine {
 
    // MARK: Private
 
-   private var sm: StateMachine<SMGraphType>
+   private var sm: StateMachine<PlaybackEngineState, PlaybackEngineEvent, PlaybackEngineContext>
    private let context = PlaybackEngineContext()
    private let _stateAccessLock: NonRecursiveLocking = SpinLock()
 
