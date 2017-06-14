@@ -18,10 +18,13 @@ public struct MediaObjectPasteboardUtility {
 
    private let mediaLibraryPasteboardType
       = NSPasteboard.PasteboardType("com.apple.MediaLibrary.PBoardType.MediaObjectIdentifiersPlist")
+   // FIXME: Workaround. Replace after getting answer on SO question:
+   // https://stackoverflow.com/questions/44537356/swift-4-nsfilenamespboardtype-not-available-what-to-use-instead-for-registerfo
+   private let fileNamesPasteboardType = NSPasteboard.PasteboardType("NSFilenamesPboardType")
    public let draggedTypes: [NSPasteboard.PasteboardType]
 
    public init() {
-      draggedTypes = [mediaLibraryPasteboardType, .string]
+      draggedTypes = [mediaLibraryPasteboardType, fileNamesPasteboardType]
    }
 
    public func objectsFromPasteboard(pasteboard: NSPasteboard) -> PasteboardObjects {
@@ -31,8 +34,8 @@ public struct MediaObjectPasteboardUtility {
       if pasteboardTypes.contains(mediaLibraryPasteboardType),
          let dict = pasteboard.propertyList(forType: mediaLibraryPasteboardType) as? NSDictionary {
          return .mediaObjects(dict)
-      } else if pasteboardTypes.contains(.string),
-         let filePaths = pasteboard.propertyList(forType: .string) as? [String] {
+      } else if pasteboardTypes.contains(fileNamesPasteboardType),
+         let filePaths = pasteboard.propertyList(forType: fileNamesPasteboardType) as? [String] {
          let acceptedFilePaths = filteredFilePaths(pasteboardFilePaths: filePaths)
          return acceptedFilePaths.count > 0 ? .filePaths(acceptedFilePaths) : .none
       } else {

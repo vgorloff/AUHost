@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13122.17" systemVersion="16F73" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13122.17"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
@@ -644,10 +645,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller-->
+        <!--Main Window-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="B8D-0N-5wS" userLabel="Main Window" customClass="MainWindowController" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" tabbingMode="disallowed" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -670,10 +671,10 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="fDS-uT-9RV">
-                                <rect key="frame" x="0.0" y="0.0" width="654" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="653" height="487"/>
                                 <subviews>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NHN-KG-mxd">
-                                        <rect key="frame" x="289" y="451" width="77" height="32"/>
+                                        <rect key="frame" x="288" y="451" width="77" height="32"/>
                                         <buttonCell key="cell" type="push" title="Pause" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x8W-OT-gRF">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
@@ -683,18 +684,18 @@
                                         </connections>
                                     </button>
                                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="sLj-0G-iyc" customClass="MediaItemView" customModule="AUHost" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="352" width="638" height="98"/>
+                                        <rect key="frame" x="8" y="352" width="637" height="98"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="98" id="LQk-SQ-OSH"/>
                                         </constraints>
                                     </customView>
                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="30H-mh-T68">
-                                        <rect key="frame" x="8" y="8" width="638" height="336"/>
+                                        <rect key="frame" x="8" y="8" width="637" height="336"/>
                                         <subviews>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Nu-Mk-IWq">
-                                                <rect key="frame" x="0.0" y="0.0" width="293" height="336"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="292.5" height="336"/>
                                                 <clipView key="contentView" id="wp3-rL-Kpu">
-                                                    <rect key="frame" x="1" y="0.0" width="291" height="335"/>
+                                                    <rect key="frame" x="1" y="0.0" width="290.5" height="335"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" headerView="kWa-DB-nyu" id="eph-K0-hUQ">
@@ -704,7 +705,7 @@
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                             <tableColumns>
-                                                                <tableColumn editable="NO" width="287.5" minWidth="40" maxWidth="1000" id="isD-KT-1M5">
+                                                                <tableColumn editable="NO" width="288" minWidth="40" maxWidth="1000" id="isD-KT-1M5">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Effects">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -725,7 +726,7 @@
                                                         </tableView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="kjJ-Ob-Y0i">
+                                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="kjJ-Ob-Y0i">
                                                     <rect key="frame" x="1" y="319" width="290.5" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
@@ -739,7 +740,7 @@
                                                 </tableHeaderView>
                                             </scrollView>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FSJ-w4-ti7">
-                                                <rect key="frame" x="295" y="308" width="48" height="32"/>
+                                                <rect key="frame" x="294.5" y="308" width="48" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="36" id="9sQ-yX-QZE"/>
                                                 </constraints>
@@ -752,9 +753,9 @@
                                                 </connections>
                                             </button>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ige-jU-ReU">
-                                                <rect key="frame" x="345" y="0.0" width="293" height="336"/>
+                                                <rect key="frame" x="344.5" y="0.0" width="292.5" height="336"/>
                                                 <clipView key="contentView" id="mfQ-Gx-htG">
-                                                    <rect key="frame" x="1" y="0.0" width="291" height="335"/>
+                                                    <rect key="frame" x="1" y="0.0" width="290.5" height="335"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" alternatingRowBackgroundColors="YES" multipleSelection="NO" autosaveColumns="NO" enabled="NO" headerView="3MP-0i-tHg" id="U9p-NH-boP">
@@ -764,7 +765,7 @@
                                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                             <tableColumns>
-                                                                <tableColumn editable="NO" width="287.5" minWidth="40" maxWidth="1000" id="2rY-T2-5H5">
+                                                                <tableColumn editable="NO" width="288" minWidth="40" maxWidth="1000" id="2rY-T2-5H5">
                                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" enabled="NO" borderStyle="border" title="Presets">
                                                                         <font key="font" metaFont="smallSystem"/>
                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -785,8 +786,8 @@
                                                         </tableView>
                                                     </subviews>
                                                 </clipView>
-                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="H9d-s7-Evj">
-                                                    <rect key="frame" x="1" y="319" width="291" height="16"/>
+                                                <scroller key="horizontalScroller" verticalHuggingPriority="750" horizontal="YES" id="H9d-s7-Evj">
+                                                    <rect key="frame" x="1" y="319" width="290.5" height="16"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="BV5-8b-mpb">
@@ -858,10 +859,10 @@
             </objects>
             <point key="canvasLocation" x="75.5" y="822.5"/>
         </scene>
-        <!--Window Controller-->
+        <!--Effect Window-->
         <scene sceneID="fmD-hk-x3J">
             <objects>
-                <windowController id="wHA-WJ-aB5" customClass="EffectWindowController" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController id="wHA-WJ-aB5" userLabel="Effect Window" customClass="EffectWindowController" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bS9-uo-X1t" customClass="NSPanel">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" nonactivatingPanel="YES"/>
                         <rect key="contentRect" x="1118" y="286" width="480" height="270"/>

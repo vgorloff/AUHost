@@ -146,10 +146,8 @@
 			isa = PBXGroup;
 			children = (
 				804860401DAAF94A004EFA32 /* AUHost.xcconfig */,
-				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
-				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
-				8035EF2F1B3752030026AD7D /* ViewController.swift */,
 				C5E335AB1C4FE7B000CD42BB /* Resources */,
+				804E68891EF10BC5006C64BC /* Sources */,
 				C5E335AA1C4FE73300CD42BB /* Supporting Files */,
 			);
 			path = AUHost;
@@ -177,6 +175,16 @@
 				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		804E68891EF10BC5006C64BC /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
+				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
+				8035EF2F1B3752030026AD7D /* ViewController.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		807E3C031D25D9330033629F /* Core */ = {
@@ -285,9 +293,8 @@
 				TargetAttributes = {
 					8035EF291B3752030026AD7D = {
 						CreatedOnToolsVersion = 7.0;
-						DevelopmentTeam = E27KE6VTF6;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Sandbox = {
 								enabled = 1;
@@ -506,6 +513,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
@@ -529,7 +537,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "AUHost/Supporting Files/AUHost.entitlements";
-				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "$(AWL_BUILD_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
