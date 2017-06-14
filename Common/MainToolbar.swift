@@ -12,20 +12,15 @@ class MainToolbar: NSToolbar {
 
    let toolbarDelegate = GenericDelegate()
 
-   enum Event {
-      case reloadPlugIns
-      case toggleMediaLibrary
-   }
+   var eventHandler: ((MainToolbar.Event) -> Void)?
 
-   var eventHandler: ((Event) -> Void)?
-
-   init(identifier: String, showsReloadPlugInsItem: Bool = true) {
+   init(identifier: NSToolbar.Identifier, showsReloadPlugInsItem: Bool = true) {
       super.init(identifier: identifier)
       allowsUserCustomization = true
       autosavesConfiguration = true
       displayMode = .iconAndLabel
-      toolbarDelegate.allowedItemIdentifiers = [NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier]
-      toolbarDelegate.defaultItemIdentifiers = Event.toolbarIDs + [NSToolbarFlexibleSpaceItemIdentifier]
+      toolbarDelegate.allowedItemIdentifiers = [.space, .flexibleSpace]
+      toolbarDelegate.defaultItemIdentifiers = Event.toolbarIDs + [.flexibleSpace]
       if showsReloadPlugInsItem == false {
          toolbarDelegate.defaultItemIdentifiers = toolbarDelegate.defaultItemIdentifiers.filter {
             $0 != Event.reloadPlugIns.itemIdentifier
@@ -33,7 +28,7 @@ class MainToolbar: NSToolbar {
       }
       toolbarDelegate.selectableItemIdentifiers = toolbarDelegate.allowedItemIdentifiers
       toolbarDelegate.makeItemCallback = { [unowned self] id, flag in
-         guard let event = Event(stringValue: id) else {
+         guard let event = Event(id: id) else {
             return nil
          }
          return self.makeToolbarItem(event: event)
@@ -56,56 +51,9 @@ class MainToolbar: NSToolbar {
    }
 
    @objc private func handle(toolbarItem: NSToolbarItem) {
-      guard let event = Event(stringValue: toolbarItem.itemIdentifier) else {
+      guard let event = Event(id: toolbarItem.itemIdentifier) else {
          return
       }
       eventHandler?(event)
-   }
-}
-
-extension MainToolbar.Event {
-
-   var itemIdentifier: String {
-      switch self {
-      case .reloadPlugIns: return "ua.com.wavalabs.toolbar.reloadPlugIns"
-      case .toggleMediaLibrary: return "ua.com.wavalabs.toolbar.toggleMediaLibrary"
-      }
-   }
-
-   var label: String {
-      switch self {
-      case .reloadPlugIns: return "Reload PlugIns"
-      case .toggleMediaLibrary: return "Media Library"
-      }
-   }
-
-   var view: NSView? {
-      return nil
-   }
-
-   var image: NSImage? {
-      switch self {
-      case .reloadPlugIns: return NSImage(named: NSImageNameNetwork)
-      case .toggleMediaLibrary: return NSImage(named: NSImageNameFolder)
-      }
-   }
-
-   var paletteLabel: String {
-      return label
-   }
-
-   static var allValues: [MainToolbar.Event] {
-      return [toggleMediaLibrary, reloadPlugIns]
-   }
-
-   static var toolbarIDs: [String] {
-      return [toggleMediaLibrary, reloadPlugIns].map { $0.itemIdentifier }
-   }
-
-   init?(stringValue: String) {
-      guard let event = (MainToolbar.Event.allValues.filter { $0.itemIdentifier == stringValue }).first else {
-         return nil
-      }
-      self = event
    }
 }

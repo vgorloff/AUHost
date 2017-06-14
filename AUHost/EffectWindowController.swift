@@ -14,7 +14,7 @@ class EffectWindowController: NSWindowController, NSWindowDelegate {
 
    override func awakeFromNib() {
       super.awakeFromNib()
-      windowFrameAutosaveName = g.string(fromClass: EffectWindowController.self) + ":WindowFrame"
+      windowFrameAutosaveName = NSWindow.FrameAutosaveName(g.string(fromClass: EffectWindowController.self) + ":WindowFrame")
    }
 
    // MARK: - NSWindowDelegate

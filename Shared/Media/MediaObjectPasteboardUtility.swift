@@ -16,11 +16,12 @@ public struct MediaObjectPasteboardUtility {
       case none
    }
 
-   private let mediaLibraryPasteboardType = "com.apple.MediaLibrary.PBoardType.MediaObjectIdentifiersPlist"
-   public let draggedTypes: [String]
+   private let mediaLibraryPasteboardType
+      = NSPasteboard.PasteboardType("com.apple.MediaLibrary.PBoardType.MediaObjectIdentifiersPlist")
+   public let draggedTypes: [NSPasteboard.PasteboardType]
 
    public init() {
-      draggedTypes = [mediaLibraryPasteboardType, NSFilenamesPboardType]
+      draggedTypes = [mediaLibraryPasteboardType, .string]
    }
 
    public func objectsFromPasteboard(pasteboard: NSPasteboard) -> PasteboardObjects {
@@ -30,8 +31,8 @@ public struct MediaObjectPasteboardUtility {
       if pasteboardTypes.contains(mediaLibraryPasteboardType),
          let dict = pasteboard.propertyList(forType: mediaLibraryPasteboardType) as? NSDictionary {
          return .mediaObjects(dict)
-      } else if pasteboardTypes.contains(NSFilenamesPboardType),
-         let filePaths = pasteboard.propertyList(forType: NSFilenamesPboardType) as? [String] {
+      } else if pasteboardTypes.contains(.string),
+         let filePaths = pasteboard.propertyList(forType: .string) as? [String] {
          let acceptedFilePaths = filteredFilePaths(pasteboardFilePaths: filePaths)
          return acceptedFilePaths.count > 0 ? .filePaths(acceptedFilePaths) : .none
       } else {
@@ -40,7 +41,7 @@ public struct MediaObjectPasteboardUtility {
    }
 
    private func filteredFilePaths(pasteboardFilePaths: [String]) -> [String] {
-      let ws = NSWorkspace.shared()
+      let ws = NSWorkspace.shared
       let result = pasteboardFilePaths.filter { element in
          do {
             let fileType = try ws.type(ofFile: element)

@@ -105,7 +105,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       playbackEngine.openEffectView { [weak self] controller in guard let s = self else { return }
          s.effectViewController = controller
          if controller != nil {
-            s.performSegue(withIdentifier: segueOpenEffect, sender: s)
+            s.performSegue(withIdentifier: s.segueOpenEffect, sender: s)
          }
       }
    }

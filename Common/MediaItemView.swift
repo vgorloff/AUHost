@@ -40,12 +40,12 @@ public final class MediaItemView: NSView {
 
    required public init?(coder: NSCoder) {
       super.init(coder: coder)
-      register(forDraggedTypes: pbUtil.draggedTypes)
+      registerForDraggedTypes(pbUtil.draggedTypes)
    }
 
    public override init(frame frameRect: NSRect) {
       super.init(frame: frameRect)
-      register(forDraggedTypes: pbUtil.draggedTypes)
+      registerForDraggedTypes(pbUtil.draggedTypes)
    }
 
    deinit {
@@ -54,10 +54,10 @@ public final class MediaItemView: NSView {
 
    public override func draw(_ dirtyRect: NSRect) {
       NSColor.white.setFill()
-      NSRectFill(dirtyRect)
+      dirtyRect.fill()
       (isHighlighted ? NSColor.keyboardFocusIndicatorColor : NSColor.gridColor).setStroke()
       let borderWidth = isHighlighted ? 2.CGFloatValue : 1.CGFloatValue
-      NSBezierPath.setDefaultLineWidth(borderWidth)
+      NSBezierPath.defaultLineWidth = borderWidth
       NSBezierPath.stroke(bounds.insetBy(dx: 0.5 * borderWidth, dy: 0.5 * borderWidth))
 
       textDragAndDropColor.useAltValue = cachedWaveform() != nil
@@ -124,7 +124,7 @@ public final class MediaItemView: NSView {
    private func drawWaveform() {
 
       // !inLiveResize,
-      guard !inLiveResize, let context = NSGraphicsContext.current()?.cgContext, let waveform = cachedWaveform() else {
+      guard !inLiveResize, let context = NSGraphicsContext.current?.cgContext, let waveform = cachedWaveform() else {
          return // FIXME: Implement interpolation for live resize and while waiting for waveform cashe arrival.
       }
       let scaleFactor = getScaleFactor()
@@ -154,9 +154,9 @@ public final class MediaItemView: NSView {
    private func drawTextMessage() {
       let paragraphStyle = NSMutableParagraphStyle()
       paragraphStyle.alignment = NSTextAlignment.center
-      let attributes = [NSParagraphStyleAttributeName: paragraphStyle,
-                        NSForegroundColorAttributeName: textDragAndDropColor.currentValue,
-                        NSFontAttributeName: textDragAndDropFont]
+      let attributes = [NSAttributedStringKey.paragraphStyle: paragraphStyle,
+                        .foregroundColor: textDragAndDropColor.currentValue,
+                        .font: textDragAndDropFont]
       let textSize = textDragAndDropMessage.size(withAttributes: attributes)
       let offsetX = bounds.height - textSize.height
       textDragAndDropMessage.draw(in: bounds.insetBy(dx: 8, dy: offsetX * 0.5), withAttributes: attributes)

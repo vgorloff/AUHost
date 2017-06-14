@@ -10,13 +10,13 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   private lazy var mediaLibraryController = g.configure(NSMediaLibraryBrowserController.shared()) {
-      $0.mediaLibraries = [NSMediaLibrary.audio]
+   private lazy var mediaLibraryController = g.configure(NSMediaLibraryBrowserController.shared) {
+      $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
 
    override func awakeFromNib() {
       super.awakeFromNib()
-      let mainToolbar = MainToolbar(identifier: "ua.com.wavelabs.AUHost:mainToolbar")
+      let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
       mainToolbar.eventHandler = { [unowned self] in
          switch $0 {
          case .toggleMediaLibrary:

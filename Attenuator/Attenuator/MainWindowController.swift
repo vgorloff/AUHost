@@ -16,7 +16,8 @@ class MainWindowController: NSWindowController {
 
    override func awakeFromNib() {
       super.awakeFromNib()
-      let mainToolbar = MainToolbar(identifier: "ua.com.wavelabs.Attenuator:mainToolbar", showsReloadPlugInsItem: false)
+      let id = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
+      let mainToolbar = MainToolbar(identifier: id, showsReloadPlugInsItem: false)
       mainToolbar.eventHandler = { [unowned self] in
          switch $0 {
          case .toggleMediaLibrary:
