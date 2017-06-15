@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		80130BA61C4C538800D6DDAC /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */; };
 		8035EF2E1B3752030026AD7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF2D1B3752030026AD7D /* AppDelegate.swift */; };
-		8035EF301B3752030026AD7D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF2F1B3752030026AD7D /* ViewController.swift */; };
+		8035EF301B3752030026AD7D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF2F1B3752030026AD7D /* MainViewController.swift */; };
 		8035EF321B3752030026AD7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF311B3752030026AD7D /* Assets.xcassets */; };
 		8035EF351B3752030026AD7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF331B3752030026AD7D /* Main.storyboard */; };
 		8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF3D1B375EE00026AD7D /* MainWindowController.swift */; };
@@ -43,6 +43,8 @@
 		80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */; };
 		80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B331C4AA78E00308D83 /* EffectWindowController.swift */; };
 		80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B491C4B035E00308D83 /* PlaybackEngine.swift */; };
+		80FE8EC71EF32B57008F245C /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE8EC61EF32B57008F245C /* MainViewModel.swift */; };
+		80FE8EC91EF32DA6008F245C /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE8EC81EF32DA6008F245C /* MainModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -72,7 +74,7 @@
 		80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
 		8035EF2A1B3752030026AD7D /* AUHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8035EF2D1B3752030026AD7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8035EF2F1B3752030026AD7D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8035EF2F1B3752030026AD7D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8035EF311B3752030026AD7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8035EF341B3752030026AD7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8035EF361B3752030026AD7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -109,6 +111,8 @@
 		80C620881B378A5C00D58E68 /* AUHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AUHost.entitlements; sourceTree = "<group>"; };
 		80C97B331C4AA78E00308D83 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80C97B491C4B035E00308D83 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
+		80FE8EC61EF32B57008F245C /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		80FE8EC81EF32DA6008F245C /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,7 +186,9 @@
 			children = (
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
-				8035EF2F1B3752030026AD7D /* ViewController.swift */,
+				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
+				80FE8EC61EF32B57008F245C /* MainViewModel.swift */,
+				80FE8EC81EF32DA6008F245C /* MainModel.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -355,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80FE8EC71EF32B57008F245C /* MainViewModel.swift in Sources */,
 				80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */,
 				804674361D25DC92000989CA /* Math.swift in Sources */,
 				804674241D25DA66000989CA /* KVOHelper.swift in Sources */,
@@ -366,7 +373,7 @@
 				80A94FFF1D59300F0044ED2C /* CommonExtensions.swift in Sources */,
 				807E3C0A1D25D9330033629F /* MinMax.swift in Sources */,
 				80485FB71DA59386004EFA32 /* main.swift in Sources */,
-				8035EF301B3752030026AD7D /* ViewController.swift in Sources */,
+				8035EF301B3752030026AD7D /* MainViewController.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
 				807E3C0F1D25D9670033629F /* Functions.swift in Sources */,
 				804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */,
@@ -386,6 +393,7 @@
 				80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */,
 				8035EF2E1B3752030026AD7D /* AppDelegate.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
+				80FE8EC91EF32DA6008F245C /* MainModel.swift in Sources */,
 				80AC1BA71EEF371D0048151A /* String.swift in Sources */,
 				805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */,
 				8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */,

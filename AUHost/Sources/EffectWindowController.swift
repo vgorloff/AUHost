@@ -8,7 +8,7 @@
 
 import AppKit
 
-class EffectWindowController: NSWindowController, NSWindowDelegate {
+class EffectWindowController: NSWindowController {
 
    var handlerWindowWillClose: (() -> Void)?
 
@@ -16,8 +16,9 @@ class EffectWindowController: NSWindowController, NSWindowDelegate {
       super.awakeFromNib()
       windowFrameAutosaveName = NSWindow.FrameAutosaveName(g.string(fromClass: EffectWindowController.self) + ":WindowFrame")
    }
+}
 
-   // MARK: - NSWindowDelegate
+extension EffectWindowController: NSWindowDelegate {
 
    func windowWillClose(_ notification: Notification) {
       handlerWindowWillClose?()
