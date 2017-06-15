@@ -32,7 +32,6 @@ class MainViewController: NSViewController {
    private var playbackEngine: PlaybackEngine {
       return Application.sharedInstance.playbackEngine
    }
-   private var audioUnitDatasource = AudioComponentsUtility()
    private var selectedAUComponent: AVAudioUnitComponent?
    private var canOpenEffectView: Bool {
       guard let component = selectedAUComponent, effectWindowController == nil else {
@@ -51,7 +50,6 @@ class MainViewController: NSViewController {
       DispatchQueue.main.async { [weak self] in guard let s = self else { return }
          s.setUpPlaybackHelper()
          s.setUpMediaItemView()
-         s.setUpAudioComponentsUtility()
          s.viewModel.reloadEffects()
       }
    }
@@ -83,6 +81,19 @@ extension MainViewController {
                this.tableEffects.reloadData()
             }
             this.tableEffects.isEnabled = !isBusy
+         }
+      }
+      model.eventHandler = { [weak self] in guard let this = self else { return }
+         switch $0 {
+         case .audioComponentChanged(let change):
+            switch change {
+            case .audioComponentRegistered:
+               break
+            case .audioComponentInstanceInvalidated:
+               this.playbackEngine.selectEffect(component: nil, completionHandler: nil)
+               this.selectedAUComponent = nil
+            }
+            this.viewModel.reloadEffects()
          }
       }
    }
@@ -118,19 +129,6 @@ extension MainViewController {
 }
 
 extension MainViewController {
-
-   private func setUpAudioComponentsUtility() {
-      audioUnitDatasource.handlerStateChange = { [weak self] change in guard let s = self else { return }
-         switch change {
-         case .audioComponentRegistered:
-            s.tableEffects.reloadData()
-         case .audioComponentInstanceInvalidated(_, _):
-            s.playbackEngine.selectEffect(component: nil, completionHandler: nil)
-            s.tableEffects.reloadData()
-            s.selectedAUComponent = nil
-         }
-      }
-   }
 
    private func setUpMediaItemView() {
       mediaItemView.onCompleteDragWithObjects = { [weak self] results in
