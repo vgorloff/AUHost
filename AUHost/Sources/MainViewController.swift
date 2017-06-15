@@ -15,7 +15,7 @@ import CoreAudioKit
  Links:
  * [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
  */
-class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+class MainViewController: NSViewController {
 
    @IBOutlet private weak var buttonOpenEffectView: NSButton!
    @IBOutlet private weak var buttonPlay: NSButton!
@@ -23,8 +23,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
    @IBOutlet private weak var tablePresets: NSTableView!
    @IBOutlet private weak var mediaItemView: MediaItemView!
 
-   // MARK: - Private
-   private var availableEffects = [AVAudioUnitComponent]()
+   let viewModel = MainViewModel()
+   let model = MainModel()
+
    private var availablePresets = [AUAudioUnitPreset]()
    private weak var effectViewController: NSViewController? // Temporary store
    private weak var effectWindowController: EffectWindowController?
@@ -43,14 +44,15 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
    }
    private let segueOpenEffect = NSStoryboardSegue.Identifier("S:OpenEffectView")
 
-   // MARK: - Overrides
    override func viewDidLoad() {
       super.viewDidLoad()
+      setupHandlers()
+      viewModel.model = model
       DispatchQueue.main.async { [weak self] in guard let s = self else { return }
          s.setUpPlaybackHelper()
          s.setUpMediaItemView()
          s.setUpAudioComponentsUtility()
-         s.reloadEffectsList()
+         s.viewModel.reloadEffects()
       }
    }
 
@@ -69,18 +71,21 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
-   // MARK: - Internal
+}
 
-   func reloadEffectsList() {
-      tableEffects.isEnabled = false
-      audioUnitDatasource.updateEffectList { [weak self] effects in guard let s = self else { return }
-         s.availableEffects = effects
-         s.tableEffects.reloadData()
-         s.tableEffects.isEnabled = true
+extension MainViewController {
+
+   private func setupHandlers() {
+      viewModel.viewHandler = { [weak self] in guard let this = self else { return }
+         switch $0 {
+         case .loadingEffects(let isBusy):
+            if !isBusy {
+               this.tableEffects.reloadData()
+            }
+            this.tableEffects.isEnabled = !isBusy
+         }
       }
    }
-
-   // MARK: - Actions
 
    @IBAction private func actionTogglePlayAudio(_ sender: AnyObject) {
       do {
@@ -110,7 +115,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
-   // MARK: - Private
+}
+
+extension MainViewController {
 
    private func setUpAudioComponentsUtility() {
       audioUnitDatasource.handlerStateChange = { [weak self] change in guard let s = self else { return }
@@ -190,12 +197,14 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
-   // MARK: - NSTableViewDataSource
+}
+
+extension MainViewController: NSTableViewDataSource {
 
    func numberOfRows(in tableView: NSTableView) -> Int {
       switch tableView {
       case tableEffects:
-         return availableEffects.count + 1
+         return viewModel.availableEffects.count + 1
       case tablePresets:
          return availablePresets.count + 1
       default:
@@ -209,7 +218,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          if row == 0 {
             return "- No Effect -"
          }
-         let component = availableEffects[row - 1]
+         let component = viewModel.availableEffects[row - 1]
          return component.name
       case tablePresets:
          if row == 0 {
@@ -221,8 +230,9 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
          fatalError("Unknown tableView: \(tableView)")
       }
    }
+}
 
-   // MARK: - NSTableViewDelegate
+extension MainViewController: NSTableViewDelegate {
 
    func tableViewSelectionDidChange(_ aNotification: Notification) {
       guard let tableView = aNotification.object as? NSTableView, tableView.selectedRow >= 0 else {
@@ -242,8 +252,8 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
             selectedAUComponent = nil
          } else {
             let row = tableView.selectedRow - 1
-            if row < availableEffects.count {
-               let component = availableEffects[row]
+            if row < viewModel.availableEffects.count {
+               let component = viewModel.availableEffects[row]
                Logger.debug(subsystem: .controller, category: .handle, message: "Selecting effect: \"\(component.name)\"")
                playbackEngine.selectEffect(component: component) { [weak self, weak component] result in
                   guard let s = self else { return }

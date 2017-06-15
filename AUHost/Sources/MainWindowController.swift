@@ -22,14 +22,14 @@ class MainWindowController: NSWindowController {
          case .toggleMediaLibrary:
             self.mediaLibraryController.togglePanel(self)
          case .reloadPlugIns:
-            self.mainController.reloadEffectsList()
+            self.mainController.viewModel.reloadEffects()
          }
       }
       window?.toolbar = mainToolbar
    }
 
-   private var mainController: ViewController {
-      guard let c = contentViewController as? ViewController else {
+   private var mainController: MainViewController {
+      guard let c = contentViewController as? MainViewController else {
          fatalError()
       }
       return c
