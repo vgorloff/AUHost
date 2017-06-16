@@ -26,12 +26,12 @@ class Application: NSApplication {
       delegate = appDelegate
    }
 
-   deinit {
-
-   }
-
    required init?(coder: NSCoder) {
       super.init(coder: coder)
+   }
+
+   deinit {
+
    }
 
 }

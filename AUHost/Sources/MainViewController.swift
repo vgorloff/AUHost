@@ -24,7 +24,6 @@ class MainViewController: NSViewController {
    @IBOutlet private weak var mediaItemView: MediaItemView!
 
    let viewModel = MainViewModel()
-   let model = MainModel()
 
    private weak var effectViewController: NSViewController? // Temporary store
    private weak var effectWindowController: EffectWindowController?
@@ -37,9 +36,8 @@ class MainViewController: NSViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       setupHandlers()
-      viewModel.model = model
-      DispatchQueue.main.async { [weak self] in guard let s = self else { return }
-         s.viewModel.reloadEffects()
+      DispatchQueue.main.async {
+         self.viewModel.reloadEffects()
       }
    }
 
@@ -100,18 +98,10 @@ extension MainViewController {
                this.buttonPlay.isEnabled = false
                this.buttonOpenEffectView.isEnabled = false
             }
+         case .audioComponentsChanged:
+            this.tablePresets.reloadData()
          }
-      }
-      model.eventHandler = { [weak self] in guard let this = self else { return }
-         switch $0 {
-         case .audioComponentChanged(let change):
-            switch change {
-            case .audioComponentRegistered:
-               break
-            case .audioComponentInstanceInvalidated:
-               this.viewModel.selectEffect(nil)
-            }
-         }
+         
       }
       mediaItemView.onCompleteDragWithObjects = { [weak self] results in
          guard let s = self else { return }

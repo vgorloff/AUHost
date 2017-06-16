@@ -11,7 +11,11 @@ import CoreAudioKit
 
 final class PlaybackEngineContext {
 
-   internal private(set) var effect: AVAudioUnit?
+   enum Error: Swift.Error {
+      case FileIsNotSet
+   }
+
+   private(set) var effect: AVAudioUnit?
    private let engine = AVAudioEngine()
    private let player = AVAudioPlayerNode()
    private var file: AVAudioFile?
@@ -19,7 +23,6 @@ final class PlaybackEngineContext {
 
    var filePlaybackCompleted: AVAudioNodeCompletionHandler?
 
-   // MARK: - Init | Deinit
    init() {
       Logger.initialize(subsystem: .media)
       engine.attach(player)
@@ -29,7 +32,9 @@ final class PlaybackEngineContext {
       Logger.deinitialize(subsystem: .media)
    }
 
-   // MARK: - Actions
+}
+
+extension PlaybackEngineContext {
 
    func play() throws {
       try engine.start()
@@ -53,7 +58,7 @@ final class PlaybackEngineContext {
 
    func startPlayer() throws {
       guard let file = file else {
-         throw PlaybackEngineStateError.FileIsNotSet
+         throw Error.FileIsNotSet
       }
       scheduleFile(file: file, offset: playbackOffset)
       player.play()
@@ -61,7 +66,7 @@ final class PlaybackEngineContext {
 
    func scheduleFile() throws {
       guard let file = file else {
-         throw PlaybackEngineStateError.FileIsNotSet
+         throw Error.FileIsNotSet
       }
       scheduleFile(file: file, offset: playbackOffset)
    }
@@ -103,7 +108,7 @@ final class PlaybackEngineContext {
    }
 
    func selectEffect(componentDescription: AudioComponentDescription?,
-                     completionHandler: @escaping ((PlaybackEngineEffectSelectionResult) -> Void)) {
+                     completionHandler: @escaping ((PlaybackEngineStateMachine.EffectSelectionResult) -> Void)) {
       guard let desc = componentDescription else {
          DispatchQueue.main.async { [weak self] in
             self?.clearEffect()
@@ -128,7 +133,9 @@ final class PlaybackEngineContext {
       }
    }
 
-   // MARK: - Private
+}
+
+extension PlaybackEngineContext {
 
    private func clearEffect() {
       defer {

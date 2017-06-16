@@ -30,7 +30,7 @@ class MainModel {
       }
    }
 
-   func selectEffect(_ effect: AVAudioUnitComponent?, completion: ((PlaybackEngineEffectSelectionResult) -> Void)?) {
+   func selectEffect(_ effect: AVAudioUnitComponent?, completion: ((PlaybackEngineStateMachine.EffectSelectionResult) -> Void)?) {
       let engine = Application.sharedInstance.playbackEngine
       engine.selectEffect(component: effect) {
          completion?($0)

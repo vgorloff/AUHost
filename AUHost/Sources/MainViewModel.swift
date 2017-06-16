@@ -15,7 +15,8 @@ class MainViewModel {
       case loadingEffects(Bool)
       case willSelectEffect
       case didSelectEffect(Error?)
-      case playbackEngineStageChanged(PlaybackEngineState)
+      case playbackEngineStageChanged(PlaybackEngineStateMachine.State)
+      case audioComponentsChanged
    }
 
    enum CoordinatorEvent {
@@ -25,7 +26,7 @@ class MainViewModel {
    var viewHandler: ((ViewEvent) -> Void)?
    var coordinatorHandler: ((CoordinatorEvent) -> Void)?
 
-   var model: MainModel?
+   private var model = MainModel()
    private(set) var selectedAUComponent: AVAudioUnitComponent?
    private(set) var availableEffects = [AVAudioUnitComponent]()
    private(set) var availablePresets = [AUAudioUnitPreset]()
@@ -36,6 +37,21 @@ class MainViewModel {
          switch $0 {
          case .EngineStateChanged(_, let new):
             this.viewHandler?(.playbackEngineStageChanged(new))
+         }
+      }
+      model.eventHandler = { [weak self] in guard let this = self else { return }
+         switch $0 {
+         case .audioComponentChanged(let change):
+            switch change {
+            case .audioComponentRegistered:
+               this.viewHandler?(.audioComponentsChanged)
+            case .audioComponentInstanceInvalidated(let au, _):
+               if au.component == this.selectedAUComponent?.audioComponent {
+                  this.selectEffect(nil)
+               } else {
+                  this.viewHandler?(.audioComponentsChanged)
+               }
+            }
          }
       }
    }
@@ -50,9 +66,6 @@ class MainViewModel {
    }
 
    func reloadEffects() {
-      guard let model = model else {
-         return
-      }
       viewHandler?(.loadingEffects(true))
       model.reloadEffects { [weak self] in guard let this = self else { return }
          this.availableEffects = $0
@@ -62,9 +75,6 @@ class MainViewModel {
    }
 
    func selectEffect(_ component: AVAudioUnitComponent?) {
-      guard let model = model else {
-         return
-      }
       viewHandler?(.willSelectEffect)
       model.selectEffect(component) { [weak self, weak component] in guard let this = self else { return }
          switch $0 {
@@ -83,23 +93,14 @@ class MainViewModel {
    }
 
    func selectPreset(_ preset: AUAudioUnitPreset?) {
-      guard let model = model else {
-         return
-      }
       model.selectPreset(preset)
    }
 
    func togglePlay() {
-      guard let model = model else {
-         return
-      }
       model.togglePlay()
    }
 
    func processFileAtURL(_ url: URL) throws {
-      guard let model = model else {
-         return
-      }
       try model.processFileAtURL(url)
    }
 }

@@ -79,8 +79,8 @@ public final class AudioComponentsUtility {
       }
 
       observerOfComponentChange = Notification.SmartObserver(
-      forName: .audioComponentInstanceInvalidation, queue: notificationsQueue) {[weak self] notification in
-         guard let s1 = self else {
+      forName: .audioComponentInstanceInvalidation, queue: notificationsQueue) { [weak self] notification in
+         guard let this = self else {
             return
          }
          guard let crashedAU = notification.object as? AUAudioUnit else {
@@ -91,11 +91,8 @@ public final class AudioComponentsUtility {
             let pointer = unsafeBitCast(value.pointerValue, to: UnsafeMutablePointer<AudioUnit>.self)
             audioUnit = pointer.pointee
          }
-         s1.completionHandlerQueue.async { [weak s1] in
-            guard let s2 = s1 else {
-               return
-            }
-            s2.handlerStateChange?(.audioComponentInstanceInvalidated(crashedAU, audioUnit))
+         this.completionHandlerQueue.async {
+            self?.handlerStateChange?(.audioComponentInstanceInvalidated(crashedAU, audioUnit))
          }
       }
    }
