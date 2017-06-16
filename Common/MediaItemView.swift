@@ -36,8 +36,6 @@ public final class MediaItemView: NSView {
 
    public var onCompleteDragWithObjects: ((MediaObjectPasteboardUtility.PasteboardObjects) -> Void)?
 
-   // MARK: - Public
-
    required public init?(coder: NSCoder) {
       super.init(coder: coder)
       registerForDraggedTypes(pbUtil.draggedTypes)
@@ -64,8 +62,9 @@ public final class MediaItemView: NSView {
       drawWaveform()
       drawTextMessage()
    }
+}
 
-   // MARK: - NSDraggingDestination
+extension MediaItemView {
 
    public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
       let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard())
@@ -114,7 +113,9 @@ public final class MediaItemView: NSView {
       isHighlighted = false
    }
 
-   // MARK: - Private
+}
+
+extension MediaItemView {
 
    private func getScaleFactor() -> CGFloat {
       let backingSize = convertToBacking(bounds.size)

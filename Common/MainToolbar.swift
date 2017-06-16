@@ -16,24 +16,28 @@ class MainToolbar: NSToolbar {
 
    init(identifier: NSToolbar.Identifier, showsReloadPlugInsItem: Bool = true) {
       super.init(identifier: identifier)
+      setupHandlers()
       allowsUserCustomization = true
       autosavesConfiguration = true
       displayMode = .iconAndLabel
       toolbarDelegate.allowedItemIdentifiers = [.space, .flexibleSpace]
+      toolbarDelegate.selectableItemIdentifiers = [.space, .flexibleSpace]
       toolbarDelegate.defaultItemIdentifiers = Event.toolbarIDs + [.flexibleSpace]
       if showsReloadPlugInsItem == false {
          toolbarDelegate.defaultItemIdentifiers = toolbarDelegate.defaultItemIdentifiers.filter {
             $0 != Event.reloadPlugIns.itemIdentifier
          }
       }
-      toolbarDelegate.selectableItemIdentifiers = toolbarDelegate.allowedItemIdentifiers
+      delegate = toolbarDelegate
+   }
+
+   private func setupHandlers() {
       toolbarDelegate.makeItemCallback = { [unowned self] id, flag in
          guard let event = Event(id: id) else {
             return nil
          }
          return self.makeToolbarItem(event: event)
       }
-      delegate = toolbarDelegate
    }
 
    private func makeToolbarItem(event: Event) -> NSToolbarItem {
