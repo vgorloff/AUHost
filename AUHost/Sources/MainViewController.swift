@@ -26,20 +26,11 @@ class MainViewController: NSViewController {
    let viewModel = MainViewModel()
    let model = MainModel()
 
-   private var availablePresets = [AUAudioUnitPreset]()
    private weak var effectViewController: NSViewController? // Temporary store
    private weak var effectWindowController: EffectWindowController?
-   private var playbackEngine: PlaybackEngine {
-      return Application.sharedInstance.playbackEngine
-   }
-   private var selectedAUComponent: AVAudioUnitComponent?
+
    private var canOpenEffectView: Bool {
-      guard let component = selectedAUComponent, effectWindowController == nil else {
-         return false
-      }
-      let flags = AudioComponentFlags(rawValue: component.audioComponentDescription.componentFlags)
-      let v3AU = flags.contains(AudioComponentFlags.isV3AudioUnit)
-      return component.hasCustomView || v3AU
+      return effectWindowController == nil && viewModel.canOpenEffectView
    }
    private let segueOpenEffect = NSStoryboardSegue.Identifier("S:OpenEffectView")
 
@@ -48,8 +39,6 @@ class MainViewController: NSViewController {
       setupHandlers()
       viewModel.model = model
       DispatchQueue.main.async { [weak self] in guard let s = self else { return }
-         s.setUpPlaybackHelper()
-         s.setUpMediaItemView()
          s.viewModel.reloadEffects()
       }
    }
@@ -81,6 +70,36 @@ extension MainViewController {
                this.tableEffects.reloadData()
             }
             this.tableEffects.isEnabled = !isBusy
+         case .willSelectEffect:
+            this.tablePresets.isEnabled = false
+         case .didSelectEffect(let error):
+            this.tablePresets.reloadData()
+            this.tablePresets.isEnabled = this.viewModel.availablePresets.count > 0
+            if error == nil {
+               if this.effectWindowController != nil {
+                  DispatchQueue.main.async { [weak self] in
+                     self?.actionToggleEffectView(nil)
+                  }
+               }
+            }
+         case .playbackEngineStageChanged(let state):
+            switch state {
+            case .Playing:
+               this.buttonPlay.isEnabled = true
+               this.buttonPlay.title = "Pause"
+               this.buttonOpenEffectView.isEnabled = this.canOpenEffectView
+            case .Stopped:
+               this.buttonPlay.isEnabled = true
+               this.buttonPlay.title = "Play"
+               this.buttonOpenEffectView.isEnabled = this.canOpenEffectView
+            case .Paused:
+               this.buttonPlay.isEnabled = true
+               this.buttonPlay.title = "Resume"
+               this.buttonOpenEffectView.isEnabled = this.canOpenEffectView
+            case .SettingEffect, .SettingFile:
+               this.buttonPlay.isEnabled = false
+               this.buttonOpenEffectView.isEnabled = false
+            }
          }
       }
       model.eventHandler = { [weak self] in guard let this = self else { return }
@@ -90,47 +109,10 @@ extension MainViewController {
             case .audioComponentRegistered:
                break
             case .audioComponentInstanceInvalidated:
-               this.playbackEngine.selectEffect(component: nil, completionHandler: nil)
-               this.selectedAUComponent = nil
+               this.viewModel.selectEffect(nil)
             }
-            this.viewModel.reloadEffects()
          }
       }
-   }
-
-   @IBAction private func actionTogglePlayAudio(_ sender: AnyObject) {
-      do {
-         switch playbackEngine.stateID {
-         case .Playing:
-            playbackEngine.pause()
-         case .Paused:
-            try playbackEngine.resume()
-         case .Stopped:
-            try playbackEngine.play()
-         case .SettingEffect, .SettingFile: break
-         }
-      } catch {
-         Logger.error(subsystem: .controller, category: .handle, message: error)
-      }
-   }
-
-   @IBAction private func actionToggleEffectView(_ sender: AnyObject?) {
-      guard canOpenEffectView && effectWindowController == nil else {
-         return
-      }
-      playbackEngine.openEffectView { [weak self] controller in guard let s = self else { return }
-         s.effectViewController = controller
-         if controller != nil {
-            s.performSegue(withIdentifier: s.segueOpenEffect, sender: s)
-         }
-      }
-   }
-
-}
-
-extension MainViewController {
-
-   private func setUpMediaItemView() {
       mediaItemView.onCompleteDragWithObjects = { [weak self] results in
          guard let s = self else { return }
          switch results {
@@ -151,31 +133,26 @@ extension MainViewController {
       }
    }
 
-   private func setUpPlaybackHelper() {
-      playbackEngine.changeHandler = { [weak self, weak playbackEngine] change in
-         guard let s = self, let engine = playbackEngine else { return }
-         switch change {
-         case .EngineStateChanged(_, _):
-            switch engine.stateID {
-            case .Playing:
-               s.buttonPlay.isEnabled = true
-               s.buttonPlay.title = "Pause"
-               s.buttonOpenEffectView.isEnabled = s.canOpenEffectView
-            case .Stopped:
-               s.buttonPlay.isEnabled = true
-               s.buttonPlay.title = "Play"
-               s.buttonOpenEffectView.isEnabled = s.canOpenEffectView
-            case .Paused:
-               s.buttonPlay.isEnabled = true
-               s.buttonPlay.title = "Resume"
-               s.buttonOpenEffectView.isEnabled = s.canOpenEffectView
-            case .SettingEffect, .SettingFile:
-               s.buttonPlay.isEnabled = false
-               s.buttonOpenEffectView.isEnabled = false
-            }
+   @IBAction private func actionTogglePlayAudio(_ sender: AnyObject) {
+      viewModel.togglePlay()
+   }
+
+   @IBAction private func actionToggleEffectView(_ sender: AnyObject?) {
+      guard canOpenEffectView else {
+         return
+      }
+      let engine = Application.sharedInstance.playbackEngine
+      engine.openEffectView { [weak self] controller in guard let s = self else { return }
+         s.effectViewController = controller
+         if controller != nil {
+            s.performSegue(withIdentifier: s.segueOpenEffect, sender: s)
          }
       }
    }
+
+}
+
+extension MainViewController {
 
    private func processFileAtURL(_ url: URL) {
       do {
@@ -183,12 +160,8 @@ extension MainViewController {
             url.stopAccessingSecurityScopedResource() // Seems working fine without this line
          }
          _ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
-         let f = try AVAudioFile(forReading: url)
          mediaItemView.mediaFileURL = url
-         try playbackEngine.setFileToPlay(f)
-         if playbackEngine.stateID == .Stopped {
-            try playbackEngine.play()
-         }
+         try viewModel.processFileAtURL(url)
          Logger.debug(subsystem: .controller, category: .open, message: "File assigned: \(url.absoluteString)")
       } catch {
          Logger.error(subsystem: .controller, category: .open, message: error)
@@ -204,7 +177,7 @@ extension MainViewController: NSTableViewDataSource {
       case tableEffects:
          return viewModel.availableEffects.count + 1
       case tablePresets:
-         return availablePresets.count + 1
+         return viewModel.availablePresets.count + 1
       default:
          fatalError("Unknown tableView: \(tableView)")
       }
@@ -222,7 +195,7 @@ extension MainViewController: NSTableViewDataSource {
          if row == 0 {
             return "- Default Preset -"
          }
-         let preset = availablePresets[row - 1]
+         let preset = viewModel.availablePresets[row - 1]
          return preset.name
       default:
          fatalError("Unknown tableView: \(tableView)")
@@ -236,64 +209,33 @@ extension MainViewController: NSTableViewDelegate {
       guard let tableView = aNotification.object as? NSTableView, tableView.selectedRow >= 0 else {
          return
       }
-      func handleTableEffects() {
-         let shouldReopenEffectView = (effectWindowController != nil)
+
+      switch tableView {
+      case tableEffects:
          effectWindowController?.close()
          if tableView.selectedRow == 0 {
             Logger.debug(subsystem: .controller, category: .handle, message: "Clearing effect")
-            playbackEngine.selectEffect(component: nil) { [weak self] _ in
-               guard let s = self else { return }
-               s.availablePresets.removeAll()
-               s.tablePresets.reloadData()
-               s.tablePresets.isEnabled = s.availablePresets.count > 0
-            }
-            selectedAUComponent = nil
+            viewModel.selectEffect(nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < viewModel.availableEffects.count {
                let component = viewModel.availableEffects[row]
                Logger.debug(subsystem: .controller, category: .handle, message: "Selecting effect: \"\(component.name)\"")
-               playbackEngine.selectEffect(component: component) { [weak self, weak component] result in
-                  guard let s = self else { return }
-                  switch result {
-                  case .EffectCleared: break
-                  case .Failure(let e):
-                     Logger.error(subsystem: .controller, category: .handle, message: e)
-                  case .Success(let effect):
-                     s.availablePresets = effect.auAudioUnit.factoryPresets ?? []
-                     s.tablePresets.reloadData()
-                     s.tablePresets.isEnabled = s.availablePresets.count > 0
-                     s.selectedAUComponent = component
-                     if shouldReopenEffectView {
-                        DispatchQueue.main.async { [weak self] in
-                           self?.actionToggleEffectView(nil)
-                        }
-                     }
-                  }
-               }
+               viewModel.selectEffect(component)
             }
          }
-      }
-
-      func handleTablePresets() {
+      case tablePresets:
          if tableView.selectedRow == 0 {
             Logger.debug(subsystem: .controller, category: .lifecycle, message: "Clearing preset")
-            playbackEngine.selectPreset(preset: nil)
+            viewModel.selectPreset(nil)
          } else {
             let row = tableView.selectedRow - 1
-            if row < availablePresets.count {
-               let preset = availablePresets[row]
+            if row < viewModel.availablePresets.count {
+               let preset = viewModel.availablePresets[row]
                Logger.debug(subsystem: .controller, category: .lifecycle, message: "Selecting preset: \"\(preset.name)\"")
-               playbackEngine.selectPreset(preset: preset)
+               viewModel.selectPreset(preset)
             }
          }
-      }
-
-      switch tableView {
-      case tableEffects:
-         handleTableEffects()
-      case tablePresets:
-         handleTablePresets()
       default:
          fatalError("Unknown tableView: \(tableView)")
       }

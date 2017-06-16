@@ -13,6 +13,7 @@ class Application: NSApplication {
    let appDelegate = AppDelegate()
    let mediaLibraryLoader = MediaLibraryUtility()
    let playbackEngine = PlaybackEngine()
+   
    static var sharedInstance: Application {
       guard let application = NSApplication.shared as? Application else {
          fatalError()
