@@ -38,7 +38,7 @@ class MainWindowController: NSWindowController {
 
    override func windowDidLoad() {
       super.windowDidLoad()
-      Application.sharedInstance.mediaLibraryLoader.loadMediaLibrary { [weak self] in
+      Application.sharedInstance.coordinator.mediaLibraryLoader.loadMediaLibrary { [weak self] in
          self?.mediaLibraryController.isVisible = true
       }
    }

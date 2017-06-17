@@ -17,7 +17,7 @@ class ViewController: NSViewController {
    @IBOutlet fileprivate weak var buttonPlay: NSButton!
    @IBOutlet fileprivate weak var buttonLoadAU: NSButton!
    fileprivate var playbackEngine: PlaybackEngine {
-      return Application.sharedInstance.playbackEngine
+      return Application.sharedInstance.coordinator.playbackEngine
    }
    fileprivate var audioUnit: AttenuatorAudioUnit?
    fileprivate var audioUnitController: AttenuatorViewController?
@@ -51,7 +51,7 @@ extension ViewController {
          case .none:
             break
          case .mediaObjects(let mediaObjectsDict):
-            let mediaObjects = Application.sharedInstance.mediaLibraryLoader.mediaObjectsFromPlist(
+            let mediaObjects = Application.sharedInstance.coordinator.mediaLibraryLoader.mediaObjectsFromPlist(
                pasteboardPlist: mediaObjectsDict)
             if let firstMediaObject = mediaObjects.first?.1.first?.1, let url = firstMediaObject.url {
                s.processFileAtURL(url)
