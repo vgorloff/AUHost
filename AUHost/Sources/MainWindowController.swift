@@ -10,35 +10,28 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   private lazy var mediaLibraryController = g.configure(NSMediaLibraryBrowserController.shared) {
-      $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
-   }
+   var uiModel: MainWindowUIModelType?
 
-   override func awakeFromNib() {
-      super.awakeFromNib()
-      let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
-      mainToolbar.eventHandler = { [unowned self] in
-         switch $0 {
-         case .toggleMediaLibrary:
-            self.mediaLibraryController.togglePanel(self)
-         case .reloadPlugIns:
-            self.mainController.viewModel.reloadEffects()
-         }
-      }
-      window?.toolbar = mainToolbar
-   }
-
-   private var mainController: MainViewController {
-      guard let c = contentViewController as? MainViewController else {
-         fatalError()
-      }
-      return c
-   }
+   private let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
 
    override func windowDidLoad() {
       super.windowDidLoad()
-      Application.sharedInstance.mediaLibraryLoader.loadMediaLibrary { [weak self] in
-         self?.mediaLibraryController.isVisible = true
+      window?.toolbar = mainToolbar
+      setupHandlers()
+   }
+
+}
+
+extension MainWindowController {
+
+   private func setupHandlers() {
+      mainToolbar.eventHandler = { [unowned self] in
+         switch $0 {
+         case .toggleMediaLibrary:
+            self.uiModel?.toggleMediaBrowser(sender: self)
+         case .reloadPlugIns:
+            self.uiModel?.reloadEffects()
+         }
       }
    }
 

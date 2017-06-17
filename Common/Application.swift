@@ -10,20 +10,9 @@ import Cocoa
 
 class Application: NSApplication {
 
-   let appDelegate = AppDelegate()
-   let mediaLibraryLoader = MediaLibraryUtility()
-   let playbackEngine = PlaybackEngine()
-   
-   static var sharedInstance: Application {
-      guard let application = NSApplication.shared as? Application else {
-         fatalError()
-      }
-      return application
-   }
-
    override init() {
       super.init()
-      delegate = appDelegate
+      delegate = self
    }
 
    required init?(coder: NSCoder) {
@@ -32,6 +21,22 @@ class Application: NSApplication {
 
    deinit {
 
+   }
+
+}
+
+extension Application: NSApplicationDelegate {
+
+   func applicationDidFinishLaunching(_ aNotification: Notification) {
+      
+   }
+
+   func applicationWillTerminate(_ aNotification: Notification) {
+      // Insert code here to tear down your application
+   }
+
+   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+      return true
    }
 
 }

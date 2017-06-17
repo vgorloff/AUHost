@@ -54,6 +54,8 @@
 		805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */; };
 		806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806476511D454A8A00AF72B9 /* FoundationUtilities.swift */; };
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
+		8088EB231EF4784C0022A26E /* PlaybackEngineStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088EB221EF478420022A26E /* PlaybackEngineStateMachine.swift */; };
+		8088EB271EF47B490022A26E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088EB261EF47B490022A26E /* MainCoordinator.swift */; };
 		80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6A1C568A6800BF812A /* AttenuatorView.swift */; };
 		80A21A6E1C569B3500BF812A /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */; };
 		80A950041D5930A80044ED2C /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A950011D5930A50044ED2C /* CommonExtensions.swift */; };
@@ -176,6 +178,8 @@
 		8048603F1DAAF748004EFA32 /* Attenuator.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Attenuator.xcconfig; sourceTree = "<group>"; };
 		805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		806476511D454A8A00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; };
+		8088EB221EF478420022A26E /* PlaybackEngineStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackEngineStateMachine.swift; sourceTree = "<group>"; };
+		8088EB261EF47B490022A26E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		80A21A6A1C568A6800BF812A /* AttenuatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
 		80A21A6D1C569B3500BF812A /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
 		80A950011D5930A50044ED2C /* CommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
@@ -309,6 +313,7 @@
 				80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */,
 				80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */,
 				80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */,
+				8088EB221EF478420022A26E /* PlaybackEngineStateMachine.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -376,6 +381,7 @@
 				C5A5A1011C47E75F00F9864E /* ViewController.swift */,
 				C5A5A1031C47E75F00F9864E /* Assets.xcassets */,
 				C5A5A1051C47E75F00F9864E /* Main.storyboard */,
+				8088EB261EF47B490022A26E /* MainCoordinator.swift */,
 			);
 			path = Attenuator;
 			sourceTree = "<group>";
@@ -624,6 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80485FE41DA6C700004EFA32 /* Application.swift in Sources */,
+				8088EB271EF47B490022A26E /* MainCoordinator.swift in Sources */,
 				80485FD51DA6C4B4004EFA32 /* NonRecursiveLocking.swift in Sources */,
 				80485FC81DA6C2EC004EFA32 /* WaveformCacheUtility.swift in Sources */,
 				80485FD81DA6C55A004EFA32 /* KVOHelper.swift in Sources */,
@@ -642,6 +649,7 @@
 				80485FCE1DA6C39B004EFA32 /* PlaybackEngine.swift in Sources */,
 				80485FDA1DA6C579004EFA32 /* Enumerations.swift in Sources */,
 				80485FC31DA6C26F004EFA32 /* AppDelegate.swift in Sources */,
+				8088EB231EF4784C0022A26E /* PlaybackEngineStateMachine.swift in Sources */,
 				80485FD01DA6C3B5004EFA32 /* Logger.swift in Sources */,
 				80485FD11DA6C3CD004EFA32 /* StateMachine.swift in Sources */,
 				80485FBE1DA6C054004EFA32 /* NSToolbar.swift in Sources */,
