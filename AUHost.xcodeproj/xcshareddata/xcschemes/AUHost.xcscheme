@@ -29,6 +29,16 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       codeCoverageEnabled = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "806556DD1EF5AC7400C4C2FA"
+               BuildableName = "AUHostKitTests.xctest"
+               BlueprintName = "AUHostKitTests"
+               ReferencedContainer = "container:AUHost.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference

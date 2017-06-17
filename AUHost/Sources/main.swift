@@ -17,8 +17,9 @@ app.setActivationPolicy(.regular)
 // This will assign property `NSApplication.mainMenu` as well.
 AppConfig.mainMenu.instantiate(withOwner: app, topLevelObjects: nil)
 
-let coordinator = MainWindowCoordinator()
-let windowController = coordinator.start()
+guard let windowController = AppConfig.mainWindowController as? MainWindowController else {
+   fatalError("Wrong type for initial window controller. Expected `\(MainWindowController.self)`")
+}
 windowController.window?.makeKeyAndOrderFront(nil)
 
 app.activate(ignoringOtherApps: true)

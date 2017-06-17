@@ -10,14 +10,23 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   var uiModel: MainWindowUIModelType?
-
+   private let viewUIModel = MainViewUIModel()
    private let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
+   private lazy var mlController = g.configure(NSMediaLibraryBrowserController.shared) {
+      $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
+   }
 
    override func windowDidLoad() {
       super.windowDidLoad()
       window?.toolbar = mainToolbar
       setupHandlers()
+      guard let vc = contentViewController as? MainViewController else {
+         fatalError("Wrong type for initial view controller. Expected `\(MainViewController.self)`")
+      }
+      vc.uiModel = viewUIModel
+      viewUIModel.mediaLibraryLoader.loadMediaLibrary { [weak self] in
+         self?.mlController.isVisible = true
+      }
    }
 
 }
@@ -28,9 +37,9 @@ extension MainWindowController {
       mainToolbar.eventHandler = { [unowned self] in
          switch $0 {
          case .toggleMediaLibrary:
-            self.uiModel?.toggleMediaBrowser(sender: self)
+            self.mlController.togglePanel(self)
          case .reloadPlugIns:
-            self.uiModel?.reloadEffects()
+            self.viewUIModel.reloadEffects()
          }
       }
    }
