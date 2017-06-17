@@ -69,11 +69,3 @@ public extension ColorType {
 	}
 
 }
-
-#if os(iOS)
-extension CGSize: StringRepresentable {
-	public var stringValue: String {
-		return NSStringFromCGSize(self)
-	}
-}
-#endif

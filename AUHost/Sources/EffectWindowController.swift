@@ -8,9 +8,17 @@
 
 import AppKit
 
+protocol EffectWindowCoordination: class {
+   func handleEvent(_: EffectWindowController.CoordinationEvent)
+}
+
 class EffectWindowController: NSWindowController {
 
-   var uiModel: EffectWindowUIModelType?
+   enum CoordinationEvent {
+      case windowWillClose
+   }
+
+   weak var coordinationDelegate: EffectWindowCoordination?
 
    override func awakeFromNib() {
       super.awakeFromNib()
@@ -25,6 +33,6 @@ class EffectWindowController: NSWindowController {
 extension EffectWindowController: NSWindowDelegate {
 
    func windowWillClose(_ notification: Notification) {
-      uiModel?.windowWillClose()
+      coordinationDelegate?.handleEvent(.windowWillClose)
    }
 }

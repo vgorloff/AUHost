@@ -11,10 +11,8 @@ import AVFoundation
 import MediaLibrary
 import CoreAudioKit
 
-/**
- Links:
- * [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
- */
+
+// Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
 class MainViewController: NSViewController {
 
    @IBOutlet private weak var buttonOpenEffectView: NSButton!
@@ -23,75 +21,46 @@ class MainViewController: NSViewController {
    @IBOutlet private weak var tablePresets: NSTableView!
    @IBOutlet private weak var mediaItemView: MediaItemView!
 
-   var uiModel: MainViewUIModelType? {
+   var uiModel: MainViewUIModel? {
+      willSet {
+         uiModel?.uiDelegate = nil
+      }
       didSet {
-         setupHandlers()
+         uiModel?.uiDelegate = self
          uiModel?.reloadEffects()
       }
    }
-
-   private weak var effectViewController: NSViewController? // Temporary store
+   private let segueOpenEffect = NSStoryboardSegue.Identifier("S:OpenEffectView")
+   private var effectViewController: NSViewController? // Temporary store
 
    override func viewDidLoad() {
       super.viewDidLoad()
+      setupHandlers()
    }
 
    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-      uiModel?.prepare(segue: segue)
+      if segue.identifier == segueOpenEffect, let wc = segue.destinationController as? EffectWindowController {
+         wc.contentViewController = effectViewController
+         wc.coordinationDelegate = self
+         uiModel?.effectWindowWillOpen(wc)
+      }
    }
 
 }
 
+extension MainViewController: EffectWindowCoordination {
+
+   func handleEvent(_ event: EffectWindowController.CoordinationEvent) {
+      switch event {
+      case .windowWillClose:
+         uiModel?.effectWindowWillClose()
+      }
+   }
+}
+
 extension MainViewController {
 
-   private func setupHandlers() {
-      uiModel?.viewHandler = { [weak self] in guard let this = self, let uiModel = self?.uiModel else { return }
-         switch $0 {
-         case .effectWindowWillOpen:
-            this.buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .effectWindowWillClose:
-            this.buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .loadingEffects(let isBusy):
-            if !isBusy {
-               this.tableEffects.reloadData()
-            }
-            this.tableEffects.isEnabled = !isBusy
-            this.buttonOpenEffectView.isEnabled = !isBusy && uiModel.canOpenEffectView
-         case .willSelectEffect:
-            this.tablePresets.isEnabled = false
-         case .didSelectEffect(let error):
-            this.tablePresets.reloadData()
-            this.tablePresets.isEnabled = uiModel.availablePresets.count > 0
-            if error == nil {
-               DispatchQueue.main.async {
-                  self?.actionToggleEffectView(nil)
-               }
-            }
-            this.buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .playbackEngineStageChanged(let state):
-            switch state {
-            case .Playing:
-               this.buttonPlay.isEnabled = true
-               this.buttonPlay.title = "Pause"
-               this.buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-            case .Stopped:
-               this.buttonPlay.isEnabled = true
-               this.buttonPlay.title = "Play"
-               this.buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-            case .Paused:
-               this.buttonPlay.isEnabled = true
-               this.buttonPlay.title = "Resume"
-               this.buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-            case .SettingEffect, .SettingFile:
-               this.buttonPlay.isEnabled = false
-               this.buttonOpenEffectView.isEnabled = false
-            }
-         case .audioComponentsChanged:
-            this.tablePresets.reloadData()
-         case .selectMedia(let url):
-            this.mediaItemView.mediaFileURL = url
-         }
-      }
+   func setupHandlers() {
       mediaItemView.onCompleteDragWithObjects = { [weak self] in
          self?.uiModel?.handlePastboard($0)
       }
@@ -103,10 +72,65 @@ extension MainViewController {
 
    @IBAction private func actionToggleEffectView(_ sender: AnyObject?) {
       if uiModel?.canOpenEffectView == true {
-         uiModel?.openEffectView()
+         uiModel?.openEffectView { [weak self] in guard let this = self else { return }
+            this.effectViewController = $0
+            this.performSegue(withIdentifier: this.segueOpenEffect, sender: nil)
+            this.effectViewController = nil
+         }
       }
    }
+}
 
+extension MainViewController: MainViewUIHandling {
+
+   func handleEvent(_ event: MainViewUIModel.UIEvent) {
+      guard let uiModel = uiModel else { return }
+      switch event {
+      case .effectWindowWillOpen:
+         buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
+      case .effectWindowWillClose:
+         buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
+      case .loadingEffects(let isBusy):
+         if !isBusy {
+            tableEffects.reloadData()
+         }
+         tableEffects.isEnabled = !isBusy
+         buttonOpenEffectView.isEnabled = !isBusy && uiModel.canOpenEffectView
+      case .willSelectEffect:
+         tablePresets.isEnabled = false
+      case .didSelectEffect(let error):
+         tablePresets.reloadData()
+         tablePresets.isEnabled = uiModel.availablePresets.count > 0
+         if error == nil {
+            DispatchQueue.main.async {
+               self.actionToggleEffectView(nil)
+            }
+         }
+         buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
+      case .playbackEngineStageChanged(let state):
+         switch state {
+         case .Playing:
+            buttonPlay.isEnabled = true
+            buttonPlay.title = "Pause"
+            buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
+         case .Stopped:
+            buttonPlay.isEnabled = true
+            buttonPlay.title = "Play"
+            buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
+         case .Paused:
+            buttonPlay.isEnabled = true
+            buttonPlay.title = "Resume"
+            buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
+         case .SettingEffect, .SettingFile:
+            buttonPlay.isEnabled = false
+            buttonOpenEffectView.isEnabled = false
+         }
+      case .audioComponentsChanged:
+         tablePresets.reloadData()
+      case .selectMedia(let url):
+         mediaItemView.mediaFileURL = url
+      }
+   }
 }
 
 extension MainViewController: NSTableViewDataSource {
