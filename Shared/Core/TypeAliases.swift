@@ -8,5 +8,6 @@
 
 import Foundation
 
-typealias GenericCompletion<T1, T2> = (T1) -> T2
-typealias Completion<T> = GenericCompletion<T, Void>
+public typealias GenericCompletion<T1, T2> = (T1) -> T2
+public typealias Completion<T> = GenericCompletion<T, Void>
+public typealias VoidCompletion = () -> Void

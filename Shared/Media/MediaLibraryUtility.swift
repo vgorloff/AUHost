@@ -9,55 +9,58 @@
 import Foundation
 import MediaLibrary
 
+public protocol MediaLibraryUtilityDelegate: class {
+   func handleEvent(_: MediaLibraryUtility.Event)
+}
+
 public final class MediaLibraryUtility: NSObject {
 
-	public enum MediaLibraryChangeEvent {
+	public enum Event {
 		case mediaSourceChanged([String : MLMediaSource]?)
 	}
 
-	private lazy var _mediaLibrary: MLMediaLibrary = self.setUpMediaLibrary()
-	private var kvoObserverOfMediaSources: KVOHelper<[String : MLMediaSource]>?
+	@objc private let mediaLibrary: MLMediaLibrary
 	private var mediaLibraryLoadCallback: (() -> Void)?
 	private var mediaLibraryIsLoaded = false
+   var observation: NSKeyValueObservation?
 
-	public var onMediaLibraryChange: ((MediaLibraryChangeEvent) -> Void)?
+	public weak var delegate: MediaLibraryUtilityDelegate?
 
 	public override init() {
+      mediaLibrary = MLMediaLibrary(options: [MLMediaLoadSourceTypesKey: MLMediaSourceType.audio.rawValue])
 		super.init()
 		Logger.initialize(subsystem: .media)
-		kvoObserverOfMediaSources = KVOHelper(object: _mediaLibrary, keyPath: "mediaSources") { [weak self] result in
-			guard let s = self else { return }
-			if let value = result.valueNew {
-            Logger.debug(subsystem: .media, category: .handle,
-                         message: "Found \(value.count) media sources: \(Array(value.keys))")
-				for mediaSource in value.values {
-					_ = mediaSource.rootMediaGroup // Triggering lazy initialization
-					// TODO: It is better to setup another KVO roundtrip. By Vlad Gorlov, Jan 15, 2016.
-				}
-			}
-			s.mediaLibraryIsLoaded = true
-			s.onMediaLibraryChange?(.mediaSourceChanged(result.valueNew))
-			s.mediaLibraryLoadCallback?()
-		}
+      observation = mediaLibrary.observe(\.mediaSources) { [weak self] object, _ in guard let this = self else { return }
+         let sources = object.mediaSources ?? [:]
+         Logger.debug(subsystem: .media, category: .handle,
+                      message: "Found \(sources.count) media sources: \(Array(sources.keys))")
+         for mediaSource in sources.values {
+            _ = mediaSource.rootMediaGroup // Triggering lazy initialization
+            // TODO: It is better to setup another KVO roundtrip. By Vlad Gorlov, Jan 15, 2016.
+         }
+         this.mediaLibraryIsLoaded = true
+         this.delegate?.handleEvent(.mediaSourceChanged(sources))
+         this.mediaLibraryLoadCallback?()
+      }
 	}
 
 	deinit {
-		kvoObserverOfMediaSources = nil
+      observation = nil
 		Logger.deinitialize(subsystem: .media)
 	}
 
-	public func loadMediaLibrary(completion: (() -> Void)?) {
+	public func loadMediaLibrary(completion: VoidCompletion?) {
 		if mediaLibraryIsLoaded {
-			completion?()
+         completion?()
 		} else {
 			mediaLibraryLoadCallback = completion
-			_ = _mediaLibrary.mediaSources // Triggering lazy initialization
+			_ = mediaLibrary.mediaSources // Triggering lazy initialization
 		}
 	}
 
 	public func mediaObjectsFromPlist(pasteboardPlist: NSDictionary) -> [String: [String : MLMediaObject]] {
 		var results = [String: [String: MLMediaObject]]()
-		guard let keys = pasteboardPlist.allKeys as? [String], let mediaSources = _mediaLibrary.mediaSources else {
+		guard let keys = pasteboardPlist.allKeys as? [String], let mediaSources = mediaLibrary.mediaSources else {
 			return results
 		}
 		for key in keys {
@@ -68,12 +71,4 @@ public final class MediaLibraryUtility: NSObject {
 		}
 		return results
 	}
-
-	// MARK: - Private
-
-	private func setUpMediaLibrary() -> MLMediaLibrary {
-		let o = [MLMediaLoadSourceTypesKey: MLMediaSourceType.audio.rawValue]
-		return MLMediaLibrary(options: o)
-	}
-
 }

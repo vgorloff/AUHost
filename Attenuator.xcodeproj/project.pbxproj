@@ -41,7 +41,6 @@
 		80485FD31DA6C491004EFA32 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674421D25DE77000989CA /* Functions.swift */; };
 		80485FD41DA6C493004EFA32 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674421D25DE77000989CA /* Functions.swift */; };
 		80485FD51DA6C4B4004EFA32 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674471D25DE77000989CA /* NonRecursiveLocking.swift */; };
-		80485FD81DA6C55A004EFA32 /* KVOHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674431D25DE77000989CA /* KVOHelper.swift */; };
 		80485FD91DA6C572004EFA32 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674451D25DE77000989CA /* Math.swift */; };
 		80485FDA1DA6C579004EFA32 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046743E1D25DE77000989CA /* Enumerations.swift */; };
 		80485FDB1DA6C5F8004EFA32 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674701D25DF2A000989CA /* DispatchSource.swift */; };
@@ -152,7 +151,6 @@
 		8046743A1D25DE77000989CA /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
 		8046743E1D25DE77000989CA /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		804674421D25DE77000989CA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		804674431D25DE77000989CA /* KVOHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOHelper.swift; sourceTree = "<group>"; };
 		804674441D25DE77000989CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		804674451D25DE77000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		804674461D25DE77000989CA /* MinMax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
@@ -268,7 +266,6 @@
 				80AC1BAA1EEF37C50048151A /* Extensions */,
 				806476511D454A8A00AF72B9 /* FoundationUtilities.swift */,
 				804674421D25DE77000989CA /* Functions.swift */,
-				804674431D25DE77000989CA /* KVOHelper.swift */,
 				804674441D25DE77000989CA /* Logger.swift */,
 				804674451D25DE77000989CA /* Math.swift */,
 				804674461D25DE77000989CA /* MinMax.swift */,
@@ -635,7 +632,6 @@
 				80485FE41DA6C700004EFA32 /* Application.swift in Sources */,
 				80485FD51DA6C4B4004EFA32 /* NonRecursiveLocking.swift in Sources */,
 				80485FC81DA6C2EC004EFA32 /* WaveformCacheUtility.swift in Sources */,
-				80485FD81DA6C55A004EFA32 /* KVOHelper.swift in Sources */,
 				805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */,
 				80485FCA1DA6C343004EFA32 /* MinMax.swift in Sources */,
 				80485FE51DA6C735004EFA32 /* MediaLibraryUtility.swift in Sources */,
