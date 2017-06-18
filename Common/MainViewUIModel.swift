@@ -20,6 +20,7 @@ class MainViewUIModel {
       case loadingEffects(Bool)
       case willSelectEffect
       case didSelectEffect(Error?)
+      case didClearEffect
       case playbackEngineStageChanged(PlaybackEngineStateMachine.State)
       case audioComponentsChanged
       case selectMedia(URL)
@@ -51,7 +52,7 @@ class MainViewUIModel {
             this.uiDelegate?.handleEvent(.audioComponentsChanged)
          case .audioComponentInstanceInvalidated(let au, _):
             if au.component == this.selectedAUComponent?.audioComponent {
-               this.selectEffect(nil)
+               this.selectEffect(nil, completion: nil)
             } else {
                this.uiDelegate?.handleEvent(.audioComponentsChanged)
             }
@@ -81,14 +82,15 @@ extension MainViewUIModel {
 
    }
 
-   func selectEffect(_ component: AVAudioUnitComponent?) {
+   func selectEffect(_ component: AVAudioUnitComponent?, completion: Completion<AVAudioUnit>?) {
       uiDelegate?.handleEvent(.willSelectEffect)
-      playbackEngine.selectEffect(component: component) { [weak self, weak component] in guard let this = self else { return }
+      playbackEngine.selectEffect(componentDescription: component?.audioComponentDescription) { [weak self] in
+         guard let this = self else { return }
          switch $0 {
          case .EffectCleared:
             this.availablePresets.removeAll()
             this.selectedAUComponent = nil
-            this.uiDelegate?.handleEvent(.didSelectEffect(nil))
+            this.uiDelegate?.handleEvent(.didClearEffect)
          case .Failure(let e):
             Logger.error(subsystem: .controller, category: .handle, message: e)
             this.uiDelegate?.handleEvent(.didSelectEffect(e))
@@ -96,6 +98,7 @@ extension MainViewUIModel {
             this.availablePresets = effect.auAudioUnit.factoryPresets ?? []
             this.selectedAUComponent = component
             this.uiDelegate?.handleEvent(.didSelectEffect(nil))
+            completion?(effect)
          }
       }
    }

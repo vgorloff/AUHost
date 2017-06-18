@@ -116,18 +116,12 @@ extension PlaybackEngine {
       }
       avau.auAudioUnit.currentPreset = matchedPreset
    }
-
-   func selectEffect(component: AVAudioUnitComponent?,
-                     completionHandler: ((PlaybackEngineStateMachine.EffectSelectionResult) -> Void)?) {
-      selectEffect(componentDescription: component?.audioComponentDescription, completionHandler: completionHandler)
-   }
-
 }
 
 extension PlaybackEngine {
 
    func selectEffect(componentDescription: AudioComponentDescription?,
-                             completionHandler: ((PlaybackEngineStateMachine.EffectSelectionResult) -> Void)?) {
+                     completionHandler: ((PlaybackEngineStateMachine.EffectSelectionResult) -> Void)?) {
       var possibleRelaunchEvent: PlaybackEngineStateMachine.Event?
       switch stateID {
       case .SettingEffect, .SettingFile: break

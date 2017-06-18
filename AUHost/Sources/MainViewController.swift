@@ -98,14 +98,13 @@ extension MainViewController: MainViewUIHandling {
          buttonOpenEffectView.isEnabled = !isBusy && uiModel.canOpenEffectView
       case .willSelectEffect:
          tablePresets.isEnabled = false
-      case .didSelectEffect(let error):
+      case .didSelectEffect:
          tablePresets.reloadData()
          tablePresets.isEnabled = uiModel.availablePresets.count > 0
-         if error == nil {
-            DispatchQueue.main.async {
-               self.actionToggleEffectView(nil)
-            }
-         }
+         buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
+      case .didClearEffect:
+         tablePresets.reloadData()
+         tablePresets.isEnabled = uiModel.availablePresets.count > 0
          buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
       case .playbackEngineStageChanged(let state):
          switch state {
@@ -178,13 +177,17 @@ extension MainViewController: NSTableViewDelegate {
          uiModel.closeEffectView()
          if tableView.selectedRow == 0 {
             Logger.debug(subsystem: .controller, category: .handle, message: "Clearing effect")
-            uiModel.selectEffect(nil)
+            uiModel.selectEffect(nil, completion: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < uiModel.availableEffects.count {
                let component = uiModel.availableEffects[row]
                Logger.debug(subsystem: .controller, category: .handle, message: "Selecting effect: \"\(component.name)\"")
-               uiModel.selectEffect(component)
+               uiModel.selectEffect(component) { [weak self] _ in
+                  DispatchQueue.main.async {
+                     self?.actionToggleEffectView(nil)
+                  }
+               }
             }
          }
       case tablePresets:
