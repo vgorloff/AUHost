@@ -35,8 +35,6 @@
 		807E3C0F1D25D9670033629F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C0C1D25D9670033629F /* Functions.swift */; };
 		807E3C101D25D9670033629F /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */; };
 		807E3C141D25D9880033629F /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */; };
-		807E3C181D25D9B30033629F /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C161D25D9B30033629F /* StateMachine.swift */; };
-		8088EB1D1EF4674F0022A26E /* PlaybackEngineStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088EB1C1EF4674F0022A26E /* PlaybackEngineStateMachine.swift */; };
 		8088EB211EF470D00022A26E /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088EB201EF470D00022A26E /* TypeAliases.swift */; };
 		8096F4F21EF5809900B1A5CD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F9DF8B1EF5802C0026A7A6 /* main.swift */; };
 		80A94FFF1D59300F0044ED2C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A94FFE1D59300F0044ED2C /* Color.swift */; };
@@ -107,8 +105,6 @@
 		807E3C0C1D25D9670033629F /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
 		807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
-		807E3C161D25D9B30033629F /* StateMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
-		8088EB1C1EF4674F0022A26E /* PlaybackEngineStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackEngineStateMachine.swift; sourceTree = "<group>"; };
 		8088EB201EF470D00022A26E /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		80A94FFE1D59300F0044ED2C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		80AC1BA21EEF36B40048151A /* OperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
@@ -184,7 +180,6 @@
 				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
 				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
 				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
-				8088EB1C1EF4674F0022A26E /* PlaybackEngineStateMachine.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -241,7 +236,6 @@
 				807E3C061D25D9330033629F /* MinMax.swift */,
 				807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */,
 				807E3C071D25D9330033629F /* NumericTypesConversions.swift */,
-				807E3C161D25D9B30033629F /* StateMachine.swift */,
 				8088EB201EF470D00022A26E /* TypeAliases.swift */,
 			);
 			path = Core;
@@ -422,13 +416,11 @@
 				8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */,
 				804674221D25DA66000989CA /* Enumerations.swift in Sources */,
 				80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */,
-				807E3C181D25D9B30033629F /* StateMachine.swift in Sources */,
 				8088EB211EF470D00022A26E /* TypeAliases.swift in Sources */,
 				80AC1BA51EEF36E10048151A /* DispatchQueue.swift in Sources */,
 				8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */,
 				80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */,
 				80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */,
-				8088EB1D1EF4674F0022A26E /* PlaybackEngineStateMachine.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
 				80AC1BA71EEF371D0048151A /* String.swift in Sources */,
 				805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */,

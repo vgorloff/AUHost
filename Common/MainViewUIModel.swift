@@ -21,7 +21,7 @@ class MainViewUIModel {
       case willSelectEffect
       case didSelectEffect(Error?)
       case didClearEffect
-      case playbackEngineStageChanged(PlaybackEngineStateMachine.State)
+      case playbackEngineStageChanged(PlaybackEngine.State)
       case audioComponentsChanged
       case selectMedia(URL)
       case effectWindowWillOpen
@@ -40,11 +40,8 @@ class MainViewUIModel {
    private var effectWindowController: NSWindowController? // Temporary store
 
    init() {
-      playbackEngine.changeHandler = { [weak self] in guard let this = self else { return }
-         switch $0 {
-         case .EngineStateChanged(_, let new):
-            this.uiDelegate?.handleEvent(.playbackEngineStageChanged(new))
-         }
+      playbackEngine.changeHandler = { [weak self] in
+         self?.uiDelegate?.handleEvent(.playbackEngineStageChanged($0.newState))
       }
       audioUnitDatasource.handlerStateChange = { [weak self] change in guard let this = self else { return }
          switch change {
@@ -111,12 +108,12 @@ extension MainViewUIModel {
       do {
          switch playbackEngine.stateID {
          case .Playing:
-            playbackEngine.pause()
+            try playbackEngine.pause()
          case .Paused:
             try playbackEngine.resume()
          case .Stopped:
             try playbackEngine.play()
-         case .SettingEffect, .SettingFile:
+         case .updatingGraph:
             break
          }
       } catch {
@@ -132,7 +129,7 @@ extension MainViewUIModel {
          _ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
          uiDelegate?.handleEvent(.selectMedia(url))
          let f = try AVAudioFile(forReading: url)
-         try playbackEngine.setFileToPlay(f)
+         playbackEngine.setFileToPlay(f)
          if playbackEngine.stateID == .Stopped {
             try playbackEngine.play()
          }
