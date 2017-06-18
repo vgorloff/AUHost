@@ -10,36 +10,30 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   private lazy var mediaLibraryController = g.configure(NSMediaLibraryBrowserController.shared) {
+   private lazy var mlController = g.configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
-
-   override func awakeFromNib() {
-      super.awakeFromNib()
-      let id = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
-      let mainToolbar = MainToolbar(identifier: id, showsReloadPlugInsItem: false)
-      mainToolbar.eventHandler = { [unowned self] in
-         switch $0 {
-         case .toggleMediaLibrary:
-            self.mediaLibraryController.togglePanel(self)
-         case .reloadPlugIns:
-            break
-         }
-      }
-      window?.toolbar = mainToolbar
-   }
-
-   private var mainController: ViewController {
-      guard let c = contentViewController as? ViewController else {
-         fatalError()
-      }
-      return c
-   }
+   let mainToolbarID = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
+   lazy var mainToolbar: MainToolbar = MainToolbar(identifier: self.mainToolbarID, showsReloadPlugInsItem: false)
+   private let viewUIModel = MainViewUIModel()
 
    override func windowDidLoad() {
       super.windowDidLoad()
-      Application.sharedInstance.coordinator.mediaLibraryLoader.loadMediaLibrary { [weak self] in
-         self?.mediaLibraryController.isVisible = true
+      guard let vc = contentViewController as? ViewController else {
+         fatalError("Wrong type for initial view controller. Expected `\(ViewController.self)`")
+      }
+      vc.uiModel = viewUIModel
+      viewUIModel.mediaLibraryLoader.loadMediaLibrary { [weak self] in
+         self?.mlController.isVisible = true
+      }
+      window?.toolbar = mainToolbar
+      mainToolbar.eventHandler = { [unowned self] in
+         switch $0 {
+         case .toggleMediaLibrary:
+            self.mlController.togglePanel(self)
+         case .reloadPlugIns:
+            break
+         }
       }
    }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8005CA4B1EF6B3400091E075 /* MainViewUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */; };
 		80130BA61C4C538800D6DDAC /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */; };
 		8035EF301B3752030026AD7D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF2F1B3752030026AD7D /* MainViewController.swift */; };
 		8035EF321B3752030026AD7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF311B3752030026AD7D /* Assets.xcassets */; };
@@ -45,9 +46,6 @@
 		80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */; };
 		80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B331C4AA78E00308D83 /* EffectWindowController.swift */; };
 		80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B491C4B035E00308D83 /* PlaybackEngine.swift */; };
-		80F9DF821EF52EDE0026A7A6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80F9DF841EF52EDE0026A7A6 /* MainMenu.xib */; };
-		80F9DF861EF547EE0026A7A6 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F9DF851EF547EE0026A7A6 /* AppConfig.swift */; };
-		80FE8EC71EF32B57008F245C /* MainViewUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE8EC61EF32B57008F245C /* MainViewUIModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -74,6 +72,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewUIModel.swift; sourceTree = "<group>"; };
 		80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
 		8035EF2A1B3752030026AD7D /* AUHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8035EF2F1B3752030026AD7D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -119,10 +118,7 @@
 		80C620881B378A5C00D58E68 /* AUHost.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = AUHost.entitlements; sourceTree = "<group>"; };
 		80C97B331C4AA78E00308D83 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80C97B491C4B035E00308D83 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
-		80F9DF831EF52EDE0026A7A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		80F9DF851EF547EE0026A7A6 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		80F9DF8B1EF5802C0026A7A6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		80FE8EC61EF32B57008F245C /* MainViewUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewUIModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,10 +177,10 @@
 		80485FB31DA591CE004EFA32 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				80F9DF851EF547EE0026A7A6 /* AppConfig.swift */,
 				80485FE11DA6C6F6004EFA32 /* Application.swift */,
 				805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */,
 				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
+				8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */,
 				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
 				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
 				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
@@ -199,7 +195,6 @@
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				80F9DF8B1EF5802C0026A7A6 /* main.swift */,
 				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
-				80FE8EC61EF32B57008F245C /* MainViewUIModel.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
 			);
 			path = Sources;
@@ -300,7 +295,6 @@
 			children = (
 				8035EF311B3752030026AD7D /* Assets.xcassets */,
 				8035EF331B3752030026AD7D /* Main.storyboard */,
-				80F9DF841EF52EDE0026A7A6 /* MainMenu.xib */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -375,7 +369,6 @@
 			files = (
 				8035EF321B3752030026AD7D /* Assets.xcassets in Resources */,
 				8035EF351B3752030026AD7D /* Main.storyboard in Resources */,
-				80F9DF821EF52EDE0026A7A6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +396,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80FE8EC71EF32B57008F245C /* MainViewUIModel.swift in Sources */,
 				80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */,
 				804674361D25DC92000989CA /* Math.swift in Sources */,
 				804674241D25DA66000989CA /* KVOHelper.swift in Sources */,
@@ -415,6 +407,7 @@
 				80A94FFF1D59300F0044ED2C /* Color.swift in Sources */,
 				807E3C0A1D25D9330033629F /* MinMax.swift in Sources */,
 				8035EF301B3752030026AD7D /* MainViewController.swift in Sources */,
+				8005CA4B1EF6B3400091E075 /* MainViewUIModel.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
 				806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */,
 				807E3C0F1D25D9670033629F /* Functions.swift in Sources */,
@@ -438,7 +431,6 @@
 				8088EB1D1EF4674F0022A26E /* PlaybackEngineStateMachine.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
 				80AC1BA71EEF371D0048151A /* String.swift in Sources */,
-				80F9DF861EF547EE0026A7A6 /* AppConfig.swift in Sources */,
 				805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */,
 				8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */,
 			);
@@ -453,14 +445,6 @@
 				8035EF341B3752030026AD7D /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		80F9DF841EF52EDE0026A7A6 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				80F9DF831EF52EDE0026A7A6 /* Base */,
-			);
-			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
