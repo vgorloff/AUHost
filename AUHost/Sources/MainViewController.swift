@@ -120,7 +120,7 @@ extension MainViewController: MainViewUIHandling {
             buttonPlay.isEnabled = true
             buttonPlay.title = "Resume"
             buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .SettingEffect, .SettingFile:
+         case .updatingGraph:
             buttonPlay.isEnabled = false
             buttonOpenEffectView.isEnabled = false
          }

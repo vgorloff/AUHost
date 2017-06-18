@@ -11,42 +11,48 @@ import CoreAudioKit
 
 final class PlaybackEngine {
 
-   enum Change {
-      case EngineStateChanged(old: PlaybackEngineStateMachine.State, new: PlaybackEngineStateMachine.State)
+   struct Change {
+      let event: Event
+      let oldState: State
+      let newState: State
+      var shouldChange: Bool {
+         return oldState != newState
+      }
    }
 
-   private var sm: StateMachine<PlaybackEngineStateMachine.State, PlaybackEngineStateMachine.Event, PlaybackEngineContext>
+   enum State: Int {
+      case Stopped, Playing, Paused, updatingGraph
+   }
+
+   enum Event: Int {
+      case Play, Pause, Resume, Stop, SetFile, SetEffect, Autostop
+   }
+
+   enum EffectSelectionResult {
+      case EffectCleared
+      case Success(AVAudioUnit)
+      case Failure(Error)
+   }
+
+   var changeHandler: Completion<Change>?
+
    private let context = PlaybackEngineContext()
    private let _stateAccessLock: NonRecursiveLocking = SpinLock()
-
-   var changeHandler: ((Change) -> Void)?
-   var stateID: PlaybackEngineStateMachine.State {
-      return _stateAccessLock.synchronized {
-         return sm.state
+   private var stateIDValue: State = .Stopped
+   private(set) var stateID: State {
+      get {
+         return _stateAccessLock.synchronized {
+            return stateIDValue
+         }
+      } set {
+         return _stateAccessLock.synchronized {
+            stateIDValue = newValue
+         }
       }
    }
 
    init() {
-      sm = StateMachine(context: context, graph: PlaybackEngineStateMachine.stateMachineGraph)
-      sm.stateChangeHandler = { [weak self] oldState, event, newState in
-         Logger.debug(subsystem: .media, category: .handle, message: "State changed: \(oldState) => \(newState)")
-         DispatchQueue.main.async { [weak self] in
-            self?.changeHandler?(Change.EngineStateChanged(old: oldState, new: newState))
-         }
-      }
-      context.filePlaybackCompleted = { [weak self] in guard let s = self else { return }
-         Logger.debug(subsystem: .media, category: .handle, message: "Playback stopped or file finished playing. Current state: \(s.stateID)")
-         guard s.stateID == .Playing else {
-            return
-         }
-         DispatchQueue.main.async { [weak self] in guard let s = self else { return }
-            do {
-               try s.sm.handleEvent(event: .Stop)
-            } catch {
-               Logger.error(subsystem: .media, category: .handle, message: error)
-            }
-         }
-      }
+      setupHandlers()
       Logger.initialize(subsystem: .media)
    }
 
@@ -58,38 +64,73 @@ final class PlaybackEngine {
 
 extension PlaybackEngine {
 
-   func setFileToPlay(_ fileToPlay: AVAudioFile) throws {
-      switch stateID {
-      case .SettingEffect, .SettingFile, .Stopped: break
-      case .Playing, .Paused:
-         try sm.handleEvent(event: .Stop)
+   func setFileToPlay(_ fileToPlay: AVAudioFile) {
+      let change1 = Change(event: .SetFile, oldState: stateID, newState: .updatingGraph)
+      guard change1.shouldChange else {
+         return
       }
-      try sm.handleEvent(event: .SetFile(fileToPlay))
-      try sm.handleEvent(event: .Stop)
+      notifyAboutChange(change1)
+      switch change1.oldState {
+      case .updatingGraph, .Stopped:
+         break
+      case .Playing, .Paused:
+         context.stop()
+      }
+      let change2 = Change(event: .SetFile, oldState: change1.newState, newState: .Stopped)
+      context.setFileToPlay(fileToPlay)
+      notifyAboutChange(change2)
    }
 
    func stop() {
-      do {
-         try sm.handleEvent(event: .Stop)
-      } catch {
-         Logger.error(subsystem: .media, category: .lifecycle, message: error)
+      let change = Change(event: .SetFile, oldState: stateID, newState: .Stopped)
+      if change.shouldChange  {
+         switch change.oldState {
+         case .Paused, .Playing:
+            context.stop()
+         case .updatingGraph, .Stopped:
+            break
+         }
+         notifyAboutChange(change)
       }
    }
 
-   func pause() {
-      do {
-         try sm.handleEvent(event: .Pause)
-      } catch {
-         Logger.error(subsystem: .media, category: .lifecycle, message: error)
+   func pause() throws {
+      let change = Change(event: .Pause, oldState: stateID, newState: .Paused)
+      if change.shouldChange {
+         switch change.oldState {
+         case .Paused, .Stopped, .updatingGraph:
+            break
+         case .Playing:
+            context.pause()
+         }
+         notifyAboutChange(change)
       }
    }
 
    func resume() throws {
-      try sm.handleEvent(event: .Resume)
+      let change = Change(event: .Resume, oldState: stateID, newState: .Playing)
+      if change.shouldChange {
+         switch change.oldState  {
+         case .updatingGraph, .Stopped, .Playing:
+            break
+         case .Paused:
+            try context.resume()
+         }
+         notifyAboutChange(change)
+      }
    }
 
    func play() throws {
-      try sm.handleEvent(event: .Play)
+      let change = Change(event: .Play, oldState: stateID, newState: .Playing)
+      if change.shouldChange {
+         switch change.oldState  {
+         case .Playing, .Paused, .updatingGraph:
+            break
+         case .Stopped:
+            try context.play()
+         }
+         notifyAboutChange(change)
+      }
    }
 
    func openEffectView(completionHandler: @escaping (NSViewController?) -> Void) {
@@ -116,42 +157,74 @@ extension PlaybackEngine {
       }
       avau.auAudioUnit.currentPreset = matchedPreset
    }
-}
 
-extension PlaybackEngine {
-
-   func selectEffect(componentDescription: AudioComponentDescription?,
-                     completionHandler: ((PlaybackEngineStateMachine.EffectSelectionResult) -> Void)?) {
-      var possibleRelaunchEvent: PlaybackEngineStateMachine.Event?
-      switch stateID {
-      case .SettingEffect, .SettingFile: break
-      case .Stopped: possibleRelaunchEvent = .Stop
-      case .Paused: possibleRelaunchEvent = .Pause
-      case .Playing: possibleRelaunchEvent = .Play
+   func selectEffect(componentDescription: AudioComponentDescription?, completion: ((EffectSelectionResult) -> Void)?) {
+      let change1 = Change(event: .SetEffect, oldState: stateID, newState: .updatingGraph)
+      guard change1.shouldChange else {
+         return
       }
-      let sema = DispatchSemaphore(value: 0)
-      let event = PlaybackEngineStateMachine.Event.SetEffect(componentDescription) { result in
-         DispatchQueue.main.async {
-            completionHandler?(result)
-            sema.signal()
-         }
+      notifyAboutChange(change1)
+      switch change1.oldState {
+      case .updatingGraph, .Stopped:
+         break
+      case .Paused, .Playing:
+         context.stopPlayer()
       }
-      DispatchQueue.UserInitiated.async { [weak self] in guard let s = self else { return }
-         do {
-            try s.sm.handleEvent(event: event)
-         } catch {
-            Logger.error(subsystem: .media, category: .request, message: error)
-         }
-         sema.wait() {
-            guard let relaunchEvent = possibleRelaunchEvent else {
-               return
-            }
+      let change2 = Change(event: .SetEffect, oldState: change1.newState, newState: change1.oldState)
+      let restartCallback: () -> Void = { [weak self] in
+         switch change2.newState {
+         case .Playing:
             do {
-               try s.sm.handleEvent(event: relaunchEvent)
+               try self?.context.startPlayer()
             } catch {
-               Logger.error(subsystem: .media, category: .request, message: error)
+               Logger.error(subsystem: .media, category: .generic, message: error)
+            }
+         case .Paused:
+            do {
+               try self?.context.scheduleFile()
+            } catch {
+               Logger.error(subsystem: .media, category: .generic, message: error)
+            }
+         case .Stopped ,.updatingGraph:
+            break
+         }
+         self?.notifyAboutChange(change2)
+      }
+      DispatchQueue.UserInitiated.async { [weak self] in
+         self?.context.selectEffect(componentDescription: componentDescription) { result in
+            DispatchQueue.main.async {
+               completion?(result)
+               restartCallback()
             }
          }
       }
    }
+
+}
+
+extension PlaybackEngine {
+
+   private func setupHandlers() {
+      context.filePlaybackCompleted = { [weak self] in guard let s = self else { return }
+         let change = Change(event: .Autostop, oldState: s.stateID, newState: .Stopped)
+         let message = "Playback stopped or file finished playing. Current state: \(change.oldState)"
+         Logger.debug(subsystem: .media, category: .handle, message: message)
+         if change.oldState == .Playing {
+            DispatchQueue.main.async { [weak self] in guard let s = self else { return }
+               s.context.stop()
+               s.notifyAboutChange(change)
+            }
+         }
+      }
+   }
+
+   private func notifyAboutChange(_ change: Change) {
+      stateID = change.newState
+      Logger.debug(subsystem: .media, category: .handle, message: "State changed: \(change.oldState) => \(change.newState)")
+      DispatchQueue.main.async {
+         self.changeHandler?(change)
+      }
+   }
+
+
 }

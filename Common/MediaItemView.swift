@@ -141,11 +141,11 @@ extension MediaItemView {
                                                       valueMax: waveformValue.max.CGFloatValue)
       }
       context.setShouldAntialias(false)
-      //		CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor)
+      // CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor)
       context.translateBy(x: 0.5 / scaleFactor, y: 0.5 / scaleFactor); // Center the origin at center of a pixel
 
       context.saveGState()
-      //		CGContextFillRect(context, bounds)
+      // CGContextFillRect(context, bounds)
       context.setStrokeColor(waveformColor.cgColor)
       context.setLineWidth(lineWidth)
       context.strokeLineSegments(between: wfDrawingProvider.points)

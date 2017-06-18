@@ -108,11 +108,11 @@ extension PlaybackEngineContext {
    }
 
    func selectEffect(componentDescription: AudioComponentDescription?,
-                     completionHandler: @escaping ((PlaybackEngineStateMachine.EffectSelectionResult) -> Void)) {
+                     completion: Completion<PlaybackEngine.EffectSelectionResult>?) {
       guard let desc = componentDescription else {
          DispatchQueue.main.async { [weak self] in
             self?.clearEffect()
-            completionHandler(.EffectCleared)
+            completion?(.EffectCleared)
          }
          return
       }
@@ -121,11 +121,11 @@ extension PlaybackEngineContext {
       let loadOptions: AudioComponentInstantiationOptions = canLoadInProcess ? .loadInProcess : .loadOutOfProcess
       AVAudioUnit.instantiate(with: desc, options: loadOptions) {[weak self] (avAudioUnit, error) in
          if let e = error {
-            completionHandler(.Failure(e))
+            completion?(.Failure(e))
          } else if let effect = avAudioUnit {
             DispatchQueue.main.async { [weak self] in
                self?.assignEffect(effect)
-               completionHandler(.Success(effect))
+               completion?(.Success(effect))
             }
          } else {
             fatalError()
