@@ -15,7 +15,6 @@
 		8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF3D1B375EE00026AD7D /* MainWindowController.swift */; };
 		8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */; };
 		804674221D25DA66000989CA /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046741E1D25DA66000989CA /* Enumerations.swift */; };
-		804674241D25DA66000989CA /* KVOHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674211D25DA66000989CA /* KVOHelper.swift */; };
 		804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674251D25DAA1000989CA /* WaveformCacheUtility.swift */; };
 		804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */; };
 		8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */; };
@@ -80,7 +79,6 @@
 		8035EF3D1B375EE00026AD7D /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
 		8046741E1D25DA66000989CA /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
-		804674211D25DA66000989CA /* KVOHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KVOHelper.swift; sourceTree = "<group>"; };
 		804674251D25DAA1000989CA /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 				8046741E1D25DA66000989CA /* Enumerations.swift */,
 				8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */,
 				807E3C0C1D25D9670033629F /* Functions.swift */,
-				804674211D25DA66000989CA /* KVOHelper.swift */,
 				807E3C051D25D9330033629F /* Logger.swift */,
 				804674341D25DC92000989CA /* Math.swift */,
 				807E3C061D25D9330033629F /* MinMax.swift */,
@@ -392,7 +389,6 @@
 			files = (
 				80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */,
 				804674361D25DC92000989CA /* Math.swift in Sources */,
-				804674241D25DA66000989CA /* KVOHelper.swift in Sources */,
 				80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */,
 				807E3C141D25D9880033629F /* MediaObjectPasteboardUtility.swift in Sources */,
 				807E3C101D25D9670033629F /* NonRecursiveLocking.swift in Sources */,
