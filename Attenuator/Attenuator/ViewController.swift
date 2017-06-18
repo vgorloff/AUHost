@@ -65,7 +65,7 @@ extension ViewController: MainViewUIHandling {
          case .Paused:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Resume"
-         case .SettingEffect, .SettingFile:
+         case .updatingGraph:
             buttonPlay.isEnabled = false
          }
       case .selectMedia(let url):
