@@ -91,10 +91,6 @@
 		805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		8064764B1D45376200AF72B9 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; tabWidth = 3; };
-		806556D81EF5AC7400C4C2FA /* AUHostKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AUHostKit.h; sourceTree = "<group>"; };
-		806556D91EF5AC7400C4C2FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		806556E51EF5AC7400C4C2FA /* AUHostKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AUHostKitTests.swift; sourceTree = "<group>"; };
-		806556E71EF5AC7400C4C2FA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		806556F41EF5AEC400C4C2FA /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
 		807E3C051D25D9330033629F /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -132,8 +128,6 @@
 				80485FB31DA591CE004EFA32 /* Common */,
 				8035EF2C1B3752030026AD7D /* AUHost */,
 				80C422891C46C3F700B5CCF1 /* Shared */,
-				806556D71EF5AC7400C4C2FA /* AUHostKit */,
-				806556E41EF5AC7400C4C2FA /* AUHostKitTests */,
 				8035EF2B1B3752030026AD7D /* Products */,
 			);
 			indentWidth = 3;
@@ -191,24 +185,6 @@
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		806556D71EF5AC7400C4C2FA /* AUHostKit */ = {
-			isa = PBXGroup;
-			children = (
-				806556D81EF5AC7400C4C2FA /* AUHostKit.h */,
-				806556D91EF5AC7400C4C2FA /* Info.plist */,
-			);
-			path = AUHostKit;
-			sourceTree = "<group>";
-		};
-		806556E41EF5AC7400C4C2FA /* AUHostKitTests */ = {
-			isa = PBXGroup;
-			children = (
-				806556E51EF5AC7400C4C2FA /* AUHostKitTests.swift */,
-				806556E71EF5AC7400C4C2FA /* Info.plist */,
-			);
-			path = AUHostKitTests;
 			sourceTree = "<group>";
 		};
 		806556F31EF5AE8800C4C2FA /* Extensions */ = {
