@@ -18,9 +18,13 @@
 		801E7E3F1C544B1B0064126C /* AttenuatorAU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801E7E3E1C544B1B0064126C /* AttenuatorAU.swift */; };
 		801E7E411C544E000064126C /* AttenuatorKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		801E7E431C5451530064126C /* AttenuatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 801E7E3B1C544A680064126C /* AttenuatorViewController.xib */; };
+		802BE2E21EFDAE6D0072D3D8 /* GLKMatrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE2E01EFDAE640072D3D8 /* GLKMatrix4.swift */; };
+		802BE2E41EFDAE860072D3D8 /* AudioBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE2E31EFDAE810072D3D8 /* AudioBuffer.swift */; };
+		802BE2E61EFDAEC20072D3D8 /* AudioComponentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE2E51EFDAEAD0072D3D8 /* AudioComponentDescription.swift */; };
+		802BE2E81EFDAF740072D3D8 /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80141F9E1EF6B53900490F78 /* TypeAliases.swift */; };
+		802BE2E91EFDAF780072D3D8 /* DisplayLink.GenericRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */; };
 		804416331DAC2DF000B84BEF /* BufferDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804416321DAC2DF000B84BEF /* BufferDatasource.swift */; };
 		804416351DAC30F400B84BEF /* VULevelMeter.DrawingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804416341DAC30F400B84BEF /* VULevelMeter.DrawingData.swift */; };
-		804416371DAC324D00B84BEF /* GLKMatrix4.Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804416361DAC324D00B84BEF /* GLKMatrix4.Ext.swift */; };
 		804416391DAC32E600B84BEF /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 804416381DAC32E600B84BEF /* VULevelMeter.Shaders.metal */; };
 		8044ABCF1C52E24000FA3DA3 /* AttenuatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8044ABDD1C52E4A700FA3DA3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */; };
@@ -50,7 +54,7 @@
 		80485FE71DA6C7B8004EFA32 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE61DA6C7B8004EFA32 /* MainWindowController.swift */; };
 		80485FEC1DA6CA9C004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */; };
 		80485FED1DA6CAB4004EFA32 /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046743A1D25DE77000989CA /* AlternativeValue.swift */; };
-		80485FF21DA82CE7004EFA32 /* AVFoundationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FEF1DA82CD1004EFA32 /* AVFoundationExtensions.swift */; };
+		80485FF21DA82CE7004EFA32 /* UnsafeMutableAudioBufferListPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */; };
 		804860381DAABD82004EFA32 /* BufferedAudioBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FF31DA857E0004EFA32 /* BufferedAudioBus.swift */; };
 		805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */; };
 		806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806476511D454A8A00AF72B9 /* FoundationUtilities.swift */; };
@@ -138,9 +142,12 @@
 		801E7E3A1C544A680064126C /* AttenuatorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorViewController.swift; sourceTree = "<group>"; };
 		801E7E3B1C544A680064126C /* AttenuatorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttenuatorViewController.xib; sourceTree = "<group>"; };
 		801E7E3E1C544B1B0064126C /* AttenuatorAU.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttenuatorAU.swift; sourceTree = "<group>"; };
+		802BE2E01EFDAE640072D3D8 /* GLKMatrix4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKMatrix4.swift; sourceTree = "<group>"; };
+		802BE2E31EFDAE810072D3D8 /* AudioBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBuffer.swift; sourceTree = "<group>"; };
+		802BE2E51EFDAEAD0072D3D8 /* AudioComponentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioComponentDescription.swift; sourceTree = "<group>"; };
+		802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLink.GenericRenderer.swift; sourceTree = "<group>"; };
 		804416321DAC2DF000B84BEF /* BufferDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
 		804416341DAC30F400B84BEF /* VULevelMeter.DrawingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.DrawingData.swift; sourceTree = "<group>"; };
-		804416361DAC324D00B84BEF /* GLKMatrix4.Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKMatrix4.Ext.swift; sourceTree = "<group>"; };
 		804416381DAC32E600B84BEF /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
 		8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttenuatorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8044ABCE1C52E24000FA3DA3 /* AttenuatorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttenuatorKit.h; sourceTree = "<group>"; };
@@ -171,7 +178,7 @@
 		80485FE31DA6C700004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FE61DA6C7B8004EFA32 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
-		80485FEF1DA82CD1004EFA32 /* AVFoundationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVFoundationExtensions.swift; sourceTree = "<group>"; };
+		80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
 		80485FF31DA857E0004EFA32 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
 		8048603D1DAAE5CA004EFA32 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8048603F1DAAF748004EFA32 /* Attenuator.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Attenuator.xcconfig; sourceTree = "<group>"; };
@@ -231,6 +238,17 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		802BE2DF1EFDAE640072D3D8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				802BE2E31EFDAE810072D3D8 /* AudioBuffer.swift */,
+				802BE2E51EFDAEAD0072D3D8 /* AudioComponentDescription.swift */,
+				802BE2E01EFDAE640072D3D8 /* GLKMatrix4.swift */,
+				80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8044ABCD1C52E24000FA3DA3 /* AttenuatorKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,16 +297,16 @@
 		8046744C1D25DE77000989CA /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				804416321DAC2DF000B84BEF /* BufferDatasource.swift */,
-				80485FEF1DA82CD1004EFA32 /* AVFoundationExtensions.swift */,
-				8046746E1D25DF10000989CA /* DisplayLink.swift */,
 				8046744D1D25DE77000989CA /* AudioComponentsUtility.swift */,
+				804416321DAC2DF000B84BEF /* BufferDatasource.swift */,
+				80485FF31DA857E0004EFA32 /* BufferedAudioBus.swift */,
+				802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */,
+				8046746E1D25DF10000989CA /* DisplayLink.swift */,
+				802BE2DF1EFDAE640072D3D8 /* Extensions */,
 				8046744E1D25DE77000989CA /* MediaLibraryUtility.swift */,
 				8046744F1D25DE77000989CA /* MediaObjectPasteboardUtility.swift */,
 				804674501D25DE77000989CA /* WaveformCacheUtility.swift */,
 				804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */,
-				80485FF31DA857E0004EFA32 /* BufferedAudioBus.swift */,
-				804416361DAC324D00B84BEF /* GLKMatrix4.Ext.swift */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -600,6 +618,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802BE2E81EFDAF740072D3D8 /* TypeAliases.swift in Sources */,
+				802BE2E61EFDAEC20072D3D8 /* AudioComponentDescription.swift in Sources */,
 				80485FDB1DA6C5F8004EFA32 /* DispatchSource.swift in Sources */,
 				801E7E381C5444CB0064126C /* AttenuatorParameter.swift in Sources */,
 				80A21A6B1C568A6800BF812A /* AttenuatorView.swift in Sources */,
@@ -608,14 +628,16 @@
 				801E7E371C5444CB0064126C /* AttenuatorAudioUnit.swift in Sources */,
 				80485FD21DA6C472004EFA32 /* Logger.swift in Sources */,
 				804416351DAC30F400B84BEF /* VULevelMeter.DrawingData.swift in Sources */,
+				802BE2E21EFDAE6D0072D3D8 /* GLKMatrix4.swift in Sources */,
 				8046746D1D25DF04000989CA /* VULevelMeter.swift in Sources */,
 				804860381DAABD82004EFA32 /* BufferedAudioBus.swift in Sources */,
-				804416371DAC324D00B84BEF /* GLKMatrix4.Ext.swift in Sources */,
 				804416331DAC2DF000B84BEF /* BufferDatasource.swift in Sources */,
-				80485FF21DA82CE7004EFA32 /* AVFoundationExtensions.swift in Sources */,
+				802BE2E91EFDAF780072D3D8 /* DisplayLink.GenericRenderer.swift in Sources */,
+				80485FF21DA82CE7004EFA32 /* UnsafeMutableAudioBufferListPointer.swift in Sources */,
 				804416391DAC32E600B84BEF /* VULevelMeter.Shaders.metal in Sources */,
 				80485FD41DA6C493004EFA32 /* Functions.swift in Sources */,
 				806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */,
+				802BE2E41EFDAE860072D3D8 /* AudioBuffer.swift in Sources */,
 				80485FDC1DA6C603004EFA32 /* NumericTypesConversions.swift in Sources */,
 				80AC1BB71EEF38630048151A /* String.swift in Sources */,
 				80AC1BB91EEF38E90048151A /* Bundle.swift in Sources */,
