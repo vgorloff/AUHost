@@ -14,7 +14,7 @@ private let gUseInternalCustomDrawTimer = false
 
 public final class VULevelMeter: MTKView {
 
-   enum Errors: Error {
+   enum Error: Swift.Error {
       case unableToInitialize(String)
    }
 
@@ -59,7 +59,7 @@ public final class VULevelMeter: MTKView {
 
    private func initializeMetal() throws {
       guard let metalDevice = MTLCreateSystemDefaultDevice() else {
-         throw Errors.unableToInitialize(String(describing: MTLDevice.self))
+         throw Error.unableToInitialize(String(describing: MTLDevice.self))
       }
       device = metalDevice
       commandQueue = metalDevice.makeCommandQueue()
@@ -77,10 +77,10 @@ public final class VULevelMeter: MTKView {
 
    private func setUpPipeline(metalDevice: MTLDevice, pixelFormat: MTLPixelFormat) throws -> MTLRenderPipelineState {
       guard let vertexProgram = defaultLibrary.makeFunction(name: "vertex_line") else {
-         throw Errors.unableToInitialize(String(describing: MTLFunction.self))
+         throw Error.unableToInitialize(String(describing: MTLFunction.self))
       }
       guard let fragmentProgram = defaultLibrary.makeFunction(name: "fragment_line") else {
-         throw Errors.unableToInitialize(String(describing: MTLFunction.self))
+         throw Error.unableToInitialize(String(describing: MTLFunction.self))
       }
 
       let pipelineStateDescriptor = MTLRenderPipelineDescriptor()
@@ -147,10 +147,10 @@ extension VULevelMeter {
    private func render() throws {
       dataBufferProvider.dispatchWait()
       guard let currentDrawable = currentDrawable else {
-         throw Errors.unableToInitialize(String(describing: CAMetalDrawable.self))
+         throw Error.unableToInitialize(String(describing: CAMetalDrawable.self))
       }
       guard let renderPassDescriptor = currentRenderPassDescriptor else {
-         throw Errors.unableToInitialize(String(describing: MTLRenderPassDescriptor.self))
+         throw Error.unableToInitialize(String(describing: MTLRenderPassDescriptor.self))
       }
 
       let commandBuffer = commandQueue.makeCommandBuffer()

@@ -19,7 +19,7 @@ public final class MediaLibraryUtility: NSObject {
 		case mediaSourceChanged([String : MLMediaSource]?)
 	}
 
-	@objc private let mediaLibrary: MLMediaLibrary
+	private let mediaLibrary: MLMediaLibrary
 	private var mediaLibraryLoadCallback: (() -> Void)?
 	private var mediaLibraryIsLoaded = false
    var observation: NSKeyValueObservation?
