@@ -6,6 +6,8 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
+import Foundation
+
 public enum BundleError: Error {
    case missedURLForResource(resourceName: String, resourceExtension: String)
 }
