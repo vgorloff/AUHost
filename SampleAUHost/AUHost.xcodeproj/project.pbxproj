@@ -133,8 +133,8 @@
 		8005E8591EFDB9A5003D7686 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				804860401DAAF94A004EFA32 /* Version.xcconfig */,
 				8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */,
+				804860401DAAF94A004EFA32 /* Version.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";

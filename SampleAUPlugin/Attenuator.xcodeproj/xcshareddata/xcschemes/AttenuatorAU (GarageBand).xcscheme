@@ -35,20 +35,6 @@
                ReferencedContainer = "container:Attenuator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8035EF291B3752030026AD7D"
-               BuildableName = "AUHost.app"
-               BlueprintName = "AUHost"
-               ReferencedContainer = "container:../AUHost.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -84,15 +70,6 @@
          runnableDebuggingMode = "0"
          FilePath = "/Applications/GarageBand.app">
       </PathRunnable>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8035EF291B3752030026AD7D"
-            BuildableName = "AUHost.app"
-            BlueprintName = "AUHost"
-            ReferencedContainer = "container:../AUHost.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -102,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8035EF291B3752030026AD7D"
-            BuildableName = "AUHost.app"
-            BlueprintName = "AUHost"
-            ReferencedContainer = "container:../AUHost.xcodeproj">
+            BlueprintIdentifier = "C5A5A1111C47EB5300F9864E"
+            BuildableName = "AttenuatorAU.appex"
+            BlueprintName = "AttenuatorAU"
+            ReferencedContainer = "container:Attenuator.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

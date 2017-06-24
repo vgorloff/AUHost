@@ -1,5 +1,5 @@
 //
-//  MainViewModel.swift
+//  MainViewUIModel.swift
 //  AUHost
 //
 //  Created by Vlad Gorlov on 15.06.17.
