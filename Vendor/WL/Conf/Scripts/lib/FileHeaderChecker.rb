@@ -24,7 +24,7 @@ class FileHeaderChecker
       elsif File.file?(fileOrDirectoryPath)
          filePathsToAnalyze = [fileOrDirectoryPath]
       else
-         raise ArgumentError.new("Expected path to file or directory.")
+         raise ArgumentError.new("Expected path to file or directory. Observed \"#{fileOrDirectoryPath}\"")
       end
       invalidResults = []
       filePathsToAnalyze.each { |f|
