@@ -2,7 +2,7 @@
 //  MainToolbar.Event.swift
 //  AUHost
 //
-//  Created by VG (DE) on 14.06.17.
+//  Created by Vlad Gorlov on 14.06.17.
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
