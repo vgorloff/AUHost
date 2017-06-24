@@ -158,9 +158,7 @@ public final class FileHeaderChecker {
             // 3rd party source file.
             return nil
          } else {
-
             fileHeader = try analyzeHeaderType3(filePath, headerContents: headerContents)
-
          }
       } catch FHCError.fileHeaderCheckerIssue(let reason) {
          return FileHeaderCheckerIssue(filePath: filePath, issueReason: reason)

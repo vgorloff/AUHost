@@ -1,5 +1,5 @@
 //
-//  AVFoundationExtensions.swift
+//  UnsafeMutableAudioBufferListPointer.swift
 //  WaveLabs
 //
 //  Created by Vlad Gorlov on 29.06.16.

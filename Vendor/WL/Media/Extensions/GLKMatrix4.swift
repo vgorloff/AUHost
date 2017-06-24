@@ -1,5 +1,5 @@
 //
-//  GLKMatrix4.Ext.swift
+//  GLKMatrix4.swift
 //  WaveLabs
 //
 //  Created by VG (DE) on 10/10/2016.

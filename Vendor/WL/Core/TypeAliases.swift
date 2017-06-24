@@ -2,7 +2,7 @@
 //  TypeAliases.swift
 //  WaveLabs
 //
-//  Created by VG (DE) on 16.06.17.
+//  Created by Vlad Gorlov on 16.06.17.
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 

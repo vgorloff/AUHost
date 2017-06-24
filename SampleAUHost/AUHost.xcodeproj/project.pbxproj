@@ -98,6 +98,7 @@
 		807E3C0C1D25D9670033629F /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
 		807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
 		807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
+		8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		8088EB201EF470D00022A26E /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		80A94FFE1D59300F0044ED2C /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		80AC1BA21EEF36B40048151A /* OperationQueue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
@@ -120,18 +121,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8005E8581EFDB932003D7686 /* Common */ = {
+		8005E8581EFDB932003D7686 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				80485FB31DA591CE004EFA32 /* Sources */,
 			);
-			path = Common;
+			name = Shared;
+			path = ../Shared;
 			sourceTree = "<group>";
 		};
 		8005E8591EFDB9A5003D7686 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
 				804860401DAAF94A004EFA32 /* Version.xcconfig */,
+				8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -139,10 +142,11 @@
 		8035EF211B3752030026AD7D = {
 			isa = PBXGroup;
 			children = (
-				80E4D2F21EFDBB0A00D8A2BC /* Reusable */,
 				8005E8591EFDB9A5003D7686 /* Configuration */,
-				C5E335AB1C4FE7B000CD42BB /* Resources */,
 				804E68891EF10BC5006C64BC /* Sources */,
+				C5E335AB1C4FE7B000CD42BB /* Resources */,
+				8005E8581EFDB932003D7686 /* Shared */,
+				80C422891C46C3F700B5CCF1 /* Vendor */,
 				8035EF2B1B3752030026AD7D /* Products */,
 			);
 			indentWidth = 3;
@@ -242,24 +246,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		80C422891C46C3F700B5CCF1 /* Shared */ = {
+		80C422891C46C3F700B5CCF1 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
 				804674291D25DBA2000989CA /* UI */,
 				807E3C121D25D9880033629F /* Media */,
 				807E3C031D25D9330033629F /* Core */,
 			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		80E4D2F21EFDBB0A00D8A2BC /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-				8005E8581EFDB932003D7686 /* Common */,
-				80C422891C46C3F700B5CCF1 /* Shared */,
-			);
-			name = Reusable;
-			path = ..;
+			name = Vendor;
+			path = ../Vendor/WL;
 			sourceTree = "<group>";
 		};
 		C5E335AB1C4FE7B000CD42BB /* Resources */ = {
@@ -359,7 +354,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sh \"$SRCROOT/Scripts/BuildPhase-Validate.sh\"\n";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc # Or set /bin/bash -l as shell in Xcode\n\"$SRCROOT/Scripts/BuildPhase-CheckHeaders.rb\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -421,7 +416,7 @@
 /* Begin XCBuildConfiguration section */
 		8035EF371B3752030026AD7D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 804860401DAAF94A004EFA32 /* Version.xcconfig */;
+			baseConfigurationReference = 8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -471,7 +466,7 @@
 		};
 		8035EF381B3752030026AD7D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 804860401DAAF94A004EFA32 /* Version.xcconfig */;
+			baseConfigurationReference = 8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;

@@ -1,8 +1,8 @@
 //
 //  CGSize.swift
-//  AUHost
+//  WaveLabs
 //
-//  Created by VG (DE) on 17.06.17.
+//  Created by Vlad Gorlov on 17.06.17.
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 

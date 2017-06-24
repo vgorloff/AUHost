@@ -1,6 +1,6 @@
 //
-//  DisplayLink.GR.swift
-//  Attenuator
+//  DisplayLink.GenericRenderer.swift
+//  WaveLabs
 //
 //  Created by VG (DE) on 23.06.17.
 //  Copyright © 2017 WaveLabs. All rights reserved.

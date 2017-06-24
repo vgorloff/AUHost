@@ -1,5 +1,5 @@
 //
-//  CommonExtensions.swift
+//  Color.swift
 //  WaveLabs
 //
 //  Created by Volodymyr Gorlov on 04.01.16.
