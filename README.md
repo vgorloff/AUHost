@@ -9,6 +9,12 @@ I faced *weird* issues while translating sample code to pure Swift. Such as miss
 
 [AudioUnitV3Example](https://www.google.com/search?q=AudioUnitV3Example+site:apple.com) also does not explain how to build PlugIn which is not pure DSP unit, but for instance Visualiser (Level meter, Oscilloscope, etc.).
 
+## Build system and Deployment target requirements
+
+- **Xcode 9 (Swift 4)**
+- iOS 9, macOS 10.11
+- Metal
+
 ## AUHost.app
 
 This is a standalone application which can load any AudioUnits v3 PlugIns registered in the system.
@@ -57,12 +63,3 @@ Volume level meter uses Metal 3D graphics engine for rendering signal volume in 
 Gain control used to control DSP engine of AudioUnit PlugIn. Under the hood it bound to multiplication coefficient used to in functions from Accelerate framework.
 
 <img src="https://raw.githubusercontent.com/vgorloff/AUHost/master/Media/Screenshot-Attenuator.png" height="600" alt="Screenshot: Attenuator">
-
-## Build system and Deployment target requirements
-
-- Xcode 9 (Swift 4)
-- iOS 9, macOS 10.11
-- Metal
-
-**Note**: In order to make custom build and use sandboxed binary (with underlying PlugIn/XPC subsystem) it is required to sign Hosting application and Extension with appropriate certificate. If you don't have Apple Developer ID (and thus don't have code sign certificate), then download and use existing [binary](https://github.com/vgorloff/AUHost/releases).
-
