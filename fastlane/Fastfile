@@ -44,14 +44,13 @@ lane :release do
    apps.each { |app| XcodeBuilder.validateBinary(app) }
 end
 
+desc "Deploy release to GitHub."
 lane :deploy do
+   assets = Dir["#{AWLOutputDir}/*.app.zip"]
+   releaseName = File.read("#{ENV['PWD']}/fastlane/ReleaseName.txt").strip
+   releaseDescription = File.read("#{ENV['PWD']}/fastlane/ReleaseNotes.txt").strip
    github_release = set_github_release(
-     repository_name: "vgorloff/AUHost",
-     api_token: ENV['AWL_GITHUB_TOKEN'],
-     name: File.read("#{ENV['PWD']}/fastlane/ReleaseName.txt"),
-     tag_name: last_git_tag,
-     description: File.read("#{ENV['PWD']}/fastlane/ReleaseNotes.txt"),
-     commitish: "master",
-     upload_assets: ["#{awl_AuHostAppPath}.zip", "#{awl_AttenuatorAppPath}.zip"]
+     repository_name: "vgorloff/AUHost", api_token: ENV['AWL_GITHUB_TOKEN'], name: releaseName, tag_name: last_git_tag,
+     description: releaseDescription, commitish: "master", upload_assets: assets
    )
 end
