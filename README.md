@@ -60,7 +60,7 @@ Gain control used to control DSP engine of AudioUnit PlugIn. Under the hood it b
 
 ## Build system and Deployment target requirements
 
-- Xcode 8 (Swift 3)
+- Xcode 9 (Swift 4)
 - iOS 9, macOS 10.11
 - Metal
 
