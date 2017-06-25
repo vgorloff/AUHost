@@ -5,46 +5,46 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.105.0"
 
-import '../Shared/Conf/Scripts/fastlane.rb'
+import "#{ENV['PWD']}/Vendor/WL/Conf/fastlane/fastlane.rb"
 
-AWLAuHostProjectRelativeFilePath = "AUHost.xcodeproj"
-AWLAttenuatorProjectRelativeFilePath = "Attenuator.xcodeproj"
+AWLOutputDir = "#{ENV['PWD']}/Build"
+
+def cleanOutputDir
+   if File.directory?(AWLOutputDir)
+      puts("→ Deleting directory #{AWLOutputDir}")
+      FileUtils.rm_r(AWLOutputDir)
+   end
+end
 
 desc "Builds project."
 lane :build do
-  XcodeBuildProject("AUHost", AWLAuHostProjectRelativeFilePath)
-  XcodeBuildProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+   sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane build"
+   sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane build"
 end
 
 desc "Builds when under CI (i.e. Travis)."
 lane :ci do
-   XcodeBuildProjectCI("AUHost", AWLAuHostProjectRelativeFilePath)
-   XcodeBuildProjectCI("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
+   sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane ci"
+   sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane ci"
 end
 
 desc "Cleans project."
 lane :clean do
-   XcodeCleanProject("AUHost", AWLAuHostProjectRelativeFilePath)
-   XcodeCleanProject("AttenuatorAU", AWLAttenuatorProjectRelativeFilePath)
-end
-
-desc "Increment version number."
-desc "Usually should be runned after finishing release in Git Flow."
-lane :bump do
-  ensure_git_status_clean
-  Bump(AWLAuHostProjectRelativeFilePath, AWLAttenuatorProjectRelativeFilePath)
+   sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane clean"
+   sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane clean"
+   cleanOutputDir()
 end
 
 desc "Build codesigned release for GitHub."
 lane :release do
-   gym( clean: true, project: AWLAuHostProjectRelativeFilePath, scheme: "AUHost", output_directory: "#{ENV['PWD']}/build", derived_data_path: "#{ENV['PWD']}/build" )
-   gym( clean: true, project: AWLAttenuatorProjectRelativeFilePath, scheme: "AttenuatorAU", output_directory: "#{ENV['PWD']}/build", derived_data_path: "#{ENV['PWD']}/build" )
-   awl_AuHostAppPath = "#{ENV['PWD']}/build/AUHost.app"
-   awl_AttenuatorAppPath = "#{ENV['PWD']}/build/Attenuator.app"
-   zip(path: awl_AuHostAppPath, output_path: "#{awl_AuHostAppPath}.zip")
-   zip(path: awl_AttenuatorAppPath, output_path: "#{awl_AttenuatorAppPath}.zip")
-   ValidateApp(awl_AuHostAppPath, awl_AttenuatorAppPath)
+   gym(clean: true, project: "SampleAUHost/AUHost.xcodeproj", scheme: "AUHost", output_directory: AWLOutputDir, derived_data_path: AWLOutputDir)
+   gym(clean: true, project: "SampleAUPlugin/Attenuator.xcodeproj", scheme: "Attenuator", output_directory: AWLOutputDir, derived_data_path: AWLOutputDir)
+   apps = Dir["#{AWLOutputDir}/*.app"]
+   apps.each { |app| zip(path: app, output_path: "#{app}.zip") }
+   apps.each { |app| XcodeBuilder.validateBinary(app) }
+end
 
+lane :deploy do
    github_release = set_github_release(
      repository_name: "vgorloff/AUHost",
      api_token: ENV['AWL_GITHUB_TOKEN'],
@@ -54,12 +54,4 @@ lane :release do
      commitish: "master",
      upload_assets: ["#{awl_AuHostAppPath}.zip", "#{awl_AttenuatorAppPath}.zip"]
    )
-   
-   sh "rm -rf #{ENV['PWD']}/build"
-  
-end
-
-desc "Service: Update Fastlane and other Tools."
-lane :update do
-  SelfUpdate()
 end

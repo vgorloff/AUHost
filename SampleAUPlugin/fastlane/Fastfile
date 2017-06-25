@@ -1,0 +1,26 @@
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "1.105.0"
+
+import "#{ENV['PWD']}/Vendor/WL/Conf/fastlane/fastlane.rb"
+
+XCodeProjectFilePath = "#{ENV['PWD']}/Attenuator.xcodeproj"
+XCodeProjectSchema = "Attenuator"
+
+desc "Builds project."
+lane :build do
+   XcodeBuilder.new(self, XCodeProjectFilePath).build(XCodeProjectSchema)
+end
+
+desc "Cleans project."
+lane :clean do
+   XcodeBuilder.new(self, XCodeProjectFilePath).clean(XCodeProjectSchema)
+end
+
+desc "Builds when under CI (i.e. Travis)."
+lane :ci do
+   XcodeBuilder.new(self, XCodeProjectFilePath).ci(XCodeProjectSchema)
+end
