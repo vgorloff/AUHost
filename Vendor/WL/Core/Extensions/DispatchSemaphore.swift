@@ -9,8 +9,8 @@
 import Foundation
 
 public extension DispatchSemaphore {
-  public func wait(completion: () -> Void) {
-    wait()
-    completion()
-  }
+   public func wait(completion: () -> Void) {
+      wait()
+      completion()
+   }
 }

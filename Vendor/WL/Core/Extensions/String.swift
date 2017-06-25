@@ -10,7 +10,7 @@ import Foundation
 
 // NSString bindings
 public extension String {
-
+   
    public func appending(pathComponent str: String) -> String {
       return (self as NSString).appendingPathComponent(str)
    }
@@ -35,7 +35,7 @@ public extension String {
 }
 
 public extension String {
-
+   
    public var uppercaseFirstCharacterString: String {
       if characters.count > 0 {
          let separationIndex = index(after: startIndex)
@@ -46,14 +46,14 @@ public extension String {
          return self
       }
    }
-
+   
    /// - parameter length: Desired string length. Should be at least 4 characters.
    /// - returns: New string by replacing original string middle characters with ".."
    public func clip(toLength length: Int) -> String {
       if length < 4 || characters.count < length {
          return self
       }
-
+      
       let rangeEnd = length / 2 - 1 // "- 1" represents one dot "."
       let rangeStart = length - 2 - rangeEnd // "- 2" represents two dots ".."
       let indexStart = index(startIndex, offsetBy: rangeStart)
@@ -63,7 +63,7 @@ public extension String {
       s.replaceSubrange(range, with: "..")
       return s
    }
-
+   
    // swiftlint:disable variable_name
    public var OSTypeValue: OSType {
       let chars = utf8
@@ -74,8 +74,8 @@ public extension String {
       return result
    }
    // swiftlint:enable variable_name
-
+   
    public var componentsSeparatedByNewline: [String] {
-      return components(separatedBy: CharacterSet.newlines)
+      return components(separatedBy: .newlines)
    }
 }
