@@ -1,1 +1,3 @@
-* 
+* Refactoring code for better architecture.
+* Xcode 9 compatibility update.
+* Swift 4 compatibility update.
