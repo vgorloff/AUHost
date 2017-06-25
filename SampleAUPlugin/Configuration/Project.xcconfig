@@ -1,0 +1,9 @@
+//
+//  Project.xcconfig
+//  AUHost
+//
+//  Created by Vlad Gorlov on 25.06.17.
+//  Copyright © 2017 WaveLabs. All rights reserved.
+//
+
+#include "Version.xcconfig"
