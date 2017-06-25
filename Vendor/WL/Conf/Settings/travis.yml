@@ -3,6 +3,6 @@
 # - [ Travis CI Tutorial: Getting Started - Ray Wenderlich ]( http://www.raywenderlich.com/109418/travis-ci-tutorial )
 
 language: objective-c
-osx_image: xcode8.3
+osx_image: xcode9
 before_install: gem update fastlane --no-ri --no-rdoc --no-document
-script: Shared/Conf/Scripts/travis.sh
+script: Vendor/WL/Conf/Scripts/travis.sh
