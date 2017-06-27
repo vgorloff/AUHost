@@ -6,10 +6,10 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
-import Cocoa
 import AVFoundation
-import MediaLibrary
+import Cocoa
 import CoreAudioKit
+import MediaLibrary
 
 // Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
 class MainViewController: NSViewController {

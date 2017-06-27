@@ -6,9 +6,9 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
-import Cocoa
 import AVFoundation
 import Accelerate
+import Cocoa
 
 public final class MediaItemView: NSView {
    private var isHighlighted = false {

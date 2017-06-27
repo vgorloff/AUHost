@@ -6,9 +6,9 @@
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
-import Foundation
 import AVFoundation
 import AppKit
+import Foundation
 
 protocol MainViewUIHandling: class {
    func handleEvent(_: MainViewUIModel.UIEvent)

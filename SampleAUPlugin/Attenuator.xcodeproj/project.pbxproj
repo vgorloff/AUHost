@@ -639,7 +639,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc # Or set /bin/bash -l as shell in Xcode\n\"$SRCROOT/Scripts/BuildPhase-CheckHeaders.rb\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc # Or set /bin/bash -l as shell in Xcode\n\"$SRCROOT/Scripts/BuildPhase-CheckHeaders.rb\"\n\"$SRCROOT/Scripts/BuildPhase-OrganizeImports.rb\"";
 		};
 		C51A63701C4FD1650016F291 /* Run Script (Force PlugIn Registration) */ = {
 			isa = PBXShellScriptBuildPhase;
