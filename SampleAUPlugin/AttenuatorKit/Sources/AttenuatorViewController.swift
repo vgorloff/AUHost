@@ -6,8 +6,8 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import CoreAudioKit
 import AVFoundation
+import CoreAudioKit
 
 open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
    private var audioUnit: AttenuatorAudioUnit?

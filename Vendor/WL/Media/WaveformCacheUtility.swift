@@ -6,8 +6,8 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import Accelerate
 import AVFoundation
+import Accelerate
 
 public struct WaveformCacheUtility {
 

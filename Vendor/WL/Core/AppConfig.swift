@@ -6,8 +6,8 @@
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 struct AppConfig {
 

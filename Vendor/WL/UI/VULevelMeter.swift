@@ -7,8 +7,8 @@
 //
 
 import AppKit
-import MetalKit
 import GLKit
+import MetalKit
 
 private let gUseInternalCustomDrawTimer = false
 

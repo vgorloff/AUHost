@@ -6,8 +6,8 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
-import QuartzCore
 import CoreVideo
+import QuartzCore
 
 // swiftlint:disable:next function_parameter_count
 func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,

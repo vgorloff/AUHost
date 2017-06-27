@@ -6,10 +6,10 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import Foundation
-import AudioUnit
 import AVFoundation
 import Accelerate
+import AudioUnit
+import Foundation
 
 struct AttenuatorDSPKernel {
 
