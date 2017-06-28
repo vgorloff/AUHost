@@ -24,6 +24,10 @@ class Tool
          puts "Execution#{command} skipped when building Interface Builder target."
          return false
       end
+      if ENV['CLANG_COVERAGE_MAPPING'] != nil
+         puts "Execution#{command} skipped when building testing target."
+         return false
+      end
       return true
    end
    def self.canRunSwiftLint()
