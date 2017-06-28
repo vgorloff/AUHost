@@ -9,7 +9,7 @@
 import AppKit
 
 extension MainToolbar {
-   
+
    enum Event: Int {
       case reloadPlugIns
       case toggleMediaLibrary
@@ -61,5 +61,5 @@ extension MainToolbar.Event {
    var paletteLabel: String {
       return label
    }
-   
+
 }
