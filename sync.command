@@ -6,5 +6,5 @@ cd "$AWLProjectDirPath"
 
 AWLExeFilePath="/Applications/Tools/FreeFileSync.app/Contents/MacOS/FreeFileSync"
 AWLSyncLeft="$AWLProjectDirPath/Vendor/WL"
-AWLSyncRight="$GV_VCS_HOME/BitBucket/WL"
+AWLSyncRight="$GV_DEV_HOME/libs/WL"
 "$AWLExeFilePath" "$AWLSyncLeft/Conf/Settings/sync.ffs_gui" -LeftDir "$AWLSyncLeft" -RightDir "$AWLSyncRight"
