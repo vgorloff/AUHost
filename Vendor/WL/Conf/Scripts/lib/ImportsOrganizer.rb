@@ -8,15 +8,8 @@ class ImportsOrganizer
    def initialize()
       @fileExtensions = [".h", ".m", ".mm", ".swift"]
    end
-   def process(fileOrDirectoryPath)
-      filePathsToAnalyze = []
-      if File.directory?(fileOrDirectoryPath)
-         filePathsToAnalyze = Dir["#{fileOrDirectoryPath}/**/*"].select { |f| File.file?(f) && @fileExtensions.include?(File.extname(f)) }
-      elsif File.file?(fileOrDirectoryPath)
-         filePathsToAnalyze = [fileOrDirectoryPath]
-      else
-         raise ArgumentError.new("Expected path to file or directory. Observed \"#{fileOrDirectoryPath}\"")
-      end
+   def processFiles(filePathsToAnalyze)
+      filePathsToAnalyze = filePathsToAnalyze.select { |f|  @fileExtensions.include?(File.extname(f)) }
       filePathsToAnalyze.each { |f|
          fileContentsLines = File.readlines(f)
          isCoreected, updatedFileContentsLines = correctImportsIfNeeded(fileContentsLines)
@@ -27,6 +20,17 @@ class ImportsOrganizer
             end
          end
       }
+   end
+   def process(fileOrDirectoryPath)
+      filePathsToAnalyze = []
+      if File.directory?(fileOrDirectoryPath)
+         filePathsToAnalyze = Dir["#{fileOrDirectoryPath}/**/*"].select { |f| File.file?(f) }
+      elsif File.file?(fileOrDirectoryPath)
+         filePathsToAnalyze = [fileOrDirectoryPath]
+      else
+         raise ArgumentError.new("Expected path to file or directory. Observed \"#{fileOrDirectoryPath}\"")
+      end
+      self.processFiles(filePathsToAnalyze)
    end
    def correctImportsIfNeeded(fileContentsLines)
       indexOfFirstImport = -1

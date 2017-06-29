@@ -2,6 +2,8 @@
 
 require 'fileutils'
 
+# puts ENV.inspect
+
 class Tool
    def self.verifyBrewToolExists(toolName)
       status = system("hash #{toolName} 2>/dev/null")
@@ -22,10 +24,6 @@ class Tool
       end
       if ENV['TARGET_INTERFACE_BUILDER'] != nil
          puts "Execution#{command} skipped when building Interface Builder target."
-         return false
-      end
-      if ENV['CLANG_COVERAGE_MAPPING'] != nil
-         puts "Execution#{command} skipped when building testing target."
          return false
       end
       return true
