@@ -1,10 +1,15 @@
 #!/usr/bin/env ruby
 
-require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/lib/ImportsOrganizer.rb"
-require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/lib/Tool.rb"
+projectDirPath = File.expand_path("#{File.dirname(__FILE__)}/../")
+gitRepoDirPath = File.expand_path("#{projectDirPath}/../")
+
+require "#{projectDirPath}/Vendor/WL/Conf/Scripts/lib/ImportsOrganizer.rb"
+require "#{projectDirPath}/Vendor/WL/Conf/Scripts/lib/Tool.rb"
+require "#{projectDirPath}/Vendor/WL/Conf/Scripts/lib/GitStatus.rb"
 
 exit(0) if !Tool.verifyEnvironment("Organize Imports")
 
-ImportsOrganizer.new().process("#{ENV['PWD']}/Sources")
-ImportsOrganizer.new().process("#{ENV['PWD']}/Shared")
-ImportsOrganizer.new().process("#{ENV['PWD']}/Vendor/WL")
+changedFiles = GitStatus.new(gitRepoDirPath).changedFiles
+ImportsOrganizer.new().processFiles(changedFiles.select{ |f| f.start_with?("#{projectDirPath}/Sources")} )
+ImportsOrganizer.new().processFiles(changedFiles.select{ |f| f.start_with?("#{projectDirPath}/Shared")} )
+ImportsOrganizer.new().processFiles(changedFiles.select{ |f| f.start_with?("#{projectDirPath}/Vendor/WL")} )
