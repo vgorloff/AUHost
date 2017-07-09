@@ -8,8 +8,9 @@
 
 import AVFoundation
 import AudioUnit
+import CoreAudioKit
 
-public final class AttenuatorAudioUnit: AUAudioUnit {
+public class AttenuatorAudioUnit: AUAudioUnit {
 
    public enum Errors: Error {
       case statusError(OSStatus)
@@ -33,7 +34,6 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 
    var eventHandler: ((Event) -> Void)?
 
-   // MARK: - Public
    override public var parameterTree: AUParameterTree {
       return _parameterTree
    }
@@ -67,8 +67,6 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       return _outputBusses
    }
 
-   // MARK: - Init * Deinit
-
    public override init(componentDescription: AudioComponentDescription, options: AudioComponentInstantiationOptions) throws {
       dsp = AttenuatorDSPKernel(maxChannels: maxChannels)
       try super.init(componentDescription: componentDescription, options: options)
@@ -95,7 +93,9 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       super.deallocateRenderResources()
    }
 
-   // MARK: - Private
+}
+
+extension AttenuatorAudioUnit {
 
    private func setUpBusses() throws {
       guard let defaultFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2) else {

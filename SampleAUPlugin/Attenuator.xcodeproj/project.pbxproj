@@ -46,6 +46,7 @@
 		80485FF21DA82CE7004EFA32 /* UnsafeMutableAudioBufferListPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */; };
 		805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */; };
 		806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806476511D454A8A00AF72B9 /* FoundationUtilities.swift */; };
+		8078A0F41F11706D00663678 /* NSNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078A0F31F11705C00663678 /* NSNib.swift */; };
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80A180B81EFDBE5600716C26 /* BufferDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B31EFDBE4900716C26 /* BufferDatasource.swift */; };
 		80A180B91EFDBE5600716C26 /* BufferedAudioBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */; };
@@ -66,6 +67,7 @@
 		80AC1BB91EEF38E90048151A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BB81EEF38E30048151A /* Bundle.swift */; };
 		80AC1BBB1EEF39150048151A /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */; };
 		80AC1BBC1EEF39200048151A /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAC1EEF37C50048151A /* DispatchSemaphore.swift */; };
+		80AF82DC1F117B1D003F81E0 /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */; };
 		80C808991EFF2A1500E68A3F /* OperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAD1EEF37C50048151A /* OperationQueue.swift */; };
 		80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */; };
 		80C8089B1EFF2A7500E68A3F /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */; };
@@ -172,6 +174,7 @@
 		80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
 		805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		806476511D454A8A00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; };
+		8078A0F31F11705C00663678 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
 		80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
 		80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		80A180B31EFDBE4900716C26 /* BufferDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 		80AC1BAD1EEF37C50048151A /* OperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
 		80AC1BAE1EEF37C50048151A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		80AC1BB81EEF38E30048151A /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
 		80C808591EFF268F00E68A3F /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		C5A5A0FC1C47E75F00F9864E /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A5A1121C47EB5300F9864E /* AttenuatorAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AttenuatorAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -280,6 +284,7 @@
 				804674451D25DE77000989CA /* Math.swift */,
 				804674461D25DE77000989CA /* MinMax.swift */,
 				804674471D25DE77000989CA /* NonRecursiveLocking.swift */,
+				80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */,
 				804674491D25DE77000989CA /* NumericTypesConversions.swift */,
 				80141F9E1EF6B53900490F78 /* TypeAliases.swift */,
 			);
@@ -386,6 +391,7 @@
 				80AC1BB81EEF38E30048151A /* Bundle.swift */,
 				80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */,
 				80AC1BAC1EEF37C50048151A /* DispatchSemaphore.swift */,
+				8078A0F31F11705C00663678 /* NSNib.swift */,
 				80AC1BAD1EEF37C50048151A /* OperationQueue.swift */,
 				80AC1BAE1EEF37C50048151A /* String.swift */,
 			);
@@ -668,6 +674,7 @@
 				80485FDB1DA6C5F8004EFA32 /* DispatchSource.swift in Sources */,
 				80A180D21EFDC01200716C26 /* AttenuatorDSPKernel.swift in Sources */,
 				80A180D31EFDC01200716C26 /* AttenuatorParameter.swift in Sources */,
+				80AF82DC1F117B1D003F81E0 /* NotificationObserver.swift in Sources */,
 				80A180B81EFDBE5600716C26 /* BufferDatasource.swift in Sources */,
 				80485FD21DA6C472004EFA32 /* Logger.swift in Sources */,
 				804416351DAC30F400B84BEF /* VULevelMeter.DrawingData.swift in Sources */,
@@ -682,6 +689,7 @@
 				80485FD41DA6C493004EFA32 /* Functions.swift in Sources */,
 				80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */,
 				806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */,
+				8078A0F41F11706D00663678 /* NSNib.swift in Sources */,
 				80C808991EFF2A1500E68A3F /* OperationQueue.swift in Sources */,
 				802BE2E41EFDAE860072D3D8 /* AudioBuffer.swift in Sources */,
 				80485FDC1DA6C603004EFA32 /* NumericTypesConversions.swift in Sources */,
