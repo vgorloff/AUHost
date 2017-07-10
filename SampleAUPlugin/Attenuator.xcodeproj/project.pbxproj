@@ -47,6 +47,7 @@
 		805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */; };
 		806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806476511D454A8A00AF72B9 /* FoundationUtilities.swift */; };
 		8078A0F41F11706D00663678 /* NSNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078A0F31F11705C00663678 /* NSNib.swift */; };
+		808704E51F1432BB0048E46A /* MTLDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808704E41F1432B20048E46A /* MTLDevice.swift */; };
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80A180B81EFDBE5600716C26 /* BufferDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B31EFDBE4900716C26 /* BufferDatasource.swift */; };
 		80A180B91EFDBE5600716C26 /* BufferedAudioBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */; };
@@ -175,6 +176,7 @@
 		805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		806476511D454A8A00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; };
 		8078A0F31F11705C00663678 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
+		808704E41F1432B20048E46A /* MTLDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLDevice.swift; sourceTree = "<group>"; };
 		80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
 		80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		80A180B31EFDBE4900716C26 /* BufferDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 				802BE2E31EFDAE810072D3D8 /* AudioBuffer.swift */,
 				802BE2E51EFDAEAD0072D3D8 /* AudioComponentDescription.swift */,
 				802BE2E01EFDAE640072D3D8 /* GLKMatrix4.swift */,
+				808704E41F1432B20048E46A /* MTLDevice.swift */,
 				80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */,
 			);
 			path = Extensions;
@@ -689,6 +692,7 @@
 				80485FD41DA6C493004EFA32 /* Functions.swift in Sources */,
 				80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */,
 				806476531D454B6300AF72B9 /* FoundationUtilities.swift in Sources */,
+				808704E51F1432BB0048E46A /* MTLDevice.swift in Sources */,
 				8078A0F41F11706D00663678 /* NSNib.swift in Sources */,
 				80C808991EFF2A1500E68A3F /* OperationQueue.swift in Sources */,
 				802BE2E41EFDAE860072D3D8 /* AudioBuffer.swift in Sources */,
