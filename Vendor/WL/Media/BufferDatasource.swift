@@ -9,6 +9,7 @@
 import Foundation
 import MetalKit
 
+@available(OSX 10.11, *)
 final class BufferDatasource {
 
    struct Buffers {

@@ -8,6 +8,7 @@
 
 import AVFoundation
 
+@available(OSX 10.11, *)
 class BufferedAudioBus {
 
    fileprivate var maxFrames: AUAudioFrameCount = 0

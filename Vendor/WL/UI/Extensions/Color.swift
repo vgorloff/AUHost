@@ -69,3 +69,34 @@ public extension ColorType {
 	}
 
 }
+
+#if os(iOS)
+extension ColorType {
+
+   public var lighterColor: ColorType {
+      var r = CGFloat(0)
+      var g = CGFloat(0)
+      var b = CGFloat(0)
+      var a = CGFloat(0)
+      if getRed(&r, green: &g, blue: &b, alpha: &a) {
+         return ColorType(red: min(r + 0.2, 1.0), green: min(g + 0.2, 1.0), blue: min(b + 0.2, 1.0), alpha: a)
+      } else {
+         assert(false, "Unable to get lighter color for color: \(self)")
+         return self
+      }
+   }
+
+   public var darkerColor: ColorType {
+      var r = CGFloat(0)
+      var g = CGFloat(0)
+      var b = CGFloat(0)
+      var a = CGFloat(0)
+      if getRed(&r, green: &g, blue: &b, alpha: &a) {
+         return ColorType(red: min(r - 0.2, 1.0), green: min(g - 0.2, 1.0), blue: min(b - 0.2, 1.0), alpha: a)
+      } else {
+         assert(false, "Unable to get lighter color for color: \(self)")
+         return self
+      }
+   }
+}
+#endif

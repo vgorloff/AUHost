@@ -6,6 +6,9 @@
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
+import AppKit
+
 extension NSNib {
 
    public func instantiate(withOwner owner: Any?) -> [Any]? {
@@ -16,3 +19,4 @@ extension NSNib {
       return topLevelObjects as? [Any]
    }
 }
+#endif

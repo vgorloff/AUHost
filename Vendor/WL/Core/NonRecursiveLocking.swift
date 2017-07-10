@@ -10,7 +10,7 @@ import Darwin
 import Foundation
 
 public protocol NonRecursiveLocking {
-	func synchronized<T>( closure: () -> T) -> T
+	func synchronized<T>(closure: () -> T) -> T
 }
 
 public struct NonRecursiveLock {

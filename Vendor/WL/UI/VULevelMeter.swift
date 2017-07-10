@@ -12,6 +12,7 @@ import MetalKit
 
 private let gUseInternalCustomDrawTimer = false
 
+@available(OSX 10.11, *)
 public final class VULevelMeter: MTKView {
 
    enum Error: Swift.Error {
@@ -90,9 +91,6 @@ public final class VULevelMeter: MTKView {
       pipelineStateDescriptor.colorAttachments[0].pixelFormat = pixelFormat
       return try metalDevice.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
    }
-}
-
-extension VULevelMeter {
 
    public override func draw(_ dirtyRect: NSRect) {
       if !inLiveResize {
@@ -105,6 +103,10 @@ extension VULevelMeter {
          }
       }
    }
+}
+
+@available(OSX 10.11, *)
+extension VULevelMeter {
 
    private func prepareRenderCommandEncoder(encoder: MTLRenderCommandEncoder, drawable: CAMetalDrawable) {
 
