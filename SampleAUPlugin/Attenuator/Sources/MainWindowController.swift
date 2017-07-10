@@ -10,7 +10,7 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   private lazy var mlController = g.configure(NSMediaLibraryBrowserController.shared) {
+   private lazy var mlController: NSMediaLibraryBrowserController = g.configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
    let mainToolbarID = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
