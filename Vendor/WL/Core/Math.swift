@@ -33,16 +33,10 @@ extension Float: RandomInRangeValueType {
 
 public struct Math {
 
-	public static func placeValueInRange<T: Comparable>(value: T, min: T, max: T) -> T {
-		var result = value
-		if value < min {
-			result = min
-		}
-		if value > max {
-			result = max
-		}
-		return result
-	}
+    public static func valueInRange<T: Comparable>(_ value: T, min minValue: T, max maxValue: T) -> T {
+        let tmpValue = min(value, maxValue)
+        return max(tmpValue, minValue)
+    }
 
 	public static func average(valueA: Float, _ valueB: Float) -> Float {
 		return 0.5 * (valueA + valueB)

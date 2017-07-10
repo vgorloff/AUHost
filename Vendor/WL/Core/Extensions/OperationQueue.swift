@@ -8,8 +8,24 @@
 
 import Foundation
 
+extension OperationQueue {
+
+   public convenience init(qos: QualityOfService) {
+      self.init()
+      qualityOfService = qos
+   }
+
+   public func addOperations(_ ops: Operation...) {
+      addOperations(ops, waitUntilFinished: false)
+   }
+
+   public var isEmpty: Bool {
+      return operationCount <= 0
+   }
+}
+
 public extension OperationQueue {
-   
+
    public struct UserInteractive {
       public static func nonConcurrent(name: String? = nil) -> OperationQueue {
          let q = concurrent(name: name)
@@ -23,7 +39,7 @@ public extension OperationQueue {
          return q
       }
    }
-   
+
    public struct UserInitiated {
       public static func nonConcurrent(name: String? = nil) -> OperationQueue {
          let q = concurrent(name: name)
@@ -37,7 +53,7 @@ public extension OperationQueue {
          return q
       }
    }
-   
+
    public struct Utility {
       public static func nonConcurrent(name: String? = nil) -> OperationQueue {
          let q = concurrent(name: name)
@@ -51,7 +67,7 @@ public extension OperationQueue {
          return q
       }
    }
-   
+
    public struct Background {
       public static func nonConcurrent(name: String? = nil) -> OperationQueue {
          let q = concurrent(name: name)
@@ -65,7 +81,7 @@ public extension OperationQueue {
          return q
       }
    }
-   
+
    public struct Default {
       public static func nonConcurrent(name: String? = nil) -> OperationQueue {
          let q = concurrent(name: name)
@@ -79,7 +95,7 @@ public extension OperationQueue {
          return q
       }
    }
-   
+
    public struct NonConcurrent {
       public static func userInteractive(name: String? = nil) -> OperationQueue {
          return OperationQueue.UserInteractive.nonConcurrent(name: name)
@@ -97,7 +113,7 @@ public extension OperationQueue {
          return OperationQueue.Default.nonConcurrent(name: name)
       }
    }
-   
+
    public struct Concurrent {
       public static func userInteractive(name: String? = nil) -> OperationQueue {
          return OperationQueue.UserInteractive.concurrent(name: name)
@@ -115,5 +131,5 @@ public extension OperationQueue {
          return OperationQueue.Default.concurrent(name: name)
       }
    }
-   
+
 }

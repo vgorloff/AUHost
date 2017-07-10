@@ -48,34 +48,38 @@ final class BufferDatasource {
       }
    }
 
-   func nextBuffers(vertices: [Float], color: [Float], matrix: [Float]) -> Buffers {
+}
+
+extension BufferDatasource {
+
+   func nextBuffers(vertices: [Float], color: [Float], matrix: [Float]) throws -> Buffers {
 
       let verticesDataSize = vertices.count * MemoryLayout<Float>.size
       let colorDataSize = color.count * MemoryLayout<Float>.size
       let matrixDataSize = matrix.count * MemoryLayout<Float>.size
 
       if buffers.position.count - 1 < availableBufferIndex {
-         buffers.position.append(device.makeBuffer(length: verticesDataSize, options: []))
+         buffers.position.append(try device.makeBuffer(length: verticesDataSize))
       }
       if buffers.color.count - 1 < availableBufferIndex {
-         buffers.color.append(device.makeBuffer(length: colorDataSize, options: []))
+         buffers.color.append(try device.makeBuffer(length: colorDataSize))
       }
       if buffers.projectionMatrix.count - 1 < availableBufferIndex {
-         buffers.projectionMatrix.append(device.makeBuffer(length: matrixDataSize, options: []))
+         buffers.projectionMatrix.append(try device.makeBuffer(length: matrixDataSize))
       }
 
       var currentBuffers = buffers.buffers(at: availableBufferIndex)
 
       if currentBuffers.position.length != verticesDataSize {
-         currentBuffers.position = device.makeBuffer(length: verticesDataSize, options: [])
+         currentBuffers.position = try device.makeBuffer(length: verticesDataSize)
          buffers.position[availableBufferIndex] = currentBuffers.position
       }
       if currentBuffers.color.length != colorDataSize {
-         currentBuffers.color = device.makeBuffer(length: colorDataSize, options: [])
+         currentBuffers.color = try device.makeBuffer(length: colorDataSize)
          buffers.color[availableBufferIndex] = currentBuffers.color
       }
       if currentBuffers.projectionMatrix.length != matrixDataSize {
-         currentBuffers.projectionMatrix = device.makeBuffer(length: matrixDataSize, options: [])
+         currentBuffers.projectionMatrix = try device.makeBuffer(length: matrixDataSize)
          buffers.projectionMatrix[availableBufferIndex] = currentBuffers.projectionMatrix
       }
 
