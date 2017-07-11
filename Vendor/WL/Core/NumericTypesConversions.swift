@@ -8,8 +8,6 @@
 
 import CoreGraphics
 
-//region MARK: Protocols
-
 public protocol IntRepresentable {
    var intValue: Int { get }
 }
@@ -45,8 +43,6 @@ public protocol DoubleRepresentable {
 public protocol CGFloatRepresentable {
    var CGFloatValue: CGFloat { get } // swiftlint:disable:this variable_name
 }
-
-//endregion
 
 //region MARK: Implementations
 
