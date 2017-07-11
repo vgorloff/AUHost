@@ -14,7 +14,6 @@
 		8035EF351B3752030026AD7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF331B3752030026AD7D /* Main.storyboard */; };
 		8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF3D1B375EE00026AD7D /* MainWindowController.swift */; };
 		8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */; };
-		804674221D25DA66000989CA /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046741E1D25DA66000989CA /* Enumerations.swift */; };
 		804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674251D25DAA1000989CA /* WaveformCacheUtility.swift */; };
 		804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */; };
 		8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */; };
@@ -23,16 +22,15 @@
 		80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB41DA591CE004EFA32 /* MainToolbar.swift */; };
 		80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE11DA6C6F6004EFA32 /* Application.swift */; };
 		80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */; };
+		805301131F156050000B0C41 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7F71F155FFE00E5D248 /* ResultType.swift */; };
+		805301141F156053000B0C41 /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7F61F155FFE00E5D248 /* MinMax.swift */; };
 		805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */; };
 		8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064764B1D45376200AF72B9 /* DispatchSource.swift */; };
-		8064764E1D45399B00AF72B9 /* FoundationUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */; };
 		806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806556F41EF5AEC400C4C2FA /* CGSize.swift */; };
 		807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C041D25D9330033629F /* AlternativeValue.swift */; };
 		807E3C091D25D9330033629F /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C051D25D9330033629F /* Logger.swift */; };
-		807E3C0A1D25D9330033629F /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C061D25D9330033629F /* MinMax.swift */; };
 		807E3C0B1D25D9330033629F /* NumericTypesConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C071D25D9330033629F /* NumericTypesConversions.swift */; };
 		807E3C0F1D25D9670033629F /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C0C1D25D9670033629F /* Functions.swift */; };
-		807E3C101D25D9670033629F /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */; };
 		807E3C141D25D9880033629F /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */; };
 		8088EB211EF470D00022A26E /* CoreTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088EB201EF470D00022A26E /* CoreTypeAliases.swift */; };
 		8096F4F21EF5809900B1A5CD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F9DF8B1EF5802C0026A7A6 /* main.swift */; };
@@ -43,6 +41,11 @@
 		80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */; };
 		80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B331C4AA78E00308D83 /* EffectWindowController.swift */; };
 		80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B491C4B035E00308D83 /* PlaybackEngine.swift */; };
+		80DEB7F21F155F9500E5D248 /* NonRecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7EE1F155F8F00E5D248 /* NonRecursiveLock.swift */; };
+		80DEB7F31F155F9500E5D248 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7EF1F155F8F00E5D248 /* NonRecursiveLocking.swift */; };
+		80DEB7F41F155F9500E5D248 /* SpinLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7F01F155F8F00E5D248 /* SpinLock.swift */; };
+		80DEB7F51F155F9500E5D248 /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7F11F155F8F00E5D248 /* UnfairLock.swift */; };
+		80E390921F1568B40056D64D /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80E390911F1568B20056D64D /* NotificationObserver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,7 +80,6 @@
 		8035EF341B3752030026AD7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8035EF3D1B375EE00026AD7D /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
-		8046741E1D25DA66000989CA /* Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enumerations.swift; sourceTree = "<group>"; };
 		804674251D25DAA1000989CA /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
@@ -89,14 +91,11 @@
 		804860401DAAF94A004EFA32 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		8064764B1D45376200AF72B9 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
-		8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 3; lastKnownFileType = sourcecode.swift; path = FoundationUtilities.swift; sourceTree = "<group>"; tabWidth = 3; };
 		806556F41EF5AEC400C4C2FA /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
 		807E3C051D25D9330033629F /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		807E3C061D25D9330033629F /* MinMax.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
 		807E3C071D25D9330033629F /* NumericTypesConversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericTypesConversions.swift; sourceTree = "<group>"; };
 		807E3C0C1D25D9670033629F /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
 		807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
 		8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		8088EB201EF470D00022A26E /* CoreTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTypeAliases.swift; sourceTree = "<group>"; };
@@ -107,6 +106,13 @@
 		80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSemaphore.swift; sourceTree = "<group>"; };
 		80C97B331C4AA78E00308D83 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80C97B491C4B035E00308D83 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
+		80DEB7EE1F155F8F00E5D248 /* NonRecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecursiveLock.swift; sourceTree = "<group>"; };
+		80DEB7EF1F155F8F00E5D248 /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
+		80DEB7F01F155F8F00E5D248 /* SpinLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinLock.swift; sourceTree = "<group>"; };
+		80DEB7F11F155F8F00E5D248 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
+		80DEB7F61F155FFE00E5D248 /* MinMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
+		80DEB7F71F155FFE00E5D248 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
+		80E390911F1568B20056D64D /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
 		80F9DF8B1EF5802C0026A7A6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,18 +212,18 @@
 		807E3C031D25D9330033629F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				80DEB7EC1F155F8F00E5D248 /* Components */,
 				80AC1BA11EEF36B40048151A /* Extensions */,
 				807E3C041D25D9330033629F /* AlternativeValue.swift */,
+				8088EB201EF470D00022A26E /* CoreTypeAliases.swift */,
 				8064764B1D45376200AF72B9 /* DispatchSource.swift */,
-				8046741E1D25DA66000989CA /* Enumerations.swift */,
-				8064764D1D45399B00AF72B9 /* FoundationUtilities.swift */,
 				807E3C0C1D25D9670033629F /* Functions.swift */,
 				807E3C051D25D9330033629F /* Logger.swift */,
 				804674341D25DC92000989CA /* Math.swift */,
-				807E3C061D25D9330033629F /* MinMax.swift */,
-				807E3C0D1D25D9670033629F /* NonRecursiveLocking.swift */,
+				80DEB7F61F155FFE00E5D248 /* MinMax.swift */,
+				80E390911F1568B20056D64D /* NotificationObserver.swift */,
 				807E3C071D25D9330033629F /* NumericTypesConversions.swift */,
-				8088EB201EF470D00022A26E /* CoreTypeAliases.swift */,
+				80DEB7F71F155FFE00E5D248 /* ResultType.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -255,6 +261,25 @@
 			);
 			name = Vendor;
 			path = ../Vendor/WL;
+			sourceTree = "<group>";
+		};
+		80DEB7EC1F155F8F00E5D248 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				80DEB7ED1F155F8F00E5D248 /* Concurrency */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		80DEB7ED1F155F8F00E5D248 /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				80DEB7EE1F155F8F00E5D248 /* NonRecursiveLock.swift */,
+				80DEB7EF1F155F8F00E5D248 /* NonRecursiveLocking.swift */,
+				80DEB7F01F155F8F00E5D248 /* SpinLock.swift */,
+				80DEB7F11F155F8F00E5D248 /* UnfairLock.swift */,
+			);
+			path = Concurrency;
 			sourceTree = "<group>";
 		};
 		C5E335AB1C4FE7B000CD42BB /* Resources */ = {
@@ -367,13 +392,15 @@
 				804674361D25DC92000989CA /* Math.swift in Sources */,
 				80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */,
 				807E3C141D25D9880033629F /* MediaObjectPasteboardUtility.swift in Sources */,
-				807E3C101D25D9670033629F /* NonRecursiveLocking.swift in Sources */,
+				805301131F156050000B0C41 /* ResultType.swift in Sources */,
+				80DEB7F31F155F9500E5D248 /* NonRecursiveLocking.swift in Sources */,
 				807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */,
 				80130BA61C4C538800D6DDAC /* PlaybackEngineContext.swift in Sources */,
 				80A94FFF1D59300F0044ED2C /* Color.swift in Sources */,
-				807E3C0A1D25D9330033629F /* MinMax.swift in Sources */,
+				80DEB7F51F155F9500E5D248 /* UnfairLock.swift in Sources */,
 				8035EF301B3752030026AD7D /* MainViewController.swift in Sources */,
 				8005CA4B1EF6B3400091E075 /* MainViewUIModel.swift in Sources */,
+				80E390921F1568B40056D64D /* NotificationObserver.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
 				806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */,
 				807E3C0F1D25D9670033629F /* Functions.swift in Sources */,
@@ -381,20 +408,21 @@
 				8096F4F21EF5809900B1A5CD /* main.swift in Sources */,
 				80485FB21DA591AB004EFA32 /* NSToolbar.swift in Sources */,
 				807E3C0B1D25D9330033629F /* NumericTypesConversions.swift in Sources */,
-				8064764E1D45399B00AF72B9 /* FoundationUtilities.swift in Sources */,
+				80DEB7F41F155F9500E5D248 /* SpinLock.swift in Sources */,
 				80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */,
 				807E3C091D25D9330033629F /* Logger.swift in Sources */,
 				80AC1BA31EEF36B40048151A /* OperationQueue.swift in Sources */,
 				8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */,
-				804674221D25DA66000989CA /* Enumerations.swift in Sources */,
 				80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */,
 				8088EB211EF470D00022A26E /* CoreTypeAliases.swift in Sources */,
 				80AC1BA51EEF36E10048151A /* DispatchQueue.swift in Sources */,
 				8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */,
 				80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */,
+				805301141F156053000B0C41 /* MinMax.swift in Sources */,
 				80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
 				80AC1BA71EEF371D0048151A /* String.swift in Sources */,
+				80DEB7F21F155F9500E5D248 /* NonRecursiveLock.swift in Sources */,
 				805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */,
 				8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */,
 			);
