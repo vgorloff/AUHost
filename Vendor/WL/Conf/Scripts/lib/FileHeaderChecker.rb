@@ -18,6 +18,17 @@ class FileHeaderChecker
       @projectNames = projectNames
       @fileExtensions = [".h", ".m", ".mm", ".swift", ".metal", ".xcconfig"]
    end
+   def analyse(fileOrDirectoryPath)
+      filePathsToAnalyze = []
+      if File.directory?(fileOrDirectoryPath)
+         filePathsToAnalyze = Dir["#{fileOrDirectoryPath}/**/*"].select { |f| File.file?(f) }
+      elsif File.file?(fileOrDirectoryPath)
+         filePathsToAnalyze = [fileOrDirectoryPath]
+      else
+         raise ArgumentError.new("Expected path to file or directory. Observed \"#{fileOrDirectoryPath}\"")
+      end
+      self.analyseFiles(filePathsToAnalyze)
+   end
    def analyseFiles(filePathsToAnalyze)
      invalidResults = []
      filePathsToAnalyze = filePathsToAnalyze.select { |f| @fileExtensions.include?(File.extname(f)) }

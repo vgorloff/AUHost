@@ -530,13 +530,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5A5A10B1C47E75F00F9864E /* Build configuration list for PBXNativeTarget "Attenuator" */;
 			buildPhases = (
-				801176711DA1758F004AB73F /* Run Script (Force Plugin Deregistration) */,
+				801BE5A41F16CE5900806169 /* Run Script: Pre-Build */,
 				C5A5A0F81C47E75F00F9864E /* Sources */,
 				C5A5A0F91C47E75F00F9864E /* Frameworks */,
 				C5A5A0FA1C47E75F00F9864E /* Resources */,
 				C5A5A1261C47EB5300F9864E /* Embed App Extensions */,
 				80D5104C1C6697D000C53608 /* Embed Frameworks */,
-				C51A63701C4FD1650016F291 /* Run Script (Force PlugIn Registration) */,
+				C51A63701C4FD1650016F291 /* Run Script: Post-Build */,
 			);
 			buildRules = (
 			);
@@ -648,19 +648,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		801176711DA1758F004AB73F /* Run Script (Force Plugin Deregistration) */ = {
+		801BE5A41F16CE5900806169 /* Run Script: Pre-Build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script (Force Plugin Deregistration)";
+			name = "Run Script: Pre-Build";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "pluginkit -r \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\nexit 0";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n\"$SRCROOT/Scripts/BuildPhase-PreBuild.rb\"";
 		};
 		80B9403A1D1B50D50013FE1C /* Run Script: Pre-Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -674,21 +674,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc # Or set /bin/bash -l as shell in Xcode\n\"$SRCROOT/Scripts/BuildPhase-OrganizeImports.rb\"\n\"$SRCROOT/Scripts/BuildPhase-CheckHeaders.rb\"\n\"$SRCROOT/Scripts/BuildPhase-SwiftLint.rb\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n\"$SRCROOT/Scripts/BuildPhase-PreBuild.rb\"";
 		};
-		C51A63701C4FD1650016F291 /* Run Script (Force PlugIn Registration) */ = {
+		C51A63701C4FD1650016F291 /* Run Script: Post-Build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Run Script (Force PlugIn Registration)";
+			name = "Run Script: Post-Build";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#echo \"warning: Explicit PlugIn registration disabled (It is not required by default)\" & exit 0\npluginkit -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" 2>/dev/null\nexit 0";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n\"$SRCROOT/Scripts/BuildPhase-PostBuild.rb\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
