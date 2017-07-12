@@ -6,6 +6,7 @@
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import Foundation
 
 extension DisplayLink {
@@ -80,3 +81,4 @@ extension DisplayLink.GenericRenderer: CustomReflectable {
       return Mirror(self, children: children)
    }
 }
+#endif

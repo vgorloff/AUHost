@@ -10,7 +10,7 @@ public struct Logger {
 
    public enum Subsystem: Int {
       case `default` = 1000
-      case network
+      case net
       case data
       case model
       case view
@@ -172,7 +172,7 @@ extension Logger.Subsystem {
    fileprivate var stringValue: String {
       switch self {
       case .default: return "ua.com.wavelabs.default"
-      case .network: return "ua.com.wavelabs.network"
+      case .net: return "ua.com.wavelabs.network"
       case .data: return "ua.com.wavelabs.data"
       case .model: return "ua.com.wavelabs.model"
       case .view: return "ua.com.wavelabs.view"

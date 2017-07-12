@@ -6,6 +6,7 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import Foundation
 import MediaLibrary
 
@@ -72,3 +73,4 @@ public final class MediaLibraryUtility: NSObject {
 		return results
 	}
 }
+#endif

@@ -13,6 +13,7 @@ public enum MTLDeviceError: Swift.Error {
    case unableToInitialize(AnyClass)
 }
 
+@available(OSX 10.11, *)
 extension MTLDevice {
 
    public func makeBuffer(length: Int, options: MTLResourceOptions = []) throws -> MTLBuffer {

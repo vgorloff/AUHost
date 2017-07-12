@@ -6,6 +6,7 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import Cocoa
 
 extension NSToolbar {
@@ -64,3 +65,4 @@ extension NSToolbar.GenericDelegate {
       }
    }
 }
+#endif

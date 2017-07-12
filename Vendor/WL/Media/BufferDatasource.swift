@@ -50,6 +50,7 @@ final class BufferDatasource {
 
 }
 
+@available(OSX 10.11, *)
 extension BufferDatasource {
 
    func nextBuffers(vertices: [Float], color: [Float], matrix: [Float]) throws -> Buffers {

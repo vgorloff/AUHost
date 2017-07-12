@@ -8,6 +8,7 @@
 
 import AVFoundation
 
+@available(OSX 10.11, *)
 extension Notification.Name {
    static let audioComponentRegistrationsChanged = Notification.Name(rawValue:
       kAudioComponentRegistrationsChangedNotification as String)
@@ -15,7 +16,7 @@ extension Notification.Name {
       kAudioComponentInstanceInvalidationNotification as String)
 }
 
-@available(iOS 9.0, *)
+@available(iOS 9.0, OSX 10.11, *)
 public final class AudioComponentsUtility {
 
    public enum StateChange {

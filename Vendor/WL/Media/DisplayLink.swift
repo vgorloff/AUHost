@@ -6,6 +6,7 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import CoreVideo
 import QuartzCore
 
@@ -80,5 +81,4 @@ extension DisplayLink {
       }
    }
 }
-
-
+#endif

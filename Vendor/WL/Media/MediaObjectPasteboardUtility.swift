@@ -6,6 +6,7 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import AppKit
 
 public struct MediaObjectPasteboardUtility {
@@ -57,3 +58,4 @@ public struct MediaObjectPasteboardUtility {
       return result
    }
 }
+#endif
