@@ -56,13 +56,13 @@ extension ViewController: MainViewUIHandling {
       switch event {
       case .playbackEngineStageChanged(let state):
          switch state {
-         case .Playing:
+         case .playing:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Pause"
-         case .Stopped:
+         case .stopped:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Play"
-         case .Paused:
+         case .paused:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Resume"
          case .updatingGraph:
