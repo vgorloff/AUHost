@@ -28,10 +28,8 @@
 		80485FC91DA6C2F7004EFA32 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */; };
 		80485FCE1DA6C39B004EFA32 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */; };
 		80485FCF1DA6C39B004EFA32 /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */; };
-		80485FD01DA6C3B5004EFA32 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674441D25DE77000989CA /* Logger.swift */; };
-		80485FD21DA6C472004EFA32 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674441D25DE77000989CA /* Logger.swift */; };
-		80485FD31DA6C491004EFA32 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674421D25DE77000989CA /* Functions.swift */; };
-		80485FD41DA6C493004EFA32 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674421D25DE77000989CA /* Functions.swift */; };
+		80485FD01DA6C3B5004EFA32 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674441D25DE77000989CA /* Log.swift */; };
+		80485FD21DA6C472004EFA32 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674441D25DE77000989CA /* Log.swift */; };
 		80485FD91DA6C572004EFA32 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674451D25DE77000989CA /* Math.swift */; };
 		80485FDB1DA6C5F8004EFA32 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674701D25DF2A000989CA /* DispatchSource.swift */; };
 		80485FDC1DA6C603004EFA32 /* NumericTypesConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674491D25DE77000989CA /* NumericTypesConversions.swift */; };
@@ -47,6 +45,8 @@
 		8053011B1F156111000B0C41 /* NonRecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */; };
 		8053011D1F15612E000B0C41 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8053011C1F156123000B0C41 /* ResultType.swift */; };
 		805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */; };
+		80674F381F16C54200C316A0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80674F371F16C52F00C316A0 /* Util.swift */; };
+		80674F391F16C54300C316A0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80674F371F16C52F00C316A0 /* Util.swift */; };
 		8078A0F41F11706D00663678 /* NSNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8078A0F31F11705C00663678 /* NSNib.swift */; };
 		808704E51F1432BB0048E46A /* MTLDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 808704E41F1432B20048E46A /* MTLDevice.swift */; };
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
@@ -158,8 +158,7 @@
 		8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		8046743A1D25DE77000989CA /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
-		804674421D25DE77000989CA /* Functions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Functions.swift; sourceTree = "<group>"; };
-		804674441D25DE77000989CA /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		804674441D25DE77000989CA /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		804674451D25DE77000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
 		804674491D25DE77000989CA /* NumericTypesConversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericTypesConversions.swift; sourceTree = "<group>"; };
 		8046744E1D25DE77000989CA /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
@@ -179,6 +178,7 @@
 		805301151F1560C4000B0C41 /* MinMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
 		8053011C1F156123000B0C41 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
+		80674F371F16C52F00C316A0 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		8078A0F31F11705C00663678 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
 		808704E41F1432B20048E46A /* MTLDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLDevice.swift; sourceTree = "<group>"; };
 		80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
@@ -289,14 +289,14 @@
 				80AC1BAA1EEF37C50048151A /* Extensions */,
 				8046743A1D25DE77000989CA /* AlternativeValue.swift */,
 				804674701D25DF2A000989CA /* DispatchSource.swift */,
-				804674421D25DE77000989CA /* Functions.swift */,
-				804674441D25DE77000989CA /* Logger.swift */,
+				804674441D25DE77000989CA /* Log.swift */,
 				804674451D25DE77000989CA /* Math.swift */,
 				805301151F1560C4000B0C41 /* MinMax.swift */,
 				80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */,
 				804674491D25DE77000989CA /* NumericTypesConversions.swift */,
 				8053011C1F156123000B0C41 /* ResultType.swift */,
 				80141F9E1EF6B53900490F78 /* CoreTypeAliases.swift */,
+				80674F371F16C52F00C316A0 /* Util.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -700,13 +700,14 @@
 				802BE2E81EFDAF740072D3D8 /* CoreTypeAliases.swift in Sources */,
 				80A180D51EFDC01200716C26 /* AttenuatorViewController.swift in Sources */,
 				802BE2E61EFDAEC20072D3D8 /* AudioComponentDescription.swift in Sources */,
+				80674F381F16C54200C316A0 /* Util.swift in Sources */,
 				80485FDB1DA6C5F8004EFA32 /* DispatchSource.swift in Sources */,
 				80E390931F1568D60056D64D /* NotificationObserver.swift in Sources */,
 				80A180D21EFDC01200716C26 /* AttenuatorDSPKernel.swift in Sources */,
 				80A180D31EFDC01200716C26 /* AttenuatorParameter.swift in Sources */,
 				80A180B81EFDBE5600716C26 /* BufferDatasource.swift in Sources */,
 				80DEB7E91F155F8200E5D248 /* NonRecursiveLocking.swift in Sources */,
-				80485FD21DA6C472004EFA32 /* Logger.swift in Sources */,
+				80485FD21DA6C472004EFA32 /* Log.swift in Sources */,
 				804416351DAC30F400B84BEF /* VULevelMeter.DrawingData.swift in Sources */,
 				802BE2E21EFDAE6D0072D3D8 /* GLKMatrix4.swift in Sources */,
 				80DEB7EA1F155F8200E5D248 /* SpinLock.swift in Sources */,
@@ -718,7 +719,6 @@
 				80DEB7EB1F155F8200E5D248 /* UnfairLock.swift in Sources */,
 				80485FF21DA82CE7004EFA32 /* UnsafeMutableAudioBufferListPointer.swift in Sources */,
 				804416391DAC32E600B84BEF /* VULevelMeter.Shaders.metal in Sources */,
-				80485FD41DA6C493004EFA32 /* Functions.swift in Sources */,
 				80DEB7E81F155F8200E5D248 /* NonRecursiveLock.swift in Sources */,
 				80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */,
 				808704E51F1432BB0048E46A /* MTLDevice.swift in Sources */,
@@ -746,7 +746,6 @@
 				80485FE51DA6C735004EFA32 /* MediaLibraryUtility.swift in Sources */,
 				8053011A1F15610C000B0C41 /* UnfairLock.swift in Sources */,
 				8005CA4C1EF6B3520091E075 /* MainViewUIModel.swift in Sources */,
-				80485FD31DA6C491004EFA32 /* Functions.swift in Sources */,
 				8053011D1F15612E000B0C41 /* ResultType.swift in Sources */,
 				80485FC71DA6C2E6004EFA32 /* MediaObjectPasteboardUtility.swift in Sources */,
 				80485FCF1DA6C39B004EFA32 /* PlaybackEngineContext.swift in Sources */,
@@ -758,13 +757,14 @@
 				80485FCE1DA6C39B004EFA32 /* PlaybackEngine.swift in Sources */,
 				80141F9D1EF6B4C800490F78 /* Color.swift in Sources */,
 				80A180D71EFDC02800716C26 /* main.swift in Sources */,
-				80485FD01DA6C3B5004EFA32 /* Logger.swift in Sources */,
+				80485FD01DA6C3B5004EFA32 /* Log.swift in Sources */,
 				80A180D91EFDC02800716C26 /* ViewController.swift in Sources */,
 				80485FBE1DA6C054004EFA32 /* NSToolbar.swift in Sources */,
 				80485FED1DA6CAB4004EFA32 /* AlternativeValue.swift in Sources */,
 				80485FEC1DA6CA9C004EFA32 /* MediaItemView.swift in Sources */,
 				80485FD91DA6C572004EFA32 /* Math.swift in Sources */,
 				80AC1BBC1EEF39200048151A /* DispatchSemaphore.swift in Sources */,
+				80674F391F16C54300C316A0 /* Util.swift in Sources */,
 				805301181F15610C000B0C41 /* NonRecursiveLocking.swift in Sources */,
 				80C8089B1EFF2A7500E68A3F /* AudioComponentsUtility.swift in Sources */,
 			);

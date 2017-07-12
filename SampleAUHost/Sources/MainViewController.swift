@@ -107,15 +107,15 @@ extension MainViewController: MainViewUIHandling {
          buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
       case .playbackEngineStageChanged(let state):
          switch state {
-         case .Playing:
+         case .playing:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Pause"
             buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .Stopped:
+         case .stopped:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Play"
             buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .Paused:
+         case .paused:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Resume"
             buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
@@ -175,13 +175,13 @@ extension MainViewController: NSTableViewDelegate {
       case tableEffects:
          uiModel.closeEffectView()
          if tableView.selectedRow == 0 {
-            Logger.debug(subsystem: .controller, category: .handle, message: "Clearing effect")
+            Log.debug(subsystem: .controller, category: .event, message: "Clearing effect")
             uiModel.selectEffect(nil, completion: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < uiModel.availableEffects.count {
                let component = uiModel.availableEffects[row]
-               Logger.debug(subsystem: .controller, category: .handle, message: "Selecting effect: \"\(component.name)\"")
+               Log.debug(subsystem: .controller, category: .event, message: "Selecting effect: \"\(component.name)\"")
                uiModel.selectEffect(component) { [weak self] _ in
                   DispatchQueue.main.async {
                      self?.actionToggleEffectView(nil)
@@ -191,13 +191,13 @@ extension MainViewController: NSTableViewDelegate {
          }
       case tablePresets:
          if tableView.selectedRow == 0 {
-            Logger.debug(subsystem: .controller, category: .lifecycle, message: "Clearing preset")
+            Log.debug(subsystem: .controller, category: .event, message: "Clearing preset")
             uiModel.selectPreset(nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < uiModel.availablePresets.count {
                let preset = uiModel.availablePresets[row]
-               Logger.debug(subsystem: .controller, category: .lifecycle, message: "Selecting preset: \"\(preset.name)\"")
+               Log.debug(subsystem: .controller, category: .event, message: "Selecting preset: \"\(preset.name)\"")
                uiModel.selectPreset(preset)
             }
          }

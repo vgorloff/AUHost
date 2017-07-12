@@ -84,14 +84,14 @@ extension MainViewUIModel {
       playbackEngine.selectEffect(componentDescription: component?.audioComponentDescription) { [weak self] in
          guard let this = self else { return }
          switch $0 {
-         case .EffectCleared:
+         case .effectCleared:
             this.availablePresets.removeAll()
             this.selectedAUComponent = nil
             this.uiDelegate?.handleEvent(.didClearEffect)
-         case .Failure(let e):
-            Logger.error(subsystem: .controller, category: .handle, message: e)
+         case .failure(let e):
+            Log.error(subsystem: .controller, category: .event, error: e)
             this.uiDelegate?.handleEvent(.didSelectEffect(e))
-         case .Success(let effect):
+         case .success(let effect):
             this.availablePresets = effect.auAudioUnit.factoryPresets ?? []
             this.selectedAUComponent = component
             this.uiDelegate?.handleEvent(.didSelectEffect(nil))
@@ -107,17 +107,17 @@ extension MainViewUIModel {
    func togglePlay() {
       do {
          switch playbackEngine.stateID {
-         case .Playing:
+         case .playing:
             try playbackEngine.pause()
-         case .Paused:
+         case .paused:
             try playbackEngine.resume()
-         case .Stopped:
+         case .stopped:
             try playbackEngine.play()
          case .updatingGraph:
             break
          }
       } catch {
-         Logger.error(subsystem: .controller, category: .handle, message: error)
+         Log.error(subsystem: .controller, category: .event, error: error)
       }
    }
 
@@ -130,12 +130,12 @@ extension MainViewUIModel {
          uiDelegate?.handleEvent(.selectMedia(url))
          let f = try AVAudioFile(forReading: url)
          playbackEngine.setFileToPlay(f)
-         if playbackEngine.stateID == .Stopped {
+         if playbackEngine.stateID == .stopped {
             try playbackEngine.play()
          }
-         Logger.debug(subsystem: .controller, category: .open, message: "File assigned: \(url.absoluteString)")
+         Log.debug(subsystem: .controller, category: .access, message: "File assigned: \(url.absoluteString)")
       } catch {
-         Logger.error(subsystem: .controller, category: .open, message: error)
+         Log.error(subsystem: .controller, category: .access, error: error)
       }
    }
 

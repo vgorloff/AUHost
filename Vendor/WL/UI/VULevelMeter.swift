@@ -55,7 +55,7 @@ public final class VULevelMeter: MTKView {
       do {
          try initializeMetal()
       } catch {
-         Logger.error(subsystem: .media, category: .initialise, message: error)
+         Log.error(subsystem: .media, category: .initialise, error: error)
       }
    }
 
@@ -99,7 +99,7 @@ public final class VULevelMeter: MTKView {
             do {
                try self.render()
             } catch let error {
-               Logger.error(subsystem: .media, category: .initialise, message: error)
+               Log.error(subsystem: .media, category: .initialise, error: error)
             }
          }
       }

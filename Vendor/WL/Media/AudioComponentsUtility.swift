@@ -33,12 +33,12 @@ public final class AudioComponentsUtility {
 
    public init() {
       setUpObservers()
-      Logger.initialize(subsystem: .media)
+      Log.initialize(subsystem: .media)
    }
 
    deinit {
       tearDownObservers()
-      Logger.deinitialize(subsystem: .media)
+      Log.deinitialize(subsystem: .media)
    }
 
    /// **Note** Always calls completion handler on main queue
