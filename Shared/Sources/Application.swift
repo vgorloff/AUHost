@@ -1,9 +1,9 @@
 //
-//  Application.swift
-//  AUHost
+// Application.swift
+// AUHost
 //
-//  Created by Vlad Gorlov on 05/10/2016.
-//  Copyright © 2016 WaveLabs. All rights reserved.
+// Created by Vlad Gorlov on 05/10/2016.
+// Copyright © 2016 WaveLabs. All rights reserved.
 //
 
 import Cocoa
@@ -28,7 +28,7 @@ class Application: NSApplication {
 extension Application: NSApplicationDelegate {
 
    func applicationDidFinishLaunching(_ aNotification: Notification) {
-      
+
    }
 
    func applicationWillTerminate(_ aNotification: Notification) {

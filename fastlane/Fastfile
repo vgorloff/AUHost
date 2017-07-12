@@ -6,6 +6,8 @@
 fastlane_version "1.105.0"
 
 import "#{ENV['PWD']}/Vendor/WL/Conf/fastlane/fastlane.rb"
+require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/lib/ImportsOrganizer.rb"
+require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/lib/FileHeaderChecker.rb"
 
 AWLOutputDir = "#{ENV['PWD']}/Build"
 
@@ -53,4 +55,17 @@ lane :deploy do
      repository_name: "vgorloff/AUHost", api_token: ENV['AWL_GITHUB_TOKEN'], name: releaseName, tag_name: last_git_tag,
      description: releaseDescription, commitish: "master", upload_assets: assets
    )
+end
+
+desc "Autocorrect source code."
+lane :autocorrect do
+   `swiftlint autocorrect --path #{ENV['PWD']}`
+   ImportsOrganizer.new().process(ENV['PWD'])
+end
+
+desc "Verify source code."
+lane :verify do
+   `swiftlint lint --quiet --path #{ENV['PWD']}`
+   puts FileHeaderChecker.new(["AUHost", "WaveLabs"]).analyse("#{ENV['PWD']}/SampleAUHost")
+   puts FileHeaderChecker.new(["Attenuator", "WaveLabs"]).analyse("#{ENV['PWD']}/SampleAUPlugin")
 end

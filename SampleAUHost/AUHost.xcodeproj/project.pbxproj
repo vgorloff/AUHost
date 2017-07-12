@@ -379,7 +379,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc # Or set /bin/bash -l as shell in Xcode\n\"$SRCROOT/Scripts/BuildPhase-OrganizeImports.rb\"\n\"$SRCROOT/Scripts/BuildPhase-CheckHeaders.rb\"\n\"$SRCROOT/Scripts/BuildPhase-SwiftLint.rb\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n\"$SRCROOT/Scripts/BuildPhase-PreBuild.rb\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
