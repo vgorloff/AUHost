@@ -5,22 +5,27 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.105.0"
 
-import "#{ENV['PWD']}/Vendor/WL/Conf/fastlane/fastlane.rb"
+import "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/fastlane.rb"
 
 XCodeProjectFilePath = "#{ENV['PWD']}/AUHost.xcodeproj"
 XCodeProjectSchema = "AUHost"
 
 desc "Builds project."
 lane :build do
-   XcodeBuilder.new(self, XCodeProjectFilePath).build(XCodeProjectSchema)
+   XcodeBuilder.new(XCodeProjectFilePath).build(XCodeProjectSchema)
 end
 
 desc "Cleans project."
 lane :clean do
-   XcodeBuilder.new(self, XCodeProjectFilePath).clean(XCodeProjectSchema)
+   XcodeBuilder.new(XCodeProjectFilePath).clean(XCodeProjectSchema)
 end
 
 desc "Builds when under CI (i.e. Travis)."
 lane :ci do
-   XcodeBuilder.new(self, XCodeProjectFilePath).ci(XCodeProjectSchema)
+   XcodeBuilder.new(XCodeProjectFilePath).ci(XCodeProjectSchema)
+end
+
+desc "Archives project."
+lane :archive do
+   XcodeBuilder.new(XCodeProjectFilePath).archive(XCodeProjectSchema)
 end
