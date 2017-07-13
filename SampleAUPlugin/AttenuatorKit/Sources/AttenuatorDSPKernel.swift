@@ -21,8 +21,9 @@ struct AttenuatorDSPKernel {
 
    private var _maximumMagnitude: [SampleType]
    var maximumMagnitude: [SampleType] {
-      return maximumMagnitudeLock.synchronized { return _maximumMagnitude }
+      return maximumMagnitudeLock.synchronized { _maximumMagnitude }
    }
+
    private let maximumMagnitudeLock: NonRecursiveLocking = SpinLock()
 
    init(maxChannels: UInt32) {
@@ -32,7 +33,7 @@ struct AttenuatorDSPKernel {
    func getParameter(_ parameter: AttenuatorParameter) -> AUValue {
       switch parameter {
       case .gain:
-         return valueGainLock.synchronized { return valueGain }
+         return valueGainLock.synchronized { valueGain }
       }
    }
 
@@ -101,5 +102,4 @@ struct AttenuatorDSPKernel {
       }
       return noErr
    }
-
 }

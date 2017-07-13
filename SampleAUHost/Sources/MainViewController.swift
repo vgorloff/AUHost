@@ -29,6 +29,7 @@ class MainViewController: NSViewController {
          uiModel?.reloadEffects()
       }
    }
+
    private let segueOpenEffect = NSStoryboardSegue.Identifier("S:OpenEffectView")
    private var effectViewController: NSViewController? // Temporary store
 
@@ -44,7 +45,6 @@ class MainViewController: NSViewController {
          uiModel?.effectWindowWillOpen(wc)
       }
    }
-
 }
 
 extension MainViewController: EffectWindowCoordination {
@@ -65,11 +65,11 @@ extension MainViewController {
       }
    }
 
-   @IBAction private func actionTogglePlayAudio(_ sender: AnyObject) {
+   @IBAction private func actionTogglePlayAudio(_: AnyObject) {
       uiModel?.togglePlay()
    }
 
-   @IBAction private func actionToggleEffectView(_ sender: AnyObject?) {
+   @IBAction private func actionToggleEffectView(_: AnyObject?) {
       if uiModel?.canOpenEffectView == true {
          uiModel?.openEffectView { [weak self] in guard let this = self else { return }
             this.effectViewController = $0
@@ -205,5 +205,4 @@ extension MainViewController: NSTableViewDelegate {
          fatalError("Unknown tableView: \(tableView)")
       }
    }
-
 }

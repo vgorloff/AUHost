@@ -32,7 +32,7 @@ class EffectWindowController: NSWindowController {
 
 extension EffectWindowController: NSWindowDelegate {
 
-   func windowWillClose(_ notification: Notification) {
+   func windowWillClose(_: Notification) {
       coordinationDelegate?.handleEvent(.windowWillClose)
    }
 }

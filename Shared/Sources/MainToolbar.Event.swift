@@ -61,5 +61,4 @@ extension MainToolbar.Event {
    var paletteLabel: String {
       return label
    }
-
 }

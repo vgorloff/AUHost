@@ -42,10 +42,10 @@ final class PlaybackEngine {
    private(set) var stateID: State {
       get {
          return _stateAccessLock.synchronized {
-            return stateIDValue
+            stateIDValue
          }
       } set {
-         return _stateAccessLock.synchronized {
+         _stateAccessLock.synchronized {
             stateIDValue = newValue
          }
       }
@@ -59,7 +59,6 @@ final class PlaybackEngine {
    deinit {
       Log.deinitialize(subsystem: .media)
    }
-
 }
 
 extension PlaybackEngine {
@@ -199,7 +198,6 @@ extension PlaybackEngine {
          }
       }
    }
-
 }
 
 extension PlaybackEngine {
@@ -225,5 +223,4 @@ extension PlaybackEngine {
          self.changeHandler?(change)
       }
    }
-
 }

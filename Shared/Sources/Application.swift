@@ -20,23 +20,19 @@ class Application: NSApplication {
    }
 
    deinit {
-
    }
-
 }
 
 extension Application: NSApplicationDelegate {
 
-   func applicationDidFinishLaunching(_ aNotification: Notification) {
-
+   func applicationDidFinishLaunching(_: Notification) {
    }
 
-   func applicationWillTerminate(_ aNotification: Notification) {
+   func applicationWillTerminate(_: Notification) {
       // Insert code here to tear down your application
    }
 
-   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+   func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {
       return true
    }
-
 }
