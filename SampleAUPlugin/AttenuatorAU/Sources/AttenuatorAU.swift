@@ -9,5 +9,5 @@
 import AttenuatorKit
 
 public final class AttenuatorAU: AttenuatorViewController {
-	// Just to simplify NSExtension configuration.
+   // Just to simplify NSExtension configuration.
 }

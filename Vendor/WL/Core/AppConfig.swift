@@ -6,8 +6,9 @@
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
-import Foundation
+#if os(OSX)
 import AppKit
+import Foundation
 
 struct AppConfig {
 
@@ -44,3 +45,4 @@ struct AppConfig {
       return wc
    }
 }
+#endif

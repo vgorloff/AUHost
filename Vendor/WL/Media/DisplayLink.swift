@@ -6,8 +6,9 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
-import QuartzCore
+#if os(OSX)
 import CoreVideo
+import QuartzCore
 
 // swiftlint:disable:next function_parameter_count
 func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,
@@ -26,6 +27,7 @@ public final class DisplayLink {
    public enum Errors: Error {
       case CVReturnError(CVReturn)
    }
+
    private let displayLink: CVDisplayLink
 
    public var isRunning: Bool {
@@ -63,7 +65,6 @@ public final class DisplayLink {
    public func start() throws {
       try verifyStatusCode(CVDisplayLinkStart(displayLink))
    }
-
 }
 
 extension DisplayLink {
@@ -80,5 +81,4 @@ extension DisplayLink {
       }
    }
 }
-
-
+#endif

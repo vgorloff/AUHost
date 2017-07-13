@@ -13,7 +13,7 @@ public extension DispatchQueue {
    public static var Default: DispatchQueue {
       return DispatchQueue.global(qos: .default)
    }
-   
+
    public static var UserInteractive: DispatchQueue {
       return DispatchQueue.global(qos: .userInteractive)
    }
@@ -41,5 +41,4 @@ public extension DispatchQueue {
          return try sync(execute: work)
       }
    }
-
 }

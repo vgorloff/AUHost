@@ -6,6 +6,7 @@
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import Foundation
 
 extension DisplayLink {
@@ -33,14 +34,14 @@ extension DisplayLink {
                s.frameCounter = 0
             }
          }
-         Logger.initialize(subsystem: .media)
+         Log.initialize(subsystem: .media)
       }
 
       deinit {
          if displayLink.isRunning {
             _ = try? stop()
          }
-         Logger.deinitialize(subsystem: .media)
+         Log.deinitialize(subsystem: .media)
       }
    }
 }
@@ -48,7 +49,7 @@ extension DisplayLink {
 extension DisplayLink.GenericRenderer {
 
    public func start(shouldResetFrameCounter: Bool = false) throws {
-      Logger.debug(subsystem: .media, category: .lifecycle, message: "Starting")
+      Log.debug(subsystem: .media, category: .event, message: "Starting")
       if shouldResetFrameCounter {
          frameCounter = 0
       }
@@ -57,7 +58,7 @@ extension DisplayLink.GenericRenderer {
    }
 
    public func stop() throws {
-      Logger.debug(subsystem: .media, category: .lifecycle, message: "Stopping")
+      Log.debug(subsystem: .media, category: .event, message: "Stopping")
       dispatchSource.suspend()
       try displayLink.stop()
    }
@@ -69,7 +70,6 @@ extension DisplayLink.GenericRenderer {
       let displayID = CGMainDisplayID()
       try displayLink.setCurrentCGDisplay(displayID: displayID)
    }
-
 }
 
 extension DisplayLink.GenericRenderer: CustomReflectable {
@@ -80,3 +80,4 @@ extension DisplayLink.GenericRenderer: CustomReflectable {
       return Mirror(self, children: children)
    }
 }
+#endif

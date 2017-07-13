@@ -6,8 +6,8 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import Cocoa
 import AudioUnit
+import Cocoa
 
 class AttenuatorView: NSView {
 

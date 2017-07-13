@@ -6,6 +6,7 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import Foundation
 import MediaLibrary
 
@@ -29,10 +30,10 @@ public final class MediaLibraryUtility: NSObject {
 	public override init() {
       mediaLibrary = MLMediaLibrary(options: [MLMediaLoadSourceTypesKey: MLMediaSourceType.audio.rawValue])
 		super.init()
-		Logger.initialize(subsystem: .media)
+		Log.initialize(subsystem: .media)
       observation = mediaLibrary.observe(\.mediaSources) { [weak self] object, _ in guard let this = self else { return }
          let sources = object.mediaSources ?? [:]
-         Logger.debug(subsystem: .media, category: .handle,
+         Log.debug(subsystem: .media, category: .event,
                       message: "Found \(sources.count) media sources: \(Array(sources.keys))")
          for mediaSource in sources.values {
             _ = mediaSource.rootMediaGroup // Triggering lazy initialization
@@ -46,7 +47,7 @@ public final class MediaLibraryUtility: NSObject {
 
 	deinit {
       observation = nil
-		Logger.deinitialize(subsystem: .media)
+		Log.deinitialize(subsystem: .media)
 	}
 
 	public func loadMediaLibrary(completion: VoidCompletion?) {
@@ -72,3 +73,4 @@ public final class MediaLibraryUtility: NSObject {
 		return results
 	}
 }
+#endif

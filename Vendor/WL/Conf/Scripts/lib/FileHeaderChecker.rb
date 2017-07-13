@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby -w
 
 require 'fileutils'
+require "#{File.realpath(File.dirname(__FILE__))}/Extensions/File.rb"
 
 class FileHeaderChecker
    
@@ -17,27 +18,42 @@ class FileHeaderChecker
       @projectNames = projectNames
       @fileExtensions = [".h", ".m", ".mm", ".swift", ".metal", ".xcconfig"]
    end
-   def performAnalysis(fileOrDirectoryPath)
+   def analyse(fileOrDirectoryPath)
       filePathsToAnalyze = []
       if File.directory?(fileOrDirectoryPath)
-         filePathsToAnalyze = Dir["#{fileOrDirectoryPath}/**/*"].select { |f| File.file?(f) && @fileExtensions.include?(File.extname(f)) }
+         filePathsToAnalyze = Dir["#{fileOrDirectoryPath}/**/*"].select { |f| File.file?(f) }
       elsif File.file?(fileOrDirectoryPath)
          filePathsToAnalyze = [fileOrDirectoryPath]
       else
          raise ArgumentError.new("Expected path to file or directory. Observed \"#{fileOrDirectoryPath}\"")
       end
-      invalidResults = []
-      filePathsToAnalyze.each { |f|
-         begin
-            headerLines = File.head(f, 16)
-            headerElements = parseFileHeader(headerLines)
-            results = analyseHeader(f, headerElements)
-            invalidResults += generateError(f, results)
-         rescue Exception => e
-            invalidResults.push("#{f}:1: warning: #{e.message}")
-         end
-      }
-      return invalidResults
+      self.analyseFiles(filePathsToAnalyze)
+   end
+   def analyseFiles(filePathsToAnalyze)
+     invalidResults = []
+     filePathsToAnalyze = filePathsToAnalyze.select { |f| @fileExtensions.include?(File.extname(f)) }
+     filePathsToAnalyze.each { |f|
+        begin
+           headerLines = File.head(f, 16)
+           headerElements = parseFileHeader(headerLines)
+           results = analyseHeader(f, headerElements)
+           invalidResults += generateError(f, results)
+        rescue Exception => e
+           invalidResults.push("#{f}:1: warning: #{e.message}")
+        end
+     }
+     return invalidResults
+   end
+   def performAnalysis(fileOrDirectoryPath)
+      filePathsToAnalyze = []
+      if File.directory?(fileOrDirectoryPath)
+         filePathsToAnalyze = Dir["#{fileOrDirectoryPath}/**/*"].select { |f| File.file?(f) }
+      elsif File.file?(fileOrDirectoryPath)
+         filePathsToAnalyze = [fileOrDirectoryPath]
+      else
+         raise ArgumentError.new("Expected path to file or directory. Observed \"#{fileOrDirectoryPath}\"")
+      end
+      self.analyseFiles(filePathsToAnalyze)
    end
    def generateError(filePath, headerElements)
       results = []
@@ -129,20 +145,5 @@ class FileHeaderChecker
    end
    def parseFileHeaderV3(fileHeaderLines)
       raise "Not implemented"
-   end
-end
-
-# Reads a set number of lines from the top.
-# Usage: File.head('path.txt')
-class File
-   def self.head(path, n = 1)
-      open(path) do |f|
-         lines = []
-         n.times do
-            line = f.gets || break
-            lines << line
-         end
-         lines
-      end
    end
 end

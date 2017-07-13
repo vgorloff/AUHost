@@ -11,11 +11,12 @@ import AVFoundation
 extension UnsafeMutableAudioBufferListPointer {
    public var audioBuffers: [AudioBuffer] {
       var result = [AudioBuffer]()
-      for audioBufferIndex in 0..<count {
+      for audioBufferIndex in 0 ..< count {
          result.append(self[audioBufferIndex])
       }
       return result
    }
+
    init(unsafePointer pointer: UnsafePointer<AudioBufferList>) {
       self.init(UnsafeMutablePointer<AudioBufferList>(mutating: pointer))
    }

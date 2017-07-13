@@ -6,12 +6,14 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import AppKit
-import MetalKit
 import GLKit
+import MetalKit
 
 private let gUseInternalCustomDrawTimer = false
 
+@available(OSX 10.11, *)
 public final class VULevelMeter: MTKView {
 
    enum Error: Swift.Error {
@@ -53,7 +55,7 @@ public final class VULevelMeter: MTKView {
       do {
          try initializeMetal()
       } catch {
-         Logger.error(subsystem: .media, category: .initialise, message: error)
+         Log.error(subsystem: .media, category: .initialise, error: error)
       }
    }
 
@@ -90,23 +92,24 @@ public final class VULevelMeter: MTKView {
       pipelineStateDescriptor.colorAttachments[0].pixelFormat = pixelFormat
       return try metalDevice.makeRenderPipelineState(descriptor: pipelineStateDescriptor)
    }
-}
 
-extension VULevelMeter {
-
-   public override func draw(_ dirtyRect: NSRect) {
+   public override func draw(_: NSRect) {
       if !inLiveResize {
          autoreleasepool { [unowned self] in
             do {
                try self.render()
             } catch let error {
-               Logger.error(subsystem: .media, category: .initialise, message: error)
+               Log.error(subsystem: .media, category: .initialise, error: error)
             }
          }
       }
    }
+}
 
-   private func prepareRenderCommandEncoder(encoder: MTLRenderCommandEncoder, drawable: CAMetalDrawable) {
+@available(OSX 10.11, *)
+extension VULevelMeter {
+
+   private func prepareRenderCommandEncoder(encoder: MTLRenderCommandEncoder, drawable: CAMetalDrawable) throws {
 
       let drawableSize = drawable.layer.drawableSize
       let levelL = min(1, level[0]).CGFloatValue
@@ -114,7 +117,7 @@ extension VULevelMeter {
       let w = Float(drawableSize.width * levelL)
       let h = Float(drawableSize.height * levelL)
 
-      //OpenGL’s normalized z-coordinate system ranges from -1 to 1, while Metal’s is only 0 to 1.
+      // OpenGL’s normalized z-coordinate system ranges from -1 to 1, while Metal’s is only 0 to 1.
       let projectionMatrix = GLKMatrix4MakeOrtho(0, w, h, 0, -1, 1)
 
       modelDatasource.reset(xOffset: 0, yOffset: 0, width: Double(w), height: Double(h))
@@ -136,8 +139,8 @@ extension VULevelMeter {
       color.getRed(&componentR, green: &componentG, blue: &componentB, alpha: nil)
       let colorData = [Float(componentR), Float(componentG), Float(componentB)]
 
-      let buffers = dataBufferProvider.nextBuffers(vertices: modelDatasource.floatVertices,
-                                                   color: colorData, matrix: projectionMatrix.data())
+      let buffers = try dataBufferProvider.nextBuffers(vertices: modelDatasource.floatVertices,
+                                                       color: colorData, matrix: projectionMatrix.data())
       encoder.setVertexBuffer(buffers.position, offset: 0, index: 0)
       encoder.setVertexBuffer(buffers.color, offset: 0, index: 1)
       encoder.setVertexBuffer(buffers.projectionMatrix, offset: 0, index: 2)
@@ -145,29 +148,43 @@ extension VULevelMeter {
    }
 
    private func render() throws {
-      dataBufferProvider.dispatchWait()
+
       guard let currentDrawable = currentDrawable else {
          throw Error.unableToInitialize(String(describing: CAMetalDrawable.self))
       }
+
       guard let renderPassDescriptor = currentRenderPassDescriptor else {
          throw Error.unableToInitialize(String(describing: MTLRenderPassDescriptor.self))
       }
 
-      let commandBuffer = commandQueue.makeCommandBuffer()
-      commandBuffer.label = "Main Command Buffer"
-      commandBuffer.addCompletedHandler { [unowned self] _ -> Void in
-         self.dataBufferProvider.dispatchSignal()
+      guard let commandBuffer = commandQueue.makeCommandBuffer() else {
+         throw Error.unableToInitialize(String(describing: MTLCommandBuffer.self))
       }
-      let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
-      renderEncoder.label = "Final Pass Encoder"
 
-      renderEncoder.pushDebugGroup("Drawing buffers")
-      renderEncoder.setRenderPipelineState(pipelineState)
-      prepareRenderCommandEncoder(encoder: renderEncoder, drawable: currentDrawable)
-      renderEncoder.popDebugGroup()
+      guard let renderEncoder = commandBuffer.makeRenderCommandEncoder(descriptor: renderPassDescriptor) else {
+         throw Error.unableToInitialize(String(describing: MTLRenderCommandEncoder.self))
+      }
 
-      renderEncoder.endEncoding()
-      commandBuffer.present(currentDrawable)
-      commandBuffer.commit()
+      do {
+         dataBufferProvider.dispatchWait()
+         commandBuffer.label = "Main Command Buffer"
+         commandBuffer.addCompletedHandler { [unowned self] _ -> Void in
+            self.dataBufferProvider.dispatchSignal()
+         }
+
+         renderEncoder.label = "Final Pass Encoder"
+         renderEncoder.pushDebugGroup("Drawing buffers")
+         renderEncoder.setRenderPipelineState(pipelineState)
+         try prepareRenderCommandEncoder(encoder: renderEncoder, drawable: currentDrawable)
+         renderEncoder.popDebugGroup()
+         renderEncoder.endEncoding()
+
+         commandBuffer.present(currentDrawable)
+         commandBuffer.commit()
+      } catch {
+         dataBufferProvider.dispatchSignal()
+         throw error
+      }
    }
 }
+#endif

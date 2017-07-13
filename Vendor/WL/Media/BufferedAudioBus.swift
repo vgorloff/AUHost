@@ -8,6 +8,7 @@
 
 import AVFoundation
 
+@available(OSX 10.11, *)
 class BufferedAudioBus {
 
    fileprivate var maxFrames: AUAudioFrameCount = 0
@@ -34,9 +35,9 @@ class BufferedAudioBus {
       originalAudioBufferList = nil
       mutableAudioBufferList = nil
    }
-
 }
 
+@available(OSX 10.11, *)
 class BufferedInputBus: BufferedAudioBus {
 
    private func prepareInputBufferList() {
@@ -66,6 +67,7 @@ class BufferedInputBus: BufferedAudioBus {
    }
 }
 
+@available(OSX 10.11, *)
 class BufferedOutputBus: BufferedAudioBus {
 
    func prepareOutputBufferList(_ outputBufferList: UnsafeMutablePointer<AudioBufferList>, frameCount: AUAudioFrameCount,

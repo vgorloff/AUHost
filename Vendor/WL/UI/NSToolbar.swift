@@ -6,6 +6,7 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
+#if os(OSX)
 import Cocoa
 
 extension NSToolbar {
@@ -19,7 +20,6 @@ extension NSToolbar {
       var eventHandler: ((Event) -> Void)?
       var makeItemCallback: ((_ itemIdentifier: NSToolbarItem.Identifier, _ willBeInserted: Bool) -> NSToolbarItem?)?
    }
-
 }
 
 extension NSToolbar.GenericDelegate {
@@ -37,15 +37,15 @@ extension NSToolbar.GenericDelegate {
       return makeItemCallback?(itemIdentifier, flag)
    }
 
-   func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+   func toolbarDefaultItemIdentifiers(_: NSToolbar) -> [NSToolbarItem.Identifier] {
       return defaultItemIdentifiers
    }
 
-   func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+   func toolbarAllowedItemIdentifiers(_: NSToolbar) -> [NSToolbarItem.Identifier] {
       return allowedItemIdentifiers
    }
 
-   func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+   func toolbarSelectableItemIdentifiers(_: NSToolbar) -> [NSToolbarItem.Identifier] {
       return selectableItemIdentifiers
    }
 
@@ -64,3 +64,4 @@ extension NSToolbar.GenericDelegate {
       }
    }
 }
+#endif

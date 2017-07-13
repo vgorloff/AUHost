@@ -88,7 +88,7 @@ public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceT
       _deinit()
    }
 
-	public var customMirror: Mirror {
+   public var customMirror: Mirror {
       let children = DictionaryLiteral<String, Any>(dictionaryLiteral: ("dispatchSourceSuspendCount", dispatchSourceSuspendCount))
       return Mirror(self, children: children)
    }
@@ -104,23 +104,23 @@ public final class SmartDispatchSourceTimer: SmartDispatchSource {
    public func scheduleRepeating(deadline: DispatchTime, interval: DispatchTimeInterval,
                                  leeway: DispatchTimeInterval = .milliseconds(0)) {
       if let timer = dispatchSource as? DispatchSourceTimer {
-			timer.scheduleRepeating(deadline: deadline, interval: interval, leeway: leeway)
+         timer.scheduleRepeating(deadline: deadline, interval: interval, leeway: leeway)
       }
    }
-
 }
 
 public final class SmartDispatchSourceUserDataAdd: SmartDispatchSource {
-	public init(queue: DispatchQueue? = nil) {
+   public init(queue: DispatchQueue? = nil) {
       super.init()
-		dispatchSource = DispatchSource.makeUserDataAddSource(queue: queue)
-	}
-	public func mergeData(value: UInt) {
-		guard let dispatchSourceInstance = dispatchSource as? DispatchSourceUserDataAdd else {
-			return
-		}
-		dispatchSourceInstance.add(data: value)
-	}
+      dispatchSource = DispatchSource.makeUserDataAddSource(queue: queue)
+   }
+
+   public func mergeData(value: UInt) {
+      guard let dispatchSourceInstance = dispatchSource as? DispatchSourceUserDataAdd else {
+         return
+      }
+      dispatchSourceInstance.add(data: value)
+   }
 }
 
 public final class SmartDispatchSourceUserDataOr: SmartDispatchSource {
@@ -128,6 +128,7 @@ public final class SmartDispatchSourceUserDataOr: SmartDispatchSource {
       super.init()
       dispatchSource = DispatchSource.makeUserDataOrSource(queue: queue)
    }
+
    public func mergeData(value: UInt) {
       guard let dispatchSourceInstance = dispatchSource as? DispatchSourceUserDataOr else {
          return
