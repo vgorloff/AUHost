@@ -7,78 +7,78 @@
 //
 
 #if os(OSX)
-   import CoreVideo
-   import QuartzCore
+import CoreVideo
+import QuartzCore
 
-   // swiftlint:disable:next function_parameter_count
-   func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,
-                                       _: UnsafePointer<CVTimeStamp>,
-                                       _: UnsafePointer<CVTimeStamp>,
-                                       _: CVOptionFlags,
-                                       _: UnsafeMutablePointer<CVOptionFlags>,
-                                       _ context: UnsafeMutableRawPointer?) -> CVReturn {
-      let dispatchSource = unsafeBitCast(context, to: SmartDispatchSourceUserDataAdd.self)
-      dispatchSource.mergeData(value: 1)
-      return kCVReturnSuccess
+// swiftlint:disable:next function_parameter_count
+func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,
+                                    _: UnsafePointer<CVTimeStamp>,
+                                    _: UnsafePointer<CVTimeStamp>,
+                                    _: CVOptionFlags,
+                                    _: UnsafeMutablePointer<CVOptionFlags>,
+                                    _ context: UnsafeMutableRawPointer?) -> CVReturn {
+   let dispatchSource = unsafeBitCast(context, to: SmartDispatchSourceUserDataAdd.self)
+   dispatchSource.mergeData(value: 1)
+   return kCVReturnSuccess
+}
+
+public final class DisplayLink {
+
+   public enum Errors: Error {
+      case CVReturnError(CVReturn)
    }
 
-   public final class DisplayLink {
+   private let displayLink: CVDisplayLink
 
-      public enum Errors: Error {
-         case CVReturnError(CVReturn)
+   public var isRunning: Bool {
+      return CVDisplayLinkIsRunning(displayLink)
+   }
+
+   init(displayLink: CVDisplayLink) {
+      self.displayLink = displayLink
+   }
+
+   public static func createWithActiveCGDisplays() throws -> DisplayLink {
+      var displayLink: CVDisplayLink?
+      var status: CVReturn
+      status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
+      try verifyStatusCode(status)
+      guard let displayLinkInstance = displayLink else {
+         throw Errors.CVReturnError(kCVReturnError)
       }
+      return DisplayLink(displayLink: displayLinkInstance)
+   }
 
-      private let displayLink: CVDisplayLink
+   public func setCurrentCGDisplay(displayID: CGDirectDisplayID) throws {
+      try verifyStatusCode(CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID))
+   }
 
-      public var isRunning: Bool {
-         return CVDisplayLinkIsRunning(displayLink)
-      }
+   public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputCallback?,
+                                 userInfo: UnsafeMutableRawPointer?) throws {
+      try verifyStatusCode(CVDisplayLinkSetOutputCallback(displayLink, callback, userInfo))
+   }
 
-      init(displayLink: CVDisplayLink) {
-         self.displayLink = displayLink
-      }
+   public func stop() throws {
+      try verifyStatusCode(CVDisplayLinkStop(displayLink))
+   }
 
-      public static func createWithActiveCGDisplays() throws -> DisplayLink {
-         var displayLink: CVDisplayLink?
-         var status: CVReturn
-         status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
-         try verifyStatusCode(status)
-         guard let displayLinkInstance = displayLink else {
-            throw Errors.CVReturnError(kCVReturnError)
-         }
-         return DisplayLink(displayLink: displayLinkInstance)
-      }
+   public func start() throws {
+      try verifyStatusCode(CVDisplayLinkStart(displayLink))
+   }
+}
 
-      public func setCurrentCGDisplay(displayID: CGDirectDisplayID) throws {
-         try verifyStatusCode(CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID))
-      }
+extension DisplayLink {
 
-      public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputCallback?,
-                                    userInfo: UnsafeMutableRawPointer?) throws {
-         try verifyStatusCode(CVDisplayLinkSetOutputCallback(displayLink, callback, userInfo))
-      }
-
-      public func stop() throws {
-         try verifyStatusCode(CVDisplayLinkStop(displayLink))
-      }
-
-      public func start() throws {
-         try verifyStatusCode(CVDisplayLinkStart(displayLink))
+   private func verifyStatusCode(_ statusCode: CVReturn) throws {
+      if statusCode != kCVReturnSuccess {
+         throw Errors.CVReturnError(statusCode)
       }
    }
 
-   extension DisplayLink {
-
-      private func verifyStatusCode(_ statusCode: CVReturn) throws {
-         if statusCode != kCVReturnSuccess {
-            throw Errors.CVReturnError(statusCode)
-         }
-      }
-
-      private static func verifyStatusCode(_ statusCode: CVReturn) throws {
-         if statusCode != kCVReturnSuccess {
-            throw Errors.CVReturnError(statusCode)
-         }
+   private static func verifyStatusCode(_ statusCode: CVReturn) throws {
+      if statusCode != kCVReturnSuccess {
+         throw Errors.CVReturnError(statusCode)
       }
    }
+}
 #endif

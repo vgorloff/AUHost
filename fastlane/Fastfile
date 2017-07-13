@@ -61,7 +61,7 @@ desc "Autocorrect source code."
 lane :autocorrect do
    sh "swiftformat "\
    "--allman false --binarygrouping none --commas inline --comments indent --decimalgrouping none --empty void "\
-   "--exponentcase lowercase --header ignore --hexgrouping none --hexliteralcase uppercase --ifdef indent --indent 3 --insertlines enabled "\
+   "--exponentcase lowercase --header ignore --hexgrouping none --hexliteralcase uppercase --ifdef noindent --indent 3 --insertlines enabled "\
    "--linebreaks lf --octalgrouping none --patternlet inline --ranges spaced --removelines true --semicolons inline --self remove "\
    "--stripunusedargs unnamed-only --trimwhitespace always --wraparguments disabled --wrapelements disabled "\
    "\"#{ENV['PWD']}\""

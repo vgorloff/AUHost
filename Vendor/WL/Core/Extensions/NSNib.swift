@@ -7,16 +7,16 @@
 //
 
 #if os(OSX)
-   import AppKit
+import AppKit
 
-   extension NSNib {
+extension NSNib {
 
-      public func instantiate(withOwner owner: Any?) -> [Any]? {
-         var topLevelObjects: NSArray?
-         guard instantiate(withOwner: owner, topLevelObjects: &topLevelObjects) else {
-            return nil
-         }
-         return topLevelObjects as? [Any]
+   public func instantiate(withOwner owner: Any?) -> [Any]? {
+      var topLevelObjects: NSArray?
+      guard instantiate(withOwner: owner, topLevelObjects: &topLevelObjects) else {
+         return nil
       }
+      return topLevelObjects as? [Any]
    }
+}
 #endif

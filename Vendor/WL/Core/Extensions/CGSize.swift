@@ -9,13 +9,13 @@
 import CoreGraphics
 
 #if os(iOS)
-   import UIKit
+import UIKit
 
-   extension CGSize: StringRepresentable {
-      public var stringValue: String {
-         return NSStringFromCGSize(self)
-      }
+extension CGSize: StringRepresentable {
+   public var stringValue: String {
+      return NSStringFromCGSize(self)
    }
+}
 #endif
 
 extension CGSize {
