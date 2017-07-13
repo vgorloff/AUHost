@@ -18,7 +18,7 @@ class XcodeBuilder
       c = configuration == nil ? "" : "-configuration #{configuration}"
       archivePath = "#{@buildDir}/#{schema}.xcarchive"
       exportPath = "#{@buildDir}/#{schema}.export"
-      exportOptionsPath = "/Users/vova/Downloads/export_options.plist"
+      exportOptionsPath = "#{File.realpath(File.dirname(__FILE__))}/Resources/xcode.exportOptions.macOS.plist"
       puts "→ Building archive to \"#{exportPath}\"".green
       cmd = "#{@buildExecutable} -project \"#{@projectFilePath}\" -scheme \"#{schema}\" -archivePath \"#{archivePath}\" #{c} #{@derivedDataPath} archive #{@commonArgsXCPretty}"
       system(cmd)
