@@ -6,15 +6,17 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import AudioUnit
 import AVFoundation
+import AudioUnit
+import CoreAudioKit
 
-public final class AttenuatorAudioUnit: AUAudioUnit {
+public class AttenuatorAudioUnit: AUAudioUnit {
 
    public enum Errors: Error {
       case statusError(OSStatus)
       case unableToInitialize(String)
    }
+
    private let maxChannels = UInt32(8)
    private var _parameterTree: AUParameterTree!
    private var _inputBusses: AUAudioUnitBusArray!
@@ -23,9 +25,9 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
    internal private(set) var outputBus: BufferedOutputBus!
    private(set) var dsp: AttenuatorDSPKernel
    internal private(set) var parameterGain: AUParameter!
-//   public override var canProcessInPlace: Bool {
-//      return true
-//   }
+   //   public override var canProcessInPlace: Bool {
+   //      return true
+   //   }
 
    enum Event {
       case allocateRenderResources
@@ -33,15 +35,15 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
 
    var eventHandler: ((Event) -> Void)?
 
-   // MARK: - Public
-   override public var parameterTree: AUParameterTree {
+   public override var parameterTree: AUParameterTree {
       return _parameterTree
    }
-   override public var internalRenderBlock: AUInternalRenderBlock {
-      return { [weak self] actionFlags, timestamp, frameCount, outputBusNumber, outputData,
-         realtimeEventListHead, pullInputBlock in
+
+   public override var internalRenderBlock: AUInternalRenderBlock {
+      return { [weak self] _, timestamp, frameCount, _, outputData,
+         _, pullInputBlock in
          guard let s = self, let pullBlock = pullInputBlock, let inputBus = s.inputBus, let outputBus = s.outputBus,
-         let inputBufferList = inputBus.mutableAudioBufferList else {
+            let inputBufferList = inputBus.mutableAudioBufferList else {
             return kAudioUnitErr_NoConnection
          }
 
@@ -59,15 +61,13 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       }
    }
 
-   override public var inputBusses: AUAudioUnitBusArray {
+   public override var inputBusses: AUAudioUnitBusArray {
       return _inputBusses
    }
 
-   override public var outputBusses: AUAudioUnitBusArray {
+   public override var outputBusses: AUAudioUnitBusArray {
       return _outputBusses
    }
-
-   // MARK: - Init * Deinit
 
    public override init(componentDescription: AudioComponentDescription, options: AudioComponentInstantiationOptions) throws {
       dsp = AttenuatorDSPKernel(maxChannels: maxChannels)
@@ -94,8 +94,9 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       outputBus.deallocateRenderResources()
       super.deallocateRenderResources()
    }
+}
 
-   // MARK: - Private
+extension AttenuatorAudioUnit {
 
    private func setUpBusses() throws {
       guard let defaultFormat = AVAudioFormat(standardFormatWithSampleRate: 44100, channels: 2) else {
@@ -132,5 +133,4 @@ public final class AttenuatorAudioUnit: AUAudioUnit {
       }
       return tree
    }
-
 }

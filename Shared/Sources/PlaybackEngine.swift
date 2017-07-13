@@ -21,31 +21,31 @@ final class PlaybackEngine {
    }
 
    enum State: Int {
-      case Stopped, Playing, Paused, updatingGraph
+      case stopped, playing, paused, updatingGraph
    }
 
    enum Event: Int {
-      case Play, Pause, Resume, Stop, SetFile, SetEffect, Autostop
+      case play, pause, resume, stop, setFile, setEffect, autostop
    }
 
    enum EffectSelectionResult {
-      case EffectCleared
-      case Success(AVAudioUnit)
-      case Failure(Error)
+      case effectCleared
+      case success(AVAudioUnit)
+      case failure(Error)
    }
 
    var changeHandler: Completion<Change>?
 
    private let context = PlaybackEngineContext()
    private let _stateAccessLock: NonRecursiveLocking = SpinLock()
-   private var stateIDValue: State = .Stopped
+   private var stateIDValue: State = .stopped
    private(set) var stateID: State {
       get {
          return _stateAccessLock.synchronized {
-            return stateIDValue
+            stateIDValue
          }
       } set {
-         return _stateAccessLock.synchronized {
+         _stateAccessLock.synchronized {
             stateIDValue = newValue
          }
       }
@@ -53,41 +53,40 @@ final class PlaybackEngine {
 
    init() {
       setupHandlers()
-      Logger.initialize(subsystem: .media)
+      Log.initialize(subsystem: .media)
    }
 
    deinit {
-      Logger.deinitialize(subsystem: .media)
+      Log.deinitialize(subsystem: .media)
    }
-
 }
 
 extension PlaybackEngine {
 
    func setFileToPlay(_ fileToPlay: AVAudioFile) {
-      let change1 = Change(event: .SetFile, oldState: stateID, newState: .updatingGraph)
+      let change1 = Change(event: .setFile, oldState: stateID, newState: .updatingGraph)
       guard change1.shouldChange else {
          return
       }
       notifyAboutChange(change1)
       switch change1.oldState {
-      case .updatingGraph, .Stopped:
+      case .updatingGraph, .stopped:
          break
-      case .Playing, .Paused:
+      case .playing, .paused:
          context.stop()
       }
-      let change2 = Change(event: .SetFile, oldState: change1.newState, newState: .Stopped)
+      let change2 = Change(event: .setFile, oldState: change1.newState, newState: .stopped)
       context.setFileToPlay(fileToPlay)
       notifyAboutChange(change2)
    }
 
    func stop() {
-      let change = Change(event: .SetFile, oldState: stateID, newState: .Stopped)
-      if change.shouldChange  {
+      let change = Change(event: .setFile, oldState: stateID, newState: .stopped)
+      if change.shouldChange {
          switch change.oldState {
-         case .Paused, .Playing:
+         case .paused, .playing:
             context.stop()
-         case .updatingGraph, .Stopped:
+         case .updatingGraph, .stopped:
             break
          }
          notifyAboutChange(change)
@@ -95,12 +94,12 @@ extension PlaybackEngine {
    }
 
    func pause() throws {
-      let change = Change(event: .Pause, oldState: stateID, newState: .Paused)
+      let change = Change(event: .pause, oldState: stateID, newState: .paused)
       if change.shouldChange {
          switch change.oldState {
-         case .Paused, .Stopped, .updatingGraph:
+         case .paused, .stopped, .updatingGraph:
             break
-         case .Playing:
+         case .playing:
             context.pause()
          }
          notifyAboutChange(change)
@@ -108,12 +107,12 @@ extension PlaybackEngine {
    }
 
    func resume() throws {
-      let change = Change(event: .Resume, oldState: stateID, newState: .Playing)
+      let change = Change(event: .resume, oldState: stateID, newState: .playing)
       if change.shouldChange {
-         switch change.oldState  {
-         case .updatingGraph, .Stopped, .Playing:
+         switch change.oldState {
+         case .updatingGraph, .stopped, .playing:
             break
-         case .Paused:
+         case .paused:
             try context.resume()
          }
          notifyAboutChange(change)
@@ -121,12 +120,12 @@ extension PlaybackEngine {
    }
 
    func play() throws {
-      let change = Change(event: .Play, oldState: stateID, newState: .Playing)
+      let change = Change(event: .play, oldState: stateID, newState: .playing)
       if change.shouldChange {
-         switch change.oldState  {
-         case .Playing, .Paused, .updatingGraph:
+         switch change.oldState {
+         case .playing, .paused, .updatingGraph:
             break
-         case .Stopped:
+         case .stopped:
             try context.play()
          }
          notifyAboutChange(change)
@@ -159,33 +158,33 @@ extension PlaybackEngine {
    }
 
    func selectEffect(componentDescription: AudioComponentDescription?, completion: ((EffectSelectionResult) -> Void)?) {
-      let change1 = Change(event: .SetEffect, oldState: stateID, newState: .updatingGraph)
+      let change1 = Change(event: .setEffect, oldState: stateID, newState: .updatingGraph)
       guard change1.shouldChange else {
          return
       }
       notifyAboutChange(change1)
       switch change1.oldState {
-      case .updatingGraph, .Stopped:
+      case .updatingGraph, .stopped:
          break
-      case .Paused, .Playing:
+      case .paused, .playing:
          context.stopPlayer()
       }
-      let change2 = Change(event: .SetEffect, oldState: change1.newState, newState: change1.oldState)
+      let change2 = Change(event: .setEffect, oldState: change1.newState, newState: change1.oldState)
       let restartCallback: () -> Void = { [weak self] in
          switch change2.newState {
-         case .Playing:
+         case .playing:
             do {
                try self?.context.startPlayer()
             } catch {
-               Logger.error(subsystem: .media, category: .generic, message: error)
+               Log.error(subsystem: .media, category: .generic, error: error)
             }
-         case .Paused:
+         case .paused:
             do {
                try self?.context.scheduleFile()
             } catch {
-               Logger.error(subsystem: .media, category: .generic, message: error)
+               Log.error(subsystem: .media, category: .generic, error: error)
             }
-         case .Stopped ,.updatingGraph:
+         case .stopped, .updatingGraph:
             break
          }
          self?.notifyAboutChange(change2)
@@ -199,17 +198,16 @@ extension PlaybackEngine {
          }
       }
    }
-
 }
 
 extension PlaybackEngine {
 
    private func setupHandlers() {
       context.filePlaybackCompleted = { [weak self] in guard let s = self else { return }
-         let change = Change(event: .Autostop, oldState: s.stateID, newState: .Stopped)
+         let change = Change(event: .autostop, oldState: s.stateID, newState: .stopped)
          let message = "Playback stopped or file finished playing. Current state: \(change.oldState)"
-         Logger.debug(subsystem: .media, category: .handle, message: message)
-         if change.oldState == .Playing {
+         Log.debug(subsystem: .media, category: .event, message: message)
+         if change.oldState == .playing {
             DispatchQueue.main.async { [weak self] in guard let s = self else { return }
                s.context.stop()
                s.notifyAboutChange(change)
@@ -220,11 +218,9 @@ extension PlaybackEngine {
 
    private func notifyAboutChange(_ change: Change) {
       stateID = change.newState
-      Logger.debug(subsystem: .media, category: .handle, message: "State changed: \(change.oldState) => \(change.newState)")
+      Log.debug(subsystem: .media, category: .event, message: "State changed: \(change.oldState) => \(change.newState)")
       DispatchQueue.main.async {
          self.changeHandler?(change)
       }
    }
-
-
 }

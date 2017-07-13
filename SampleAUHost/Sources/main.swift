@@ -6,7 +6,7 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
 
 _ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)

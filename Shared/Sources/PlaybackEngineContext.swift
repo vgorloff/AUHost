@@ -12,7 +12,7 @@ import CoreAudioKit
 final class PlaybackEngineContext {
 
    enum Error: Swift.Error {
-      case FileIsNotSet
+      case fileIsNotSet
    }
 
    private(set) var effect: AVAudioUnit?
@@ -24,14 +24,13 @@ final class PlaybackEngineContext {
    var filePlaybackCompleted: AVAudioNodeCompletionHandler?
 
    init() {
-      Logger.initialize(subsystem: .media)
+      Log.initialize(subsystem: .media)
       engine.attach(player)
    }
 
    deinit {
-      Logger.deinitialize(subsystem: .media)
+      Log.deinitialize(subsystem: .media)
    }
-
 }
 
 extension PlaybackEngineContext {
@@ -58,7 +57,7 @@ extension PlaybackEngineContext {
 
    func startPlayer() throws {
       guard let file = file else {
-         throw Error.FileIsNotSet
+         throw Error.fileIsNotSet
       }
       scheduleFile(file: file, offset: playbackOffset)
       player.play()
@@ -66,7 +65,7 @@ extension PlaybackEngineContext {
 
    func scheduleFile() throws {
       guard let file = file else {
-         throw Error.FileIsNotSet
+         throw Error.fileIsNotSet
       }
       scheduleFile(file: file, offset: playbackOffset)
    }
@@ -112,27 +111,26 @@ extension PlaybackEngineContext {
       guard let desc = componentDescription else {
          DispatchQueue.main.async { [weak self] in
             self?.clearEffect()
-            completion?(.EffectCleared)
+            completion?(.effectCleared)
          }
          return
       }
       let flags = AudioComponentFlags(rawValue: desc.componentFlags)
       let canLoadInProcess = flags.contains(AudioComponentFlags.canLoadInProcess)
       let loadOptions: AudioComponentInstantiationOptions = canLoadInProcess ? .loadInProcess : .loadOutOfProcess
-      AVAudioUnit.instantiate(with: desc, options: loadOptions) {[weak self] (avAudioUnit, error) in
+      AVAudioUnit.instantiate(with: desc, options: loadOptions) { [weak self] avAudioUnit, error in
          if let e = error {
-            completion?(.Failure(e))
+            completion?(.failure(e))
          } else if let effect = avAudioUnit {
             DispatchQueue.main.async { [weak self] in
                self?.assignEffect(effect)
-               completion?(.Success(effect))
+               completion?(.success(effect))
             }
          } else {
             fatalError()
          }
       }
    }
-
 }
 
 extension PlaybackEngineContext {
@@ -177,10 +175,10 @@ extension PlaybackEngineContext {
       statistics.append("File samplerate: \(file.fileFormat.sampleRate)")
       statistics.append("File playback offset: \(offset)")
       statistics.append("Frames to play: \(framesToPlay)")
-      Logger.debug(subsystem: .media, category: .diagnostics, message: statistics.joined(separator: "; "))
+      Log.debug(subsystem: .media, category: .event, message: statistics.joined(separator: "; "))
       guard framesToPlay > 0 else {
-         Logger.default(subsystem: .media, category: .lifecycle,
-                        message: "Nothing to play. Check value of 'playbackOffset' property.")
+         Log.default(subsystem: .media, category: .event,
+                     message: "Nothing to play. Check value of 'playbackOffset' property.")
          return
       }
 
@@ -191,5 +189,4 @@ extension PlaybackEngineContext {
          self?.filePlaybackCompleted?()
       }
    }
-
 }

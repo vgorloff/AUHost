@@ -6,18 +6,22 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import CoreAudioKit
 import AVFoundation
+import CoreAudioKit
 
-open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
+open class AttenuatorViewController: AUViewController {
+
+   private var auView: AttenuatorView?
    private var audioUnit: AttenuatorAudioUnit?
    private var parameterObserverToken: AUParameterObserverToken?
+   private var observers = [NotificationObserver]()
+   private var isConfigured = false
 
-   convenience public init?(au: AttenuatorAudioUnit) {
+   public convenience init?(au: AttenuatorAudioUnit) {
       self.init(nibName: nil, bundle: nil)
       audioUnit = au
       if let auView = auView {
-         setUpView(au: au, auView: auView)
+         setupView(au: au, auView: auView)
       }
    }
 
@@ -30,51 +34,73 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
    }
 
    open override func loadView() {
-      var topLevelObjects: NSArray?
       let nibName = NSNib.Name(String(describing: AttenuatorViewController.self))
-      guard let nib = NSNib(nibNamed: nibName, bundle: Bundle(for: AttenuatorViewController.self)),
-         nib.instantiate(withOwner: self, topLevelObjects: &topLevelObjects) else {
-            fatalError()
+      guard let nib = NSNib(nibNamed: nibName, bundle: Bundle(for: AttenuatorViewController.self)) else {
+         fatalError()
       }
-      for object in topLevelObjects ?? [] {
-         if let v = object as? AttenuatorView {
-            view = v
-            return
-         }
+      guard let objects = nib.instantiate(withOwner: self) else {
+         fatalError()
       }
-      fatalError()
+      guard let v = (objects.map { $0 as? AttenuatorView }.flatMap { $0 }).first else {
+         fatalError()
+      }
+      view = v
+      auView = v
+      preferredContentSize = NSSize(width: 200, height: 150)
    }
 
-   var auView: AttenuatorView? {
-      return view as? AttenuatorView
+   open override var preferredMaximumSize: NSSize {
+      return NSSize(width: 800, height: 600)
    }
 
-   override open func viewDidLoad() {
+   open override var preferredMinimumSize: NSSize {
+      return NSSize(width: 200, height: 150)
+   }
+
+   open override func viewDidLoad() {
       super.viewDidLoad()
+      setupViewIfNeeded()
    }
 
-   override open func viewDidAppear() {
+   open override func viewDidAppear() {
       super.viewDidAppear()
       auView?.startMetering()
    }
 
-   override open func viewWillDisappear() {
+   open override func viewWillDisappear() {
       super.viewWillDisappear()
       auView?.stopMetering()
    }
 
+   deinit {
+      observers.removeAll()
+   }
+}
+
+extension AttenuatorViewController: AUAudioUnitFactory {
+
    public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
       let au = try AttenuatorAudioUnit(componentDescription: componentDescription, options: [])
       audioUnit = au
-      if let auView = auView {
-         DispatchQueue.main.async { [weak self] in
-            self?.setUpView(au: au, auView: auView)
-         }
-      }
+      setupViewIfNeeded()
       return au
    }
+}
 
-   private func setUpView(au: AttenuatorAudioUnit, auView: AttenuatorView) {
+extension AttenuatorViewController {
+
+   private func setupViewIfNeeded() {
+      DispatchQueue.main.async {
+         if !self.isConfigured {
+            self.isConfigured = true
+            if let au = self.audioUnit, let view = self.auView {
+               self.setupView(au: au, auView: view)
+            }
+         }
+      }
+   }
+
+   private func setupView(au: AttenuatorAudioUnit, auView: AttenuatorView) {
       auView.viewLevelMeter.numberOfChannels = au.outputBus.bus.format.channelCount
       auView.updateParameter(parameter: AttenuatorParameter.gain, withValue: au.parameterGain.value)
       parameterObserverToken = au.parameterTree.token(byAddingParameterObserver: { address, value in
@@ -83,7 +109,7 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
             s.auView?.updateParameter(parameter: paramType, withValue: value)
          }
       })
-      auView.handlerParameterDidChaned = {[weak self] parameter, value in guard let s = self else { return }
+      auView.handlerParameterDidChaned = { [weak self] _, value in guard let s = self else { return }
          guard let token = s.parameterObserverToken else {
             return
          }
@@ -107,5 +133,4 @@ open class AttenuatorViewController: AUViewController, AUAudioUnitFactory {
       }
       auView.viewLevelMeter.numberOfChannels = au.outputBus.bus.format.channelCount
    }
-
 }

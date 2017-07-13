@@ -6,9 +6,9 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import Cocoa
 import AVFoundation
 import AttenuatorKit
+import Cocoa
 
 class ViewController: NSViewController {
 
@@ -31,15 +31,16 @@ class ViewController: NSViewController {
 
    fileprivate lazy var acd: AudioComponentDescription = {
       let flags = AudioComponentFlags.sandboxSafe.rawValue
-//      let flags = AudioComponentFlags.isV3AudioUnit.rawValue
-//         | AudioComponentFlags.requiresAsyncInstantiation.rawValue
-//         | AudioComponentFlags.sandboxSafe.rawValue
-//         | AudioComponentFlags.canLoadInProcess.rawValue
+      //      let flags = AudioComponentFlags.isV3AudioUnit.rawValue
+      //         | AudioComponentFlags.requiresAsyncInstantiation.rawValue
+      //         | AudioComponentFlags.sandboxSafe.rawValue
+      //         | AudioComponentFlags.canLoadInProcess.rawValue
       let acd = AudioComponentDescription(componentType: kAudioUnitType_Effect, componentSubType: "attr".OSTypeValue,
                                           componentManufacturer: "wlUA".OSTypeValue,
                                           componentFlags: flags, componentFlagsMask: 0)
       return acd
    }()
+
    lazy var version = UInt32(Date.timeIntervalSinceReferenceDate)
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -56,13 +57,13 @@ extension ViewController: MainViewUIHandling {
       switch event {
       case .playbackEngineStageChanged(let state):
          switch state {
-         case .Playing:
+         case .playing:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Pause"
-         case .Stopped:
+         case .stopped:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Play"
-         case .Paused:
+         case .paused:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Resume"
          case .updatingGraph:
@@ -104,7 +105,7 @@ extension ViewController {
       buttonLoadAU.action = #selector(actionToggleEffect(_:))
    }
 
-   @objc private func actionToggleEffect(_ sender: AnyObject) {
+   @objc private func actionToggleEffect(_: AnyObject) {
       let component: AVAudioUnitComponent? = (audioUnit == nil) ? audioUnitComponent : nil
       uiModel?.selectEffect(component) { [weak self] in
          if let au = $0.auAudioUnit as? AttenuatorAudioUnit {
@@ -113,7 +114,7 @@ extension ViewController {
       }
    }
 
-   @objc private func actionTogglePlayAudio(_ sender: AnyObject) {
+   @objc private func actionTogglePlayAudio(_: AnyObject) {
       uiModel?.togglePlay()
    }
 
@@ -124,9 +125,9 @@ extension ViewController {
          addChildViewController(ctrl)
          containerView.addSubview(ctrl.view)
          let cH = NSLayoutConstraint.constraints(withVisualFormat: "|[subview]|",
-                                                 options: [], metrics: nil, views:["subview": ctrl.view])
+                                                 options: [], metrics: nil, views: ["subview": ctrl.view])
          let cV = NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|",
-                                                 options: [], metrics: nil, views:["subview": ctrl.view])
+                                                 options: [], metrics: nil, views: ["subview": ctrl.view])
          containerView.addConstraints(cH)
          containerView.addConstraints(cV)
          audioUnitController = ctrl
