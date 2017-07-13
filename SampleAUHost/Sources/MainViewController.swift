@@ -6,11 +6,10 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
-import Cocoa
 import AVFoundation
-import MediaLibrary
+import Cocoa
 import CoreAudioKit
-
+import MediaLibrary
 
 // Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
 class MainViewController: NSViewController {
@@ -30,6 +29,7 @@ class MainViewController: NSViewController {
          uiModel?.reloadEffects()
       }
    }
+
    private let segueOpenEffect = NSStoryboardSegue.Identifier("S:OpenEffectView")
    private var effectViewController: NSViewController? // Temporary store
 
@@ -45,7 +45,6 @@ class MainViewController: NSViewController {
          uiModel?.effectWindowWillOpen(wc)
       }
    }
-
 }
 
 extension MainViewController: EffectWindowCoordination {
@@ -66,11 +65,11 @@ extension MainViewController {
       }
    }
 
-   @IBAction private func actionTogglePlayAudio(_ sender: AnyObject) {
+   @IBAction private func actionTogglePlayAudio(_: AnyObject) {
       uiModel?.togglePlay()
    }
 
-   @IBAction private func actionToggleEffectView(_ sender: AnyObject?) {
+   @IBAction private func actionToggleEffectView(_: AnyObject?) {
       if uiModel?.canOpenEffectView == true {
          uiModel?.openEffectView { [weak self] in guard let this = self else { return }
             this.effectViewController = $0
@@ -108,15 +107,15 @@ extension MainViewController: MainViewUIHandling {
          buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
       case .playbackEngineStageChanged(let state):
          switch state {
-         case .Playing:
+         case .playing:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Pause"
             buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .Stopped:
+         case .stopped:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Play"
             buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
-         case .Paused:
+         case .paused:
             buttonPlay.isEnabled = true
             buttonPlay.title = "Resume"
             buttonOpenEffectView.isEnabled = uiModel.canOpenEffectView
@@ -176,13 +175,13 @@ extension MainViewController: NSTableViewDelegate {
       case tableEffects:
          uiModel.closeEffectView()
          if tableView.selectedRow == 0 {
-            Logger.debug(subsystem: .controller, category: .handle, message: "Clearing effect")
+            Log.debug(subsystem: .controller, category: .event, message: "Clearing effect")
             uiModel.selectEffect(nil, completion: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < uiModel.availableEffects.count {
                let component = uiModel.availableEffects[row]
-               Logger.debug(subsystem: .controller, category: .handle, message: "Selecting effect: \"\(component.name)\"")
+               Log.debug(subsystem: .controller, category: .event, message: "Selecting effect: \"\(component.name)\"")
                uiModel.selectEffect(component) { [weak self] _ in
                   DispatchQueue.main.async {
                      self?.actionToggleEffectView(nil)
@@ -192,13 +191,13 @@ extension MainViewController: NSTableViewDelegate {
          }
       case tablePresets:
          if tableView.selectedRow == 0 {
-            Logger.debug(subsystem: .controller, category: .lifecycle, message: "Clearing preset")
+            Log.debug(subsystem: .controller, category: .event, message: "Clearing preset")
             uiModel.selectPreset(nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < uiModel.availablePresets.count {
                let preset = uiModel.availablePresets[row]
-               Logger.debug(subsystem: .controller, category: .lifecycle, message: "Selecting preset: \"\(preset.name)\"")
+               Log.debug(subsystem: .controller, category: .event, message: "Selecting preset: \"\(preset.name)\"")
                uiModel.selectPreset(preset)
             }
          }
@@ -206,5 +205,4 @@ extension MainViewController: NSTableViewDelegate {
          fatalError("Unknown tableView: \(tableView)")
       }
    }
-
 }

@@ -1,10 +1,10 @@
 //
-//  Attenuator.xcconfig
-//  Attenuator
+//  Version.xcconfig
+//  AUHost
 //
 //  Created by Vlad Gorlov on 10/10/2016.
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-AWL_BUILD_VERSION=25
-AWL_MARKETING_VERSION=1.1.2
+AWL_BUILD_VERSION=26
+AWL_MARKETING_VERSION=1.1.3

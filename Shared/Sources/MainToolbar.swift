@@ -32,7 +32,7 @@ class MainToolbar: NSToolbar {
    }
 
    private func setupHandlers() {
-      toolbarDelegate.makeItemCallback = { [unowned self] id, flag in
+      toolbarDelegate.makeItemCallback = { [unowned self] id, _ in
          guard let event = Event(id: id) else {
             return nil
          }

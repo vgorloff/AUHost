@@ -12,7 +12,7 @@ class MainWindowController: NSWindowController {
 
    private let viewUIModel = MainViewUIModel()
    private let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
-   private lazy var mlController = g.configure(NSMediaLibraryBrowserController.shared) {
+   private lazy var mlController: NSMediaLibraryBrowserController = Util.configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
 
@@ -28,7 +28,6 @@ class MainWindowController: NSWindowController {
          self?.mlController.isVisible = true
       }
    }
-
 }
 
 extension MainWindowController {
@@ -43,5 +42,4 @@ extension MainWindowController {
          }
       }
    }
-
 }

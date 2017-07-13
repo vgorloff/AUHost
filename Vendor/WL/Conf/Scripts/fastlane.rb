@@ -1,4 +1,4 @@
-require "#{File.realpath(File.dirname(__FILE__))}/XcodeBuilder.rb"
+Dir[File.dirname(__FILE__) + '/lib/*.rb'].each {|file| require file }
 
 def GetPropertyCodesignFolderPath(project)
   awl_AppPath = (sh "xcodebuild -project #{project} -showBuildSettings -configuration Release | grep CODESIGNING_FOLDER_PATH | grep -oEi \"\/.*\"").strip

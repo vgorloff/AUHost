@@ -8,6 +8,7 @@
 
 import AVFoundation
 
+@available(OSX 10.11, *)
 extension Notification.Name {
    static let audioComponentRegistrationsChanged = Notification.Name(rawValue:
       kAudioComponentRegistrationsChangedNotification as String)
@@ -15,7 +16,7 @@ extension Notification.Name {
       kAudioComponentInstanceInvalidationNotification as String)
 }
 
-@available(iOS 9.0, *)
+@available(iOS 9.0, OSX 10.11, *)
 public final class AudioComponentsUtility {
 
    public enum StateChange {
@@ -23,8 +24,8 @@ public final class AudioComponentsUtility {
       case audioComponentInstanceInvalidated(AUAudioUnit, AudioUnit?)
    }
 
-   private var observerOfComponentChange: Notification.SmartObserver?
-   private var observerOfComponentInvalidate: Notification.SmartObserver?
+   private var observerOfComponentChange: NotificationObserver?
+   private var observerOfComponentInvalidate: NotificationObserver?
    private lazy var notificationsQueue = OperationQueue.Concurrent.utility()
 
    public var handlerStateChange: ((StateChange) -> Void)?
@@ -32,12 +33,12 @@ public final class AudioComponentsUtility {
 
    public init() {
       setUpObservers()
-      Logger.initialize(subsystem: .media)
+      Log.initialize(subsystem: .media)
    }
 
    deinit {
       tearDownObservers()
-      Logger.deinitialize(subsystem: .media)
+      Log.deinitialize(subsystem: .media)
    }
 
    /// **Note** Always calls completion handler on main queue
@@ -65,8 +66,8 @@ public final class AudioComponentsUtility {
    // MARK: - Private
 
    private func setUpObservers() {
-      observerOfComponentChange = Notification.SmartObserver(
-      forName: .audioComponentRegistrationsChanged, queue: notificationsQueue) { [weak self] _ in
+      observerOfComponentChange = NotificationObserver(
+         name: .audioComponentRegistrationsChanged, queue: notificationsQueue) { [weak self] _ in
          guard let s1 = self else {
             return
          }
@@ -78,8 +79,8 @@ public final class AudioComponentsUtility {
          }
       }
 
-      observerOfComponentChange = Notification.SmartObserver(
-      forName: .audioComponentInstanceInvalidation, queue: notificationsQueue) { [weak self] notification in
+      observerOfComponentChange = NotificationObserver(
+         name: .audioComponentInstanceInvalidation, queue: notificationsQueue) { [weak self] notification in
          guard let this = self else {
             return
          }

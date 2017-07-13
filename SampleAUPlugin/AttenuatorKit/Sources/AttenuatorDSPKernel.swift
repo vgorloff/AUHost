@@ -6,10 +6,10 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import Foundation
-import AudioUnit
 import AVFoundation
 import Accelerate
+import AudioUnit
+import Foundation
 
 struct AttenuatorDSPKernel {
 
@@ -21,8 +21,9 @@ struct AttenuatorDSPKernel {
 
    private var _maximumMagnitude: [SampleType]
    var maximumMagnitude: [SampleType] {
-      return maximumMagnitudeLock.synchronized { return _maximumMagnitude }
+      return maximumMagnitudeLock.synchronized { _maximumMagnitude }
    }
+
    private let maximumMagnitudeLock: NonRecursiveLocking = SpinLock()
 
    init(maxChannels: UInt32) {
@@ -32,7 +33,7 @@ struct AttenuatorDSPKernel {
    func getParameter(_ parameter: AttenuatorParameter) -> AUValue {
       switch parameter {
       case .gain:
-         return valueGainLock.synchronized { return valueGain }
+         return valueGainLock.synchronized { valueGain }
       }
    }
 
@@ -72,34 +73,33 @@ struct AttenuatorDSPKernel {
          let samplesBI = UnsafePointer<SampleType>(inputData.assumingMemoryBound(to: SampleType.self))
          let samplesBO = outputData.assumingMemoryBound(to: SampleType.self)
          #if true
-            var gain = dspValueGain
-            var maximumMagnitudeValue: Float = 0
-            let numElementsToProcess = vDSP_Length(frameCount)
-            vDSP_vsmul(samplesBI, 1, &gain, samplesBO, 1, numElementsToProcess)
-            vDSP_maxmgv(samplesBO, 1, &maximumMagnitudeValue, numElementsToProcess)
-            _maximumMagnitude[index] = maximumMagnitudeLock.synchronized {
-               return maximumMagnitudeValue
-            }
+         var gain = dspValueGain
+         var maximumMagnitudeValue: Float = 0
+         let numElementsToProcess = vDSP_Length(frameCount)
+         vDSP_vsmul(samplesBI, 1, &gain, samplesBO, 1, numElementsToProcess)
+         vDSP_maxmgv(samplesBO, 1, &maximumMagnitudeValue, numElementsToProcess)
+         _maximumMagnitude[index] = maximumMagnitudeLock.synchronized {
+            return maximumMagnitudeValue
+         }
          #else
-            // Applying gain by math
-            let numSamples = Int(bO.mDataByteSize / UInt32(MemoryLayout<SampleType>.stride))
-            assert(AVAudioFrameCount(numSamples) == frameCount)
-            let samplesI = UnsafeBufferPointer<SampleType>(start: samplesBI, count: numSamples)
-            let samplesO = UnsafeMutableBufferPointer<SampleType>(start: samplesBO, count: numSamples)
-            var maximumMagnitudeValue: SampleType = 0
-            for sampleIndex in 0 ..< samplesI.count {
-               let sampleValue = samplesI[sampleIndex]
-               samplesO[sampleIndex] = dspValueGain * sampleValue
-               if sampleValue > maximumMagnitudeValue {
-                  maximumMagnitudeValue = sampleValue
-               }
+         // Applying gain by math
+         let numSamples = Int(bO.mDataByteSize / UInt32(MemoryLayout<SampleType>.stride))
+         assert(AVAudioFrameCount(numSamples) == frameCount)
+         let samplesI = UnsafeBufferPointer<SampleType>(start: samplesBI, count: numSamples)
+         let samplesO = UnsafeMutableBufferPointer<SampleType>(start: samplesBO, count: numSamples)
+         var maximumMagnitudeValue: SampleType = 0
+         for sampleIndex in 0 ..< samplesI.count {
+            let sampleValue = samplesI[sampleIndex]
+            samplesO[sampleIndex] = dspValueGain * sampleValue
+            if sampleValue > maximumMagnitudeValue {
+               maximumMagnitudeValue = sampleValue
             }
-            _maximumMagnitude[index] = maximumMagnitudeLock.synchronized {
-               return maximumMagnitudeValue
-            }
+         }
+         _maximumMagnitude[index] = maximumMagnitudeLock.synchronized {
+            return maximumMagnitudeValue
+         }
          #endif
       }
       return noErr
    }
-
 }
