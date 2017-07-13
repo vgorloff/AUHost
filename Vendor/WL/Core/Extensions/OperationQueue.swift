@@ -32,6 +32,7 @@ public extension OperationQueue {
          q.maxConcurrentOperationCount = 1
          return q
       }
+
       public static func concurrent(name: String? = nil) -> OperationQueue {
          let q = OperationQueue()
          q.qualityOfService = .userInteractive
@@ -46,6 +47,7 @@ public extension OperationQueue {
          q.maxConcurrentOperationCount = 1
          return q
       }
+
       public static func concurrent(name: String? = nil) -> OperationQueue {
          let q = OperationQueue()
          q.qualityOfService = .userInitiated
@@ -60,6 +62,7 @@ public extension OperationQueue {
          q.maxConcurrentOperationCount = 1
          return q
       }
+
       public static func concurrent(name: String? = nil) -> OperationQueue {
          let q = OperationQueue()
          q.qualityOfService = .utility
@@ -74,6 +77,7 @@ public extension OperationQueue {
          q.maxConcurrentOperationCount = 1
          return q
       }
+
       public static func concurrent(name: String? = nil) -> OperationQueue {
          let q = OperationQueue()
          q.qualityOfService = .background
@@ -88,6 +92,7 @@ public extension OperationQueue {
          q.maxConcurrentOperationCount = 1
          return q
       }
+
       public static func concurrent(name: String? = nil) -> OperationQueue {
          let q = OperationQueue()
          q.qualityOfService = .default
@@ -100,15 +105,19 @@ public extension OperationQueue {
       public static func userInteractive(name: String? = nil) -> OperationQueue {
          return OperationQueue.UserInteractive.nonConcurrent(name: name)
       }
+
       public static func userInitiated(name: String? = nil) -> OperationQueue {
          return OperationQueue.UserInitiated.nonConcurrent(name: name)
       }
+
       public static func utility(name: String? = nil) -> OperationQueue {
          return OperationQueue.Utility.nonConcurrent(name: name)
       }
+
       public static func background(name: String? = nil) -> OperationQueue {
          return OperationQueue.Background.nonConcurrent(name: name)
       }
+
       public static func `default`(name: String? = nil) -> OperationQueue {
          return OperationQueue.Default.nonConcurrent(name: name)
       }
@@ -118,18 +127,21 @@ public extension OperationQueue {
       public static func userInteractive(name: String? = nil) -> OperationQueue {
          return OperationQueue.UserInteractive.concurrent(name: name)
       }
+
       public static func userInitiated(name: String? = nil) -> OperationQueue {
          return OperationQueue.UserInitiated.concurrent(name: name)
       }
+
       public static func utility(name: String? = nil) -> OperationQueue {
          return OperationQueue.Utility.concurrent(name: name)
       }
+
       public static func background(name: String? = nil) -> OperationQueue {
          return OperationQueue.Background.concurrent(name: name)
       }
+
       public static func `default`(name: String? = nil) -> OperationQueue {
          return OperationQueue.Default.concurrent(name: name)
       }
    }
-
 }

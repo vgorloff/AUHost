@@ -18,12 +18,12 @@ public final class ModelDatasource {
 
    public func addHorizontalLine(yPosition: Double) {
       floatVertices.append(contentsOf: [Float(xOffset), Float(yPosition),
-                                             Float(xOffset + width), Float(yPosition)])
+                                        Float(xOffset + width), Float(yPosition)])
    }
 
    public func addVerticalLine(xPosition: Double) {
       floatVertices.append(contentsOf: [Float(xPosition), Float(yOffset),
-                                             Float(xPosition), Float(yOffset + height)])
+                                        Float(xPosition), Float(yOffset + height)])
    }
 
    public func reset(xOffset: Double, yOffset: Double, width: Double, height: Double) {
@@ -33,5 +33,4 @@ public final class ModelDatasource {
       self.height = height
       floatVertices.removeAll(keepingCapacity: true)
    }
-
 }

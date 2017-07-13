@@ -33,7 +33,6 @@ public struct Log {
    }
 
    fileprivate static var loggers = [Int: OSLog]()
-
 }
 
 extension Log {
@@ -115,7 +114,7 @@ extension Log {
       }
    }
 
-   public static func fault(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure() -> Bool,
+   public static func fault(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure () -> Bool,
                             function: String = #function, file: String = #file, line: Int32 = #line,
                             dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
@@ -124,7 +123,7 @@ extension Log {
       }
    }
 
-   public static func error(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure() -> Bool,
+   public static func error(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure () -> Bool,
                             function: String = #function, file: String = #file, line: Int32 = #line,
                             dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
@@ -133,7 +132,7 @@ extension Log {
       }
    }
 
-   public static func info(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure() -> Bool,
+   public static func info(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure () -> Bool,
                            function: String = #function, file: String = #file, line: Int32 = #line,
                            dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
@@ -142,7 +141,7 @@ extension Log {
       }
    }
 
-   public static func debug(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure() -> Bool,
+   public static func debug(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure () -> Bool,
                             function: String = #function, file: String = #file, line: Int32 = #line,
                             dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }
@@ -151,7 +150,7 @@ extension Log {
       }
    }
 
-   public static func `default`(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure() -> Bool,
+   public static func `default`(subsystem: Subsystem, category: Category, message: String, if expression: @autoclosure () -> Bool,
                                 function: String = #function, file: String = #file, line: Int32 = #line,
                                 dso: UnsafeRawPointer? = #dsohandle) {
       guard expression() else { return }

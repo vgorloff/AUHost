@@ -21,7 +21,6 @@ extension Util {
    public static func configureEach<T>(_ elements: [T], _ closure: (T) -> Void) {
       elements.forEach { closure($0) }
    }
-
 }
 
 extension Util {
@@ -48,5 +47,4 @@ extension Util {
    public static func string(fromClass cls: AnyClass) -> String {
       return NSStringFromClass(cls)
    }
-
 }

@@ -47,7 +47,6 @@ final class BufferDatasource {
          inFlightSemaphore.signal()
       }
    }
-
 }
 
 @available(OSX 10.11, *)
@@ -103,5 +102,4 @@ extension BufferDatasource {
    func dispatchSignal() {
       inFlightSemaphore.signal()
    }
-
 }

@@ -13,6 +13,7 @@ public struct AlternativeValue<T> {
    public var currentValue: T {
       return useAltValue ? altValue : value
    }
+
    public var useAltValue: Bool = false
 
    public init(_ aValue: T, altValue anAltValue: T) {

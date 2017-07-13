@@ -17,7 +17,7 @@ open class AttenuatorViewController: AUViewController {
    private var observers = [NotificationObserver]()
    private var isConfigured = false
 
-   convenience public init?(au: AttenuatorAudioUnit) {
+   public convenience init?(au: AttenuatorAudioUnit) {
       self.init(nibName: nil, bundle: nil)
       audioUnit = au
       if let auView = auView {
@@ -57,17 +57,17 @@ open class AttenuatorViewController: AUViewController {
       return NSSize(width: 200, height: 150)
    }
 
-   override open func viewDidLoad() {
+   open override func viewDidLoad() {
       super.viewDidLoad()
       setupViewIfNeeded()
    }
 
-   override open func viewDidAppear() {
+   open override func viewDidAppear() {
       super.viewDidAppear()
       auView?.startMetering()
    }
 
-   override open func viewWillDisappear() {
+   open override func viewWillDisappear() {
       super.viewWillDisappear()
       auView?.stopMetering()
    }
@@ -75,7 +75,6 @@ open class AttenuatorViewController: AUViewController {
    deinit {
       observers.removeAll()
    }
-
 }
 
 extension AttenuatorViewController: AUAudioUnitFactory {
@@ -110,7 +109,7 @@ extension AttenuatorViewController {
             s.auView?.updateParameter(parameter: paramType, withValue: value)
          }
       })
-      auView.handlerParameterDidChaned = {[weak self] parameter, value in guard let s = self else { return }
+      auView.handlerParameterDidChaned = { [weak self] _, value in guard let s = self else { return }
          guard let token = s.parameterObserverToken else {
             return
          }
@@ -134,5 +133,4 @@ extension AttenuatorViewController {
       }
       auView.viewLevelMeter.numberOfChannels = au.outputBus.bus.format.channelCount
    }
-
 }

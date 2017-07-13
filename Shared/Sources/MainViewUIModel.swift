@@ -56,7 +56,6 @@ class MainViewUIModel {
          }
       }
    }
-
 }
 
 extension MainViewUIModel {
@@ -76,7 +75,6 @@ extension MainViewUIModel {
          this.availableEffects = $0
          this.uiDelegate?.handleEvent(.loadingEffects(false))
       }
-
    }
 
    func selectEffect(_ component: AVAudioUnitComponent?, completion: Completion<AVAudioUnit>?) {

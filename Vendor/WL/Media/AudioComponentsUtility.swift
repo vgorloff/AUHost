@@ -67,7 +67,7 @@ public final class AudioComponentsUtility {
 
    private func setUpObservers() {
       observerOfComponentChange = NotificationObserver(
-      name: .audioComponentRegistrationsChanged, queue: notificationsQueue) { [weak self] _ in
+         name: .audioComponentRegistrationsChanged, queue: notificationsQueue) { [weak self] _ in
          guard let s1 = self else {
             return
          }
@@ -80,7 +80,7 @@ public final class AudioComponentsUtility {
       }
 
       observerOfComponentChange = NotificationObserver(
-      name: .audioComponentInstanceInvalidation, queue: notificationsQueue) { [weak self] notification in
+         name: .audioComponentInstanceInvalidation, queue: notificationsQueue) { [weak self] notification in
          guard let this = self else {
             return
          }

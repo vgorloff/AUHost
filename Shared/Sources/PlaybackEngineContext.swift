@@ -31,7 +31,6 @@ final class PlaybackEngineContext {
    deinit {
       Log.deinitialize(subsystem: .media)
    }
-
 }
 
 extension PlaybackEngineContext {
@@ -119,7 +118,7 @@ extension PlaybackEngineContext {
       let flags = AudioComponentFlags(rawValue: desc.componentFlags)
       let canLoadInProcess = flags.contains(AudioComponentFlags.canLoadInProcess)
       let loadOptions: AudioComponentInstantiationOptions = canLoadInProcess ? .loadInProcess : .loadOutOfProcess
-      AVAudioUnit.instantiate(with: desc, options: loadOptions) {[weak self] (avAudioUnit, error) in
+      AVAudioUnit.instantiate(with: desc, options: loadOptions) { [weak self] avAudioUnit, error in
          if let e = error {
             completion?(.failure(e))
          } else if let effect = avAudioUnit {
@@ -132,7 +131,6 @@ extension PlaybackEngineContext {
          }
       }
    }
-
 }
 
 extension PlaybackEngineContext {
@@ -180,7 +178,7 @@ extension PlaybackEngineContext {
       Log.debug(subsystem: .media, category: .event, message: statistics.joined(separator: "; "))
       guard framesToPlay > 0 else {
          Log.default(subsystem: .media, category: .event,
-                        message: "Nothing to play. Check value of 'playbackOffset' property.")
+                     message: "Nothing to play. Check value of 'playbackOffset' property.")
          return
       }
 
@@ -191,5 +189,4 @@ extension PlaybackEngineContext {
          self?.filePlaybackCompleted?()
       }
    }
-
 }

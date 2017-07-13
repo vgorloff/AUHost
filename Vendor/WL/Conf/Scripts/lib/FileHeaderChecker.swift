@@ -34,9 +34,11 @@ struct FileHeaderContents {
       }
       return components
    }
+
    var valid: Bool {
       return invalidComponents.count == 0
    }
+
    var issueReason: String {
       if valid {
          return ""
@@ -169,19 +171,19 @@ public final class FileHeaderChecker {
       }
 
       if !headerComponents.valid {
-         return FileHeaderCheckerIssue(filePath: filePath, issueReason:headerComponents.issueReason)
+         return FileHeaderCheckerIssue(filePath: filePath, issueReason: headerComponents.issueReason)
       } else {
          let actualFilename = headerComponents.fileNameComponent.value
          let expectedFileName = filePath.lastPathComponent
          if actualFilename != expectedFileName {
             return FileHeaderCheckerIssue(filePath: filePath,
-                                          issueReason:"Incorrect file name. Expected file name \"\(expectedFileName)\".")
+                                          issueReason: "Incorrect file name. Expected file name \"\(expectedFileName)\".")
          }
 
          let observerProjectName = headerComponents.projectNameComponent.value
          if !projectNames.contains(observerProjectName) {
             return FileHeaderCheckerIssue(filePath: filePath,
-               issueReason:"Incorrect project name: expected=\"\(projectNames)\"; observed=\"\(observerProjectName)\".")
+                                          issueReason: "Incorrect project name: expected=\"\(projectNames)\"; observed=\"\(observerProjectName)\".")
          }
       }
 
@@ -258,5 +260,4 @@ public final class FileHeaderChecker {
                                           author: components[4], copyright: components[5], hasPrefixes: false)
       return fileHeader
    }
-
 }

@@ -1,3 +1,11 @@
+//
+//  Release.xcconfig
+//  WaveLabs
+//
+//  Created by Vlad Gorlov on 25.06.17.
+//  Copyright © 2017 WaveLabs. All rights reserved.
+//
+
 #include "Common.xcconfig"
 
 DEBUG_INFORMATION_FORMAT = dwarf-with-dsym

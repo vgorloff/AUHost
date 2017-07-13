@@ -41,5 +41,4 @@ public extension DispatchQueue {
          return try sync(execute: work)
       }
    }
-
 }

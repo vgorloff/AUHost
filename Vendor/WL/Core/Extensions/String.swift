@@ -14,27 +14,35 @@ public extension String {
    public func appendingPathComponent(_ str: String) -> String {
       return (self as NSString).appendingPathComponent(str)
    }
+
    public var pathExtension: String {
       return (self as NSString).pathExtension
    }
+
    public var deletingPathExtension: String {
       return (self as NSString).deletingPathExtension
    }
+
    public func appendingPathExtension(_ str: String) -> String? {
       return (self as NSString).appendingPathExtension(str)
    }
+
    public var lastPathComponent: String {
       return (self as NSString).lastPathComponent
    }
+
    public var deletingLastPathComponent: String {
       return (self as NSString).deletingLastPathComponent
    }
+
    public var expandingTildeInPath: String {
       return (self as NSString).expandingTildeInPath
    }
+
    public func replacingCharacters(in nsRange: NSRange, with: String) -> String {
       return (self as NSString).replacingCharacters(in: nsRange, with: with)
    }
+
    public func nsRange(of searchString: String) -> NSRange {
       return (self as NSString).range(of: searchString)
    }
@@ -83,8 +91,8 @@ public extension String {
       }
       return result
    }
-   // swiftlint:enable variable_name
 
+   // swiftlint:enable variable_name
 }
 
 // http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index
@@ -102,7 +110,7 @@ public extension String {
          let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex),
          let from = String.Index(from16, within: self),
          let to = String.Index(to16, within: self)
-         else { return nil }
+      else { return nil }
       return from ..< to
    }
 }

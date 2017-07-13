@@ -35,7 +35,6 @@ class BufferedAudioBus {
       originalAudioBufferList = nil
       mutableAudioBufferList = nil
    }
-
 }
 
 @available(OSX 10.11, *)

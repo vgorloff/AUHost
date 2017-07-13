@@ -38,5 +38,4 @@ open class NotificationObserver: NSObject {
    open func handleNotification(_ notification: Foundation.Notification) {
       notificationHandler?(notification)
    }
-
 }

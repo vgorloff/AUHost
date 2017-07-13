@@ -28,7 +28,6 @@ class MainWindowController: NSWindowController {
          self?.mlController.isVisible = true
       }
    }
-
 }
 
 extension MainWindowController {
@@ -43,5 +42,4 @@ extension MainWindowController {
          }
       }
    }
-
 }

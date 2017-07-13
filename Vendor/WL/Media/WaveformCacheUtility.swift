@@ -44,7 +44,7 @@ public struct WaveformCacheUtility {
                maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
             guard let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
                                                 frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize)) else {
-                                                   throw Error.unableToInitialize(String(describing: AVAudioPCMBuffer.self))
+               throw Error.unableToInitialize(String(describing: AVAudioPCMBuffer.self))
             }
 
             var waveformCache = [MinMax<Float>]()
@@ -86,7 +86,7 @@ public struct WaveformCacheUtility {
       //		vDSP_minv(buffer.floatChannelData.memory, 1, &minimumMagnitudeValue, numElementsToProcess)
       //		Swift.print(minimumMagnitudeValue, maximumMagnitudeValue, "\n")
 
-      //Swift.print(buffer.frameLength)
+      // Swift.print(buffer.frameLength)
       var channelValues = [MinMax<Float>]()
       let mbl = UnsafeMutableAudioBufferListPointer(buffer.mutableAudioBufferList)
       for index in 0 ..< mbl.count {
@@ -99,7 +99,7 @@ public struct WaveformCacheUtility {
          var minimumMagnitudeValue: Float = 0
          vDSP_maxv(samplesBI, 1, &maximumMagnitudeValue, numElementsToProcess)
          vDSP_minv(samplesBI, 1, &minimumMagnitudeValue, numElementsToProcess)
-         //Swift.print(minimumMagnitudeValue, maximumMagnitudeValue)
+         // Swift.print(minimumMagnitudeValue, maximumMagnitudeValue)
          channelValues.append(MinMax(min: minimumMagnitudeValue, max: maximumMagnitudeValue))
       }
       assert(channelValues.count > 0)

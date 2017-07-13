@@ -16,6 +16,7 @@ public final class MediaItemView: NSView {
          needsDisplay = true
       }
    }
+
    private let textDragAndDropMessage: NSString = "Drop media file here..."
    private var textDragAndDropColor = AlternativeValue<NSColor>(NSColor.gray, altValue: NSColor.white)
    private let textDragAndDropFont = NSFont.labelFont(ofSize: 17)
@@ -28,6 +29,7 @@ public final class MediaItemView: NSView {
          rebuildWaveform()
       }
    }
+
    public override var frame: NSRect {
       didSet {
          rebuildWaveform()
@@ -36,7 +38,7 @@ public final class MediaItemView: NSView {
 
    public var onCompleteDragWithObjects: ((MediaObjectPasteboardUtility.PasteboardObjects) -> Void)?
 
-   required public init?(coder: NSCoder) {
+   public required init?(coder: NSCoder) {
       super.init(coder: coder)
       registerForDraggedTypes(pbUtil.draggedTypes)
    }
@@ -78,15 +80,15 @@ extension MediaItemView {
       }
    }
 
-   public override func draggingUpdated(_ sender: NSDraggingInfo) -> NSDragOperation {
+   public override func draggingUpdated(_: NSDraggingInfo) -> NSDragOperation {
       return NSDragOperation.every
    }
 
-   public override func draggingExited(_ sender: NSDraggingInfo?) {
+   public override func draggingExited(_: NSDraggingInfo?) {
       isHighlighted = false
    }
 
-   public override func prepareForDragOperation(_ sender: NSDraggingInfo) -> Bool {
+   public override func prepareForDragOperation(_: NSDraggingInfo) -> Bool {
       return true
    }
 
@@ -109,10 +111,9 @@ extension MediaItemView {
       }
    }
 
-   public override func concludeDragOperation(_ sender: NSDraggingInfo?) {
+   public override func concludeDragOperation(_: NSDraggingInfo?) {
       isHighlighted = false
    }
-
 }
 
 extension MediaItemView {
@@ -134,7 +135,7 @@ extension MediaItemView {
       assert(Int(bounds.width * scaleFactor) == waveform.count)
       wfDrawingProvider.reset(xOffset: 0.5 * lineWidth, yOffset: 0.5 * lineWidth, width: bounds.width - lineWidth,
                               height: bounds.height - lineWidth)
-      for index in 0..<waveform.count {
+      for index in 0 ..< waveform.count {
          let waveformValue = waveform[index]
          wfDrawingProvider.addVerticalLineAtXPosition(xPosition: index.CGFloatValue / scaleFactor,
                                                       valueMin: waveformValue.min.CGFloatValue,
@@ -142,7 +143,7 @@ extension MediaItemView {
       }
       context.setShouldAntialias(false)
       // CGContextSetFillColorWithColor(context, NSColor.whiteColor().CGColor)
-      context.translateBy(x: 0.5 / scaleFactor, y: 0.5 / scaleFactor); // Center the origin at center of a pixel
+      context.translateBy(x: 0.5 / scaleFactor, y: 0.5 / scaleFactor) // Center the origin at center of a pixel
 
       context.saveGState()
       // CGContextFillRect(context, bounds)
@@ -169,14 +170,14 @@ extension MediaItemView {
       }
       wfCache.buildWaveformForResolution(fileURL: mf as URL,
                                          resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
-                                          switch result {
-                                          case .failure(let e):
-                                             Swift.print(e)
-                                          case .success(_):
-                                             DispatchQueue.main.async { [weak self] in
-                                                self?.needsDisplay = true
-                                             }
-                                          }
+         switch result {
+         case .failure(let e):
+            Swift.print(e)
+         case .success:
+            DispatchQueue.main.async { [weak self] in
+               self?.needsDisplay = true
+            }
+         }
       }
    }
 
@@ -186,5 +187,4 @@ extension MediaItemView {
       }
       return wfCache.cachedWaveformForResolution(url: mf, resolution: UInt64(bounds.width * getScaleFactor()))
    }
-
 }

@@ -9,13 +9,13 @@
 import CoreGraphics
 
 #if os(iOS)
-import UIKit
+   import UIKit
 
-extension CGSize: StringRepresentable {
-   public var stringValue: String {
-      return NSStringFromCGSize(self)
+   extension CGSize: StringRepresentable {
+      public var stringValue: String {
+         return NSStringFromCGSize(self)
+      }
    }
-}
 #endif
 
 extension CGSize {
@@ -36,7 +36,6 @@ extension CGSize {
    public var isZeroSize: Bool {
       return width <= CGFloat.leastNormalMagnitude && height <= CGFloat.leastNormalMagnitude
    }
-
 }
 
 private extension CGSize {
@@ -47,9 +46,9 @@ private extension CGSize {
    }
 
    func aspectResize(toSize newSize: CGSize, withResizeMethod: ResizeMethod) -> CGRect {
-      if self.equalTo(newSize) {
+      if equalTo(newSize) {
          return CGRect(origin: CGPoint.zero, size: self)
-      } else if self.equalTo(CGSize.zero) {
+      } else if equalTo(CGSize.zero) {
          let origin = CGPoint(x: 0.5 * newSize.width, y: 0.5 * newSize.height)
          return CGRect(origin: origin, size: self)
       } else if newSize.equalTo(CGSize.zero) {
@@ -97,5 +96,4 @@ public extension CGSize {
    init(squareSide: CGFloat) {
       self.init(width: squareSide, height: squareSide)
    }
-
 }

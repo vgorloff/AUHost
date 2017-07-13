@@ -48,5 +48,4 @@ public enum ResultType<T> {
       case .success: return .success(())
       }
    }
-
 }

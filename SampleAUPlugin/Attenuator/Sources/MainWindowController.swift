@@ -13,6 +13,7 @@ class MainWindowController: NSWindowController {
    private lazy var mlController: NSMediaLibraryBrowserController = Util.configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
+
    let mainToolbarID = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
    lazy var mainToolbar: MainToolbar = MainToolbar(identifier: self.mainToolbarID, showsReloadPlugInsItem: false)
    private let viewUIModel = MainViewUIModel()
@@ -36,5 +37,4 @@ class MainWindowController: NSWindowController {
          }
       }
    }
-
 }
