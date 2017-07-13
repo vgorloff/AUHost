@@ -5,18 +5,7 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.105.0"
 
-import "#{ENV['PWD']}/Vendor/WL/Conf/fastlane/fastlane.rb"
-require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/lib/ImportsOrganizer.rb"
-require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/lib/FileHeaderChecker.rb"
-
-AWLOutputDir = "#{ENV['PWD']}/Build"
-
-def cleanOutputDir
-   if File.directory?(AWLOutputDir)
-      puts("→ Deleting directory #{AWLOutputDir}")
-      FileUtils.rm_r(AWLOutputDir)
-   end
-end
+require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/fastlane.rb"
 
 desc "Builds project."
 lane :build do
@@ -34,21 +23,20 @@ desc "Cleans project."
 lane :clean do
    sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane clean"
    sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane clean"
-   cleanOutputDir()
 end
 
 desc "Build codesigned release for GitHub."
 lane :release do
-   gym(clean: true, project: "SampleAUHost/AUHost.xcodeproj", scheme: "AUHost", output_directory: AWLOutputDir, derived_data_path: AWLOutputDir)
-   gym(clean: true, project: "SampleAUPlugin/Attenuator.xcodeproj", scheme: "Attenuator", output_directory: AWLOutputDir, derived_data_path: AWLOutputDir)
-   apps = Dir["#{AWLOutputDir}/*.app"]
+   sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane archive"
+   sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane archive"
+   apps = Dir["#{ENV['PWD']}/**/*.export/*.app"].select { |f| File.directory?(f) }
    apps.each { |app| zip(path: app, output_path: "#{app}.zip") }
    apps.each { |app| XcodeBuilder.validateBinary(app) }
 end
 
 desc "Deploy release to GitHub."
 lane :deploy do
-   assets = Dir["#{AWLOutputDir}/*.app.zip"]
+   assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
    releaseName = File.read("#{ENV['PWD']}/fastlane/ReleaseName.txt").strip
    releaseDescription = File.read("#{ENV['PWD']}/fastlane/ReleaseNotes.txt").strip
    github_release = set_github_release(
