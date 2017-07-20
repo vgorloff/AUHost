@@ -177,7 +177,8 @@ extension Log {
 
    @available(OSX 10.12, *)
    fileprivate static func format(_ message: String, function: String, file: String, line: Int32) -> String {
-      return "\(message) → \(function) ⋆ \(file.lastPathComponent):\(line)"
+      let filename = (file as NSString).lastPathComponent
+      return "\(message) → \(function) ⋆ \(filename):\(line)"
    }
 }
 

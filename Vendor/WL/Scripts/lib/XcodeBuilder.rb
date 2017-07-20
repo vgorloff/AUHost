@@ -14,14 +14,22 @@ class XcodeBuilder
       cmd = "#{@buildExecutable} -project \"#{@projectFilePath}\" -scheme \"#{schema}\" #{c} #{@derivedDataPath} build #{@commonArgsXCPretty}"
       system(cmd)
    end
-   def archive(schema, configuration = nil)
+   def test(schema, configuration = nil)
+      c = configuration == nil ? "" : "-configuration #{configuration}"
+      cmd = "#{@buildExecutable} -project \"#{@projectFilePath}\" -scheme \"#{schema}\" #{c} #{@derivedDataPath} test #{@commonArgsXCPretty}"
+      system(cmd)
+   end
+   def archive(schema, configuration = nil, skipExport = false)
       c = configuration == nil ? "" : "-configuration #{configuration}"
       archivePath = "#{@buildDir}/#{schema}.xcarchive"
       exportPath = "#{@buildDir}/#{schema}.export"
       exportOptionsPath = "#{File.realpath(File.dirname(__FILE__))}/Resources/xcode.exportOptions.macOS.plist"
-      puts "→ Building archive to \"#{exportPath}\"".green
+      puts "→ Building archive to \"#{archivePath}\"".green
       cmd = "#{@buildExecutable} -project \"#{@projectFilePath}\" -scheme \"#{schema}\" -archivePath \"#{archivePath}\" #{c} #{@derivedDataPath} archive #{@commonArgsXCPretty}"
       system(cmd)
+      if skipExport
+         return
+      end
       puts "→ Exporting archive to \"#{exportPath}\"".green
       cmd = "xcodebuild -exportArchive -archivePath \"#{archivePath}\" -exportPath \"#{exportPath}\" -exportOptionsPlist \"#{exportOptionsPath}\" "
       system(cmd)
