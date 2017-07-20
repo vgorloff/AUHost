@@ -5,7 +5,7 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.105.0"
 
-require "#{ENV['PWD']}/Vendor/WL/Conf/Scripts/fastlane.rb"
+require "#{ENV['PWD']}/Vendor/WL/Scripts/fastlane.rb"
 
 desc "Builds project."
 lane :build do
