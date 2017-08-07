@@ -8,16 +8,6 @@
 
 import CoreGraphics
 
-#if os(iOS)
-import UIKit
-
-extension CGSize: StringRepresentable {
-   public var stringValue: String {
-      return NSStringFromCGSize(self)
-   }
-}
-#endif
-
 extension CGSize {
 
    public init(squareDimension: CGFloat) {

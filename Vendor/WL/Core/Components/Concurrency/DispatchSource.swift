@@ -8,7 +8,7 @@
 
 import Foundation
 
-private protocol _SmartDispatchSourceType: class {
+private protocol _DispatchSourceType: class {
    var dispatchSource: DispatchSourceProtocol? { get set }
    // To prevent issue related to "BUG IN CLIENT OF LIBDISPATCH: Release of a suspended object"
    var dispatchSourceSuspendCount: Int { get set }
@@ -18,7 +18,7 @@ private protocol _SmartDispatchSourceType: class {
    func _deinit()
 }
 
-extension _SmartDispatchSourceType {
+extension _DispatchSourceType {
    func _resume() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
@@ -66,7 +66,7 @@ public protocol SmartDispatchSourceType: class {
    func setEventHandler(qos: DispatchQoS, flags: DispatchWorkItemFlags, handler: (() -> Void)?)
 }
 
-public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType, CustomReflectable {
+public class SmartDispatchSource: _DispatchSourceType, SmartDispatchSourceType, CustomReflectable {
 
    fileprivate var dispatchSource: DispatchSourceProtocol?
    fileprivate var dispatchSourceSuspendCount = 1
@@ -101,10 +101,10 @@ public final class SmartDispatchSourceTimer: SmartDispatchSource {
       dispatchSource = DispatchSource.makeTimerSource(flags: flags, queue: queue)
    }
 
-   public func scheduleRepeating(deadline: DispatchTime, interval: DispatchTimeInterval,
-                                 leeway: DispatchTimeInterval = .milliseconds(0)) {
+   public func schedule(deadline: DispatchTime, repeating: DispatchTimeInterval,
+                        leeway: DispatchTimeInterval = .milliseconds(0)) {
       if let timer = dispatchSource as? DispatchSourceTimer {
-         timer.scheduleRepeating(deadline: deadline, interval: interval, leeway: leeway)
+         timer.schedule(deadline: deadline, repeating: repeating, leeway: leeway)
       }
    }
 }

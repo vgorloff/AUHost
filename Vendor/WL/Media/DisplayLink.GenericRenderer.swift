@@ -19,7 +19,8 @@ extension DisplayLink {
       private var frameCounter: UInt
       private var dispatchSource: SmartDispatchSourceUserDataAdd
 
-      public var renderCallback: VoidCompletion?
+      public typealias RenderCallback = () -> Void
+      public var renderCallback: RenderCallback?
 
       public init(frameRateDivider divider: UInt = 1, renderCallbackQueue: DispatchQueue? = nil) throws {
          frameRateDivider = divider

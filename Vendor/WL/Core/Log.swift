@@ -46,11 +46,29 @@ extension Log {
       }
    }
 
+   public static func initialize(subsystem: Subsystem, message: String, function: String = #function, file: String = #file,
+                                 line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: .initialise)
+         let message = format("+++ \(message)", function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
+      }
+   }
+
    public static func deinitialize(subsystem: Subsystem, function: String = #function, file: String = #file, line: Int32 = #line,
                                    dso: UnsafeRawPointer? = #dsohandle) {
       if #available(OSX 10.12, iOS 10.0, *) {
          let logger = getLogger(subsystem: subsystem, category: .deinitialize)
          let message = format("~~~", function: function, file: file, line: line)
+         os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
+      }
+   }
+
+   public static func deinitialize(subsystem: Subsystem, message: String, function: String = #function, file: String = #file,
+                                   line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      if #available(OSX 10.12, iOS 10.0, *) {
+         let logger = getLogger(subsystem: subsystem, category: .deinitialize)
+         let message = format("~~~ \(message)", function: function, file: file, line: line)
          os_log("%{public}@", dso: dso, log: logger, type: .debug, message)
       }
    }

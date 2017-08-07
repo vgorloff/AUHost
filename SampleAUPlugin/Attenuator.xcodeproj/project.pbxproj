@@ -31,13 +31,13 @@
 		80485FD01DA6C3B5004EFA32 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674441D25DE77000989CA /* Log.swift */; };
 		80485FD21DA6C472004EFA32 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674441D25DE77000989CA /* Log.swift */; };
 		80485FD91DA6C572004EFA32 /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674451D25DE77000989CA /* Math.swift */; };
-		80485FDB1DA6C5F8004EFA32 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674701D25DF2A000989CA /* DispatchSource.swift */; };
 		80485FDC1DA6C603004EFA32 /* NumericTypesConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674491D25DE77000989CA /* NumericTypesConversions.swift */; };
 		80485FE41DA6C700004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE31DA6C700004EFA32 /* Application.swift */; };
 		80485FE51DA6C735004EFA32 /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046744E1D25DE77000989CA /* MediaLibraryUtility.swift */; };
 		80485FEC1DA6CA9C004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */; };
 		80485FED1DA6CAB4004EFA32 /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046743A1D25DE77000989CA /* AlternativeValue.swift */; };
 		80485FF21DA82CE7004EFA32 /* UnsafeMutableAudioBufferListPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */; };
+		804C49B71F26AC920015B83A /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C49B61F26AC8C0015B83A /* DispatchSource.swift */; };
 		805301161F1560E4000B0C41 /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805301151F1560C4000B0C41 /* MinMax.swift */; };
 		805301181F15610C000B0C41 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */; };
 		805301191F15610C000B0C41 /* SpinLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7E61F155F7800E5D248 /* SpinLock.swift */; };
@@ -167,7 +167,6 @@
 		804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046746C1D25DF04000989CA /* VULevelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
 		8046746E1D25DF10000989CA /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
-		804674701D25DF2A000989CA /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		80485FAF1DA4657A004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
 		80485FBB1DA6C04F004EFA32 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
 		80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
@@ -175,6 +174,7 @@
 		80485FE31DA6C700004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 		80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
+		804C49B61F26AC8C0015B83A /* DispatchSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		805301151F1560C4000B0C41 /* MinMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
 		8053011C1F156123000B0C41 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
@@ -288,7 +288,6 @@
 				80DEB7E21F155F7800E5D248 /* Components */,
 				80AC1BAA1EEF37C50048151A /* Extensions */,
 				8046743A1D25DE77000989CA /* AlternativeValue.swift */,
-				804674701D25DF2A000989CA /* DispatchSource.swift */,
 				804674441D25DE77000989CA /* Log.swift */,
 				804674451D25DE77000989CA /* Math.swift */,
 				805301151F1560C4000B0C41 /* MinMax.swift */,
@@ -430,6 +429,7 @@
 		80DEB7E31F155F7800E5D248 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
+				804C49B61F26AC8C0015B83A /* DispatchSource.swift */,
 				80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */,
 				80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */,
 				80DEB7E61F155F7800E5D248 /* SpinLock.swift */,
@@ -701,7 +701,6 @@
 				80A180D51EFDC01200716C26 /* AttenuatorViewController.swift in Sources */,
 				802BE2E61EFDAEC20072D3D8 /* AudioComponentDescription.swift in Sources */,
 				80674F381F16C54200C316A0 /* Util.swift in Sources */,
-				80485FDB1DA6C5F8004EFA32 /* DispatchSource.swift in Sources */,
 				80E390931F1568D60056D64D /* NotificationObserver.swift in Sources */,
 				80A180D21EFDC01200716C26 /* AttenuatorDSPKernel.swift in Sources */,
 				80A180D31EFDC01200716C26 /* AttenuatorParameter.swift in Sources */,
@@ -720,6 +719,7 @@
 				80485FF21DA82CE7004EFA32 /* UnsafeMutableAudioBufferListPointer.swift in Sources */,
 				804416391DAC32E600B84BEF /* VULevelMeter.Shaders.metal in Sources */,
 				80DEB7E81F155F8200E5D248 /* NonRecursiveLock.swift in Sources */,
+				804C49B71F26AC920015B83A /* DispatchSource.swift in Sources */,
 				80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */,
 				808704E51F1432BB0048E46A /* MTLDevice.swift in Sources */,
 				8078A0F41F11706D00663678 /* NSNib.swift in Sources */,
