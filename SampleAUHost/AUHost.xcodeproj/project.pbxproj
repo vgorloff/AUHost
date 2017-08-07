@@ -22,10 +22,10 @@
 		80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB41DA591CE004EFA32 /* MainToolbar.swift */; };
 		80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE11DA6C6F6004EFA32 /* Application.swift */; };
 		80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */; };
+		804C49B91F26AD0B0015B83A /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804C49B81F26AD080015B83A /* DispatchSource.swift */; };
 		805301131F156050000B0C41 /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7F71F155FFE00E5D248 /* ResultType.swift */; };
 		805301141F156053000B0C41 /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7F61F155FFE00E5D248 /* MinMax.swift */; };
 		805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */; };
-		8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8064764B1D45376200AF72B9 /* DispatchSource.swift */; };
 		806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806556F41EF5AEC400C4C2FA /* CGSize.swift */; };
 		80674F3B1F16C55400C316A0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80674F3A1F16C55000C316A0 /* Util.swift */; };
 		807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C041D25D9330033629F /* AlternativeValue.swift */; };
@@ -89,8 +89,8 @@
 		80485FE11DA6C6F6004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 		804860401DAAF94A004EFA32 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
+		804C49B81F26AD080015B83A /* DispatchSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
-		8064764B1D45376200AF72B9 /* DispatchSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		806556F41EF5AEC400C4C2FA /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		80674F3A1F16C55000C316A0 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
@@ -216,7 +216,6 @@
 				80AC1BA11EEF36B40048151A /* Extensions */,
 				807E3C041D25D9330033629F /* AlternativeValue.swift */,
 				8088EB201EF470D00022A26E /* CoreTypeAliases.swift */,
-				8064764B1D45376200AF72B9 /* DispatchSource.swift */,
 				807E3C051D25D9330033629F /* Log.swift */,
 				804674341D25DC92000989CA /* Math.swift */,
 				80DEB7F61F155FFE00E5D248 /* MinMax.swift */,
@@ -274,6 +273,7 @@
 		80DEB7ED1F155F8F00E5D248 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
+				804C49B81F26AD080015B83A /* DispatchSource.swift */,
 				80DEB7EE1F155F8F00E5D248 /* NonRecursiveLock.swift */,
 				80DEB7EF1F155F8F00E5D248 /* NonRecursiveLocking.swift */,
 				80DEB7F01F155F8F00E5D248 /* SpinLock.swift */,
@@ -401,6 +401,7 @@
 				8035EF301B3752030026AD7D /* MainViewController.swift in Sources */,
 				8005CA4B1EF6B3400091E075 /* MainViewUIModel.swift in Sources */,
 				80E390921F1568B40056D64D /* NotificationObserver.swift in Sources */,
+				804C49B91F26AD0B0015B83A /* DispatchSource.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
 				806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */,
 				804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */,
@@ -412,7 +413,6 @@
 				80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */,
 				807E3C091D25D9330033629F /* Log.swift in Sources */,
 				80AC1BA31EEF36B40048151A /* OperationQueue.swift in Sources */,
-				8064764C1D45376200AF72B9 /* DispatchSource.swift in Sources */,
 				80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */,
 				8088EB211EF470D00022A26E /* CoreTypeAliases.swift in Sources */,
 				80AC1BA51EEF36E10048151A /* DispatchQueue.swift in Sources */,
