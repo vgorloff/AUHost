@@ -56,10 +56,10 @@ public extension String {
 
    public var uppercasedFirstCharacter: String {
       if characters.count > 0 {
-         let separationIndex = index(after: startIndex)
-         let firstLetter = substring(to: separationIndex).uppercased()
-         let capitalisedSentence = substring(from: separationIndex)
-         return firstLetter + capitalisedSentence
+         let splitIndex = index(after: startIndex)
+         let firstCharacter = self[..<splitIndex].uppercased()
+         let sentence = self[splitIndex...]
+         return firstCharacter + sentence
       } else {
          return self
       }
