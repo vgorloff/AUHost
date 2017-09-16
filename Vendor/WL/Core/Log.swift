@@ -17,9 +17,11 @@ public struct Log {
       case net
       case media
       case io
+      case service
       case model
       case view
       case controller
+      case viewModel
    }
 
    public enum Category: Int {
@@ -30,6 +32,7 @@ public struct Log {
       case event
       case fetch
       case access
+      case processing
    }
 
    fileprivate static var loggers = [Int: OSLog]()
@@ -213,6 +216,8 @@ extension Log.Subsystem {
       case .media: return "\(Log.vendorID).media"
       case .core: return "\(Log.vendorID).core"
       case .io: return "\(Log.vendorID).io"
+      case .viewModel: return "\(Log.vendorID).viewModel"
+      case .service: return "\(Log.vendorID).service"
       }
    }
 }
@@ -231,6 +236,7 @@ extension Log.Category {
       case .response: return "Response"
       case .event: return "Event"
       case .access: return "Access"
+      case .processing: return "Processing"
       }
    }
 }
