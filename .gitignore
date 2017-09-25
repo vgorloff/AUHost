@@ -1,1 +1,43 @@
-Vendor/WL/Settings/gitignore
+### Xcode
+# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
+
+## OS X
+.DS_Store
+
+## IDE
+.idea
+
+## Build generated
+/Build
+/DerivedData
+
+## Package managers
+/Vendor/Carthage
+
+## Various settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+xcbaselines
+
+## Other
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+.tmp
+*.playground
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+
+## Fastlane
+/fastlane/report.xml
+/fastlane/test_output
+/fastlane/README.md
