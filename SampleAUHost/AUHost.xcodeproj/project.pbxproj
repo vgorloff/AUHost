@@ -13,12 +13,14 @@
 		8035EF321B3752030026AD7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF311B3752030026AD7D /* Assets.xcassets */; };
 		8035EF351B3752030026AD7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF331B3752030026AD7D /* Main.storyboard */; };
 		8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF3D1B375EE00026AD7D /* MainWindowController.swift */; };
-		8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */; };
+		8044E5DC1F79B39E005E5760 /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8044E5DB1F79B39E005E5760 /* NSToolbar.swift */; };
+		8044E5E11F79B3B1005E5760 /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8044E5DF1F79B3B1005E5760 /* MediaLibraryUtility.swift */; };
+		8044E5E41F79B3C7005E5760 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8044E5E31F79B3C7005E5760 /* Util.swift */; };
+		8044E5E61F79B3E6005E5760 /* UITypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8044E5E51F79B3E6005E5760 /* UITypeAliases.swift */; };
 		804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674251D25DAA1000989CA /* WaveformCacheUtility.swift */; };
 		804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */; };
 		8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */; };
 		804674361D25DC92000989CA /* Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674341D25DC92000989CA /* Math.swift */; };
-		80485FB21DA591AB004EFA32 /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB11DA591AB004EFA32 /* NSToolbar.swift */; };
 		80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB41DA591CE004EFA32 /* MainToolbar.swift */; };
 		80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE11DA6C6F6004EFA32 /* Application.swift */; };
 		80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */; };
@@ -27,7 +29,6 @@
 		805301141F156053000B0C41 /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7F61F155FFE00E5D248 /* MinMax.swift */; };
 		805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */; };
 		806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806556F41EF5AEC400C4C2FA /* CGSize.swift */; };
-		80674F3B1F16C55400C316A0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80674F3A1F16C55000C316A0 /* Util.swift */; };
 		807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C041D25D9330033629F /* AlternativeValue.swift */; };
 		807E3C091D25D9330033629F /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C051D25D9330033629F /* Log.swift */; };
 		807E3C0B1D25D9330033629F /* NumericTypesConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C071D25D9330033629F /* NumericTypesConversions.swift */; };
@@ -79,12 +80,14 @@
 		8035EF311B3752030026AD7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8035EF341B3752030026AD7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8035EF3D1B375EE00026AD7D /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
+		8044E5DB1F79B39E005E5760 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
+		8044E5DF1F79B3B1005E5760 /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
+		8044E5E31F79B3C7005E5760 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		8044E5E51F79B3E6005E5760 /* UITypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITypeAliases.swift; sourceTree = "<group>"; };
 		804674251D25DAA1000989CA /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		804674341D25DC92000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		80485FB11DA591AB004EFA32 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
 		80485FB41DA591CE004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
 		80485FE11DA6C6F6004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
@@ -92,7 +95,6 @@
 		804C49B81F26AD080015B83A /* DispatchSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
 		805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		806556F41EF5AEC400C4C2FA /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
-		80674F3A1F16C55000C316A0 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
 		807E3C051D25D9330033629F /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		807E3C071D25D9330033629F /* NumericTypesConversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericTypesConversions.swift; sourceTree = "<group>"; };
@@ -167,11 +169,47 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8044E5D81F79B057005E5760 /* WL */ = {
+			isa = PBXGroup;
+			children = (
+				8044E5E21F79B3C7005E5760 /* Foundation */,
+				804674291D25DBA2000989CA /* UI */,
+				807E3C121D25D9880033629F /* Media */,
+				807E3C031D25D9330033629F /* Core */,
+			);
+			path = WL;
+			sourceTree = "<group>";
+		};
+		8044E5DA1F79B38F005E5760 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8044E5DB1F79B39E005E5760 /* NSToolbar.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		8044E5DD1F79B3B1005E5760 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8044E5DF1F79B3B1005E5760 /* MediaLibraryUtility.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		8044E5E21F79B3C7005E5760 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				8044E5E31F79B3C7005E5760 /* Util.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
 		804674291D25DBA2000989CA /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8044E5E51F79B3E6005E5760 /* UITypeAliases.swift */,
+				8044E5DA1F79B38F005E5760 /* macOS */,
 				806556F31EF5AE8800C4C2FA /* Extensions */,
-				80485FB11DA591AB004EFA32 /* NSToolbar.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -222,7 +260,6 @@
 				80E390911F1568B20056D64D /* NotificationObserver.swift */,
 				807E3C071D25D9330033629F /* NumericTypesConversions.swift */,
 				80DEB7F71F155FFE00E5D248 /* ResultType.swift */,
-				80674F3A1F16C55000C316A0 /* Util.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -230,8 +267,8 @@
 		807E3C121D25D9880033629F /* Media */ = {
 			isa = PBXGroup;
 			children = (
+				8044E5DD1F79B3B1005E5760 /* macOS */,
 				8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */,
-				8046741A1D25DA01000989CA /* MediaLibraryUtility.swift */,
 				807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */,
 				804674251D25DAA1000989CA /* WaveformCacheUtility.swift */,
 				804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */,
@@ -254,12 +291,10 @@
 		80C422891C46C3F700B5CCF1 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
-				804674291D25DBA2000989CA /* UI */,
-				807E3C121D25D9880033629F /* Media */,
-				807E3C031D25D9330033629F /* Core */,
+				8044E5D81F79B057005E5760 /* WL */,
 			);
 			name = Vendor;
-			path = ../Vendor/WL;
+			path = ../Vendor;
 			sourceTree = "<group>";
 		};
 		80DEB7EC1F155F8F00E5D248 /* Components */ = {
@@ -402,13 +437,13 @@
 				8005CA4B1EF6B3400091E075 /* MainViewUIModel.swift in Sources */,
 				80E390921F1568B40056D64D /* NotificationObserver.swift in Sources */,
 				804C49B91F26AD0B0015B83A /* DispatchSource.swift in Sources */,
+				8044E5E11F79B3B1005E5760 /* MediaLibraryUtility.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
 				806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */,
 				804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */,
 				8096F4F21EF5809900B1A5CD /* main.swift in Sources */,
-				80674F3B1F16C55400C316A0 /* Util.swift in Sources */,
-				80485FB21DA591AB004EFA32 /* NSToolbar.swift in Sources */,
 				807E3C0B1D25D9330033629F /* NumericTypesConversions.swift in Sources */,
+				8044E5E61F79B3E6005E5760 /* UITypeAliases.swift in Sources */,
 				80DEB7F41F155F9500E5D248 /* SpinLock.swift in Sources */,
 				80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */,
 				807E3C091D25D9330033629F /* Log.swift in Sources */,
@@ -416,9 +451,10 @@
 				80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */,
 				8088EB211EF470D00022A26E /* CoreTypeAliases.swift in Sources */,
 				80AC1BA51EEF36E10048151A /* DispatchQueue.swift in Sources */,
-				8046741B1D25DA01000989CA /* MediaLibraryUtility.swift in Sources */,
 				80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */,
+				8044E5DC1F79B39E005E5760 /* NSToolbar.swift in Sources */,
 				805301141F156053000B0C41 /* MinMax.swift in Sources */,
+				8044E5E41F79B3C7005E5760 /* Util.swift in Sources */,
 				80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
 				80AC1BA71EEF371D0048151A /* String.swift in Sources */,
