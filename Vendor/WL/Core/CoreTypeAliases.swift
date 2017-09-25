@@ -8,6 +8,14 @@
 
 import Foundation
 
+#if os(iOS)
+   import UIKit
+   public typealias EdgeInsets = UIEdgeInsets
+#elseif os(OSX)
+   import AppKit
+   public typealias EdgeInsets = NSEdgeInsets
+#endif
+
 public typealias GenericCompletion<T1, T2> = (T1) -> T2
 public typealias Completion<T> = GenericCompletion<T, Void>
 public typealias VoidCompletion = () -> Void

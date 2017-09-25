@@ -2,7 +2,12 @@
 
 gitRepoDirPath = File.expand_path("#{File.dirname(__FILE__)}/../../")
 
-require "#{gitRepoDirPath}/Vendor/WL/Scripts/WL.rb"
+libraryFilePath = "#{ENV['AWL_LIB_SRC']}/Scripts/WL.rb"
+if File.exists?(libraryFilePath)
+   require libraryFilePath
+else
+   require "#{gitRepoDirPath}/Vendor/WL/Scripts/WL.rb"
+end
 
 changedFiles = GitStatus.new(gitRepoDirPath).changedFiles
 

@@ -5,7 +5,12 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.105.0"
 
-require "#{ENV['PWD']}/Vendor/WL/Scripts/fastlane.rb"
+libraryFilePath = "#{ENV['AWL_LIB_SRC']}/Scripts/WL.rb"
+if File.exists?(libraryFilePath)
+   import libraryFilePath
+else
+   import "#{ENV['PWD']}/Vendor/WL/Scripts/WL.rb"
+end
 
 desc "Builds project."
 lane :build do
@@ -62,4 +67,16 @@ lane :verify do
    `swiftlint lint --quiet --path #{ENV['PWD']}`
    puts FileHeaderChecker.new(["AUHost", "WaveLabs"]).analyse("#{ENV['PWD']}/SampleAUHost")
    puts FileHeaderChecker.new(["Attenuator", "WaveLabs"]).analyse("#{ENV['PWD']}/SampleAUPlugin")
+end
+
+desc "Unsync source code."
+lane :unsync do
+   srcUnsync("#{ENV['PWD']}/SampleAUHost/AUHost.xcodeproj")
+   srcUnsync("#{ENV['PWD']}/SampleAUPlugin/Attenuator.xcodeproj")
+end
+
+desc "Sync source code."
+lane :sync do
+   srcSync("#{ENV['PWD']}/SampleAUHost/AUHost.xcodeproj")
+   srcSync("#{ENV['PWD']}/SampleAUPlugin/Attenuator.xcodeproj", cleanup: false)
 end

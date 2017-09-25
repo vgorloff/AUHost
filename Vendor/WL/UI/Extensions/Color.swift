@@ -8,11 +8,9 @@
 
 import CoreGraphics
 #if os(iOS)
-import UIKit
-public typealias ColorType = UIColor
+   import UIKit
 #elseif os(OSX)
-import AppKit
-public typealias ColorType = NSColor
+   import AppKit
 #endif
 
 public extension ColorType {

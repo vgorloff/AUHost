@@ -5,7 +5,12 @@
 # Update this, if you use features of a newer version
 fastlane_version "1.105.0"
 
-import "#{ENV['PWD']}/Vendor/WL/Scripts/fastlane.rb"
+libraryFilePath = "#{ENV['AWL_LIB_SRC']}/Scripts/WL.rb"
+if File.exists?(libraryFilePath)
+   import libraryFilePath
+else
+   import "#{ENV['PWD']}/Vendor/WL/Scripts/WL.rb"
+end
 
 XCodeProjectFilePath = "#{ENV['PWD']}/Attenuator.xcodeproj"
 XCodeProjectSchema = "Attenuator"
