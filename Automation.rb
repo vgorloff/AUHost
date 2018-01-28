@@ -28,7 +28,7 @@ class Automation
       system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make release"
       system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make release"
       apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
-      apps.each { |app| zip(path: app, output_path: "#{app}.zip") }
+      apps.each { |app| Archive.zip(app) }
       apps.each { |app| XcodeBuilder.validateBinary(app) }
    end
    
@@ -38,13 +38,19 @@ class Automation
    end
    
    def self.deploy()
-      # assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
-      # releaseName = File.read("#{ENV['PWD']}/fastlane/ReleaseName.txt").strip
-      # releaseDescription = File.read("#{ENV['PWD']}/fastlane/ReleaseNotes.txt").strip
-      # github_release = set_github_release(
-      #   repository_name: "vgorloff/AUHost", api_token: ENV['AWL_GITHUB_TOKEN'], name: releaseName, tag_name: last_git_tag,
-      #   description: releaseDescription, commitish: "master", upload_assets: assets
-      # )
+      assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
+      releaseInfo = YAML.load_file("#{GitRepoDirPath}/Configuration/Release.yml")
+      releaseName = releaseInfo['name']
+      releaseDescriptions = releaseInfo['description'].map { |l| "* #{l}"}
+      releaseDescription = releaseDescriptions.join("\n")
+      version = Version.new(VersionFilePath).projectVersion
+      puts "! Will make GitHub release → #{version}: \"#{releaseName}\""
+      puts releaseDescriptions.map { |l| "  #{l}" }
+      assets.each { |f| puts "  #{f}" }
+      gh = GitHubRelease.new("vgorloff", "AUHost")
+      Readline.readline("OK? > ")
+      gh.release(version, releaseName, releaseDescription)
+      assets.each { |f| gh.uploadAsset(f) }
    end
 
 end
