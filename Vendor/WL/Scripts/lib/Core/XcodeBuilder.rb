@@ -17,6 +17,7 @@ end
 class XcodeBuilder
     
   def initialize(projectFilePath, buildRoot = ENV['PWD'])
+    @isVerbodeMode = false
     @buildRoot = buildRoot
     @projectFilePath = projectFilePath
     @buildDir = "#{buildRoot}/DerivedData"
@@ -24,7 +25,7 @@ class XcodeBuilder
 
     @buildExecutable = 'xcrun xcodebuild'
     @commonArgsXCPretty = ""
-    if !Tool.isTravisCI
+    if !@isVerbodeMode
       @buildExecutable = "set -o pipefail && #{@buildExecutable}"
       @commonArgsXCPretty = "| xcpretty --color --simple"
     end
