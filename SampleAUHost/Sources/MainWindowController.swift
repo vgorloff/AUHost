@@ -26,7 +26,7 @@ class MainWindowController: NSWindowController {
       vc.uiModel = viewUIModel
       viewUIModel.mediaLibraryLoader.eventHandler = { [weak self] in
          switch $0 {
-         case .mediaSourceChanged(_):
+         case .mediaSourceChanged:
             self?.mlController.isVisible = true
          }
       }

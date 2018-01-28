@@ -6,8 +6,8 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import AVFoundation
 import AttenuatorKit
+import AVFoundation
 import Cocoa
 
 class ViewController: NSViewController {
