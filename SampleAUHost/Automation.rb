@@ -6,7 +6,6 @@ class Automation
    GitRepoDirPath = ENV['PWD']
    XCodeProjectFilePath = GitRepoDirPath + "/AUHost.xcodeproj"
    XCodeProjectSchema = "AUHost"
-   VersionFilePath = GitRepoDirPath + "/Configuration/Version.xcconfig"
       
    def self.ci()
       XcodeBuilder.new(XCodeProjectFilePath).ci(XCodeProjectSchema)

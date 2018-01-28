@@ -71,6 +71,9 @@
 		80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */; };
 		80C8089B1EFF2A7500E68A3F /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */; };
 		80D33DFB201D7A69007518BA /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 80D33DFA201D7A66007518BA /* VULevelMeter.Shaders.metal */; };
+		80D33DFE201D7DA8007518BA /* SmartDispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D33DFC201D7D98007518BA /* SmartDispatchSource.swift */; };
+		80D33DFF201D7DA8007518BA /* SmartDispatchSourceUserDataAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D33DFD201D7D98007518BA /* SmartDispatchSourceUserDataAdd.swift */; };
+		80D33E01201D7DC3007518BA /* SmartDispatchSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D33E00201D7DC3007518BA /* SmartDispatchSourceType.swift */; };
 		80D5104A1C6697D000C53608 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80D5104B1C6697D000C53608 /* AttenuatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		80DEB7E81F155F8200E5D248 /* NonRecursiveLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */; };
@@ -203,6 +206,9 @@
 		80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
 		80C808591EFF268F00E68A3F /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		80D33DFA201D7A66007518BA /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
+		80D33DFC201D7D98007518BA /* SmartDispatchSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDispatchSource.swift; sourceTree = "<group>"; };
+		80D33DFD201D7D98007518BA /* SmartDispatchSourceUserDataAdd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartDispatchSourceUserDataAdd.swift; sourceTree = "<group>"; };
+		80D33E00201D7DC3007518BA /* SmartDispatchSourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartDispatchSourceType.swift; sourceTree = "<group>"; };
 		80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecursiveLock.swift; sourceTree = "<group>"; };
 		80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
 		80DEB7E61F155F7800E5D248 /* SpinLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinLock.swift; sourceTree = "<group>"; };
@@ -242,6 +248,9 @@
 		139934316CD31AF7FF7B7F5D /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
+				80D33E00201D7DC3007518BA /* SmartDispatchSourceType.swift */,
+				80D33DFC201D7D98007518BA /* SmartDispatchSource.swift */,
+				80D33DFD201D7D98007518BA /* SmartDispatchSourceUserDataAdd.swift */,
 				80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */,
 				80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */,
 				80DEB7E61F155F7800E5D248 /* SpinLock.swift */,
@@ -668,7 +677,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = WaveLabs;
 				TargetAttributes = {
 					8044ABCB1C52E24000FA3DA3 = {
@@ -814,10 +823,13 @@
 				80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */,
 				808704E51F1432BB0048E46A /* MTLDevice.swift in Sources */,
 				8078A0F41F11706D00663678 /* NSNib.swift in Sources */,
+				80D33DFF201D7DA8007518BA /* SmartDispatchSourceUserDataAdd.swift in Sources */,
 				80C808991EFF2A1500E68A3F /* OperationQueue.swift in Sources */,
 				8044E60C1F79B489005E5760 /* VULevelMeter.swift in Sources */,
 				802BE2E41EFDAE860072D3D8 /* AudioBuffer.swift in Sources */,
 				80485FDC1DA6C603004EFA32 /* NumericTypesConversions.swift in Sources */,
+				80D33DFE201D7DA8007518BA /* SmartDispatchSource.swift in Sources */,
+				80D33E01201D7DC3007518BA /* SmartDispatchSourceType.swift in Sources */,
 				80AC1BB71EEF38630048151A /* String.swift in Sources */,
 				80AC1BB91EEF38E90048151A /* Bundle.swift in Sources */,
 				8046746F1D25DF10000989CA /* DisplayLink.swift in Sources */,
@@ -909,6 +921,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -918,7 +931,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -953,6 +966,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -962,7 +976,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
@@ -1003,12 +1017,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1053,12 +1069,14 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1081,6 +1099,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
@@ -1090,6 +1109,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Attenuator/Attenuator.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -1112,6 +1132,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = Attenuator/Attenuator.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
@@ -1134,6 +1155,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1156,6 +1178,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CODE_SIGN_ENTITLEMENTS = AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;

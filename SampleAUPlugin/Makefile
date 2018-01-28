@@ -14,6 +14,9 @@ clean:
 test:
 	@ruby -r "`pwd`/Automation.rb" -e "Automation.test"
 
+post:
+	@ruby -r "`pwd`/Automation.rb" -e "Automation.post"
+
 release:
 	@ruby -r "`pwd`/Automation.rb" -e "Automation.release"
 

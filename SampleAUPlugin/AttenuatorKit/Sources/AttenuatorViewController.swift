@@ -38,9 +38,7 @@ open class AttenuatorViewController: AUViewController {
       guard let nib = NSNib(nibNamed: nibName, bundle: Bundle(for: AttenuatorViewController.self)) else {
          fatalError()
       }
-      guard let objects = nib.instantiate(withOwner: self) else {
-         fatalError()
-      }
+      let objects = nib.instantiate(withOwner: self)
       guard let v = (objects.map { $0 as? AttenuatorView }.flatMap { $0 }).first else {
          fatalError()
       }
