@@ -8,16 +8,19 @@
 
 import Foundation
 
-public enum BundleError: Error {
-   case missedURLForResource(resourceName: String, resourceExtension: String)
-}
-
 public extension Bundle {
 
    public func urlForResource(resourceName: String, resourceExtension: String) throws -> URL {
       guard let url = url(forResource: resourceName, withExtension: resourceExtension) else {
-         throw BundleError.missedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
+         throw NSError.Bundle.missedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
       }
       return url
+   }
+}
+
+extension NSError {
+
+   public enum Bundle: Swift.Error {
+      case missedURLForResource(resourceName: String, resourceExtension: String)
    }
 }

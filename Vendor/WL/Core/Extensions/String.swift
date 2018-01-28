@@ -11,55 +11,74 @@ import Foundation
 // NSString bindings
 public extension String {
 
-   public func appendingPathComponent(_ str: String) -> String {
+   func appendingPathComponent(_ str: String) -> String {
       return (self as NSString).appendingPathComponent(str)
    }
 
-   public var pathExtension: String {
+   var pathExtension: String {
       return (self as NSString).pathExtension
    }
 
-   public var deletingPathExtension: String {
+   var deletingPathExtension: String {
       return (self as NSString).deletingPathExtension
    }
 
-   public func appendingPathExtension(_ str: String) -> String? {
+   func appendingPathExtension(_ str: String) -> String? {
       return (self as NSString).appendingPathExtension(str)
    }
 
-   public var lastPathComponent: String {
+   var lastPathComponent: String {
       return (self as NSString).lastPathComponent
    }
 
-   public var deletingLastPathComponent: String {
+   var deletingLastPathComponent: String {
       return (self as NSString).deletingLastPathComponent
    }
 
-   public var expandingTildeInPath: String {
+   func deletingLastPathComponents(_ numberOfComponents: Int) -> String {
+      var result = self
+      for _ in 0 ..< numberOfComponents {
+         result = result.deletingLastPathComponent
+      }
+      return result
+   }
+
+   var expandingTildeInPath: String {
       return (self as NSString).expandingTildeInPath
    }
 
-   public func replacingCharacters(in nsRange: NSRange, with: String) -> String {
+   func replacingCharacters(in nsRange: NSRange, with: String) -> String {
       return (self as NSString).replacingCharacters(in: nsRange, with: with)
    }
 
-   public func nsRange(of searchString: String) -> NSRange {
+   func nsRange(of searchString: String) -> NSRange {
       return (self as NSString).range(of: searchString)
    }
 }
 
 public extension String {
 
-   public var componentsSeparatedByNewline: [String] {
+   var componentsSeparatedByNewline: [String] {
       return components(separatedBy: .newlines)
    }
 
-   public var uppercasedFirstCharacter: String {
-      if characters.count > 0 {
-         let separationIndex = index(after: startIndex)
-         let firstLetter = substring(to: separationIndex).uppercased()
-         let capitalisedSentence = substring(from: separationIndex)
-         return firstLetter + capitalisedSentence
+   func uppercasedFirstCharacter() -> String {
+      if count > 0 {
+         let splitIndex = index(after: startIndex)
+         let firstCharacter = self[..<splitIndex].uppercased()
+         let sentence = self[splitIndex...]
+         return firstCharacter + sentence
+      } else {
+         return self
+      }
+   }
+
+   func lowercasedFirstCharacter() -> String {
+      if count > 0 {
+         let splitIndex = index(after: startIndex)
+         let firstCharacter = self[..<splitIndex].lowercased()
+         let sentence = self[splitIndex...]
+         return firstCharacter + sentence
       } else {
          return self
       }
@@ -67,8 +86,8 @@ public extension String {
 
    /// - parameter length: Desired string length. Should be at least 4 characters.
    /// - returns: New string by replacing original string middle characters with ".."
-   public func clip(toLength length: Int) -> String {
-      if length < 4 || characters.count < length {
+   func clip(toLength length: Int) -> String {
+      if length < 4 || count < length {
          return self
       }
 
@@ -83,7 +102,7 @@ public extension String {
    }
 
    // swiftlint:disable variable_name
-   public var OSTypeValue: OSType {
+   var OSTypeValue: OSType {
       let chars = utf8
       var result: UInt32 = 0
       for aChar in chars {
@@ -95,22 +114,80 @@ public extension String {
    // swiftlint:enable variable_name
 }
 
+extension String {
+
+   var mutableAttributedString: NSMutableAttributedString {
+      return NSMutableAttributedString(string: self)
+   }
+
+   var attributedString: NSAttributedString {
+      return NSAttributedString(string: self)
+   }
+}
+
 // http://stackoverflow.com/questions/25138339/nsrange-to-rangestring-index
 public extension String {
 
-   public func nsRange(from range: Range<String.Index>) -> NSRange {
-      let from = range.lowerBound.samePosition(in: utf16)
-      let to = range.upperBound.samePosition(in: utf16)
-      return NSRange(location: utf16.distance(from: utf16.startIndex, to: from), length: utf16.distance(from: from, to: to))
+   public func range(from nsRange: NSRange) -> Range<String.Index>? {
+      return Range(nsRange, in: self)
+   }
+}
+
+extension String {
+
+   struct ComponentsSplitByDelimiter {
+      let start: String
+      let middle: String
+      let end: String
    }
 
-   public func range(from nsRange: NSRange) -> Range<String.Index>? {
-      guard
-         let from16 = utf16.index(utf16.startIndex, offsetBy: nsRange.location, limitedBy: utf16.endIndex),
-         let to16 = utf16.index(from16, offsetBy: nsRange.length, limitedBy: utf16.endIndex),
-         let from = String.Index(from16, within: self),
-         let to = String.Index(to16, within: self)
-      else { return nil }
-      return from ..< to
+   private func numberOf(_ character: Character) -> Int {
+      var result = 0
+      for value in self where character == value {
+         result += 1
+      }
+      return result
+   }
+
+   public func applyAttributesBetweenDelimiter(_ character: Character, attributes: [NSAttributedStringKey: Any],
+                                               commonAttributes: [NSAttributedStringKey: Any]? = nil) -> NSAttributedString {
+      let numCharacters = numberOf(character)
+      guard numCharacters > 0 && numCharacters % 2 == 0 else {
+         return NSAttributedString(string: self, attributes: commonAttributes)
+      }
+
+      guard let components = componentsDelimedBy(character) else {
+         return NSAttributedString(string: self, attributes: commonAttributes)
+      }
+
+      let mutableString = NSMutableAttributedString()
+      mutableString.append(NSAttributedString(string: components.start, attributes: commonAttributes))
+      mutableString.append(NSAttributedString(string: components.middle, attributes: attributes))
+      if !components.end.isEmpty {
+         let restOfTheString = components.end.applyAttributesBetweenDelimiter(character,
+                                                                              attributes: attributes,
+                                                                              commonAttributes: commonAttributes)
+         mutableString.append(restOfTheString)
+      }
+      return mutableString
+   }
+
+   func componentsDelimedBy(_ character: Character) -> ComponentsSplitByDelimiter? {
+
+      let delimiter = String(character)
+
+      guard let rangeOfStart = range(of: delimiter), !rangeOfStart.isEmpty else {
+         return nil
+      }
+
+      let restOfTheString = String(self[rangeOfStart.upperBound...])
+      guard let rangeOfEnd = restOfTheString.range(of: delimiter), !rangeOfEnd.isEmpty else {
+         return nil
+      }
+
+      let partStart = String(self[..<rangeOfStart.lowerBound])
+      let partMiddle = String(restOfTheString[..<rangeOfEnd.lowerBound])
+      let partEnd = String(restOfTheString[rangeOfEnd.upperBound...])
+      return ComponentsSplitByDelimiter(start: partStart, middle: partMiddle, end: partEnd)
    }
 }

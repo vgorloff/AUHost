@@ -1,0 +1,1 @@
+Dir[__FILE__.sub(/\.rb$/, '/*.rb')].each { |f| require f }
