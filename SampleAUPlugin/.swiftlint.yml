@@ -1,0 +1,23 @@
+disabled_rules: # rule identifiers to exclude from running
+- todo
+- empty_enum_arguments
+  
+line_length:
+  warning: 130
+  error: 200
+
+file_length:
+  warning: 500
+  error: 1000
+
+identifier_name:
+  min_length:
+    warning: 2
+    error: 1
+  max_length:
+    warning: 46
+    error: 52
+
+type_body_length:
+  - 300 # warning
+  - 400 # error
