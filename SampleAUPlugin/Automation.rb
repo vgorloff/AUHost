@@ -6,7 +6,6 @@ class Automation
    GitRepoDirPath = ENV['PWD']
    XCodeProjectFilePath = GitRepoDirPath + "/Attenuator.xcodeproj"
    XCodeProjectSchema = "Attenuator"
-   VersionFilePath = GitRepoDirPath + "/Configuration/Version.xcconfig"
       
    def self.ci()
       XcodeBuilder.new(XCodeProjectFilePath).ci(XCodeProjectSchema)
@@ -22,6 +21,13 @@ class Automation
    
    def self.test()
       puts "! Nothing to do."
+   end
+   
+   def self.post()
+      targetName = ENV['TARGET_NAME']
+      if targetName == "Attenuator"
+         `pluginkit -v -a "#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex"`
+      end
    end
    
    def self.release()

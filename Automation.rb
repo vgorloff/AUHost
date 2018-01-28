@@ -25,11 +25,11 @@ class Automation
    end
    
    def self.release()
-      # sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane archive"
-      # sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane archive"
-      # apps = Dir["#{ENV['PWD']}/**/*.export/*.app"].select { |f| File.directory?(f) }
-      # apps.each { |app| zip(path: app, output_path: "#{app}.zip") }
-      # apps.each { |app| XcodeBuilder.validateBinary(app) }
+      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make release"
+      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make release"
+      apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
+      apps.each { |app| zip(path: app, output_path: "#{app}.zip") }
+      apps.each { |app| XcodeBuilder.validateBinary(app) }
    end
    
    def self.verify()
