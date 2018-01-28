@@ -146,46 +146,46 @@
 /* Begin PBXFileReference section */
 		8005CA4A1EF6B3020091E075 /* MainViewUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewUIModel.swift; sourceTree = "<group>"; };
 		80141F9C1EF6B4C800490F78 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		80141F9E1EF6B53900490F78 /* CoreTypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreTypeAliases.swift; sourceTree = "<group>"; };
-		802BE2E01EFDAE640072D3D8 /* GLKMatrix4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GLKMatrix4.swift; sourceTree = "<group>"; };
-		802BE2E31EFDAE810072D3D8 /* AudioBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioBuffer.swift; sourceTree = "<group>"; };
-		802BE2E51EFDAEAD0072D3D8 /* AudioComponentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioComponentDescription.swift; sourceTree = "<group>"; };
-		802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayLink.GenericRenderer.swift; sourceTree = "<group>"; };
+		80141F9E1EF6B53900490F78 /* CoreTypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreTypeAliases.swift; path = CoreTypeAliases.swift; sourceTree = "<group>"; };
+		802BE2E01EFDAE640072D3D8 /* GLKMatrix4.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GLKMatrix4.swift; path = GLKMatrix4.swift; sourceTree = "<group>"; };
+		802BE2E31EFDAE810072D3D8 /* AudioBuffer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioBuffer.swift; path = AudioBuffer.swift; sourceTree = "<group>"; };
+		802BE2E51EFDAEAD0072D3D8 /* AudioComponentDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AudioComponentDescription.swift; path = AudioComponentDescription.swift; sourceTree = "<group>"; };
+		802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DisplayLink.GenericRenderer.swift; path = DisplayLink.GenericRenderer.swift; sourceTree = "<group>"; };
 		8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AttenuatorKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
 		8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
-		8044E5E81F79B42E005E5760 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
-		8044E5ED1F79B446005E5760 /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
-		8044E5FA1F79B45C005E5760 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
-		8044E5FC1F79B45C005E5760 /* VULevelMeter.DrawingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.DrawingData.swift; sourceTree = "<group>"; };
-		8044E5FD1F79B45C005E5760 /* VULevelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
+		8044E5E81F79B42E005E5760 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Util.swift; sourceTree = "<group>"; };
+		8044E5ED1F79B446005E5760 /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaLibraryUtility.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
+		8044E5FA1F79B45C005E5760 /* NSToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSToolbar.swift; path = NSToolbar.swift; sourceTree = "<group>"; };
+		8044E5FC1F79B45C005E5760 /* VULevelMeter.DrawingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VULevelMeter.DrawingData.swift; path = VULevelMeter.DrawingData.swift; sourceTree = "<group>"; };
+		8044E5FD1F79B45C005E5760 /* VULevelMeter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VULevelMeter.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
 		8044E60F1F79B4BA005E5760 /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
 		8044E6121F79B4E0005E5760 /* UITypeAliases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITypeAliases.swift; sourceTree = "<group>"; };
-		8046743A1D25DE77000989CA /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
-		804674441D25DE77000989CA /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		804674451D25DE77000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Math.swift; sourceTree = "<group>"; };
-		804674491D25DE77000989CA /* NumericTypesConversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericTypesConversions.swift; sourceTree = "<group>"; };
-		8046744F1D25DE77000989CA /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
-		804674501D25DE77000989CA /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
-		804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
-		8046746E1D25DF10000989CA /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
+		8046743A1D25DE77000989CA /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlternativeValue.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
+		804674441D25DE77000989CA /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Log.swift; path = Log.swift; sourceTree = "<group>"; };
+		804674451D25DE77000989CA /* Math.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Math.swift; path = Math.swift; sourceTree = "<group>"; };
+		804674491D25DE77000989CA /* NumericTypesConversions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumericTypesConversions.swift; path = NumericTypesConversions.swift; sourceTree = "<group>"; };
+		8046744F1D25DE77000989CA /* MediaObjectPasteboardUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MediaObjectPasteboardUtility.swift; path = MediaObjectPasteboardUtility.swift; sourceTree = "<group>"; };
+		804674501D25DE77000989CA /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaveformCacheUtility.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
+		804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WaveformDrawingDataProvider.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
+		8046746E1D25DF10000989CA /* DisplayLink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DisplayLink.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		80485FAF1DA4657A004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
 		80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
 		80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
 		80485FE31DA6C700004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
-		80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
+		80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UnsafeMutableAudioBufferListPointer.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
 		804C49B61F26AC8C0015B83A /* DispatchSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchSource.swift; sourceTree = "<group>"; };
-		805301151F1560C4000B0C41 /* MinMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMax.swift; sourceTree = "<group>"; };
-		8053011C1F156123000B0C41 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
+		805301151F1560C4000B0C41 /* MinMax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MinMax.swift; path = MinMax.swift; sourceTree = "<group>"; };
+		8053011C1F156123000B0C41 /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultType.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
-		8078A0F31F11705C00663678 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNib.swift; sourceTree = "<group>"; };
-		808704E41F1432B20048E46A /* MTLDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTLDevice.swift; sourceTree = "<group>"; };
-		80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
-		80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
-		80A180B31EFDBE4900716C26 /* BufferDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
+		8078A0F31F11705C00663678 /* NSNib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NSNib.swift; path = NSNib.swift; sourceTree = "<group>"; };
+		808704E41F1432B20048E46A /* MTLDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MTLDevice.swift; path = MTLDevice.swift; sourceTree = "<group>"; };
+		80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BufferedAudioBus.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
+		80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AudioComponentsUtility.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
+		80A180B31EFDBE4900716C26 /* BufferDatasource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BufferDatasource.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
 		80A180BB1EFDBEF700716C26 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		80A180BD1EFDBF1D00716C26 /* AttenuatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttenuatorViewController.xib; sourceTree = "<group>"; };
 		80A180BF1EFDBF1D00716C26 /* AttenuatorAudioUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttenuatorAudioUnit.swift; sourceTree = "<group>"; };
@@ -205,12 +205,12 @@
 		80AC1BAD1EEF37C50048151A /* OperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
 		80AC1BAE1EEF37C50048151A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		80AC1BB81EEF38E30048151A /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
+		80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NotificationObserver.swift; path = NotificationObserver.swift; sourceTree = "<group>"; };
 		80C808591EFF268F00E68A3F /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
-		80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecursiveLock.swift; sourceTree = "<group>"; };
-		80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
-		80DEB7E61F155F7800E5D248 /* SpinLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinLock.swift; sourceTree = "<group>"; };
-		80DEB7E71F155F7800E5D248 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
+		80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonRecursiveLock.swift; path = NonRecursiveLock.swift; sourceTree = "<group>"; };
+		80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NonRecursiveLocking.swift; path = NonRecursiveLocking.swift; sourceTree = "<group>"; };
+		80DEB7E61F155F7800E5D248 /* SpinLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpinLock.swift; path = SpinLock.swift; sourceTree = "<group>"; };
+		80DEB7E71F155F7800E5D248 /* UnfairLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnfairLock.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
 		C5A5A0FC1C47E75F00F9864E /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A5A1121C47EB5300F9864E /* AttenuatorAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AttenuatorAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -243,15 +243,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		80141F9B1EF6B4C800490F78 /* Extensions */ = {
+		139934316CD31AF7FF7B7F5D /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
-				80141F9C1EF6B4C800490F78 /* Color.swift */,
+				80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */,
+				80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */,
+				80DEB7E61F155F7800E5D248 /* SpinLock.swift */,
+				80DEB7E71F155F7800E5D248 /* UnfairLock.swift */,
 			);
-			path = Extensions;
+			name = Concurrency;
+			path = Concurrency;
 			sourceTree = "<group>";
 		};
-		802BE2DF1EFDAE640072D3D8 /* Extensions */ = {
+		1F04F71F0726B757A1339077 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8044E5FD1F79B45C005E5760 /* VULevelMeter.swift */,
+				8044E5FC1F79B45C005E5760 /* VULevelMeter.DrawingData.swift */,
+			);
+			name = macOS;
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		24729E1613EF45AFF107FCFD /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8053011C1F156123000B0C41 /* ResultType.swift */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		2B2CB38FBD3524E99B36561F /* Observables */ = {
+			isa = PBXGroup;
+			children = (
+				80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */,
+			);
+			name = Observables;
+			path = Observables;
+			sourceTree = "<group>";
+		};
+		4ADDB7FCEB4461D34C9004DA /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8044E5FA1F79B45C005E5760 /* NSToolbar.swift */,
+			);
+			name = macOS;
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		5DDDE705461D798894DE7E71 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DBC3CDD4CD6320D6D40DFB5E /* Components */,
+				8046743A1D25DE77000989CA /* AlternativeValue.swift */,
+				80141F9E1EF6B53900490F78 /* CoreTypeAliases.swift */,
+				804674451D25DE77000989CA /* Math.swift */,
+				805301151F1560C4000B0C41 /* MinMax.swift */,
+				804674491D25DE77000989CA /* NumericTypesConversions.swift */,
+				8044E5E81F79B42E005E5760 /* Util.swift */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		6ADD44FED23293734C189D80 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				802BE2E31EFDAE810072D3D8 /* AudioBuffer.swift */,
@@ -259,6 +315,16 @@
 				802BE2E01EFDAE640072D3D8 /* GLKMatrix4.swift */,
 				808704E41F1432B20048E46A /* MTLDevice.swift */,
 				80485FEF1DA82CD1004EFA32 /* UnsafeMutableAudioBufferListPointer.swift */,
+			);
+			name = Extensions;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		80141F9B1EF6B4C800490F78 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4ADDB7FCEB4461D34C9004DA /* macOS */,
+				80141F9C1EF6B4C800490F78 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -276,10 +342,10 @@
 		8044ABDE1C52E4B700FA3DA3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */,
-				8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */,
-				8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */,
 				8044ABDC1C52E4A700FA3DA3 /* AVFoundation.framework */,
+				8044ABDF1C52E4D600FA3DA3 /* AudioUnit.framework */,
+				8044ABE11C52E4E600FA3DA3 /* CoreAudio.framework */,
+				8044ABE31C52E4F100FA3DA3 /* CoreAudioKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -287,37 +353,18 @@
 		8044E5D91F79B0CB005E5760 /* WL */ = {
 			isa = PBXGroup;
 			children = (
-				8044E5E71F79B42E005E5760 /* Foundation */,
 				804674391D25DE77000989CA /* Core */,
 				8046744C1D25DE77000989CA /* Media */,
+				E3BEBE8DA9B5E33F479BA9A1 /* Types */,
 				804674521D25DE77000989CA /* UI */,
 			);
-			path = WL;
-			sourceTree = "<group>";
-		};
-		8044E5E71F79B42E005E5760 /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				8044E5E81F79B42E005E5760 /* Util.swift */,
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
-		8044E5EB1F79B446005E5760 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				8044E5ED1F79B446005E5760 /* MediaLibraryUtility.swift */,
-			);
-			path = macOS;
-			sourceTree = "<group>";
+			name = WL;
+			sourceTree = WL;
 		};
 		8044E5F01F79B45C005E5760 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				8044E5FA1F79B45C005E5760 /* NSToolbar.swift */,
-				8044E5FC1F79B45C005E5760 /* VULevelMeter.DrawingData.swift */,
 				8044E60F1F79B4BA005E5760 /* VULevelMeter.Shaders.metal */,
-				8044E5FD1F79B45C005E5760 /* VULevelMeter.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -327,14 +374,7 @@
 			children = (
 				80DEB7E21F155F7800E5D248 /* Components */,
 				80AC1BAA1EEF37C50048151A /* Extensions */,
-				8046743A1D25DE77000989CA /* AlternativeValue.swift */,
-				804674441D25DE77000989CA /* Log.swift */,
-				804674451D25DE77000989CA /* Math.swift */,
-				805301151F1560C4000B0C41 /* MinMax.swift */,
-				80AF82DB1F117B16003F81E0 /* NotificationObserver.swift */,
-				804674491D25DE77000989CA /* NumericTypesConversions.swift */,
-				8053011C1F156123000B0C41 /* ResultType.swift */,
-				80141F9E1EF6B53900490F78 /* CoreTypeAliases.swift */,
+				5DDDE705461D798894DE7E71 /* Sources */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -342,16 +382,7 @@
 		8046744C1D25DE77000989CA /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				8044E5EB1F79B446005E5760 /* macOS */,
-				802BE2DF1EFDAE640072D3D8 /* Extensions */,
-				80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */,
-				80A180B31EFDBE4900716C26 /* BufferDatasource.swift */,
-				80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */,
-				802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */,
-				8046746E1D25DF10000989CA /* DisplayLink.swift */,
-				8046744F1D25DE77000989CA /* MediaObjectPasteboardUtility.swift */,
-				804674501D25DE77000989CA /* WaveformCacheUtility.swift */,
-				804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */,
+				BAB462FDE9E03CC16B4AD33D /* Sources */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -359,9 +390,10 @@
 		804674521D25DE77000989CA /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				8044E6121F79B4E0005E5760 /* UITypeAliases.swift */,
-				8044E5F01F79B45C005E5760 /* macOS */,
 				80141F9B1EF6B4C800490F78 /* Extensions */,
+				8044E5F01F79B45C005E5760 /* macOS */,
+				D7E4A632DF8C84570BD50E39 /* Sources */,
+				8044E6121F79B4E0005E5760 /* UITypeAliases.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -434,10 +466,10 @@
 		80AC1BAA1EEF37C50048151A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D4A71B47BA2B7AD6DA473958 /* macOS */,
 				80AC1BB81EEF38E30048151A /* Bundle.swift */,
 				80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */,
 				80AC1BAC1EEF37C50048151A /* DispatchSemaphore.swift */,
-				8078A0F31F11705C00663678 /* NSNib.swift */,
 				80AC1BAD1EEF37C50048151A /* OperationQueue.swift */,
 				80AC1BAE1EEF37C50048151A /* String.swift */,
 			);
@@ -465,10 +497,6 @@
 			isa = PBXGroup;
 			children = (
 				804C49B61F26AC8C0015B83A /* DispatchSource.swift */,
-				80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */,
-				80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */,
-				80DEB7E61F155F7800E5D248 /* SpinLock.swift */,
-				80DEB7E71F155F7800E5D248 /* UnfairLock.swift */,
 			);
 			path = Concurrency;
 			sourceTree = "<group>";
@@ -477,14 +505,41 @@
 			isa = PBXGroup;
 			children = (
 				80485FE31DA6C700004EFA32 /* Application.swift */,
-				805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */,
 				80485FAF1DA4657A004EFA32 /* MainToolbar.swift */,
+				805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */,
 				8005CA4A1EF6B3020091E075 /* MainViewUIModel.swift */,
 				80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */,
 				80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */,
 				80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		BAB462FDE9E03CC16B4AD33D /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6ADD44FED23293734C189D80 /* Extensions */,
+				EA71A3438DC06C6EB0A1DC6D /* macOS */,
+				80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */,
+				80A180B31EFDBE4900716C26 /* BufferDatasource.swift */,
+				80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */,
+				8046746E1D25DF10000989CA /* DisplayLink.swift */,
+				802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */,
+				8046744F1D25DE77000989CA /* MediaObjectPasteboardUtility.swift */,
+				804674501D25DE77000989CA /* WaveformCacheUtility.swift */,
+				804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C0C4D8CD7C3900C74828707B /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				804674441D25DE77000989CA /* Log.swift */,
+			);
+			name = Logging;
+			path = Logging;
 			sourceTree = "<group>";
 		};
 		C5A5A0F31C47E75F00F9864E = {
@@ -526,6 +581,53 @@
 				80A180C51EFDBF3100716C26 /* Sources */,
 			);
 			path = AttenuatorAU;
+			sourceTree = "<group>";
+		};
+		D4A71B47BA2B7AD6DA473958 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8078A0F31F11705C00663678 /* NSNib.swift */,
+			);
+			name = macOS;
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		D7E4A632DF8C84570BD50E39 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1F04F71F0726B757A1339077 /* macOS */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		DBC3CDD4CD6320D6D40DFB5E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				139934316CD31AF7FF7B7F5D /* Concurrency */,
+				C0C4D8CD7C3900C74828707B /* Logging */,
+				2B2CB38FBD3524E99B36561F /* Observables */,
+			);
+			name = Components;
+			path = Components;
+			sourceTree = "<group>";
+		};
+		E3BEBE8DA9B5E33F479BA9A1 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				24729E1613EF45AFF107FCFD /* Sources */,
+			);
+			name = Types;
+			path = Types;
+			sourceTree = "<group>";
+		};
+		EA71A3438DC06C6EB0A1DC6D /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				8044E5ED1F79B446005E5760 /* MediaLibraryUtility.swift */,
+			);
+			name = macOS;
+			path = macOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
