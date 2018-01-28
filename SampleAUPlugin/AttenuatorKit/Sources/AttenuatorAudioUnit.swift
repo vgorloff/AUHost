@@ -6,8 +6,8 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import AVFoundation
 import AudioUnit
+import AVFoundation
 import CoreAudioKit
 
 public class AttenuatorAudioUnit: AUAudioUnit {

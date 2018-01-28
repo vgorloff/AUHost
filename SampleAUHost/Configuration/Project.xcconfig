@@ -9,3 +9,8 @@
 #include "Version.xcconfig"
 
 CURRENT_PROJECT_VERSION = $(AWL_BUILD_VERSION)
+
+DEVELOPMENT_TEAM = E27KE6VTF6
+
+// You can use this file to override project settings (such as DEVELOPMENT_TEAM, File/Framework Search Paths, etc.)
+#include? "Developer.xcconfig"
