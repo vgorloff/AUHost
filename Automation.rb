@@ -4,6 +4,7 @@ if File.exist?(MainFile) then require MainFile else require_relative "Vendor/WL/
 class Automation
 
    GitRepoDirPath = ENV['PWD']
+   VersionFilePath = GitRepoDirPath + "/Configuration/Version.xcconfig"
       
    def self.ci()
       system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make ci"
@@ -38,6 +39,7 @@ class Automation
    end
    
    def self.deploy()
+      require 'yaml'
       assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
       releaseInfo = YAML.load_file("#{GitRepoDirPath}/Configuration/Release.yml")
       releaseName = releaseInfo['name']
