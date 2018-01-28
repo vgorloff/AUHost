@@ -7,3 +7,5 @@
 //
 
 #include "Version.xcconfig"
+
+CURRENT_PROJECT_VERSION = $(AWL_BUILD_VERSION)
