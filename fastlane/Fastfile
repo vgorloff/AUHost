@@ -1,34 +1,3 @@
-# If you want to automatically update fastlane if a new version is available:
-# update_fastlane
-
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
-fastlane_version "1.105.0"
-
-libraryFilePath = "#{ENV['AWL_LIB_SRC']}/Scripts/WL.rb"
-if File.exists?(libraryFilePath)
-   import libraryFilePath
-else
-   import "#{ENV['PWD']}/Vendor/WL/Scripts/WL.rb"
-end
-
-desc "Builds project."
-lane :build do
-   sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane build"
-   sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane build"
-end
-
-desc "Builds when under CI (i.e. Travis)."
-lane :ci do
-   sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane ci"
-   sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane ci"
-end
-
-desc "Cleans project."
-lane :clean do
-   sh "cd \"#{ENV['PWD']}/SampleAUHost\" && fastlane clean"
-   sh "cd \"#{ENV['PWD']}/SampleAUPlugin\" && fastlane clean"
-end
 
 desc "Build codesigned release for GitHub."
 lane :release do
@@ -50,18 +19,6 @@ lane :deploy do
    )
 end
 
-desc "Autocorrect source code."
-lane :autocorrect do
-   sh "swiftformat "\
-   "--allman false --binarygrouping none --commas inline --comments indent --decimalgrouping none --empty void "\
-   "--exponentcase lowercase --header ignore --hexgrouping none --hexliteralcase uppercase --ifdef noindent --indent 3 --insertlines enabled "\
-   "--linebreaks lf --octalgrouping none --patternlet inline --ranges spaced --removelines true --semicolons inline --self remove "\
-   "--stripunusedargs unnamed-only --trimwhitespace always --wraparguments disabled --wrapelements disabled "\
-   "\"#{ENV['PWD']}\""
-   sh "swiftlint autocorrect --path #{ENV['PWD']}"
-   ImportsOrganizer.new().process(ENV['PWD'])
-end
-
 desc "Verify source code."
 lane :verify do
    `swiftlint lint --quiet --path #{ENV['PWD']}`
@@ -69,14 +26,3 @@ lane :verify do
    puts FileHeaderChecker.new(["Attenuator", "WaveLabs"]).analyse("#{ENV['PWD']}/SampleAUPlugin")
 end
 
-desc "Unsync source code."
-lane :unsync do
-   srcUnsync("#{ENV['PWD']}/SampleAUHost/AUHost.xcodeproj")
-   srcUnsync("#{ENV['PWD']}/SampleAUPlugin/Attenuator.xcodeproj")
-end
-
-desc "Sync source code."
-lane :sync do
-   srcSync("#{ENV['PWD']}/SampleAUHost/AUHost.xcodeproj")
-   srcSync("#{ENV['PWD']}/SampleAUPlugin/Attenuator.xcodeproj", cleanup: false)
-end
