@@ -7,10 +7,13 @@
 //
 
 import CoreGraphics
+
 #if os(iOS)
    import UIKit
+   public typealias ColorType = UIColor
 #elseif os(OSX)
    import AppKit
+   public typealias ColorType = NSColor
 #endif
 
 public extension ColorType {
@@ -28,7 +31,7 @@ public extension ColorType {
       guard scanner.scanString("#", into: nil) else {
          return nil
       }
-      guard (scanner.string.characters.count - scanner.scanLocation) == 6 else {
+      guard (scanner.string.count - scanner.scanLocation) == 6 else {
          return nil
       }
       var hexNumber: UInt64 = 0
@@ -68,32 +71,32 @@ public extension ColorType {
 }
 
 #if os(iOS)
-extension ColorType {
+   extension ColorType {
 
-   public var lighterColor: ColorType {
-      var r = CGFloat(0)
-      var g = CGFloat(0)
-      var b = CGFloat(0)
-      var a = CGFloat(0)
-      if getRed(&r, green: &g, blue: &b, alpha: &a) {
-         return ColorType(red: min(r + 0.2, 1.0), green: min(g + 0.2, 1.0), blue: min(b + 0.2, 1.0), alpha: a)
-      } else {
-         assert(false, "Unable to get lighter color for color: \(self)")
-         return self
+      public var lighterColor: ColorType {
+         var r = CGFloat(0)
+         var g = CGFloat(0)
+         var b = CGFloat(0)
+         var a = CGFloat(0)
+         if getRed(&r, green: &g, blue: &b, alpha: &a) {
+            return ColorType(red: min(r + 0.2, 1.0), green: min(g + 0.2, 1.0), blue: min(b + 0.2, 1.0), alpha: a)
+         } else {
+            assert(false, "Unable to get lighter color for color: \(self)")
+            return self
+         }
+      }
+
+      public var darkerColor: ColorType {
+         var r = CGFloat(0)
+         var g = CGFloat(0)
+         var b = CGFloat(0)
+         var a = CGFloat(0)
+         if getRed(&r, green: &g, blue: &b, alpha: &a) {
+            return ColorType(red: min(r - 0.2, 1.0), green: min(g - 0.2, 1.0), blue: min(b - 0.2, 1.0), alpha: a)
+         } else {
+            assert(false, "Unable to get lighter color for color: \(self)")
+            return self
+         }
       }
    }
-
-   public var darkerColor: ColorType {
-      var r = CGFloat(0)
-      var g = CGFloat(0)
-      var b = CGFloat(0)
-      var a = CGFloat(0)
-      if getRed(&r, green: &g, blue: &b, alpha: &a) {
-         return ColorType(red: min(r - 0.2, 1.0), green: min(g - 0.2, 1.0), blue: min(b - 0.2, 1.0), alpha: a)
-      } else {
-         assert(false, "Unable to get lighter color for color: \(self)")
-         return self
-      }
-   }
-}
 #endif

@@ -19,12 +19,19 @@ extension CGSize {
       return CGSize(width: factor * width, height: factor * height)
    }
 
-   public func insetBy(dw: CGFloat, dh: CGFloat) -> CGSize {
-      return CGSize(width: width - dw, height: height - dh)
+   public func insetBy(dx: CGFloat, dy: CGFloat) -> CGSize {
+      return CGSize(width: width - dx, height: height - dy)
    }
 
    public var isZeroSize: Bool {
       return width <= CGFloat.leastNormalMagnitude && height <= CGFloat.leastNormalMagnitude
+   }
+}
+
+extension CGSize: Comparable {
+
+   public static func < (lhs: CGSize, rhs: CGSize) -> Bool {
+      return lhs.width < rhs.width || lhs.height < rhs.height
    }
 }
 
