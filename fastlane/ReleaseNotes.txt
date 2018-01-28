@@ -1,2 +1,0 @@
-* Refactoring and cleanup.
-* Xcode 9 beta 3 compatibility update.
