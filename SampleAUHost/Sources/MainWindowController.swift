@@ -24,9 +24,13 @@ class MainWindowController: NSWindowController {
          fatalError("Wrong type for initial view controller. Expected `\(MainViewController.self)`")
       }
       vc.uiModel = viewUIModel
-      viewUIModel.mediaLibraryLoader.loadMediaLibrary { [weak self] in
-         self?.mlController.isVisible = true
+      viewUIModel.mediaLibraryLoader.eventHandler = { [weak self] in
+         switch $0 {
+         case .mediaSourceChanged:
+            self?.mlController.isVisible = true
+         }
       }
+      viewUIModel.mediaLibraryLoader.loadMediaLibrary()
    }
 }
 

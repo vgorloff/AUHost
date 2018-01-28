@@ -1,1 +1,14 @@
-Vendor/WL/Conf/Settings/travis.yml
+# Info:
+# - Travis CI for iOS - https://www.objc.io/issues/6-build-tools/travis-ci/
+# - Travis CI Tutorial - http://www.raywenderlich.com/109418/travis-ci-tutorial
+# - Building Swift Project: https://docs.travis-ci.com/user/languages/objective-c/
+
+language: objective-c
+osx_image: xcode9.2
+install: true # Skipping install - https://docs.travis-ci.com/user/customizing-the-build
+script: make ci
+
+branches:
+  only:
+  - master
+  - /^release\/.*$/

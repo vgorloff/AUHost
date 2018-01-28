@@ -1,1 +1,30 @@
-Vendor/WL/Conf/Settings/gitignore
+## OS X
+.DS_Store
+
+## Local developer settings
+Developer.xcconfig
+
+## Build generated
+/Build
+/DerivedData
+.tmp
+
+## Package managers
+/Vendor/Carthage
+
+## IDE
+.idea
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+xcbaselines
+*.xccheckout
+*.moved-aside
+*.xcscmblueprint
+

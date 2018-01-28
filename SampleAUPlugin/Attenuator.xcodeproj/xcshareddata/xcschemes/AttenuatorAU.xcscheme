@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0930"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -71,6 +71,15 @@
          runnableDebuggingMode = "0"
          FilePath = "/&lt;placeholder&gt;">
       </PathRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "C5A5A1111C47EB5300F9864E"
+            BuildableName = "AttenuatorAU.appex"
+            BlueprintName = "AttenuatorAU"
+            ReferencedContainer = "container:Attenuator.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
