@@ -151,20 +151,18 @@ extension String {
 
    public func applyAttributesBetweenDelimiter(_ character: Character, attributes: [NSAttributedStringKey: Any],
                                                commonAttributes: [NSAttributedStringKey: Any]? = nil) -> NSAttributedString {
-      let commonAttribs = (commonAttributes ?? [:]) as [String: Any]
-      let attribs = attributes as [String: Any]
       let numCharacters = numberOf(character)
       guard numCharacters > 0 && numCharacters % 2 == 0 else {
-         return NSAttributedString(string: self, attributes: commonAttribs)
+         return NSAttributedString(string: self, attributes: commonAttributes)
       }
 
       guard let components = componentsDelimedBy(character) else {
-         return NSAttributedString(string: self, attributes: commonAttribs)
+         return NSAttributedString(string: self, attributes: commonAttributes)
       }
 
       let mutableString = NSMutableAttributedString()
-      mutableString.append(NSAttributedString(string: components.start, attributes: commonAttribs))
-      mutableString.append(NSAttributedString(string: components.middle, attributes: attribs))
+      mutableString.append(NSAttributedString(string: components.start, attributes: commonAttributes))
+      mutableString.append(NSAttributedString(string: components.middle, attributes: attributes))
       if !components.end.isEmpty {
          let restOfTheString = components.end.applyAttributesBetweenDelimiter(character,
                                                                               attributes: attributes,
