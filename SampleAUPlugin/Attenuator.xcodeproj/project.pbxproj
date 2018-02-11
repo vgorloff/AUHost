@@ -248,11 +248,11 @@
 		139934316CD31AF7FF7B7F5D /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
-				80D33E00201D7DC3007518BA /* SmartDispatchSourceType.swift */,
-				80D33DFC201D7D98007518BA /* SmartDispatchSource.swift */,
-				80D33DFD201D7D98007518BA /* SmartDispatchSourceUserDataAdd.swift */,
 				80DEB7E41F155F7800E5D248 /* NonRecursiveLock.swift */,
 				80DEB7E51F155F7800E5D248 /* NonRecursiveLocking.swift */,
+				80D33DFC201D7D98007518BA /* SmartDispatchSource.swift */,
+				80D33E00201D7DC3007518BA /* SmartDispatchSourceType.swift */,
+				80D33DFD201D7D98007518BA /* SmartDispatchSourceUserDataAdd.swift */,
 				80DEB7E61F155F7800E5D248 /* SpinLock.swift */,
 				80DEB7E71F155F7800E5D248 /* UnfairLock.swift */,
 			);
@@ -262,9 +262,9 @@
 		1F04F71F0726B757A1339077 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				80D33DFA201D7A66007518BA /* VULevelMeter.Shaders.metal */,
 				8044E5FD1F79B45C005E5760 /* VULevelMeter.swift */,
 				8044E5FC1F79B45C005E5760 /* VULevelMeter.DrawingData.swift */,
+				80D33DFA201D7A66007518BA /* VULevelMeter.Shaders.metal */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -357,8 +357,8 @@
 				E3BEBE8DA9B5E33F479BA9A1 /* Types */,
 				804674521D25DE77000989CA /* UI */,
 			);
-			path = WL;
-			sourceTree = "<group>";
+			name = WL;
+			sourceTree = WL;
 		};
 		804674391D25DE77000989CA /* Core */ = {
 			isa = PBXGroup;
@@ -401,7 +401,8 @@
 				80C808591EFF268F00E68A3F /* Project.xcconfig */,
 				80A180BB1EFDBEF700716C26 /* Version.xcconfig */,
 			);
-			path = Configuration;
+			name = Configuration;
+			path = ../Configuration;
 			sourceTree = "<group>";
 		};
 		80A180BC1EFDBF1D00716C26 /* Resources */ = {
@@ -495,9 +496,6 @@
 				80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */,
 				80A180B31EFDBE4900716C26 /* BufferDatasource.swift */,
 				80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */,
-				8046746E1D25DF10000989CA /* DisplayLink.swift */,
-				802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */,
-				8046744F1D25DE77000989CA /* MediaObjectPasteboardUtility.swift */,
 				804674501D25DE77000989CA /* WaveformCacheUtility.swift */,
 				804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */,
 			);
@@ -590,7 +588,10 @@
 		EA71A3438DC06C6EB0A1DC6D /* macOS */ = {
 			isa = PBXGroup;
 			children = (
+				8046746E1D25DF10000989CA /* DisplayLink.swift */,
+				802BE2E71EFDAEFA0072D3D8 /* DisplayLink.GenericRenderer.swift */,
 				8044E5ED1F79B446005E5760 /* MediaLibraryUtility.swift */,
+				8046744F1D25DE77000989CA /* MediaObjectPasteboardUtility.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";

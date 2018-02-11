@@ -19,10 +19,6 @@ class Automation
       XcodeBuilder.new(XCodeProjectFilePath).clean(XCodeProjectSchema)
    end
    
-   def self.test()
-      puts "! Nothing to do."
-   end
-   
    def self.release()
       XcodeBuilder.new(XCodeProjectFilePath).archive(XCodeProjectSchema)
    end
@@ -55,10 +51,6 @@ class Automation
             l.correctWithSwiftLint()
          end
       end
-   end
-   
-   def self.deploy()
-      puts "! Nothing to do."
    end
 
 end

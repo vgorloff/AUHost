@@ -189,7 +189,6 @@
 			children = (
 				D2AECA5D2DA777AF9852C6F5 /* macOS */,
 				8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */,
-				807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */,
 				804674251D25DAA1000989CA /* WaveformCacheUtility.swift */,
 				804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */,
 			);
@@ -211,7 +210,8 @@
 				8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */,
 				804860401DAAF94A004EFA32 /* Version.xcconfig */,
 			);
-			path = Configuration;
+			name = Configuration;
+			path = ../Configuration;
 			sourceTree = "<group>";
 		};
 		8035EF211B3752030026AD7D = {
@@ -244,8 +244,8 @@
 				D3408796DA3F6206B6EB9D96 /* Types */,
 				804674291D25DBA2000989CA /* UI */,
 			);
-			path = WL;
-			sourceTree = "<group>";
+			name = WL;
+			sourceTree = WL;
 		};
 		804674291D25DBA2000989CA /* UI */ = {
 			isa = PBXGroup;
@@ -348,6 +348,7 @@
 			isa = PBXGroup;
 			children = (
 				8044E5DF1F79B3B1005E5760 /* MediaLibraryUtility.swift */,
+				807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
