@@ -34,7 +34,8 @@ class Automation
      puts "→ Default keychain now: #{KeyChain.default}"
      begin
         puts "→ Making build..."
-        release()
+        XcodeBuilder.new(XCodeProjectFilePathAUHost).ci("AUHost")
+        XcodeBuilder.new(XCodeProjectFilePathPlugIn).ci("Attenuator")
         puts "→ Making cleanup..."
         KeyChain.setDefault(defaultKeyChain)
         KeyChain.delete(kc.nameOrPath)
@@ -57,8 +58,8 @@ class Automation
    end
    
    def self.release()
-      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost", nil, true)
-      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator", nil, true)
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator")
       apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
       apps.each { |app| Archive.zip(app) }
       apps.each { |app| XcodeBuilder.validateBinary(app) }
