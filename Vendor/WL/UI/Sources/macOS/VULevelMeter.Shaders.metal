@@ -1,6 +1,6 @@
 //
 //  VULevelMeter.Shaders.metal
-//  WaveLabs
+//  WLUI
 //
 //  Created by Volodymyr Gorlov on 20.11.15.
 //	 Copyright (c) 2012 Vlad Gorlov. All rights reserved.

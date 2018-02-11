@@ -1,6 +1,6 @@
 //
 //  Project.xcconfig
-//  AUHost
+//  Attenuator
 //
 //  Created by Vlad Gorlov on 25.06.17.
 //  Copyright © 2017 WaveLabs. All rights reserved.
@@ -8,7 +8,7 @@
 
 #include "Version.xcconfig"
 
-CURRENT_PROJECT_VERSION = $(AWL_BUILD_VERSION)
+CURRENT_PROJECT_VERSION = $(APP_BUNDLE_VERSION)
 
 DEVELOPMENT_TEAM = E27KE6VTF6
 

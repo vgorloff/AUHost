@@ -4,40 +4,145 @@ if File.exist?(MainFile) then require MainFile else require_relative "Vendor/WL/
 class Automation
 
    GitRepoDirPath = ENV['PWD']
+   VersionFilePath = GitRepoDirPath + "/Configuration/Version.xcconfig"
+   XCodeProjectFilePathAUHost = GitRepoDirPath + "/AUHost.xcodeproj"
+   XCodeProjectFilePathPlugIn = GitRepoDirPath + "/Attenuator.xcodeproj"
+   TmpDirPath = GitRepoDirPath + "/DerivedData"
+   KeyChainPath = TmpDirPath + "/VST3NetSend.keychain"
+   P12FilePath = GitRepoDirPath + '/Configuration/Codesign/DeveloperIDApplication.p12'
       
    def self.ci()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make ci"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make ci"
+     if !Tool.isCIServer
+        release()
+        return
+     end
+     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+     puts "→ Preparing environment..."
+     FileUtils.mkdir_p TmpDirPath
+     puts Tool.announceEnvVars
+     puts "→ Setting up keychain..."
+     kc = KeyChain.create(KeyChainPath)
+     puts KeyChain.list
+     defaultKeyChain = KeyChain.default
+     puts "→ Default keychain: #{defaultKeyChain}"
+     kc.setSettings()
+     kc.info()
+     kc.import(P12FilePath, ENV['AWL_P12_PASSWORD'], ["/usr/bin/codesign"])
+     kc.setKeyCodesignPartitionList()
+     kc.dump()
+     KeyChain.setDefault(kc.nameOrPath)
+     puts "→ Default keychain now: #{KeyChain.default}"
+     begin
+        puts "→ Making build..."
+        release()
+        puts "→ Making cleanup..."
+        KeyChain.setDefault(defaultKeyChain)
+        KeyChain.delete(kc.nameOrPath)
+     rescue
+        KeyChain.setDefault(defaultKeyChain)
+        KeyChain.delete(kc.nameOrPath)
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        raise
+     end
    end
    
    def self.build()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make build"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make build"
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).build("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).build("Attenuator")
    end
    
    def self.clean()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make clean"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make clean"
-   end
-   
-   def self.test()
-      puts "! Nothing to do."
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).clean("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).clean("Attenuator")
    end
    
    def self.release()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make release"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make release"
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost", nil, true)
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator", nil, true)
       apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
       apps.each { |app| Archive.zip(app) }
       apps.each { |app| XcodeBuilder.validateBinary(app) }
    end
    
    def self.verify()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make verify"
+      verifyHost()
       system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make verify"
    end
    
+   def self.post()
+     if Tool.isCIServer
+        return
+     end
+      targetName = ENV['TARGET_NAME']
+      if targetName == "Attenuator"
+         `pluginkit -v -a "#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex"`
+      end
+   end
+
+   def self.verifyPlugIn()
+      if Tool.isCIServer
+         return
+      end
+      projectPath = GitRepoDirPath + "/SampleAUPlugin"
+      t = Tool.new()
+      l = Linter.new(projectPath)
+      h = FileHeaderChecker.new(["Attenuator", "WaveLabs"])
+      if t.isXcodeBuild
+         if t.canRunActions("Verification")
+            changedFiles = GitStatus.new(GitRepoDirPath).changedFiles()
+            puts "→ Checking headers..."
+            puts h.analyseFiles(changedFiles)
+            if l.canRunSwiftLint()
+               puts "→ Linting..."
+               l.lintFiles(changedFiles)
+            end
+         end
+      else
+         puts h.analyseDir(projectPath)
+         if l.canRunSwiftFormat()
+            puts "→ Correcting sources (SwiftFormat)..."
+            l.correctWithSwiftFormat()
+         end
+         if l.canRunSwiftLint()
+            puts "→ Correcting sources (SwiftLint)..."
+            l.correctWithSwiftLint()
+         end
+      end
+   end
+   
+   def self.verifyHost()
+      if Tool.isCIServer
+         return
+      end
+      projectPath = GitRepoDirPath + "/SampleAUHost"
+      t = Tool.new()
+      l = Linter.new(projectPath)
+      h = FileHeaderChecker.new(["AUHost", "WaveLabs"])
+      if t.isXcodeBuild
+         if t.canRunActions("Verification")
+            changedFiles = GitStatus.new(GitRepoDirPath).changedFiles()
+            puts "→ Checking headers..."
+            puts h.analyseFiles(changedFiles)
+            if l.canRunSwiftLint()
+               puts "→ Linting..."
+               l.lintFiles(changedFiles)
+            end
+         end
+      else
+         puts h.analyseDir(projectPath)
+         if l.canRunSwiftFormat()
+            puts "→ Correcting sources (SwiftFormat)..."
+            l.correctWithSwiftFormat()
+         end
+         if l.canRunSwiftLint()
+            puts "→ Correcting sources (SwiftLint)..."
+            l.correctWithSwiftLint()
+         end
+      end
+   end
+   
    def self.deploy()
+      require 'yaml'
       assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
       releaseInfo = YAML.load_file("#{GitRepoDirPath}/Configuration/Release.yml")
       releaseName = releaseInfo['name']
