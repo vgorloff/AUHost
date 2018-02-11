@@ -1,6 +1,6 @@
 //
 //  Color.swift
-//  WaveLabs
+//  WLUI
 //
 //  Created by Volodymyr Gorlov on 04.01.16.
 //  Copyright © 2016 WaveLabs. All rights reserved.

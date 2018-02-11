@@ -3,32 +3,15 @@ if File.exist?(MainFile) then require MainFile else require_relative "Vendor/WL/
 
 class Automation
 
-   GitRepoDirPath = ENV['PWD']
-   XCodeProjectFilePath = GitRepoDirPath + "/AUHost.xcodeproj"
-   XCodeProjectSchema = "AUHost"
-      
-   def self.ci()
-      XcodeBuilder.new(XCodeProjectFilePath).ci(XCodeProjectSchema)
-   end
-   
-   def self.build()
-      XcodeBuilder.new(XCodeProjectFilePath).build(XCodeProjectSchema)
-   end
-   
-   def self.clean()
-      XcodeBuilder.new(XCodeProjectFilePath).clean(XCodeProjectSchema)
-   end
-   
-   def self.release()
-      XcodeBuilder.new(XCodeProjectFilePath).archive(XCodeProjectSchema)
-   end
+   ProjectPath = ENV['PWD']
+   GitRepoDirPath = ENV['PWD'] + "/../"
    
    def self.verify()
       if Tool.isCIServer
          return
       end
       t = Tool.new()
-      l = Linter.new(GitRepoDirPath)
+      l = Linter.new(ProjectPath)
       h = FileHeaderChecker.new(["AUHost", "WaveLabs"])
       if t.isXcodeBuild
          if t.canRunActions("Verification")
@@ -41,7 +24,7 @@ class Automation
             end
          end
       else
-         puts h.analyseDir(GitRepoDirPath)
+         puts h.analyseDir(ProjectPath)
          if l.canRunSwiftFormat()
             puts "→ Correcting sources (SwiftFormat)..."
             l.correctWithSwiftFormat()

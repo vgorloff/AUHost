@@ -40,6 +40,9 @@ public struct Log {
 
    fileprivate static var loggers = [Int: OSLog]()
    fileprivate static let isUnderTesting = NSClassFromString("XCTestCase") != nil
+
+   private init() {
+   }
 }
 
 extension Log {

@@ -335,7 +335,8 @@
 				80A180BE1EFDBF1D00716C26 /* Sources */,
 				80A180C41EFDBF1D00716C26 /* AttenuatorKit.h */,
 			);
-			path = AttenuatorKit;
+			name = AttenuatorKit;
+			path = SampleAUPlugin/AttenuatorKit;
 			sourceTree = "<group>";
 		};
 		8044ABDE1C52E4B700FA3DA3 /* Frameworks */ = {
@@ -391,8 +392,7 @@
 			children = (
 				80E4D2F41EFDBD7C00D8A2BC /* Sources */,
 			);
-			name = Shared;
-			path = ../Shared;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		80A180BA1EFDBEF700716C26 /* Configuration */ = {
@@ -401,8 +401,7 @@
 				80C808591EFF268F00E68A3F /* Project.xcconfig */,
 				80A180BB1EFDBEF700716C26 /* Version.xcconfig */,
 			);
-			name = Configuration;
-			path = ../Configuration;
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 		80A180BC1EFDBF1D00716C26 /* Resources */ = {
@@ -470,8 +469,7 @@
 			children = (
 				8044E5D91F79B0CB005E5760 /* WL */,
 			);
-			name = Vendor;
-			path = ../Vendor;
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		80E4D2F41EFDBD7C00D8A2BC /* Sources */ = {
@@ -540,7 +538,8 @@
 				80A180C71EFDBF4100716C26 /* Resources */,
 				80A180CB1EFDBF4100716C26 /* Sources */,
 			);
-			path = Attenuator;
+			name = Attenuator;
+			path = SampleAUPlugin/Attenuator;
 			sourceTree = "<group>";
 		};
 		C5A5A1131C47EB5300F9864E /* AttenuatorAU */ = {
@@ -548,7 +547,8 @@
 			children = (
 				80A180C51EFDBF3100716C26 /* Sources */,
 			);
-			path = AttenuatorAU;
+			name = AttenuatorAU;
+			path = SampleAUPlugin/AttenuatorAU;
 			sourceTree = "<group>";
 		};
 		D4A71B47BA2B7AD6DA473958 /* macOS */ = {
@@ -763,7 +763,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nmake verify";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\ncd SampleAUPlugin && make verify";
 		};
 		80B9403A1D1B50D50013FE1C /* Run Script: Pre-Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -777,7 +777,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nmake verify";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\ncd SampleAUPlugin && make verify";
 		};
 		C51A63701C4FD1650016F291 /* Run Script: Post-Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -791,7 +791,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nmake post";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\ncd SampleAUPlugin && make post";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -948,7 +948,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = AttenuatorKit/Info.plist;
+				INFOPLIST_FILE = SampleAUPlugin/AttenuatorKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AttenuatorAU.AttenuatorKit;
@@ -992,7 +992,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = AttenuatorKit/Info.plist;
+				INFOPLIST_FILE = SampleAUPlugin/AttenuatorKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AttenuatorAU.AttenuatorKit;
@@ -1106,13 +1106,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Attenuator/Attenuator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/Attenuator/Attenuator.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "$(APP_BUNDLE_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
-				INFOPLIST_FILE = Attenuator/Info.plist;
+				INFOPLIST_FILE = SampleAUPlugin/Attenuator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1126,13 +1126,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = Attenuator/Attenuator.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/Attenuator/Attenuator.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "$(APP_BUNDLE_VERSION)";
 				DEPLOYMENT_LOCATION = YES;
-				INFOPLIST_FILE = Attenuator/Info.plist;
+				INFOPLIST_FILE = SampleAUPlugin/Attenuator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1146,12 +1146,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = AttenuatorAU/AttenuatorAU.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "$(APP_BUNDLE_VERSION)";
-				INFOPLIST_FILE = AttenuatorAU/Info.plist;
+				INFOPLIST_FILE = SampleAUPlugin/AttenuatorAU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator.AttenuatorAU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1166,12 +1166,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = AttenuatorAU/AttenuatorAU.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/AttenuatorAU/AttenuatorAU.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = "$(APP_BUNDLE_VERSION)";
-				INFOPLIST_FILE = AttenuatorAU/Info.plist;
+				INFOPLIST_FILE = SampleAUPlugin/AttenuatorAU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator.AttenuatorAU;
 				PRODUCT_NAME = "$(TARGET_NAME)";

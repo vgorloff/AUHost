@@ -5,25 +5,27 @@ class Automation
 
    GitRepoDirPath = ENV['PWD']
    VersionFilePath = GitRepoDirPath + "/Configuration/Version.xcconfig"
+   XCodeProjectFilePathAUHost = GitRepoDirPath + "/AUHost.xcodeproj"
+   XCodeProjectFilePathPlugIn = GitRepoDirPath + "/Attenuator.xcodeproj"
       
    def self.ci()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make ci"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make ci"
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).ci("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).ci("Attenuator")
    end
    
    def self.build()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make build"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make build"
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).build("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).build("Attenuator")
    end
    
    def self.clean()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make clean"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make clean"
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).clean("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).clean("Attenuator")
    end
    
    def self.release()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make release"
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make release"
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator")
       apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
       apps.each { |app| Archive.zip(app) }
       apps.each { |app| XcodeBuilder.validateBinary(app) }

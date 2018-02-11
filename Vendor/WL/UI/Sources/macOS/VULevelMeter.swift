@@ -1,6 +1,6 @@
 //
 //  VULevelMeter.swift
-//  WaveLabs
+//  WLUI
 //
 //  Created by Vlad Gorlov on 26.01.16.
 //  Copyright © 2016 WaveLabs. All rights reserved.
