@@ -448,7 +448,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/SampleAUHost/Automation.rb\" -e \"Automation.verify\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.verifyHost\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
