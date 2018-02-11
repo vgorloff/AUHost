@@ -11,9 +11,6 @@ build:
 clean:
 	@ruby -r "`pwd`/Automation.rb" -e "Automation.clean"
 
-test:
-	@ruby -r "`pwd`/Automation.rb" -e "Automation.test"
-
 release:
 	@ruby -r "`pwd`/Automation.rb" -e "Automation.release"
 
