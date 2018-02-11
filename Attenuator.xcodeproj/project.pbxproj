@@ -762,7 +762,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/SampleAUPlugin/Automation.rb\" -e \"Automation.verify\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.verifyPlugIn\"";
 		};
 		C51A63701C4FD1650016F291 /* Run Script: Post-Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -776,7 +776,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/SampleAUPlugin/Automation.rb\" -e \"Automation.post\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.post\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 

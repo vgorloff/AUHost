@@ -57,16 +57,88 @@ class Automation
    end
    
    def self.release()
-      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost")
-      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator")
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost", nil, true)
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator", nil, true)
       apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
       apps.each { |app| Archive.zip(app) }
       apps.each { |app| XcodeBuilder.validateBinary(app) }
    end
    
    def self.verify()
-      system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make verify"
+      verifyHost()
       system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make verify"
+   end
+   
+   def self.post()
+     if Tool.isCIServer
+        return
+     end
+      targetName = ENV['TARGET_NAME']
+      if targetName == "Attenuator"
+         `pluginkit -v -a "#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex"`
+      end
+   end
+
+   def self.verifyPlugIn()
+      if Tool.isCIServer
+         return
+      end
+      projectPath = GitRepoDirPath + "/SampleAUPlugin"
+      t = Tool.new()
+      l = Linter.new(projectPath)
+      h = FileHeaderChecker.new(["Attenuator", "WaveLabs"])
+      if t.isXcodeBuild
+         if t.canRunActions("Verification")
+            changedFiles = GitStatus.new(GitRepoDirPath).changedFiles()
+            puts "→ Checking headers..."
+            puts h.analyseFiles(changedFiles)
+            if l.canRunSwiftLint()
+               puts "→ Linting..."
+               l.lintFiles(changedFiles)
+            end
+         end
+      else
+         puts h.analyseDir(projectPath)
+         if l.canRunSwiftFormat()
+            puts "→ Correcting sources (SwiftFormat)..."
+            l.correctWithSwiftFormat()
+         end
+         if l.canRunSwiftLint()
+            puts "→ Correcting sources (SwiftLint)..."
+            l.correctWithSwiftLint()
+         end
+      end
+   end
+   
+   def self.verifyHost()
+      if Tool.isCIServer
+         return
+      end
+      projectPath = GitRepoDirPath + "/SampleAUHost"
+      t = Tool.new()
+      l = Linter.new(projectPath)
+      h = FileHeaderChecker.new(["AUHost", "WaveLabs"])
+      if t.isXcodeBuild
+         if t.canRunActions("Verification")
+            changedFiles = GitStatus.new(GitRepoDirPath).changedFiles()
+            puts "→ Checking headers..."
+            puts h.analyseFiles(changedFiles)
+            if l.canRunSwiftLint()
+               puts "→ Linting..."
+               l.lintFiles(changedFiles)
+            end
+         end
+      else
+         puts h.analyseDir(projectPath)
+         if l.canRunSwiftFormat()
+            puts "→ Correcting sources (SwiftFormat)..."
+            l.correctWithSwiftFormat()
+         end
+         if l.canRunSwiftLint()
+            puts "→ Correcting sources (SwiftLint)..."
+            l.correctWithSwiftLint()
+         end
+      end
    end
    
    def self.deploy()
