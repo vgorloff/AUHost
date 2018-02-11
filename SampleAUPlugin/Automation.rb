@@ -1,5 +1,5 @@
 MainFile = "#{ENV['AWL_LIB_SRC']}/Scripts/Automation.rb"
-if File.exist?(MainFile) then require MainFile else require_relative "Vendor/WL/Scripts/lib/Core.rb" end
+if File.exist?(MainFile) then require MainFile else require_relative "../Vendor/WL/Scripts/lib/Core.rb" end
 
 class Automation
 
@@ -7,6 +7,9 @@ class Automation
   GitRepoDirPath = ENV['PWD'] + "/../"
 
    def self.post()
+     if Tool.isCIServer
+        return
+     end
       targetName = ENV['TARGET_NAME']
       if targetName == "Attenuator"
          `pluginkit -v -a "#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex"`

@@ -633,7 +633,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C5A5A10B1C47E75F00F9864E /* Build configuration list for PBXNativeTarget "Attenuator" */;
 			buildPhases = (
-				801BE5A41F16CE5900806169 /* Run Script: Pre-Build */,
 				C5A5A0F81C47E75F00F9864E /* Sources */,
 				C5A5A0F91C47E75F00F9864E /* Frameworks */,
 				C5A5A0FA1C47E75F00F9864E /* Resources */,
@@ -751,20 +750,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		801BE5A41F16CE5900806169 /* Run Script: Pre-Build */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run Script: Pre-Build";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\ncd SampleAUPlugin && make verify";
-		};
 		80B9403A1D1B50D50013FE1C /* Run Script: Pre-Build */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -777,7 +762,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\ncd SampleAUPlugin && make verify";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/SampleAUPlugin/Automation.rb\" -e \"Automation.verify\"";
 		};
 		C51A63701C4FD1650016F291 /* Run Script: Post-Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -791,7 +776,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\ncd SampleAUPlugin && make post";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/SampleAUPlugin/Automation.rb\" -e \"Automation.post\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
