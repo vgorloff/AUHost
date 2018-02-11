@@ -244,8 +244,8 @@
 				D3408796DA3F6206B6EB9D96 /* Types */,
 				804674291D25DBA2000989CA /* UI */,
 			);
-			name = WL;
-			sourceTree = WL;
+			path = WL;
+			sourceTree = "<group>";
 		};
 		804674291D25DBA2000989CA /* UI */ = {
 			isa = PBXGroup;

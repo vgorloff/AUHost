@@ -21,10 +21,6 @@ class Automation
       system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make clean"
    end
    
-   def self.test()
-      puts "! Nothing to do."
-   end
-   
    def self.release()
       system "cd \"#{GitRepoDirPath}/SampleAUHost\" && make release"
       system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make release"
