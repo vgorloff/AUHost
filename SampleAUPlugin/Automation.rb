@@ -18,11 +18,7 @@ class Automation
    def self.clean()
       XcodeBuilder.new(XCodeProjectFilePath).clean(XCodeProjectSchema)
    end
-   
-   def self.test()
-      puts "! Nothing to do."
-   end
-   
+
    def self.post()
       targetName = ENV['TARGET_NAME']
       if targetName == "Attenuator"
@@ -62,10 +58,6 @@ class Automation
             l.correctWithSwiftLint()
          end
       end
-   end
-   
-   def self.deploy()
-      puts "! Nothing to do."
    end
 
 end
