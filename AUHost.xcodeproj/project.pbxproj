@@ -189,7 +189,6 @@
 			children = (
 				D2AECA5D2DA777AF9852C6F5 /* macOS */,
 				8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */,
-				807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */,
 				804674251D25DAA1000989CA /* WaveformCacheUtility.swift */,
 				804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */,
 			);
@@ -201,8 +200,7 @@
 			children = (
 				80485FB31DA591CE004EFA32 /* Sources */,
 			);
-			name = Shared;
-			path = ../Shared;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		8005E8591EFDB9A5003D7686 /* Configuration */ = {
@@ -277,7 +275,8 @@
 				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
 			);
-			path = Sources;
+			name = Sources;
+			path = SampleAUHost/Sources;
 			sourceTree = "<group>";
 		};
 		806556F31EF5AE8800C4C2FA /* Extensions */ = {
@@ -323,8 +322,7 @@
 			children = (
 				8044E5D81F79B057005E5760 /* WL */,
 			);
-			name = Vendor;
-			path = ../Vendor;
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		999913C2B46BD64387CE6BDB /* Sources */ = {
@@ -341,13 +339,15 @@
 				8035EF311B3752030026AD7D /* Assets.xcassets */,
 				8035EF331B3752030026AD7D /* Main.storyboard */,
 			);
-			path = Resources;
+			name = Resources;
+			path = SampleAUHost/Resources;
 			sourceTree = "<group>";
 		};
 		D2AECA5D2DA777AF9852C6F5 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
 				8044E5DF1F79B3B1005E5760 /* MediaLibraryUtility.swift */,
+				807E3C131D25D9880033629F /* MediaObjectPasteboardUtility.swift */,
 			);
 			path = macOS;
 			sourceTree = "<group>";
@@ -448,7 +448,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nmake verify";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.verifyHost\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -612,12 +612,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = AUHost.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleAUHost/AUHost.entitlements;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = SampleAUHost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AUHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -633,12 +633,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
-				CODE_SIGN_ENTITLEMENTS = AUHost.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SampleAUHost/AUHost.entitlements;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEPLOYMENT_LOCATION = YES;
-				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_FILE = SampleAUHost/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AUHost;
 				PRODUCT_NAME = "$(TARGET_NAME)";

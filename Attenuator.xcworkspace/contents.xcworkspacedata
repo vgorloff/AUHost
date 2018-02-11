@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:SampleAUPlugin/Attenuator.xcodeproj">
+      location = "group:Attenuator.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:SampleAUHost/AUHost.xcodeproj">
+      location = "group:AUHost.xcodeproj">
    </FileRef>
 </Workspace>
