@@ -7,10 +7,43 @@ class Automation
    VersionFilePath = GitRepoDirPath + "/Configuration/Version.xcconfig"
    XCodeProjectFilePathAUHost = GitRepoDirPath + "/AUHost.xcodeproj"
    XCodeProjectFilePathPlugIn = GitRepoDirPath + "/Attenuator.xcodeproj"
+   TmpDirPath = GitRepoDirPath + "/DerivedData"
+   KeyChainPath = TmpDirPath + "/VST3NetSend.keychain"
+   P12FilePath = GitRepoDirPath + '/Configuration/Codesign/DeveloperIDApplication.p12'
       
    def self.ci()
-      XcodeBuilder.new(XCodeProjectFilePathAUHost).ci("AUHost")
-      XcodeBuilder.new(XCodeProjectFilePathPlugIn).ci("Attenuator")
+     if !Tool.isCIServer
+        release()
+        return
+     end
+     puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+     puts "→ Preparing environment..."
+     FileUtils.mkdir_p TmpDirPath
+     puts Tool.announceEnvVars
+     puts "→ Setting up keychain..."
+     kc = KeyChain.create(KeyChainPath)
+     puts KeyChain.list
+     defaultKeyChain = KeyChain.default
+     puts "→ Default keychain: #{defaultKeyChain}"
+     kc.setSettings()
+     kc.info()
+     kc.import(P12FilePath, ENV['AWL_P12_PASSWORD'], ["/usr/bin/codesign"])
+     kc.setKeyCodesignPartitionList()
+     kc.dump()
+     KeyChain.setDefault(kc.nameOrPath)
+     puts "→ Default keychain now: #{KeyChain.default}"
+     begin
+        puts "→ Making build..."
+        release()
+        puts "→ Making cleanup..."
+        KeyChain.setDefault(defaultKeyChain)
+        KeyChain.delete(kc.nameOrPath)
+     rescue
+        KeyChain.setDefault(defaultKeyChain)
+        KeyChain.delete(kc.nameOrPath)
+        puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+        raise
+     end
    end
    
    def self.build()

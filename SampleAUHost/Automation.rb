@@ -1,5 +1,5 @@
 MainFile = "#{ENV['AWL_LIB_SRC']}/Scripts/Automation.rb"
-if File.exist?(MainFile) then require MainFile else require_relative "Vendor/WL/Scripts/lib/Core.rb" end
+if File.exist?(MainFile) then require MainFile else require_relative "../Vendor/WL/Scripts/lib/Core.rb" end
 
 class Automation
 
