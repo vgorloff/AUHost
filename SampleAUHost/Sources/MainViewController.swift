@@ -175,13 +175,13 @@ extension MainViewController: NSTableViewDelegate {
       case tableEffects:
          uiModel.closeEffectView()
          if tableView.selectedRow == 0 {
-            Log.debug(subsystem: .controller, category: .event, message: "Clearing effect")
+            log.debug(.controller, "Clearing effect")
             uiModel.selectEffect(nil, completion: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < uiModel.availableEffects.count {
                let component = uiModel.availableEffects[row]
-               Log.debug(subsystem: .controller, category: .event, message: "Selecting effect: \"\(component.name)\"")
+               log.debug(.controller, "Selecting effect: \"\(component.name)\"")
                uiModel.selectEffect(component) { [weak self] _ in
                   DispatchQueue.main.async {
                      self?.actionToggleEffectView(nil)
@@ -191,13 +191,13 @@ extension MainViewController: NSTableViewDelegate {
          }
       case tablePresets:
          if tableView.selectedRow == 0 {
-            Log.debug(subsystem: .controller, category: .event, message: "Clearing preset")
+            log.debug(.controller, "Clearing preset")
             uiModel.selectPreset(nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < uiModel.availablePresets.count {
                let preset = uiModel.availablePresets[row]
-               Log.debug(subsystem: .controller, category: .event, message: "Selecting preset: \"\(preset.name)\"")
+               log.debug(.controller, "Selecting preset: \"\(preset.name)\"")
                uiModel.selectPreset(preset)
             }
          }

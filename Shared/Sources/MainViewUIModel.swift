@@ -87,7 +87,7 @@ extension MainViewUIModel {
             this.selectedAUComponent = nil
             this.uiDelegate?.handleEvent(.didClearEffect)
          case .failure(let e):
-            Log.error(subsystem: .controller, category: .event, error: e)
+            log.error(.controller, e)
             this.uiDelegate?.handleEvent(.didSelectEffect(e))
          case .success(let effect):
             this.availablePresets = effect.auAudioUnit.factoryPresets ?? []
@@ -115,7 +115,7 @@ extension MainViewUIModel {
             break
          }
       } catch {
-         Log.error(subsystem: .controller, category: .event, error: error)
+         log.error(.controller, error)
       }
    }
 
@@ -131,9 +131,9 @@ extension MainViewUIModel {
          if playbackEngine.stateID == .stopped {
             try playbackEngine.play()
          }
-         Log.debug(subsystem: .controller, category: .access, message: "File assigned: \(url.absoluteString)")
+         log.debug(.controller, "File assigned: \(url.absoluteString)")
       } catch {
-         Log.error(subsystem: .controller, category: .access, error: error)
+         log.error(.controller, error)
       }
    }
 
