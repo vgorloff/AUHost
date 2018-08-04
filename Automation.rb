@@ -71,7 +71,7 @@ class Automation
    
    def self.verify()
       verifyHost()
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make verify"
+      verifyPlugIn()
    end
    
    def self.post()
@@ -90,7 +90,7 @@ class Automation
       end
       projectPath = GitRepoDirPath + "/SampleAUPlugin"
       t = Tool.new()
-      l = Linter.new(projectPath)
+      l = Linter.new(projectPath, GitRepoDirPath + "/.swiftlint.yml")
       h = FileHeaderChecker.new(["Attenuator", "WaveLabs"])
       if t.isXcodeBuild
          if t.canRunActions("Verification")
@@ -106,7 +106,7 @@ class Automation
          puts h.analyseDir(projectPath)
          if l.canRunSwiftFormat()
             puts "→ Correcting sources (SwiftFormat)..."
-            l.correctWithSwiftFormat()
+            l.correctWithSwiftFormat(projectPath)
          end
          if l.canRunSwiftLint()
             puts "→ Correcting sources (SwiftLint)..."
@@ -121,7 +121,7 @@ class Automation
       end
       projectPath = GitRepoDirPath + "/SampleAUHost"
       t = Tool.new()
-      l = Linter.new(projectPath)
+      l = Linter.new(projectPath, GitRepoDirPath + "/.swiftlint.yml")
       h = FileHeaderChecker.new(["AUHost", "WaveLabs"])
       if t.isXcodeBuild
          if t.canRunActions("Verification")
@@ -137,7 +137,7 @@ class Automation
          puts h.analyseDir(projectPath)
          if l.canRunSwiftFormat()
             puts "→ Correcting sources (SwiftFormat)..."
-            l.correctWithSwiftFormat()
+            l.correctWithSwiftFormat(projectPath)
          end
          if l.canRunSwiftLint()
             puts "→ Correcting sources (SwiftLint)..."

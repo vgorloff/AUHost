@@ -287,21 +287,20 @@
 		8044E5D91F79B0CB005E5760 /* WL */ = {
 			isa = PBXGroup;
 			children = (
-				80C23C172116053F00BD1321 /* Types */,
-				80C23B6C2116038700BD1321 /* Foundation */,
 				80C23B172116031500BD1321 /* AppKit */,
 				804674391D25DE77000989CA /* Core */,
+				80C23B6C2116038700BD1321 /* Foundation */,
 				8046744C1D25DE77000989CA /* Media */,
+				80C23C172116053F00BD1321 /* Types */,
 			);
-			name = WL;
-			path = /Users/vova/Dropbox/Developer/Projects/WL;
-			sourceTree = WL;
+			path = WL;
+			sourceTree = "<group>";
 		};
 		804674391D25DE77000989CA /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				80C23C242116056900BD1321 /* Converters */,
 				80C23BEF2116047E00BD1321 /* Concurrency */,
+				80C23C242116056900BD1321 /* Converters */,
 				80AC1BAA1EEF37C50048151A /* Extensions */,
 				5DDDE705461D798894DE7E71 /* Sources */,
 			);
@@ -404,13 +403,13 @@
 		80C23B5C2116031500BD1321 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				80C23BB1211603E000BD1321 /* VULevelMeter.DrawingData.swift */,
-				80C23BB2211603E100BD1321 /* VULevelMeter.Shaders.metal */,
-				80C23BB3211603E100BD1321 /* VULevelMeter.swift */,
+				80C23B652116031500BD1321 /* DisplayLink.swift */,
 				80C23B5E2116031500BD1321 /* DisplayLink.GenericRenderer.swift */,
 				80C23B622116031500BD1321 /* MediaLibraryUtility.swift */,
-				80C23B652116031500BD1321 /* DisplayLink.swift */,
 				80C23B672116031500BD1321 /* MediaObjectPasteboardUtility.swift */,
+				80C23BB3211603E100BD1321 /* VULevelMeter.swift */,
+				80C23BB1211603E000BD1321 /* VULevelMeter.DrawingData.swift */,
+				80C23BB2211603E100BD1321 /* VULevelMeter.Shaders.metal */,
 			);
 			path = Media;
 			sourceTree = "<group>";
@@ -418,8 +417,8 @@
 		80C23B6C2116038700BD1321 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				80C23BEA2116044700BD1321 /* Notification */,
 				80C23BCF2116041F00BD1321 /* Extensions */,
+				80C23BEA2116044700BD1321 /* Notification */,
 				80C23BAA211603C400BD1321 /* os */,
 				80C23B922116038700BD1321 /* Sources */,
 			);
@@ -429,9 +428,9 @@
 		80C23B922116038700BD1321 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				80C23C142116051D00BD1321 /* Math.swift */,
 				80C23B972116038700BD1321 /* BuildInfo.swift */,
 				80C23B9A2116038700BD1321 /* Functions.swift */,
+				80C23C142116051D00BD1321 /* Math.swift */,
 				80C23B9B2116038700BD1321 /* Result.swift */,
 				80C23B9C2116038700BD1321 /* RuntimeInfo.swift */,
 			);
@@ -466,8 +465,8 @@
 		80C23BCF2116041F00BD1321 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				80C23C122116050600BD1321 /* String.swift */,
 				80C23BE72116041F00BD1321 /* Color.swift */,
+				80C23C122116050600BD1321 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -517,8 +516,8 @@
 		80C23C182116053F00BD1321 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				80C23C41211607E900BD1321 /* RandomFactory.swift */,
 				80C23C1C2116053F00BD1321 /* MinMax.swift */,
+				80C23C41211607E900BD1321 /* RandomFactory.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -542,8 +541,8 @@
 		80E4D2F41EFDBD7C00D8A2BC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				80C23C3E211607B800BD1321 /* Logger.swift */,
 				80485FE31DA6C700004EFA32 /* Application.swift */,
+				80C23C3E211607B800BD1321 /* Logger.swift */,
 				80485FAF1DA4657A004EFA32 /* MainToolbar.swift */,
 				805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */,
 				8005CA4A1EF6B3020091E075 /* MainViewUIModel.swift */,
@@ -775,7 +774,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.verifyPlugIn\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.verifyPlugIn\"\n";
 		};
 		C51A63701C4FD1650016F291 /* Run Script: Post-Build */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -789,7 +788,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.post\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.post\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

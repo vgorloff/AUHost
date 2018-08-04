@@ -1,23 +1,48 @@
-disabled_rules: # rule identifiers to exclude from running
-- todo
-- empty_enum_arguments
+disabled_rules:
+  - weak_delegate # SwiftLint still work non reloable for this rule.
+  - todo
+  - empty_enum_arguments # Looks like it is usefull to know enumeration arguments.
+  - redundant_string_enum_value
+
+excluded:
+  - Build
+  - Vendor
+
+cyclomatic_complexity:
+  warning: 24
+  error: 36
   
+function_body_length:
+  warning: 80
+  error: 120
+
+type_body_length:
+  warning: 320
+  error: 500
+
 line_length:
   warning: 130
   error: 200
 
 file_length:
-  warning: 500
-  error: 1000
+  warning: 450
+  error: 600
 
 identifier_name:
   min_length:
     warning: 2
     error: 1
   max_length:
-    warning: 46
-    error: 52
+    warning: 50
+    error: 56
 
-type_body_length:
-  - 300 # warning
-  - 400 # error
+type_name:
+  min_length:
+    warning: 3
+    error: 1
+  max_length:
+    warning: 48
+    error: 56
+
+nesting:
+  type_level: 2

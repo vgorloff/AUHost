@@ -1,6 +1,6 @@
 //
 //  AlternativeValue.swift
-//  WaveLabs
+//  mcCore
 //
 //  Created by Vlad Gorlov on 27.01.16.
 //  Copyright © 2016 WaveLabs. All rights reserved.

@@ -30,7 +30,7 @@ public struct WaveformCacheUtility {
    }
 
    public func buildWaveformForResolution(fileURL url: URL, resolution: UInt64,
-                                          callback: @escaping (ResultType<[MinMax<Float>]>) -> Void) {
+                                          callback: @escaping (Result<[MinMax<Float>]>) -> Void) {
       assert(resolution > 0)
       DispatchQueue.global(qos: .utility).async {
          do {
