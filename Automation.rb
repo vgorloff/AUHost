@@ -1,5 +1,9 @@
 MainFile = "#{ENV['AWL_LIB_SRC']}/Scripts/Automation.rb"
-if File.exist?(MainFile) then require MainFile else require_relative "Vendor/WL/Scripts/lib/Core.rb" end
+if File.exist?(MainFile)
+  require MainFile
+else
+  Dir[File.dirname(__FILE__) + "/Vendor/WL/Scripts/**/*.rb"].each { |f| require f }
+end
 
 class Automation
 
@@ -9,7 +13,7 @@ class Automation
    XCodeProjectFilePathPlugIn = GitRepoDirPath + "/Attenuator.xcodeproj"
    TmpDirPath = GitRepoDirPath + "/DerivedData"
    KeyChainPath = TmpDirPath + "/VST3NetSend.keychain"
-   P12FilePath = GitRepoDirPath + '/Configuration/Codesign/DeveloperIDApplication.p12'
+   P12FilePath = GitRepoDirPath + '/Codesign/DeveloperIDApplication.p12'
       
    def self.ci()
      if !Tool.isCIServer
@@ -34,7 +38,8 @@ class Automation
      puts "→ Default keychain now: #{KeyChain.default}"
      begin
         puts "→ Making build..."
-        release()
+        XcodeBuilder.new(XCodeProjectFilePathAUHost).ci("AUHost")
+        XcodeBuilder.new(XCodeProjectFilePathPlugIn).ci("Attenuator")
         puts "→ Making cleanup..."
         KeyChain.setDefault(defaultKeyChain)
         KeyChain.delete(kc.nameOrPath)
@@ -57,8 +62,8 @@ class Automation
    end
    
    def self.release()
-      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost", nil, true)
-      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator", nil, true)
+      XcodeBuilder.new(XCodeProjectFilePathAUHost).archive("AUHost")
+      XcodeBuilder.new(XCodeProjectFilePathPlugIn).archive("Attenuator")
       apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
       apps.each { |app| Archive.zip(app) }
       apps.each { |app| XcodeBuilder.validateBinary(app) }
@@ -66,7 +71,7 @@ class Automation
    
    def self.verify()
       verifyHost()
-      system "cd \"#{GitRepoDirPath}/SampleAUPlugin\" && make verify"
+      verifyPlugIn()
    end
    
    def self.post()
@@ -85,7 +90,7 @@ class Automation
       end
       projectPath = GitRepoDirPath + "/SampleAUPlugin"
       t = Tool.new()
-      l = Linter.new(projectPath)
+      l = Linter.new(projectPath, GitRepoDirPath + "/.swiftlint.yml")
       h = FileHeaderChecker.new(["Attenuator", "WaveLabs"])
       if t.isXcodeBuild
          if t.canRunActions("Verification")
@@ -101,7 +106,7 @@ class Automation
          puts h.analyseDir(projectPath)
          if l.canRunSwiftFormat()
             puts "→ Correcting sources (SwiftFormat)..."
-            l.correctWithSwiftFormat()
+            l.correctWithSwiftFormat(projectPath)
          end
          if l.canRunSwiftLint()
             puts "→ Correcting sources (SwiftLint)..."
@@ -116,7 +121,7 @@ class Automation
       end
       projectPath = GitRepoDirPath + "/SampleAUHost"
       t = Tool.new()
-      l = Linter.new(projectPath)
+      l = Linter.new(projectPath, GitRepoDirPath + "/.swiftlint.yml")
       h = FileHeaderChecker.new(["AUHost", "WaveLabs"])
       if t.isXcodeBuild
          if t.canRunActions("Verification")
@@ -132,7 +137,7 @@ class Automation
          puts h.analyseDir(projectPath)
          if l.canRunSwiftFormat()
             puts "→ Correcting sources (SwiftFormat)..."
-            l.correctWithSwiftFormat()
+            l.correctWithSwiftFormat(projectPath)
          end
          if l.canRunSwiftLint()
             puts "→ Correcting sources (SwiftLint)..."

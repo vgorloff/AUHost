@@ -22,11 +22,11 @@ class EffectWindowController: NSWindowController {
 
    override func awakeFromNib() {
       super.awakeFromNib()
-      windowFrameAutosaveName = NSWindow.FrameAutosaveName(Util.string(fromClass: EffectWindowController.self) + ":WindowFrame")
+      windowFrameAutosaveName = NSWindow.FrameAutosaveName(string(fromClass: EffectWindowController.self) + ":WindowFrame")
    }
 
    deinit {
-      Log.deinitialize(subsystem: .controller)
+      log.deinitialize()
    }
 }
 
