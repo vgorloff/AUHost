@@ -19,7 +19,6 @@
 		80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE11DA6C6F6004EFA32 /* Application.swift */; };
 		80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */; };
 		805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */; };
-		806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806556F41EF5AEC400C4C2FA /* CGSize.swift */; };
 		807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C041D25D9330033629F /* AlternativeValue.swift */; };
 		8088EB211EF470D00022A26E /* CoreTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8088EB201EF470D00022A26E /* CoreTypeAliases.swift */; };
 		8096F4F21EF5809900B1A5CD /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F9DF8B1EF5802C0026A7A6 /* main.swift */; };
@@ -88,7 +87,6 @@
 		80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 		804860401DAAF94A004EFA32 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
-		806556F41EF5AEC400C4C2FA /* CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGSize.swift; sourceTree = "<group>"; };
 		807E3C041D25D9330033629F /* AlternativeValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
 		8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
 		8088EB201EF470D00022A26E /* CoreTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTypeAliases.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 		80AC1BA11EEF36B40048151A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				806556F41EF5AEC400C4C2FA /* CGSize.swift */,
 				80AC1BA41EEF36E10048151A /* DispatchQueue.swift */,
 				80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */,
 				80AC1BA21EEF36B40048151A /* OperationQueue.swift */,
@@ -520,7 +517,6 @@
 				80C23A67211601A100BD1321 /* UnfairLock.swift in Sources */,
 				804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */,
 				80C23C342116069500BD1321 /* MediaObjectPasteboardUtility.swift in Sources */,
-				806556F51EF5AEC400C4C2FA /* CGSize.swift in Sources */,
 				804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */,
 				8096F4F21EF5809900B1A5CD /* main.swift in Sources */,
 				80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */,
