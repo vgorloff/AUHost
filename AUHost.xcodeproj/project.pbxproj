@@ -194,26 +194,25 @@
 			isa = PBXGroup;
 			children = (
 				80C23ABA211602C800BD1321 /* AppKit */,
-				80C23A822116021B00BD1321 /* Types */,
-				80C23A1D2116016C00BD1321 /* Foundation */,
 				807E3C031D25D9330033629F /* Core */,
+				80C23A1D2116016C00BD1321 /* Foundation */,
 				807E3C121D25D9880033629F /* Media */,
+				80C23A822116021B00BD1321 /* Types */,
 			);
-			name = WL;
-			path = /Users/vova/Dropbox/Developer/Projects/WL;
-			sourceTree = WL;
+			path = WL;
+			sourceTree = "<group>";
 		};
 		80485FB31DA591CE004EFA32 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				80485FE11DA6C6F6004EFA32 /* Application.swift */,
+				80C23C322116061900BD1321 /* Logger.swift */,
 				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
 				805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */,
 				8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */,
 				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
 				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
 				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
-				80C23C322116061900BD1321 /* Logger.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -263,10 +262,10 @@
 			isa = PBXGroup;
 			children = (
 				80C23A9F211602A600BD1321 /* Extensions */,
-				80C23A932116025800BD1321 /* Sources */,
-				80C23A7B211601FC00BD1321 /* os */,
-				80C23A76211601E500BD1321 /* Notification */,
 				80C23A252116016C00BD1321 /* Extensions */,
+				80C23A76211601E500BD1321 /* Notification */,
+				80C23A7B211601FC00BD1321 /* os */,
+				80C23A932116025800BD1321 /* Sources */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -282,10 +281,10 @@
 		80C23A57211601A000BD1321 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
-				80C23A58211601A000BD1321 /* UnfairLock.swift */,
+				80C23A63211601A000BD1321 /* NonRecursiveLock.swift */,
 				80C23A5A211601A000BD1321 /* NonRecursiveLocking.swift */,
 				80C23A5D211601A000BD1321 /* SpinLock.swift */,
-				80C23A63211601A000BD1321 /* NonRecursiveLock.swift */,
+				80C23A58211601A000BD1321 /* UnfairLock.swift */,
 			);
 			name = Concurrency;
 			path = ../Concurrency;
@@ -326,8 +325,8 @@
 		80C23A832116021B00BD1321 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				80C23C2B211605BB00BD1321 /* RandomFactory.swift */,
 				80C23A872116021B00BD1321 /* MinMax.swift */,
+				80C23C2B211605BB00BD1321 /* RandomFactory.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -343,9 +342,9 @@
 		80C23A932116025800BD1321 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				80C23A942116025800BD1321 /* Math.swift */,
 				80C23A982116025800BD1321 /* BuildInfo.swift */,
 				80C23A9B2116025800BD1321 /* Functions.swift */,
+				80C23A942116025800BD1321 /* Math.swift */,
 				80C23A9C2116025800BD1321 /* Result.swift */,
 				80C23A9D2116025800BD1321 /* RuntimeInfo.swift */,
 			);
@@ -363,8 +362,8 @@
 		80C23ABA211602C800BD1321 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
-				80C23B0B211602EF00BD1321 /* Media */,
 				80C23ABB211602C800BD1321 /* Extensions */,
+				80C23B0B211602EF00BD1321 /* Media */,
 			);
 			path = AppKit;
 			sourceTree = "<group>";
@@ -490,7 +489,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.verifyHost\"";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"`pwd`/Automation.rb\" -e \"Automation.verifyHost\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
