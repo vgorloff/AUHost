@@ -1,6 +1,6 @@
 //
 //  OperationQueue.swift
-//  WaveLabs
+//  mcCore
 //
 //  Created by Vlad Gorlov on 23.12.15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
@@ -10,138 +10,56 @@ import Foundation
 
 extension OperationQueue {
 
+   public static func serial(qos: QualityOfService, name: String? = nil) -> OperationQueue {
+      let queue = parallel(qos: qos, name: name)
+      queue.maxConcurrentOperationCount = 1
+      return queue
+   }
+
+   public static func parallel(qos: QualityOfService, name: String? = nil) -> OperationQueue {
+      let queue = OperationQueue()
+      queue.qualityOfService = qos
+      queue.name = name
+      return queue
+   }
+}
+
+extension OperationQueue {
+
    public convenience init(qos: QualityOfService) {
       self.init()
       qualityOfService = qos
+   }
+
+   public func addDependentOperations(_ ops: Operation...) {
+      addDependentOperations(ops)
+   }
+
+   public func addDependentOperations(_ ops: [Operation]) {
+      var operations = ops
+      while !operations.isEmpty {
+         if let previousLast = operations.popLast(), let last = operations.last {
+            previousLast.addDependency(last)
+         }
+      }
+      addOperations(ops)
    }
 
    public func addOperations(_ ops: Operation...) {
       addOperations(ops, waitUntilFinished: false)
    }
 
+   public func addOperations(_ ops: [Operation]) {
+      addOperations(ops, waitUntilFinished: false)
+   }
+
    public var isEmpty: Bool {
       return operationCount <= 0
    }
-}
 
-public extension OperationQueue {
-
-   public struct UserInteractive {
-      public static func nonConcurrent(name: String? = nil) -> OperationQueue {
-         let q = concurrent(name: name)
-         q.maxConcurrentOperationCount = 1
-         return q
-      }
-
-      public static func concurrent(name: String? = nil) -> OperationQueue {
-         let q = OperationQueue()
-         q.qualityOfService = .userInteractive
-         q.name = name
-         return q
-      }
-   }
-
-   public struct UserInitiated {
-      public static func nonConcurrent(name: String? = nil) -> OperationQueue {
-         let q = concurrent(name: name)
-         q.maxConcurrentOperationCount = 1
-         return q
-      }
-
-      public static func concurrent(name: String? = nil) -> OperationQueue {
-         let q = OperationQueue()
-         q.qualityOfService = .userInitiated
-         q.name = name
-         return q
-      }
-   }
-
-   public struct Utility {
-      public static func nonConcurrent(name: String? = nil) -> OperationQueue {
-         let q = concurrent(name: name)
-         q.maxConcurrentOperationCount = 1
-         return q
-      }
-
-      public static func concurrent(name: String? = nil) -> OperationQueue {
-         let q = OperationQueue()
-         q.qualityOfService = .utility
-         q.name = name
-         return q
-      }
-   }
-
-   public struct Background {
-      public static func nonConcurrent(name: String? = nil) -> OperationQueue {
-         let q = concurrent(name: name)
-         q.maxConcurrentOperationCount = 1
-         return q
-      }
-
-      public static func concurrent(name: String? = nil) -> OperationQueue {
-         let q = OperationQueue()
-         q.qualityOfService = .background
-         q.name = name
-         return q
-      }
-   }
-
-   public struct Default {
-      public static func nonConcurrent(name: String? = nil) -> OperationQueue {
-         let q = concurrent(name: name)
-         q.maxConcurrentOperationCount = 1
-         return q
-      }
-
-      public static func concurrent(name: String? = nil) -> OperationQueue {
-         let q = OperationQueue()
-         q.qualityOfService = .default
-         q.name = name
-         return q
-      }
-   }
-
-   public struct NonConcurrent {
-      public static func userInteractive(name: String? = nil) -> OperationQueue {
-         return OperationQueue.UserInteractive.nonConcurrent(name: name)
-      }
-
-      public static func userInitiated(name: String? = nil) -> OperationQueue {
-         return OperationQueue.UserInitiated.nonConcurrent(name: name)
-      }
-
-      public static func utility(name: String? = nil) -> OperationQueue {
-         return OperationQueue.Utility.nonConcurrent(name: name)
-      }
-
-      public static func background(name: String? = nil) -> OperationQueue {
-         return OperationQueue.Background.nonConcurrent(name: name)
-      }
-
-      public static func `default`(name: String? = nil) -> OperationQueue {
-         return OperationQueue.Default.nonConcurrent(name: name)
-      }
-   }
-
-   public struct Concurrent {
-      public static func userInteractive(name: String? = nil) -> OperationQueue {
-         return OperationQueue.UserInteractive.concurrent(name: name)
-      }
-
-      public static func userInitiated(name: String? = nil) -> OperationQueue {
-         return OperationQueue.UserInitiated.concurrent(name: name)
-      }
-
-      public static func utility(name: String? = nil) -> OperationQueue {
-         return OperationQueue.Utility.concurrent(name: name)
-      }
-
-      public static func background(name: String? = nil) -> OperationQueue {
-         return OperationQueue.Background.concurrent(name: name)
-      }
-
-      public static func `default`(name: String? = nil) -> OperationQueue {
-         return OperationQueue.Default.concurrent(name: name)
-      }
+   public func withSuspended(workItem: () -> Void) {
+      isSuspended = true
+      workItem()
+      isSuspended = false
    }
 }

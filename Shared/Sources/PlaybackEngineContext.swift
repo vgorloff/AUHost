@@ -24,12 +24,12 @@ final class PlaybackEngineContext {
    var filePlaybackCompleted: AVAudioNodeCompletionHandler?
 
    init() {
-      Log.initialize(subsystem: .media)
+      log.initialize()
       engine.attach(player)
    }
 
    deinit {
-      Log.deinitialize(subsystem: .media)
+      log.deinitialize()
    }
 }
 
@@ -175,10 +175,9 @@ extension PlaybackEngineContext {
       statistics.append("File samplerate: \(file.fileFormat.sampleRate)")
       statistics.append("File playback offset: \(offset)")
       statistics.append("Frames to play: \(framesToPlay)")
-      Log.debug(subsystem: .media, category: .event, message: statistics.joined(separator: "; "))
+      log.debug(.media, statistics.joined(separator: "; "))
       guard framesToPlay > 0 else {
-         Log.default(subsystem: .media, category: .event,
-                     message: "Nothing to play. Check value of 'playbackOffset' property.")
+         log.default(.media, "Nothing to play. Check value of 'playbackOffset' property.")
          return
       }
 

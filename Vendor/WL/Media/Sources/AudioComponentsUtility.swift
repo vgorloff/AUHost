@@ -26,19 +26,19 @@ public final class AudioComponentsUtility {
 
    private var observerOfComponentChange: NotificationObserver?
    private var observerOfComponentInvalidate: NotificationObserver?
-   private lazy var notificationsQueue = OperationQueue.Concurrent.utility()
+   private lazy var notificationsQueue = OperationQueue.parallel(qos: .utility)
 
    public var handlerStateChange: ((StateChange) -> Void)?
    public var completionHandlerQueue = DispatchQueue.main
 
    public init() {
       setUpObservers()
-      Log.initialize(subsystem: .media)
+      log.initialize()
    }
 
    deinit {
       tearDownObservers()
-      Log.deinitialize(subsystem: .media)
+      log.deinitialize()
    }
 
    /// **Note** Always calls completion handler on main queue

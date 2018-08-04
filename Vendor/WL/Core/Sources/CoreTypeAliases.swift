@@ -1,6 +1,6 @@
 //
-//  TypeAliases.swift
-//  WaveLabs
+//  CoreTypeAliases.swift
+//  mcCore
 //
 //  Created by Vlad Gorlov on 16.06.17.
 //  Copyright © 2017 WaveLabs. All rights reserved.

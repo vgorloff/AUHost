@@ -10,7 +10,7 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   private lazy var mlController: NSMediaLibraryBrowserController = Util.configure(NSMediaLibraryBrowserController.shared) {
+   private lazy var mlController: NSMediaLibraryBrowserController = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
 

@@ -53,11 +53,11 @@ final class PlaybackEngine {
 
    init() {
       setupHandlers()
-      Log.initialize(subsystem: .media)
+      log.initialize()
    }
 
    deinit {
-      Log.deinitialize(subsystem: .media)
+      log.deinitialize()
    }
 }
 
@@ -176,20 +176,20 @@ extension PlaybackEngine {
             do {
                try self?.context.startPlayer()
             } catch {
-               Log.error(subsystem: .media, category: .generic, error: error)
+               log.error(.media, error)
             }
          case .paused:
             do {
                try self?.context.scheduleFile()
             } catch {
-               Log.error(subsystem: .media, category: .generic, error: error)
+               log.error(.media, error)
             }
          case .stopped, .updatingGraph:
             break
          }
          self?.notifyAboutChange(change2)
       }
-      DispatchQueue.UserInitiated.async { [weak self] in
+      DispatchQueue.userInitiated.async { [weak self] in
          self?.context.selectEffect(componentDescription: componentDescription) { result in
             DispatchQueue.main.async {
                completion?(result)
@@ -206,7 +206,7 @@ extension PlaybackEngine {
       context.filePlaybackCompleted = { [weak self] in guard let s = self else { return }
          let change = Change(event: .autostop, oldState: s.stateID, newState: .stopped)
          let message = "Playback stopped or file finished playing. Current state: \(change.oldState)"
-         Log.debug(subsystem: .media, category: .event, message: message)
+         log.debug(.media, message)
          if change.oldState == .playing {
             DispatchQueue.main.async { [weak self] in guard let s = self else { return }
                s.context.stop()
@@ -218,7 +218,7 @@ extension PlaybackEngine {
 
    private func notifyAboutChange(_ change: Change) {
       stateID = change.newState
-      Log.debug(subsystem: .media, category: .event, message: "State changed: \(change.oldState) => \(change.newState)")
+      log.debug(.media, "State changed: \(change.oldState) => \(change.newState)")
       DispatchQueue.main.async {
          self.changeHandler?(change)
       }

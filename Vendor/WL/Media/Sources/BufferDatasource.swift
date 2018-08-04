@@ -10,12 +10,12 @@ import Foundation
 import MetalKit
 
 @available(OSX 10.11, *)
-final class BufferDatasource {
+public final class BufferDatasource {
 
-   struct Buffers {
-      var position: MTLBuffer
-      var color: MTLBuffer
-      var projectionMatrix: MTLBuffer
+   public struct Buffers {
+      public var position: MTLBuffer
+      public var color: MTLBuffer
+      public var projectionMatrix: MTLBuffer
    }
 
    private struct CollectionOfBuffers {
@@ -36,7 +36,7 @@ final class BufferDatasource {
    private var availableBufferIndex = 0
    private var device: MTLDevice
 
-   init(device aDevice: MTLDevice, inFlightBuffersCount: Int) {
+   public init(device aDevice: MTLDevice, inFlightBuffersCount: Int) {
       inFlightSemaphore = DispatchSemaphore(value: inFlightBuffersCount)
       self.inFlightBuffersCount = inFlightBuffersCount
       device = aDevice
@@ -52,7 +52,7 @@ final class BufferDatasource {
 @available(OSX 10.11, *)
 extension BufferDatasource {
 
-   func nextBuffers(vertices: [Float], color: [Float], matrix: [Float]) throws -> Buffers {
+   public func nextBuffers(vertices: [Float], color: [Float], matrix: [Float]) throws -> Buffers {
 
       let verticesDataSize = vertices.count * MemoryLayout<Float>.size
       let colorDataSize = color.count * MemoryLayout<Float>.size
@@ -95,11 +95,11 @@ extension BufferDatasource {
       return currentBuffers
    }
 
-   func dispatchWait() {
+   public func dispatchWait() {
       inFlightSemaphore.wait()
    }
 
-   func dispatchSignal() {
+   public func dispatchSignal() {
       inFlightSemaphore.signal()
    }
 }
