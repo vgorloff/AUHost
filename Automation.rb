@@ -1,5 +1,9 @@
 MainFile = "#{ENV['AWL_LIB_SRC']}/Scripts/Automation.rb"
-if File.exist?(MainFile) then require MainFile else require_relative "Vendor/WL/Scripts/lib/Core.rb" end
+if File.exist?(MainFile)
+  require MainFile
+else
+  Dir[File.dirname(__FILE__) + "/Vendor/WL/Scripts/**/*.rb"].each { |f| require f }
+end
 
 class Automation
 
@@ -9,7 +13,7 @@ class Automation
    XCodeProjectFilePathPlugIn = GitRepoDirPath + "/Attenuator.xcodeproj"
    TmpDirPath = GitRepoDirPath + "/DerivedData"
    KeyChainPath = TmpDirPath + "/VST3NetSend.keychain"
-   P12FilePath = GitRepoDirPath + '/Configuration/Codesign/DeveloperIDApplication.p12'
+   P12FilePath = GitRepoDirPath + '/Codesign/DeveloperIDApplication.p12'
       
    def self.ci()
      if !Tool.isCIServer
