@@ -15,10 +15,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C5A5A0FB1C47E75F00F9864E"
-               BuildableName = "Attenuator.app"
-               BlueprintName = "Attenuator"
-               ReferencedContainer = "container:SampleAUPlugin/Attenuator.xcodeproj">
+               BlueprintIdentifier = "8035EF291B3752030026AD7D"
+               BuildableName = "AUHost.app"
+               BlueprintName = "AUHost"
+               ReferencedContainer = "container:AUHost.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,10 +29,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8035EF291B3752030026AD7D"
-               BuildableName = "AUHost.app"
-               BlueprintName = "AUHost"
-               ReferencedContainer = "container:AUHost.xcodeproj">
+               BlueprintIdentifier = "C5A5A0FB1C47E75F00F9864E"
+               BuildableName = "Attenuator.app"
+               BlueprintName = "Attenuator"
+               ReferencedContainer = "container:Attenuator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
