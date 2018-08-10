@@ -129,51 +129,206 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		44BE8DB6E683F3DD45804B13 /* Sources */ = {
+		0B27A0F42FF3F68BBA894C2D /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				80C23A57211601A000BD1321 /* Concurrency */,
+				243F6281CBFF57859FB83F28 /* Extensions */,
+				778BBAE693CCB3E1AC216C4A /* Notification */,
+				60073EF9DD26E3F9F9255D1E /* os */,
+				A09E6853292009A66109A806 /* Sources */,
+			);
+			name = Foundation;
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		0D8BFDBBFCC609B966FC8079 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				E2997D215D458F69A917DDBB /* Sources */,
+			);
+			name = Types;
+			path = Types;
+			sourceTree = "<group>";
+		};
+		0E4ED773AD603F9795BB476B /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				77C898BBD17F1E71B99FC55B /* Extensions */,
+				20893F01AC8507B4CD7AB9BB /* Media */,
+			);
+			name = AppKit;
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		15411FDA33D441961B9B6068 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
 				807E3C041D25D9330033629F /* AlternativeValue.swift */,
 				8088EB201EF470D00022A26E /* CoreTypeAliases.swift */,
 			);
+			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		79558735CFB064658DA82E9F /* Sources */ = {
+		1D9BB9EE949BB35869C71D33 /* log */ = {
+			isa = PBXGroup;
+			children = (
+				80C23A7F211601FC00BD1321 /* Log.swift */,
+			);
+			name = log;
+			path = log;
+			sourceTree = "<group>";
+		};
+		20893F01AC8507B4CD7AB9BB /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				80C23B11211602EF00BD1321 /* MediaLibraryUtility.swift */,
+				80C23B16211602EF00BD1321 /* MediaObjectPasteboardUtility.swift */,
+			);
+			name = Media;
+			path = Media;
+			sourceTree = "<group>";
+		};
+		21F6F5B76FF9BD90499111A0 /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				80C23A902116023E00BD1321 /* NumericTypesConversions.swift */,
+			);
+			name = Converters;
+			path = Converters;
+			sourceTree = "<group>";
+		};
+		243F6281CBFF57859FB83F28 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80C23AB7211602A600BD1321 /* Color.swift */,
+				80C23A382116016C00BD1321 /* String.swift */,
+			);
+			name = Extensions;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		369D6D11F9AB09F260640668 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */,
+				804860401DAAF94A004EFA32 /* Version.xcconfig */,
+			);
+			name = Configuration;
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		373E826AC120F05E3F6557EE /* SampleAUHost */ = {
+			isa = PBXGroup;
+			children = (
+				6FB2507046C2AE6C3D9DC41F /* Sources */,
+			);
+			name = SampleAUHost;
+			path = SampleAUHost;
+			sourceTree = "<group>";
+		};
+		3D19EE07DBB854ECA658CE25 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */,
 				804674251D25DAA1000989CA /* WaveformCacheUtility.swift */,
 				804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */,
 			);
+			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		8005E8581EFDB932003D7686 /* Shared */ = {
+		42A98F2FF7DEBCDFC4F20256 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				80485FB31DA591CE004EFA32 /* Sources */,
+				8B99571D4B0A2DCA4F12AD40 /* Concurrency */,
+				21F6F5B76FF9BD90499111A0 /* Converters */,
+				875B9C3B6BB1B3C2BA68D433 /* Extensions */,
+				15411FDA33D441961B9B6068 /* Sources */,
 			);
-			path = Shared;
+			name = Core;
+			path = Core;
 			sourceTree = "<group>";
 		};
-		8005E8591EFDB9A5003D7686 /* Configuration */ = {
+		5B5C9B900B24E9E43424905C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */,
-				804860401DAAF94A004EFA32 /* Version.xcconfig */,
+				80485FE11DA6C6F6004EFA32 /* Application.swift */,
+				80C23C322116061900BD1321 /* Logger.swift */,
+				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
+				805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */,
+				8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */,
+				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
+				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
+				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
 			);
-			path = Configuration;
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		60073EF9DD26E3F9F9255D1E /* os */ = {
+			isa = PBXGroup;
+			children = (
+				1D9BB9EE949BB35869C71D33 /* log */,
+			);
+			name = os;
+			path = os;
+			sourceTree = "<group>";
+		};
+		6FB2507046C2AE6C3D9DC41F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
+				80F9DF8B1EF5802C0026A7A6 /* main.swift */,
+				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
+				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		713858FA6411EEB7ED138AEC /* WL */ = {
+			isa = PBXGroup;
+			children = (
+				0E4ED773AD603F9795BB476B /* AppKit */,
+				42A98F2FF7DEBCDFC4F20256 /* Core */,
+				0B27A0F42FF3F68BBA894C2D /* Foundation */,
+				D969A89EA5C488925A751E43 /* Media */,
+				0D8BFDBBFCC609B966FC8079 /* Types */,
+			);
+			name = WL;
+			path = WL;
+			sourceTree = "<group>";
+		};
+		778BBAE693CCB3E1AC216C4A /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				80C23A77211601E500BD1321 /* NotificationObserver.swift */,
+			);
+			name = Notification;
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		77C898BBD17F1E71B99FC55B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80C23AC3211602C800BD1321 /* NSToolbar.swift */,
+			);
+			name = Extensions;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8035EF211B3752030026AD7D = {
 			isa = PBXGroup;
 			children = (
-				8005E8591EFDB9A5003D7686 /* Configuration */,
-				804E68891EF10BC5006C64BC /* Sources */,
+				369D6D11F9AB09F260640668 /* Configuration */,
+				8035EF2B1B3752030026AD7D /* Products */,
 				C5E335AB1C4FE7B000CD42BB /* Resources */,
-				8005E8581EFDB932003D7686 /* Shared */,
-				80C422891C46C3F700B5CCF1 /* Vendor */,
+				373E826AC120F05E3F6557EE /* SampleAUHost */,
+				C35EE243D2648A1E5FB9E424 /* Shared */,
+				DCD9F9868B7FC7C011B0AF1C /* Vendor */,
+				C35EE243D2648A1E5FB9E424 /* Shared */,
+				DCD9F9868B7FC7C011B0AF1C /* Vendor */,
 				8035EF2B1B3752030026AD7D /* Products */,
 			);
 			indentWidth = 3;
@@ -188,94 +343,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8044E5D81F79B057005E5760 /* WL */ = {
-			isa = PBXGroup;
-			children = (
-				80C23ABA211602C800BD1321 /* AppKit */,
-				807E3C031D25D9330033629F /* Core */,
-				80C23A1D2116016C00BD1321 /* Foundation */,
-				807E3C121D25D9880033629F /* Media */,
-				80C23A822116021B00BD1321 /* Types */,
-			);
-			path = WL;
-			sourceTree = "<group>";
-		};
-		80485FB31DA591CE004EFA32 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80485FE11DA6C6F6004EFA32 /* Application.swift */,
-				80C23C322116061900BD1321 /* Logger.swift */,
-				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
-				805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */,
-				8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */,
-				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
-				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
-				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		804E68891EF10BC5006C64BC /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
-				80F9DF8B1EF5802C0026A7A6 /* main.swift */,
-				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
-				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
-			);
-			name = Sources;
-			path = SampleAUHost/Sources;
-			sourceTree = "<group>";
-		};
-		807E3C031D25D9330033629F /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A8E2116023E00BD1321 /* Converters */,
-				80AC1BA11EEF36B40048151A /* Extensions */,
-				44BE8DB6E683F3DD45804B13 /* Sources */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		807E3C121D25D9880033629F /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				79558735CFB064658DA82E9F /* Sources */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
-		80AC1BA11EEF36B40048151A /* Extensions */ = {
+		875B9C3B6BB1B3C2BA68D433 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				80AC1BA41EEF36E10048151A /* DispatchQueue.swift */,
 				80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */,
 				80AC1BA21EEF36B40048151A /* OperationQueue.swift */,
 			);
+			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		80C23A1D2116016C00BD1321 /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A9F211602A600BD1321 /* Extensions */,
-				80C23A252116016C00BD1321 /* Extensions */,
-				80C23A76211601E500BD1321 /* Notification */,
-				80C23A7B211601FC00BD1321 /* os */,
-				80C23A932116025800BD1321 /* Sources */,
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
-		80C23A252116016C00BD1321 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A382116016C00BD1321 /* String.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		80C23A57211601A000BD1321 /* Concurrency */ = {
+		8B99571D4B0A2DCA4F12AD40 /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
 				80C23A63211601A000BD1321 /* NonRecursiveLock.swift */,
@@ -284,59 +363,10 @@
 				80C23A58211601A000BD1321 /* UnfairLock.swift */,
 			);
 			name = Concurrency;
-			path = ../Concurrency;
+			path = Concurrency;
 			sourceTree = "<group>";
 		};
-		80C23A76211601E500BD1321 /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A77211601E500BD1321 /* NotificationObserver.swift */,
-			);
-			path = Notification;
-			sourceTree = "<group>";
-		};
-		80C23A7B211601FC00BD1321 /* os */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A7E211601FC00BD1321 /* log */,
-			);
-			path = os;
-			sourceTree = "<group>";
-		};
-		80C23A7E211601FC00BD1321 /* log */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A7F211601FC00BD1321 /* Log.swift */,
-			);
-			path = log;
-			sourceTree = "<group>";
-		};
-		80C23A822116021B00BD1321 /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A832116021B00BD1321 /* Sources */,
-			);
-			path = Types;
-			sourceTree = "<group>";
-		};
-		80C23A832116021B00BD1321 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A872116021B00BD1321 /* MinMax.swift */,
-				80C23C2B211605BB00BD1321 /* RandomFactory.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		80C23A8E2116023E00BD1321 /* Converters */ = {
-			isa = PBXGroup;
-			children = (
-				80C23A902116023E00BD1321 /* NumericTypesConversions.swift */,
-			);
-			path = Converters;
-			sourceTree = "<group>";
-		};
-		80C23A932116025800BD1321 /* Sources */ = {
+		A09E6853292009A66109A806 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				80C23A982116025800BD1321 /* BuildInfo.swift */,
@@ -345,49 +375,17 @@
 				80C23A9C2116025800BD1321 /* Result.swift */,
 				80C23A9D2116025800BD1321 /* RuntimeInfo.swift */,
 			);
+			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		80C23A9F211602A600BD1321 /* Extensions */ = {
+		C35EE243D2648A1E5FB9E424 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				80C23AB7211602A600BD1321 /* Color.swift */,
+				5B5C9B900B24E9E43424905C /* Sources */,
 			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		80C23ABA211602C800BD1321 /* AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				80C23ABB211602C800BD1321 /* Extensions */,
-				80C23B0B211602EF00BD1321 /* Media */,
-			);
-			path = AppKit;
-			sourceTree = "<group>";
-		};
-		80C23ABB211602C800BD1321 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				80C23AC3211602C800BD1321 /* NSToolbar.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		80C23B0B211602EF00BD1321 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				80C23B11211602EF00BD1321 /* MediaLibraryUtility.swift */,
-				80C23B16211602EF00BD1321 /* MediaObjectPasteboardUtility.swift */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
-		80C422891C46C3F700B5CCF1 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				8044E5D81F79B057005E5760 /* WL */,
-			);
-			path = Vendor;
+			name = Shared;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		C5E335AB1C4FE7B000CD42BB /* Resources */ = {
@@ -397,6 +395,34 @@
 			);
 			name = Resources;
 			path = SampleAUHost/Resources;
+			sourceTree = "<group>";
+		};
+		D969A89EA5C488925A751E43 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				3D19EE07DBB854ECA658CE25 /* Sources */,
+			);
+			name = Media;
+			path = Media;
+			sourceTree = "<group>";
+		};
+		DCD9F9868B7FC7C011B0AF1C /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				713858FA6411EEB7ED138AEC /* WL */,
+			);
+			name = Vendor;
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		E2997D215D458F69A917DDBB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				80C23A872116021B00BD1321 /* MinMax.swift */,
+				80C23C2B211605BB00BD1321 /* RandomFactory.swift */,
+			);
+			name = Sources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

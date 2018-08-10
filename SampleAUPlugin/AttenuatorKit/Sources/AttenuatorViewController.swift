@@ -11,18 +11,15 @@ import CoreAudioKit
 
 open class AttenuatorViewController: AUViewController {
 
-   private var auView: AttenuatorView?
+   private lazy var auView = AttenuatorView()
    private var audioUnit: AttenuatorAudioUnit?
    private var parameterObserverToken: AUParameterObserverToken?
-   private var observers = [NotificationObserver]()
    private var isConfigured = false
 
-   public convenience init?(au: AttenuatorAudioUnit) {
-      self.init(nibName: nil, bundle: nil)
+   public init(au: AttenuatorAudioUnit) {
       audioUnit = au
-      if let auView = auView {
-         setupView(au: au, auView: auView)
-      }
+      super.init(nibName: nil, bundle: nil)
+      setupViewIfNeeded()
    }
 
    public override init(nibName nibNameOrNil: NSNib.Name?, bundle nibBundleOrNil: Bundle?) {
@@ -30,20 +27,11 @@ open class AttenuatorViewController: AUViewController {
    }
 
    public required init?(coder: NSCoder) {
-      super.init(coder: coder)
+      fatalError()
    }
 
    open override func loadView() {
-      let nibName = NSNib.Name(String(describing: AttenuatorViewController.self))
-      guard let nib = NSNib(nibNamed: nibName, bundle: Bundle(for: AttenuatorViewController.self)) else {
-         fatalError()
-      }
-      let objects = nib.instantiate(withOwner: self)
-      guard let v = (objects.map { $0 as? AttenuatorView }.compactMap { $0 }).first else {
-         fatalError()
-      }
-      view = v
-      auView = v
+      view = auView
       preferredContentSize = NSSize(width: 200, height: 150)
    }
 
@@ -62,16 +50,16 @@ open class AttenuatorViewController: AUViewController {
 
    open override func viewDidAppear() {
       super.viewDidAppear()
-      auView?.startMetering()
+      auView.startMetering()
    }
 
    open override func viewWillDisappear() {
       super.viewWillDisappear()
-      auView?.stopMetering()
+      auView.stopMetering()
    }
 
    deinit {
-      observers.removeAll()
+      log.deinitialize()
    }
 }
 
@@ -80,7 +68,9 @@ extension AttenuatorViewController: AUAudioUnitFactory {
    public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
       let au = try AttenuatorAudioUnit(componentDescription: componentDescription, options: [])
       audioUnit = au
-      setupViewIfNeeded()
+      DispatchQueue.main.async {
+         self.setupViewIfNeeded()
+      }
       return au
    }
 }
@@ -88,23 +78,19 @@ extension AttenuatorViewController: AUAudioUnitFactory {
 extension AttenuatorViewController {
 
    private func setupViewIfNeeded() {
-      DispatchQueue.main.async {
-         if !self.isConfigured {
-            self.isConfigured = true
-            if let au = self.audioUnit, let view = self.auView {
-               self.setupView(au: au, auView: view)
-            }
-         }
+      if !isConfigured, let au = audioUnit {
+         isConfigured = true
+         self.setupUI(au: au)
       }
    }
 
-   private func setupView(au: AttenuatorAudioUnit, auView: AttenuatorView) {
+   private func setupUI(au: AttenuatorAudioUnit) {
       auView.viewLevelMeter.numberOfChannels = au.outputBus.bus.format.channelCount
       auView.updateParameter(parameter: AttenuatorParameter.gain, withValue: au.parameterGain.value)
       parameterObserverToken = au.parameterTree.token(byAddingParameterObserver: { address, value in
          DispatchQueue.main.async { [weak self] in guard let s = self else { return }
             let paramType = AttenuatorParameter.fromRawValue(address)
-            s.auView?.updateParameter(parameter: paramType, withValue: value)
+            s.auView.updateParameter(parameter: paramType, withValue: value)
          }
       })
       auView.handlerParameterDidChaned = { [weak self] _, value in guard let s = self else { return }
@@ -124,7 +110,7 @@ extension AttenuatorViewController {
          case .allocateRenderResources:
             DispatchQueue.main.async { [weak self] in guard let s = self else { return }
                if let outBus = self?.audioUnit?.outputBus {
-                  s.auView?.viewLevelMeter.numberOfChannels = outBus.bus.format.channelCount
+                  s.auView.viewLevelMeter.numberOfChannels = outBus.bus.format.channelCount
                }
             }
          }
