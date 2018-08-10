@@ -120,18 +120,17 @@ extension ViewController {
 
    private func openEffectView(au: AttenuatorAudioUnit) {
       audioUnit = au
-      if let ctrl = AttenuatorViewController(au: au) {
-         ctrl.view.translatesAutoresizingMaskIntoConstraints = false
-         addChildViewController(ctrl)
-         containerView.addSubview(ctrl.view)
-         let cH = NSLayoutConstraint.constraints(withVisualFormat: "|[subview]|",
-                                                 options: [], metrics: nil, views: ["subview": ctrl.view])
-         let cV = NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|",
-                                                 options: [], metrics: nil, views: ["subview": ctrl.view])
-         containerView.addConstraints(cH)
-         containerView.addConstraints(cV)
-         audioUnitController = ctrl
-      }
+      let ctrl = AttenuatorViewController(au: au)
+      ctrl.view.translatesAutoresizingMaskIntoConstraints = false
+      addChildViewController(ctrl)
+      containerView.addSubview(ctrl.view)
+      let cH = NSLayoutConstraint.constraints(withVisualFormat: "|[subview]|",
+                                              options: [], metrics: nil, views: ["subview": ctrl.view])
+      let cV = NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|",
+                                              options: [], metrics: nil, views: ["subview": ctrl.view])
+      containerView.addConstraints(cH)
+      containerView.addConstraints(cV)
+      audioUnitController = ctrl
    }
 
    private func closeEffectView() {
