@@ -16,7 +16,6 @@
 		804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */; };
 		8046742E1D25DBCF000989CA /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */; };
 		80485FB51DA591CE004EFA32 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FB41DA591CE004EFA32 /* MainToolbar.swift */; };
-		80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE11DA6C6F6004EFA32 /* Application.swift */; };
 		80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */; };
 		805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */; };
 		807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807E3C041D25D9330033629F /* AlternativeValue.swift */; };
@@ -47,6 +46,8 @@
 		80C23C362116073600BD1321 /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C23AC3211602C800BD1321 /* NSToolbar.swift */; };
 		80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B331C4AA78E00308D83 /* EffectWindowController.swift */; };
 		80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C97B491C4B035E00308D83 /* PlaybackEngine.swift */; };
+		80C9E52B2120AD2200EBB8A5 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9E52A2120AD2200EBB8A5 /* Application.swift */; };
+		80C9E5392120C81A00EBB8A5 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9E5382120C81A00EBB8A5 /* MainMenu.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,7 +84,6 @@
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		8046742D1D25DBCF000989CA /* AudioComponentsUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioComponentsUtility.swift; sourceTree = "<group>"; };
 		80485FB41DA591CE004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
-		80485FE11DA6C6F6004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 		804860401DAAF94A004EFA32 /* Version.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
 		805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
@@ -115,6 +115,8 @@
 		80C23C322116061900BD1321 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		80C97B331C4AA78E00308D83 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80C97B491C4B035E00308D83 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
+		80C9E52A2120AD2200EBB8A5 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		80C9E5382120C81A00EBB8A5 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		80F9DF8B1EF5802C0026A7A6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,7 +139,6 @@
 				60073EF9DD26E3F9F9255D1E /* os */,
 				A09E6853292009A66109A806 /* Sources */,
 			);
-			name = Foundation;
 			path = Foundation;
 			sourceTree = "<group>";
 		};
@@ -146,7 +147,6 @@
 			children = (
 				E2997D215D458F69A917DDBB /* Sources */,
 			);
-			name = Types;
 			path = Types;
 			sourceTree = "<group>";
 		};
@@ -156,7 +156,6 @@
 				77C898BBD17F1E71B99FC55B /* Extensions */,
 				20893F01AC8507B4CD7AB9BB /* Media */,
 			);
-			name = AppKit;
 			path = AppKit;
 			sourceTree = "<group>";
 		};
@@ -166,7 +165,6 @@
 				807E3C041D25D9330033629F /* AlternativeValue.swift */,
 				8088EB201EF470D00022A26E /* CoreTypeAliases.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -175,7 +173,6 @@
 			children = (
 				80C23A7F211601FC00BD1321 /* Log.swift */,
 			);
-			name = log;
 			path = log;
 			sourceTree = "<group>";
 		};
@@ -185,7 +182,6 @@
 				80C23B11211602EF00BD1321 /* MediaLibraryUtility.swift */,
 				80C23B16211602EF00BD1321 /* MediaObjectPasteboardUtility.swift */,
 			);
-			name = Media;
 			path = Media;
 			sourceTree = "<group>";
 		};
@@ -194,7 +190,6 @@
 			children = (
 				80C23A902116023E00BD1321 /* NumericTypesConversions.swift */,
 			);
-			name = Converters;
 			path = Converters;
 			sourceTree = "<group>";
 		};
@@ -204,7 +199,6 @@
 				80C23AB7211602A600BD1321 /* Color.swift */,
 				80C23A382116016C00BD1321 /* String.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -214,16 +208,15 @@
 				8081DD6C1EFF18AA0008D6AC /* Project.xcconfig */,
 				804860401DAAF94A004EFA32 /* Version.xcconfig */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
 		373E826AC120F05E3F6557EE /* SampleAUHost */ = {
 			isa = PBXGroup;
 			children = (
+				C5E335AB1C4FE7B000CD42BB /* Resources */,
 				6FB2507046C2AE6C3D9DC41F /* Sources */,
 			);
-			name = SampleAUHost;
 			path = SampleAUHost;
 			sourceTree = "<group>";
 		};
@@ -234,7 +227,6 @@
 				804674251D25DAA1000989CA /* WaveformCacheUtility.swift */,
 				804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -246,14 +238,12 @@
 				875B9C3B6BB1B3C2BA68D433 /* Extensions */,
 				15411FDA33D441961B9B6068 /* Sources */,
 			);
-			name = Core;
 			path = Core;
 			sourceTree = "<group>";
 		};
 		5B5C9B900B24E9E43424905C /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				80485FE11DA6C6F6004EFA32 /* Application.swift */,
 				80C23C322116061900BD1321 /* Logger.swift */,
 				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
 				805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */,
@@ -262,7 +252,6 @@
 				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
 				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -271,19 +260,19 @@
 			children = (
 				1D9BB9EE949BB35869C71D33 /* log */,
 			);
-			name = os;
 			path = os;
 			sourceTree = "<group>";
 		};
 		6FB2507046C2AE6C3D9DC41F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				80C9E52A2120AD2200EBB8A5 /* Application.swift */,
 				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
 				80F9DF8B1EF5802C0026A7A6 /* main.swift */,
 				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
 				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
+				80C9E5382120C81A00EBB8A5 /* MainMenu.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -296,7 +285,6 @@
 				D969A89EA5C488925A751E43 /* Media */,
 				0D8BFDBBFCC609B966FC8079 /* Types */,
 			);
-			name = WL;
 			path = WL;
 			sourceTree = "<group>";
 		};
@@ -305,7 +293,6 @@
 			children = (
 				80C23A77211601E500BD1321 /* NotificationObserver.swift */,
 			);
-			name = Notification;
 			path = Notification;
 			sourceTree = "<group>";
 		};
@@ -314,7 +301,6 @@
 			children = (
 				80C23AC3211602C800BD1321 /* NSToolbar.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -322,11 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				369D6D11F9AB09F260640668 /* Configuration */,
-				8035EF2B1B3752030026AD7D /* Products */,
-				C5E335AB1C4FE7B000CD42BB /* Resources */,
 				373E826AC120F05E3F6557EE /* SampleAUHost */,
-				C35EE243D2648A1E5FB9E424 /* Shared */,
-				DCD9F9868B7FC7C011B0AF1C /* Vendor */,
 				C35EE243D2648A1E5FB9E424 /* Shared */,
 				DCD9F9868B7FC7C011B0AF1C /* Vendor */,
 				8035EF2B1B3752030026AD7D /* Products */,
@@ -350,7 +332,6 @@
 				80AC1BA81EEF37380048151A /* DispatchSemaphore.swift */,
 				80AC1BA21EEF36B40048151A /* OperationQueue.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -362,7 +343,6 @@
 				80C23A5D211601A000BD1321 /* SpinLock.swift */,
 				80C23A58211601A000BD1321 /* UnfairLock.swift */,
 			);
-			name = Concurrency;
 			path = Concurrency;
 			sourceTree = "<group>";
 		};
@@ -375,7 +355,6 @@
 				80C23A9C2116025800BD1321 /* Result.swift */,
 				80C23A9D2116025800BD1321 /* RuntimeInfo.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -384,7 +363,6 @@
 			children = (
 				5B5C9B900B24E9E43424905C /* Sources */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -393,8 +371,7 @@
 			children = (
 				8035EF331B3752030026AD7D /* Main.storyboard */,
 			);
-			name = Resources;
-			path = SampleAUHost/Resources;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		D969A89EA5C488925A751E43 /* Media */ = {
@@ -402,7 +379,6 @@
 			children = (
 				3D19EE07DBB854ECA658CE25 /* Sources */,
 			);
-			name = Media;
 			path = Media;
 			sourceTree = "<group>";
 		};
@@ -411,7 +387,6 @@
 			children = (
 				713858FA6411EEB7ED138AEC /* WL */,
 			);
-			name = Vendor;
 			path = Vendor;
 			sourceTree = "<group>";
 		};
@@ -421,7 +396,6 @@
 				80C23A872116021B00BD1321 /* MinMax.swift */,
 				80C23C2B211605BB00BD1321 /* RandomFactory.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -521,7 +495,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80485FE21DA6C6F6004EFA32 /* Application.swift in Sources */,
 				80AC1BA91EEF37380048151A /* DispatchSemaphore.swift in Sources */,
 				80C23A69211601A100BD1321 /* NonRecursiveLocking.swift in Sources */,
 				807E3C081D25D9330033629F /* AlternativeValue.swift in Sources */,
@@ -546,6 +519,7 @@
 				804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */,
 				8096F4F21EF5809900B1A5CD /* main.swift in Sources */,
 				80C97B341C4AA78E00308D83 /* EffectWindowController.swift in Sources */,
+				80C9E52B2120AD2200EBB8A5 /* Application.swift in Sources */,
 				80C23AB9211602B200BD1321 /* Color.swift in Sources */,
 				80AC1BA31EEF36B40048151A /* OperationQueue.swift in Sources */,
 				80485FE91DA6CA8D004EFA32 /* MediaItemView.swift in Sources */,
@@ -556,6 +530,7 @@
 				80C23C2F211605F700BD1321 /* Math.swift in Sources */,
 				80C23A8D2116022600BD1321 /* MinMax.swift in Sources */,
 				80C23A562116018500BD1321 /* String.swift in Sources */,
+				80C9E5392120C81A00EBB8A5 /* MainMenu.swift in Sources */,
 				80C97B4A1C4B035E00308D83 /* PlaybackEngine.swift in Sources */,
 				8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */,
 				805A88551EF0FD7D00B8B937 /* MainToolbar.Event.swift in Sources */,

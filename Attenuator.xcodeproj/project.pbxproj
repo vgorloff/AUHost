@@ -17,7 +17,6 @@
 		80485FC91DA6C2F7004EFA32 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674511D25DE77000989CA /* WaveformDrawingDataProvider.swift */; };
 		80485FCE1DA6C39B004EFA32 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */; };
 		80485FCF1DA6C39B004EFA32 /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */; };
-		80485FE41DA6C700004EFA32 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FE31DA6C700004EFA32 /* Application.swift */; };
 		80485FEC1DA6CA9C004EFA32 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */; };
 		80485FED1DA6CAB4004EFA32 /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8046743A1D25DE77000989CA /* AlternativeValue.swift */; };
 		805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */; };
@@ -83,6 +82,8 @@
 		80C808991EFF2A1500E68A3F /* OperationQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAD1EEF37C50048151A /* OperationQueue.swift */; };
 		80C8089A1EFF2A2500E68A3F /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */; };
 		80C8089B1EFF2A7500E68A3F /* AudioComponentsUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B21EFDBE4900716C26 /* AudioComponentsUtility.swift */; };
+		80C9E52D2120AD3E00EBB8A5 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9E52C2120AD3E00EBB8A5 /* Application.swift */; };
+		80C9E52F2120AFA000EBB8A5 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80C9E52E2120AFA000EBB8A5 /* MainMenu.swift */; };
 		80D5104A1C6697D000C53608 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80D5104B1C6697D000C53608 /* AttenuatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5A5A1221C47EB5300F9864E /* AttenuatorAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C5A5A1121C47EB5300F9864E /* AttenuatorAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -161,7 +162,6 @@
 		80485FAF1DA4657A004EFA32 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
 		80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
 		80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
-		80485FE31DA6C700004EFA32 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
 		80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 		805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BufferedAudioBus.swift; sourceTree = "<group>"; };
@@ -219,6 +219,8 @@
 		80C23C3E211607B800BD1321 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		80C23C41211607E900BD1321 /* RandomFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RandomFactory.swift; sourceTree = "<group>"; };
 		80C808591EFF268F00E68A3F /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		80C9E52C2120AD3E00EBB8A5 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		80C9E52E2120AFA000EBB8A5 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		C5A5A0FC1C47E75F00F9864E /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5A5A1121C47EB5300F9864E /* AttenuatorAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AttenuatorAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -293,7 +295,6 @@
 		22F8A5908B55291CA6226A79 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				80485FE31DA6C700004EFA32 /* Application.swift */,
 				80C23C3E211607B800BD1321 /* Logger.swift */,
 				80485FAF1DA4657A004EFA32 /* MainToolbar.swift */,
 				805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */,
@@ -391,14 +392,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		80A180C71EFDBF4100716C26 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				80A180C91EFDBF4100716C26 /* Main.storyboard */,
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		8EC198B28D1372B3AE3B6E09 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -438,9 +431,11 @@
 		A823004CCB5A1B68E870108B /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				80C9E52C2120AD3E00EBB8A5 /* Application.swift */,
 				80A180CC1EFDBF4100716C26 /* main.swift */,
 				80A180CD1EFDBF4100716C26 /* MainWindowController.swift */,
 				80A180CE1EFDBF4100716C26 /* ViewController.swift */,
+				80C9E52E2120AFA000EBB8A5 /* MainMenu.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -511,7 +506,6 @@
 		C5A5A0F31C47E75F00F9864E = {
 			isa = PBXGroup;
 			children = (
-				C5A5A0FE1C47E75F00F9864E /* Attenuator */,
 				B0A6532B93FBF9A8E86BB56F /* Configuration */,
 				39AA9EA7E8C45CEFDDDDD079 /* SampleAUPlugin */,
 				A6DEF679C283C97816AA0889 /* Shared */,
@@ -529,15 +523,6 @@
 				8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		C5A5A0FE1C47E75F00F9864E /* Attenuator */ = {
-			isa = PBXGroup;
-			children = (
-				80A180C71EFDBF4100716C26 /* Resources */,
-			);
-			name = Attenuator;
-			path = SampleAUPlugin/Attenuator;
 			sourceTree = "<group>";
 		};
 		CBADBD199C436E66EF1CF461 /* Extensions */ = {
@@ -605,6 +590,7 @@
 		FADC2A49529EAB415DDBB072 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				80A180C91EFDBF4100716C26 /* Main.storyboard */,
 				80A180C81EFDBF4100716C26 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -850,7 +836,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80485FE41DA6C700004EFA32 /* Application.swift in Sources */,
 				80C23BA8211603B600BD1321 /* BuildInfo.swift in Sources */,
 				80C23BE92116042C00BD1321 /* Color.swift in Sources */,
 				80C23C162116052200BD1321 /* Math.swift in Sources */,
@@ -860,6 +845,7 @@
 				80C23BA5211603AC00BD1321 /* Result.swift in Sources */,
 				80C23C232116055500BD1321 /* MinMax.swift in Sources */,
 				80C23C442116082400BD1321 /* NSToolbar.swift in Sources */,
+				80C9E52F2120AFA000EBB8A5 /* MainMenu.swift in Sources */,
 				80C23BAF211603CA00BD1321 /* Log.swift in Sources */,
 				80485FC81DA6C2EC004EFA32 /* WaveformCacheUtility.swift in Sources */,
 				805A88571EF0FE1100B8B937 /* MainToolbar.Event.swift in Sources */,
@@ -875,6 +861,7 @@
 				80C23C42211607E900BD1321 /* RandomFactory.swift in Sources */,
 				80A180D71EFDC02800716C26 /* main.swift in Sources */,
 				80A180D91EFDC02800716C26 /* ViewController.swift in Sources */,
+				80C9E52D2120AD3E00EBB8A5 /* Application.swift in Sources */,
 				80C23C432116080F00BD1321 /* Functions.swift in Sources */,
 				80485FED1DA6CAB4004EFA32 /* AlternativeValue.swift in Sources */,
 				80485FEC1DA6CA9C004EFA32 /* MediaItemView.swift in Sources */,

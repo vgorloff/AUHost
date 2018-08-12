@@ -9,4 +9,12 @@
 import AppKit
 import Foundation
 
-_ = NSApplicationMain(CommandLine.argc, CommandLine.unsafeArgv)
+autoreleasepool {
+   // Even if we loading application manually we need to setup `Info.plist` key:
+   // <key>NSPrincipalClass</key>
+   // <string>NSApplication</string>
+   // Otherwise Application will be loaded in `low resolution` mode.
+   let app = Application.shared
+   app.setActivationPolicy(.regular)
+   app.run()
+}
