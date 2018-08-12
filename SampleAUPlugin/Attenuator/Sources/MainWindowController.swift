@@ -32,10 +32,10 @@ class MainWindowController: NSWindowController {
       }
       viewUIModel.mediaLibraryLoader.loadMediaLibrary()
       window?.toolbar = mainToolbar
-      mainToolbar.eventHandler = { [unowned self] in
+      mainToolbar.eventHandler = { [weak self] in
          switch $0 {
          case .toggleMediaLibrary:
-            self.mlController.togglePanel(self)
+            self?.mlController.togglePanel(nil)
          case .reloadPlugIns:
             break
          }
