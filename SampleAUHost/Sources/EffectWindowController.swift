@@ -14,15 +14,37 @@ protocol EffectWindowCoordination: class {
 
 class EffectWindowController: NSWindowController {
 
+   private lazy var customWindow = NSWindow(contentRect: CGRect(x: 1118, y: 286, width: 480, height: 270),
+                                            styleMask: [.titled, .closable, .miniaturizable, .resizable, .nonactivatingPanel],
+                                            backing: .buffered, defer: true)
+
    enum CoordinationEvent {
       case windowWillClose
    }
 
    weak var coordinationDelegate: EffectWindowCoordination?
 
+   init() {
+      super.init(window: nil)
+      window = customWindow
+      window?.delegate = self
+      setupUI()
+   }
+
+   required init?(coder: NSCoder) {
+      fatalError("Please use this class from code.")
+   }
+
+   private func setupUI() {
+
+      customWindow.autorecalculatesKeyViewLoop = false
+      customWindow.title = "Window"
+
+      windowFrameAutosaveName = NSWindow.FrameAutosaveName(string(fromClass: EffectWindowController.self) + ":WindowFrame")
+   }
+
    override func awakeFromNib() {
       super.awakeFromNib()
-      windowFrameAutosaveName = NSWindow.FrameAutosaveName(string(fromClass: EffectWindowController.self) + ":WindowFrame")
    }
 
    deinit {
