@@ -196,29 +196,11 @@
                         <outlet property="mediaItemView" destination="sLj-0G-iyc" id="4KO-cW-0vE"/>
                         <outlet property="tableEffects" destination="eph-K0-hUQ" id="2Nw-Bm-D0e"/>
                         <outlet property="tablePresets" destination="U9p-NH-boP" id="alz-7v-czO"/>
-                        <segue destination="wHA-WJ-aB5" kind="show" identifier="S:OpenEffectView" id="9iV-gi-VR4"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75.5" y="822.5"/>
-        </scene>
-        <!--Effect Window-->
-        <scene sceneID="fmD-hk-x3J">
-            <objects>
-                <windowController id="wHA-WJ-aB5" userLabel="Effect Window" customClass="EffectWindowController" customModule="AUHost" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="bS9-uo-X1t" customClass="NSPanel">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" nonactivatingPanel="YES"/>
-                        <rect key="contentRect" x="1118" y="286" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <connections>
-                            <outlet property="delegate" destination="wHA-WJ-aB5" id="of1-Oc-Y0c"/>
-                        </connections>
-                    </window>
-                </windowController>
-                <customObject id="ljy-g7-XlA" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="758" y="829"/>
         </scene>
     </scenes>
 </document>

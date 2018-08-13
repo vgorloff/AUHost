@@ -30,20 +30,9 @@ class MainViewController: NSViewController {
       }
    }
 
-   private let segueOpenEffect = NSStoryboardSegue.Identifier("S:OpenEffectView")
-   private var effectViewController: NSViewController? // Temporary store
-
    override func viewDidLoad() {
       super.viewDidLoad()
       setupHandlers()
-   }
-
-   override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-      if segue.identifier == segueOpenEffect, let wc = segue.destinationController as? EffectWindowController {
-         wc.contentViewController = effectViewController
-         wc.coordinationDelegate = self
-         uiModel?.effectWindowWillOpen(wc)
-      }
    }
 }
 
@@ -71,10 +60,12 @@ extension MainViewController {
 
    @IBAction private func actionToggleEffectView(_: AnyObject?) {
       if uiModel?.canOpenEffectView == true {
-         uiModel?.openEffectView { [weak self] in guard let this = self else { return }
-            this.effectViewController = $0
-            this.performSegue(withIdentifier: this.segueOpenEffect, sender: nil)
-            this.effectViewController = nil
+         uiModel?.openEffectView { [weak self] in
+            let wc = EffectWindowController()
+            wc.contentViewController = $0
+            wc.coordinationDelegate = self
+            wc.showWindow(nil)
+            self?.uiModel?.effectWindowWillOpen(wc)
          }
       }
    }
