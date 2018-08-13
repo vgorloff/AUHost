@@ -34,7 +34,6 @@
 		80A180D81EFDC02800716C26 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180CD1EFDBF4100716C26 /* MainWindowController.swift */; };
 		80A180D91EFDC02800716C26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180CE1EFDBF4100716C26 /* ViewController.swift */; };
 		80A180DA1EFDC03300716C26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80A180C81EFDBF4100716C26 /* Assets.xcassets */; };
-		80A180DB1EFDC03700716C26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80A180C91EFDBF4100716C26 /* Main.storyboard */; };
 		80AC1BB91EEF38E90048151A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BB81EEF38E30048151A /* Bundle.swift */; };
 		80AC1BBB1EEF39150048151A /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */; };
 		80AC1BBC1EEF39200048151A /* DispatchSemaphore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAC1EEF37C50048151A /* DispatchSemaphore.swift */; };
@@ -176,7 +175,6 @@
 		80A180C41EFDBF1D00716C26 /* AttenuatorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttenuatorKit.h; sourceTree = "<group>"; };
 		80A180C61EFDBF3100716C26 /* AttenuatorAU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttenuatorAU.swift; sourceTree = "<group>"; };
 		80A180C81EFDBF4100716C26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		80A180CA1EFDBF4100716C26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		80A180CC1EFDBF4100716C26 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		80A180CD1EFDBF4100716C26 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		80A180CE1EFDBF4100716C26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -590,7 +588,6 @@
 		FADC2A49529EAB415DDBB072 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				80A180C91EFDBF4100716C26 /* Main.storyboard */,
 				80A180C81EFDBF4100716C26 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -744,7 +741,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				80A180DA1EFDC03300716C26 /* Assets.xcassets in Resources */,
-				80A180DB1EFDC03700716C26 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -900,17 +896,6 @@
 			targetProxy = C5A5A1201C47EB5300F9864E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		80A180C91EFDBF4100716C26 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				80A180CA1EFDBF4100716C26 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8044ABD61C52E24000FA3DA3 /* Debug */ = {
