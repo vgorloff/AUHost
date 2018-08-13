@@ -10,6 +10,13 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
+   private lazy var customWindow = NSWindow(contentRect: CGRect(x: 196, y: 240, width: 480, height: 270),
+                                            styleMask: [.titled, .closable, .miniaturizable, .resizable],
+                                            backing: .buffered, defer: true)
+
+   private lazy var mainStoryboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+   private lazy var mainViewController = mainStoryboard.instantiateInitialController() as? ViewController
+
    private lazy var mlController: NSMediaLibraryBrowserController = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
@@ -18,26 +25,42 @@ class MainWindowController: NSWindowController {
    lazy var mainToolbar: MainToolbar = MainToolbar(identifier: self.mainToolbarID, showsReloadPlugInsItem: false)
    private let viewUIModel = MainViewUIModel()
 
-   override func windowDidLoad() {
-      super.windowDidLoad()
-      guard let vc = contentViewController as? ViewController else {
-         fatalError("Wrong type for initial view controller. Expected `\(ViewController.self)`")
-      }
-      vc.uiModel = viewUIModel
-      viewUIModel.mediaLibraryLoader.eventHandler = { [weak self] in
-         switch $0 {
-         case .mediaSourceChanged:
-            self?.mlController.isVisible = true
-         }
-      }
+   init() {
+      super.init(window: nil)
+      customWindow.toolbar = mainToolbar
+      window = customWindow
+      contentViewController = mainViewController
+      setupUI()
+      setupHandlers()
+
+      mainViewController?.uiModel = viewUIModel
       viewUIModel.mediaLibraryLoader.loadMediaLibrary()
-      window?.toolbar = mainToolbar
+   }
+
+   required init?(coder: NSCoder) {
+      fatalError("Please use this class from code.")
+   }
+
+   private func setupUI() {
+
+      customWindow.autorecalculatesKeyViewLoop = false
+      customWindow.minSize = CGSize(width: 320, height: 240)
+      customWindow.title = "Window"
+   }
+
+   private func setupHandlers() {
       mainToolbar.eventHandler = { [weak self] in
          switch $0 {
          case .toggleMediaLibrary:
             self?.mlController.togglePanel(nil)
          case .reloadPlugIns:
             break
+         }
+      }
+      viewUIModel.mediaLibraryLoader.eventHandler = { [weak self] in
+         switch $0 {
+         case .mediaSourceChanged:
+            self?.mlController.isVisible = true
          }
       }
    }

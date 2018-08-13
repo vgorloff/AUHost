@@ -10,33 +10,56 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
+   private lazy var mainStoryboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
+
+   private lazy var customWindow = NSWindow(contentRect: CGRect(x: 196, y: 240, width: 480, height: 270),
+                                            styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: true)
+
+   private lazy var mainViewController = mainStoryboard.instantiateInitialController() as? MainViewController
    private let viewUIModel = MainViewUIModel()
    private let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
    private lazy var mlController: NSMediaLibraryBrowserController = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
    }
 
-   override func windowDidLoad() {
-      super.windowDidLoad()
-      window?.toolbar = mainToolbar
+   init() {
+      super.init(window: nil)
+      customWindow.toolbar = mainToolbar
+      window = customWindow
+      contentViewController = mainViewController
+      setupUI()
       setupHandlers()
-      guard let vc = contentViewController as? MainViewController else {
-         fatalError("Wrong type for initial view controller. Expected `\(MainViewController.self)`")
+
+      mainViewController?.uiModel = viewUIModel
+      viewUIModel.mediaLibraryLoader.loadMediaLibrary()
+   }
+
+   override func showWindow(_ sender: Any?) {
+      super.showWindow(sender)
+   }
+
+   required init?(coder: NSCoder) {
+      fatalError()
+   }
+}
+
+extension MainWindowController {
+
+   private func setupUI() {
+      customWindow.autorecalculatesKeyViewLoop = false
+      customWindow.title = "Window"
+      if #available(OSX 10.12, *) {
+         customWindow.tabbingMode = .disallowed
       }
-      vc.uiModel = viewUIModel
+   }
+
+   private func setupHandlers() {
       viewUIModel.mediaLibraryLoader.eventHandler = { [weak self] in
          switch $0 {
          case .mediaSourceChanged:
             self?.mlController.isVisible = true
          }
       }
-      viewUIModel.mediaLibraryLoader.loadMediaLibrary()
-   }
-}
-
-extension MainWindowController {
-
-   private func setupHandlers() {
       mainToolbar.eventHandler = { [unowned self] in
          switch $0 {
          case .toggleMediaLibrary:

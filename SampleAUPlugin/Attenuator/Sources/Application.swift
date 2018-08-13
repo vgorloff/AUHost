@@ -11,8 +11,7 @@ import Cocoa
 class Application: NSApplication {
 
    private lazy var appMenu = MainMenu()
-   private lazy var storyboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-   private lazy var mainWindowController = storyboard.instantiateInitialController() as? MainWindowController
+   private lazy var mainWindowController = MainWindowController()
 
    override init() {
       super.init()
@@ -34,7 +33,7 @@ class Application: NSApplication {
 extension Application: NSApplicationDelegate {
 
    func applicationDidFinishLaunching(_: Notification) {
-      mainWindowController?.showWindow(nil)
+      mainWindowController.showWindow(nil)
    }
 
    func applicationWillTerminate(_: Notification) {
