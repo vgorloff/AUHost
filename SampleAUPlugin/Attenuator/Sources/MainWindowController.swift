@@ -14,8 +14,7 @@ class MainWindowController: NSWindowController {
                                             styleMask: [.titled, .closable, .miniaturizable, .resizable],
                                             backing: .buffered, defer: true)
 
-   private lazy var mainStoryboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-   private lazy var mainViewController = mainStoryboard.instantiateInitialController() as? ViewController
+   private lazy var mainViewController = ViewController()
 
    private lazy var mlController: NSMediaLibraryBrowserController = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
@@ -33,7 +32,7 @@ class MainWindowController: NSWindowController {
       setupUI()
       setupHandlers()
 
-      mainViewController?.uiModel = viewUIModel
+      mainViewController.uiModel = viewUIModel
       viewUIModel.mediaLibraryLoader.loadMediaLibrary()
    }
 
