@@ -10,13 +10,10 @@ import Cocoa
 
 class MainWindowController: NSWindowController {
 
-   private lazy var mainStoryboard = NSStoryboard(name: NSStoryboard.Name("Main"), bundle: nil)
-
-   private lazy var customWindow = NSWindow(contentRect: CGRect(x: 196, y: 240, width: 480, height: 270),
+   private lazy var customWindow = NSWindow(contentRect: CGRect(x: 196, y: 240, width: 640, height: 480),
                                             styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: true)
 
    private lazy var mainViewController = MainViewController()
-   private let viewUIModel = MainViewUIModel()
    private let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
    private lazy var mlController: NSMediaLibraryBrowserController = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
@@ -30,12 +27,7 @@ class MainWindowController: NSWindowController {
       setupUI()
       setupHandlers()
 
-      mainViewController.uiModel = viewUIModel
-      viewUIModel.mediaLibraryLoader.loadMediaLibrary()
-   }
-
-   override func showWindow(_ sender: Any?) {
-      super.showWindow(sender)
+      mainViewController.viewModel.mediaLibraryLoader.loadMediaLibrary()
    }
 
    required init?(coder: NSCoder) {
@@ -46,26 +38,24 @@ class MainWindowController: NSWindowController {
 extension MainWindowController {
 
    private func setupUI() {
-      customWindow.autorecalculatesKeyViewLoop = false
-      customWindow.title = "Window"
       if #available(OSX 10.12, *) {
          customWindow.tabbingMode = .disallowed
       }
    }
 
    private func setupHandlers() {
-      viewUIModel.mediaLibraryLoader.eventHandler = { [weak self] in
+      mainViewController.viewModel.mediaLibraryLoader.eventHandler = { [weak self] in
          switch $0 {
          case .mediaSourceChanged:
             self?.mlController.isVisible = true
          }
       }
-      mainToolbar.eventHandler = { [unowned self] in
+      mainToolbar.eventHandler = { [weak self] in
          switch $0 {
          case .toggleMediaLibrary:
-            self.mlController.togglePanel(self)
+            self?.mlController.togglePanel(self)
          case .reloadPlugIns:
-            self.viewUIModel.reloadEffects()
+            self?.mainViewController.viewModel.reloadEffects()
          }
       }
    }

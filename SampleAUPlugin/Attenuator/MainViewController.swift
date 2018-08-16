@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  Attenuator
 //
 //  Created by Volodymyr Gorlov on 14.01.16.
@@ -10,7 +10,7 @@ import AttenuatorKit
 import AVFoundation
 import Cocoa
 
-class ViewController: NSViewController {
+class MainViewController: NSViewController {
 
    private lazy var stackView1 = NSStackView()
    private lazy var stackView2 = NSStackView()
@@ -28,14 +28,7 @@ class ViewController: NSViewController {
       view = NSView()
    }
 
-   var uiModel: MainViewUIModel? {
-      willSet {
-         uiModel?.uiDelegate = nil
-      }
-      didSet {
-         uiModel?.uiDelegate = self
-      }
-   }
+   let viewModel = MainViewUIModel()
 
    private lazy var acd: AudioComponentDescription = {
       let flags = AudioComponentFlags.sandboxSafe.rawValue
@@ -53,6 +46,9 @@ class ViewController: NSViewController {
 
    init() {
       super.init(nibName: nil, bundle: nil)
+      AUAudioUnit.registerSubclass(AttenuatorAudioUnit.self, as: acd, name: "WaveLabs: Attenuator (Local)", version: version)
+      let registeredComponents = AVAudioUnitComponentManager.shared().components(matching: acd)
+      audioUnitComponent = registeredComponents.first
    }
 
    required init?(coder: NSCoder) {
@@ -64,16 +60,12 @@ class ViewController: NSViewController {
       setupUI()
       setupLayout()
       setupHandlers()
-      setupActions()
-      AUAudioUnit.registerSubclass(AttenuatorAudioUnit.self, as: acd, name: "WaveLabs: Attenuator (Local)", version: version)
-      let registeredComponents = AVAudioUnitComponentManager.shared().components(matching: acd)
-      audioUnitComponent = registeredComponents.first
    }
 }
 
-extension ViewController: MainViewUIHandling {
+extension MainViewController {
 
-   func handleEvent(_ event: MainViewUIModel.UIEvent) {
+   func handleEvent(_ event: MainViewUIModel.Event) {
       switch event {
       case .playbackEngineStageChanged(let state):
          switch state {
@@ -106,7 +98,7 @@ extension ViewController: MainViewUIHandling {
    }
 }
 
-extension ViewController {
+extension MainViewController {
 
    private func setupUI() {
 
@@ -115,7 +107,6 @@ extension ViewController {
       stackView1.addArrangedSubview(stackView2)
       stackView1.addArrangedSubview(mediaItemView)
       stackView1.addArrangedSubview(containerView)
-
       stackView1.alignment = .centerX
       stackView1.detachesHiddenViews = true
       stackView1.distribution = .fillProportionally
@@ -130,7 +121,6 @@ extension ViewController {
 
       stackView2.addArrangedSubview(buttonPlay)
       stackView2.addArrangedSubview(buttonLoadAU)
-
       stackView2.alignment = .centerY
       stackView2.detachesHiddenViews = true
       stackView2.distribution = .fillEqually
@@ -145,9 +135,9 @@ extension ViewController {
       buttonLoadAU.setContentHuggingPriority(.defaultHigh, for: .vertical)
       buttonLoadAU.title = "Load AU"
       buttonLoadAU.translatesAutoresizingMaskIntoConstraints = false
-
       buttonLoadAU.cell?.isBordered = true
 
+      buttonPlay.isEnabled = false
       buttonPlay.alignment = .center
       buttonPlay.bezelStyle = .rounded
       buttonPlay.font = NSFont.systemFont(ofSize: 13)
@@ -155,7 +145,6 @@ extension ViewController {
       buttonPlay.setContentHuggingPriority(.defaultHigh, for: .vertical)
       buttonPlay.title = "Play"
       buttonPlay.translatesAutoresizingMaskIntoConstraints = false
-
       buttonPlay.cell?.isBordered = true
    }
 
@@ -180,24 +169,21 @@ extension ViewController {
 
    private func setupHandlers() {
       mediaItemView.onCompleteDragWithObjects = { [weak self] in
-         self?.uiModel?.handlePastboard($0)
+         self?.viewModel.handlePastboard($0)
       }
-   }
-
-   private func setupActions() {
+      viewModel.eventHandler = { [weak self] in
+         self?.handleEvent($0)
+      }
       buttonPlay.target = self
       buttonPlay.action = #selector(actionTogglePlayAudio(_:))
-      buttonPlay.isEnabled = false
-      buttonPlay.title = "Play"
 
       buttonLoadAU.target = self
-      buttonLoadAU.title = "Load AU"
       buttonLoadAU.action = #selector(actionToggleEffect(_:))
    }
 
    @objc private func actionToggleEffect(_: AnyObject) {
       let component: AVAudioUnitComponent? = (audioUnit == nil) ? audioUnitComponent : nil
-      uiModel?.selectEffect(component) { [weak self] in
+      viewModel.selectEffect(component) { [weak self] in
          if let au = $0.auAudioUnit as? AttenuatorAudioUnit {
             self?.openEffectView(au: au)
          }
@@ -205,7 +191,7 @@ extension ViewController {
    }
 
    @objc private func actionTogglePlayAudio(_: AnyObject) {
-      uiModel?.togglePlay()
+      viewModel.togglePlay()
    }
 
    private func openEffectView(au: AttenuatorAudioUnit) {
@@ -218,8 +204,7 @@ extension ViewController {
                                               options: [], metrics: nil, views: ["subview": ctrl.view])
       let cV = NSLayoutConstraint.constraints(withVisualFormat: "V:|[subview]|",
                                               options: [], metrics: nil, views: ["subview": ctrl.view])
-      containerView.addConstraints(cH)
-      containerView.addConstraints(cV)
+      NSLayoutConstraint.activate(cH + cV)
       audioUnitController = ctrl
    }
 

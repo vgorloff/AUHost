@@ -8,21 +8,17 @@
 
 import AppKit
 
-protocol EffectWindowCoordination: class {
-   func handleEvent(_: EffectWindowController.CoordinationEvent)
-}
-
 class EffectWindowController: NSWindowController {
+
+   enum Event {
+      case windowWillClose
+   }
+
+   var eventHandler: ((Event) -> Void)?
 
    private lazy var customWindow = NSWindow(contentRect: CGRect(x: 1118, y: 286, width: 480, height: 270),
                                             styleMask: [.titled, .closable, .miniaturizable, .resizable, .nonactivatingPanel],
                                             backing: .buffered, defer: true)
-
-   enum CoordinationEvent {
-      case windowWillClose
-   }
-
-   weak var coordinationDelegate: EffectWindowCoordination?
 
    init() {
       super.init(window: nil)
@@ -35,18 +31,6 @@ class EffectWindowController: NSWindowController {
       fatalError("Please use this class from code.")
    }
 
-   private func setupUI() {
-
-      customWindow.autorecalculatesKeyViewLoop = false
-      customWindow.title = "Window"
-
-      windowFrameAutosaveName = NSWindow.FrameAutosaveName(string(fromClass: EffectWindowController.self) + ":WindowFrame")
-   }
-
-   override func awakeFromNib() {
-      super.awakeFromNib()
-   }
-
    deinit {
       log.deinitialize()
    }
@@ -55,6 +39,13 @@ class EffectWindowController: NSWindowController {
 extension EffectWindowController: NSWindowDelegate {
 
    func windowWillClose(_: Notification) {
-      coordinationDelegate?.handleEvent(.windowWillClose)
+      eventHandler?(.windowWillClose)
+   }
+}
+
+extension EffectWindowController {
+
+   private func setupUI() {
+      windowFrameAutosaveName = NSWindow.FrameAutosaveName(string(fromClass: EffectWindowController.self) + ":WindowFrame")
    }
 }
