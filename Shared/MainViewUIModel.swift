@@ -10,13 +10,9 @@ import AVFoundation
 import AppKit
 import Foundation
 
-protocol MainViewUIHandling: class {
-   func handleEvent(_: MainViewUIModel.UIEvent)
-}
-
 class MainViewUIModel {
 
-   enum UIEvent {
+   enum Event {
       case loadingEffects(Bool)
       case willSelectEffect
       case didSelectEffect(Error?)
@@ -28,33 +24,19 @@ class MainViewUIModel {
       case effectWindowWillClose
    }
 
-   weak var uiDelegate: MainViewUIHandling?
+   var eventHandler: ((Event) -> Void)?
 
    private var isEffectOpened = false
    private(set) var selectedAUComponent: AVAudioUnitComponent?
-   private(set) var availableEffects = [AVAudioUnitComponent]()
-   private(set) var availablePresets = [AUAudioUnitPreset]()
-   private let audioUnitDatasource = AudioComponentsUtility()
-   let mediaLibraryLoader = MediaLibraryUtility()
-   private let playbackEngine = PlaybackEngine()
+   private(set) var availableEffects: [AVAudioUnitComponent] = []
+   private(set) var availablePresets: [AUAudioUnitPreset] = []
+   private(set) lazy var audioUnitDatasource = AudioComponentsUtility()
+   private(set) lazy var mediaLibraryLoader = MediaLibraryUtility()
+   private(set) lazy var playbackEngine = PlaybackEngine()
    private var effectWindowController: NSWindowController? // Temporary store
 
    init() {
-      playbackEngine.changeHandler = { [weak self] in
-         self?.uiDelegate?.handleEvent(.playbackEngineStageChanged($0.newState))
-      }
-      audioUnitDatasource.handlerStateChange = { [weak self] change in guard let this = self else { return }
-         switch change {
-         case .audioComponentRegistered:
-            this.uiDelegate?.handleEvent(.audioComponentsChanged)
-         case .audioComponentInstanceInvalidated(let au, _):
-            if au.component == this.selectedAUComponent?.audioComponent {
-               this.selectEffect(nil, completion: nil)
-            } else {
-               this.uiDelegate?.handleEvent(.audioComponentsChanged)
-            }
-         }
-      }
+      setupHandlers()
    }
 }
 
@@ -70,29 +52,29 @@ extension MainViewUIModel {
    }
 
    func reloadEffects() {
-      uiDelegate?.handleEvent(.loadingEffects(true))
+      eventHandler?(.loadingEffects(true))
       audioUnitDatasource.updateEffectList { [weak self] in guard let this = self else { return }
          this.availableEffects = $0
-         this.uiDelegate?.handleEvent(.loadingEffects(false))
+         this.eventHandler?(.loadingEffects(false))
       }
    }
 
    func selectEffect(_ component: AVAudioUnitComponent?, completion: Completion<AVAudioUnit>?) {
-      uiDelegate?.handleEvent(.willSelectEffect)
+      eventHandler?(.willSelectEffect)
       playbackEngine.selectEffect(componentDescription: component?.audioComponentDescription) { [weak self] in
          guard let this = self else { return }
          switch $0 {
          case .effectCleared:
             this.availablePresets.removeAll()
             this.selectedAUComponent = nil
-            this.uiDelegate?.handleEvent(.didClearEffect)
+            this.eventHandler?(.didClearEffect)
          case .failure(let e):
             log.error(.controller, e)
-            this.uiDelegate?.handleEvent(.didSelectEffect(e))
+            this.eventHandler?(.didSelectEffect(e))
          case .success(let effect):
             this.availablePresets = effect.auAudioUnit.factoryPresets ?? []
             this.selectedAUComponent = component
-            this.uiDelegate?.handleEvent(.didSelectEffect(nil))
+            this.eventHandler?(.didSelectEffect(nil))
             completion?(effect)
          }
       }
@@ -125,7 +107,7 @@ extension MainViewUIModel {
             url.stopAccessingSecurityScopedResource() // Seems working fine without this line
          }
          _ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
-         uiDelegate?.handleEvent(.selectMedia(url))
+         eventHandler?(.selectMedia(url))
          let f = try AVAudioFile(forReading: url)
          playbackEngine.setFileToPlay(f)
          if playbackEngine.stateID == .stopped {
@@ -156,13 +138,13 @@ extension MainViewUIModel {
    func effectWindowWillOpen(_ vc: NSWindowController) {
       isEffectOpened = true
       effectWindowController = vc
-      uiDelegate?.handleEvent(.effectWindowWillOpen)
+      eventHandler?(.effectWindowWillOpen)
    }
 
    func effectWindowWillClose() {
       isEffectOpened = false
       effectWindowController = nil
-      uiDelegate?.handleEvent(.effectWindowWillClose)
+      eventHandler?(.effectWindowWillClose)
    }
 
    func handlePastboard(_ objects: MediaObjectPasteboardUtility.PasteboardObjects) {
@@ -178,6 +160,28 @@ extension MainViewUIModel {
          if let firstFilePath = filePaths.first {
             let url = NSURL(fileURLWithPath: firstFilePath)
             processFileAtURL(url as URL)
+         }
+      }
+   }
+}
+
+
+extension MainViewUIModel {
+
+   private func setupHandlers() {
+      playbackEngine.changeHandler = { [weak self] in
+         self?.eventHandler?(.playbackEngineStageChanged($0.newState))
+      }
+      audioUnitDatasource.handlerStateChange = { [weak self] change in guard let this = self else { return }
+         switch change {
+         case .audioComponentRegistered:
+            this.eventHandler?(.audioComponentsChanged)
+         case .audioComponentInstanceInvalidated(let au, _):
+            if au.component == this.selectedAUComponent?.audioComponent {
+               this.selectEffect(nil, completion: nil)
+            } else {
+               this.eventHandler?(.audioComponentsChanged)
+            }
          }
       }
    }

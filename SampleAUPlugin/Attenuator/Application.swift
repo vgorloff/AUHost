@@ -11,7 +11,7 @@ import Cocoa
 class Application: NSApplication {
 
    private lazy var appMenu = MainMenu()
-   private lazy var mainWindowController = MainWindowController()
+   private lazy var windowController = MainWindowController()
 
    override init() {
       super.init()
@@ -25,19 +25,12 @@ class Application: NSApplication {
    required init?(coder: NSCoder) {
       fatalError()
    }
-
-   deinit {
-   }
 }
 
 extension Application: NSApplicationDelegate {
 
    func applicationDidFinishLaunching(_: Notification) {
-      mainWindowController.showWindow(nil)
-   }
-
-   func applicationWillTerminate(_: Notification) {
-      // Insert code here to tear down your application
+      windowController.showWindow(nil)
    }
 
    func applicationShouldTerminateAfterLastWindowClosed(_: NSApplication) -> Bool {

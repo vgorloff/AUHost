@@ -14,52 +14,51 @@ class MainWindowController: NSWindowController {
                                             styleMask: [.titled, .closable, .miniaturizable, .resizable],
                                             backing: .buffered, defer: true)
 
-   private lazy var mainViewController = ViewController()
-
-   private lazy var mlController: NSMediaLibraryBrowserController = configure(NSMediaLibraryBrowserController.shared) {
-      $0.mediaLibraries = [NSMediaLibraryBrowserController.Library.audio]
+   private lazy var mediaLibraryBrowser = configure(NSMediaLibraryBrowserController.shared) {
+      $0.mediaLibraries = [.audio]
    }
-
-   let mainToolbarID = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
-   lazy var mainToolbar: MainToolbar = MainToolbar(identifier: self.mainToolbarID, showsReloadPlugInsItem: false)
-   private let viewUIModel = MainViewUIModel()
+   private lazy var viewController = MainViewController()
+   private lazy var mainToolbarID = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
+   private lazy var mainToolbar: MainToolbar = MainToolbar(identifier: self.mainToolbarID, showsReloadPlugInsItem: false)
 
    init() {
       super.init(window: nil)
       customWindow.toolbar = mainToolbar
       window = customWindow
-      contentViewController = mainViewController
+      contentViewController = viewController
+
       setupUI()
       setupHandlers()
-
-      mainViewController.uiModel = viewUIModel
-      viewUIModel.mediaLibraryLoader.loadMediaLibrary()
+      
+      viewController.viewModel.mediaLibraryLoader.loadMediaLibrary()
    }
 
    required init?(coder: NSCoder) {
       fatalError("Please use this class from code.")
    }
+}
+
+extension MainWindowController {
 
    private func setupUI() {
-
-      customWindow.autorecalculatesKeyViewLoop = false
-      customWindow.minSize = CGSize(width: 320, height: 240)
-      customWindow.title = "Window"
+      if #available(OSX 10.12, *) {
+         customWindow.tabbingMode = .disallowed
+      }
    }
 
    private func setupHandlers() {
       mainToolbar.eventHandler = { [weak self] in
          switch $0 {
          case .toggleMediaLibrary:
-            self?.mlController.togglePanel(nil)
+            self?.mediaLibraryBrowser.togglePanel(nil)
          case .reloadPlugIns:
             break
          }
       }
-      viewUIModel.mediaLibraryLoader.eventHandler = { [weak self] in
+      viewController.viewModel.mediaLibraryLoader.eventHandler = { [weak self] in
          switch $0 {
          case .mediaSourceChanged:
-            self?.mlController.isVisible = true
+            self?.mediaLibraryBrowser.isVisible = true
          }
       }
    }

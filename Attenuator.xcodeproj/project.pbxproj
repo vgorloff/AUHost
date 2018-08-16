@@ -31,7 +31,7 @@
 		80A180D61EFDC01C00716C26 /* AttenuatorAU.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180C61EFDBF3100716C26 /* AttenuatorAU.swift */; };
 		80A180D71EFDC02800716C26 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180CC1EFDBF4100716C26 /* main.swift */; };
 		80A180D81EFDC02800716C26 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180CD1EFDBF4100716C26 /* MainWindowController.swift */; };
-		80A180D91EFDC02800716C26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180CE1EFDBF4100716C26 /* ViewController.swift */; };
+		80A180D91EFDC02800716C26 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180CE1EFDBF4100716C26 /* MainViewController.swift */; };
 		80A180DA1EFDC03300716C26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80A180C81EFDBF4100716C26 /* Assets.xcassets */; };
 		80AC1BB91EEF38E90048151A /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BB81EEF38E30048151A /* Bundle.swift */; };
 		80AC1BBB1EEF39150048151A /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */; };
@@ -175,7 +175,7 @@
 		80A180C81EFDBF4100716C26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80A180CC1EFDBF4100716C26 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		80A180CD1EFDBF4100716C26 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		80A180CE1EFDBF4100716C26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		80A180CE1EFDBF4100716C26 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		80AC1BAB1EEF37C50048151A /* DispatchQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		80AC1BAC1EEF37C50048151A /* DispatchSemaphore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchSemaphore.swift; sourceTree = "<group>"; };
 		80AC1BAD1EEF37C50048151A /* OperationQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationQueue.swift; sourceTree = "<group>"; };
@@ -515,7 +515,7 @@
 				80C9E52C2120AD3E00EBB8A5 /* Application.swift */,
 				80A180CC1EFDBF4100716C26 /* main.swift */,
 				80A180CD1EFDBF4100716C26 /* MainWindowController.swift */,
-				80A180CE1EFDBF4100716C26 /* ViewController.swift */,
+				80A180CE1EFDBF4100716C26 /* MainViewController.swift */,
 				80C9E52E2120AFA000EBB8A5 /* MainMenu.swift */,
 				80A180C81EFDBF4100716C26 /* Assets.xcassets */,
 			);
@@ -812,7 +812,7 @@
 				80485FCE1DA6C39B004EFA32 /* PlaybackEngine.swift in Sources */,
 				80C23C42211607E900BD1321 /* RandomFactory.swift in Sources */,
 				80A180D71EFDC02800716C26 /* main.swift in Sources */,
-				80A180D91EFDC02800716C26 /* ViewController.swift in Sources */,
+				80A180D91EFDC02800716C26 /* MainViewController.swift in Sources */,
 				80C9E52D2120AD3E00EBB8A5 /* Application.swift in Sources */,
 				80C23C432116080F00BD1321 /* Functions.swift in Sources */,
 				80485FED1DA6CAB4004EFA32 /* AlternativeValue.swift in Sources */,
