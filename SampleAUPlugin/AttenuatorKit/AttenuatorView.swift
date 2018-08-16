@@ -12,7 +12,7 @@ import mcBase
 
 class AttenuatorView: NSView {
 
-   private (set) lazy var viewLevelMeter = VULevelMeter()
+   private(set) lazy var viewLevelMeter = VULevelMeter()
    private lazy var sliderGain = NSSlider()
    private lazy var stackView = NSStackView()
    private lazy var viewContainerView = NSView()
@@ -36,7 +36,6 @@ class AttenuatorView: NSView {
    deinit {
       log.deinitialize()
    }
-
 }
 
 extension AttenuatorView {

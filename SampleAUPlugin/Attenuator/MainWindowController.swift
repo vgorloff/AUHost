@@ -18,6 +18,7 @@ class MainWindowController: NSWindowController {
    private lazy var mediaLibraryBrowser = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [.audio]
    }
+
    private lazy var viewController = MainViewController()
    private lazy var mainToolbarID = NSToolbar.Identifier("ua.com.wavelabs.Attenuator:mainToolbar")
    private lazy var mainToolbar: MainToolbar = MainToolbar(identifier: self.mainToolbarID, showsReloadPlugInsItem: false)
@@ -30,7 +31,7 @@ class MainWindowController: NSWindowController {
 
       setupUI()
       setupHandlers()
-      
+
       viewController.viewModel.mediaLibraryLoader.loadMediaLibrary()
    }
 
