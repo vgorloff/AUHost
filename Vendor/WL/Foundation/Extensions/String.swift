@@ -243,6 +243,18 @@ extension String {
 
 extension String {
 
+   public func leftPadding(toLength: Int, withPad character: Character) -> String {
+      let stringLength = count
+      if stringLength < toLength {
+         return String(repeatElement(character, count: toLength - stringLength)) + self
+      } else {
+         return self
+      }
+   }
+}
+
+extension String {
+
    // See: https://stackoverflow.com/questions/39488488/unescaping-backslash-in-swift
    public var unescaped: String {
       let entities = ["\0": "\\0",

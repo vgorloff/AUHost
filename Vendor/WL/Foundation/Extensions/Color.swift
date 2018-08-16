@@ -215,9 +215,27 @@ extension Color {
    }
 }
 
+// Popular colors.
 public extension Color {
 
-   static let xFEFEFE = Color(hexValue: 0xFEFEFE)
-   static let xF0F0F0 = Color(hexValue: 0xF0F0F0)
+   static let x080808 = #colorLiteral(red: 0.0313725490196078, green: 0.0313725490196078, blue: 0.0313725490196078, alpha: 1)
+   static let x242424 = #colorLiteral(red: 0.1411764705882353, green: 0.1411764705882353, blue: 0.1411764705882353, alpha: 1)
+   static let x313232 = #colorLiteral(red: 0.1921568627450981, green: 0.1960784313725490, blue: 0.1960784313725490, alpha: 1)
+   static let x506743 = #colorLiteral(red: 0.3137254901960784, green: 0.4039215686274510, blue: 0.2627450980392157, alpha: 1)
+   static let x7EC2AF = #colorLiteral(red: 0.4941176470588236, green: 0.7607843137254902, blue: 0.6862745098039216, alpha: 1)
+   static let x90C0B2 = #colorLiteral(red: 0.5647058823529412, green: 0.7529411764705882, blue: 0.6980392156862745, alpha: 1)
+   static let x90D4C8 = #colorLiteral(red: 0.5647058823529412, green: 0.8313725490196079, blue: 0.7843137254901961, alpha: 1)
+   static let xA6DB8B = #colorLiteral(red: 0.6509803921568628, green: 0.8588235294117647, blue: 0.5450980392156862, alpha: 1)
+   static let xAEAEAE = #colorLiteral(red: 0.6823529411764706, green: 0.6823529411764706, blue: 0.6823529411764706, alpha: 1)
+   static let xB2B8C5 = #colorLiteral(red: 0.6980392156862745, green: 0.7215686274509804, blue: 0.7725490196078432, alpha: 1)
+   static let xB5F3F0 = #colorLiteral(red: 0.7098039215686275, green: 0.9529411764705882, blue: 0.9411764705882353, alpha: 1)
+   static let xBD11E7 = #colorLiteral(red: 0.7411764705882353, green: 0.0666666666666667, blue: 0.9058823529411765, alpha: 1)
+   static let xDEDEDE = #colorLiteral(red: 0.8705882352941177, green: 0.8705882352941177, blue: 0.8705882352941177, alpha: 1)
+   static let xEFEFF1 = #colorLiteral(red: 0.9372549019607843, green: 0.9372549019607843, blue: 0.9450980392156862, alpha: 1)
+   static let xF0F0F0 = #colorLiteral(red: 0.9411764705882353, green: 0.9411764705882353, blue: 0.9411764705882353, alpha: 1)
+   static let xF1F1F1 = #colorLiteral(red: 0.9450980392156862, green: 0.9450980392156862, blue: 0.9450980392156862, alpha: 1)
+   static let xFAFAFA = #colorLiteral(red: 0.9803921568627451, green: 0.9803921568627451, blue: 0.9803921568627451, alpha: 1)
+   static let xFEFEFE = #colorLiteral(red: 0.9960784313725490, green: 0.9960784313725490, blue: 0.9960784313725490, alpha: 1)
+   static let xFF0000 = #colorLiteral(red: 1.0000000000000000, green: 0.0000000000000000, blue: 0.0000000000000000, alpha: 1)
 
 }

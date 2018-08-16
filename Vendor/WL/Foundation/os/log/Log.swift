@@ -78,8 +78,7 @@ public class Log<T: LogCategory> {
 }
 
 extension Log {
-
-   public func initialize(message: String? = nil, function: String = #function, file: String = #file,
+   public func initialize(_ message: String? = nil, function: String = #function, file: String = #file,
                           line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
       if #available(OSX 10.12, iOS 10.0, *) {
          guard !RuntimeInfo.isUnderAnyTesting else {
@@ -96,7 +95,7 @@ extension Log {
       }
    }
 
-   public func deinitialize(message: String? = nil, function: String = #function, file: String = #file, line: Int32 = #line,
+   public func deinitialize(_ message: String? = nil, function: String = #function, file: String = #file, line: Int32 = #line,
                             dso: UnsafeRawPointer? = #dsohandle) {
       if #available(OSX 10.12, iOS 10.0, *) {
          guard !RuntimeInfo.isUnderAnyTesting else {
@@ -237,7 +236,7 @@ extension Log {
    private func log(type: OSLogType, message: String, logger: OSLog, dso: UnsafeRawPointer?) {
       if #available(OSX 10.12, iOS 10.0, *) {
          if RuntimeInfo.isInsidePlayground || LogBundle.isCommandLine {
-            print("[\(type.stringValue.uppercased())] \(message)")
+            print("[\(type.codeValue)] \(message)")
          } else {
             os_log("%{public}@", dso: dso, log: logger, type: type, message)
          }
@@ -258,7 +257,13 @@ extension Log {
 
    private func format(_ message: String, function: String, file: String, line: Int32) -> String {
       let filename = (file as NSString).lastPathComponent
-      return "\(message) → \(function) ⋆ \(filename):\(line)"
+      let msg: String
+      if BuildInfo.isDebug {
+         msg = "\(filename):\(line) ⋆ \(function)\n → \(message)"
+      } else {
+         msg = "\(filename):\(line) ⋆ \(function) → \(message)"
+      }
+      return msg
    }
 }
 
@@ -280,6 +285,24 @@ extension OSLogType {
          return "fault"
       default:
          return "unknown"
+      }
+   }
+
+   @available(OSX 10.12, *)
+   public var codeValue: String {
+      switch self {
+      case .default:
+         return "D"
+      case .info:
+         return "I"
+      case .debug:
+         return "D"
+      case .error:
+         return "E"
+      case .fault:
+         return "F"
+      default:
+         return "U"
       }
    }
 }

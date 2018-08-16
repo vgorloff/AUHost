@@ -15,13 +15,12 @@ public final class MediaLibraryUtility: NSObject {
       case mediaSourceChanged([String: MLMediaSource])
    }
 
-   public var eventHandler: ((Event) -> Void)?
-
    private let mediaLibrary: MLMediaLibrary
    private var mediaLibraryLoadCallback: ((Event) -> Void)?
    private var mediaLibraryIsLoaded = false
    var observation: NSKeyValueObservation?
 
+   public var eventHandler: ((Event) -> Void)?
 
    public override init() {
       mediaLibrary = MLMediaLibrary(options: [MLMediaLoadSourceTypesKey: MLMediaSourceType.audio.rawValue])
