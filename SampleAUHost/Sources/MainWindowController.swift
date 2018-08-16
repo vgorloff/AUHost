@@ -15,7 +15,7 @@ class MainWindowController: NSWindowController {
    private lazy var customWindow = NSWindow(contentRect: CGRect(x: 196, y: 240, width: 480, height: 270),
                                             styleMask: [.titled, .closable, .miniaturizable, .resizable], backing: .buffered, defer: true)
 
-   private lazy var mainViewController = mainStoryboard.instantiateInitialController() as? MainViewController
+   private lazy var mainViewController = MainViewController()
    private let viewUIModel = MainViewUIModel()
    private let mainToolbar = MainToolbar(identifier: NSToolbar.Identifier("ua.com.wavelabs.AUHost:mainToolbar"))
    private lazy var mlController: NSMediaLibraryBrowserController = configure(NSMediaLibraryBrowserController.shared) {
@@ -30,7 +30,7 @@ class MainWindowController: NSWindowController {
       setupUI()
       setupHandlers()
 
-      mainViewController?.uiModel = viewUIModel
+      mainViewController.uiModel = viewUIModel
       viewUIModel.mediaLibraryLoader.loadMediaLibrary()
    }
 
