@@ -9,7 +9,7 @@ class Automation
 
    GitRepoDirPath = ENV['PWD']
    VersionFilePath = GitRepoDirPath + "/Configuration/Version.xcconfig"
-   XCodeProjectFilePathAUHost = GitRepoDirPath + "/AUHost.xcodeproj"
+   XCodeProjectFilePathAUHost = GitRepoDirPath + "/Attenuator.xcodeproj"
    XCodeProjectFilePathPlugIn = GitRepoDirPath + "/Attenuator.xcodeproj"
    TmpDirPath = GitRepoDirPath + "/DerivedData"
    KeyChainPath = TmpDirPath + "/VST3NetSend.keychain"

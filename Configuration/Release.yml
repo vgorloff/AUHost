@@ -1,3 +1,3 @@
-name: Xcode 10.0 compatibility update.
+name: Good bye XIBs.
 description:
-   - Automation scripts update.
+   - UI made from code.
