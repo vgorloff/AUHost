@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80CE7408212620EF00A9B298 /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FR_815437241009 /* VULevelMeter.Shaders.metal */; };
 		BF_108386241351 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_420833202030 /* MediaItemView.swift */; };
 		BF_120051973118 /* GLKMatrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_334412403324 /* GLKMatrix4.swift */; };
 		BF_120197410682 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_771218874362 /* Bundle.swift */; };
@@ -44,7 +45,6 @@
 		BF_426323267642 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_397463362798 /* EffectWindowController.swift */; };
 		BF_436522488763 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_326191943752 /* AttenuatorKit.framework */; };
 		BF_450647299459 /* mcBase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BF_462811020165 /* VULevelMeter.Shaders.metal in Resources */ = {isa = PBXBuildFile; fileRef = FR_815437241009 /* VULevelMeter.Shaders.metal */; };
 		BF_471128291173 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_167156401758 /* MainToolbar.Event.swift */; };
 		BF_483256707278 /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_523879450642 /* MediaObjectPasteboardUtility.swift */; };
 		BF_499899976946 /* BufferDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_815381213556 /* BufferDatasource.swift */; };
@@ -268,7 +268,7 @@
 		FR_768423343955 /* MainViewUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewUIModel.swift; sourceTree = "<group>"; };
 		FR_771218874362 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		FR_815381213556 /* BufferDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
-		FR_815437241009 /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
+		FR_815437241009 /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
 		FR_817548472275 /* CoreTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTypeAliases.swift; sourceTree = "<group>"; };
 		FR_819732604982 /* VULevelMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
 		FR_821723210092 /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
@@ -334,7 +334,6 @@
 				144C1910A1CA27F7989B4B5C /* Shared */,
 				19F06BCFBC3AEBA276516984 /* Types */,
 			);
-			name = WL;
 			path = WL;
 			sourceTree = "<group>";
 		};
@@ -349,7 +348,6 @@
 				FR_348139716022 /* AttenuatorViewController.swift */,
 				FR_613679079742 /* Logger.swift */,
 			);
-			name = AttenuatorKit;
 			path = AttenuatorKit;
 			sourceTree = "<group>";
 		};
@@ -358,7 +356,6 @@
 			children = (
 				69A3F940ABA354E3066915C6 /* Configuration */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -367,7 +364,6 @@
 			children = (
 				6D39A0E89B0B13E2872CC580 /* Sources */,
 			);
-			name = Types;
 			path = Types;
 			sourceTree = "<group>";
 		};
@@ -377,7 +373,6 @@
 				B4BDD1A9CDCA74DFABFC3844 /* Extensions */,
 				B6CDDD5D10222A1CFF99FD28 /* Media */,
 			);
-			name = AppKit;
 			path = AppKit;
 			sourceTree = "<group>";
 		};
@@ -386,7 +381,6 @@
 			children = (
 				FR_886066776493 /* Project.xcconfig */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -399,7 +393,6 @@
 				FR_372664141963 /* MTLDevice.swift */,
 				FR_104646605203 /* UnsafeMutableAudioBufferListPointer.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -408,7 +401,6 @@
 			children = (
 				FR_471329193054 /* Log.swift */,
 			);
-			name = log;
 			path = log;
 			sourceTree = "<group>";
 		};
@@ -418,7 +410,6 @@
 				FR_841180301618 /* Color.swift */,
 				FR_220013696539 /* String.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -433,7 +424,6 @@
 				FR_153099800804 /* SpinLock.swift */,
 				FR_653613194344 /* UnfairLock.swift */,
 			);
-			name = Concurrency;
 			path = Concurrency;
 			sourceTree = "<group>";
 		};
@@ -443,7 +433,6 @@
 				FR_921324438643 /* App-macOS.xcconfig */,
 				FR_385141638974 /* Framework-macOS.xcconfig */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -453,7 +442,6 @@
 				FR_840642450824 /* MinMax.swift */,
 				FR_901061600663 /* RandomFactory.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -470,7 +458,6 @@
 				FR_915164787290 /* main.swift */,
 				FR_331675799995 /* Assets.xcassets */,
 			);
-			name = Attenuator;
 			path = Attenuator;
 			sourceTree = "<group>";
 		};
@@ -479,7 +466,6 @@
 			children = (
 				FR_384542317052 /* NotificationObserver.swift */,
 			);
-			name = Notification;
 			path = Notification;
 			sourceTree = "<group>";
 		};
@@ -493,7 +479,6 @@
 				FR_257820063930 /* PlaybackEngine.swift */,
 				FR_339395790607 /* PlaybackEngineContext.swift */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -503,7 +488,6 @@
 				FR_913492155579 /* AlternativeValue.swift */,
 				FR_817548472275 /* CoreTypeAliases.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -520,7 +504,6 @@
 				FR_265111543119 /* MainWindowController.swift */,
 				FR_589106379467 /* main.swift */,
 			);
-			name = SampleAUHost;
 			path = SampleAUHost;
 			sourceTree = "<group>";
 		};
@@ -533,7 +516,6 @@
 				FR_821723210092 /* WaveformCacheUtility.swift */,
 				FR_163349485050 /* WaveformDrawingDataProvider.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -543,7 +525,6 @@
 				467FFE8FA32E2C893305A394 /* Extensions */,
 				9E20E4CEE0BC144A4F655B3A /* Sources */,
 			);
-			name = Media;
 			path = Media;
 			sourceTree = "<group>";
 		};
@@ -554,7 +535,6 @@
 				B24E7175852E784421D8FFB0 /* AttenuatorAU */,
 				0AAE74974C975FB6D07D6E8B /* AttenuatorKit */,
 			);
-			name = SampleAUPlugin;
 			path = SampleAUPlugin;
 			sourceTree = "<group>";
 		};
@@ -564,7 +544,6 @@
 				0A77060B7A79FCCC150D1296 /* WL */,
 				FR_273837539070 /* Logger.swift */,
 			);
-			name = Vendor;
 			path = Vendor;
 			sourceTree = "<group>";
 		};
@@ -575,7 +554,6 @@
 				FR_901334806416 /* Info.plist */,
 				FR_174547737971 /* AttenuatorAU.swift */,
 			);
-			name = AttenuatorAU;
 			path = AttenuatorAU;
 			sourceTree = "<group>";
 		};
@@ -585,7 +563,6 @@
 				FR_120747681218 /* NSNib.swift */,
 				FR_511882230498 /* NSToolbar.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -600,7 +577,6 @@
 				FR_819732604982 /* VULevelMeter.swift */,
 				FR_914617087001 /* VULevelMeter.DrawingData.swift */,
 			);
-			name = Media;
 			path = Media;
 			sourceTree = "<group>";
 		};
@@ -612,7 +588,6 @@
 				B9C145DC23372E06275A77D3 /* Sources */,
 				E179F4B4F20F99C5C891CC5E /* os */,
 			);
-			name = Foundation;
 			path = Foundation;
 			sourceTree = "<group>";
 		};
@@ -625,7 +600,6 @@
 				FR_193470404895 /* Result.swift */,
 				FR_138548045935 /* RuntimeInfo.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -637,7 +611,6 @@
 				C33EE520A4A7249BDDF6923C /* Extensions */,
 				8A98C64E03D3DCAC1EA90056 /* Sources */,
 			);
-			name = Core;
 			path = Core;
 			sourceTree = "<group>";
 		};
@@ -649,7 +622,6 @@
 				FR_356432211764 /* DispatchSemaphore.swift */,
 				FR_187228268653 /* OperationQueue.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -658,7 +630,6 @@
 			children = (
 				FR_358188614321 /* NumericTypesConversions.swift */,
 			);
-			name = Converters;
 			path = Converters;
 			sourceTree = "<group>";
 		};
@@ -667,7 +638,6 @@
 			children = (
 				4DADA91992F46E2CC285BE44 /* log */,
 			);
-			name = os;
 			path = os;
 			sourceTree = "<group>";
 		};
@@ -675,11 +645,8 @@
 			isa = PBXGroup;
 			children = (
 				467C05AD16D93DE7433F7004 /* Configuration */,
-				G_8620238527590 /* Products */,
 				8EF900758D1751896AF40310 /* SampleAUHost */,
 				A7A7CD950F628795767C2972 /* SampleAUPlugin */,
-				86215B2225CDBCDA6AFD3B14 /* Shared */,
-				B24B9AC8D5946C06D3CC722B /* Vendor */,
 				86215B2225CDBCDA6AFD3B14 /* Shared */,
 				B24B9AC8D5946C06D3CC722B /* Vendor */,
 				G_8620238527590 /* Products */,
@@ -706,7 +673,7 @@
 /* Begin PBXNativeTarget section */
 		NT_159652559712 /* Attenuator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CL_159652559712-1 /* Build configuration list for PBXNativeTarget "Attenuator" */;
+			buildConfigurationList = "CL_159652559712-1" /* Build configuration list for PBXNativeTarget "Attenuator" */;
 			buildPhases = (
 				SBP_15965255971 /* Sources */,
 				RBP_15965255971 /* Resources */,
@@ -769,7 +736,6 @@
 			buildConfigurationList = CL_480799490371 /* Build configuration list for PBXNativeTarget "mcBase" */;
 			buildPhases = (
 				SBP_48079949037 /* Sources */,
-				RBP_48079949037 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -832,6 +798,9 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
 			mainGroup = G_8448771205358;
 			productRefGroup = G_8620238527590 /* Products */;
 			projectDirPath = "";
@@ -852,14 +821,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_380722562613 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		RBP_48079949037 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF_462811020165 /* VULevelMeter.Shaders.metal in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -981,6 +942,7 @@
 				BF_347185512254 /* DispatchSemaphore.swift in Sources */,
 				BF_902159462898 /* DisplayLink.GenericRenderer.swift in Sources */,
 				BF_405665347337 /* DisplayLink.swift in Sources */,
+				80CE7408212620EF00A9B298 /* VULevelMeter.Shaders.metal in Sources */,
 				BF_336052649090 /* Functions.swift in Sources */,
 				BF_120051973118 /* GLKMatrix4.swift in Sources */,
 				BF_715482638275 /* Log.swift in Sources */,
@@ -1221,7 +1183,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		CL_159652559712-1 /* Build configuration list for PBXNativeTarget "Attenuator" */ = {
+		"CL_159652559712-1" /* Build configuration list for PBXNativeTarget "Attenuator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC_342975071444 /* Debug */,
