@@ -10,7 +10,6 @@
 		8005CA4B1EF6B3400091E075 /* MainViewUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */; };
 		80130BA61C4C538800D6DDAC /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */; };
 		8035EF301B3752030026AD7D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF2F1B3752030026AD7D /* MainViewController.swift */; };
-		8035EF351B3752030026AD7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8035EF331B3752030026AD7D /* Main.storyboard */; };
 		8035EF3E1B375EE00026AD7D /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8035EF3D1B375EE00026AD7D /* MainWindowController.swift */; };
 		804674271D25DAA1000989CA /* WaveformCacheUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674251D25DAA1000989CA /* WaveformCacheUtility.swift */; };
 		804674281D25DAA1000989CA /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */; };
@@ -78,7 +77,6 @@
 		80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
 		8035EF2A1B3752030026AD7D /* AUHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8035EF2F1B3752030026AD7D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		8035EF341B3752030026AD7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8035EF3D1B375EE00026AD7D /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		804674251D25DAA1000989CA /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
 		804674261D25DAA1000989CA /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
@@ -369,7 +367,6 @@
 		C5E335AB1C4FE7B000CD42BB /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8035EF331B3752030026AD7D /* Main.storyboard */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -467,7 +464,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8035EF351B3752030026AD7D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -539,17 +535,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		8035EF331B3752030026AD7D /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8035EF341B3752030026AD7D /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		8035EF371B3752030026AD7D /* Debug */ = {
