@@ -16,6 +16,9 @@ public final class WaveformDrawingDataProvider {
    private var xOffset: CGFloat = 0
    private var yOffset: CGFloat = 0
 
+   public init() {
+   }
+
    public func addVerticalLineAtXPosition(xPosition: CGFloat, valueMin: CGFloat, valueMax: CGFloat) {
       let middleY = 0.5 * height
       let halfAmplitude = middleY

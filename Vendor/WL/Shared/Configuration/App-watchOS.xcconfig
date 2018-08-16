@@ -1,0 +1,16 @@
+//
+//  iOSApp.xcconfig
+//  mc
+//
+//  Created by Vlad Gorlov on 29.04.18.
+//  Copyright © 2018 Demo. All rights reserved.
+//
+
+#include "Common.xcconfig"
+
+SDKROOT = watchos
+
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+LD_RUNPATH_SEARCH_PATHS = $(inherited) @executable_path/Frameworks
+
+DYLIB_INSTALL_NAME_BASE = @rpath

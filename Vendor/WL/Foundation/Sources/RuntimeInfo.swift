@@ -20,6 +20,9 @@ public struct RuntimeInfo {
       public static let playgroundTestingMode = "com.mc.PlaygroundTestingMode"
       public static let uiTestingMode = "com.mc.UITestingMode"
       public static let isNetworkingTraceEnabled = "com.mc.isNetworkingTraceEnabled"
+      public static let inMemoryStore = "com.mc.inMemoryStore"
+      public static let isStubsDisabled = "com.mc.isStubsDisabled"
+      public static let shouldAssertOnAmbiguousLayout = "com.mc.assertOnAmbiguousLayout"
    }
 
 	/**
@@ -51,12 +54,24 @@ public struct RuntimeInfo {
 		ProcessInfo.processInfo.environment[Constants.uiTestingMode] != nil
 	}()
 
+   public static let inMemoryStore: Bool = {
+      ProcessInfo.processInfo.environment[Constants.inMemoryStore] != nil
+   }()
+
    public static let isUnderPlaygroundTesting: Bool = {
       ProcessInfo.processInfo.environment[Constants.playgroundTestingMode] != nil
    }()
 
    public static let isNetworkingTraceEnabled: Bool = {
       ProcessInfo.processInfo.environment[Constants.isNetworkingTraceEnabled] != nil
+   }()
+
+   public static let isStubsDisabled: Bool = {
+      ProcessInfo.processInfo.environment[Constants.isStubsDisabled] != nil
+   }()
+
+   public static let shouldAssertOnAmbiguousLayout: Bool = {
+      ProcessInfo.processInfo.environment[Constants.shouldAssertOnAmbiguousLayout] != nil
    }()
 
    #if os(iOS)
