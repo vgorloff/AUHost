@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80CF249021262374002C2CD6 /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FR_815437241009 /* VULevelMeter.Shaders.metal */; };
 		BF_108386241351 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_420833202030 /* MediaItemView.swift */; };
+		BF_116550122392 /* mcBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF_120051973118 /* GLKMatrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_334412403324 /* GLKMatrix4.swift */; };
 		BF_120197410682 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_771218874362 /* Bundle.swift */; };
 		BF_122479688698 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_594631765386 /* NonRecursiveLocking.swift */; };
@@ -17,7 +17,7 @@
 		BF_136079885591 /* NSNib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_120747681218 /* NSNib.swift */; };
 		BF_166673019280 /* AudioBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_201236785267 /* AudioBuffer.swift */; };
 		BF_166813772389 /* MTLDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_372664141963 /* MTLDevice.swift */; };
-		BF_182101490142 /* mcBase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF_182101490142 /* mcBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF_218431404757 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_868331935700 /* MainMenu.swift */; };
 		BF_220368219085 /* UnsafeMutableAudioBufferListPointer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_104646605203 /* UnsafeMutableAudioBufferListPointer.swift */; };
 		BF_226540662901 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_915164787290 /* main.swift */; };
@@ -44,7 +44,8 @@
 		BF_417973310869 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_163349485050 /* WaveformDrawingDataProvider.swift */; };
 		BF_426323267642 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_397463362798 /* EffectWindowController.swift */; };
 		BF_436522488763 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_326191943752 /* AttenuatorKit.framework */; };
-		BF_450647299459 /* mcBase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF_450647299459 /* mcBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF_462811020165 /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FR_815437241009 /* VULevelMeter.Shaders.metal */; };
 		BF_471128291173 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_167156401758 /* MainToolbar.Event.swift */; };
 		BF_483256707278 /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_523879450642 /* MediaObjectPasteboardUtility.swift */; };
 		BF_499899976946 /* BufferDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_815381213556 /* BufferDatasource.swift */; };
@@ -56,13 +57,13 @@
 		BF_572136877846 /* RandomFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_901061600663 /* RandomFactory.swift */; };
 		BF_593725304816 /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_226788898884 /* AttenuatorView.swift */; };
 		BF_612893257700 /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_514056196278 /* DispatchQueue.swift */; };
-		BF_618360049365 /* AttenuatorKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FR_326191943752 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF_618360049365 /* AttenuatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FR_326191943752 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF_620035775470 /* NumericTypesConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_358188614321 /* NumericTypesConversions.swift */; };
 		BF_621017153203 /* SpinLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_153099800804 /* SpinLock.swift */; };
 		BF_621129062072 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_108768514913 /* MainViewController.swift */; };
 		BF_632526416738 /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_339395790607 /* PlaybackEngineContext.swift */; };
 		BF_635084898562 /* MainViewUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_768423343955 /* MainViewUIModel.swift */; };
-		BF_641474248042 /* mcBase.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF_641474248042 /* mcBase.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF_651476620979 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_589106379467 /* main.swift */; };
 		BF_668532946694 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_220013696539 /* String.swift */; };
 		BF_679717566796 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_172951373363 /* Logger.swift */; };
@@ -70,7 +71,7 @@
 		BF_682442558561 /* CoreTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_817548472275 /* CoreTypeAliases.swift */; };
 		BF_686167947020 /* MediaLibraryUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_410250789410 /* MediaLibraryUtility.swift */; };
 		BF_693743575159 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_420833202030 /* MediaItemView.swift */; };
-		BF_696105582496 /* AttenuatorKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = FR_326191943752 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BF_696105582496 /* AttenuatorKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FR_326191943752 /* AttenuatorKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BF_715482638275 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_471329193054 /* Log.swift */; };
 		BF_721203222755 /* mcBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; };
 		BF_724421257235 /* AudioComponentDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_362841609540 /* AudioComponentDescription.swift */; };
@@ -89,7 +90,7 @@
 		BF_861622764164 /* VULevelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_819732604982 /* VULevelMeter.swift */; };
 		BF_865353549067 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_914821030408 /* Application.swift */; };
 		BF_871483697180 /* mcBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FR_480799490371 /* mcBase.framework */; };
-		BF_875997168301 /* AttenuatorAU.appex in CopyFiles */ = {isa = PBXBuildFile; fileRef = FR_745679344536 /* AttenuatorAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BF_875997168301 /* AttenuatorAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FR_745679344536 /* AttenuatorAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		BF_888980183033 /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_286667488207 /* BuildInfo.swift */; };
 		BF_902159462898 /* DisplayLink.GenericRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_242455603820 /* DisplayLink.GenericRenderer.swift */; };
 		BF_902239814856 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_131151532904 /* MainToolbar.swift */; };
@@ -152,46 +153,61 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		CFBP_1318432118 /* CopyFiles */ = {
+		CFBP_1318432118 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BF_618360049365 /* AttenuatorKit.framework in CopyFiles */,
-				BF_641474248042 /* mcBase.framework in CopyFiles */,
+				BF_618360049365 /* AttenuatorKit.framework in Embed Frameworks */,
+				BF_641474248042 /* mcBase.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFBP_2509519818 /* CopyFiles */ = {
+		CFBP_2509519818 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BF_182101490142 /* mcBase.framework in CopyFiles */,
+				BF_182101490142 /* mcBase.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFBP_6674098902 /* CopyFiles */ = {
+		CFBP_6674098902 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				BF_875997168301 /* AttenuatorAU.appex in CopyFiles */,
+				BF_875997168301 /* AttenuatorAU.appex in Embed App Extensions */,
 			);
+			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFBP_6744944455 /* CopyFiles */ = {
+		CFBP_6744944455 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BF_696105582496 /* AttenuatorKit.framework in CopyFiles */,
-				BF_450647299459 /* mcBase.framework in CopyFiles */,
+				BF_696105582496 /* AttenuatorKit.framework in Embed Frameworks */,
+				BF_450647299459 /* mcBase.framework in Embed Frameworks */,
 			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CFBP_8713768808 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BF_116550122392 /* mcBase.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -268,7 +284,7 @@
 		FR_768423343955 /* MainViewUIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewUIModel.swift; sourceTree = "<group>"; };
 		FR_771218874362 /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		FR_815381213556 /* BufferDatasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferDatasource.swift; sourceTree = "<group>"; };
-		FR_815437241009 /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
+		FR_815437241009 /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
 		FR_817548472275 /* CoreTypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTypeAliases.swift; sourceTree = "<group>"; };
 		FR_819732604982 /* VULevelMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VULevelMeter.swift; sourceTree = "<group>"; };
 		FR_821723210092 /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
@@ -324,70 +340,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00ECF645066A1930CA8E21C7 /* Shared */ = {
+		02418C93399864D6D5A55E8F /* WL */ = {
 			isa = PBXGroup;
 			children = (
-				96B32EE8D7481D756E4A97CA /* Configuration */,
+				0A268538CB5DDF9228B69964 /* AppKit */,
+				DCA74FF2C7755A8AF6BE1181 /* Core */,
+				ED87D87AD5E36477C9A25656 /* Foundation */,
+				98A5A9DA9FD8C8DAB4767343 /* Media */,
+				BD35CD5DCC2035E483ADD7D4 /* Shared */,
+				9ECC8E450D30CC94167B51B3 /* Types */,
 			);
-			path = Shared;
+			name = WL;
+			path = WL;
 			sourceTree = "<group>";
 		};
-		0A72F7B6C76049C4286AC918 /* Extensions */ = {
+		0281D5F5ABAF43C4D028A6A4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FR_841180301618 /* Color.swift */,
 				FR_220013696539 /* String.swift */,
 			);
+			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		0B4565B80F8E930B15BE5AA0 /* Attenuator */ = {
-			isa = PBXGroup;
-			children = (
-				FR_486426767884 /* App.entitlements */,
-				FR_434848954846 /* Info.plist */,
-				FR_914821030408 /* Application.swift */,
-				FR_399297571310 /* Logger.swift */,
-				FR_868331935700 /* MainMenu.swift */,
-				FR_357021155731 /* MainViewController.swift */,
-				FR_190835224210 /* MainWindowController.swift */,
-				FR_915164787290 /* main.swift */,
-				FR_331675799995 /* Assets.xcassets */,
-			);
-			path = Attenuator;
-			sourceTree = "<group>";
-		};
-		1E79C84EB8592A495429F697 /* log */ = {
-			isa = PBXGroup;
-			children = (
-				FR_471329193054 /* Log.swift */,
-			);
-			path = log;
-			sourceTree = "<group>";
-		};
-		34E6252B5A5C5831C8A41A24 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				FR_840642450824 /* MinMax.swift */,
-				FR_901061600663 /* RandomFactory.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		3B751D709ACFBF6745B1BE61 /* WL */ = {
-			isa = PBXGroup;
-			children = (
-				517377211A1DA34FE88D3A44 /* AppKit */,
-				671BD14C995FA4EEF3C94416 /* Core */,
-				8C107C47AF84BB0C9BD9B2CA /* Foundation */,
-				70673D46B836CA5EC3237902 /* Media */,
-				00ECF645066A1930CA8E21C7 /* Shared */,
-				DB7447867CD04F6885E26F3F /* Types */,
-			);
-			path = WL;
-			sourceTree = "<group>";
-		};
-		3E4736021E89377C1E23BC29 /* Extensions */ = {
+		06128B4FADA5403B4A4A7074 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FR_201236785267 /* AudioBuffer.swift */,
@@ -396,94 +373,21 @@
 				FR_372664141963 /* MTLDevice.swift */,
 				FR_104646605203 /* UnsafeMutableAudioBufferListPointer.swift */,
 			);
+			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4D8DB743D262B3330C26801D /* Vendor */ = {
+		0A268538CB5DDF9228B69964 /* AppKit */ = {
 			isa = PBXGroup;
 			children = (
-				3B751D709ACFBF6745B1BE61 /* WL */,
-				FR_273837539070 /* Logger.swift */,
+				DFD3CB39BA5E91F5F43A594F /* Extensions */,
+				CE3375BB0B32C4E58573041C /* Media */,
 			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		517377211A1DA34FE88D3A44 /* AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				5C400CA41EAEFE7590A9C111 /* Extensions */,
-				5B30C9D379FCFE65E98A365A /* Media */,
-			);
+			name = AppKit;
 			path = AppKit;
 			sourceTree = "<group>";
 		};
-		54BADDBFDB4C6E180E2B4F4C /* AttenuatorKit */ = {
-			isa = PBXGroup;
-			children = (
-				FR_255189197228 /* Info.plist */,
-				FR_384870902945 /* AttenuatorAudioUnit.swift */,
-				FR_680334338110 /* AttenuatorDSPKernel.swift */,
-				FR_148513859102 /* AttenuatorParameter.swift */,
-				FR_226788898884 /* AttenuatorView.swift */,
-				FR_348139716022 /* AttenuatorViewController.swift */,
-				FR_613679079742 /* Logger.swift */,
-			);
-			path = AttenuatorKit;
-			sourceTree = "<group>";
-		};
-		582A18A78958F3C74970AF5F /* Converters */ = {
-			isa = PBXGroup;
-			children = (
-				FR_358188614321 /* NumericTypesConversions.swift */,
-			);
-			path = Converters;
-			sourceTree = "<group>";
-		};
-		5B30C9D379FCFE65E98A365A /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				FR_815437241009 /* VULevelMeter.Shaders.metal */,
-				FR_100578481280 /* DisplayLink.swift */,
-				FR_242455603820 /* DisplayLink.GenericRenderer.swift */,
-				FR_410250789410 /* MediaLibraryUtility.swift */,
-				FR_523879450642 /* MediaObjectPasteboardUtility.swift */,
-				FR_819732604982 /* VULevelMeter.swift */,
-				FR_914617087001 /* VULevelMeter.DrawingData.swift */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
-		5C400CA41EAEFE7590A9C111 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				FR_120747681218 /* NSNib.swift */,
-				FR_511882230498 /* NSToolbar.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		65AC836E35B0795BAB5070C2 /* AttenuatorAU */ = {
-			isa = PBXGroup;
-			children = (
-				FR_732707889926 /* Extension.entitlements */,
-				FR_901334806416 /* Info.plist */,
-				FR_174547737971 /* AttenuatorAU.swift */,
-			);
-			path = AttenuatorAU;
-			sourceTree = "<group>";
-		};
-		671BD14C995FA4EEF3C94416 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				A90EE84FCFCE2AADAF53CEF3 /* Concurrency */,
-				582A18A78958F3C74970AF5F /* Converters */,
-				85DBB62FD1CD9C15EDF3A352 /* Extensions */,
-				9C39410583E01A4EA4F95F70 /* Sources */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		6D55229E8EB5CB3F8D1CF3AD /* SampleAUHost */ = {
+		0A3B79AB954112D9C4977DBF /* SampleAUHost */ = {
 			isa = PBXGroup;
 			children = (
 				FR_561063399873 /* App.entitlements */,
@@ -496,102 +400,62 @@
 				FR_265111543119 /* MainWindowController.swift */,
 				FR_589106379467 /* main.swift */,
 			);
+			name = SampleAUHost;
 			path = SampleAUHost;
 			sourceTree = "<group>";
 		};
-		6F655756537DEA3E7FA80BA3 /* SampleAUPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				0B4565B80F8E930B15BE5AA0 /* Attenuator */,
-				65AC836E35B0795BAB5070C2 /* AttenuatorAU */,
-				54BADDBFDB4C6E180E2B4F4C /* AttenuatorKit */,
-			);
-			path = SampleAUPlugin;
-			sourceTree = "<group>";
-		};
-		70673D46B836CA5EC3237902 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				3E4736021E89377C1E23BC29 /* Extensions */,
-				C1C607043DA8657EE6413C91 /* Sources */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
-		70C5829AB1C2BFF25AF88BBD /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				FR_131151532904 /* MainToolbar.swift */,
-				FR_167156401758 /* MainToolbar.Event.swift */,
-				FR_768423343955 /* MainViewUIModel.swift */,
-				FR_420833202030 /* MediaItemView.swift */,
-				FR_257820063930 /* PlaybackEngine.swift */,
-				FR_339395790607 /* PlaybackEngineContext.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		7C8260D153594BE526E6D75C /* Notification */ = {
-			isa = PBXGroup;
-			children = (
-				FR_384542317052 /* NotificationObserver.swift */,
-			);
-			path = Notification;
-			sourceTree = "<group>";
-		};
-		819C026AA83D888914491975 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				FR_286667488207 /* BuildInfo.swift */,
-				FR_957287976757 /* Functions.swift */,
-				FR_147648478192 /* Math.swift */,
-				FR_193470404895 /* Result.swift */,
-				FR_138548045935 /* RuntimeInfo.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		85DBB62FD1CD9C15EDF3A352 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				FR_771218874362 /* Bundle.swift */,
-				FR_514056196278 /* DispatchQueue.swift */,
-				FR_356432211764 /* DispatchSemaphore.swift */,
-				FR_187228268653 /* OperationQueue.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		8C107C47AF84BB0C9BD9B2CA /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				0A72F7B6C76049C4286AC918 /* Extensions */,
-				7C8260D153594BE526E6D75C /* Notification */,
-				819C026AA83D888914491975 /* Sources */,
-				F288545628B4D062A4DE4767 /* os */,
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
-		96B32EE8D7481D756E4A97CA /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				FR_921324438643 /* App-macOS.xcconfig */,
-				FR_385141638974 /* Framework-macOS.xcconfig */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		9C39410583E01A4EA4F95F70 /* Sources */ = {
+		193F12015E2FAA478455B95D /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				FR_913492155579 /* AlternativeValue.swift */,
 				FR_817548472275 /* CoreTypeAliases.swift */,
 			);
+			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		A90EE84FCFCE2AADAF53CEF3 /* Concurrency */ = {
+		2C2851028FDEECB5366A5830 /* AttenuatorKit */ = {
+			isa = PBXGroup;
+			children = (
+				FR_255189197228 /* Info.plist */,
+				FR_384870902945 /* AttenuatorAudioUnit.swift */,
+				FR_680334338110 /* AttenuatorDSPKernel.swift */,
+				FR_148513859102 /* AttenuatorParameter.swift */,
+				FR_226788898884 /* AttenuatorView.swift */,
+				FR_348139716022 /* AttenuatorViewController.swift */,
+				FR_613679079742 /* Logger.swift */,
+			);
+			name = AttenuatorKit;
+			path = AttenuatorKit;
+			sourceTree = "<group>";
+		};
+		3CD662B0131FE6AAAE279F97 /* Attenuator */ = {
+			isa = PBXGroup;
+			children = (
+				FR_486426767884 /* App.entitlements */,
+				FR_434848954846 /* Info.plist */,
+				FR_914821030408 /* Application.swift */,
+				FR_399297571310 /* Logger.swift */,
+				FR_868331935700 /* MainMenu.swift */,
+				FR_357021155731 /* MainViewController.swift */,
+				FR_190835224210 /* MainWindowController.swift */,
+				FR_915164787290 /* main.swift */,
+				FR_331675799995 /* Assets.xcassets */,
+			);
+			name = Attenuator;
+			path = Attenuator;
+			sourceTree = "<group>";
+		};
+		3EF544B74E0CDE8055AFD94D /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				FR_358188614321 /* NumericTypesConversions.swift */,
+			);
+			name = Converters;
+			path = Converters;
+			sourceTree = "<group>";
+		};
+		699BC28BD144736023949E5B /* Concurrency */ = {
 			isa = PBXGroup;
 			children = (
 				FR_276385122155 /* NonRecursiveLock.swift */,
@@ -602,18 +466,139 @@
 				FR_153099800804 /* SpinLock.swift */,
 				FR_653613194344 /* UnfairLock.swift */,
 			);
+			name = Concurrency;
 			path = Concurrency;
 			sourceTree = "<group>";
 		};
-		B2B004AD5CC81E7142B28B5A /* Configuration */ = {
+		6BD82F8EB71B38BAA98A4FAA /* AttenuatorAU */ = {
+			isa = PBXGroup;
+			children = (
+				FR_732707889926 /* Extension.entitlements */,
+				FR_901334806416 /* Info.plist */,
+				FR_174547737971 /* AttenuatorAU.swift */,
+			);
+			name = AttenuatorAU;
+			path = AttenuatorAU;
+			sourceTree = "<group>";
+		};
+		89B5E4A24877FC947BD90221 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FR_840642450824 /* MinMax.swift */,
+				FR_901061600663 /* RandomFactory.swift */,
+			);
+			name = Sources;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		8F3305FF2DE1E89DC21B6EB7 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
 				FR_886066776493 /* Project.xcconfig */,
 			);
+			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
-		C1C607043DA8657EE6413C91 /* Sources */ = {
+		9097189D452900982BBC65F3 /* os */ = {
+			isa = PBXGroup;
+			children = (
+				DA88B8980C7EBEE4E4915B98 /* log */,
+			);
+			name = os;
+			path = os;
+			sourceTree = "<group>";
+		};
+		98A5A9DA9FD8C8DAB4767343 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				06128B4FADA5403B4A4A7074 /* Extensions */,
+				D5983EB4B0298DED67D21395 /* Sources */,
+			);
+			name = Media;
+			path = Media;
+			sourceTree = "<group>";
+		};
+		9AF9C86EF9C9EA6730B320D7 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FR_131151532904 /* MainToolbar.swift */,
+				FR_167156401758 /* MainToolbar.Event.swift */,
+				FR_768423343955 /* MainViewUIModel.swift */,
+				FR_420833202030 /* MediaItemView.swift */,
+				FR_257820063930 /* PlaybackEngine.swift */,
+				FR_339395790607 /* PlaybackEngineContext.swift */,
+			);
+			name = Shared;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		9ECC8E450D30CC94167B51B3 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				89B5E4A24877FC947BD90221 /* Sources */,
+			);
+			name = Types;
+			path = Types;
+			sourceTree = "<group>";
+		};
+		B1A07E799B09440E15C0B0C0 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				02418C93399864D6D5A55E8F /* WL */,
+				FR_273837539070 /* Logger.swift */,
+			);
+			name = Vendor;
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		B3767F8249C7A5A76F435303 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FR_771218874362 /* Bundle.swift */,
+				FR_514056196278 /* DispatchQueue.swift */,
+				FR_356432211764 /* DispatchSemaphore.swift */,
+				FR_187228268653 /* OperationQueue.swift */,
+			);
+			name = Extensions;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BBDDBC8B5508C3F2B3C21B94 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				FR_921324438643 /* App-macOS.xcconfig */,
+				FR_385141638974 /* Framework-macOS.xcconfig */,
+			);
+			name = Configuration;
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		BD35CD5DCC2035E483ADD7D4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDBC8B5508C3F2B3C21B94 /* Configuration */,
+			);
+			name = Shared;
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		CE3375BB0B32C4E58573041C /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				FR_815437241009 /* VULevelMeter.Shaders.metal */,
+				FR_100578481280 /* DisplayLink.swift */,
+				FR_242455603820 /* DisplayLink.GenericRenderer.swift */,
+				FR_410250789410 /* MediaLibraryUtility.swift */,
+				FR_523879450642 /* MediaObjectPasteboardUtility.swift */,
+				FR_819732604982 /* VULevelMeter.swift */,
+				FR_914617087001 /* VULevelMeter.DrawingData.swift */,
+			);
+			name = Media;
+			path = Media;
+			sourceTree = "<group>";
+		};
+		D5983EB4B0298DED67D21395 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				FR_481872999206 /* AudioComponentsUtility.swift */,
@@ -622,33 +607,97 @@
 				FR_821723210092 /* WaveformCacheUtility.swift */,
 				FR_163349485050 /* WaveformDrawingDataProvider.swift */,
 			);
+			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		DB7447867CD04F6885E26F3F /* Types */ = {
+		D94769FB09A3031A7364FC64 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				34E6252B5A5C5831C8A41A24 /* Sources */,
+				FR_286667488207 /* BuildInfo.swift */,
+				FR_957287976757 /* Functions.swift */,
+				FR_147648478192 /* Math.swift */,
+				FR_193470404895 /* Result.swift */,
+				FR_138548045935 /* RuntimeInfo.swift */,
 			);
-			path = Types;
+			name = Sources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		F288545628B4D062A4DE4767 /* os */ = {
+		DA88B8980C7EBEE4E4915B98 /* log */ = {
 			isa = PBXGroup;
 			children = (
-				1E79C84EB8592A495429F697 /* log */,
+				FR_471329193054 /* Log.swift */,
 			);
-			path = os;
+			name = log;
+			path = log;
+			sourceTree = "<group>";
+		};
+		DCA74FF2C7755A8AF6BE1181 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				699BC28BD144736023949E5B /* Concurrency */,
+				3EF544B74E0CDE8055AFD94D /* Converters */,
+				B3767F8249C7A5A76F435303 /* Extensions */,
+				193F12015E2FAA478455B95D /* Sources */,
+			);
+			name = Core;
+			path = Core;
+			sourceTree = "<group>";
+		};
+		DFD3CB39BA5E91F5F43A594F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FR_120747681218 /* NSNib.swift */,
+				FR_511882230498 /* NSToolbar.swift */,
+			);
+			name = Extensions;
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E205075C0B4D5CDABB230B98 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				FR_384542317052 /* NotificationObserver.swift */,
+			);
+			name = Notification;
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		ED87D87AD5E36477C9A25656 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				0281D5F5ABAF43C4D028A6A4 /* Extensions */,
+				E205075C0B4D5CDABB230B98 /* Notification */,
+				D94769FB09A3031A7364FC64 /* Sources */,
+				9097189D452900982BBC65F3 /* os */,
+			);
+			name = Foundation;
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		F433CB36687D53072B66930F /* SampleAUPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				3CD662B0131FE6AAAE279F97 /* Attenuator */,
+				6BD82F8EB71B38BAA98A4FAA /* AttenuatorAU */,
+				2C2851028FDEECB5366A5830 /* AttenuatorKit */,
+			);
+			name = SampleAUPlugin;
+			path = SampleAUPlugin;
 			sourceTree = "<group>";
 		};
 		G_8448771205358 = {
 			isa = PBXGroup;
 			children = (
-				B2B004AD5CC81E7142B28B5A /* Configuration */,
-				6D55229E8EB5CB3F8D1CF3AD /* SampleAUHost */,
-				6F655756537DEA3E7FA80BA3 /* SampleAUPlugin */,
-				70C5829AB1C2BFF25AF88BBD /* Shared */,
-				4D8DB743D262B3330C26801D /* Vendor */,
+				8F3305FF2DE1E89DC21B6EB7 /* Configuration */,
+				G_8620238527590 /* Products */,
+				0A3B79AB954112D9C4977DBF /* SampleAUHost */,
+				F433CB36687D53072B66930F /* SampleAUPlugin */,
+				9AF9C86EF9C9EA6730B320D7 /* Shared */,
+				B1A07E799B09440E15C0B0C0 /* Vendor */,
+				9AF9C86EF9C9EA6730B320D7 /* Shared */,
+				B1A07E799B09440E15C0B0C0 /* Vendor */,
 				G_8620238527590 /* Products */,
 			);
 			indentWidth = 3;
@@ -673,21 +722,21 @@
 /* Begin PBXNativeTarget section */
 		NT_159652559712 /* Attenuator */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = "CL_159652559712-1" /* Build configuration list for PBXNativeTarget "Attenuator" */;
+			buildConfigurationList = CL_159652559712-1 /* Build configuration list for PBXNativeTarget "Attenuator" */;
 			buildPhases = (
 				SBP_15965255971 /* Sources */,
 				RBP_15965255971 /* Resources */,
 				FBP_15965255971 /* Frameworks */,
-				CFBP_6674098902 /* CopyFiles */,
-				CFBP_6744944455 /* CopyFiles */,
+				CFBP_6674098902 /* Embed App Extensions */,
+				CFBP_6744944455 /* Embed Frameworks */,
 				SSBP_6780109484 /* Run Script: Post-Build */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				TD_199533970320 /* PBXTargetDependency */,
-				TD_892058101403 /* PBXTargetDependency */,
-				TD_377971750741 /* PBXTargetDependency */,
+				TD_405027732687 /* PBXTargetDependency */,
+				TD_305881252344 /* PBXTargetDependency */,
+				TD_559689680466 /* PBXTargetDependency */,
 			);
 			name = Attenuator;
 			productName = Attenuator;
@@ -701,11 +750,12 @@
 				SSBP_7631960516 /* Run Script: Verify */,
 				SBP_32619194375 /* Sources */,
 				FBP_32619194375 /* Frameworks */,
+				CFBP_8713768808 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				TD_673131683383 /* PBXTargetDependency */,
+				TD_802909430205 /* PBXTargetDependency */,
 			);
 			name = AttenuatorKit;
 			productName = AttenuatorKit;
@@ -719,12 +769,12 @@
 				SSBP_3126798100 /* Run Script: Verify */,
 				SBP_47952142880 /* Sources */,
 				FBP_47952142880 /* Frameworks */,
-				CFBP_2509519818 /* CopyFiles */,
+				CFBP_2509519818 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				TD_198914086365 /* PBXTargetDependency */,
+				TD_630840688699 /* PBXTargetDependency */,
 			);
 			name = AUHost;
 			productName = AUHost;
@@ -736,7 +786,6 @@
 			buildConfigurationList = CL_480799490371 /* Build configuration list for PBXNativeTarget "mcBase" */;
 			buildPhases = (
 				SBP_48079949037 /* Sources */,
-				RBP_48079949037 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -753,13 +802,13 @@
 			buildPhases = (
 				SBP_74567934453 /* Sources */,
 				FBP_74567934453 /* Frameworks */,
-				CFBP_1318432118 /* CopyFiles */,
+				CFBP_1318432118 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				TD_199501787015 /* PBXTargetDependency */,
-				TD_535715904614 /* PBXTargetDependency */,
+				TD_639608621081 /* PBXTargetDependency */,
+				TD_639009998779 /* PBXTargetDependency */,
 			);
 			name = AttenuatorAU;
 			productName = AttenuatorAU;
@@ -781,6 +830,7 @@
 					};
 					NT_326191943752 = {
 						DevelopmentTeam = E27KE6VTF6;
+						ProvisioningStyle = Automatic;
 					};
 					NT_479521428808 = {
 						DevelopmentTeam = E27KE6VTF6;
@@ -788,6 +838,7 @@
 					};
 					NT_480799490371 = {
 						DevelopmentTeam = E27KE6VTF6;
+						ProvisioningStyle = Automatic;
 					};
 					NT_745679344536 = {
 						DevelopmentTeam = E27KE6VTF6;
@@ -799,9 +850,6 @@
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-			);
 			mainGroup = G_8448771205358;
 			productRefGroup = G_8620238527590 /* Products */;
 			projectDirPath = "";
@@ -822,13 +870,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_380722562613 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		RBP_48079949037 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -950,7 +991,6 @@
 				BF_347185512254 /* DispatchSemaphore.swift in Sources */,
 				BF_902159462898 /* DisplayLink.GenericRenderer.swift in Sources */,
 				BF_405665347337 /* DisplayLink.swift in Sources */,
-				80CF249021262374002C2CD6 /* VULevelMeter.Shaders.metal in Sources */,
 				BF_336052649090 /* Functions.swift in Sources */,
 				BF_120051973118 /* GLKMatrix4.swift in Sources */,
 				BF_715482638275 /* Log.swift in Sources */,
@@ -978,6 +1018,7 @@
 				BF_273058726749 /* UnfairLock.swift in Sources */,
 				BF_220368219085 /* UnsafeMutableAudioBufferListPointer.swift in Sources */,
 				BF_375585536426 /* VULevelMeter.DrawingData.swift in Sources */,
+				BF_462811020165 /* VULevelMeter.Shaders.metal in Sources */,
 				BF_861622764164 /* VULevelMeter.swift in Sources */,
 				BF_930156288061 /* WaveformCacheUtility.swift in Sources */,
 				BF_417973310869 /* WaveformDrawingDataProvider.swift in Sources */,
@@ -995,40 +1036,40 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		TD_198914086365 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = NT_480799490371 /* mcBase */;
-			targetProxy = CIP_63084068869 /* PBXContainerItemProxy */;
-		};
-		TD_199501787015 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = NT_326191943752 /* AttenuatorKit */;
-			targetProxy = CIP_63960862108 /* PBXContainerItemProxy */;
-		};
-		TD_199533970320 /* PBXTargetDependency */ = {
+		TD_305881252344 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = NT_745679344536 /* AttenuatorAU */;
 			targetProxy = CIP_30588125234 /* PBXContainerItemProxy */;
 		};
-		TD_377971750741 /* PBXTargetDependency */ = {
+		TD_405027732687 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = NT_326191943752 /* AttenuatorKit */;
+			targetProxy = CIP_40502773268 /* PBXContainerItemProxy */;
+		};
+		TD_559689680466 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = NT_480799490371 /* mcBase */;
 			targetProxy = CIP_55968968046 /* PBXContainerItemProxy */;
 		};
-		TD_535715904614 /* PBXTargetDependency */ = {
+		TD_630840688699 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = NT_480799490371 /* mcBase */;
+			targetProxy = CIP_63084068869 /* PBXContainerItemProxy */;
+		};
+		TD_639009998779 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = NT_480799490371 /* mcBase */;
 			targetProxy = CIP_63900999877 /* PBXContainerItemProxy */;
 		};
-		TD_673131683383 /* PBXTargetDependency */ = {
+		TD_639608621081 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = NT_326191943752 /* AttenuatorKit */;
+			targetProxy = CIP_63960862108 /* PBXContainerItemProxy */;
+		};
+		TD_802909430205 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = NT_480799490371 /* mcBase */;
 			targetProxy = CIP_80290943020 /* PBXContainerItemProxy */;
-		};
-		TD_892058101403 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = NT_326191943752 /* AttenuatorKit */;
-			targetProxy = CIP_40502773268 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1052,6 +1093,9 @@
 			baseConfigurationReference = FR_385141638974 /* Framework-macOS.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = SampleAUPlugin/AttenuatorKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Base;
@@ -1078,6 +1122,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = SampleAUPlugin/AttenuatorKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AttenuatorKit;
@@ -1125,6 +1172,9 @@
 			baseConfigurationReference = FR_385141638974 /* Framework-macOS.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = SampleAUPlugin/AttenuatorKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Base;
@@ -1165,6 +1215,9 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = E27KE6VTF6;
 				INFOPLIST_FILE = SampleAUPlugin/AttenuatorKit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AttenuatorKit;
@@ -1191,7 +1244,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
 		};
-		"CL_159652559712-1" /* Build configuration list for PBXNativeTarget "Attenuator" */ = {
+		CL_159652559712-1 /* Build configuration list for PBXNativeTarget "Attenuator" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC_342975071444 /* Debug */,
