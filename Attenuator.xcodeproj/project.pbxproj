@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80CE7408212620EF00A9B298 /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FR_815437241009 /* VULevelMeter.Shaders.metal */; };
+		80CF249021262374002C2CD6 /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FR_815437241009 /* VULevelMeter.Shaders.metal */; };
 		BF_108386241351 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_420833202030 /* MediaItemView.swift */; };
 		BF_120051973118 /* GLKMatrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_334412403324 /* GLKMatrix4.swift */; };
 		BF_120197410682 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_771218874362 /* Bundle.swift */; };
@@ -324,87 +324,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A77060B7A79FCCC150D1296 /* WL */ = {
+		00ECF645066A1930CA8E21C7 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				3684EFA2DA21F75F743857D6 /* AppKit */,
-				BBF8733804AFFDDFB8ED6030 /* Core */,
-				B8B52116155FF1AC98E56011 /* Foundation */,
-				A325D0D79DD97219A826196E /* Media */,
-				144C1910A1CA27F7989B4B5C /* Shared */,
-				19F06BCFBC3AEBA276516984 /* Types */,
-			);
-			path = WL;
-			sourceTree = "<group>";
-		};
-		0AAE74974C975FB6D07D6E8B /* AttenuatorKit */ = {
-			isa = PBXGroup;
-			children = (
-				FR_255189197228 /* Info.plist */,
-				FR_384870902945 /* AttenuatorAudioUnit.swift */,
-				FR_680334338110 /* AttenuatorDSPKernel.swift */,
-				FR_148513859102 /* AttenuatorParameter.swift */,
-				FR_226788898884 /* AttenuatorView.swift */,
-				FR_348139716022 /* AttenuatorViewController.swift */,
-				FR_613679079742 /* Logger.swift */,
-			);
-			path = AttenuatorKit;
-			sourceTree = "<group>";
-		};
-		144C1910A1CA27F7989B4B5C /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				69A3F940ABA354E3066915C6 /* Configuration */,
+				96B32EE8D7481D756E4A97CA /* Configuration */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		19F06BCFBC3AEBA276516984 /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				6D39A0E89B0B13E2872CC580 /* Sources */,
-			);
-			path = Types;
-			sourceTree = "<group>";
-		};
-		3684EFA2DA21F75F743857D6 /* AppKit */ = {
-			isa = PBXGroup;
-			children = (
-				B4BDD1A9CDCA74DFABFC3844 /* Extensions */,
-				B6CDDD5D10222A1CFF99FD28 /* Media */,
-			);
-			path = AppKit;
-			sourceTree = "<group>";
-		};
-		467C05AD16D93DE7433F7004 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				FR_886066776493 /* Project.xcconfig */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		467FFE8FA32E2C893305A394 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				FR_201236785267 /* AudioBuffer.swift */,
-				FR_362841609540 /* AudioComponentDescription.swift */,
-				FR_334412403324 /* GLKMatrix4.swift */,
-				FR_372664141963 /* MTLDevice.swift */,
-				FR_104646605203 /* UnsafeMutableAudioBufferListPointer.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		4DADA91992F46E2CC285BE44 /* log */ = {
-			isa = PBXGroup;
-			children = (
-				FR_471329193054 /* Log.swift */,
-			);
-			path = log;
-			sourceTree = "<group>";
-		};
-		4EACC62EF966B97113063C02 /* Extensions */ = {
+		0A72F7B6C76049C4286AC918 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FR_841180301618 /* Color.swift */,
@@ -413,39 +341,7 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		67E2A44CA823B7DF83DF1B41 /* Concurrency */ = {
-			isa = PBXGroup;
-			children = (
-				FR_276385122155 /* NonRecursiveLock.swift */,
-				FR_594631765386 /* NonRecursiveLocking.swift */,
-				FR_366887712976 /* SmartDispatchSource.swift */,
-				FR_266445624153 /* SmartDispatchSourceType.swift */,
-				FR_371613980578 /* SmartDispatchSourceUserDataAdd.swift */,
-				FR_153099800804 /* SpinLock.swift */,
-				FR_653613194344 /* UnfairLock.swift */,
-			);
-			path = Concurrency;
-			sourceTree = "<group>";
-		};
-		69A3F940ABA354E3066915C6 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				FR_921324438643 /* App-macOS.xcconfig */,
-				FR_385141638974 /* Framework-macOS.xcconfig */,
-			);
-			path = Configuration;
-			sourceTree = "<group>";
-		};
-		6D39A0E89B0B13E2872CC580 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				FR_840642450824 /* MinMax.swift */,
-				FR_901061600663 /* RandomFactory.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		7E47A0EF7DAE93594806379E /* Attenuator */ = {
+		0B4565B80F8E930B15BE5AA0 /* Attenuator */ = {
 			isa = PBXGroup;
 			children = (
 				FR_486426767884 /* App.entitlements */,
@@ -461,37 +357,133 @@
 			path = Attenuator;
 			sourceTree = "<group>";
 		};
-		84398A0B48B2F993BC77BFA8 /* Notification */ = {
+		1E79C84EB8592A495429F697 /* log */ = {
 			isa = PBXGroup;
 			children = (
-				FR_384542317052 /* NotificationObserver.swift */,
+				FR_471329193054 /* Log.swift */,
 			);
-			path = Notification;
+			path = log;
 			sourceTree = "<group>";
 		};
-		86215B2225CDBCDA6AFD3B14 /* Shared */ = {
+		34E6252B5A5C5831C8A41A24 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				FR_131151532904 /* MainToolbar.swift */,
-				FR_167156401758 /* MainToolbar.Event.swift */,
-				FR_768423343955 /* MainViewUIModel.swift */,
-				FR_420833202030 /* MediaItemView.swift */,
-				FR_257820063930 /* PlaybackEngine.swift */,
-				FR_339395790607 /* PlaybackEngineContext.swift */,
-			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		8A98C64E03D3DCAC1EA90056 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				FR_913492155579 /* AlternativeValue.swift */,
-				FR_817548472275 /* CoreTypeAliases.swift */,
+				FR_840642450824 /* MinMax.swift */,
+				FR_901061600663 /* RandomFactory.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		8EF900758D1751896AF40310 /* SampleAUHost */ = {
+		3B751D709ACFBF6745B1BE61 /* WL */ = {
+			isa = PBXGroup;
+			children = (
+				517377211A1DA34FE88D3A44 /* AppKit */,
+				671BD14C995FA4EEF3C94416 /* Core */,
+				8C107C47AF84BB0C9BD9B2CA /* Foundation */,
+				70673D46B836CA5EC3237902 /* Media */,
+				00ECF645066A1930CA8E21C7 /* Shared */,
+				DB7447867CD04F6885E26F3F /* Types */,
+			);
+			path = WL;
+			sourceTree = "<group>";
+		};
+		3E4736021E89377C1E23BC29 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FR_201236785267 /* AudioBuffer.swift */,
+				FR_362841609540 /* AudioComponentDescription.swift */,
+				FR_334412403324 /* GLKMatrix4.swift */,
+				FR_372664141963 /* MTLDevice.swift */,
+				FR_104646605203 /* UnsafeMutableAudioBufferListPointer.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4D8DB743D262B3330C26801D /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				3B751D709ACFBF6745B1BE61 /* WL */,
+				FR_273837539070 /* Logger.swift */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		517377211A1DA34FE88D3A44 /* AppKit */ = {
+			isa = PBXGroup;
+			children = (
+				5C400CA41EAEFE7590A9C111 /* Extensions */,
+				5B30C9D379FCFE65E98A365A /* Media */,
+			);
+			path = AppKit;
+			sourceTree = "<group>";
+		};
+		54BADDBFDB4C6E180E2B4F4C /* AttenuatorKit */ = {
+			isa = PBXGroup;
+			children = (
+				FR_255189197228 /* Info.plist */,
+				FR_384870902945 /* AttenuatorAudioUnit.swift */,
+				FR_680334338110 /* AttenuatorDSPKernel.swift */,
+				FR_148513859102 /* AttenuatorParameter.swift */,
+				FR_226788898884 /* AttenuatorView.swift */,
+				FR_348139716022 /* AttenuatorViewController.swift */,
+				FR_613679079742 /* Logger.swift */,
+			);
+			path = AttenuatorKit;
+			sourceTree = "<group>";
+		};
+		582A18A78958F3C74970AF5F /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				FR_358188614321 /* NumericTypesConversions.swift */,
+			);
+			path = Converters;
+			sourceTree = "<group>";
+		};
+		5B30C9D379FCFE65E98A365A /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				FR_815437241009 /* VULevelMeter.Shaders.metal */,
+				FR_100578481280 /* DisplayLink.swift */,
+				FR_242455603820 /* DisplayLink.GenericRenderer.swift */,
+				FR_410250789410 /* MediaLibraryUtility.swift */,
+				FR_523879450642 /* MediaObjectPasteboardUtility.swift */,
+				FR_819732604982 /* VULevelMeter.swift */,
+				FR_914617087001 /* VULevelMeter.DrawingData.swift */,
+			);
+			path = Media;
+			sourceTree = "<group>";
+		};
+		5C400CA41EAEFE7590A9C111 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FR_120747681218 /* NSNib.swift */,
+				FR_511882230498 /* NSToolbar.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		65AC836E35B0795BAB5070C2 /* AttenuatorAU */ = {
+			isa = PBXGroup;
+			children = (
+				FR_732707889926 /* Extension.entitlements */,
+				FR_901334806416 /* Info.plist */,
+				FR_174547737971 /* AttenuatorAU.swift */,
+			);
+			path = AttenuatorAU;
+			sourceTree = "<group>";
+		};
+		671BD14C995FA4EEF3C94416 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				A90EE84FCFCE2AADAF53CEF3 /* Concurrency */,
+				582A18A78958F3C74970AF5F /* Converters */,
+				85DBB62FD1CD9C15EDF3A352 /* Extensions */,
+				9C39410583E01A4EA4F95F70 /* Sources */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		6D55229E8EB5CB3F8D1CF3AD /* SampleAUHost */ = {
 			isa = PBXGroup;
 			children = (
 				FR_561063399873 /* App.entitlements */,
@@ -507,91 +499,47 @@
 			path = SampleAUHost;
 			sourceTree = "<group>";
 		};
-		9E20E4CEE0BC144A4F655B3A /* Sources */ = {
+		6F655756537DEA3E7FA80BA3 /* SampleAUPlugin */ = {
 			isa = PBXGroup;
 			children = (
-				FR_481872999206 /* AudioComponentsUtility.swift */,
-				FR_815381213556 /* BufferDatasource.swift */,
-				FR_592645883518 /* BufferedAudioBus.swift */,
-				FR_821723210092 /* WaveformCacheUtility.swift */,
-				FR_163349485050 /* WaveformDrawingDataProvider.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		A325D0D79DD97219A826196E /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				467FFE8FA32E2C893305A394 /* Extensions */,
-				9E20E4CEE0BC144A4F655B3A /* Sources */,
-			);
-			path = Media;
-			sourceTree = "<group>";
-		};
-		A7A7CD950F628795767C2972 /* SampleAUPlugin */ = {
-			isa = PBXGroup;
-			children = (
-				7E47A0EF7DAE93594806379E /* Attenuator */,
-				B24E7175852E784421D8FFB0 /* AttenuatorAU */,
-				0AAE74974C975FB6D07D6E8B /* AttenuatorKit */,
+				0B4565B80F8E930B15BE5AA0 /* Attenuator */,
+				65AC836E35B0795BAB5070C2 /* AttenuatorAU */,
+				54BADDBFDB4C6E180E2B4F4C /* AttenuatorKit */,
 			);
 			path = SampleAUPlugin;
 			sourceTree = "<group>";
 		};
-		B24B9AC8D5946C06D3CC722B /* Vendor */ = {
+		70673D46B836CA5EC3237902 /* Media */ = {
 			isa = PBXGroup;
 			children = (
-				0A77060B7A79FCCC150D1296 /* WL */,
-				FR_273837539070 /* Logger.swift */,
-			);
-			path = Vendor;
-			sourceTree = "<group>";
-		};
-		B24E7175852E784421D8FFB0 /* AttenuatorAU */ = {
-			isa = PBXGroup;
-			children = (
-				FR_732707889926 /* Extension.entitlements */,
-				FR_901334806416 /* Info.plist */,
-				FR_174547737971 /* AttenuatorAU.swift */,
-			);
-			path = AttenuatorAU;
-			sourceTree = "<group>";
-		};
-		B4BDD1A9CDCA74DFABFC3844 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				FR_120747681218 /* NSNib.swift */,
-				FR_511882230498 /* NSToolbar.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		B6CDDD5D10222A1CFF99FD28 /* Media */ = {
-			isa = PBXGroup;
-			children = (
-				FR_815437241009 /* VULevelMeter.Shaders.metal */,
-				FR_100578481280 /* DisplayLink.swift */,
-				FR_242455603820 /* DisplayLink.GenericRenderer.swift */,
-				FR_410250789410 /* MediaLibraryUtility.swift */,
-				FR_523879450642 /* MediaObjectPasteboardUtility.swift */,
-				FR_819732604982 /* VULevelMeter.swift */,
-				FR_914617087001 /* VULevelMeter.DrawingData.swift */,
+				3E4736021E89377C1E23BC29 /* Extensions */,
+				C1C607043DA8657EE6413C91 /* Sources */,
 			);
 			path = Media;
 			sourceTree = "<group>";
 		};
-		B8B52116155FF1AC98E56011 /* Foundation */ = {
+		70C5829AB1C2BFF25AF88BBD /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4EACC62EF966B97113063C02 /* Extensions */,
-				84398A0B48B2F993BC77BFA8 /* Notification */,
-				B9C145DC23372E06275A77D3 /* Sources */,
-				E179F4B4F20F99C5C891CC5E /* os */,
+				FR_131151532904 /* MainToolbar.swift */,
+				FR_167156401758 /* MainToolbar.Event.swift */,
+				FR_768423343955 /* MainViewUIModel.swift */,
+				FR_420833202030 /* MediaItemView.swift */,
+				FR_257820063930 /* PlaybackEngine.swift */,
+				FR_339395790607 /* PlaybackEngineContext.swift */,
 			);
-			path = Foundation;
+			path = Shared;
 			sourceTree = "<group>";
 		};
-		B9C145DC23372E06275A77D3 /* Sources */ = {
+		7C8260D153594BE526E6D75C /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				FR_384542317052 /* NotificationObserver.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
+		819C026AA83D888914491975 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				FR_286667488207 /* BuildInfo.swift */,
@@ -603,18 +551,7 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		BBF8733804AFFDDFB8ED6030 /* Core */ = {
-			isa = PBXGroup;
-			children = (
-				67E2A44CA823B7DF83DF1B41 /* Concurrency */,
-				C94FFBB5A9A8FE9B59ED67D5 /* Converters */,
-				C33EE520A4A7249BDDF6923C /* Extensions */,
-				8A98C64E03D3DCAC1EA90056 /* Sources */,
-			);
-			path = Core;
-			sourceTree = "<group>";
-		};
-		C33EE520A4A7249BDDF6923C /* Extensions */ = {
+		85DBB62FD1CD9C15EDF3A352 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				FR_771218874362 /* Bundle.swift */,
@@ -625,18 +562,81 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		C94FFBB5A9A8FE9B59ED67D5 /* Converters */ = {
+		8C107C47AF84BB0C9BD9B2CA /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				FR_358188614321 /* NumericTypesConversions.swift */,
+				0A72F7B6C76049C4286AC918 /* Extensions */,
+				7C8260D153594BE526E6D75C /* Notification */,
+				819C026AA83D888914491975 /* Sources */,
+				F288545628B4D062A4DE4767 /* os */,
 			);
-			path = Converters;
+			path = Foundation;
 			sourceTree = "<group>";
 		};
-		E179F4B4F20F99C5C891CC5E /* os */ = {
+		96B32EE8D7481D756E4A97CA /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				4DADA91992F46E2CC285BE44 /* log */,
+				FR_921324438643 /* App-macOS.xcconfig */,
+				FR_385141638974 /* Framework-macOS.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		9C39410583E01A4EA4F95F70 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FR_913492155579 /* AlternativeValue.swift */,
+				FR_817548472275 /* CoreTypeAliases.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		A90EE84FCFCE2AADAF53CEF3 /* Concurrency */ = {
+			isa = PBXGroup;
+			children = (
+				FR_276385122155 /* NonRecursiveLock.swift */,
+				FR_594631765386 /* NonRecursiveLocking.swift */,
+				FR_366887712976 /* SmartDispatchSource.swift */,
+				FR_266445624153 /* SmartDispatchSourceType.swift */,
+				FR_371613980578 /* SmartDispatchSourceUserDataAdd.swift */,
+				FR_153099800804 /* SpinLock.swift */,
+				FR_653613194344 /* UnfairLock.swift */,
+			);
+			path = Concurrency;
+			sourceTree = "<group>";
+		};
+		B2B004AD5CC81E7142B28B5A /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				FR_886066776493 /* Project.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		C1C607043DA8657EE6413C91 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				FR_481872999206 /* AudioComponentsUtility.swift */,
+				FR_815381213556 /* BufferDatasource.swift */,
+				FR_592645883518 /* BufferedAudioBus.swift */,
+				FR_821723210092 /* WaveformCacheUtility.swift */,
+				FR_163349485050 /* WaveformDrawingDataProvider.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		DB7447867CD04F6885E26F3F /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				34E6252B5A5C5831C8A41A24 /* Sources */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		F288545628B4D062A4DE4767 /* os */ = {
+			isa = PBXGroup;
+			children = (
+				1E79C84EB8592A495429F697 /* log */,
 			);
 			path = os;
 			sourceTree = "<group>";
@@ -644,11 +644,11 @@
 		G_8448771205358 = {
 			isa = PBXGroup;
 			children = (
-				467C05AD16D93DE7433F7004 /* Configuration */,
-				8EF900758D1751896AF40310 /* SampleAUHost */,
-				A7A7CD950F628795767C2972 /* SampleAUPlugin */,
-				86215B2225CDBCDA6AFD3B14 /* Shared */,
-				B24B9AC8D5946C06D3CC722B /* Vendor */,
+				B2B004AD5CC81E7142B28B5A /* Configuration */,
+				6D55229E8EB5CB3F8D1CF3AD /* SampleAUHost */,
+				6F655756537DEA3E7FA80BA3 /* SampleAUPlugin */,
+				70C5829AB1C2BFF25AF88BBD /* Shared */,
+				4D8DB743D262B3330C26801D /* Vendor */,
 				G_8620238527590 /* Products */,
 			);
 			indentWidth = 3;
@@ -736,6 +736,7 @@
 			buildConfigurationList = CL_480799490371 /* Build configuration list for PBXNativeTarget "mcBase" */;
 			buildPhases = (
 				SBP_48079949037 /* Sources */,
+				RBP_48079949037 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -821,6 +822,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF_380722562613 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		RBP_48079949037 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -942,7 +950,7 @@
 				BF_347185512254 /* DispatchSemaphore.swift in Sources */,
 				BF_902159462898 /* DisplayLink.GenericRenderer.swift in Sources */,
 				BF_405665347337 /* DisplayLink.swift in Sources */,
-				80CE7408212620EF00A9B298 /* VULevelMeter.Shaders.metal in Sources */,
+				80CF249021262374002C2CD6 /* VULevelMeter.Shaders.metal in Sources */,
 				BF_336052649090 /* Functions.swift in Sources */,
 				BF_120051973118 /* GLKMatrix4.swift in Sources */,
 				BF_715482638275 /* Log.swift in Sources */,

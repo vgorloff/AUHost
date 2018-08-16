@@ -137,10 +137,10 @@ schemes:
    AUHost:
      build:
        targets:
-         AUHost: [all]
+         AUHost: [run, archive]
          
    Attenuator:
      build:
        targets:
-         Attenuator: [all]
+         Attenuator: [run, archive]
 
