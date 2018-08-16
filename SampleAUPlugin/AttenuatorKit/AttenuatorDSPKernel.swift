@@ -10,6 +10,7 @@ import Accelerate
 import AudioUnit
 import AVFoundation
 import Foundation
+import mcBase
 
 struct AttenuatorDSPKernel {
 
@@ -69,7 +70,7 @@ struct AttenuatorDSPKernel {
 
          // We are expecting one buffer per channel.
          assert(bI.mNumberChannels == bO.mNumberChannels && bI.mNumberChannels == 1)
-         assert(bI.mDataByteSize == bO.mDataByteSize)
+         // assert(bI.mDataByteSize == bO.mDataByteSize) // In Logic this seems not a case.
          let samplesBI = UnsafePointer<SampleType>(inputData.assumingMemoryBound(to: SampleType.self))
          let samplesBO = outputData.assumingMemoryBound(to: SampleType.self)
          #if true

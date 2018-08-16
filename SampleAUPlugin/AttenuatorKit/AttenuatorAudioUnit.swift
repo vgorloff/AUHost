@@ -9,6 +9,7 @@
 import AudioUnit
 import AVFoundation
 import CoreAudioKit
+import mcBase
 
 public class AttenuatorAudioUnit: AUAudioUnit {
 

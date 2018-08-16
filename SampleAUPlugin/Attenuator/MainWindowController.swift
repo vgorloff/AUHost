@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import mcBase
 
 class MainWindowController: NSWindowController {
 

@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import mcBase
 
 class EffectWindowController: NSWindowController {
 

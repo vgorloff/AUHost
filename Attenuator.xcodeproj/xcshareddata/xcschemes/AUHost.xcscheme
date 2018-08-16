@@ -14,9 +14,9 @@
             buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NT_159652559712"
-               BuildableName = "Attenuator.app"
-               BlueprintName = "Attenuator"
+               BlueprintIdentifier = "NT_479521428808"
+               BuildableName = "AUHost.app"
+               BlueprintName = "AUHost"
                ReferencedContainer = "container:Attenuator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_159652559712"
-            BuildableName = "Attenuator.app"
-            BlueprintName = "Attenuator"
+            BlueprintIdentifier = "NT_479521428808"
+            BuildableName = "AUHost.app"
+            BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -55,9 +55,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_159652559712"
-            BuildableName = "Attenuator.app"
-            BlueprintName = "Attenuator"
+            BlueprintIdentifier = "NT_479521428808"
+            BuildableName = "AUHost.app"
+            BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -74,9 +74,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_159652559712"
-            BuildableName = "Attenuator.app"
-            BlueprintName = "Attenuator"
+            BlueprintIdentifier = "NT_479521428808"
+            BuildableName = "AUHost.app"
+            BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

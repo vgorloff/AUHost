@@ -9,20 +9,20 @@
 import AVFoundation
 
 @available(OSX 10.11, *)
-class BufferedAudioBus {
+public class BufferedAudioBus {
 
    fileprivate var maxFrames: AUAudioFrameCount = 0
    private var pcmBuffer: AVAudioPCMBuffer?
    fileprivate(set) var originalAudioBufferList: UnsafePointer<AudioBufferList>?
-   fileprivate(set) var mutableAudioBufferList: UnsafeMutablePointer<AudioBufferList>?
-   private(set) var bus: AUAudioUnitBus
+   public fileprivate(set) var mutableAudioBufferList: UnsafeMutablePointer<AudioBufferList>?
+   public private(set) var bus: AUAudioUnitBus
 
-   init(format: AVAudioFormat, maxChannels: AVAudioChannelCount) throws {
+   public init(format: AVAudioFormat, maxChannels: AVAudioChannelCount) throws {
       bus = try AUAudioUnitBus(format: format)
       bus.maximumChannelCount = maxChannels
    }
 
-   func allocateRenderResources(maxFrames: AUAudioFrameCount) {
+   public func allocateRenderResources(maxFrames: AUAudioFrameCount) {
       self.maxFrames = maxFrames
       pcmBuffer = AVAudioPCMBuffer(pcmFormat: bus.format, frameCapacity: maxFrames)
       pcmBuffer?.frameLength = maxFrames
@@ -30,7 +30,7 @@ class BufferedAudioBus {
       mutableAudioBufferList = pcmBuffer?.mutableAudioBufferList
    }
 
-   func deallocateRenderResources() {
+   public func deallocateRenderResources() {
       pcmBuffer = nil
       originalAudioBufferList = nil
       mutableAudioBufferList = nil
@@ -38,7 +38,7 @@ class BufferedAudioBus {
 }
 
 @available(OSX 10.11, *)
-class BufferedInputBus: BufferedAudioBus {
+public class BufferedInputBus: BufferedAudioBus {
 
    private func prepareInputBufferList() {
       guard let mbl = mutableAudioBufferList, let bl = originalAudioBufferList else {
@@ -57,7 +57,7 @@ class BufferedInputBus: BufferedAudioBus {
       }
    }
 
-   func pull(actionFlags: UnsafeMutablePointer<AudioUnitRenderActionFlags>, timestamp: UnsafePointer<AudioTimeStamp>,
+   public func pull(actionFlags: UnsafeMutablePointer<AudioUnitRenderActionFlags>, timestamp: UnsafePointer<AudioTimeStamp>,
              frameCount: AUAudioFrameCount, inputBusNumber: Int, pullBlock: AURenderPullInputBlock) -> AUAudioUnitStatus {
       guard let mbl = mutableAudioBufferList else {
          return kAudioUnitErr_Uninitialized
@@ -68,9 +68,9 @@ class BufferedInputBus: BufferedAudioBus {
 }
 
 @available(OSX 10.11, *)
-class BufferedOutputBus: BufferedAudioBus {
+public class BufferedOutputBus: BufferedAudioBus {
 
-   func prepareOutputBufferList(_ outputBufferList: UnsafeMutablePointer<AudioBufferList>, frameCount: AUAudioFrameCount,
+   public func prepareOutputBufferList(_ outputBufferList: UnsafeMutablePointer<AudioBufferList>, frameCount: AUAudioFrameCount,
                                 zeroFill: Bool = false) {
       guard let busBufferList = originalAudioBufferList else {
          return

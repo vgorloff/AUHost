@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import mcBase
 
 enum ModuleLogCategory: String, LogCategory {
    case media, controller
 }
 
-let log = Log<ModuleLogCategory>(subsystem: "auhost")
+let log = Log<ModuleLogCategory>(subsystem: "app")
