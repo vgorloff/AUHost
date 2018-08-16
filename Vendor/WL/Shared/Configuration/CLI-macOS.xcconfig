@@ -1,0 +1,11 @@
+//
+//  Tests.xcconfig
+//  mc
+//
+//  Created by Rainer Grinninger on 22.06.17.
+//  Copyright © 2017 Good Hood GmbH. All rights reserved.
+//
+
+#include "Common.xcconfig"
+
+SDKROOT = macosx

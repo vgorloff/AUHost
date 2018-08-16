@@ -1,0 +1,50 @@
+options:
+  deploymentTarget:
+    macOS: "10.11"
+  settingPresets: none
+  createIntermediateGroups: true
+  usesTabs: false
+  indentWidth: 3
+  tabWidth: 3
+
+attributes:
+   ORGANIZATIONNAME: WaveLabs
+   LastUpgradeCheck: "1000"
+   
+configFiles:
+   Debug: Configuration/Project.xcconfig
+   Release: Configuration/Project.xcconfig
+
+name: AttenuatorEx
+
+targets:
+       
+  AUHost:
+    type: application
+    platform: macOS
+    settings:
+      INFOPLIST_FILE: SampleAUHost/Info.plist
+      PRODUCT_BUNDLE_IDENTIFIER: ua.com.wavelabs.AUHost
+      CODE_SIGN_ENTITLEMENTS: SampleAUHost/App.entitlements
+      CODE_SIGN_IDENTITY: Mac Developer
+      CODE_SIGN_STYLE: Automatic
+      DEVELOPMENT_TEAM: E27KE6VTF6
+      DEPLOYMENT_LOCATION: YES
+    configFiles:
+       Debug: Vendor/WL/Shared/Configuration/App-macOS.xcconfig
+       Release: Vendor/WL/Shared/Configuration/App-macOS.xcconfig
+    sources:
+       - SampleAUHost
+       - Shared
+       - Vendor/WL/AppKit
+       - Vendor/WL/Core
+       - Vendor/WL/Foundation
+       - Vendor/WL/Media
+       - Vendor/WL/Types
+       
+schemes:
+       
+   AUHost:
+     build:
+       targets:
+         AUHost: [all]
