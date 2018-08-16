@@ -212,8 +212,12 @@
 		373E826AC120F05E3F6557EE /* SampleAUHost */ = {
 			isa = PBXGroup;
 			children = (
-				C5E335AB1C4FE7B000CD42BB /* Resources */,
-				6FB2507046C2AE6C3D9DC41F /* Sources */,
+				80C9E52A2120AD2200EBB8A5 /* Application.swift */,
+				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
+				80F9DF8B1EF5802C0026A7A6 /* main.swift */,
+				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
+				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
+				80C9E5382120C81A00EBB8A5 /* MainMenu.swift */,
 			);
 			path = SampleAUHost;
 			sourceTree = "<group>";
@@ -239,39 +243,12 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		5B5C9B900B24E9E43424905C /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80C23C322116061900BD1321 /* Logger.swift */,
-				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
-				805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */,
-				8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */,
-				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
-				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
-				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
 		60073EF9DD26E3F9F9255D1E /* os */ = {
 			isa = PBXGroup;
 			children = (
 				1D9BB9EE949BB35869C71D33 /* log */,
 			);
 			path = os;
-			sourceTree = "<group>";
-		};
-		6FB2507046C2AE6C3D9DC41F /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80C9E52A2120AD2200EBB8A5 /* Application.swift */,
-				80C97B331C4AA78E00308D83 /* EffectWindowController.swift */,
-				80F9DF8B1EF5802C0026A7A6 /* main.swift */,
-				8035EF2F1B3752030026AD7D /* MainViewController.swift */,
-				8035EF3D1B375EE00026AD7D /* MainWindowController.swift */,
-				80C9E5382120C81A00EBB8A5 /* MainMenu.swift */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		713858FA6411EEB7ED138AEC /* WL */ = {
@@ -359,16 +336,15 @@
 		C35EE243D2648A1E5FB9E424 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				5B5C9B900B24E9E43424905C /* Sources */,
+				80C23C322116061900BD1321 /* Logger.swift */,
+				80485FB41DA591CE004EFA32 /* MainToolbar.swift */,
+				805A88541EF0FD7D00B8B937 /* MainToolbar.Event.swift */,
+				8005CA491EF6B2DD0091E075 /* MainViewUIModel.swift */,
+				80485FE81DA6CA8D004EFA32 /* MediaItemView.swift */,
+				80C97B491C4B035E00308D83 /* PlaybackEngine.swift */,
+				80130BA51C4C538800D6DDAC /* PlaybackEngineContext.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		C5E335AB1C4FE7B000CD42BB /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		D969A89EA5C488925A751E43 /* Media */ = {

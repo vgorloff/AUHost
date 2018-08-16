@@ -23,7 +23,6 @@
 		8088B5A01C53FACB00847DF9 /* AttenuatorKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8044ABCC1C52E24000FA3DA3 /* AttenuatorKit.framework */; };
 		80A180B81EFDBE5600716C26 /* BufferDatasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B31EFDBE4900716C26 /* BufferDatasource.swift */; };
 		80A180B91EFDBE5600716C26 /* BufferedAudioBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180B11EFDBE4900716C26 /* BufferedAudioBus.swift */; };
-		80A180CF1EFDBFE600716C26 /* AttenuatorKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 80A180C41EFDBF1D00716C26 /* AttenuatorKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		80A180D11EFDC01200716C26 /* AttenuatorAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180BF1EFDBF1D00716C26 /* AttenuatorAudioUnit.swift */; };
 		80A180D21EFDC01200716C26 /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180C01EFDBF1D00716C26 /* AttenuatorDSPKernel.swift */; };
 		80A180D31EFDC01200716C26 /* AttenuatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A180C11EFDBF1D00716C26 /* AttenuatorParameter.swift */; };
@@ -172,7 +171,6 @@
 		80A180C11EFDBF1D00716C26 /* AttenuatorParameter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttenuatorParameter.swift; sourceTree = "<group>"; };
 		80A180C21EFDBF1D00716C26 /* AttenuatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
 		80A180C31EFDBF1D00716C26 /* AttenuatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttenuatorViewController.swift; sourceTree = "<group>"; };
-		80A180C41EFDBF1D00716C26 /* AttenuatorKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttenuatorKit.h; sourceTree = "<group>"; };
 		80A180C61EFDBF3100716C26 /* AttenuatorAU.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttenuatorAU.swift; sourceTree = "<group>"; };
 		80A180C81EFDBF4100716C26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80A180CC1EFDBF4100716C26 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -288,20 +286,6 @@
 				C52B97EBB987589D1B448ED8 /* Media */,
 			);
 			path = AppKit;
-			sourceTree = "<group>";
-		};
-		22F8A5908B55291CA6226A79 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80C23C3E211607B800BD1321 /* Logger.swift */,
-				80485FAF1DA4657A004EFA32 /* MainToolbar.swift */,
-				805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */,
-				8005CA4A1EF6B3020091E075 /* MainViewUIModel.swift */,
-				80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */,
-				80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */,
-				80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		27F685AFC77383F149168049 /* WL */ = {
@@ -421,21 +405,15 @@
 		A6DEF679C283C97816AA0889 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				22F8A5908B55291CA6226A79 /* Sources */,
+				80C23C3E211607B800BD1321 /* Logger.swift */,
+				80485FAF1DA4657A004EFA32 /* MainToolbar.swift */,
+				805A88561EF0FE0D00B8B937 /* MainToolbar.Event.swift */,
+				8005CA4A1EF6B3020091E075 /* MainViewUIModel.swift */,
+				80485FEA1DA6CA97004EFA32 /* MediaItemView.swift */,
+				80485FCC1DA6C39B004EFA32 /* PlaybackEngine.swift */,
+				80485FCD1DA6C39B004EFA32 /* PlaybackEngineContext.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		A823004CCB5A1B68E870108B /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80C9E52C2120AD3E00EBB8A5 /* Application.swift */,
-				80A180CC1EFDBF4100716C26 /* main.swift */,
-				80A180CD1EFDBF4100716C26 /* MainWindowController.swift */,
-				80A180CE1EFDBF4100716C26 /* ViewController.swift */,
-				80C9E52E2120AFA000EBB8A5 /* MainMenu.swift */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		AB91DAEE7551516B8860E2C6 /* Notification */ = {
@@ -444,18 +422,6 @@
 				80C23BEB2116044700BD1321 /* NotificationObserver.swift */,
 			);
 			path = Notification;
-			sourceTree = "<group>";
-		};
-		AC1F2ACC3035A043CC2CB50D /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80A180BF1EFDBF1D00716C26 /* AttenuatorAudioUnit.swift */,
-				80A180C01EFDBF1D00716C26 /* AttenuatorDSPKernel.swift */,
-				80A180C11EFDBF1D00716C26 /* AttenuatorParameter.swift */,
-				80A180C21EFDBF1D00716C26 /* AttenuatorView.swift */,
-				80A180C31EFDBF1D00716C26 /* AttenuatorViewController.swift */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		AE128C6EDB4BD73D4A0873A7 /* Core */ = {
@@ -535,14 +501,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		D251D68B325A57FA58DE31DA /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				80A180C61EFDBF3100716C26 /* AttenuatorAU.swift */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
 		F05040F59E99B49D31288437 /* Converters */ = {
 			isa = PBXGroup;
 			children = (
@@ -554,8 +512,12 @@
 		F11F3C10BFC6D9E0F30665F6 /* Attenuator */ = {
 			isa = PBXGroup;
 			children = (
-				FADC2A49529EAB415DDBB072 /* Resources */,
-				A823004CCB5A1B68E870108B /* Sources */,
+				80C9E52C2120AD3E00EBB8A5 /* Application.swift */,
+				80A180CC1EFDBF4100716C26 /* main.swift */,
+				80A180CD1EFDBF4100716C26 /* MainWindowController.swift */,
+				80A180CE1EFDBF4100716C26 /* ViewController.swift */,
+				80C9E52E2120AFA000EBB8A5 /* MainMenu.swift */,
+				80A180C81EFDBF4100716C26 /* Assets.xcassets */,
 			);
 			path = Attenuator;
 			sourceTree = "<group>";
@@ -563,8 +525,11 @@
 		F53C405A923C73D7C882BD8B /* AttenuatorKit */ = {
 			isa = PBXGroup;
 			children = (
-				AC1F2ACC3035A043CC2CB50D /* Sources */,
-				80A180C41EFDBF1D00716C26 /* AttenuatorKit.h */,
+				80A180BF1EFDBF1D00716C26 /* AttenuatorAudioUnit.swift */,
+				80A180C01EFDBF1D00716C26 /* AttenuatorDSPKernel.swift */,
+				80A180C11EFDBF1D00716C26 /* AttenuatorParameter.swift */,
+				80A180C21EFDBF1D00716C26 /* AttenuatorView.swift */,
+				80A180C31EFDBF1D00716C26 /* AttenuatorViewController.swift */,
 			);
 			path = AttenuatorKit;
 			sourceTree = "<group>";
@@ -580,17 +545,9 @@
 		F8F2C36EE6DDFFA8BF78FB55 /* AttenuatorAU */ = {
 			isa = PBXGroup;
 			children = (
-				D251D68B325A57FA58DE31DA /* Sources */,
+				80A180C61EFDBF3100716C26 /* AttenuatorAU.swift */,
 			);
 			path = AttenuatorAU;
-			sourceTree = "<group>";
-		};
-		FADC2A49529EAB415DDBB072 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				80A180C81EFDBF4100716C26 /* Assets.xcassets */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		FD492F335FD9DC346512895A /* Sources */ = {
@@ -609,7 +566,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80A180CF1EFDBFE600716C26 /* AttenuatorKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
