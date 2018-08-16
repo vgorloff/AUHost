@@ -80,7 +80,7 @@ extension AttenuatorViewController {
    private func setupViewIfNeeded() {
       if !isConfigured, let au = audioUnit {
          isConfigured = true
-         self.setupUI(au: au)
+         setupUI(au: au)
       }
    }
 

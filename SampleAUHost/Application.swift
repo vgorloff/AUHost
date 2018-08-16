@@ -25,7 +25,6 @@ class Application: NSApplication {
    required init?(coder: NSCoder) {
       fatalError()
    }
-
 }
 
 extension Application: NSApplicationDelegate {

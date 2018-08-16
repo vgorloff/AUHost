@@ -394,4 +394,3 @@ class MainMenu: NSMenu {
       menuAUHostItem05Services.submenu = menuServices
    }
 }
-

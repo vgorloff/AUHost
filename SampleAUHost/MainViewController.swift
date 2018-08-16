@@ -225,7 +225,6 @@ extension MainViewController {
    }
 }
 
-
 extension MainViewController {
 
    private func setupUI() {
@@ -368,5 +367,4 @@ extension MainViewController {
 
       NSLayoutConstraint.activate(constraints)
    }
-
 }

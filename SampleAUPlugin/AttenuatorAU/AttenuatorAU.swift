@@ -9,5 +9,5 @@
 import Foundation
 
 public class Dummy {
-   // Just to simplify NSExtension configuration.
+   // NSExtension uses other bundle and Principal class. See Apple Docs and Info.plist file.
 }
