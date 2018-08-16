@@ -9,6 +9,7 @@
 import AVFoundation
 import AppKit
 import Foundation
+import mcBase
 
 class MainViewUIModel {
 

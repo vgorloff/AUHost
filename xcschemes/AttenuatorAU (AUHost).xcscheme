@@ -18,7 +18,7 @@
                BlueprintIdentifier = "8035EF291B3752030026AD7D"
                BuildableName = "AUHost.app"
                BlueprintName = "AUHost"
-               ReferencedContainer = "container:AUHost.xcodeproj">
+               ReferencedContainer = "container:Attenuator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -50,7 +50,7 @@
             BlueprintIdentifier = "8035EF291B3752030026AD7D"
             BuildableName = "AUHost.app"
             BlueprintName = "AUHost"
-            ReferencedContainer = "container:AUHost.xcodeproj">
+            ReferencedContainer = "container:Attenuator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -73,7 +73,7 @@
             BlueprintIdentifier = "8035EF291B3752030026AD7D"
             BuildableName = "AUHost.app"
             BlueprintName = "AUHost"
-            ReferencedContainer = "container:AUHost.xcodeproj">
+            ReferencedContainer = "container:Attenuator.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -92,7 +92,7 @@
             BlueprintIdentifier = "8035EF291B3752030026AD7D"
             BuildableName = "AUHost.app"
             BlueprintName = "AUHost"
-            ReferencedContainer = "container:AUHost.xcodeproj">
+            ReferencedContainer = "container:Attenuator.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

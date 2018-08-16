@@ -6,8 +6,8 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import AttenuatorKit
+import Foundation
 
-public final class AttenuatorAU: AttenuatorViewController {
+public class Dummy {
    // Just to simplify NSExtension configuration.
 }
