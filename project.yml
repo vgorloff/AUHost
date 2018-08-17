@@ -91,31 +91,6 @@ targets:
        Debug: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
        Release: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
     sources:
-       - SampleAUPlugin/AttenuatorAU
-    dependencies:
-       - target: AttenuatorKit
-         embed: true
-       
-  AttenuatorKit:
-    type: framework
-    platform: macOS
-    settings:
-      INFOPLIST_FILE: SampleAUPlugin/AttenuatorKit/Info.plist
-      PRODUCT_BUNDLE_IDENTIFIER: ua.com.wavelabs.AttenuatorKit
-      APPLICATION_EXTENSION_API_ONLY: YES
-      LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/Frameworks @loader_path/Frameworks
-      ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
-      CODE_SIGN_IDENTITY: Mac Developer
-      CODE_SIGN_STYLE: Automatic
-      DEVELOPMENT_TEAM: E27KE6VTF6
-    configFiles:
-       Debug: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
-       Release: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
-    prebuildScripts:
-       - script: '[[ -r ~/.bashrc ]] && . ~/.bashrc && ruby -r "`pwd`/Automation.rb" -e "Automation.verifyPlugIn"'
-         name: "Run Script: Verify"
-         shell: /bin/bash
-    sources:
        - SampleAUPlugin/AttenuatorKit
        - Vendor/WL/Core
        - Vendor/WL/Foundation
