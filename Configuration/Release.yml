@@ -1,3 +1,3 @@
-name: Good bye XIBs.
+name: Broken Logic / GarageBand integration.
 description:
-   - UI made from code.
+   - Fixes issue with missed dynamic library when using Logic.app / GarageBand.app.
