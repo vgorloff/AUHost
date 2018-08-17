@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "0930"
    wasCreatedForAppExtension = "YES"
    version = "1.3">
    <BuildAction
@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NT_479521428808"
+               BlueprintIdentifier = "8035EF291B3752030026AD7D"
                BuildableName = "AUHost.app"
                BlueprintName = "AUHost"
                ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -29,7 +29,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NT_159652559712"
+               BlueprintIdentifier = "C5A5A0FB1C47E75F00F9864E"
                BuildableName = "Attenuator.app"
                BlueprintName = "Attenuator"
                ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_479521428808"
+            BlueprintIdentifier = "8035EF291B3752030026AD7D"
             BuildableName = "AUHost.app"
             BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -70,7 +70,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_479521428808"
+            BlueprintIdentifier = "8035EF291B3752030026AD7D"
             BuildableName = "AUHost.app"
             BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -89,7 +89,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_479521428808"
+            BlueprintIdentifier = "8035EF291B3752030026AD7D"
             BuildableName = "AUHost.app"
             BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj">

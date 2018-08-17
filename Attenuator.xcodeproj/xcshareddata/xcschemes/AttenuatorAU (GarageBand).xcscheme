@@ -15,7 +15,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NT_745679344536"
+               BlueprintIdentifier = "C5A5A1111C47EB5300F9864E"
                BuildableName = "AttenuatorAU.appex"
                BlueprintName = "AttenuatorAU"
                ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -29,7 +29,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NT_159652559712"
+               BlueprintIdentifier = "C5A5A0FB1C47E75F00F9864E"
                BuildableName = "Attenuator.app"
                BlueprintName = "Attenuator"
                ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_479521428808"
+            BlueprintIdentifier = "8035EF291B3752030026AD7D"
             BuildableName = "AUHost.app"
             BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -68,13 +68,12 @@
       allowLocationSimulation = "YES">
       <PathRunnable
          runnableDebuggingMode = "0"
-         BundleIdentifier = "com.apple.garageband10"
          FilePath = "/Applications/GarageBand.app">
       </PathRunnable>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_745679344536"
+            BlueprintIdentifier = "C5A5A1111C47EB5300F9864E"
             BuildableName = "AttenuatorAU.appex"
             BlueprintName = "AttenuatorAU"
             ReferencedContainer = "container:Attenuator.xcodeproj">
@@ -92,7 +91,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_745679344536"
+            BlueprintIdentifier = "C5A5A1111C47EB5300F9864E"
             BuildableName = "AttenuatorAU.appex"
             BlueprintName = "AttenuatorAU"
             ReferencedContainer = "container:Attenuator.xcodeproj">
