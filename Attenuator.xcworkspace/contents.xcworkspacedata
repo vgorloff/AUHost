@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "group:README.md">
+   </FileRef>
+   <FileRef
+      location = "group:Attenuator.xcodeproj">
    </FileRef>
 </Workspace>
