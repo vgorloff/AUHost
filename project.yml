@@ -40,8 +40,11 @@ targets:
     sources:
        - SampleAUHost
        - Shared
-    dependencies:
-       - target: mcBase
+       - Vendor/WL/Core
+       - Vendor/WL/Foundation
+       - Vendor/WL/Media
+       - Vendor/WL/Types
+       - Vendor/WL/AppKit
        
   Attenuator:
     type: application
@@ -63,11 +66,15 @@ targets:
          shell: /bin/bash
     sources:
        - SampleAUPlugin/Attenuator
+       - SampleAUPlugin/AttenuatorKit
        - Shared
+       - Vendor/WL/Core
+       - Vendor/WL/Foundation
+       - Vendor/WL/Media
+       - Vendor/WL/Types
+       - Vendor/WL/AppKit
     dependencies:
-       - target: AttenuatorKit
        - target: AttenuatorAU
-       - target: mcBase
 
   AttenuatorAU:
     type: app-extension
@@ -79,65 +86,17 @@ targets:
       CODE_SIGN_IDENTITY: Mac Developer
       CODE_SIGN_STYLE: Automatic
       DEVELOPMENT_TEAM: E27KE6VTF6
-      # LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/../../../../Frameworks
       ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
     configFiles:
        Debug: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
        Release: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
-    sources:
-       - SampleAUPlugin/AttenuatorAU
-    dependencies:
-       - target: AttenuatorKit
-         embed: true
-       - target: mcBase
-         embed: true
-       
-  AttenuatorKit:
-    type: framework
-    platform: macOS
-    settings:
-      INFOPLIST_FILE: SampleAUPlugin/AttenuatorKit/Info.plist
-      PRODUCT_BUNDLE_IDENTIFIER: ua.com.wavelabs.AttenuatorKit
-      APPLICATION_EXTENSION_API_ONLY: YES
-      LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/Frameworks @loader_path/Frameworks
-      ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
-      CODE_SIGN_IDENTITY: Mac Developer
-      CODE_SIGN_STYLE: Automatic
-      DEVELOPMENT_TEAM: E27KE6VTF6
-    configFiles:
-       Debug: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
-       Release: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
-    prebuildScripts:
-       - script: '[[ -r ~/.bashrc ]] && . ~/.bashrc && ruby -r "`pwd`/Automation.rb" -e "Automation.verifyPlugIn"'
-         name: "Run Script: Verify"
-         shell: /bin/bash
     sources:
        - SampleAUPlugin/AttenuatorKit
-    dependencies:
-       - target: mcBase
-         embed: true
-       
-  mcBase:
-    type: framework
-    platform: macOS
-    settings:
-      INFOPLIST_FILE: SampleAUPlugin/AttenuatorKit/Info.plist
-      PRODUCT_BUNDLE_IDENTIFIER: ua.com.wavelabs.Base
-      APPLICATION_EXTENSION_API_ONLY: YES
-      LD_RUNPATH_SEARCH_PATHS: $(inherited) @executable_path/Frameworks @loader_path/Frameworks
-      CODE_SIGN_IDENTITY: Mac Developer
-      CODE_SIGN_STYLE: Automatic
-      DEVELOPMENT_TEAM: E27KE6VTF6
-    configFiles:
-       Debug: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
-       Release: Vendor/WL/Shared/Configuration/Framework-macOS.xcconfig
-    sources:
        - Vendor/WL/Core
        - Vendor/WL/Foundation
        - Vendor/WL/Media
        - Vendor/WL/Types
        - Vendor/WL/AppKit
-       - Vendor/Logger.swift
        
 schemes:
        

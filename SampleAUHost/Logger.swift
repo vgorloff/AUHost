@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import mcBase
 
 enum ModuleLogCategory: String, LogCategory {
    case media, controller
