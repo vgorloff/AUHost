@@ -6,7 +6,6 @@
 //  Copyright © 2016 WaveLabs. All rights reserved.
 //
 
-import AttenuatorKit
 import AVFoundation
 import Cocoa
 

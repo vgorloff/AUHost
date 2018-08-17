@@ -10,7 +10,6 @@ import Accelerate
 import AudioUnit
 import AVFoundation
 import Foundation
-import mcBase
 
 struct AttenuatorDSPKernel {
 
