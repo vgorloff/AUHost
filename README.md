@@ -11,9 +11,10 @@ I faced *weird* issues while translating sample code to pure Swift. Such as miss
 
 ## Build system and Deployment target requirements
 
-- **Xcode 9 (Swift 4)**
-- iOS 9, macOS 10.11
+- Xcode 10 (Swift 4)
+- macOS 10.11
 - Metal
+- [XcodeGen](https://github.com/yonaskolb/XcodeGen) - Used to generate Xcode project. (`brew install xcodegen`)
 
 ## AUHost.app
 
