@@ -16,7 +16,7 @@ class AttenuatorView: NSView {
    private lazy var stackView = NSStackView()
    private lazy var viewContainerView = NSView()
 
-   private var displayLinkUtility: DisplayLink.GenericRenderer?
+   private var displayLinkUtility: DispatchSourceDisplayLinkRenderer?
 
    var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
    var meterRefreshCallback: (() -> [AttenuatorDSPKernel.SampleType]?)?
@@ -67,8 +67,8 @@ extension AttenuatorView {
       sliderGain.action = #selector(handleGainChange(_:))
 
       do {
-         displayLinkUtility = try DisplayLink.GenericRenderer(frameRateDivider: 2, renderCallbackQueue: .main)
-         displayLinkUtility?.renderCallback = { [weak self] in
+         displayLinkUtility = try DispatchSourceDisplayLinkRenderer(frameRateDivider: 2, renderCallbackQueue: .main)
+         displayLinkUtility?.setCallback { [weak self] in
             if let value = self?.meterRefreshCallback?() {
                self?.viewLevelMeter.level = value
             }

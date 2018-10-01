@@ -75,7 +75,7 @@ class Automation
    end
    
    def self.post()
-     if Tool.isCIServer
+     if Environment.isCI
         return
      end
       targetName = ENV['TARGET_NAME']
@@ -85,15 +85,14 @@ class Automation
    end
 
    def self.verifyPlugIn()
-      if Tool.isCIServer
+      if Environment.isCI
          return
       end
       projectPath = GitRepoDirPath + "/SampleAUPlugin"
-      t = Tool.new()
       l = Linter.new(projectPath, GitRepoDirPath + "/.swiftlint.yml")
       h = FileHeaderChecker.new(["Attenuator", "WaveLabs"])
-      if t.isXcodeBuild
-         if t.canRunActions("Verification")
+      if Environment.isXcodeBuild
+         if Environment.canRunAction("Verification")
             changedFiles = GitStatus.new(GitRepoDirPath).changedFiles()
             puts "→ Checking headers..."
             puts h.analyseFiles(changedFiles)
@@ -116,15 +115,14 @@ class Automation
    end
    
    def self.verifyHost()
-      if Tool.isCIServer
+      if Environment.isCI
          return
       end
       projectPath = GitRepoDirPath + "/SampleAUHost"
-      t = Tool.new()
       l = Linter.new(projectPath, GitRepoDirPath + "/.swiftlint.yml")
       h = FileHeaderChecker.new(["AUHost", "WaveLabs"])
-      if t.isXcodeBuild
-         if t.canRunActions("Verification")
+      if Environment.isXcodeBuild
+         if Environment.canRunAction("Verification")
             changedFiles = GitStatus.new(GitRepoDirPath).changedFiles()
             puts "→ Checking headers..."
             puts h.analyseFiles(changedFiles)

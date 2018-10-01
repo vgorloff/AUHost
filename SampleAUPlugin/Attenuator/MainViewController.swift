@@ -197,7 +197,7 @@ extension MainViewController {
       audioUnit = au
       let ctrl = AttenuatorViewController(au: au)
       ctrl.view.translatesAutoresizingMaskIntoConstraints = false
-      addChildViewController(ctrl)
+      addChild(ctrl)
       containerView.addSubview(ctrl.view)
       let cH = NSLayoutConstraint.constraints(withVisualFormat: "|[subview]|",
                                               options: [], metrics: nil, views: ["subview": ctrl.view])
@@ -210,7 +210,7 @@ extension MainViewController {
    private func closeEffectView() {
       audioUnit = nil
       audioUnitController?.view.removeFromSuperview()
-      audioUnitController?.removeFromParentViewController()
+      audioUnitController?.removeFromParent()
       audioUnitController = nil
    }
 }
