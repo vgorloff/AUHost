@@ -7,6 +7,86 @@ end
 
 class Project < AbstractProject
   
+  def initialize(rootDirPath)
+    super(rootDirPath)
+    @versionFilePath = @rootDirPath + "/Configuration/Version.xcconfig"
+    @projectFilePath = @rootDirPath + "/Attenuator.xcodeproj"
+    @tmpDirPath = @rootDirPath + "/DerivedData"
+    @keyChainPath = @tmpDirPath + "/VST3NetSend.keychain"
+    @p12FilePath = @rootDirPath + '/Codesign/DeveloperIDApplication.p12'
+  end
+
+  def ci()
+    if !Environment.isCI
+       release()
+       return
+    end
+    puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    puts "→ Preparing environment..."
+    FileUtils.mkdir_p @tmpDirPath
+    puts Environment.announceEnvVars
+    puts "→ Setting up keychain..."
+    kc = KeyChain.create(@keyChainPath)
+    puts KeyChain.list
+    defaultKeyChain = KeyChain.default
+    puts "→ Default keychain: #{defaultKeyChain}"
+    kc.setSettings()
+    kc.info()
+    kc.import(@p12FilePath, ENV['AWL_P12_PASSWORD'], ["/usr/bin/codesign"])
+    kc.setKeyCodesignPartitionList()
+    kc.dump()
+    KeyChain.setDefault(kc.nameOrPath)
+    puts "→ Default keychain now: #{KeyChain.default}"
+    begin
+       puts "→ Making build..."
+       XcodeBuilder.new(@projectFilePath).ci("AUHost")
+       XcodeBuilder.new(@projectFilePath).ci("Attenuator")
+       puts "→ Making cleanup..."
+       KeyChain.setDefault(defaultKeyChain)
+       KeyChain.delete(kc.nameOrPath)
+    rescue
+       KeyChain.setDefault(defaultKeyChain)
+       KeyChain.delete(kc.nameOrPath)
+       puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+       raise
+    end
+  end
+  
+  def build()
+     XcodeBuilder.new(@projectFilePath).build("AUHost")
+     XcodeBuilder.new(@projectFilePath).build("Attenuator")
+  end
+  
+  def clean()
+     XcodeBuilder.new(@projectFilePath).clean("AUHost")
+     XcodeBuilder.new(@projectFilePath).clean("Attenuator")
+  end
+  
+  def release()
+     XcodeBuilder.new(@projectFilePath).archive("AUHost")
+     XcodeBuilder.new(@projectFilePath).archive("Attenuator")
+     apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
+     apps.each { |app| Archive.zip(app) }
+     apps.each { |app| XcodeBuilder.validateBinary(app) }
+  end
+
+  def deploy()
+     require 'yaml'
+     assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
+     releaseInfo = YAML.load_file("#{GitRepoDirPath}/Configuration/Release.yml")
+     releaseName = releaseInfo['name']
+     releaseDescriptions = releaseInfo['description'].map { |l| "* #{l}"}
+     releaseDescription = releaseDescriptions.join("\n")
+     version = Version.new(@versionFilePath).projectVersion
+     puts "! Will make GitHub release → #{version}: \"#{releaseName}\""
+     puts releaseDescriptions.map { |l| "  #{l}" }
+     assets.each { |f| puts "  #{f}" }
+     gh = GitHubRelease.new("vgorloff", "AUHost")
+     Readline.readline("OK? > ")
+     gh.release(version, releaseName, releaseDescription)
+     assets.each { |f| gh.uploadAsset(f) }
+  end
+  
   def generate()
     project = XcodeProject.new(projectPath: File.join(@rootDirPath, "Attenuator.xcodeproj"), vendorSubpath: 'WL')
     auHost = project.addApp(name: "AUHost", sources: ["Shared", "SampleAUHost"], platform: :osx, deploymentTarget: "10.11", buildSettings: {

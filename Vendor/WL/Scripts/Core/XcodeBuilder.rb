@@ -15,8 +15,9 @@ module BuildSetting
 end
 
 class XcodeBuilder
-    
+
   def initialize(projectFilePath, buildRoot = ENV['PWD'])
+   require 'securerandom'
     @isVerbodeMode = false
     @buildRoot = buildRoot
     @projectFilePath = projectFilePath
@@ -49,7 +50,7 @@ class XcodeBuilder
       raise "Test failed with status: #{$?.exitstatus}"
     end
   end
- 
+
   def archive(schema, configuration = nil, skipExport = false)
     c = configuration == nil ? "" : "-configuration #{configuration}"
     archivePath = "#{@buildDir}/#{schema}.xcarchive"
@@ -106,7 +107,7 @@ class XcodeBuilder
     value = value.split("=").last.strip
     return value
   end
-  
+
   private
   def prepareExportOptionsPlist()
     p = PlistTool.new(@exportPlistFilePath)
