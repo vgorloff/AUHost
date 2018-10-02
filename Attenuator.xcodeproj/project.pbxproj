@@ -9,7 +9,7 @@
 /* Begin PBXAggregateTarget section */
 		9BF2DF86667AD5882A199857 /* Autocorrect */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 80F10F622163F17600AA0E91 /* Build configuration list */;
+			buildConfigurationList = 80F10F622163F17600AA0E91 /* Build configuration list for PBXAggregateTarget "Autocorrect" */;
 			buildPhases = (
 				8483B84C501A58B101A66FBB /* Run Script: Autocorrect */,
 			);
@@ -20,7 +20,7 @@
 		};
 		FFACE662A4DE095673B94B41 /* Verify */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 80F10F612163F17600AA0E91 /* Build configuration list */;
+			buildConfigurationList = 80F10F612163F17600AA0E91 /* Build configuration list for PBXAggregateTarget "Verify" */;
 			buildPhases = (
 				4E5C59E7EB25841F4E520C4D /* Run Script: Verify */,
 			);
@@ -609,7 +609,7 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		4BBABBB13DBAC7B2DFDCCEB5 /* Vendor */ = {
+		4BBABBB13DBAC7B2DFDCCEB5 /* WL */ = {
 			isa = PBXGroup;
 			children = (
 				EC7B8B4313E9864D43B66667 /* AppKit */,
@@ -619,8 +619,7 @@
 				DA8DE4E7FE7C3D67F26FA67F /* Shared */,
 				DB6ABA7B50F671BC6873C0CD /* Types */,
 			);
-			name = Vendor;
-			path = ../../../../Developer/Projects/WL;
+			path = WL;
 			sourceTree = "<group>";
 		};
 		5407A0D43017D6B63FFA6798 /* Converters */ = {
@@ -665,7 +664,7 @@
 				D5A16D3EA4146E11F8FCA3F0 /* SampleAUHost */,
 				AD44774AC4C6167D8383B7B2 /* SampleAUPlugin */,
 				459F207897FBE68E97C9FFFF /* Shared */,
-				4BBABBB13DBAC7B2DFDCCEB5 /* Vendor */,
+				4BBABBB13DBAC7B2DFDCCEB5 /* WL */,
 				5BA4DD7E4854B4F04C845394 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1750,7 +1749,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80F10F612163F17600AA0E91 /* Build configuration list */ = {
+		80F10F612163F17600AA0E91 /* Build configuration list for PBXAggregateTarget "Verify" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80F10F5D2163F15200AA0E91 /* Debug */,
@@ -1759,7 +1758,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		80F10F622163F17600AA0E91 /* Build configuration list */ = {
+		80F10F622163F17600AA0E91 /* Build configuration list for PBXAggregateTarget "Autocorrect" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				80F10F5F2163F15200AA0E91 /* Debug */,
