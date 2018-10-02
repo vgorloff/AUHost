@@ -32,7 +32,11 @@ class Project < AbstractProject
   end
   
   def register()
-    system "pluginkit -v -a \"#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex\"" unless Environment.isCI
+    cmd = "pluginkit -v -a \"#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex\""
+    unless Environment.isCI
+      puts cmd
+      system cmd
+    end
   end
   
   def addSharedSources(project, target)
