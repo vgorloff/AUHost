@@ -8,7 +8,7 @@ end
 class Project < AbstractProject
   
   def generate()
-    project = XcodeProject.new(projectPath: File.join(@rootDirPath, "Attenuator_.xcodeproj"))
+    project = XcodeProject.new(projectPath: File.join(@rootDirPath, "Attenuator.xcodeproj"))
     auHost = project.addApp(name: "AUHost", sources: ["Shared", "SampleAUHost"], platform: :osx, deploymentTarget: "10.11", buildSettings: {
       "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.AUHost", "DEPLOYMENT_LOCATION" => "YES"
     })

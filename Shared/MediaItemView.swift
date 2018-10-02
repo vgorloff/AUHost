@@ -6,8 +6,8 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
-import AVFoundation
 import Accelerate
+import AVFoundation
 import Cocoa
 
 public final class MediaItemView: NSView {
