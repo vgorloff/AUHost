@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9BF2DF86667AD5882A199857"
+               BlueprintIdentifier = "0F2560EDEF8569F880E77C2F"
                BlueprintName = "Autocorrect"
                ReferencedContainer = "container:Attenuator.xcodeproj"
                BuildableName = "Autocorrect">

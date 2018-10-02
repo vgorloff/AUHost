@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
+               BlueprintIdentifier = "4096546B0BEAB638F838B875"
                BlueprintName = "AUHost"
                ReferencedContainer = "container:Attenuator.xcodeproj"
                BuildableName = "AUHost.app">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
+            BlueprintIdentifier = "4096546B0BEAB638F838B875"
             BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "AUHost.app">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
+            BlueprintIdentifier = "4096546B0BEAB638F838B875"
             BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "AUHost.app">
@@ -71,7 +71,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
+            BlueprintIdentifier = "4096546B0BEAB638F838B875"
             BlueprintName = "AUHost"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "AUHost.app">
