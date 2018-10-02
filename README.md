@@ -14,7 +14,6 @@ I faced *weird* issues while translating sample code to pure Swift. Such as miss
 - Xcode 10 (Swift 4)
 - macOS 10.11
 - Metal
-- [XcodeGen](https://github.com/yonaskolb/XcodeGen) - Used to generate Xcode project. (`brew install xcodegen`)
 
 ## AUHost.app
 
