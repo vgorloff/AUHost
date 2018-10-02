@@ -6,8 +6,8 @@
 //  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
-import AVFoundation
 import AppKit
+import AVFoundation
 import Foundation
 import MediaLibrary
 
@@ -165,7 +165,6 @@ extension MainViewUIModel {
       }
    }
 }
-
 
 extension MainViewUIModel {
 

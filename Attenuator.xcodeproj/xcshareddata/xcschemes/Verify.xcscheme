@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
-               BlueprintName = "AUHost"
+               BlueprintIdentifier = "FFACE662A4DE095673B94B41"
+               BlueprintName = "Verify"
                ReferencedContainer = "container:Attenuator.xcodeproj"
-               BuildableName = "AUHost.app">
+               BuildableName = "Verify">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <AdditionalOptions>
       </AdditionalOptions>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
-            BlueprintName = "AUHost"
-            ReferencedContainer = "container:Attenuator.xcodeproj"
-            BuildableName = "AUHost.app">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -51,16 +42,6 @@
       allowLocationSimulation = "YES">
       <AdditionalOptions>
       </AdditionalOptions>
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
-            BlueprintName = "AUHost"
-            ReferencedContainer = "container:Attenuator.xcodeproj"
-            BuildableName = "AUHost.app">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       savedToolIdentifier = ""
@@ -68,15 +49,6 @@
       debugDocumentVersioning = "YES"
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DD5B93F2834C2A3DCB4494AE"
-            BlueprintName = "AUHost"
-            ReferencedContainer = "container:Attenuator.xcodeproj"
-            BuildableName = "AUHost.app">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

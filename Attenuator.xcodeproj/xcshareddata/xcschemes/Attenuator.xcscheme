@@ -1,48 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1000"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForTesting = "NO"
+            buildForAnalyzing = "YES"
+            buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "NO">
+            buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "NT_159652559712"
-               BuildableName = "Attenuator.app"
+               BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
                BlueprintName = "Attenuator"
-               ReferencedContainer = "container:Attenuator.xcodeproj">
+               ReferencedContainer = "container:Attenuator.xcodeproj"
+               BuildableName = "Attenuator.app">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
-      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      buildConfiguration = "Debug">
+      <AdditionalOptions>
+      </AdditionalOptions>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_159652559712"
-            BuildableName = "Attenuator.app"
+            BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
             BlueprintName = "Attenuator"
-            ReferencedContainer = "container:Attenuator.xcodeproj">
+            ReferencedContainer = "container:Attenuator.xcodeproj"
+            BuildableName = "Attenuator.app">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -50,34 +47,34 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
+      buildConfiguration = "Debug"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_159652559712"
-            BuildableName = "Attenuator.app"
-            BlueprintName = "Attenuator"
-            ReferencedContainer = "container:Attenuator.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
-   </LaunchAction>
-   <ProfileAction
-      buildConfiguration = "Release"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      savedToolIdentifier = ""
-      useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "NT_159652559712"
-            BuildableName = "Attenuator.app"
+            BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
             BlueprintName = "Attenuator"
-            ReferencedContainer = "container:Attenuator.xcodeproj">
+            ReferencedContainer = "container:Attenuator.xcodeproj"
+            BuildableName = "Attenuator.app">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </LaunchAction>
+   <ProfileAction
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES"
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
+            BlueprintName = "Attenuator"
+            ReferencedContainer = "container:Attenuator.xcodeproj"
+            BuildableName = "Attenuator.app">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
