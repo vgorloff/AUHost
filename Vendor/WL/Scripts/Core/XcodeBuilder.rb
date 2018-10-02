@@ -29,7 +29,7 @@ class XcodeBuilder
       @buildExecutable = "set -o pipefail && #{@buildExecutable}"
       @commonArgsXCPretty = "| xcpretty --color --simple"
     end
-    @exportPlistFilePath = Dir::Tmpname.make_tmpname("/tmp/ruby-automation.xcodeBuilder.", ".xml")
+    @exportPlistFilePath = File.join(Dir.tmpdir, "ruby-automation.#{SecureRandom.uuid}.xml")
   end
 
   def build(schema, configuration = nil)

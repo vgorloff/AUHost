@@ -1,4 +1,4 @@
-require_relative 'Tool.rb'
+require_relative 'Environment.rb'
 
 # Info:
 # - https://github.com/stuartervine/xcode-sh/blob/master/build.sh
@@ -133,7 +133,7 @@ class KeyChain
   private
   def self.exe
     cmd = 'security'
-    if !Tool.isCIServer
+    if !Environment.isCIServer
       cmd += ' -v'
     end
     return cmd

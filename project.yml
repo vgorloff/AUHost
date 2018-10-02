@@ -82,7 +82,7 @@ targets:
     settings:
       INFOPLIST_FILE: SampleAUPlugin/AttenuatorAU/Info.plist
       PRODUCT_BUNDLE_IDENTIFIER: ua.com.wavelabs.Attenuator.AttenuatorAU
-      CODE_SIGN_ENTITLEMENTS: SampleAUPlugin/AttenuatorAU/Extension.entitlements
+      CODE_SIGN_ENTITLEMENTS: SampleAUPlugin/AttenuatorAU/App.entitlements
       CODE_SIGN_IDENTITY: Mac Developer
       CODE_SIGN_STYLE: Automatic
       DEVELOPMENT_TEAM: E27KE6VTF6

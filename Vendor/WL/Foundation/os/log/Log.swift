@@ -74,14 +74,13 @@ public class Log<T: LogCategory> {
    public init(subsystem: String) {
       self.subsystem = subsystem
    }
-
 }
 
 extension Log {
    public func initialize(_ message: String? = nil, function: String = #function, file: String = #file,
                           line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
       if #available(OSX 10.12, iOS 10.0, *) {
-         guard !RuntimeInfo.isUnderAnyTesting else {
+         guard !RuntimeInfo.isUnderTesting else {
             return
          }
          let logger = osLog(category: "init")
@@ -98,7 +97,7 @@ extension Log {
    public func deinitialize(_ message: String? = nil, function: String = #function, file: String = #file, line: Int32 = #line,
                             dso: UnsafeRawPointer? = #dsohandle) {
       if #available(OSX 10.12, iOS 10.0, *) {
-         guard !RuntimeInfo.isUnderAnyTesting else {
+         guard !RuntimeInfo.isUnderTesting else {
             return
          }
          let logger = osLog(category: "deinit")
@@ -215,7 +214,6 @@ extension Log {
          `default`(category, message, function: function, file: file, line: line, dso: dso)
       }
    }
-
 }
 
 extension Log {
@@ -266,7 +264,6 @@ extension Log {
       return msg
    }
 }
-
 
 extension OSLogType {
 

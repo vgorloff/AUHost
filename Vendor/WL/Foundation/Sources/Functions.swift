@@ -24,15 +24,21 @@ public func string(fromClass cls: AnyClass) -> String {
    return NSStringFromClass(cls)
 }
 
+public func throwIfNeeded(_ error: Swift.Error?) throws {
+   if let error = error {
+      throw error
+   }
+}
+
 @discardableResult
 public func configure<T>(_ element: T, _ closure: (T) -> Void) -> T {
-	closure(element)
-	return element
+   closure(element)
+   return element
 }
 
 public func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
-	if let value = arg {
-		return closure(value)
-	}
-	return nil
+   if let value = arg {
+      return closure(value)
+   }
+   return nil
 }

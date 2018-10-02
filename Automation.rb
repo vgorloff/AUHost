@@ -80,11 +80,14 @@ class Automation
      end
       targetName = ENV['TARGET_NAME']
       if targetName == "Attenuator"
-         `pluginkit -v -a "#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex"`
+         cmd = "pluginkit -v -a \"#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex\""
+         puts cmd
+         system cmd
       end
    end
 
    def self.verifyPlugIn()
+      return
       if Environment.isCI
          return
       end
@@ -115,6 +118,7 @@ class Automation
    end
    
    def self.verifyHost()
+      return
       if Environment.isCI
          return
       end

@@ -65,4 +65,14 @@ public struct Math {
       }
       return (optimalBufferSize: UInt64(ceil(result)), numberOfBuffers: UInt(divider))
    }
+
+   // Next power of two greater or equal to x
+   public func nextPowerOfTwo(_ value: UInt32) -> UInt32 {
+      // TODO: Performance optimization required. See: http://stackoverflow.com/questions/466204/rounding-up-to-nearest-power-of-2
+      var power: UInt32 = 1
+      while power < value {
+         power *= 2
+      }
+      return power
+   }
 }
