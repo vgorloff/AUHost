@@ -27,5 +27,3 @@ xcbaselines
 *.xccheckout
 *.moved-aside
 *.xcscmblueprint
-
-/*.xcodeproj
