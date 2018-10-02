@@ -3,7 +3,7 @@
 //  mcTypes-macOS
 //
 //  Created by Vlad Gorlov on 11.11.17.
-//  Copyright © 2017 Demo. All rights reserved.
+//  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
 import CoreGraphics

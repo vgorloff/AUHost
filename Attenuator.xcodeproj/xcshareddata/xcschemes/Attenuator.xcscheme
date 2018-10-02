@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
+               BlueprintIdentifier = "395E317A0F65A3B0860314A3"
                BlueprintName = "Attenuator"
                ReferencedContainer = "container:Attenuator.xcodeproj"
                BuildableName = "Attenuator.app">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
+            BlueprintIdentifier = "395E317A0F65A3B0860314A3"
             BlueprintName = "Attenuator"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "Attenuator.app">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
+            BlueprintIdentifier = "395E317A0F65A3B0860314A3"
             BlueprintName = "Attenuator"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "Attenuator.app">
@@ -71,7 +71,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "8AF93EC0C120C7C0FD4F5FAA"
+            BlueprintIdentifier = "395E317A0F65A3B0860314A3"
             BlueprintName = "Attenuator"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "Attenuator.app">

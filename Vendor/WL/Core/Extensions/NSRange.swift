@@ -3,7 +3,7 @@
 //  mcCore
 //
 //  Created by Vlad Gorlov on 20.11.17.
-//  Copyright © 2017 Demo. All rights reserved.
+//  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
 import Foundation
