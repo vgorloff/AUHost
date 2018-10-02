@@ -10,16 +10,29 @@ class Project < AbstractProject
   def generate()
     project = XcodeProject.new(projectPath: File.join(@rootDirPath, "Attenuator_.xcodeproj"))
     auHost = project.addApp(name: "AUHost", sources: ["Shared", "SampleAUHost"], platform: :osx, deploymentTarget: "10.11", buildSettings: {
-      "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.AUHost"
+      "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.AUHost", "DEPLOYMENT_LOCATION" => "YES"
     })
     addSharedSources(project, auHost)
     
     attenuator = project.addApp(name: "Attenuator", sources: ["Shared", "SampleAUPlugin/Attenuator", "SampleAUPlugin/AttenuatorKit"], platform: :osx, deploymentTarget: "10.11", buildSettings: {
-      "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator"
+      "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator", "DEPLOYMENT_LOCATION" => "YES"
     })
     addSharedSources(project, attenuator)
+    
+    auExtension = project.addAppExtension(name: "AttenuatorAU", sources: ["SampleAUPlugin/AttenuatorAU", "SampleAUPlugin/AttenuatorKit"], platform: :osx, deploymentTarget: "10.11", buildSettings: {
+      "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator.AttenuatorAU", "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES" => "YES"
+    })
+    addSharedSources(project, auExtension)
+    
+    project.addDependencies(to: attenuator, dependencies: [auExtension])
+    script = "ruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').register()\""
+    project.addScript(to: attenuator, script: script, name: "Register Extension", isPostBuild: true)
 
     project.save()
+  end
+  
+  def register()
+    system "pluginkit -v -a \"#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex\"" unless Environment.isCI
   end
   
   def addSharedSources(project, target)
