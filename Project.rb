@@ -9,82 +9,35 @@ class Project < AbstractProject
 
    def initialize(rootDirPath)
       super(rootDirPath)
-      @versionFilePath = @rootDirPath + "/Configuration/Version.xcconfig"
       @projectFilePath = @rootDirPath + "/Attenuator.xcodeproj"
-      @tmpDirPath = @rootDirPath + "/DerivedData"
-      @keyChainPath = @tmpDirPath + "/VST3NetSend.keychain"
-      @p12FilePath = @rootDirPath + '/Codesign/DeveloperIDApplication.p12'
    end
-
-   def ci()
-      unless Environment.isCI
-         release()
-         return
-      end
-      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-      puts "→ Preparing environment..."
-      FileUtils.mkdir_p @tmpDirPath
-      puts Environment.announceEnvVars
-      puts "→ Setting up keychain..."
-      kc = KeyChain.create(@keyChainPath)
-      puts KeyChain.list
-      defaultKeyChain = KeyChain.default
-      puts "→ Default keychain: #{defaultKeyChain}"
-      kc.setSettings()
-      kc.info()
-      kc.import(@p12FilePath, ENV['AWL_P12_PASSWORD'], ["/usr/bin/codesign"])
-      kc.setKeyCodesignPartitionList()
-      kc.dump()
-      KeyChain.setDefault(kc.nameOrPath)
-      puts "→ Default keychain now: #{KeyChain.default}"
-      begin
-         puts "→ Making build..."
-         XcodeBuilder.new(@projectFilePath).ci("AUHost")
-         XcodeBuilder.new(@projectFilePath).ci("Attenuator")
-         puts "→ Making cleanup..."
-         KeyChain.setDefault(defaultKeyChain)
-         KeyChain.delete(kc.nameOrPath)
-      rescue StandardError
-         KeyChain.setDefault(defaultKeyChain)
-         KeyChain.delete(kc.nameOrPath)
-         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-         raise
-      end
+   
+   def clean()
+      XcodeBuilder.new(@projectFilePath).clean("AUHost")
+      XcodeBuilder.new(@projectFilePath).clean("Attenuator")
    end
 
    def build()
       XcodeBuilder.new(@projectFilePath).build("AUHost")
       XcodeBuilder.new(@projectFilePath).build("Attenuator")
    end
-
-   def clean()
-      XcodeBuilder.new(@projectFilePath).clean("AUHost")
-      XcodeBuilder.new(@projectFilePath).clean("Attenuator")
-   end
-
+   
    def release()
-      XcodeBuilder.new(@projectFilePath).archive("AUHost")
-      XcodeBuilder.new(@projectFilePath).archive("Attenuator")
-      apps = Dir["#{@rootDirPath}/**/*.export/*.app"].select { |file| File.directory?(file) }
-      apps.each { |app| Archive.zip(app) }
-      apps.each { |app| XcodeBuilder.validateBinary(app) }
+      XcodeBuilder.new(@projectFilePath).ci("AUHost")
+      XcodeBuilder.new(@projectFilePath).ci("Attenuator")
+   end
+   
+   def archive()
+     XcodeBuilder.new(@projectFilePath).archive("AUHost")
+     XcodeBuilder.new(@projectFilePath).archive("Attenuator")
+     apps = Dir["#{@rootDirPath}/**/*.export/*.app"].select { |file| File.directory?(file) }
+     apps.each { |app| Archive.zip(app) }
+     apps.each { |app| XcodeBuilder.validateBinary(app) }
    end
 
    def deploy()
-      require 'yaml'
       assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
-      releaseInfo = YAML.load_file("#{@rootDirPath}/Configuration/Release.yml")
-      releaseName = releaseInfo['name']
-      releaseDescriptions = releaseInfo['description'].map { |line| "* #{line}" }
-      releaseDescription = releaseDescriptions.join("\n")
-      version = Version.new(@versionFilePath).projectVersion
-      puts "! Will make GitHub release → #{version}: \"#{releaseName}\""
-      puts(releaseDescriptions.map { |line| "  #{line}" })
-      assets.each { |file| puts "  #{file}" }
-      gh = GitHubRelease.new("vgorloff", "AUHost")
-      Readline.readline("OK? > ")
-      gh.release(version, releaseName, releaseDescription)
-      assets.each { |file| gh.uploadAsset(file) }
+      gitHubRelease(assets)
    end
 
    def generate()
