@@ -58,7 +58,7 @@ public class BufferedInputBus: BufferedAudioBus {
    }
 
    public func pull(actionFlags: UnsafeMutablePointer<AudioUnitRenderActionFlags>, timestamp: UnsafePointer<AudioTimeStamp>,
-             frameCount: AUAudioFrameCount, inputBusNumber: Int, pullBlock: AURenderPullInputBlock) -> AUAudioUnitStatus {
+                    frameCount: AUAudioFrameCount, inputBusNumber: Int, pullBlock: AURenderPullInputBlock) -> AUAudioUnitStatus {
       guard let mbl = mutableAudioBufferList else {
          return kAudioUnitErr_Uninitialized
       }
@@ -71,7 +71,7 @@ public class BufferedInputBus: BufferedAudioBus {
 public class BufferedOutputBus: BufferedAudioBus {
 
    public func prepareOutputBufferList(_ outputBufferList: UnsafeMutablePointer<AudioBufferList>, frameCount: AUAudioFrameCount,
-                                zeroFill: Bool = false) {
+                                       zeroFill: Bool = false) {
       guard let busBufferList = originalAudioBufferList else {
          return
       }

@@ -20,7 +20,7 @@ module AnsiTextStyles
       magenta: 35, pink: 95, lt_magenta: 95,
       cyan: 36, lt_cyan: 96,
       default: 39,
-      
+
       # background colours
       bg_black: 40, bg_grey: 100, bg_lt_grey: 47, bg_white: 107,
       bg_red: 41, bg_lt_red: 101,

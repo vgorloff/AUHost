@@ -151,17 +151,13 @@ extension MainViewController {
 
       var constraints: [NSLayoutConstraint] = []
 
-      constraints += [
-         stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-         stackView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
-         view.bottomAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 10),
-         view.trailingAnchor.constraint(equalTo: stackView1.trailingAnchor, constant: 10)
-      ]
+      constraints += [stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+                      stackView1.topAnchor.constraint(equalTo: view.topAnchor, constant: 10),
+                      view.bottomAnchor.constraint(equalTo: stackView1.bottomAnchor, constant: 10),
+                      view.trailingAnchor.constraint(equalTo: stackView1.trailingAnchor, constant: 10)]
 
-      constraints += [
-         mediaItemView.heightAnchor.constraint(equalToConstant: 120),
-         stackView2.widthAnchor.constraint(equalToConstant: 196)
-      ]
+      constraints += [mediaItemView.heightAnchor.constraint(equalToConstant: 120),
+                      stackView2.widthAnchor.constraint(equalToConstant: 196)]
 
       NSLayoutConstraint.activate(constraints)
    }
@@ -197,7 +193,7 @@ extension MainViewController {
       audioUnit = au
       let ctrl = AttenuatorViewController(au: au)
       ctrl.view.translatesAutoresizingMaskIntoConstraints = false
-      addChildViewController(ctrl)
+      addChild(ctrl)
       containerView.addSubview(ctrl.view)
       let cH = NSLayoutConstraint.constraints(withVisualFormat: "|[subview]|",
                                               options: [], metrics: nil, views: ["subview": ctrl.view])
@@ -210,7 +206,7 @@ extension MainViewController {
    private func closeEffectView() {
       audioUnit = nil
       audioUnitController?.view.removeFromSuperview()
-      audioUnitController?.removeFromParentViewController()
+      audioUnitController?.removeFromParent()
       audioUnitController = nil
    }
 }

@@ -9,37 +9,37 @@
 import Foundation
 
 // NSString bindings
-public extension String {
+extension String {
 
-   var url: URL? {
+   public var url: URL? {
       return URL(string: self)
    }
 
-   func appendingPathComponent(_ str: String) -> String {
+   public func appendingPathComponent(_ str: String) -> String {
       return (self as NSString).appendingPathComponent(str)
    }
 
-   var pathExtension: String {
+   public var pathExtension: String {
       return (self as NSString).pathExtension
    }
 
-   var deletingPathExtension: String {
+   public var deletingPathExtension: String {
       return (self as NSString).deletingPathExtension
    }
 
-   func appendingPathExtension(_ str: String) -> String? {
+   public func appendingPathExtension(_ str: String) -> String? {
       return (self as NSString).appendingPathExtension(str)
    }
 
-   var lastPathComponent: String {
+   public var lastPathComponent: String {
       return (self as NSString).lastPathComponent
    }
 
-   var deletingLastPathComponent: String {
+   public var deletingLastPathComponent: String {
       return (self as NSString).deletingLastPathComponent
    }
 
-   func deletingLastPathComponents(_ numberOfComponents: Int) -> String {
+   public func deletingLastPathComponents(_ numberOfComponents: Int) -> String {
       var result = self
       for _ in 0 ..< numberOfComponents {
          result = result.deletingLastPathComponent
@@ -47,42 +47,59 @@ public extension String {
       return result
    }
 
-   var expandingTildeInPath: String {
+   public var expandingTildeInPath: String {
       return (self as NSString).expandingTildeInPath
    }
 
-   func replacingCharacters(in nsRange: NSRange, with: String) -> String {
+   public var abbreviatingWithTildeInPath: String {
+      return (self as NSString).abbreviatingWithTildeInPath
+   }
+
+   public func replacingCharacters(in nsRange: NSRange, with: String) -> String {
       return (self as NSString).replacingCharacters(in: nsRange, with: with)
    }
 
-   func nsRange(of searchString: String) -> NSRange {
+   public func nsRange(of searchString: String) -> NSRange {
       return (self as NSString).range(of: searchString)
    }
 }
 
-public extension String {
+extension String {
 
-   var componentsSeparatedByNewline: [String] {
+   public var componentsSeparatedByNewline: [String] {
       return components(separatedBy: .newlines)
    }
-
 }
 
-public extension String {
+extension String {
 
-   func uppercasedFirstCharacter() -> String {
+   public var base64Encoded: String? {
+      return data(using: .utf8)?.base64EncodedString()
+   }
+
+   public var base64Decoded: String? {
+      guard let data = Data(base64Encoded: self) else {
+         return nil
+      }
+      return String(data: data, encoding: .utf8)
+   }
+}
+
+extension String {
+
+   public func uppercasedFirstCharacter() -> String {
       return uppercasedFirstCharacters(1)
    }
 
-   func lowercasedFirstCharacter() -> String {
+   public func lowercasedFirstCharacter() -> String {
       return lowercasedFirstCharacters(1)
    }
 
-   func uppercasedFirstCharacters(_ numberOfCharacters: Int) -> String {
+   public func uppercasedFirstCharacters(_ numberOfCharacters: Int) -> String {
       return changeCaseOfFirstCharacters(numberOfCharacters, action: .upper)
    }
 
-   func lowercasedFirstCharacters(_ numberOfCharacters: Int) -> String {
+   public func lowercasedFirstCharacters(_ numberOfCharacters: Int) -> String {
       return changeCaseOfFirstCharacters(numberOfCharacters, action: .lower)
    }
 
@@ -94,9 +111,9 @@ public extension String {
          if offset == count {
             switch action {
             case .lower:
-               return self.lowercased()
+               return lowercased()
             case .upper:
-               return self.uppercased()
+               return uppercased()
             }
          } else {
             let splitIndex = index(startIndex, offsetBy: offset)
@@ -114,19 +131,18 @@ public extension String {
          return self
       }
    }
-
 }
 
 public extension String {
 
-   func stringByReplacingFirstOccurrence(of target: String, with replaceString: String) -> String {
+   public func stringByReplacingFirstOccurrence(of target: String, with replaceString: String) -> String {
       if let targetRange = range(of: target) {
          return replacingCharacters(in: targetRange, with: replaceString)
       }
       return self
    }
 
-   func stringByReplacingLastOccurrence(of target: String, with replaceString: String) -> String {
+   public func stringByReplacingLastOccurrence(of target: String, with replaceString: String) -> String {
       if let targetRange = range(of: target, options: .backwards, range: nil, locale: nil) {
          return replacingCharacters(in: targetRange, with: replaceString)
       }
@@ -135,7 +151,7 @@ public extension String {
 
    /// - parameter length: Desired string length. Should be at least 4 characters.
    /// - returns: New string by replacing original string middle characters with ".."
-   func clip(toLength length: Int) -> String {
+   public func clip(toLength length: Int) -> String {
       if length < 4 || count < length {
          return self
       }
@@ -145,13 +161,12 @@ public extension String {
       let indexStart = index(startIndex, offsetBy: rangeStart)
       let indexEnd = index(endIndex, offsetBy: -rangeEnd)
       let range = indexStart ..< indexEnd
-      var s = self
-      s.replaceSubrange(range, with: "..")
-      return s
+      var string = self
+      string.replaceSubrange(range, with: "..")
+      return string
    }
 
-   // swiftlint:disable variable_name
-   var OSTypeValue: OSType {
+   public var OSTypeValue: OSType {
       let chars = utf8
       var result: UInt32 = 0
       for aChar in chars {
@@ -159,17 +174,15 @@ public extension String {
       }
       return result
    }
-
-   // swiftlint:enable variable_name
 }
 
 extension String {
 
-   var mutableAttributedString: NSMutableAttributedString {
+   public var mutableAttributedString: NSMutableAttributedString {
       return NSMutableAttributedString(string: self)
    }
 
-   var attributedString: NSAttributedString {
+   public var attributedString: NSAttributedString {
       return NSAttributedString(string: self)
    }
 }
@@ -198,8 +211,8 @@ extension String {
       return result
    }
 
-   public func applyAttributesBetweenDelimiter(_ character: Character, attributes: [NSAttributedStringKey: Any],
-                                               commonAttributes: [NSAttributedStringKey: Any]? = nil) -> NSAttributedString {
+   public func applyAttributesBetweenDelimiter(_ character: Character, attributes: [NSAttributedString.Key: Any],
+                                               commonAttributes: [NSAttributedString.Key: Any]? = nil) -> NSAttributedString {
       let numCharacters = numberOf(character)
       guard numCharacters > 0 && numCharacters % 2 == 0 else {
          return NSAttributedString(string: self, attributes: commonAttributes)
@@ -262,8 +275,7 @@ extension String {
                       "\n": "\\n",
                       "\r": "\\r",
                       "\"": "\\\"",
-                      "\'": "\\'",
-                      ]
+                      "\'": "\\'"]
 
       return entities
          .reduce(self) { string, entity in

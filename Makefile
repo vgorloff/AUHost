@@ -3,19 +3,19 @@ default:
 	@cat Makefile | grep ":$$" | sed 's/://' | xargs -I{} echo " - make {}"
 
 ci:
-	@ruby -r "`pwd`/Automation.rb" -e "Automation.ci"
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").ci"
 
 build:
-	@ruby -r "`pwd`/Automation.rb" -e "Automation.build"
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").build"
 
 clean:
-	@ruby -r "`pwd`/Automation.rb" -e "Automation.clean"
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").clean"
 
 release:
-	@ruby -r "`pwd`/Automation.rb" -e "Automation.release"
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").release"
 
 verify:
-	@ruby -r "`pwd`/Automation.rb" -e "Automation.verify"
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").verify"
 
 deploy:
-	@ruby -r "`pwd`/Automation.rb" -e "Automation.deploy"
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").deploy"

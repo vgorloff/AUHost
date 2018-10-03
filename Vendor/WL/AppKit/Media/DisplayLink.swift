@@ -6,77 +6,77 @@
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
+import AppKit
 import CoreVideo
 import QuartzCore
 
-// swiftlint:disable:next function_parameter_count
-func AWLCVDisplayLinkHelperCallback(_: CVDisplayLink,
-                                    _: UnsafePointer<CVTimeStamp>,
-                                    _: UnsafePointer<CVTimeStamp>,
-                                    _: CVOptionFlags,
-                                    _: UnsafeMutablePointer<CVOptionFlags>,
-                                    _ context: UnsafeMutableRawPointer?) -> CVReturn {
-   let dispatchSource = unsafeBitCast(context, to: SmartDispatchSourceUserDataAdd.self)
-   dispatchSource.mergeData(value: 1)
-   return kCVReturnSuccess
-}
-
 public final class DisplayLink {
-   
-   public enum Errors: Swift.Error {
-      case CVReturnError(CVReturn)
-   }
-   
+
    private let displayLink: CVDisplayLink
-   
-   public var isRunning: Bool {
-      return CVDisplayLinkIsRunning(displayLink)
-   }
-   
+
    init(displayLink: CVDisplayLink) {
       self.displayLink = displayLink
-   }
-   
-   public static func createWithActiveCGDisplays() throws -> DisplayLink {
-      var displayLink: CVDisplayLink?
-      var status: CVReturn
-      status = CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
-      try verifyStatusCode(status)
-      guard let displayLinkInstance = displayLink else {
-         throw Errors.CVReturnError(kCVReturnError)
-      }
-      return DisplayLink(displayLink: displayLinkInstance)
-   }
-   
-   public func setCurrentCGDisplay(displayID: CGDirectDisplayID) throws {
-      try verifyStatusCode(CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID))
-   }
-   
-   public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputCallback?,
-                                 userInfo: UnsafeMutableRawPointer?) throws {
-      try verifyStatusCode(CVDisplayLinkSetOutputCallback(displayLink, callback, userInfo))
-   }
-   
-   public func stop() throws {
-      try verifyStatusCode(CVDisplayLinkStop(displayLink))
-   }
-   
-   public func start() throws {
-      try verifyStatusCode(CVDisplayLinkStart(displayLink))
    }
 }
 
 extension DisplayLink {
-   
-   private func verifyStatusCode(_ statusCode: CVReturn) throws {
-      if statusCode != kCVReturnSuccess {
-         throw Errors.CVReturnError(statusCode)
+
+   public static func createWithActiveCGDisplays() throws -> DisplayLink {
+      var displayLink: CVDisplayLink?
+      if let error = CVError(code: CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)) {
+         throw error
+      }
+      guard let displayLinkInstance = displayLink else {
+         throw CVError.code(kCVReturnAllocationFailed)
+      }
+      return DisplayLink(displayLink: displayLinkInstance)
+   }
+}
+
+extension DisplayLink {
+
+   public var isRunning: Bool {
+      return CVDisplayLinkIsRunning(displayLink)
+   }
+
+   public func stop() throws {
+      guard isRunning else {
+         return
+      }
+      if let error = CVError(code: CVDisplayLinkStop(displayLink)) {
+         throw error
       }
    }
-   
-   private static func verifyStatusCode(_ statusCode: CVReturn) throws {
-      if statusCode != kCVReturnSuccess {
-         throw Errors.CVReturnError(statusCode)
+
+   public func start() throws {
+      guard !isRunning else {
+         return
+      }
+      if let error = CVError(code: CVDisplayLinkStart(displayLink)) {
+         throw error
+      }
+   }
+
+   public func setCurrentCGDisplay(displayID: CGDirectDisplayID) throws {
+      if let error = CVError(code: CVDisplayLinkSetCurrentCGDisplay(displayLink, displayID)) {
+         throw error
+      }
+   }
+
+   public func setOutputCallback(_ callback: CoreVideo.CVDisplayLinkOutputCallback?, userInfo: UnsafeMutableRawPointer?) throws {
+      if let error = CVError(code: CVDisplayLinkSetOutputCallback(displayLink, callback, userInfo)) {
+         throw error
+      }
+   }
+
+   public func setCurrentCGDisplayFromOpenGLContext(context: CGLContextObj, pixelFormat: CGLPixelFormatObj) throws {
+      let status = CVDisplayLinkSetCurrentCGDisplayFromOpenGLContext(displayLink, context, pixelFormat)
+      try throwIfNeeded(CVError(code: status))
+   }
+
+   public func setCurrentCGDisplayFromOpenGLContext(context: NSOpenGLContext, pixelFormat: NSOpenGLPixelFormat) throws {
+      if let context = context.cglContextObj, let pixelFormat = pixelFormat.cglPixelFormatObj {
+         try setCurrentCGDisplayFromOpenGLContext(context: context, pixelFormat: pixelFormat)
       }
    }
 }

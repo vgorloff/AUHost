@@ -1,6 +1,6 @@
 //
 //  MainToolbar.Event.swift
-//  AUHost
+//  Shared
 //
 //  Created by Vlad Gorlov on 14.06.17.
 //  Copyright © 2017 WaveLabs. All rights reserved.
@@ -53,8 +53,8 @@ extension MainToolbar.Event {
 
    var image: NSImage? {
       switch self {
-      case .reloadPlugIns: return NSImage(named: NSImage.Name.network)
-      case .toggleMediaLibrary: return NSImage(named: NSImage.Name.folder)
+      case .reloadPlugIns: return NSImage(named: NSImage.networkName)
+      case .toggleMediaLibrary: return NSImage(named: NSImage.folderName)
       }
    }
 

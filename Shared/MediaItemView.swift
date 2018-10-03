@@ -1,13 +1,13 @@
 //
 //  MediaItemView.swift
-//  AUHost
+//  Shared
 //
 //  Created by Vlad Gorlov on 22.06.15.
 //  Copyright © 2015 WaveLabs. All rights reserved.
 //
 
-import AVFoundation
 import Accelerate
+import AVFoundation
 import Cocoa
 
 public final class MediaItemView: NSView {
@@ -69,7 +69,7 @@ public final class MediaItemView: NSView {
 extension MediaItemView {
 
    public override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-      let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard())
+      let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard)
       switch result {
       case .none:
          isHighlighted = false
@@ -93,7 +93,7 @@ extension MediaItemView {
    }
 
    public override func performDragOperation(_ sender: NSDraggingInfo) -> Bool {
-      let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard())
+      let result = pbUtil.objectsFromPasteboard(pasteboard: sender.draggingPasteboard)
       switch result {
       case .none:
          isHighlighted = false
@@ -156,7 +156,7 @@ extension MediaItemView {
    private func drawTextMessage() {
       let paragraphStyle = NSMutableParagraphStyle()
       paragraphStyle.alignment = NSTextAlignment.center
-      let attributes = [NSAttributedStringKey.paragraphStyle: paragraphStyle,
+      let attributes = [NSAttributedString.Key.paragraphStyle: paragraphStyle,
                         .foregroundColor: textDragAndDropColor.currentValue,
                         .font: textDragAndDropFont]
       let textSize = textDragAndDropMessage.size(withAttributes: attributes)
@@ -171,8 +171,8 @@ extension MediaItemView {
       wfCache.buildWaveformForResolution(fileURL: mf as URL,
                                          resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
          switch result {
-         case .failure(let e):
-            Swift.print(e)
+         case .failure(let error):
+            Swift.print(error)
          case .success:
             DispatchQueue.main.async { [weak self] in
                self?.needsDisplay = true

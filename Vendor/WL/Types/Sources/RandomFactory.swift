@@ -3,11 +3,11 @@
 //  mcTypes-macOS
 //
 //  Created by Vlad Gorlov on 11.11.17.
-//  Copyright © 2017 Demo. All rights reserved.
+//  Copyright © 2017 WaveLabs. All rights reserved.
 //
 
-import Foundation
 import CoreGraphics
+import Foundation
 
 /// - SeeAlso: [ How does one generate a random number in Apple's Swift language? - Stack Overflow ]
 /// (http://stackoverflow.com/questions/24007129/how-does-one-generate-a-random-number-in-apples-swift-language)

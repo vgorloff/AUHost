@@ -39,9 +39,8 @@ public struct WaveformCacheUtility {
             }
             _ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
             let audioFile = try AVAudioFile(forReading: url, commonFormat: .pcmFormatFloat32, interleaved: false)
-            let optimalBufferSettings = Math.optimalBufferSizeForResolution(
-               resolution: resolution, dataSize: UInt64(audioFile.length),
-               maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
+            let optimalBufferSettings = Math.optimalBufferSizeForResolution(resolution: resolution, dataSize: UInt64(audioFile.length),
+                                                                            maxBufferSize: WaveformCacheUtility.defaultBufferFrameCapacity)
             guard let buffer = AVAudioPCMBuffer(pcmFormat: audioFile.processingFormat,
                                                 frameCapacity: AVAudioFrameCount(optimalBufferSettings.optimalBufferSize)) else {
                throw Error.unableToInitialize(String(describing: AVAudioPCMBuffer.self))
