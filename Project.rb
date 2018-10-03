@@ -79,7 +79,7 @@ class Project < AbstractProject
       releaseDescription = releaseDescriptions.join("\n")
       version = Version.new(@versionFilePath).projectVersion
       puts "! Will make GitHub release → #{version}: \"#{releaseName}\""
-      puts releaseDescriptions.map { |l| "  #{l}" }
+      puts (releaseDescriptions.map { |line| "  #{line}" })
       assets.each { |f| puts "  #{f}" }
       gh = GitHubRelease.new("vgorloff", "AUHost")
       Readline.readline("OK? > ")

@@ -45,6 +45,9 @@ class AbstractProject
    end
 
    def verify(directoryPathComponent = nil)
+      if Environment.isCI
+         return # CI doing verification separately prior to other actions.
+      end
       swiftFormatConfig = File.exist?("#{@rootDirPath}/.swiftformat") ? nil : ENV['AWL_LIB_SRC'] + '/.swiftformat'
       swiftLintConfig = File.exist?("#{@rootDirPath}/.swiftlint.yml") ? nil : ENV['AWL_LIB_SRC'] + '/.swiftlint.yml'
       linter = Linter.new(@rootDirPath, swiftLintConfig, swiftFormatConfig)
