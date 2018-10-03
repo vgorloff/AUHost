@@ -65,7 +65,7 @@ class Project < AbstractProject
   def release()
      XcodeBuilder.new(@projectFilePath).archive("AUHost")
      XcodeBuilder.new(@projectFilePath).archive("Attenuator")
-     apps = Dir["#{GitRepoDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
+     apps = Dir["#{@rootDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
      apps.each { |app| Archive.zip(app) }
      apps.each { |app| XcodeBuilder.validateBinary(app) }
   end
@@ -73,7 +73,7 @@ class Project < AbstractProject
   def deploy()
      require 'yaml'
      assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
-     releaseInfo = YAML.load_file("#{GitRepoDirPath}/Configuration/Release.yml")
+     releaseInfo = YAML.load_file("#{@rootDirPath}/Configuration/Release.yml")
      releaseName = releaseInfo['name']
      releaseDescriptions = releaseInfo['description'].map { |l| "* #{l}"}
      releaseDescription = releaseDescriptions.join("\n")
