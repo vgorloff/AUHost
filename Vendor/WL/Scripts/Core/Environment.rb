@@ -52,6 +52,10 @@ class Environment
       return isXcodeCI || isTravisCI || isJenkinsCI || isGenericCI
    end
 
+   def self.isDebug()
+      return !ENV['DEBUG'].to_s.empty?
+   end
+
    def self.isTravisCI()
       return !ENV['TRAVIS'].to_s.empty?
    end
