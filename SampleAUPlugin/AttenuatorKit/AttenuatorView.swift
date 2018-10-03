@@ -16,7 +16,7 @@ class AttenuatorView: NSView {
    private lazy var stackView = NSStackView()
    private lazy var viewContainerView = NSView()
 
-   private var displayLinkUtility: DisplayLink.GenericRenderer?
+   private var displayLinkUtility: DispatchSourceDisplayLinkRenderer?
 
    var handlerParameterDidChaned: ((AttenuatorParameter, AUValue) -> Void)?
    var meterRefreshCallback: (() -> [AttenuatorDSPKernel.SampleType]?)?
@@ -67,8 +67,8 @@ extension AttenuatorView {
       sliderGain.action = #selector(handleGainChange(_:))
 
       do {
-         displayLinkUtility = try DisplayLink.GenericRenderer(frameRateDivider: 2, renderCallbackQueue: .main)
-         displayLinkUtility?.renderCallback = { [weak self] in
+         displayLinkUtility = try DispatchSourceDisplayLinkRenderer(frameRateDivider: 2, renderCallbackQueue: .main)
+         displayLinkUtility?.setCallback { [weak self] in
             if let value = self?.meterRefreshCallback?() {
                self?.viewLevelMeter.level = value
             }
@@ -117,24 +117,18 @@ extension AttenuatorView {
    private func setupLayout() {
       var constraints: [NSLayoutConstraint] = []
 
-      constraints += [
-         bottomAnchor.constraint(equalTo: viewContainerView.bottomAnchor),
-         trailingAnchor.constraint(equalTo: viewContainerView.trailingAnchor),
-         viewContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
-         viewContainerView.topAnchor.constraint(equalTo: topAnchor)
-      ]
+      constraints += [bottomAnchor.constraint(equalTo: viewContainerView.bottomAnchor),
+                      trailingAnchor.constraint(equalTo: viewContainerView.trailingAnchor),
+                      viewContainerView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                      viewContainerView.topAnchor.constraint(equalTo: topAnchor)]
 
-      constraints += [
-         stackView.centerYAnchor.constraint(equalTo: viewContainerView.centerYAnchor),
-         stackView.leadingAnchor.constraint(equalTo: viewContainerView.leadingAnchor, constant: 8),
-         viewContainerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
-         viewContainerView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
-         viewContainerView.widthAnchor.constraint(greaterThanOrEqualToConstant: 320)
-      ]
+      constraints += [stackView.centerYAnchor.constraint(equalTo: viewContainerView.centerYAnchor),
+                      stackView.leadingAnchor.constraint(equalTo: viewContainerView.leadingAnchor, constant: 8),
+                      viewContainerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 120),
+                      viewContainerView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: 8),
+                      viewContainerView.widthAnchor.constraint(greaterThanOrEqualToConstant: 320)]
 
-      constraints += [
-         viewLevelMeter.heightAnchor.constraint(equalToConstant: 22)
-      ]
+      constraints += [viewLevelMeter.heightAnchor.constraint(equalToConstant: 22)]
 
       NSLayoutConstraint.activate(constraints)
    }

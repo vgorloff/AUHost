@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
-               BlueprintName = "AttenuatorAU"
+               BlueprintIdentifier = "061951EDD30E601AA10042F9"
+               BlueprintName = "Verify"
                ReferencedContainer = "container:Attenuator.xcodeproj"
-               BuildableName = "AttenuatorAU.appex">
+               BuildableName = "Verify">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -29,15 +29,6 @@
       buildConfiguration = "Debug">
       <AdditionalOptions>
       </AdditionalOptions>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
-            BlueprintName = "AttenuatorAU"
-            ReferencedContainer = "container:Attenuator.xcodeproj"
-            BuildableName = "AttenuatorAU.appex">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -51,16 +42,6 @@
       allowLocationSimulation = "YES">
       <AdditionalOptions>
       </AdditionalOptions>
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
-            BlueprintName = "AttenuatorAU"
-            ReferencedContainer = "container:Attenuator.xcodeproj"
-            BuildableName = "AttenuatorAU.appex">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       savedToolIdentifier = ""
@@ -68,15 +49,6 @@
       debugDocumentVersioning = "YES"
       buildConfiguration = "Release"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
-            BlueprintName = "AttenuatorAU"
-            ReferencedContainer = "container:Attenuator.xcodeproj"
-            BuildableName = "AttenuatorAU.appex">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

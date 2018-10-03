@@ -337,33 +337,25 @@ extension MainViewController {
 
       var constraints: [NSLayoutConstraint] = []
 
-      constraints += [
-         stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-         stackView1.topAnchor.constraint(equalTo: view.topAnchor),
-         view.bottomAnchor.constraint(equalTo: stackView1.bottomAnchor),
-         view.trailingAnchor.constraint(equalTo: stackView1.trailingAnchor)
-      ]
+      constraints += [stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                      stackView1.topAnchor.constraint(equalTo: view.topAnchor),
+                      view.bottomAnchor.constraint(equalTo: stackView1.bottomAnchor),
+                      view.trailingAnchor.constraint(equalTo: stackView1.trailingAnchor)]
 
-      constraints += [
-         mediaItemView.leadingAnchor.constraint(equalTo: stackView1.leadingAnchor, constant: 8),
-         stackView1.trailingAnchor.constraint(equalTo: mediaItemView.trailingAnchor, constant: 8),
-         stackView1.trailingAnchor.constraint(equalTo: stackView2.trailingAnchor, constant: 8),
-         stackView2.leadingAnchor.constraint(equalTo: stackView1.leadingAnchor, constant: 8)
-      ]
+      constraints += [mediaItemView.leadingAnchor.constraint(equalTo: stackView1.leadingAnchor, constant: 8),
+                      stackView1.trailingAnchor.constraint(equalTo: mediaItemView.trailingAnchor, constant: 8),
+                      stackView1.trailingAnchor.constraint(equalTo: stackView2.trailingAnchor, constant: 8),
+                      stackView2.leadingAnchor.constraint(equalTo: stackView1.leadingAnchor, constant: 8)]
 
-      constraints += [
-         scrollView1.topAnchor.constraint(equalTo: stackView2.topAnchor),
-         scrollView2.topAnchor.constraint(equalTo: stackView2.topAnchor),
-         stackView2.bottomAnchor.constraint(equalTo: scrollView1.bottomAnchor),
-         stackView2.bottomAnchor.constraint(equalTo: scrollView2.bottomAnchor),
-         stackView2.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
-         stackView2.widthAnchor.constraint(greaterThanOrEqualToConstant: 320)
-      ]
+      constraints += [scrollView1.topAnchor.constraint(equalTo: stackView2.topAnchor),
+                      scrollView2.topAnchor.constraint(equalTo: stackView2.topAnchor),
+                      stackView2.bottomAnchor.constraint(equalTo: scrollView1.bottomAnchor),
+                      stackView2.bottomAnchor.constraint(equalTo: scrollView2.bottomAnchor),
+                      stackView2.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
+                      stackView2.widthAnchor.constraint(greaterThanOrEqualToConstant: 320)]
 
-      constraints += [
-         buttonOpenEffectView.widthAnchor.constraint(equalToConstant: 36),
-         mediaItemView.heightAnchor.constraint(equalToConstant: 98)
-      ]
+      constraints += [buttonOpenEffectView.widthAnchor.constraint(equalToConstant: 36),
+                      mediaItemView.heightAnchor.constraint(equalToConstant: 98)]
 
       NSLayoutConstraint.activate(constraints)
    }
