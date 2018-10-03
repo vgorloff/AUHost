@@ -1,8 +1,8 @@
-MainFile = "#{ENV['AWL_LIB_SRC']}/Scripts/Automation.rb".freeze
-if File.exist?(MainFile)
-   require MainFile
+MAIN_FILE = "#{ENV['AWL_LIB_SRC']}/Scripts/Automation.rb".freeze
+if File.exist?(MAIN_FILE)
+   require MAIN_FILE
 else
-   Dir[File.dirname(__FILE__) + "/Vendor/WL/Scripts/**/*.rb"].each { |f| require f }
+   Dir[File.dirname(__FILE__) + "/Vendor/WL/Scripts/**/*.rb"].each { |file| require file }
 end
 
 class Project < AbstractProject
@@ -65,7 +65,7 @@ class Project < AbstractProject
    def release()
       XcodeBuilder.new(@projectFilePath).archive("AUHost")
       XcodeBuilder.new(@projectFilePath).archive("Attenuator")
-      apps = Dir["#{@rootDirPath}/**/*.export/*.app"].select { |f| File.directory?(f) }
+      apps = Dir["#{@rootDirPath}/**/*.export/*.app"].select { |file| File.directory?(file) }
       apps.each { |app| Archive.zip(app) }
       apps.each { |app| XcodeBuilder.validateBinary(app) }
    end
@@ -75,32 +75,35 @@ class Project < AbstractProject
       assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
       releaseInfo = YAML.load_file("#{@rootDirPath}/Configuration/Release.yml")
       releaseName = releaseInfo['name']
-      releaseDescriptions = releaseInfo['description'].map { |l| "* #{l}" }
+      releaseDescriptions = releaseInfo['description'].map { |line| "* #{line}" }
       releaseDescription = releaseDescriptions.join("\n")
       version = Version.new(@versionFilePath).projectVersion
       puts "! Will make GitHub release → #{version}: \"#{releaseName}\""
-      puts (releaseDescriptions.map { |line| "  #{line}" })
-      assets.each { |f| puts "  #{f}" }
+      puts(releaseDescriptions.map { |line| "  #{line}" })
+      assets.each { |file| puts "  #{file}" }
       gh = GitHubRelease.new("vgorloff", "AUHost")
       Readline.readline("OK? > ")
       gh.release(version, releaseName, releaseDescription)
-      assets.each { |f| gh.uploadAsset(f) }
+      assets.each { |file| gh.uploadAsset(file) }
    end
 
    def generate()
       project = XcodeProject.new(projectPath: File.join(@rootDirPath, "Attenuator.xcodeproj"), vendorSubpath: 'WL')
-      auHost = project.addApp(name: "AUHost", sources: ["Shared", "SampleAUHost"], platform: :osx, deploymentTarget: "10.11", buildSettings: {
+      auHost = project.addApp(name: "AUHost",
+                              sources: ["Shared", "SampleAUHost"], platform: :osx, deploymentTarget: "10.11", buildSettings: {
                                  "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.AUHost", "DEPLOYMENT_LOCATION" => "YES"
                               })
       addSharedSources(project, auHost)
 
-      attenuator = project.addApp(name: "Attenuator", sources: ["Shared", "SampleAUPlugin/Attenuator", "SampleAUPlugin/AttenuatorKit"],
+      attenuator = project.addApp(name: "Attenuator",
+                                  sources: ["Shared", "SampleAUPlugin/Attenuator", "SampleAUPlugin/AttenuatorKit"],
                                   platform: :osx, deploymentTarget: "10.11", buildSettings: {
                                      "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator", "DEPLOYMENT_LOCATION" => "YES"
                                   })
       addSharedSources(project, attenuator)
 
-      auExtension = project.addAppExtension(name: "AttenuatorAU", sources: ["SampleAUPlugin/AttenuatorAU", "SampleAUPlugin/AttenuatorKit"],
+      auExtension = project.addAppExtension(name: "AttenuatorAU",
+                                            sources: ["SampleAUPlugin/AttenuatorAU", "SampleAUPlugin/AttenuatorKit"],
                                             platform: :osx, deploymentTarget: "10.11", buildSettings: {
                                                "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator.AttenuatorAU",
                                                "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES" => "YES"
@@ -126,8 +129,8 @@ class Project < AbstractProject
       project.useFilters(target: target, filters: [
                             "Core/Concurrency/*", "Core/Extensions/*", "Core/Converters/*Numeric*",
                             "Core/Sources/AlternativeValue*", "Core/Sources/*Aliases*",
-                            "Foundation/os/log/*", "Foundation/Sources/*Info*", "Foundation/Testability/*", "Foundation/ObjectiveC/*",
-                            "Foundation/Notification/*",
+                            "Foundation/os/log/*", "Foundation/Sources/*Info*", "Foundation/Testability/*",
+                            "Foundation/ObjectiveC/*", "Foundation/Notification/*",
                             "Foundation/Sources/Functions*", "Foundation/Extensions/CG*", "Foundation/Extensions/*Insets*",
                             "Foundation/Extensions/Color*",
                             "Foundation/Sources/Result*", "Foundation/Sources/Math.swift", "Foundation/Extensions/String*",

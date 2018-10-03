@@ -4,7 +4,7 @@
 # - Building Swift Project: https://docs.travis-ci.com/user/languages/objective-c/
 
 language: objective-c
-osx_image: xcode9.4
+osx_image: xcode10
 install: true # Skipping install - https://docs.travis-ci.com/user/customizing-the-build
 script: make ci
 
