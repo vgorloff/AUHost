@@ -11,7 +11,9 @@ import Cocoa
 class Application: NSApplication {
 
    private lazy var appMenu = MainMenu()
-   private lazy var windowController = MainWindowController()
+   private lazy var window = Window(contentRect: CGRect(width: 320, height: 280), style: .fullSizeContent)
+   private lazy var windowController = WindowController(window: window, viewController: viewController)
+   private lazy var viewController = MainViewController()
 
    override init() {
       super.init()
@@ -30,6 +32,10 @@ class Application: NSApplication {
 extension Application: NSApplicationDelegate {
 
    func applicationDidFinishLaunching(_: Notification) {
+      viewController.viewModel.mediaLibraryLoader.loadMediaLibrary()
+      if #available(OSX 10.12, *) {
+         window.tabbingMode = .disallowed
+      }
       windowController.showWindow(nil)
    }
 

@@ -139,8 +139,6 @@ class MainMenu: NSMenu {
    lazy var menuFormatItemFont = NSMenuItem(title: "Font", action: nil, keyEquivalent: "")
    lazy var menuFormatItemText = NSMenuItem(title: "Text", action: nil, keyEquivalent: "")
    lazy var menuFormat = NSMenu(title: "Format")
-   lazy var menuViewItemShowToolbar = NSMenuItem(title: "Show Toolbar", action: #selector(NSWindow.toggleToolbarShown(_:)), keyEquivalent: "t")
-   lazy var menuViewItemCustomizeToolbar = NSMenuItem(title: "Customize Toolbar…", action: #selector(NSWindow.runToolbarCustomizationPalette(_:)), keyEquivalent: "")
    lazy var menuView = NSMenu(title: "View")
    lazy var menuWindowItemMinimize = NSMenuItem(title: "Minimize", action: #selector(NSWindow.performMiniaturize(_:)), keyEquivalent: "m")
    lazy var menuWindowItemZoom = NSMenuItem(title: "Zoom", action: #selector(NSWindow.performZoom(_:)), keyEquivalent: "")
@@ -188,11 +186,6 @@ class MainMenu: NSMenu {
       menuWindow.addItem(menuWindowItemBringAllToFront)
 
       menuMainMenuItemView.submenu = menuView
-
-      menuView.addItem(menuViewItemShowToolbar)
-      menuView.addItem(menuViewItemCustomizeToolbar)
-
-      menuViewItemShowToolbar.keyEquivalentModifierMask = [.option, .command]
 
       menuMainMenuItemFormat.submenu = menuFormat
 

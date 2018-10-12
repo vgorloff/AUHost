@@ -11,7 +11,7 @@ class Project < AbstractProject
       super(rootDirPath)
       @projectFilePath = @rootDirPath + "/Attenuator.xcodeproj"
    end
-   
+
    def clean()
       XcodeBuilder.new(@projectFilePath).clean("AUHost")
       XcodeBuilder.new(@projectFilePath).clean("Attenuator")
@@ -21,12 +21,12 @@ class Project < AbstractProject
       XcodeBuilder.new(@projectFilePath).build("AUHost")
       XcodeBuilder.new(@projectFilePath).build("Attenuator")
    end
-   
+
    def release()
       XcodeBuilder.new(@projectFilePath).ci("AUHost")
       XcodeBuilder.new(@projectFilePath).ci("Attenuator")
    end
-   
+
    def archive()
      XcodeBuilder.new(@projectFilePath).archive("AUHost")
      XcodeBuilder.new(@projectFilePath).archive("Attenuator")
@@ -91,7 +91,8 @@ class Project < AbstractProject
                             "Media/Extensions/*", "Media/Sources/Waveform*", "Media/Sources/Media*", "Media/Sources/*Utility*",
                             "Media/Sources/*Type*", "Media/Sources/*Buffer*",
                             "AppKit/Media/Media*", "AppKit/Media/VU*", "AppKit/Media/*DisplayLink*", "AppKit/Media/*Error*",
-                            "AppKit/Extensions/*Toolbar*",
+                            "AppKit/Extensions/*Toolbar*", "AppKit/Extensions/*Window*",
+                            "AppKit/Reusable/*Window*",
                             "Media/DSP/*Value*"
                          ])
    end
