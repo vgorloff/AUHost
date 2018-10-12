@@ -9,11 +9,16 @@
 import AVFoundation
 import Cocoa
 
-class MainViewController: NSViewController {
+class MainViewController: ViewController {
+
+   private (set) lazy var mediaLibraryBrowser = configure(NSMediaLibraryBrowserController.shared) {
+      $0.mediaLibraries = [.audio]
+   }
 
    private lazy var stackView1 = NSStackView()
    private lazy var stackView2 = NSStackView()
 
+   private lazy var buttonLibrary = Button(title: "Library")
    private lazy var buttonPlay = NSButton()
    private lazy var buttonLoadAU = NSButton()
    private lazy var mediaItemView = MediaItemView()
@@ -43,8 +48,8 @@ class MainViewController: NSViewController {
 
    lazy var version = UInt32(Date.timeIntervalSinceReferenceDate)
 
-   init() {
-      super.init(nibName: nil, bundle: nil)
+   override init() {
+      super.init()
       AUAudioUnit.registerSubclass(AttenuatorAudioUnit.self, as: acd, name: "WaveLabs: Attenuator (Local)", version: version)
       let registeredComponents = AVAudioUnitComponentManager.shared().components(matching: acd)
       audioUnitComponent = registeredComponents.first
@@ -52,13 +57,6 @@ class MainViewController: NSViewController {
 
    required init?(coder: NSCoder) {
       fatalError("Please use this class from code.")
-   }
-
-   override func viewDidLoad() {
-      super.viewDidLoad()
-      setupUI()
-      setupLayout()
-      setupHandlers()
    }
 }
 
@@ -99,13 +97,11 @@ extension MainViewController {
 
 extension MainViewController {
 
-   private func setupUI() {
+   override func setupUI() {
 
       view.addSubview(stackView1)
 
-      stackView1.addArrangedSubview(stackView2)
-      stackView1.addArrangedSubview(mediaItemView)
-      stackView1.addArrangedSubview(containerView)
+      stackView1.addArrangedSubviews(stackView2, mediaItemView, containerView)
       stackView1.alignment = .centerX
       stackView1.detachesHiddenViews = true
       stackView1.distribution = .fillProportionally
@@ -118,8 +114,7 @@ extension MainViewController {
 
       mediaItemView.translatesAutoresizingMaskIntoConstraints = false
 
-      stackView2.addArrangedSubview(buttonPlay)
-      stackView2.addArrangedSubview(buttonLoadAU)
+      stackView2.addArrangedSubviews(buttonPlay, buttonLoadAU, buttonLibrary)
       stackView2.alignment = .centerY
       stackView2.detachesHiddenViews = true
       stackView2.distribution = .fillEqually
@@ -147,7 +142,7 @@ extension MainViewController {
       buttonPlay.cell?.isBordered = true
    }
 
-   private func setupLayout() {
+   override func setupLayout() {
 
       var constraints: [NSLayoutConstraint] = []
 
@@ -162,18 +157,28 @@ extension MainViewController {
       NSLayoutConstraint.activate(constraints)
    }
 
-   private func setupHandlers() {
+   override func setupHandlers() {
       mediaItemView.onCompleteDragWithObjects = { [weak self] in
          self?.viewModel.handlePastboard($0)
       }
       viewModel.eventHandler = { [weak self] in
          self?.handleEvent($0)
       }
+      viewModel.mediaLibraryLoader.eventHandler = { [weak self] in
+         switch $0 {
+         case .mediaSourceChanged:
+            self?.mediaLibraryBrowser.isVisible = true
+         }
+      }
       buttonPlay.target = self
       buttonPlay.action = #selector(actionTogglePlayAudio(_:))
 
       buttonLoadAU.target = self
       buttonLoadAU.action = #selector(actionToggleEffect(_:))
+
+      buttonLibrary.setHandler(mediaLibraryBrowser) {
+         $0.togglePanel(nil)
+      }
    }
 
    @objc private func actionToggleEffect(_: AnyObject) {
