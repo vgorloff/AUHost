@@ -10,10 +10,14 @@ import Cocoa
 
 class Application: NSApplication {
 
+   private lazy var mediaLibraryBrowser = configure(NSMediaLibraryBrowserController.shared) {
+      $0.mediaLibraries = [.audio]
+   }
    private lazy var appMenu = MainMenu()
-   private lazy var window = Window(contentRect: CGRect(width: 320, height: 280), style: .fullSizeContent)
-   private lazy var windowController = WindowController(window: window, viewController: viewController)
+   private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 320, height: 280),
+                                                                   titleBarHeight: 42)
    private lazy var viewController = MainViewController()
+   private lazy var titleBarController = TitlebarViewController()
 
    override init() {
       super.init()
@@ -32,10 +36,32 @@ class Application: NSApplication {
 extension Application: NSApplicationDelegate {
 
    func applicationDidFinishLaunching(_: Notification) {
+      titleBarController.eventHandler = { [weak self] in
+         switch $0 {
+         case .effect:
+            self?.viewController.toggleEffect()
+         case .library:
+            self?.mediaLibraryBrowser.togglePanel(nil)
+         case .play:
+            self?.viewController.viewModel.togglePlay()
+         }
+      }
+      viewController.viewModel.mediaLibraryLoader.eventHandler = { [weak self] in
+         switch $0 {
+         case .mediaSourceChanged:
+            self?.mediaLibraryBrowser.isVisible = true
+         }
+      }
+      viewController.viewModel.eventHandler = { [weak self] in
+         self?.viewController.handleEvent($0)
+         self?.titleBarController.handleEvent($0)
+      }
       viewController.viewModel.mediaLibraryLoader.loadMediaLibrary()
       if #available(OSX 10.12, *) {
-         window.tabbingMode = .disallowed
+         windowController.contentWindow.tabbingMode = .disallowed
       }
+      windowController.embedContent(viewController)
+      windowController.embedTitleBarContent(titleBarController)
       windowController.showWindow(nil)
    }
 

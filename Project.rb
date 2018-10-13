@@ -43,21 +43,21 @@ class Project < AbstractProject
    def generate()
       project = XcodeProject.new(projectPath: File.join(@rootDirPath, "Attenuator.xcodeproj"), vendorSubpath: 'WL')
       auHost = project.addApp(name: "AUHost",
-                              sources: ["Shared", "SampleAUHost"], platform: :osx, deploymentTarget: "10.11", buildSettings: {
+                              sources: ["Shared", "SampleAUHost"], platform: :osx, deploymentTarget: "10.12", buildSettings: {
                                  "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.AUHost", "DEPLOYMENT_LOCATION" => "YES"
                               })
       addSharedSources(project, auHost)
 
       attenuator = project.addApp(name: "Attenuator",
                                   sources: ["Shared", "SampleAUPlugin/Attenuator", "SampleAUPlugin/AttenuatorKit"],
-                                  platform: :osx, deploymentTarget: "10.11", buildSettings: {
+                                  platform: :osx, deploymentTarget: "10.12", buildSettings: {
                                      "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator", "DEPLOYMENT_LOCATION" => "YES"
                                   })
       addSharedSources(project, attenuator)
 
       auExtension = project.addAppExtension(name: "AttenuatorAU",
                                             sources: ["SampleAUPlugin/AttenuatorAU", "SampleAUPlugin/AttenuatorKit"],
-                                            platform: :osx, deploymentTarget: "10.11", buildSettings: {
+                                            platform: :osx, deploymentTarget: "10.12", buildSettings: {
                                                "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator.AttenuatorAU",
                                                "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES" => "YES"
                                             })
@@ -91,9 +91,15 @@ class Project < AbstractProject
                             "Media/Extensions/*", "Media/Sources/Waveform*", "Media/Sources/Media*", "Media/Sources/*Utility*",
                             "Media/Sources/*Type*", "Media/Sources/*Buffer*",
                             "AppKit/Media/Media*", "AppKit/Media/VU*", "AppKit/Media/*DisplayLink*", "AppKit/Media/*Error*",
-                            "AppKit/Extensions/*Toolbar*", "AppKit/Extensions/*Window*",
-                            "AppKit/Reusable/*Window*",
-                            "Media/DSP/*Value*"
+                            "AppKit/Extensions/*Toolbar*", "AppKit/Extensions/*Window*", "AppKit/Extensions/NSControl*",
+                            "AppKit/Extensions/NSView.swift", "AppKit/Extensions/NSStackView*", "AppKit/Extensions/NSButton*",
+                            "AppKit/Extensions/NSApplication*", "AppKit/Extensions/NSViewController*",
+                            "AppKit/Reusable/*Window*", "AppKit/Reusable/ViewController*", "AppKit/Reusable/*Button*",
+                            "AppKit/Reusable/TitlebarAccessory*",
+                            "AppKit/Reusable/View*", "UI/Layout/*", "UI/Extensions/*", "AppKit/Reusable/FullContent*",
+                            "AppKit/Sources/SystemAppearance*", "Foundation/NSRegularExpression/*",
+                            "Media/DSP/*Value*", "Foundation/Dispatch/DispatchUntil.swift", "Foundation/Extensions/Scanner*",
+                            "Foundation/Extensions/*Dictionary.swift", "UI/Reporting/*", "AppKit/Reusable/*StackView*",
                          ])
    end
 
