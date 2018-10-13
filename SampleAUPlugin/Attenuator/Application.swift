@@ -15,7 +15,7 @@ class Application: NSApplication {
    }
    private lazy var appMenu = MainMenu()
    private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 320, height: 280),
-                                                                   titleBarHeight: 42)
+                                                                   titleBarHeight: 30, titleBarLeadingOffset: 7)
    private lazy var viewController = MainViewController()
    private lazy var titleBarController = TitlebarViewController()
 

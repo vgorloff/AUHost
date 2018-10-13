@@ -27,6 +27,7 @@ class TitlebarViewController: ViewController {
 
       buttonsStackView.addArrangedSubviews(buttonPlay, buttonLoadAU, buttonLibrary)
       buttonsStackView.distribution = .fillProportionally
+      buttonsStackView.spacing = 7
    }
 
    override func setupDefaults() {
@@ -35,7 +36,7 @@ class TitlebarViewController: ViewController {
 
    override func setupLayout() {
       LayoutConstraint.pin(to: .vertically, buttonsStackView).activate()
-      LayoutConstraint.withFormat("|-4-[*]-(>=10)-|", buttonsStackView).activate()
+      LayoutConstraint.withFormat("|-7-[*]-(>=7)-|", buttonsStackView).activate()
    }
 
    override func setupHandlers() {
