@@ -13,11 +13,11 @@ class Application: NSApplication {
    private lazy var mediaLibraryBrowser = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [.audio]
    }
-   private lazy var appMenu = MainMenu()
    private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 320, height: 280),
                                                                    titleBarHeight: 30, titleBarLeadingOffset: 7)
    private lazy var viewController = MainViewController()
-   private lazy var titleBarController = TitlebarViewController()
+   private lazy var titleBarController = TitlebarViewController(isHostTitleBar: false)
+   private lazy var appMenu = MainMenu()
 
    override init() {
       super.init()
@@ -44,6 +44,8 @@ extension Application: NSApplicationDelegate {
             self?.mediaLibraryBrowser.togglePanel(nil)
          case .play:
             self?.viewController.viewModel.togglePlay()
+         case .reloadPlugIns:
+            break
          }
       }
       viewController.viewModel.mediaLibraryLoader.eventHandler = { [weak self] in
@@ -53,8 +55,8 @@ extension Application: NSApplicationDelegate {
          }
       }
       viewController.viewModel.eventHandler = { [weak self] in
-         self?.viewController.handleEvent($0)
-         self?.titleBarController.handleEvent($0)
+         self?.viewController.handleEvent($0, $1)
+         self?.titleBarController.handleEvent($0, $1)
       }
       viewController.viewModel.mediaLibraryLoader.loadMediaLibrary()
       if #available(OSX 10.12, *) {

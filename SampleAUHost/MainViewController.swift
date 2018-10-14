@@ -12,15 +12,13 @@ import CoreAudioKit
 import MediaLibrary
 
 // Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
-class MainViewController: NSViewController {
+class MainViewController: ViewController {
 
-   private lazy var buttonPlay = NSButton()
    private lazy var mediaItemView = MediaItemView()
    private lazy var tableColumn1 = NSTableColumn()
    private lazy var tableEffects = NSTableView()
    private lazy var clipView1 = NSClipView()
    private lazy var scrollView1 = NSScrollView()
-   private lazy var buttonOpenEffectView = NSButton()
    private lazy var tableColumn2 = NSTableColumn()
    private lazy var tablePresets = NSTableView()
    private lazy var clipView2 = NSClipView()
@@ -30,29 +28,9 @@ class MainViewController: NSViewController {
 
    let viewModel = MainViewUIModel()
 
-   override func loadView() {
-      view = NSView()
-   }
-
-   init() {
-      super.init(nibName: nil, bundle: nil)
-      setupUI()
-      setupLayout()
-      setupHandlers()
-      tableEffects.delegate = self
-      tableEffects.dataSource = self
-
-      tablePresets.delegate = self
-      tablePresets.dataSource = self
-   }
-
    override func viewDidAppear() {
       super.viewDidAppear()
       viewModel.reloadEffects()
-   }
-
-   required init?(coder: NSCoder) {
-      fatalError("Please use this class from code.")
    }
 }
 
@@ -117,7 +95,7 @@ extension MainViewController: NSTableViewDelegate {
                log.debug(.controller, "Selecting effect: \"\(component.name)\"")
                viewModel.selectEffect(component) { [weak self] _ in
                   DispatchQueue.main.async {
-                     self?.actionToggleEffectView()
+                     self?.toggleEffect()
                   }
                }
             }
@@ -142,25 +120,13 @@ extension MainViewController: NSTableViewDelegate {
 
 extension MainViewController {
 
-   private func setupHandlers() {
+   override func setupHandlers() {
       mediaItemView.onCompleteDragWithObjects = { [weak self] in
          self?.viewModel.handlePastboard($0)
       }
-      viewModel.eventHandler = { [weak self] in
-         self?.handleEvent($0)
-      }
-      buttonPlay.target = self
-      buttonPlay.action = #selector(actionTogglePlayAudio)
-
-      buttonOpenEffectView.target = self
-      buttonOpenEffectView.action = #selector(actionToggleEffectView)
    }
 
-   @objc private func actionTogglePlayAudio() {
-      viewModel.togglePlay()
-   }
-
-   @objc private func actionToggleEffectView() {
+   func toggleEffect() {
       if viewModel.canOpenEffectView == true {
          viewModel.openEffectView { [weak self] in
             let wc = EffectWindowController()
@@ -177,63 +143,46 @@ extension MainViewController {
       }
    }
 
-   private func handleEvent(_ event: MainViewUIModel.Event) {
+   func handleEvent(_ event: MainViewUIModel.Event, _ state: MainViewUIModel.State) {
       switch event {
-      case .effectWindowWillOpen:
-         buttonOpenEffectView.isEnabled = viewModel.canOpenEffectView
-      case .effectWindowWillClose:
-         buttonOpenEffectView.isEnabled = viewModel.canOpenEffectView
       case .loadingEffects(let isBusy):
          if !isBusy {
             tableEffects.reloadData()
          }
          tableEffects.isEnabled = !isBusy
-         buttonOpenEffectView.isEnabled = !isBusy && viewModel.canOpenEffectView
       case .willSelectEffect:
          tablePresets.isEnabled = false
       case .didSelectEffect:
          tablePresets.reloadData()
          tablePresets.isEnabled = viewModel.availablePresets.count > 0
-         buttonOpenEffectView.isEnabled = viewModel.canOpenEffectView
       case .didClearEffect:
          tablePresets.reloadData()
          tablePresets.isEnabled = viewModel.availablePresets.count > 0
-         buttonOpenEffectView.isEnabled = viewModel.canOpenEffectView
-      case .playbackEngineStageChanged(let state):
-         switch state {
-         case .playing:
-            buttonPlay.isEnabled = true
-            buttonPlay.title = "Pause"
-            buttonOpenEffectView.isEnabled = viewModel.canOpenEffectView
-         case .stopped:
-            buttonPlay.isEnabled = true
-            buttonPlay.title = "Play"
-            buttonOpenEffectView.isEnabled = viewModel.canOpenEffectView
-         case .paused:
-            buttonPlay.isEnabled = true
-            buttonPlay.title = "Resume"
-            buttonOpenEffectView.isEnabled = viewModel.canOpenEffectView
-         case .updatingGraph:
-            buttonPlay.isEnabled = false
-            buttonOpenEffectView.isEnabled = false
-         }
       case .audioComponentsChanged:
          tablePresets.reloadData()
       case .selectMedia(let url):
          mediaItemView.mediaFileURL = url
+      default:
+         break
       }
    }
 }
 
 extension MainViewController {
 
-   private func setupUI() {
+   override func setupDataSource() {
+      tableEffects.delegate = self
+      tableEffects.dataSource = self
+
+      tablePresets.delegate = self
+      tablePresets.dataSource = self
+   }
+
+   override func setupUI() {
 
       view.addSubview(stackView1)
 
-      stackView1.addArrangedSubview(buttonPlay)
-      stackView1.addArrangedSubview(mediaItemView)
-      stackView1.addArrangedSubview(stackView2)
+      stackView1.addArrangedSubviews(mediaItemView, stackView2)
 
       stackView1.alignment = .centerX
       stackView1.distribution = .fill
@@ -243,9 +192,7 @@ extension MainViewController {
       stackView1.setHuggingPriority(NSLayoutConstraint.Priority(rawValue: 249.99998474121094), for: .vertical)
       stackView1.translatesAutoresizingMaskIntoConstraints = false
 
-      stackView2.addArrangedSubview(scrollView1)
-      stackView2.addArrangedSubview(buttonOpenEffectView)
-      stackView2.addArrangedSubview(scrollView2)
+      stackView2.addArrangedSubviews(scrollView1, scrollView2)
 
       stackView2.alignment = .top
       stackView2.distribution = .fillEqually
@@ -281,17 +228,6 @@ extension MainViewController {
 
       scrollView2.contentView = clipView2
 
-      buttonOpenEffectView.alignment = .center
-      buttonOpenEffectView.bezelStyle = .rounded
-      buttonOpenEffectView.font = NSFont.systemFont(ofSize: 13)
-      buttonOpenEffectView.imageScaling = .scaleProportionallyDown
-      buttonOpenEffectView.setContentHuggingPriority(.defaultHigh, for: .vertical)
-      buttonOpenEffectView.title = "e"
-      buttonOpenEffectView.translatesAutoresizingMaskIntoConstraints = false
-
-      buttonOpenEffectView.cell?.isBordered = true
-      buttonOpenEffectView.cell?.isEnabled = false
-
       scrollView1.autohidesScrollers = true
       scrollView1.horizontalLineScroll = 19
       scrollView1.horizontalPageScroll = 10
@@ -321,19 +257,9 @@ extension MainViewController {
       scrollView1.contentView = clipView1
 
       mediaItemView.translatesAutoresizingMaskIntoConstraints = false
-
-      buttonPlay.alignment = .center
-      buttonPlay.bezelStyle = .rounded
-      buttonPlay.font = NSFont.systemFont(ofSize: 13)
-      buttonPlay.imageScaling = .scaleProportionallyDown
-      buttonPlay.setContentHuggingPriority(.defaultHigh, for: .vertical)
-      buttonPlay.title = "Pause"
-      buttonPlay.translatesAutoresizingMaskIntoConstraints = false
-      buttonPlay.cell?.isBordered = true
-      buttonPlay.isEnabled = false
    }
 
-   private func setupLayout() {
+   override func setupLayout() {
 
       var constraints: [NSLayoutConstraint] = []
 
@@ -354,8 +280,7 @@ extension MainViewController {
                       stackView2.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
                       stackView2.widthAnchor.constraint(greaterThanOrEqualToConstant: 320)]
 
-      constraints += [buttonOpenEffectView.widthAnchor.constraint(equalToConstant: 36),
-                      mediaItemView.heightAnchor.constraint(equalToConstant: 98)]
+      constraints += [mediaItemView.heightAnchor.constraint(equalToConstant: 98)]
 
       NSLayoutConstraint.activate(constraints)
    }
