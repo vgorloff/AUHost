@@ -14,7 +14,7 @@ import MediaLibrary
 // Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
 class MainViewController: ViewController {
 
-   private lazy var mediaItemView = MediaItemView()
+   private lazy var mediaItemView = MediaItemView().autolayoutView()
    private lazy var tableColumn1 = NSTableColumn()
    private lazy var tableEffects = NSTableView()
    private lazy var clipView1 = NSClipView()
@@ -23,8 +23,8 @@ class MainViewController: ViewController {
    private lazy var tablePresets = NSTableView()
    private lazy var clipView2 = NSClipView()
    private lazy var scrollView2 = NSScrollView()
-   private lazy var stackView2 = NSStackView()
-   private lazy var stackView1 = NSStackView()
+   private lazy var contentStackView = NSStackView().autolayoutView()
+   private lazy var mainStackView = StackView(axis: .vertical).autolayoutView()
 
    let viewModel = MainViewUIModel()
 
@@ -180,25 +180,15 @@ extension MainViewController {
 
    override func setupUI() {
 
-      view.addSubview(stackView1)
+      view.addSubview(mainStackView)
 
-      stackView1.addArrangedSubviews(mediaItemView, stackView2)
+      mainStackView.addArrangedSubviews(mediaItemView, contentStackView)
+      mainStackView.distribution = .fill
+      mainStackView.spacing = 0
 
-      stackView1.alignment = .centerX
-      stackView1.distribution = .fill
-      stackView1.edgeInsets = NSEdgeInsets(top: 8, left: 0, bottom: 8, right: 0)
-      stackView1.orientation = .vertical
-      stackView1.setHuggingPriority(NSLayoutConstraint.Priority(rawValue: 249.99998474121094), for: .horizontal)
-      stackView1.setHuggingPriority(NSLayoutConstraint.Priority(rawValue: 249.99998474121094), for: .vertical)
-      stackView1.translatesAutoresizingMaskIntoConstraints = false
-
-      stackView2.addArrangedSubviews(scrollView1, scrollView2)
-
-      stackView2.alignment = .top
-      stackView2.distribution = .fillEqually
-      stackView2.setHuggingPriority(NSLayoutConstraint.Priority(rawValue: 249.99998474121094), for: .horizontal)
-      stackView2.setHuggingPriority(NSLayoutConstraint.Priority(rawValue: 249.99998474121094), for: .vertical)
-      stackView2.translatesAutoresizingMaskIntoConstraints = false
+      contentStackView.addArrangedSubviews(scrollView1, scrollView2)
+      contentStackView.alignment = .top
+      contentStackView.distribution = .fillEqually
 
       scrollView2.autohidesScrollers = true
       scrollView2.horizontalLineScroll = 19
@@ -237,7 +227,6 @@ extension MainViewController {
       scrollView1.verticalPageScroll = 10
 
       clipView1.documentView = tableEffects
-
       clipView1.autoresizingMask = [.width, .height]
 
       tableEffects.addTableColumn(tableColumn1)
@@ -255,33 +244,17 @@ extension MainViewController {
       tableColumn1.isEditable = false
 
       scrollView1.contentView = clipView1
-
-      mediaItemView.translatesAutoresizingMaskIntoConstraints = false
    }
 
    override func setupLayout() {
 
+      LayoutConstraint.pin(to: .bounds, mainStackView).activate()
       var constraints: [NSLayoutConstraint] = []
 
-      constraints += [stackView1.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                      stackView1.topAnchor.constraint(equalTo: view.topAnchor),
-                      view.bottomAnchor.constraint(equalTo: stackView1.bottomAnchor),
-                      view.trailingAnchor.constraint(equalTo: stackView1.trailingAnchor)]
+      constraints += [contentStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
+                      contentStackView.widthAnchor.constraint(greaterThanOrEqualToConstant: 320)]
 
-      constraints += [mediaItemView.leadingAnchor.constraint(equalTo: stackView1.leadingAnchor, constant: 8),
-                      stackView1.trailingAnchor.constraint(equalTo: mediaItemView.trailingAnchor, constant: 8),
-                      stackView1.trailingAnchor.constraint(equalTo: stackView2.trailingAnchor, constant: 8),
-                      stackView2.leadingAnchor.constraint(equalTo: stackView1.leadingAnchor, constant: 8)]
-
-      constraints += [scrollView1.topAnchor.constraint(equalTo: stackView2.topAnchor),
-                      scrollView2.topAnchor.constraint(equalTo: stackView2.topAnchor),
-                      stackView2.bottomAnchor.constraint(equalTo: scrollView1.bottomAnchor),
-                      stackView2.bottomAnchor.constraint(equalTo: scrollView2.bottomAnchor),
-                      stackView2.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
-                      stackView2.widthAnchor.constraint(greaterThanOrEqualToConstant: 320)]
-
-      constraints += [mediaItemView.heightAnchor.constraint(equalToConstant: 98)]
-
-      NSLayoutConstraint.activate(constraints)
+      mediaItemView.heightAnchor.constraint(equalToConstant: 98).activate()
+      constraints.activate()
    }
 }

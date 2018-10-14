@@ -13,7 +13,7 @@ class Application: NSApplication {
    private lazy var mediaLibraryBrowser = configure(NSMediaLibraryBrowserController.shared) {
       $0.mediaLibraries = [.audio]
    }
-   private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 640, height: 480),
+   private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 420, height: 320),
                                                                    titleBarHeight: 30, titleBarLeadingOffset: 7)
    private lazy var appMenu = MainMenu()
    private lazy var viewController = MainViewController()
