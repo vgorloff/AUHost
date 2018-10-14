@@ -5,6 +5,11 @@ class AbstractProject
 
    def initialize(rootDirPath)
       @rootDirPath = rootDirPath
+      @versionFilePath = @rootDirPath + "/Configuration/Version.xcconfig"
+      @tmpDirPath = @rootDirPath + "/DerivedData"
+      @keyChainPath = @tmpDirPath + "/App.keychain"
+      @p12FilePath = @rootDirPath + '/Codesign/DeveloperIDApplication.p12'
+      @defaultKeyChain = KeyChain.default
    end
 
    def clean()
@@ -16,10 +21,37 @@ class AbstractProject
    end
 
    def ci()
-      puts "Base class \"#{__FILE__}\" does nothing."
+      unless Environment.isCI
+         archive()
+         return
+      end
+      puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+      puts "→ Preparing environment..."
+      prepare()
+      FileUtils.mkdir_p @tmpDirPath
+      puts Environment.announceEnvVars
+      nameOrPath = setupKeyChain()
+      begin
+         puts "→ Making build..."
+         release()
+         puts "→ Making cleanup..."
+         cleanupKeyChain(nameOrPath)
+      rescue StandardError
+         cleanupKeyChain(nameOrPath)
+         puts "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+         raise
+      end
+   end
+
+   def prepare()
+      # Base class does nothing.
    end
 
    def deploy()
+      puts "Base class \"#{__FILE__}\" does nothing."
+   end
+
+   def archive()
       puts "Base class \"#{__FILE__}\" does nothing."
    end
 
@@ -28,6 +60,10 @@ class AbstractProject
    end
 
    def build()
+      puts "Base class \"#{__FILE__}\" does nothing."
+   end
+
+   def test()
       puts "Base class \"#{__FILE__}\" does nothing."
    end
 
@@ -69,6 +105,26 @@ class AbstractProject
       end
    end
 
+   def setupKeyChain()
+      puts "→ Setting up keychain..."
+      kc = KeyChain.create(@keyChainPath)
+      puts KeyChain.list
+      puts "→ Default keychain: #{@defaultKeyChain}"
+      kc.setSettings()
+      kc.info()
+      kc.import(@p12FilePath, ENV['AWL_P12_PASSWORD'], ["/usr/bin/codesign"])
+      kc.setKeyCodesignPartitionList()
+      kc.dump()
+      KeyChain.setDefault(kc.nameOrPath)
+      puts "→ Default keychain now: #{KeyChain.default}"
+      return kc.nameOrPath
+   end
+
+   def cleanupKeyChain(nameOrPath)
+      KeyChain.setDefault(@defaultKeyChain)
+      KeyChain.delete(nameOrPath)
+   end
+
    def autocorrect()
       isVerbose = !Environment.isXcodeBuild
       swiftFormatConfig = File.exist?("#{@rootDirPath}/.swiftformat") ? nil : ENV['AWL_LIB_SRC'] + '/.swiftformat'
@@ -102,6 +158,23 @@ class AbstractProject
       elsif !linterWarnings.empty? || !headerWarnings.empty?
          exit 1
       end
+   end
+
+   def gitHubRelease(assets: nil)
+      require 'yaml'
+      assets = assets.nil? ? Dir["#{@tmpDirPath}/**/*.export/*.zip"] : assets
+      releaseInfo = YAML.load_file("#{@rootDirPath}/Configuration/Release.yml")
+      releaseName = releaseInfo['name']
+      releaseDescriptions = releaseInfo['description'].map { |line| "* #{line}" }
+      releaseDescription = releaseDescriptions.join("\n")
+      version = Version.new(@versionFilePath).projectVersion
+      puts "! Will make GitHub release → #{version}: \"#{releaseName}\""
+      puts(releaseDescriptions.map { |line| "  #{line}" })
+      assets.each { |file| puts "  #{file}" }
+      gh = GitHubRelease.new("vgorloff", "AUHost")
+      Readline.readline("OK? > ")
+      gh.release(version, releaseName, releaseDescription)
+      assets.each { |file| gh.uploadAsset(file) }
    end
 
    def assets()

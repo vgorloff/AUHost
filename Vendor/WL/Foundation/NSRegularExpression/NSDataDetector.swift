@@ -1,0 +1,16 @@
+//
+//  NSDataDetector.swift
+//  mcApp
+//
+//  Created by Vlad Gorlov on 09.06.18.
+//  Copyright © 2018 WaveLabs. All rights reserved.
+//
+
+import Foundation
+
+extension NSDataDetector {
+
+   public convenience init(checkingTypes: NSTextCheckingResult.CheckingType) throws {
+      try self.init(types: checkingTypes.rawValue)
+   }
+}

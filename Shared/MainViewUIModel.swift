@@ -13,6 +13,25 @@ import MediaLibrary
 
 class MainViewUIModel {
 
+   struct State: OptionSet, CustomStringConvertible {
+
+      let rawValue: Int
+      static let empty = State(rawValue: 0)
+      static let canPlayback = State(rawValue: 1 << 0)
+      static let canOpenEffect = State(rawValue: 1 << 1)
+
+      var description: String {
+         switch self {
+         case .canPlayback:
+            return "canPlayback"
+         case .canOpenEffect:
+            return "canOpenEffect"
+         default:
+            return "empty"
+         }
+      }
+   }
+
    enum Event {
       case loadingEffects(Bool)
       case willSelectEffect
@@ -25,7 +44,7 @@ class MainViewUIModel {
       case effectWindowWillClose
    }
 
-   var eventHandler: ((Event) -> Void)?
+   var eventHandler: ((Event, State) -> Void)?
 
    private var isEffectOpened = false
    private(set) var selectedAUComponent: AVAudioUnitComponent?
@@ -53,29 +72,37 @@ extension MainViewUIModel {
    }
 
    func reloadEffects() {
-      eventHandler?(.loadingEffects(true))
+      eventHandler?(.loadingEffects(true), .empty)
       audioUnitDatasource.updateEffectList { [weak self] in guard let this = self else { return }
          this.availableEffects = $0
-         this.eventHandler?(.loadingEffects(false))
+         this.eventHandler?(.loadingEffects(false), this.state)
       }
    }
 
+   var state: State {
+      var state = State.empty
+      if canOpenEffectView {
+         state.insert(.canOpenEffect)
+      }
+      return state
+   }
+
    func selectEffect(_ component: AVAudioUnitComponent?, completion: Completion<AVAudioUnit>?) {
-      eventHandler?(.willSelectEffect)
+      eventHandler?(.willSelectEffect, .empty)
       playbackEngine.selectEffect(componentDescription: component?.audioComponentDescription) { [weak self] in
          guard let this = self else { return }
          switch $0 {
          case .effectCleared:
             this.availablePresets.removeAll()
             this.selectedAUComponent = nil
-            this.eventHandler?(.didClearEffect)
-         case .failure(let e):
-            log.error(.controller, e)
-            this.eventHandler?(.didSelectEffect(e))
+            this.eventHandler?(.didClearEffect, this.state)
+         case .failure(let error):
+            log.error(.controller, error)
+            this.eventHandler?(.didSelectEffect(error), this.state)
          case .success(let effect):
             this.availablePresets = effect.auAudioUnit.factoryPresets ?? []
             this.selectedAUComponent = component
-            this.eventHandler?(.didSelectEffect(nil))
+            this.eventHandler?(.didSelectEffect(nil), this.state)
             completion?(effect)
          }
       }
@@ -108,9 +135,9 @@ extension MainViewUIModel {
             url.stopAccessingSecurityScopedResource() // Seems working fine without this line
          }
          _ = url.startAccessingSecurityScopedResource() // Seems working fine without this line
-         eventHandler?(.selectMedia(url))
-         let f = try AVAudioFile(forReading: url)
-         playbackEngine.setFileToPlay(f)
+         eventHandler?(.selectMedia(url), .empty)
+         let file = try AVAudioFile(forReading: url)
+         playbackEngine.setFileToPlay(file)
          if playbackEngine.stateID == .stopped {
             try playbackEngine.play()
          }
@@ -139,13 +166,13 @@ extension MainViewUIModel {
    func effectWindowWillOpen(_ vc: NSWindowController) {
       isEffectOpened = true
       effectWindowController = vc
-      eventHandler?(.effectWindowWillOpen)
+      eventHandler?(.effectWindowWillOpen, state)
    }
 
    func effectWindowWillClose() {
       isEffectOpened = false
       effectWindowController = nil
-      eventHandler?(.effectWindowWillClose)
+      eventHandler?(.effectWindowWillClose, state)
    }
 
    func handlePastboard(_ objects: MediaObjectPasteboardUtility.PasteboardObjects) {
@@ -169,18 +196,18 @@ extension MainViewUIModel {
 extension MainViewUIModel {
 
    private func setupHandlers() {
-      playbackEngine.changeHandler = { [weak self] in
-         self?.eventHandler?(.playbackEngineStageChanged($0.newState))
+      playbackEngine.changeHandler = { [weak self] in guard let this = self else { return }
+         self?.eventHandler?(.playbackEngineStageChanged($0.newState), this.state)
       }
       audioUnitDatasource.handlerStateChange = { [weak self] change in guard let this = self else { return }
          switch change {
          case .audioComponentRegistered:
-            this.eventHandler?(.audioComponentsChanged)
+            this.eventHandler?(.audioComponentsChanged, this.state)
          case .audioComponentInstanceInvalidated(let au, _):
             if au.component == this.selectedAUComponent?.audioComponent {
                this.selectEffect(nil, completion: nil)
             } else {
-               this.eventHandler?(.audioComponentsChanged)
+               this.eventHandler?(.audioComponentsChanged, this.state)
             }
          }
       }
