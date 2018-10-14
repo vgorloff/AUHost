@@ -99,8 +99,10 @@ class Project < AbstractProject
                             "AppKit/Reusable/View*", "UI/Layout/*", "UI/Extensions/*", "AppKit/Reusable/FullContent*",
                             "AppKit/Sources/SystemAppearance*", "Foundation/NSRegularExpression/*",
                             "Media/DSP/*Value*", "Foundation/Dispatch/DispatchUntil.swift", "Foundation/Extensions/Scanner*",
-                            "Foundation/Extensions/*Dictionary.swift", "UI/Reporting/*", "AppKit/Reusable/*StackView*",
+                            "Foundation/Extensions/*Dictionary.swift", "UI/Reporting/*", "AppKit/Reusable/*StackView*"
                          ])
+
+      project.useFiles(target: target, files: ["ActionsBar"])
    end
 
 end

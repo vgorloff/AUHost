@@ -17,17 +17,22 @@ class TitlebarViewController: ViewController {
 
    var eventHandler: ((Event) -> Void)?
 
-   private lazy var buttonsStackView = StackView().autolayoutView()
-   private lazy var buttonLibrary = Button(title: "Library").autolayoutView()
-   private lazy var buttonPlay = Button(title: "Play").autolayoutView()
-   private lazy var buttonLoadAU = Button(title: "Load AU").autolayoutView()
+   private lazy var actionsBar = ActionsBar().autolayoutView()
+   private lazy var buttonLibrary = Button(image: ControlIcon.library.image).autolayoutView()
+   private lazy var buttonPlay = Button(image: ControlIcon.play.image, alternateImage: ControlIcon.pause.image).autolayoutView()
+   private lazy var buttonLoadAU = Button(image: ControlIcon.effect.image).autolayoutView()
 
    override func setupUI() {
-      view.addSubviews(buttonsStackView)
+      view.addSubviews(actionsBar)
 
-      buttonsStackView.addArrangedSubviews(buttonPlay, buttonLoadAU, buttonLibrary)
-      buttonsStackView.distribution = .fillProportionally
-      buttonsStackView.spacing = 7
+      let spacing: CGFloat = 7
+
+      actionsBar.itemsSpacing = spacing
+      actionsBar.edgeInsets = EdgeInsets(horizontal: spacing, vertical: 3)
+      actionsBar.setLeftItems(buttonPlay, buttonLoadAU)
+      actionsBar.setRightItems(buttonLibrary)
+
+      buttonPlay.setButtonType(.toggle)
    }
 
    override func setupDefaults() {
@@ -35,8 +40,7 @@ class TitlebarViewController: ViewController {
    }
 
    override func setupLayout() {
-      LayoutConstraint.pin(to: .vertically, buttonsStackView).activate()
-      LayoutConstraint.withFormat("|-7-[*]-(>=7)-|", buttonsStackView).activate()
+      LayoutConstraint.pin(to: .bounds, actionsBar).activate()
    }
 
    override func setupHandlers() {
@@ -57,23 +61,16 @@ class TitlebarViewController: ViewController {
          switch state {
          case .playing:
             buttonPlay.isEnabled = true
-            buttonPlay.title = "Pause"
+            buttonPlay.state = .on
          case .stopped:
             buttonPlay.isEnabled = true
-            buttonPlay.title = "Play"
+            buttonPlay.state = .off
          case .paused:
             buttonPlay.isEnabled = true
-            buttonPlay.title = "Resume"
+            buttonPlay.state = .off
          case .updatingGraph:
             buttonPlay.isEnabled = false
          }
-      case .didSelectEffect(let error):
-         if error == nil {
-            buttonLoadAU.title = "Unload AU"
-         }
-
-      case .didClearEffect:
-         buttonLoadAU.title = "Load AU"
       default:
          break
       }
