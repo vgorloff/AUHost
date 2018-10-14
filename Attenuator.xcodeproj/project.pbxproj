@@ -9,21 +9,25 @@
 /* Begin PBXAggregateTarget section */
 		23C1DADCC6BB48625909EEE9 /* Verify */ = {
 			isa = PBXAggregateTarget;
+			buildConfigurationList = 80884B4021735D87004EB0A0 /* Build configuration list */;
 			buildPhases = (
 				85345BF8D4933F44B2854658 /* Run Script: Verify */,
 			);
 			dependencies = (
 			);
 			name = Verify;
+			productName = Verify;
 		};
 		4F0514F0A81156DB22611ABB /* Autocorrect */ = {
 			isa = PBXAggregateTarget;
+			buildConfigurationList = 80884B4121735D87004EB0A0 /* Build configuration list */;
 			buildPhases = (
 				0A42C5649FC5F9DFDAA2CBE4 /* Run Script: Autocorrect */,
 			);
 			dependencies = (
 			);
 			name = Autocorrect;
+			productName = Autocorrect;
 		};
 /* End PBXAggregateTarget section */
 
@@ -86,7 +90,6 @@
 		1B9F847E64D87FAD605CB504 /* SpinLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CD889A71F6982C72AA4519 /* SpinLock.swift */; };
 		1BD0AF83F1D02E53AA4B9E95 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCDE1ABA629D03F9A6B6C96C /* Date.swift */; };
 		1C3BA7C793C87A7B1B3A7B9E /* AudioBufferProcessingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D27CC574E00B2215FB257A2 /* AudioBufferProcessingInfo.swift */; };
-		1CE66DAC7DDD13EF48351C4E /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EEEB4134057343DDA3D9C37 /* main.swift */; };
 		1D46026C03D29413CF3B514D /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AE91EF0D0C6857AAE276ACA /* UserDefaults.swift */; };
 		1DF0FE1E31A1CE8E70CE9E8A /* QuickLookProxyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D78BFD1ADD8CAFDD9F4E4EC /* QuickLookProxyType.swift */; };
 		1E08F222104AD060FA8AF7D8 /* BufferedAudioBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211C88146DA832AAC344E025 /* BufferedAudioBus.swift */; };
@@ -263,6 +266,10 @@
 		7FC65A4EEB84BADCFAEE9289 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = D14939AEA76D9580B4DE6B48 /* Logger.swift */; };
 		802C5B508A1BB43470E1B9DD /* FullContentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D5F88BB2CC7AE4963B897E /* FullContentWindowController.swift */; };
 		803DF3A101B9030F456812E6 /* NSLocker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8E516DCE1B021807890BFF /* NSLocker.swift */; };
+		80884B4221735D87004EB0A0 /* TitlebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9C191198324F3A8AA1E309 /* TitlebarViewController.swift */; };
+		80884B4321735DB0004EB0A0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC482C9425CD36E3B726DA1 /* main.swift */; };
+		80884B4521735DFF004EB0A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FFC050C40CA2CB02F431CE2 /* Assets.xcassets */; };
+		80884B4621735E04004EB0A0 /* ControlIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CFCEE229EBD5A2C5A98A779 /* ControlIcon.swift */; };
 		809A613AE9EE537E6C20A61C /* NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C78582F98692BC69AAA358 /* NSView.swift */; };
 		80D80866C3FF4A710D50CD9E /* ProcessInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0D62F5292BAABC03B1D012F /* ProcessInfo.swift */; };
 		81019B4378E1F0CFECD982D8 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BA04C4E5583565A2312C1E /* View.swift */; };
@@ -543,7 +550,7 @@
 		2345D2A45CA29A7246D2F3A1 /* Color.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		27CD889A71F6982C72AA4519 /* SpinLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SpinLock.swift; sourceTree = "<group>"; };
 		27EA59AF44F37566774EE917 /* BuildInfo.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BuildInfo.swift; sourceTree = "<group>"; };
-		28D4DFAD84E96CF6FAA182B4 /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; includeInIndex = 1; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
+		28D4DFAD84E96CF6FAA182B4 /* VULevelMeter.Shaders.metal */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.metal; path = VULevelMeter.Shaders.metal; sourceTree = "<group>"; };
 		2A1521514633D2D1F63F192A /* CGContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CGContext.swift; sourceTree = "<group>"; };
 		2AAEF08458A1BBCB75200CAF /* SmartDispatchSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SmartDispatchSource.swift; sourceTree = "<group>"; };
 		2B38924FBFC0A47D39305565 /* MainMenu.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -624,7 +631,6 @@
 		9C6C18518056B3D494E5CB99 /* DisplayLink.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DisplayLink.swift; sourceTree = "<group>"; };
 		9CFCEE229EBD5A2C5A98A779 /* ControlIcon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ControlIcon.swift; sourceTree = "<group>"; };
 		9D78BFD1ADD8CAFDD9F4E4EC /* QuickLookProxyType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = QuickLookProxyType.swift; sourceTree = "<group>"; };
-		9EEEB4134057343DDA3D9C37 /* main.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		9EF28205BD087BA5A8146A61 /* UnsafeMutableAudioBufferListPointer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UnsafeMutableAudioBufferListPointer.swift; sourceTree = "<group>"; };
 		A0C96260B84E94C074AA7AC3 /* DispatchLock.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DispatchLock.swift; sourceTree = "<group>"; };
 		A21D982DD8D80505AA75BF87 /* AVAudioBuffer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AVAudioBuffer.swift; sourceTree = "<group>"; };
@@ -686,7 +692,6 @@
 			children = (
 				4E5142F0D948A6B68CF53406 /* log */,
 			);
-			name = os;
 			path = os;
 			sourceTree = "<group>";
 		};
@@ -696,7 +701,6 @@
 				AAE625DD63852C100B5E4F17 /* GenericNotification.swift */,
 				E2B7A31E29555E4263209E77 /* NotificationObserver.swift */,
 			);
-			name = Notification;
 			path = Notification;
 			sourceTree = "<group>";
 		};
@@ -721,7 +725,6 @@
 				B52F347629A09A4908F8E6A6 /* UnfairLock.swift */,
 				08308A669343188B1C094539 /* WriteSynchronizedProperty.swift */,
 			);
-			name = Concurrency;
 			path = Concurrency;
 			sourceTree = "<group>";
 		};
@@ -730,20 +733,19 @@
 			children = (
 				E5BAB7F43DC5FA259A7FD5C4 /* Info.plist */,
 				2D62A84E2D21D1FC9BF9D22E /* Application.swift */,
-				9CFCEE229EBD5A2C5A98A779 /* ControlIcon.swift */,
 				B028652D6059B8E57B143460 /* MainMenu.swift */,
 				041D20E320D29356AA0EC069 /* MainViewController.swift */,
-				0E9C191198324F3A8AA1E309 /* TitlebarViewController.swift */,
-				5CC482C9425CD36E3B726DA1 /* main.swift */,
-				1FFC050C40CA2CB02F431CE2 /* Assets.xcassets */,
 			);
-			name = Attenuator;
 			path = Attenuator;
 			sourceTree = "<group>";
 		};
 		1BBD35BD39C71DE6A1D25B4E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				9CFCEE229EBD5A2C5A98A779 /* ControlIcon.swift */,
+				1FFC050C40CA2CB02F431CE2 /* Assets.xcassets */,
+				5CC482C9425CD36E3B726DA1 /* main.swift */,
+				0E9C191198324F3A8AA1E309 /* TitlebarViewController.swift */,
 				89547775049E00502497EF2B /* MainToolbar.swift */,
 				133E254270E0A6AAB4945DF7 /* MainToolbar.Event.swift */,
 				BAED5D4BD133C69B6004E809 /* MainViewUIModel.swift */,
@@ -751,7 +753,6 @@
 				D075E598CF473FE38417C04C /* PlaybackEngine.swift */,
 				64ED41896F802881417069B1 /* PlaybackEngineContext.swift */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -762,7 +763,6 @@
 				93FFDDF498EA7F50F6738A8A /* AttenuatorAU */,
 				5CB61888A5E92512DCA06CE0 /* AttenuatorKit */,
 			);
-			name = SampleAUPlugin;
 			path = SampleAUPlugin;
 			sourceTree = "<group>";
 		};
@@ -776,9 +776,7 @@
 				2B38924FBFC0A47D39305565 /* MainMenu.swift */,
 				72968E33580F61611A206659 /* MainViewController.swift */,
 				37818F3828477A42855601C7 /* MainWindowController.swift */,
-				9EEEB4134057343DDA3D9C37 /* main.swift */,
 			);
-			name = SampleAUHost;
 			path = SampleAUHost;
 			sourceTree = "<group>";
 		};
@@ -787,7 +785,6 @@
 			children = (
 				C45C3E3BB3E1EFA84AA2216D /* ObjCAssociation.swift */,
 			);
-			name = ObjectiveC;
 			path = ObjectiveC;
 			sourceTree = "<group>";
 		};
@@ -798,7 +795,6 @@
 				F03C4FF4D8BBDFE98B9E8B44 /* Layout */,
 				957AB2C3B262914410A01A37 /* Reporting */,
 			);
-			name = UI;
 			path = UI;
 			sourceTree = "<group>";
 		};
@@ -807,7 +803,6 @@
 			children = (
 				79F45F472A718A7A56A4EE72 /* Project.xcconfig */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -817,7 +812,6 @@
 				9A8FD4D3FE26B556E1FA185B /* AlternativeValue.swift */,
 				124F3B3638EEF9754281DC2B /* CoreTypeAliases.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -826,7 +820,6 @@
 			children = (
 				18D927EDD89F9636536E25D7 /* Log.swift */,
 			);
-			name = log;
 			path = log;
 			sourceTree = "<group>";
 		};
@@ -835,7 +828,6 @@
 			children = (
 				3E4DEF6BD4004200CEE44995 /* SystemAppearance.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -844,7 +836,6 @@
 			children = (
 				7EEE4F667DE4C125F2D04313 /* DispatchUntil.swift */,
 			);
-			name = Dispatch;
 			path = Dispatch;
 			sourceTree = "<group>";
 		};
@@ -858,7 +849,6 @@
 				4EADA852D997BB9AC2519854 /* AttenuatorViewController.swift */,
 				D14939AEA76D9580B4DE6B48 /* Logger.swift */,
 			);
-			name = AttenuatorKit;
 			path = AttenuatorKit;
 			sourceTree = "<group>";
 		};
@@ -869,7 +859,6 @@
 				A9458F2FBA1204D8AF9287E3 /* Extensions */,
 				B4D23556D590899879ADB14C /* Sources */,
 			);
-			name = Media;
 			path = Media;
 			sourceTree = "<group>";
 		};
@@ -878,7 +867,6 @@
 			children = (
 				5A8E1B97E473627F9B459376 /* App-macOS.xcconfig */,
 			);
-			name = Configuration;
 			path = Configuration;
 			sourceTree = "<group>";
 		};
@@ -890,7 +878,6 @@
 				FD8477793973089199F0EB8D /* Extensions */,
 				4CEE84D2EB8497FA19BC4A32 /* Sources */,
 			);
-			name = Core;
 			path = Core;
 			sourceTree = "<group>";
 		};
@@ -913,7 +900,6 @@
 			children = (
 				DF6D4FBF9BDB4D5F7AD6A47C /* Sources */,
 			);
-			name = Types;
 			path = Types;
 			sourceTree = "<group>";
 		};
@@ -931,7 +917,6 @@
 				E501DB544BE385719218D621 /* NSViewController.swift */,
 				70FF0B87F9AD6D558DC9B5A6 /* NSWindow.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -941,7 +926,6 @@
 				ACC330A2C255530FBE71D1B9 /* Info.plist */,
 				491EFF38005E5A434C6A6EED /* Attenuator.swift */,
 			);
-			name = AttenuatorAU;
 			path = AttenuatorAU;
 			sourceTree = "<group>";
 		};
@@ -951,7 +935,6 @@
 				17C50836849253E5EF6D201F /* FailureReporting.swift */,
 				2304ABADF138C0554DC3FB05 /* SuccessReportingType.swift */,
 			);
-			name = Reporting;
 			path = Reporting;
 			sourceTree = "<group>";
 		};
@@ -962,7 +945,6 @@
 				08AB850DB6C268EDEBF7C207 /* NSRegularExpression.swift */,
 				F52B40F797F226839B5F9542 /* RegEx.swift */,
 			);
-			name = NSRegularExpression;
 			path = NSRegularExpression;
 			sourceTree = "<group>";
 		};
@@ -971,7 +953,6 @@
 			children = (
 				5001EFF682AC01F1F8E76F36 /* NumericTypesConversions.swift */,
 			);
-			name = Converters;
 			path = Converters;
 			sourceTree = "<group>";
 		};
@@ -1001,7 +982,6 @@
 				BBAE8C165E5A13F16E346601 /* Window.swift */,
 				4F12A745FC5625858929EAD6 /* WindowController.swift */,
 			);
-			name = Reusable;
 			path = Reusable;
 			sourceTree = "<group>";
 		};
@@ -1014,7 +994,6 @@
 				673CBC3DD9CB2E3E8EB6955A /* NSLayoutConstraint.Attribute.swift */,
 				CC7E1678CC26808452790D80 /* NSLayoutYAxisAnchor.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -1034,7 +1013,6 @@
 				511AA12EC4C89C79341A0B68 /* QuickLookProxy.Media.swift */,
 				9EF28205BD087BA5A8146A61 /* UnsafeMutableAudioBufferListPointer.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -1045,7 +1023,6 @@
 				16273B6B0C0D4B96C29394C5 /* QuickLookProxy.swift */,
 				9D78BFD1ADD8CAFDD9F4E4EC /* QuickLookProxyType.swift */,
 			);
-			name = Testability;
 			path = Testability;
 			sourceTree = "<group>";
 		};
@@ -1066,7 +1043,6 @@
 				0FEC798D275228F1769D2579 /* WaveformCacheUtility.swift */,
 				3F87C5B4EABACFC82F10B3E3 /* WaveformDrawingDataProvider.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -1083,7 +1059,6 @@
 				A2CA615B7E96649821C1FBEE /* VULevelMeter.swift */,
 				6F6B47C8D596049BD8D2CD3C /* VULevelMeter.DrawingData.swift */,
 			);
-			name = Media;
 			path = Media;
 			sourceTree = "<group>";
 		};
@@ -1092,7 +1067,6 @@
 			children = (
 				65E08AE76174089937F7248D /* Configuration */,
 			);
-			name = Shared;
 			path = Shared;
 			sourceTree = "<group>";
 		};
@@ -1100,11 +1074,8 @@
 			isa = PBXGroup;
 			children = (
 				359AFFB429510B9093C71A8E /* Configuration */,
-				A52D126843D5E5A0C2B95E60 /* Products */,
 				26FA54B6B339B26E4353CEBB /* SampleAUHost */,
 				1BFA8E0E64B5C57F22D39462 /* SampleAUPlugin */,
-				1BBD35BD39C71DE6A1D25B4E /* Shared */,
-				DD844641D9C431457304AE93 /* Vendor */,
 				1BBD35BD39C71DE6A1D25B4E /* Shared */,
 				DD844641D9C431457304AE93 /* Vendor */,
 				A52D126843D5E5A0C2B95E60 /* Products */,
@@ -1116,7 +1087,6 @@
 			children = (
 				8254EB15F136321DE21B2357 /* WL */,
 			);
-			name = Vendor;
 			path = Vendor;
 			sourceTree = "<group>";
 		};
@@ -1127,7 +1097,6 @@
 				C785766506D2E95E271DA753 /* Operators.swift */,
 				428C320AA0B3C612FFC29550 /* RandomFactory.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -1140,7 +1109,6 @@
 				FD7578BB82AE73F998BBC3FA /* Result.swift */,
 				8911CFE0947FCFEA231EAF95 /* RuntimeInfo.swift */,
 			);
-			name = Sources;
 			path = Sources;
 			sourceTree = "<group>";
 		};
@@ -1156,7 +1124,6 @@
 				AC14CC0197B30A030ED80309 /* Testability */,
 				10BF8FB762B794C43E319773 /* os */,
 			);
-			name = Foundation;
 			path = Foundation;
 			sourceTree = "<group>";
 		};
@@ -1168,7 +1135,6 @@
 				4FADD7556E1A2EF1CF2F4A5C /* LayoutConstraintDynamics.swift */,
 				DB326848B15CBED96F7E8C15 /* LayoutFormatParser.swift */,
 			);
-			name = Layout;
 			path = Layout;
 			sourceTree = "<group>";
 		};
@@ -1186,7 +1152,6 @@
 				0BA46C7E2842DB4CE95F3604 /* String.swift */,
 				0A5A331746D28F35C13511B0 /* String.Index.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -1198,7 +1163,6 @@
 				A6BBC920F252C05795ADCFA0 /* Reusable */,
 				4FE69D2C6DD7D130F4C0F2E5 /* Sources */,
 			);
-			name = AppKit;
 			path = AppKit;
 			sourceTree = "<group>";
 		};
@@ -1225,7 +1189,6 @@
 				D1EC5184CBB293B49CD0CEE9 /* URL.swift */,
 				5AE91EF0D0C6857AAE276ACA /* UserDefaults.swift */,
 			);
-			name = Extensions;
 			path = Extensions;
 			sourceTree = "<group>";
 		};
@@ -1234,7 +1197,6 @@
 			children = (
 				046351E8346F019DEC3F9739 /* OscilloscopeDSPValue.swift */,
 			);
-			name = DSP;
 			path = DSP;
 			sourceTree = "<group>";
 		};
@@ -1248,6 +1210,7 @@
 				7AAAE143319D66BCEE285E14 /* Run Script: Verify */,
 				06FDA7EAECE444DF5DB3C000 /* Run Script: Verify */,
 				33F492104B28CBE48AF2AB3D /* Sources */,
+				80884B4421735DFB004EB0A0 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1306,6 +1269,26 @@
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = WaveLabs;
+				TargetAttributes = {
+					2305202DD7721BA72605EB12 = {
+						DevelopmentTeam = E27KE6VTF6;
+						ProvisioningStyle = Automatic;
+					};
+					23C1DADCC6BB48625909EEE9 = {
+						DevelopmentTeam = E27KE6VTF6;
+					};
+					4C0AD9E04C48FE15CCD8E41C = {
+						DevelopmentTeam = E27KE6VTF6;
+						ProvisioningStyle = Automatic;
+					};
+					4F0514F0A81156DB22611ABB = {
+						DevelopmentTeam = E27KE6VTF6;
+					};
+					EFD443C9861EAB1DB968035C = {
+						DevelopmentTeam = E27KE6VTF6;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 56B0722BB53E85EDE27D320D /* Build configuration list for PBXProject "Attenuator" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1337,6 +1320,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		80884B4421735DFB004EB0A0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80884B4521735DFF004EB0A0 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1357,7 +1348,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify('Shared')\"";
-			showEnvVarsInLog = 1;
 		};
 		0A42C5649FC5F9DFDAA2CBE4 /* Run Script: Autocorrect */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1376,7 +1366,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').autocorrect()\"";
-			showEnvVarsInLog = 1;
 		};
 		506DCA3B6496CCEFB43EE5B8 /* Run Script: Verify */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1395,7 +1384,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify('SampleAUPlugin/AttenuatorKit')\"";
-			showEnvVarsInLog = 1;
 		};
 		50E6EAF2C379FC19E39D856D /* Register Extension */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1414,7 +1402,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').register()\"";
-			showEnvVarsInLog = 1;
 		};
 		7AAAE143319D66BCEE285E14 /* Run Script: Verify */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1433,7 +1420,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify('SampleAUHost')\"";
-			showEnvVarsInLog = 1;
 		};
 		85345BF8D4933F44B2854658 /* Run Script: Verify */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1452,7 +1438,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify()\"";
-			showEnvVarsInLog = 1;
 		};
 		AC97388B4ED5DAA53693B30E /* Run Script: Verify */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1471,7 +1456,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify('Shared')\"";
-			showEnvVarsInLog = 1;
 		};
 		C76054B767708A4F45A768B1 /* Run Script: Verify */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1490,7 +1474,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify('SampleAUPlugin/Attenuator')\"";
-			showEnvVarsInLog = 1;
 		};
 		D1C5CD90B631CE6D20557C61 /* Run Script: Verify */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1509,7 +1492,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify('SampleAUPlugin/AttenuatorAU')\"";
-			showEnvVarsInLog = 1;
 		};
 		FB8CE45E5FCB70E7C7E0175B /* Run Script: Verify */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1528,7 +1510,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
 			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').verify('SampleAUPlugin/AttenuatorKit')\"";
-			showEnvVarsInLog = 1;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1549,7 +1530,6 @@
 				BFF60FB829D8255DC751168D /* Logger.swift in Sources */,
 				169930E965A1652AF830A425 /* MainViewController.swift in Sources */,
 				9FE4D733B6E1811910740E9E /* Application.swift in Sources */,
-				1CE66DAC7DDD13EF48351C4E /* main.swift in Sources */,
 				269BF81B46D54ECAEDE0C906 /* UnfairLock.swift in Sources */,
 				89D8367D3A7F5C0DC20A50D3 /* Property.swift in Sources */,
 				4EC265CB854849049B228800 /* AtomicPair.swift in Sources */,
@@ -1571,6 +1551,7 @@
 				1BD0AF83F1D02E53AA4B9E95 /* Date.swift in Sources */,
 				C82BC6DE4D2A03C3AFC2FDB6 /* NumberFormatter.swift in Sources */,
 				821B73FAF6E8C82621290537 /* NSNotification.swift in Sources */,
+				80884B4321735DB0004EB0A0 /* main.swift in Sources */,
 				517AE2C9826FE6BA1E6B3EAF /* Data.swift in Sources */,
 				5E1CEECFB2127C5CE091F62D /* LocalizedError.swift in Sources */,
 				54A3DCEE122FFC3F652F56B1 /* DispatchSemaphore.swift in Sources */,
@@ -1601,6 +1582,7 @@
 				28E7FD44C4673D1BA145D060 /* Functions.swift in Sources */,
 				8176B1F39A2A9B184127F9E0 /* CGSize.swift in Sources */,
 				20EB875F9F358B1B38D78B74 /* CGPoint.swift in Sources */,
+				80884B4221735D87004EB0A0 /* TitlebarViewController.swift in Sources */,
 				DE167B47401267C2BA85331E /* CGRect.swift in Sources */,
 				5D0F75A5DDFDDEF8B6FF7F18 /* EdgeInsets.swift in Sources */,
 				16E0666AB2B3096DBF235E30 /* Color.swift in Sources */,
@@ -1678,6 +1660,7 @@
 				28B03C1300C2B56E68B16DF4 /* NSDataDetector.swift in Sources */,
 				FF6FF93DC50797FFA663A64E /* NSRegularExpression.swift in Sources */,
 				E837382641E1FAA2D837DF44 /* OscilloscopeDSPValue.swift in Sources */,
+				80884B4621735E04004EB0A0 /* ControlIcon.swift in Sources */,
 				036141DC36ECCF7CD9EEB6F5 /* DispatchUntil.swift in Sources */,
 				A1FCD1DE280683016D54B7AD /* Scanner.swift in Sources */,
 				01D44BC2A4BB05D36916EBAD /* NSDictionary.swift in Sources */,
@@ -2074,6 +2057,44 @@
 			};
 			name = Debug;
 		};
+		80884B3C21735D52004EB0A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Verify;
+			};
+			name = Debug;
+		};
+		80884B3D21735D52004EB0A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = Verify;
+			};
+			name = Release;
+		};
+		80884B3E21735D52004EB0A0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				PRODUCT_NAME = Autocorrect;
+			};
+			name = Debug;
+		};
+		80884B3F21735D52004EB0A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				PRODUCT_NAME = Autocorrect;
+			};
+			name = Release;
+		};
 		8B6C796FF4D1E7D3660799C8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 79F45F472A718A7A56A4EE72 /* Project.xcconfig */;
@@ -2124,6 +2145,24 @@
 			buildConfigurations = (
 				33BB427DF8DE4DF67733DE9B /* Release */,
 				444AC2DDB05C1996D632252C /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80884B4021735D87004EB0A0 /* Build configuration list */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80884B3C21735D52004EB0A0 /* Debug */,
+				80884B3D21735D52004EB0A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		80884B4121735D87004EB0A0 /* Build configuration list */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80884B3E21735D52004EB0A0 /* Debug */,
+				80884B3F21735D52004EB0A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
