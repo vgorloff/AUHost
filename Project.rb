@@ -28,11 +28,11 @@ class Project < AbstractProject
    end
 
    def archive()
-     XcodeBuilder.new(@projectFilePath).archive("AUHost")
-     XcodeBuilder.new(@projectFilePath).archive("Attenuator")
-     apps = Dir["#{@rootDirPath}/**/*.export/*.app"].select { |file| File.directory?(file) }
-     apps.each { |app| Archive.zip(app) }
-     apps.each { |app| XcodeBuilder.validateBinary(app) }
+      XcodeBuilder.new(@projectFilePath).archive("AUHost")
+      XcodeBuilder.new(@projectFilePath).archive("Attenuator")
+      apps = Dir["#{@rootDirPath}/**/*.export/*.app"].select { |file| File.directory?(file) }
+      apps.each { |app| Archive.zip(app) }
+      apps.each { |app| XcodeBuilder.validateBinary(app) }
    end
 
    def deploy()
