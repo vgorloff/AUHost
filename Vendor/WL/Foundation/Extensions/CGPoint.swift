@@ -22,6 +22,14 @@ public extension CGPoint {
       return CGPoint(x: x + dx, y: y + dy)
    }
 
+   public func offsetX(dx: CGFloat) -> CGPoint {
+      return offsetBy(dx: dx, dy: 0)
+   }
+
+   public func offsetY(dy: CGFloat) -> CGPoint {
+      return offsetBy(dx: 0, dy: dy)
+   }
+
    public var inverted: CGPoint {
       return CGPoint(x: -x, y: -y)
    }

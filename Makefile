@@ -11,6 +11,9 @@ build:
 clean:
 	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").clean"
 
+test:
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").test"
+
 release:
 	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").release"
 

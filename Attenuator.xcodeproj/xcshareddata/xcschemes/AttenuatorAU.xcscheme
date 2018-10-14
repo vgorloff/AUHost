@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
+               BlueprintIdentifier = "EFD443C9861EAB1DB968035C"
                BlueprintName = "AttenuatorAU"
                ReferencedContainer = "container:Attenuator.xcodeproj"
                BuildableName = "AttenuatorAU.appex">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
+            BlueprintIdentifier = "EFD443C9861EAB1DB968035C"
             BlueprintName = "AttenuatorAU"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "AttenuatorAU.appex">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
+            BlueprintIdentifier = "EFD443C9861EAB1DB968035C"
             BlueprintName = "AttenuatorAU"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "AttenuatorAU.appex">
@@ -71,7 +71,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "04B3C67F00EECD1A68B16E6F"
+            BlueprintIdentifier = "EFD443C9861EAB1DB968035C"
             BlueprintName = "AttenuatorAU"
             ReferencedContainer = "container:Attenuator.xcodeproj"
             BuildableName = "AttenuatorAU.appex">
