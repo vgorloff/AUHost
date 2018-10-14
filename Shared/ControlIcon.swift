@@ -11,7 +11,7 @@ import AppKit
 
 enum ControlIcon {
 
-   case library, play, pause, effect
+   case library, play, pause, effect, reload
 
    var image: NSImage {
       let name: String
@@ -24,6 +24,8 @@ enum ControlIcon {
          name = "Control-Pause"
       case .effect:
          name = "Control-Effect"
+      case .reload:
+         name = "Control-Reload"
       }
       guard let image = NSImage(named: name) else {
          fatalError()

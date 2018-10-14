@@ -109,7 +109,6 @@
 		269BF81B46D54ECAEDE0C906 /* UnfairLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B52F347629A09A4908F8E6A6 /* UnfairLock.swift */; };
 		26BBE997CD7B326432729561 /* QuickLookProxy.Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511AA12EC4C89C79341A0B68 /* QuickLookProxy.Media.swift */; };
 		27A08169C537D537FEEBD982 /* AVFileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000C6921F4DAE7A59C585D00 /* AVFileType.swift */; };
-		2817992F0D4CE799AEF137FB /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37818F3828477A42855601C7 /* MainWindowController.swift */; };
 		286C5E57D718E63C468EE4E2 /* GenericNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE625DD63852C100B5E4F17 /* GenericNotification.swift */; };
 		28B03C1300C2B56E68B16DF4 /* NSDataDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 897439BBBB4CFDD120FF4EB8 /* NSDataDetector.swift */; };
 		28E7FD44C4673D1BA145D060 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB6F2BC05D194B960B6EF80 /* Functions.swift */; };
@@ -563,7 +562,6 @@
 		3146A8DBBD5CC4E5FA5C5424 /* DispatchQueue.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DispatchQueue.swift; sourceTree = "<group>"; };
 		32E320E47B53E879115D3D71 /* CALayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		3491F31CCCB08C5ED454D52E /* Data.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		37818F3828477A42855601C7 /* MainWindowController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		3E4DEF6BD4004200CEE44995 /* SystemAppearance.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SystemAppearance.swift; sourceTree = "<group>"; };
 		3F87C5B4EABACFC82F10B3E3 /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
 		3FF7C024ABB071AD607A11FF /* CGFloat.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CGFloat.swift; sourceTree = "<group>"; };
@@ -775,7 +773,6 @@
 				939336790316F4164FF02CD0 /* Logger.swift */,
 				2B38924FBFC0A47D39305565 /* MainMenu.swift */,
 				72968E33580F61611A206659 /* MainViewController.swift */,
-				37818F3828477A42855601C7 /* MainWindowController.swift */,
 			);
 			path = SampleAUHost;
 			sourceTree = "<group>";
@@ -1526,7 +1523,6 @@
 				F524D96F8586B599C5BB8EAF /* PlaybackEngineContext.swift in Sources */,
 				4F5C7F7634E5446C65F36FCA /* EffectWindowController.swift in Sources */,
 				7B2916480B74DC32414AFB1D /* MainMenu.swift in Sources */,
-				2817992F0D4CE799AEF137FB /* MainWindowController.swift in Sources */,
 				BFF60FB829D8255DC751168D /* Logger.swift in Sources */,
 				169930E965A1652AF830A425 /* MainViewController.swift in Sources */,
 				9FE4D733B6E1811910740E9E /* Application.swift in Sources */,

@@ -49,7 +49,7 @@ class MainViewController: ViewController {
 
 extension MainViewController {
 
-   func handleEvent(_ event: MainViewUIModel.Event) {
+   func handleEvent(_ event: MainViewUIModel.Event, _ state: MainViewUIModel.State) {
       switch event {
       case .selectMedia(let url):
          mediaItemView.mediaFileURL = url
