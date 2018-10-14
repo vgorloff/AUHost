@@ -68,8 +68,8 @@ extension MainViewController {
       view.addSubviews(stackView)
 
       stackView.addArrangedSubviews(mediaItemView, containerView)
-      stackView.detachesHiddenViews = true
       stackView.distribution = .fill
+      stackView.spacing = 0
    }
 
    override func setupLayout() {
