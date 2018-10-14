@@ -37,7 +37,7 @@ class Project < AbstractProject
 
    def deploy()
       assets = Dir["#{ENV['PWD']}/**/*.export/*.app.zip"]
-      gitHubRelease(assets)
+      gitHubRelease(assets: assets)
    end
 
    def generate()
