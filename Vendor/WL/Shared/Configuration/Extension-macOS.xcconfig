@@ -1,0 +1,13 @@
+//
+//  Framework.xcconfig
+//  mc
+//
+//  Created by Vlad Gorlov on 13.06.17.
+//  Copyright © 2017 Good Hood GmbH. All rights reserved.
+//
+
+#include "Framework-macOS.xcconfig"
+
+CODE_SIGN_IDENTITY = Mac Developer
+CODE_SIGN_STYLE = Automatic
+PROVISIONING_PROFILE_SPECIFIER =
