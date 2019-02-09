@@ -60,7 +60,7 @@ public final class MediaItemView: NSView {
       NSBezierPath.defaultLineWidth = borderWidth
       NSBezierPath.stroke(bounds.insetBy(dx: 0.5 * borderWidth, dy: 0.5 * borderWidth))
 
-      textDragAndDropColor.useAltValue = cachedWaveform() != nil
+      textDragAndDropColor.isUsedAltValue = cachedWaveform() != nil
       drawWaveform()
       drawTextMessage()
    }
