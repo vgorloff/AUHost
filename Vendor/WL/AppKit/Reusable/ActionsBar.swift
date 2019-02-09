@@ -6,13 +6,14 @@
 //  Copyright © 2018 WaveLabs. All rights reserved.
 //
 
-import Foundation
 import AppKit
+import Foundation
+import mcUI
 
 public class ActionsBar: View {
 
-   public private (set) var leftItems: [NSView] = []
-   public private (set) var rightItems: [NSView] = []
+   public private(set) var leftItems: [NSView] = []
+   public private(set) var rightItems: [NSView] = []
 
    private lazy var containerView = View().autolayoutView()
    private lazy var leftItemsStackView = StackView().autolayoutView()
@@ -32,7 +33,6 @@ public class ActionsBar: View {
          edgesConstraint.configure(insets: edgeInsets)
       }
    }
-
 }
 
 extension ActionsBar {
@@ -94,7 +94,6 @@ extension ActionsBar {
       rightItemsStackView.addArrangedSubview(item)
       updateLayout()
    }
-
 }
 
 extension ActionsBar {
@@ -130,5 +129,4 @@ extension ActionsBar {
       let shouldUseSpacing = !leftItems.isEmpty && !rightItems.isEmpty
       stackViewsSpacing.constant = shouldUseSpacing ? itemsSpacing : 0
    }
-
 }

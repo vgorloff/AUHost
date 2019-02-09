@@ -1,4 +1,5 @@
 require_relative 'Environment.rb'
+require_relative '../Extensions/AnsiTextStyles.rb'
 
 # Info:
 # - https://github.com/stuartervine/xcode-sh/blob/master/build.sh
@@ -16,7 +17,7 @@ class KeyChain
    end
 
    def self.defaultName()
-      return 'WaveLabsAutomation.keychain'
+      return 'App.keychain'
    end
 
    def self.randomPassword()

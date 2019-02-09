@@ -13,9 +13,10 @@ public class NotificationObserver: NSObject {
    public typealias Handler = ((Foundation.Notification) -> Void)
 
    private var notificationObserver: NSObjectProtocol!
+   private let notificationObject: Any?
+
    public var handler: Handler?
    public private(set) var notificationName: NSNotification.Name
-   private let notificationObject: Any?
 
    public init(name: NSNotification.Name, object: Any? = nil, queue: OperationQueue = .main, handler: Handler? = nil) {
       notificationName = name

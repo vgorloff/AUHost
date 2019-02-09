@@ -9,6 +9,7 @@
 import AppKit
 import CoreVideo
 import QuartzCore
+import mcFoundation
 
 public final class DisplayLink {
 

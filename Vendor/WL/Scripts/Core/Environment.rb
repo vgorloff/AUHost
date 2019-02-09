@@ -12,7 +12,9 @@ class Environment
       puts "→ SwiftLint: " + `which swiftlint && swiftlint version`.strip.gsub("\n", ' | ')
       puts "→ SwiftFormat: " + `which swiftformat && swiftformat --version`.strip.gsub("\n", ' | ')
       puts "→ SwiftGen: " + `which swiftgen && swiftgen --version`.strip.gsub("\n", ' | ')
-      puts "→ XcodeGen: " + `which xcodegen && xcodegen --version`.strip.gsub("\n", ' | ')
+      puts "→ XcodeGen: " + `which xcodegen`.strip.gsub("\n", ' | ')
+      # Seems Xcodegen break itself due missed `--version` argument.
+      # puts "→ XcodeGen: " + `which xcodegen && xcodegen --version`.strip.gsub("\n", ' | ')
       puts "→ Xcode: " + xcodePath() + " | " + `which xcodebuild && xcodebuild -version`.strip.gsub("\n", ' | ')
    end
 
@@ -135,6 +137,14 @@ class Environment
    def self.isXcodeBuild()
       value = ENV['XCODE_PRODUCT_BUILD_VERSION']
       return !value.nil?
+   end
+
+   def self.destinationRev
+      return ENV['BITRISEIO_GIT_BRANCH_DEST'] # i.e. `develop`
+   end
+
+   def self.sourceRev
+      return ENV['BITRISE_GIT_BRANCH'] # i.e. `feature/something`
    end
 
 end

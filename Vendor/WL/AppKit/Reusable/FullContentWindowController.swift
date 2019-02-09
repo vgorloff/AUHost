@@ -7,14 +7,15 @@
 //
 
 import AppKit
+import mcUI
 
 open class FullContentWindowController: WindowController {
 
-   let fullContentWindow: FullContentWindow
-   let fullContentViewController = ViewController()
+   private let fullContentWindow: FullContentWindow
+   private let fullContentViewController = ViewController()
 
-   public private (set) lazy var titleBarContentContainer = View().autolayoutView()
-   public private (set) lazy var contentContainer = View().autolayoutView()
+   public private(set) lazy var titleBarContentContainer = View().autolayoutView()
+   public private(set) lazy var contentContainer = View().autolayoutView()
 
    private lazy var titleOffsetConstraint =
       titleBarContentContainer.leadingAnchor.constraint(equalTo: fullContentViewController.contentView.leadingAnchor)
@@ -37,6 +38,13 @@ open class FullContentWindowController: WindowController {
       titleOffsetConstraint.constant = standardWindowButtonsRect.maxX
    }
 
+   open override func prepareForInterfaceBuilder() {
+      titleBarContentContainer.backgroundColor = .green
+      contentContainer.backgroundColor = .yellow
+      fullContentViewController.contentView.backgroundColor = .blue
+      fullContentWindow.titleBarAccessoryViewController.contentView.backgroundColor = NSColor.red.withAlphaComponent(0.4)
+   }
+
    public required init?(coder: NSCoder) {
       fatalError()
    }
@@ -55,12 +63,12 @@ extension FullContentWindowController {
 
 extension FullContentWindowController: NSWindowDelegate {
 
-   public func windowWillEnterFullScreen(_ notification: Notification) {
+   public func windowWillEnterFullScreen(_: Notification) {
       fullContentWindow.titleBarAccessoryViewController.isHidden = true
       titleOffsetConstraint.constant = 0
    }
 
-   public  func windowWillExitFullScreen(_ notification: Notification) {
+   public func windowWillExitFullScreen(_: Notification) {
       fullContentWindow.titleBarAccessoryViewController.isHidden = false
       titleOffsetConstraint.constant = fullContentWindow.standardWindowButtonsRect.maxX
    }

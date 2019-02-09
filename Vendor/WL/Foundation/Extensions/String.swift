@@ -19,8 +19,20 @@ extension String {
       return (self as NSString).appendingPathComponent(str)
    }
 
+   public func appendingPathComponents(_ values: [String]) -> String {
+      return values.reduce(self) { $0.appendingPathComponent($1) }
+   }
+
+   public func appendingPathComponents(_ values: String...) -> String {
+      return appendingPathComponents(values)
+   }
+
    public var pathExtension: String {
       return (self as NSString).pathExtension
+   }
+
+   public var pathComponents: [String] {
+      return (self as NSString).pathComponents
    }
 
    public var deletingPathExtension: String {
@@ -68,6 +80,14 @@ extension String {
 
    public var componentsSeparatedByNewline: [String] {
       return components(separatedBy: .newlines)
+   }
+
+   public var quoted: String {
+      return self.surrounded(with: "")
+   }
+
+   public func surrounded(with string: String) -> String {
+      return string + self + string
    }
 }
 
@@ -133,7 +153,7 @@ extension String {
    }
 }
 
-public extension String {
+extension String {
 
    public func stringByReplacingFirstOccurrence(of target: String, with replaceString: String) -> String {
       if let targetRange = range(of: target) {

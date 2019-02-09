@@ -58,6 +58,14 @@ extension Dictionary {
    public func int(forKeyPath: String) -> Int? {
       return (self as NSDictionary).int(forKeyPath: forKeyPath)
    }
+
+   public func value(forKeyPath: String) -> Any? {
+      return (self as NSDictionary).value(forKeyPath: forKeyPath)
+   }
+
+   public func dictionary(forKeyPath: String) -> [AnyHashable: Any]? {
+      return (self as NSDictionary).value(forKeyPath: forKeyPath) as? [AnyHashable: Any]
+   }
 }
 
 extension Dictionary {
@@ -95,7 +103,7 @@ extension Dictionary where Key == AnyHashable, Value == Any {
       return result
    }
 
-   public func writePlistToFile(path: String, atomically: Bool) throws {
+   public func writePlist(toFile path: String, atomically: Bool) throws {
       if (self as NSDictionary).write(toFile: path, atomically: atomically) == false {
          throw NSError.Dictionary.IO.unableToWriteToFile(path)
       }

@@ -36,6 +36,7 @@ public struct LayoutConstraint {
 
    public enum Target {
       case margins, bounds, insets(EdgeInsets)
+      case horizontal(CGFloat, CGFloat)
       case vertically, horizontally
       case verticallyToMargins, horizontallyToMargins
    }
@@ -51,8 +52,9 @@ public struct LayoutConstraint {
       case leading, trailing, top, bottom
    }
 
-   public enum Center: Int {
+   public enum Center {
       case both, vertically, horizontally
+      case verticalOffset(CGFloat)
    }
 }
 
@@ -87,6 +89,9 @@ extension LayoutConstraint {
          result = NSLayoutConstraint.constraints(withVisualFormat: "|-[v]-|", options: [], metrics: nil, views: ["v": view])
       case .verticallyToMargins:
          result = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[v]-|", options: [], metrics: nil, views: ["v": view])
+      case .horizontal(let leading, let trailing):
+         result = NSLayoutConstraint.constraints(withVisualFormat: "|-\(leading)-[v]-\(trailing)-|",
+                                                 options: [], metrics: nil, views: ["v": view])
       }
       return result
    }
@@ -144,7 +149,6 @@ extension LayoutConstraint {
       let result = views.map { pin(to: to, $0) }.reduce([]) { $0 + $1 }
       return result
    }
-
 }
 
 extension LayoutConstraint {
@@ -160,6 +164,9 @@ extension LayoutConstraint {
       case .horizontally:
          result = [container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                    view.leadingAnchor.constraint(greaterThanOrEqualTo: container.leadingAnchor)]
+      case .verticalOffset(let offset):
+         result = [container.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+                   view.topAnchor.constraint(greaterThanOrEqualTo: container.topAnchor, constant: offset)]
       }
       return result
    }
@@ -221,7 +228,7 @@ extension LayoutConstraint {
 
 #if os(iOS) || os(tvOS)
 
-public extension LayoutConstraint {
+extension LayoutConstraint {
 
    public static func withFormat(_ format: String, options: LayoutFormatOptions = [],
                                  metrics: [String: Float] = [:], toSafeAreasOrLayoutGudesOf viewController: UIViewController,
@@ -493,12 +500,11 @@ extension LayoutConstraint {
    public static func pinLeading(_ view: ViewType, multiplier: CGFloat = 1, constant: CGFloat = 0) -> [NSLayoutConstraint] {
       if let superview = view.superview {
          return [NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal, toItem: superview, attribute: .leading,
-                                   multiplier: multiplier, constant: constant)]
+                                    multiplier: multiplier, constant: constant)]
       } else {
          return []
       }
    }
-
 
    public static func pinLeadings(viewA: ViewType, viewB: ViewType, multiplier: CGFloat = 1,
                                   constant: CGFloat = 0) -> NSLayoutConstraint {
@@ -515,7 +521,7 @@ extension LayoutConstraint {
    public static func pinTrailing(_ view: ViewType, multiplier: CGFloat = 1, constant: CGFloat = 0) -> [NSLayoutConstraint] {
       if let superview = view.superview {
          return [NSLayoutConstraint(item: view, attribute: .trailing, relatedBy: .equal, toItem: superview, attribute: .trailing,
-                                   multiplier: multiplier, constant: constant)]
+                                    multiplier: multiplier, constant: constant)]
       } else {
          return []
       }
@@ -612,7 +618,6 @@ extension LayoutConstraint {
       }
       return constraints
    }
-
 }
 
 extension Array where Element: NSLayoutConstraint {
@@ -621,6 +626,13 @@ extension Array where Element: NSLayoutConstraint {
       if let priority = priority {
          forEach { $0.priority = priority }
       }
+      NSLayoutConstraint.activate(self)
+   }
+
+
+   /// I.e. `999` fix for Apple layout engine issues observed in Cells.
+   public func activateApplyingNonRequiredLastItemPriotity() {
+      last?.priority = .required - 1
       NSLayoutConstraint.activate(self)
    }
 

@@ -8,6 +8,8 @@
 
 import Accelerate
 import AVFoundation
+import mcTypes
+import mcFoundation
 
 public struct WaveformCacheUtility {
 

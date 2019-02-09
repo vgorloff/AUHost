@@ -30,28 +30,26 @@ public struct ConstraintsSet {
       public let leading: NSLayoutConstraint
       public let trailing: NSLayoutConstraint
 
-      init(view: ViewType, container: ViewType) {
+      public init(view: ViewType, container: ViewType) {
          leading = view.leadingAnchor.constraint(equalTo: container.leadingAnchor)
          trailing = container.trailingAnchor.constraint(equalTo: view.trailingAnchor)
          top = view.topAnchor.constraint(equalTo: container.topAnchor)
          bottom = container.bottomAnchor.constraint(equalTo: view.bottomAnchor)
       }
 
-      func configure(insets: EdgeInsets) {
+      public func configure(insets: EdgeInsets) {
          top.constant = insets.top
          bottom.constant = insets.bottom
          leading.constant = insets.left
          trailing.constant = insets.right
       }
 
-      func activate() {
+      public func activate() {
          [top, bottom, leading, trailing].activate()
       }
 
-      func deactivate() {
+      public func deactivate() {
          [top, bottom, leading, trailing].deactivate()
       }
-
    }
-
 }

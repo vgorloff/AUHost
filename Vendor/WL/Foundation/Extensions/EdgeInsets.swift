@@ -17,7 +17,7 @@ import AppKit
 public typealias EdgeInsets = NSEdgeInsets
 #endif
 
-public extension EdgeInsets {
+extension EdgeInsets {
 
    public init(left: CGFloat, right: CGFloat) {
       self.init(top: 0, left: left, bottom: 0, right: right)
@@ -39,34 +39,38 @@ public extension EdgeInsets {
       self.init(top: vertical, left: 0, bottom: vertical, right: 0)
    }
 
-   init(dimension: CGFloat) {
+   public init(vertical: CGFloat, left: CGFloat, right: CGFloat) {
+      self.init(top: vertical, left: left, bottom: vertical, right: right)
+   }
+
+   public init(dimension: CGFloat) {
       self.init(horizontal: dimension, vertical: dimension)
    }
 
-   init(top: CGFloat) {
+   public init(top: CGFloat) {
       self.init(top: top, left: 0, bottom: 0, right: 0)
    }
 
-   init(bottom: CGFloat) {
+   public init(bottom: CGFloat) {
       self.init(top: 0, left: 0, bottom: bottom, right: 0)
    }
 
-   init(left: CGFloat) {
+   public init(left: CGFloat) {
       self.init(top: 0, left: left, bottom: 0, right: 0)
    }
 
-   init(right: CGFloat) {
+   public init(right: CGFloat) {
       self.init(top: 0, left: 0, bottom: 0, right: right)
    }
 }
 
-public extension EdgeInsets {
+extension EdgeInsets {
 
-   var vertical: CGFloat {
+   public var vertical: CGFloat {
       return top + bottom
    }
 
-   var horizontal: CGFloat {
+   public var horizontal: CGFloat {
       return left + right
    }
 }

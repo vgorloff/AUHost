@@ -7,6 +7,7 @@
 //
 
 import AppKit
+import mcUI
 
 extension NSViewController {
 

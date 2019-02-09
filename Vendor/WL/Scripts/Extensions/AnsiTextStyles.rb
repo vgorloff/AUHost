@@ -1,9 +1,8 @@
-
 # See also https://stackoverflow.com/a/38735154/1418981
 
 module AnsiTextStyles
 
-  TEXT_ATTRIBUTES = {
+   TEXT_ATTRIBUTES = {
       # text properties
       none: 0, # turn off all attributes
       bold: 1, bright: 1, # these do the same thing really
@@ -12,8 +11,8 @@ module AnsiTextStyles
       hide: 8, # foreground color same as background
 
       # foreground colours
-      black: 30, grey: 90, lt_grey: 37, :white => 97,
-      red: 31, lt_red: 91, 
+      black: 30, grey: 90, lt_grey: 37, white: 97,
+      red: 31, lt_red: 91,
       green: 32, lt_green: 92,
       dk_yellow: 33, brown: 33, yellow: 93,
       blue: 34, lt_blue: 94,
@@ -28,32 +27,34 @@ module AnsiTextStyles
       bg_dk_yellow: 43, bg_brown: 43, bg_yellow: 103,
       bg_blue: 44, bg_lt_blue: 104,
       bg_magenta: 45, bg_pink: 105, bg_lt_magenta: 105,
-      bg_cyan: 46, bg_lt_cyan: 106,
-    }
+      bg_cyan: 46, bg_lt_cyan: 106
+   }.freeze
 
-  def self.text_attributes
-    TEXT_ATTRIBUTES.keys
-  end
+   def self.text_attributes
+      TEXT_ATTRIBUTES.keys
+   end
 
-  # applies the text attributes to the current string
-  def style(*text_attributes)
-    codes = TEXT_ATTRIBUTES.values_at(*text_attributes.flatten).compact
-    "\e[%sm%s\e[m" % [codes.join(';'), self.to_s]
-  end
-
-  # instance method for each text attribute (chainable)
-  TEXT_ATTRIBUTES.each {|attr, _| define_method(attr) { self.style(attr) } }
-
-  # TODO: is there a way to just include AnsiTextAttributes???
-  refine String do
-    # applies the text attributes to the current string
-    def style(*text_attributes)
+   # applies the text attributes to the current string
+   def style(*text_attributes)
       codes = TEXT_ATTRIBUTES.values_at(*text_attributes.flatten).compact
-      "\e[%sm%s\e[m" % [codes.join(';'), self.to_s]
-    end
+      format("\e[%sm%s\e[m", codes.join(';'), to_s)
+   end
 
-    # instance method for each text attribute (chainable)
-    TEXT_ATTRIBUTES.each {|attr, _| define_method(attr) { self.style(attr) } }
-  end
+   # instance method for each text attribute (chainable)
+   TEXT_ATTRIBUTES.each { |attr, _| define_method(attr) { style(attr) } }
+
+   # TODO: is there a way to just include AnsiTextAttributes???
+   refine String do
+      # applies the text attributes to the current string
+      def style(*text_attributes)
+         codes = TEXT_ATTRIBUTES.values_at(*text_attributes.flatten).compact
+         format("\e[%sm%s\e[m", codes.join(';'), to_s)
+      end
+
+      # instance method for each text attribute (chainable)
+      TEXT_ATTRIBUTES.each { |attr, _| define_method(attr) { style(attr) } }
+   end
 
 end
+
+String.include(AnsiTextStyles)

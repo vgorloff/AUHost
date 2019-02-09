@@ -7,6 +7,7 @@
 //
 
 import CoreGraphics
+import mcTypes
 
 #if os(iOS) || os(tvOS) || os(watchOS)
 import UIKit
@@ -238,4 +239,6 @@ public extension Color {
    static let xFAFAFA = #colorLiteral(red: 0.9803921568627451, green: 0.9803921568627451, blue: 0.9803921568627451, alpha: 1)
    static let xFEFEFE = #colorLiteral(red: 0.9960784313725490, green: 0.9960784313725490, blue: 0.9960784313725490, alpha: 1)
    static let xFF0000 = #colorLiteral(red: 1.0000000000000000, green: 0.0000000000000000, blue: 0.0000000000000000, alpha: 1)
+   static let xEAEBED = #colorLiteral(red: 0.9176470588235294, green: 0.9215686274509803, blue: 0.9294117647058824, alpha: 1)
+   static let x6FC7C7 = #colorLiteral(red: 0.4352941176470588, green: 0.7803921568627451, blue: 0.7803921568627451, alpha: 1)
 }

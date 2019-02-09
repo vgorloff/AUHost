@@ -29,6 +29,12 @@ public enum BuildInfo {
    public static let isTestFlight = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
 
    public static var isAppStore: Bool {
-      return isProduction && !isTestFlight
+      if isDebug {
+         return false
+      }
+      if isTestFlight {
+         return false
+      }
+      return isProduction
    }
 }
