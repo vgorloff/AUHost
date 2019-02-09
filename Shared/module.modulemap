@@ -1,0 +1,31 @@
+module mcCore [system] {
+	export *
+}
+
+module mcObjC [system] {
+	export *
+}
+
+module mcConcurrency [system] {
+	export *
+}
+
+module mcConcurrencyOC [system] {
+	export *
+}
+
+module mcFoundation [system] {
+	export *
+}
+
+module mcTypes [system] {
+	export *
+}
+
+module mcUI [system] {
+	export *
+}
+
+module mcMedia [system] {
+	export *
+}

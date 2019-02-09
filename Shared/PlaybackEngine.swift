@@ -37,7 +37,7 @@ final class PlaybackEngine {
    var changeHandler: Completion<Change>?
 
    private let context = PlaybackEngineContext()
-   private let _stateAccessLock: NonRecursiveLocking = SpinLock()
+   private let _stateAccessLock: NonRecursiveLocking = UnfairLock()
    private var stateIDValue: State = .stopped
    private(set) var stateID: State {
       get {
