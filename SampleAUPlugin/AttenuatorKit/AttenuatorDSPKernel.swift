@@ -17,14 +17,14 @@ struct AttenuatorDSPKernel {
 
    private var valueGain: AUValue = AttenuatorParameter.gain.defaultValue
    private var dspValueGain: AUValue = AttenuatorParameter.gain.defaultValue / AttenuatorParameter.gain.max
-   private let valueGainLock: NonRecursiveLocking = SpinLock()
+   private let valueGainLock: NonRecursiveLocking = UnfairLock()
 
    private var _maximumMagnitude: [SampleType]
    var maximumMagnitude: [SampleType] {
       return maximumMagnitudeLock.synchronized { _maximumMagnitude }
    }
 
-   private let maximumMagnitudeLock: NonRecursiveLocking = SpinLock()
+   private let maximumMagnitudeLock: NonRecursiveLocking = UnfairLock()
 
    init(maxChannels: UInt32) {
       _maximumMagnitude = Array(repeating: 0, count: Int(maxChannels))

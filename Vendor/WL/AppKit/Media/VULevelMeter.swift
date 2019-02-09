@@ -9,6 +9,7 @@
 import AppKit
 import GLKit
 import MetalKit
+import mcMedia
 
 private let gUseInternalCustomDrawTimer = false
 

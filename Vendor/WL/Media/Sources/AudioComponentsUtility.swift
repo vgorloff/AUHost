@@ -7,6 +7,8 @@
 //
 
 import AVFoundation
+import mcFoundation
+import mcCore
 
 @available(OSX 10.11, *)
 extension Notification.Name {

@@ -1,3 +1,6 @@
+.PHONY: default ci build clean test release verify deploy
+
+
 default:
 	@echo "Available actions:"
 	@cat Makefile | grep ":$$" | sed 's/://' | xargs -I{} echo " - make {}"

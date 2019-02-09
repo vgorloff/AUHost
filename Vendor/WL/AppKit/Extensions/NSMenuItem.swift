@@ -1,8 +1,8 @@
 //
-//  NSControl.swift
+//  NSMenuItem.swift
 //  WLUI
 //
-//  Created by Vlad Gorlov on 12.08.17.
+//  Created by Vlad Gorlov on 15.10.17.
 //  Copyright © 2017 Demo. All rights reserved.
 //
 
@@ -10,32 +10,36 @@ import AppKit
 import mcFoundation
 import mcTypes
 
-extension NSControl {
+extension NSMenuItem {
 
    public typealias Handler = (() -> Void)
 
+   public convenience init(title: String, keyEquivalent: String, handler: Handler?) {
+      self.init(title: title, action: nil, keyEquivalent: keyEquivalent)
+      setHandler(handler)
+   }
+
+   public convenience init(submenu: NSMenu) {
+      self.init()
+      self.submenu = submenu
+   }
+
    public func setHandler(_ handler: Handler?) {
       target = self
-      action = #selector(appActionHandler(_:))
+      action = #selector(wavelabsActionHandler(_:))
       if let handler = handler {
          ObjCAssociation.setCopyNonAtomic(value: handler, to: self, forKey: &OBJCAssociationKeys.actionHandler)
       }
    }
-
-   public func setHandler<T: NSObject>(_ caller: T, _ handler: @escaping (T) -> Void) {
-      setHandler { [weak caller] in guard let caller = caller else { return }
-         handler(caller)
-      }
-   }
 }
 
-extension NSControl {
+extension NSMenuItem {
 
    private struct OBJCAssociationKeys {
-      static var actionHandler = "app.ui.actionHandler"
+      static var actionHandler = "com.wavelabs.actionHandler"
    }
 
-   @objc private func appActionHandler(_ sender: NSControl) {
+   @objc private func wavelabsActionHandler(_ sender: NSControl) {
       guard sender == self else {
          return
       }

@@ -5,9 +5,12 @@
 
 import Foundation
 import os.log
+import mcConcurrency
 
 private class LogBundle {
-   static let isCommandLine = Bundle(for: LogBundle.self).bundleIdentifier == nil
+   static let isCommandLine = {
+      Bundle(for: LogBundle.self).bundleIdentifier == nil || CommandLine.arguments.first == "ruby"
+   }()
 }
 
 public protocol LogCategory {
@@ -70,9 +73,19 @@ public class Log<T: LogCategory> {
    private let vendorID = "com.mc"
    private let subsystem: String
    private var loggers = [Int: OSLog]()
+   private let lock = UnfairLock() // Not used in Production builds.
+   private var traceFilePath: String?
 
-   public init(subsystem: String) {
+   public init(subsystem: String, traceLogFilePath: String? = nil) {
       self.subsystem = subsystem
+      if RuntimeInfo.isTracingEnabled, RuntimeInfo.isLocalRun, let filePath = traceLogFilePath {
+         traceFilePath = filePath
+         try? FileManager.default.createDirectory(atPath: filePath.deletingLastPathComponent, withIntermediateDirectories: true)
+         if FileManager.default.regularFileExists(atPath: filePath) {
+            try? FileManager.default.removeItem(atPath: filePath)
+         }
+         FileManager.default.createFile(atPath: filePath, contents: nil, attributes: nil)
+      }
    }
 }
 
@@ -80,7 +93,7 @@ extension Log {
    public func initialize(_ message: String? = nil, function: String = #function, file: String = #file,
                           line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
       if #available(OSX 10.12, iOS 10.0, *) {
-         guard !RuntimeInfo.isUnderTesting else {
+         guard !RuntimeInfo.isUnderTesting, RuntimeInfo.isLoggingEnabled  else {
             return
          }
          let logger = osLog(category: "init")
@@ -97,7 +110,7 @@ extension Log {
    public func deinitialize(_ message: String? = nil, function: String = #function, file: String = #file, line: Int32 = #line,
                             dso: UnsafeRawPointer? = #dsohandle) {
       if #available(OSX 10.12, iOS 10.0, *) {
-         guard !RuntimeInfo.isUnderTesting else {
+         guard !RuntimeInfo.isUnderTesting, RuntimeInfo.isLoggingEnabled  else {
             return
          }
          let logger = osLog(category: "deinit")
@@ -108,6 +121,28 @@ extension Log {
             msg = format("~~~", function: function, file: file, line: line)
          }
          log(type: .debug, message: msg, logger: logger, dso: dso)
+      }
+  }
+
+   public func trace(_ message: String, shouldSaveToFile: Bool = false, function: String = #function, file: String = #file,
+                     line: Int32 = #line, dso: UnsafeRawPointer? = #dsohandle) {
+      guard RuntimeInfo.isTracingEnabled, RuntimeInfo.isLoggingEnabled, !BuildInfo.isAppStore else {
+         return
+      }
+      let filename = (file as NSString).lastPathComponent
+      let msg = "[T] \(filename):\(line): \(message)"
+      lock.synchronized {
+         if shouldSaveToFile {
+            if let traceFilePath = traceFilePath, let data = (msg + "\n").data(using: .utf8) {
+               let handle = FileHandle(forWritingAtPath: traceFilePath)
+               handle?.seekToEndOfFile()
+               handle?.write(data)
+               handle?.closeFile()
+            }
+         } else {
+            print(msg)
+            fflush(stdout)
+         }
       }
    }
 }
@@ -225,6 +260,9 @@ extension Log {
          if BuildInfo.isAppStore && type == .debug {
             return
          }
+		if !RuntimeInfo.isLoggingEnabled {
+			return
+		}
          let logger = osLog(category: category.rawValue)
          let message = format(message, function: function, file: file, line: line)
          log(type: type, message: message, logger: logger, dso: dso)
@@ -234,7 +272,10 @@ extension Log {
    private func log(type: OSLogType, message: String, logger: OSLog, dso: UnsafeRawPointer?) {
       if #available(OSX 10.12, iOS 10.0, *) {
          if RuntimeInfo.isInsidePlayground || LogBundle.isCommandLine {
+					lock.synchronized {
             print("[\(type.codeValue)] \(message)")
+        fflush(stdout)
+         }
          } else {
             os_log("%{public}@", dso: dso, log: logger, type: type, message)
          }
@@ -256,8 +297,8 @@ extension Log {
    private func format(_ message: String, function: String, file: String, line: Int32) -> String {
       let filename = (file as NSString).lastPathComponent
       let msg: String
-      if BuildInfo.isDebug {
-         msg = "\(filename):\(line) ⋆ \(function)\n → \(message)"
+      if BuildInfo.isDebug && !LogBundle.isCommandLine {
+         msg = "\(filename):\(line) → \(message)"
       } else {
          msg = "\(filename):\(line) ⋆ \(function) → \(message)"
       }

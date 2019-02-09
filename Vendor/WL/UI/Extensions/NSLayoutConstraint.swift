@@ -14,7 +14,10 @@ import AppKit
 
 extension NSLayoutConstraint {
 
-   public func activate() {
+   public func activate(priority: LayoutPriority? = nil) {
+      if let priority = priority {
+         self.priority = priority
+      }
       isActive = true
    }
 }

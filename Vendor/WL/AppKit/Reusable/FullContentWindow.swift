@@ -45,7 +45,6 @@ public class FullContentWindow: Window {
          setupButtons()
       }
    }
-
 }
 
 extension FullContentWindow {
@@ -62,7 +61,6 @@ extension FullContentWindow {
       }
       return result
    }
-
 }
 
 extension FullContentWindow {

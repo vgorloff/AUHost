@@ -10,10 +10,12 @@ import AppKit
 
 extension NSButton {
 
+   @available(OSX 10.12, *)
    public convenience init(image: NSImage) {
       self.init(image: image, target: nil, action: nil)
    }
 
+   @available(OSX 10.12, *)
    public convenience init(image: NSImage, alternateImage: NSImage) {
       self.init(image: image, target: nil, action: nil)
       self.alternateImage = alternateImage

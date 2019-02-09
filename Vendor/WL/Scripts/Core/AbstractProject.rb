@@ -1,14 +1,17 @@
 require_relative '../Extensions/AnsiTextStyles.rb'
-String.include(AnsiTextStyles)
+require_relative 'KeyChain.rb'
+require 'json'
 
 class AbstractProject
+
+   attr_reader :rootDirPath
 
    def initialize(rootDirPath)
       @rootDirPath = rootDirPath
       @versionFilePath = @rootDirPath + "/Configuration/Version.xcconfig"
-      @tmpDirPath = @rootDirPath + "/DerivedData"
+      @tmpDirPath = @rootDirPath + "/Build"
       @keyChainPath = @tmpDirPath + "/App.keychain"
-      @p12FilePath = @rootDirPath + '/Codesign/DeveloperIDApplication.p12'
+      @p12FilePath = @rootDirPath + '/Shared/Codesign/DeveloperIDApplication.p12'
       @defaultKeyChain = KeyChain.default
    end
 
@@ -18,6 +21,13 @@ class AbstractProject
 
    def generate()
       puts "Base class \"#{__FILE__}\" does nothing."
+   end
+
+   def regenerate()
+      script = "xcode = Application('Xcode'); xcode.quit();"
+      execute "osascript -l JavaScript -e \"#{script}\""
+      sleep(2.0)
+      generate()
    end
 
    def ci()
@@ -47,6 +57,10 @@ class AbstractProject
       # Base class does nothing.
    end
 
+   def update()
+      # Base class does nothing. Update and Checkout dependencies.
+   end
+
    def deploy()
       puts "Base class \"#{__FILE__}\" does nothing."
    end
@@ -67,6 +81,68 @@ class AbstractProject
       puts "Base class \"#{__FILE__}\" does nothing."
    end
 
+   def spmGenerate()
+      # exe = "cd \"#{@rootDirPath}\" && swift package -Xswiftc \"-target\" -Xswiftc \"x86_64-apple-macosx10.12\" generate-xcodeproj"
+      exe = "cd \"#{@rootDirPath}\" && swift package generate-xcodeproj"
+      execute exe
+      files = Dir[@rootDirPath + "/**/project.pbxproj"]
+      files.each { |file|
+         contents = File.readlines(file).reject { |line| line.include?("DEPLOYMENT_TARGET =") }.join()
+         File.write(file, contents)
+      }
+      return spmInfo()
+   end
+
+   def spmInfo()
+      exe = "cd \"#{@rootDirPath}\" && swift package dump-package"
+      json = JSON.parse(`#{exe}`)
+      return json
+   end
+
+   def spmSetupTestTargets(project)
+      json = spmInfo()
+      envVars = ENV.select { |key, _| (key.start_with?('AWL_') && !key.include?('TOKEN')) || key == "PATH" }
+      targetNames = json['targets'].select { |target| target['type'] == "test" }.map { |target| target['name'] }
+      targetNames.each { |name|
+         puts "- Updating target: #{name}"
+         target = project.findTarget(name)
+         envVars.each { |key, val|
+            project.addEnvVariable(target, key, val)
+         }
+      }
+   end
+
+   def spmSetupDeployTarget(project, target)
+      target = project.findTarget(target)
+      script = 'ditto "$TARGET_BUILD_DIR/$WRAPPER_NAME" "$AWL_SYS_HOME/lib/$WRAPPER_NAME"'
+      project.embedLinkedFrameworks(target)
+      project.addScript(target, "Deploy", script, true)
+   end
+
+   def spmSetupTargets(project)
+      json = spmInfo()
+      fwBuildSettings = {
+         # "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES" => "YES",
+         "OTHER_LDFLAGS" => "$(inherited) -framework Cocoa -framework AppKit",
+         "LD_RUNPATH_SEARCH_PATHS" => "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path/../Frameworks @loader_path/../Frameworks @loader_path/Frameworks"
+      }
+      products = json['products'].select { |target| target['product_type'] == "library" }
+      if products.empty?
+         # Xcode 10.2 fix
+         products = json['products'].select { |target| target['type'].keys.include?("library") }
+      end
+      if products.empty?
+         raise "Unable to find products"
+      end
+      targetNames = products.map { |target| target['name'] }
+      targetNames.each { |name|
+         puts "- Setting up SPM target #{name}"
+         target = project.findTarget(name)
+         project.addBuildSettings(target, fwBuildSettings)
+         project.makeScheme(target)
+      }
+   end
+
    def makeWorkspace(name:)
       require 'xcodeproj'
       projectPath = File.join(@rootDirPath, "#{name}.xcworkspace")
@@ -78,6 +154,7 @@ class AbstractProject
          project << fileRef
       }
       project.save_as(projectPath)
+      return projectPath
    end
 
    def verify(directoryPathComponent = nil)
@@ -179,28 +256,33 @@ class AbstractProject
 
    def assets()
       cmd = 'swiftgen'
-      if Environment.isCommandExists(cmd)
-         templatesDir = "#{ENV['AWL_LIB_SRC']}/Shared/Assets/XcodeGen"
-         baseDir = "#{@rootDirPath}/mcAssets"
-         assetsTemplate = "--templatePath \"#{templatesDir}/Images.stencil\"" # Default template: "--template swift4"
-         stringsTemplate = "--templatePath \"#{templatesDir}/Strings.stencil\"" # Default template: "--template structured-swift4"
-         coloursTemplate = "--templatePath \"#{templatesDir}/Colors.stencil\"" # Default template: "--template swift4"
-
-         puts '→ Generating Assets and Strings ...'
-         mediaSourceFile = "#{baseDir}/Media.xcassets"
-         if File.exist? mediaSourceFile
-            execute "#{cmd} xcassets #{assetsTemplate} --output \"#{baseDir}/MediaAsset.swift\" \"#{mediaSourceFile}\""
-         end
-         stringsSourceFile = "#{baseDir}/en.lproj/Localizable.strings"
-         if File.exist? stringsSourceFile
-            execute "#{cmd} strings #{stringsTemplate} --output \"#{baseDir}/LocalizableStrings.swift\" \"#{stringsSourceFile}\""
-         end
-         coloursSourceFile = "#{baseDir}/Colors.xcassets"
-         if File.exist? coloursSourceFile
-            execute "#{cmd} xcassets #{coloursTemplate} --output \"#{baseDir}/ColorAsset.swift\" \"#{coloursSourceFile}\""
-         end
-         puts '← Generation Completed!'
+      if !Environment.isCommandExists(cmd)
+         return
       end
+      templatesDir = "#{ENV['AWL_LIB_SRC']}/Shared/Assets/XcodeGen"
+      baseDir = Dir["#{@rootDirPath}/*Assets"].first
+      if baseDir.nil?
+         p "No folder with Assets is found."
+         return
+      end
+      assetsTemplate = "--templatePath \"#{templatesDir}/Images.stencil\"" # Default template: "--template swift4"
+      stringsTemplate = "--templatePath \"#{templatesDir}/Strings.stencil\"" # Default template: "--template structured-swift4"
+      coloursTemplate = "--templatePath \"#{templatesDir}/Colors.stencil\"" # Default template: "--template swift4"
+
+      puts '→ Generating Assets and Strings ...'
+      mediaSourceFile = "#{baseDir}/Media.xcassets"
+      if File.exist? mediaSourceFile
+         execute "#{cmd} xcassets #{assetsTemplate} --output \"#{baseDir}/MediaAsset.swift\" \"#{mediaSourceFile}\""
+      end
+      stringsSourceFile = "#{baseDir}/en.lproj/Localizable.strings"
+      if File.exist? stringsSourceFile
+         execute "#{cmd} strings #{stringsTemplate} --output \"#{baseDir}/LocalizableStrings.swift\" \"#{stringsSourceFile}\""
+      end
+      coloursSourceFile = "#{baseDir}/Colors.xcassets"
+      if File.exist? coloursSourceFile
+         execute "#{cmd} xcassets #{coloursTemplate} --output \"#{baseDir}/ColorAsset.swift\" \"#{coloursSourceFile}\""
+      end
+      puts '← Generation Completed!'
    end
 
    def deleteXcodeFiles()
@@ -234,7 +316,7 @@ class AbstractProject
    end
 
    def execute(command)
-      puts(command)
+      puts(command.green)
       system(command)
    end
 end

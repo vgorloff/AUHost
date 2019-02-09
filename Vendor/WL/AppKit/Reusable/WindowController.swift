@@ -41,15 +41,15 @@ open class WindowController: NSWindowController {
       fatalError()
    }
 
-   @objc dynamic open func setupUI() {
+   @objc open dynamic func setupUI() {
    }
 
-   @objc dynamic open func setupHandlers() {
+   @objc open dynamic func setupHandlers() {
    }
 
-   @objc dynamic open func setupLayout() {
+   @objc open dynamic func setupLayout() {
    }
 
-   @objc dynamic open func setupDefaults() {
+   @objc open dynamic func setupDefaults() {
    }
 }
