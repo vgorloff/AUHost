@@ -25,3 +25,6 @@ verify:
 
 deploy:
 	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").deploy"
+
+archive:
+	@ruby -r "`pwd`/Project.rb" -e "Project.new(\"`pwd`\").archive"
