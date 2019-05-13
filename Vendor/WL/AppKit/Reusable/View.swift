@@ -7,8 +7,14 @@
 //
 
 import AppKit
+import mcFoundation
+import mcUI
 
 open class View: NSView {
+
+   private var userDefinedIntrinsicContentSize: CGSize?
+   var onAppearanceDidChanged: ((SystemAppearance) -> Void)?
+   private var observers: [NotificationObserver] = []
 
    public var backgroundColor: NSColor? {
       didSet {
@@ -22,6 +28,10 @@ open class View: NSView {
       return mIsFlipped ?? super.isFlipped
    }
 
+   open override var intrinsicContentSize: CGSize {
+      return userDefinedIntrinsicContentSize ?? super.intrinsicContentSize
+   }
+
    public convenience init(backgroundColor: NSColor) {
       self.init()
       self.backgroundColor = backgroundColor
@@ -30,16 +40,18 @@ open class View: NSView {
    public init() {
       super.init(frame: NSRect())
       setupUI()
+      notifySystemAppearanceDidChange()
       setupLayout()
       setupDataSource()
       setupHandlers()
       setupDefaults()
-
       if #available(OSX 10.14, *) {
       } else {
-         // TODO: Update to support `highContrastLight`.
-         // See: https://stackoverflow.com/q/51774587/1418981
-         setupAppearance(.light)
+         // FIXME: Not really tested.
+         let name = NSWorkspace.accessibilityDisplayOptionsDidChangeNotification
+         observers.append(NotificationObserver(name: name) { [weak self] _ in
+            self?.notifySystemAppearanceDidChange()
+         })
       }
    }
 
@@ -59,21 +71,7 @@ open class View: NSView {
    @available(OSX 10.14, *)
    open override func viewDidChangeEffectiveAppearance() {
       super.viewDidChangeEffectiveAppearance()
-      if let value = effectiveAppearance.bestMatch(from: [.aqua, .darkAqua, .accessibilityHighContrastAqua,
-                                                          .accessibilityHighContrastDarkAqua]) {
-         switch value {
-         case .aqua:
-            setupAppearance(.light)
-         case .darkAqua:
-            setupAppearance(.dark)
-         case .accessibilityHighContrastAqua:
-            setupAppearance(.highContrastLight)
-         case .accessibilityHighContrastDarkAqua:
-            setupAppearance(.highContrastDark)
-         default:
-            break
-         }
-      }
+      notifySystemAppearanceDidChange()
    }
 
    @objc open dynamic func setupUI() {
@@ -91,7 +89,7 @@ open class View: NSView {
    @objc open dynamic func setupDataSource() {
    }
 
-   @objc open dynamic func setupAppearance(_: SystemAppearance) {
+   @objc open dynamic func setupAppearance(_ appearance: SystemAppearance) {
    }
 }
 
@@ -99,5 +97,17 @@ extension View {
 
    public func setIsFlipped(_ value: Bool?) {
       mIsFlipped = value
+   }
+
+   /// When passed **nil**, then system value is used.
+   public func setIntrinsicContentSize(_ size: CGSize?) {
+      userDefinedIntrinsicContentSize = size
+   }
+
+   // MARK: -
+
+   private func notifySystemAppearanceDidChange() {
+      onAppearanceDidChanged?(systemAppearance)
+      setupAppearance(systemAppearance)
    }
 }

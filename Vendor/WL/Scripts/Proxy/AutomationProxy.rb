@@ -6,7 +6,7 @@ class AutomationHelper
       frameworkPath = File.dirname(__FILE__) + '/mcAutomation.framework'
       archive = frameworkPath + '.zip'
       if !File.exist?(archive)
-         path = ENV['AWL_SYS_HOME'] + '/lib/mcAutomation.framework/mcAutomation'
+         path = ENV['AWL_LIBS'] + '/mcAutomation.framework/mcAutomation'
       else
          path = frameworkPath + '/mcAutomation'
          if File.exist?(frameworkPath)
@@ -30,4 +30,18 @@ module AutomationProxy
    attach_function :xc_build, [:string, :string], :void
    attach_function :xc_clean, [:string, :string], :void
    attach_function :xc_ci, [:string, :string], :void
+   attach_function :pia_gitlab_pull, [], :void
+   attach_function :pia_gitlab_push, [], :void
+
+   attach_function :gf_listFeatures, [:string], :void
+   attach_function :gf_listReleases, [:string], :void
+   attach_function :gf_startFeature, [:string], :void
+   attach_function :gf_startRelease, [:string], :void
+   attach_function :gf_continueFeature, [:string], :void
+   attach_function :gf_continueRelease, [:string], :void
+   attach_function :gf_checkoutFeature, [:string], :void
+   attach_function :gf_checkoutRelease, [:string], :void
+
+   attach_function :gf_update, [:string], :void
+
 end

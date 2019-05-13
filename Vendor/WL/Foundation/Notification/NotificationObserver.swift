@@ -16,6 +16,7 @@ public class NotificationObserver: NSObject {
    private let notificationObject: Any?
 
    public var handler: Handler?
+   public var isActive: Bool = true
    public private(set) var notificationName: NSNotification.Name
 
    public init(name: NSNotification.Name, object: Any? = nil, queue: OperationQueue = .main, handler: Handler? = nil) {
@@ -24,7 +25,10 @@ public class NotificationObserver: NSObject {
       self.handler = handler
       super.init()
       notificationObserver = NotificationCenter.default.addObserver(forName: name, object: object, queue: queue) { [weak self] in
-         self?.handler?($0)
+         guard let this = self else { return }
+         if this.isActive {
+            self?.handler?($0)
+         }
       }
    }
 
