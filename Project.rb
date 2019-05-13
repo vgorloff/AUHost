@@ -69,6 +69,7 @@ class Project < AbstractProject
       addSharedSources(gen, auExtension)
 
       gen.addDependencies(attenuator, [auExtension])
+      gen.setAsLaunchTarget(auHost, auExtension)
       script = <<DATA
 CMD="pluginkit -v -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\""
 echo Running: $CMD

@@ -82,7 +82,7 @@ public class SmartDispatchSource: _DispatchSourceType, SmartDispatchSourceType, 
    }
 
    public var customMirror: Mirror {
-      let children = DictionaryLiteral<String, Any>(dictionaryLiteral: ("dispatchSourceSuspendCount", dispatchSourceSuspendCount))
+      let children = KeyValuePairs<String, Any>(dictionaryLiteral: ("dispatchSourceSuspendCount", dispatchSourceSuspendCount))
       return Mirror(self, children: children)
    }
 }
