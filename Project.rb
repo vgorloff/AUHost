@@ -90,7 +90,7 @@ class Project < AbstractProject
 
    def addSharedSources(gen, target, isAppKit = false)
       gen.addComponentFiles(target, [
-         "Log.swift", "UnfairLock.swift", "String.swift", "NonRecursiveLocking.swift", "BuildInfo.swift", "RuntimeInfo.swift", "FileManager.swift",
+         "Log.swift", "UnfairLock.swift", "String.swift", "String.Index.swift", "NonRecursiveLocking.swift", "BuildInfo.swift", "RuntimeInfo.swift", "FileManager.swift",
          "Bundle.swift", "Functions.swift",
          "Buffered.+Bus\.swift", "BufferDatasource.swift", "SmartDispatchSource.*\.swift", "CVError.swift", "MTLDevice.swift",
          "VULevelMeter.*", "AppKit/.+/.*DisplayLink.*\.swift", "GLKMatrix4.swift"
@@ -107,7 +107,7 @@ class Project < AbstractProject
             "DispatchQueue.swift", "ActionsBar.swift", "MediaLibraryUtility.swift", "AudioComponentsUtility.swift", "MinMax.swift",
             "WaveformDrawingDataProvider.swift", "TitlebarAccessoryViewController.swift", "ConstraintsSet.swift", "NSLayoutConstraint.swift",
             "NotificationObserver.swift", "OperationQueue.swift", "Result.swift", "NumericTypesConversions.swift", "Math.swift",
-            "CGRect.swift", "Color.swift", "RandomFactory.swift", "NSToolbar.swift"
+            "CGRect.swift", "Color.swift", "RandomFactory.swift", "NSToolbar.swift", "NSAppearance.swift"
          ])
       end
    end
