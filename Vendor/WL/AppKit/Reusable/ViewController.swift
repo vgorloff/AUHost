@@ -8,6 +8,7 @@
 
 import AppKit
 import mcFoundation
+import mcUI
 
 open class ViewController: NSViewController {
 
@@ -21,11 +22,17 @@ open class ViewController: NSViewController {
    public init() {
       contentView = View()
       super.init(nibName: nil, bundle: nil)
+      contentView.onAppearanceDidChanged = { [weak self] in
+         self?.setupAppearance($0)
+      }
    }
 
    public init(view: View) {
       contentView = view
       super.init(nibName: nil, bundle: nil)
+      contentView.onAppearanceDidChanged = { [weak self] in
+         self?.setupAppearance($0)
+      }
    }
 
    public required init?(coder: NSCoder) {
@@ -48,6 +55,7 @@ open class ViewController: NSViewController {
    open override func viewDidLoad() {
       super.viewDidLoad()
       setupUI()
+      setupAppearance(contentView.systemAppearance)
       setupLayout()
       setupDataSource()
       setupHandlers()
@@ -70,5 +78,8 @@ open class ViewController: NSViewController {
    }
 
    @objc open dynamic func setupLayoutDefaults() {
+   }
+
+   @objc open dynamic func setupAppearance(_ appearance: SystemAppearance) {
    }
 }

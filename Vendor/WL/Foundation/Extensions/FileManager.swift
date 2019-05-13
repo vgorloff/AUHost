@@ -28,6 +28,14 @@ extension FileManager {
    public static var homeDirectory: String {
       return NSHomeDirectory()
    }
+
+   /// Returns path to real home directory in Sandboxed application
+   public var realHomeDirectory: String? {
+      if let home = getpwuid(getuid()).pointee.pw_dir {
+         return string(withFileSystemRepresentation: home, length: Int(strlen(home)))
+      }
+      return nil
+   }
 }
 
 extension FileManager {

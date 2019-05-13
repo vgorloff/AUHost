@@ -12,9 +12,7 @@ import mcTypes
 
 extension NSControl {
 
-   public typealias Handler = (() -> Void)
-
-   public func setHandler(_ handler: Handler?) {
+   public func setHandler(_ handler: (() -> Void)?) {
       target = self
       action = #selector(appActionHandler(_:))
       if let handler = handler {
@@ -39,7 +37,7 @@ extension NSControl {
       guard sender == self else {
          return
       }
-      if let handler: Handler = ObjCAssociation.value(from: self, forKey: &OBJCAssociationKeys.actionHandler) {
+      if let handler: (() -> Void) = ObjCAssociation.value(from: self, forKey: &OBJCAssociationKeys.actionHandler) {
          handler()
       }
    }

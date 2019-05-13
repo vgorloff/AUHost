@@ -256,11 +256,11 @@ extension LayoutConstraint {
       let topAnchorSymbol = "topLayoutGuide"
       let bottomAnchorSymbol = "bottomLayoutGuide"
       if parsedFormat.hasPrefix("V:|") {
-         parsedFormat = parsedFormat.stringByReplacingFirstOccurrence(of: "|", with: "[\(topAnchorSymbol)]")
+         parsedFormat = parsedFormat.replacingFirstOccurrence(of: "|", with: "[\(topAnchorSymbol)]")
          bindings[topAnchorSymbol] = viewController.topLayoutGuide
 
          if parsedFormat.hasSuffix("|") {
-            parsedFormat = parsedFormat.stringByReplacingLastOccurrence(of: "|", with: "[\(bottomAnchorSymbol)]")
+            parsedFormat = parsedFormat.replacingLastOccurrence(of: "|", with: "[\(bottomAnchorSymbol)]")
             bindings[bottomAnchorSymbol] = viewController.bottomLayoutGuide
          }
       }
@@ -285,7 +285,7 @@ extension LayoutConstraint {
       let safeAreaLayoutGuide = targetView.safeAreaLayoutGuide
       var parsedFormat = parsedInfo.0
       if parsedFormat.hasPrefix("H:|") {
-         parsedFormat = parsedFormat.stringByReplacingFirstOccurrence(of: "H:|", with: "|")
+         parsedFormat = parsedFormat.replacingFirstOccurrence(of: "H:|", with: "|")
       }
       if parsedFormat.hasPrefix("V:|") {
          if let view = views.first {
@@ -294,7 +294,7 @@ extension LayoutConstraint {
                parsedFormat = result.format
             } else {
                constraints.append(view.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor))
-               parsedFormat = parsedFormat.stringByReplacingFirstOccurrence(of: "|", with: "")
+               parsedFormat = parsedFormat.replacingFirstOccurrence(of: "|", with: "")
             }
          }
          if parsedFormat.hasSuffix("|") {
@@ -305,7 +305,7 @@ extension LayoutConstraint {
                   parsedFormat = result.format
                } else {
                   constraints.append(safeAreaLayoutGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor))
-                  parsedFormat = parsedFormat.stringByReplacingLastOccurrence(of: "|", with: "")
+                  parsedFormat = parsedFormat.replacingLastOccurrence(of: "|", with: "")
                }
             }
          }
@@ -317,7 +317,7 @@ extension LayoutConstraint {
                parsedFormat = result.format
             } else {
                constraints.append(view.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor))
-               parsedFormat = parsedFormat.stringByReplacingFirstOccurrence(of: "|", with: "")
+               parsedFormat = parsedFormat.replacingFirstOccurrence(of: "|", with: "")
             }
          }
          if parsedFormat.hasSuffix("|") {
@@ -328,7 +328,7 @@ extension LayoutConstraint {
                   parsedFormat = result.format
                } else {
                   constraints.append(safeAreaLayoutGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor))
-                  parsedFormat = parsedFormat.stringByReplacingLastOccurrence(of: "|", with: "")
+                  parsedFormat = parsedFormat.replacingLastOccurrence(of: "|", with: "")
                }
             }
          }
@@ -374,7 +374,7 @@ extension LayoutConstraint {
       for (index, view) in views.enumerated() {
          let viewBinding = "v\(index)"
          viewBindings[viewBinding] = view
-         parsedFormat = parsedFormat.stringByReplacingFirstOccurrence(of: viewPlaceholderCharacter, with: viewBinding)
+         parsedFormat = parsedFormat.replacingFirstOccurrence(of: viewPlaceholderCharacter, with: viewBinding)
       }
       return (parsedFormat, viewBindings)
    }

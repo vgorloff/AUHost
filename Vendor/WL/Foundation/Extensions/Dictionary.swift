@@ -108,6 +108,18 @@ extension Dictionary where Key == AnyHashable, Value == Any {
          throw NSError.Dictionary.IO.unableToWriteToFile(path)
       }
    }
+
+   /// Use this function only for debugging purpose.
+   /// Usage: `po print(myDictionary.dump())`
+   func dump() throws -> String {
+      var options = JSONSerialization.WritingOptions.prettyPrinted
+      if #available(OSX 10.13, *) {
+         options.insert(.sortedKeys)
+      }
+      let data = try JSONSerialization.data(withJSONObject: self, options: options)
+      let result = String(data: data, encoding: .utf8) ?? "null"
+      return result
+   }
 }
 
 // MARK: - Functions
