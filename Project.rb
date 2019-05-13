@@ -46,14 +46,14 @@ class Project < AbstractProject
       gen.setDeploymentTarget("10.12", "macOS")
 
       auHost = gen.addApplication("AUHost", "SampleAUHost", "macOS")
-      gen.addFiles(auHost, "Shared")
+      gen.addFiles(auHost, "Common")
       gen.addBuildSettings(auHost, {
          "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.AUHost", "DEPLOYMENT_LOCATION" => "YES"
       })
       addSharedSources(gen, auHost, true)
 
       attenuator = gen.addApplication("Attenuator", "SampleAUPlugin/Attenuator", "macOS")
-      gen.addFiles(attenuator, "Shared")
+      gen.addFiles(attenuator, "Common")
       gen.addFiles(attenuator, "SampleAUPlugin/AttenuatorKit")
       gen.addBuildSettings(attenuator, {
          "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator", "DEPLOYMENT_LOCATION" => "YES"
@@ -64,23 +64,19 @@ class Project < AbstractProject
       gen.addFiles(auExtension, "SampleAUPlugin/AttenuatorKit")
       gen.addBuildSettings(auExtension, {
          "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator.AttenuatorAU", "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES" => "YES",
-         "SWIFT_INCLUDE_PATHS" => "Shared"
+         "SWIFT_INCLUDE_PATHS" => "Common"
       })
       addSharedSources(gen, auExtension)
 
       gen.addDependencies(attenuator, [auExtension])
-      script = "ruby -r \"$SRCROOT/Project.rb\" -e \"Project.new('$SRCROOT').register()\""
+      script = <<DATA
+CMD="pluginkit -v -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\""
+echo Running: $CMD
+$CMD
+DATA
       gen.addScript(attenuator, "Register Extension", script, true)
 
       gen.save()
-   end
-
-   def register()
-      cmd = "pluginkit -v -a \"#{ENV['CODESIGNING_FOLDER_PATH']}/Contents/PlugIns/AttenuatorAU.appex\""
-      unless Environment.isCI
-         puts cmd
-         system cmd
-      end
    end
 
    def regenerate()
