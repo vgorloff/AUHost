@@ -33,6 +33,8 @@ public class NotificationObserver: NSObject {
    }
 
    deinit {
-      NotificationCenter.default.removeObserver(notificationObserver, name: notificationName, object: notificationObject)
+      if let notificationObserver = notificationObserver {
+         NotificationCenter.default.removeObserver(notificationObserver, name: notificationName, object: notificationObject)
+      }
    }
 }
