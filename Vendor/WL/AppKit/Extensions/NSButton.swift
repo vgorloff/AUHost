@@ -21,6 +21,11 @@ extension NSButton {
       self.alternateImage = alternateImage
    }
 
+   public convenience init(labelWithTitle: String) {
+      self.init(title: labelWithTitle)
+      isBordered = false
+   }
+
    public convenience init(title: String) {
       if #available(OSX 10.12, *) {
          self.init(title: title, target: nil, action: nil)

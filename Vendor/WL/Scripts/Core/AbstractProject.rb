@@ -85,7 +85,7 @@ class AbstractProject
       # exe = "cd \"#{@rootDirPath}\" && swift package -Xswiftc \"-target\" -Xswiftc \"x86_64-apple-macosx10.12\" generate-xcodeproj"
       exe = "cd \"#{@rootDirPath}\" && swift package generate-xcodeproj"
       execute exe
-      files = Dir[@rootDirPath + "/**/project.pbxproj"]
+      files = Dir[@rootDirPath + "/*/project.pbxproj"]
       files.each { |file|
          contents = File.readlines(file).reject { |line| line.include?("DEPLOYMENT_TARGET =") }.join()
          File.write(file, contents)
@@ -105,7 +105,7 @@ class AbstractProject
       targetNames = json['targets'].select { |target| target['type'] == "test" }.map { |target| target['name'] }
       targetNames.each { |name|
          puts "- Updating target: #{name}"
-         target = project.findTarget(name)
+         target = project.findTarget(name, "macOS")
          envVars.each { |key, val|
             project.addEnvVariable(target, key, val)
          }
@@ -113,8 +113,8 @@ class AbstractProject
    end
 
    def spmSetupDeployTarget(project, target)
-      target = project.findTarget(target)
-      script = 'ditto "$TARGET_BUILD_DIR/$WRAPPER_NAME" "$AWL_SYS_HOME/lib/$WRAPPER_NAME"'
+      target = project.findTarget(target, "macOS")
+      script = 'ditto -v "$TARGET_BUILD_DIR/$WRAPPER_NAME" "$AWL_LIBS/$WRAPPER_NAME"'
       project.embedLinkedFrameworks(target)
       project.addScript(target, "Deploy", script, true)
    end
@@ -137,7 +137,7 @@ class AbstractProject
       targetNames = products.map { |target| target['name'] }
       targetNames.each { |name|
          puts "- Setting up SPM target #{name}"
-         target = project.findTarget(name)
+         target = project.findTarget(name, "macOS")
          project.addBuildSettings(target, fwBuildSettings)
          project.makeScheme(target)
       }
@@ -260,7 +260,7 @@ class AbstractProject
          return
       end
       templatesDir = "#{ENV['AWL_LIB_SRC']}/Shared/Assets/XcodeGen"
-      baseDir = Dir["#{@rootDirPath}/*Assets"].first
+      baseDir = Dir["#{@rootDirPath}/**/*Assets"].first
       if baseDir.nil?
          p "No folder with Assets is found."
          return

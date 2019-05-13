@@ -8,6 +8,7 @@
 
 import AppKit
 import mcFoundation
+import mcUI
 
 extension NSView {
 
@@ -81,6 +82,21 @@ extension NSView {
          return contentHuggingPriority(for: .horizontal)
       } set {
          setContentHuggingPriority(newValue, for: .horizontal)
+      }
+   }
+
+   // MARK: -
+
+   public var systemAppearance: SystemAppearance {
+      if #available(OSX 10.14, *) {
+         return effectiveAppearance.systemAppearance
+      } else {
+         // See: https://stackoverflow.com/q/51774587/1418981
+         if NSWorkspace.shared.accessibilityDisplayShouldIncreaseContrast {
+            return .highContrastLight
+         } else {
+            return .light
+         }
       }
    }
 }

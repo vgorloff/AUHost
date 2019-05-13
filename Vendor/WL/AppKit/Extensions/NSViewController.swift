@@ -37,6 +37,10 @@ extension NSViewController {
       vc.view.removeFromSuperview()
       vc.removeFromParent()
    }
+
+   public var systemAppearance: SystemAppearance {
+      return view.systemAppearance
+   }
 }
 
 extension FailureReporting where Self: NSViewController {

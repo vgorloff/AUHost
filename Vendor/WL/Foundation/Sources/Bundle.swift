@@ -10,13 +10,25 @@ import Foundation
 
 extension Bundle {
 
-   enum Error: Swift.Error {
+   public enum Error: Swift.Error {
+      case missedURLForResource(resourceName: String, resourceExtension: String)
       case resourceFileIsNotFound(name: String, in: Bundle)
+   }
+
+   public enum Key: String {
+      case CFBundleVersion = "CFBundleVersion"
+      case CFBundleShortVersionString = "CFBundleShortVersionString"
+   }
+
+   // MARK: -
+
+   public func object(forKey: Key) -> Any? {
+      return object(forInfoDictionaryKey: forKey.rawValue)
    }
 
    public func urlForResource(resourceName: String, resourceExtension: String) throws -> URL {
       guard let url = url(forResource: resourceName, withExtension: resourceExtension) else {
-         throw NSError.Bundle.missedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
+         throw Error.missedURLForResource(resourceName: resourceName, resourceExtension: resourceExtension)
       }
       return url
    }
@@ -28,12 +40,5 @@ extension Bundle {
          throw Error.resourceFileIsNotFound(name: fileName, in: self)
       }
       return value
-   }
-}
-
-extension NSError {
-
-   public enum Bundle: Swift.Error {
-      case missedURLForResource(resourceName: String, resourceExtension: String)
    }
 }

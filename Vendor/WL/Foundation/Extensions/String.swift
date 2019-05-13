@@ -155,14 +155,14 @@ extension String {
 
 extension String {
 
-   public func stringByReplacingFirstOccurrence(of target: String, with replaceString: String) -> String {
+   public func replacingFirstOccurrence(of target: String, with replaceString: String) -> String {
       if let targetRange = range(of: target) {
          return replacingCharacters(in: targetRange, with: replaceString)
       }
       return self
    }
 
-   public func stringByReplacingLastOccurrence(of target: String, with replaceString: String) -> String {
+   public func replacingLastOccurrence(of target: String, with replaceString: String) -> String {
       if let targetRange = range(of: target, options: .backwards, range: nil, locale: nil) {
          return replacingCharacters(in: targetRange, with: replaceString)
       }
@@ -272,10 +272,29 @@ extension String {
       let partEnd = String(restOfTheString[rangeOfEnd.upperBound...])
       return ComponentsSplitByDelimiter(start: partStart, middle: partMiddle, end: partEnd)
    }
+
+   public func rangeBetweenCharacters(lower: Character, upper: Character, isBackwardSearch: Bool = true) -> Range<String.Index>? {
+      guard let rangeLower = rangeOfCharacter(from: CharacterSet(charactersIn: String(lower)), options: []) else {
+         return nil
+      }
+      if isBackwardSearch {
+         guard let rangeUpper = rangeOfCharacter(from: CharacterSet(charactersIn: String(upper)), options: [.backwards]) else {
+            return nil
+         }
+         return rangeLower.upperBound ..< rangeUpper.lowerBound
+      } else {
+         let searchRange = rangeLower.upperBound ..< endIndex
+         guard let rangeUpper = rangeOfCharacter(from: CharacterSet(charactersIn: String(upper)), range: searchRange) else {
+            return nil
+         }
+         return rangeLower.upperBound ..< rangeUpper.lowerBound
+      }
+   }
 }
 
 extension String {
 
+   // See also: https://stackoverflow.com/a/42567641/1418981
    public func leftPadding(toLength: Int, withPad character: Character) -> String {
       let stringLength = count
       if stringLength < toLength {
@@ -283,6 +302,29 @@ extension String {
       } else {
          return self
       }
+   }
+
+   public func removingPrefix(_ prefix: String) -> String {
+      if hasPrefix(prefix), !prefix.isEmpty {
+         let range = startIndex.shifting(by: prefix.count, in: self)
+         return String(self[range...])
+      } else {
+         return self
+      }
+   }
+
+   public func removingSuffix(_ suffix: String) -> String {
+      if hasSuffix(suffix), !suffix.isEmpty {
+         let range = endIndex.shifting(by: -suffix.count, in: self)
+         return String(self[..<range])
+      } else {
+         return self
+      }
+   }
+
+   public func range(start: Int, end: Int) -> Range<String.Index> {
+      let range = String.Index(utf16Offset: start, in: self) ..< String.Index(utf16Offset: end, in: self)
+      return range
    }
 }
 
