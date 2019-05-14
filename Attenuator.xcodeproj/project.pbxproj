@@ -825,8 +825,7 @@
 				G_58C7BF2F21F31A635CDB4B78046D9B59 /* Libs */,
 				G_B3D3603046EBBBA4C41389237C98D60B /* WL */,
 			);
-			name = Vendor;
-			path = ../../../../Developer/Projects;
+			path = Vendor;
 			sourceTree = "<group>";
 		};
 		G_F2B0C376AF09078F0708C29311E0591E /* Media */ = {
