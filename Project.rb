@@ -54,14 +54,14 @@ class Project < AbstractProject
 
       attenuator = gen.addApplication("Attenuator", "SampleAUPlugin/Attenuator", "macOS")
       gen.addFiles(attenuator, "Common")
-      gen.addFiles(attenuator, "SampleAUPlugin/AttenuatorKit")
+      gen.addFiles(attenuator, "SampleAUPlugin/Common")
       gen.addBuildSettings(attenuator, {
          "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator", "DEPLOYMENT_LOCATION" => "YES"
       })
       addSharedSources(gen, attenuator, true)
 
       auExtension = gen.addExtension("AttenuatorAU", "SampleAUPlugin/AttenuatorAU", "macOS")
-      gen.addFiles(auExtension, "SampleAUPlugin/AttenuatorKit")
+      gen.addFiles(auExtension, "SampleAUPlugin/Common")
       gen.addBuildSettings(auExtension, {
          "PRODUCT_BUNDLE_IDENTIFIER" => "ua.com.wavelabs.Attenuator.AttenuatorAU", "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES" => "YES",
          "SWIFT_INCLUDE_PATHS" => "Common"
@@ -70,6 +70,7 @@ class Project < AbstractProject
 
       gen.addDependencies(attenuator, [auExtension])
       gen.setAsLaunchTarget(auHost, auExtension)
+      gen.addToBuildScheme(attenuator, auExtension)
       script = <<DATA
 CMD="pluginkit -v -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\""
 echo Running: $CMD
