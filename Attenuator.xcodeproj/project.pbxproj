@@ -881,6 +881,7 @@
 				RBP_EED142C0CC1F602CAF6FA841D19079E8 /* Resources */,
 				CFBP_343DB71FECA1CCA03968818712435616 /* Embed App Extensions */,
 				SSBP_1C200BC0F29735A5418F2E5F51489819 /* Register Extension */,
+				SSBP_71B6CF9F51AF48741F093F21AC4A302D /* Verify Extension */,
 			);
 			buildRules = (
 			);
@@ -948,7 +949,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nCMD=\"pluginkit -v -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\"\necho Running: $CMD\n$CMD\n";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nCMD=\"pluginkit -vr \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" || true\"\necho Running: $CMD\n$CMD\nCMD=\"pluginkit -va \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\"\necho Running: $CMD\n$CMD\n";
+		};
+		SSBP_71B6CF9F51AF48741F093F21AC4A302D /* Verify Extension */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Verify Extension";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n# Comment line below for AU Validation\nexit 0\n\nsleep .5\nCMD=\"auval -v aufx attr wlUA\"\necho Running: $CMD\n$CMD\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1213,6 +1228,7 @@
 			baseConfigurationReference = FR_9FE87100B36DA2FEF694D8A03B92E573 /* App-macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SampleAUHost/App.entitlements;
+				DEPLOYMENT_LOCATION = YES;
 				INFOPLIST_FILE = SampleAUHost/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AUHost;
@@ -1254,6 +1270,7 @@
 			baseConfigurationReference = FR_9FE87100B36DA2FEF694D8A03B92E573 /* App-macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/Attenuator/App.entitlements;
+				DEPLOYMENT_LOCATION = YES;
 				INFOPLIST_FILE = SampleAUPlugin/Attenuator/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator;
@@ -1267,6 +1284,7 @@
 			baseConfigurationReference = FR_9FE87100B36DA2FEF694D8A03B92E573 /* App-macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SampleAUHost/App.entitlements;
+				DEPLOYMENT_LOCATION = YES;
 				INFOPLIST_FILE = SampleAUHost/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AUHost;
@@ -1280,6 +1298,7 @@
 			baseConfigurationReference = FR_9FE87100B36DA2FEF694D8A03B92E573 /* App-macOS.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/Attenuator/App.entitlements;
+				DEPLOYMENT_LOCATION = YES;
 				INFOPLIST_FILE = SampleAUPlugin/Attenuator/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator;

@@ -72,11 +72,24 @@ class Project < AbstractProject
       gen.setAsLaunchTarget(auHost, auExtension)
       gen.addToBuildScheme(attenuator, auExtension)
       script = <<DATA
-CMD="pluginkit -v -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\""
+CMD="pluginkit -vr \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" || true"
+echo Running: $CMD
+$CMD
+CMD="pluginkit -va \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\""
 echo Running: $CMD
 $CMD
 DATA
       gen.addScript(attenuator, "Register Extension", script, true)
+      script = <<DATA
+# Comment line below for AU Validation
+exit 0
+
+sleep .5
+CMD="auval -v aufx attr wlUA"
+echo Running: $CMD
+$CMD
+DATA
+      gen.addScript(attenuator, "Verify Extension", script, true)
 
       gen.save()
    end
