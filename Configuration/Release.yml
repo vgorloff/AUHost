@@ -1,3 +1,4 @@
-name: Swift 5 compatibility update.
+name: Extension Registration Fix.
 description:
-   - Xcode 10.2.1 compatibility update.
+   - Fixes previously broken Plug-In registration.
+   - See Docs/Troubleshooting.md
