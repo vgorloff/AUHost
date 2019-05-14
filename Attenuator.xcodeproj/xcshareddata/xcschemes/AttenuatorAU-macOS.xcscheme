@@ -21,6 +21,20 @@
                ReferencedContainer = "container:Attenuator.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "NT_A71F9727AA9C3A06FAC3AC8E5D71F7EB"
+               BuildableName = "Attenuator.app"
+               BlueprintName = "Attenuator-macOS"
+               ReferencedContainer = "container:Attenuator.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <LaunchAction
