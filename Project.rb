@@ -13,8 +13,12 @@ class Project < AbstractProject
    end
 
    def clean()
-      XcodeBuilder.new(@projectFilePath).clean("AUHost-macOS")
-      XcodeBuilder.new(@projectFilePath).clean("Attenuator-macOS")
+      Dir["/tmp/Attenuator.dst"].each { |dir|
+         FileUtils.rm_r(dir)
+      }
+      Dir["#{rootDirPath}/DerivedData"].each { |dir|
+         FileUtils.rm_r(dir)
+      }
    end
 
    def build()
