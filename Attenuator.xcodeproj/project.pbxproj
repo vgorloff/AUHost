@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF_016B8D4022C471027C9E330F4B2937A5 /* AttenuatorAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_5CD016A1B953E4477B93938828566376 /* AttenuatorAudioUnit.swift */; };
 		BF_0330B62DB9960B82AFBD5CF83C41D83E /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_FF32A5B900B46A0D9B3F77550EDC29F2 /* NSToolbar.swift */; };
 		BF_03AB0C2E4C67AEBB3BD5261C1C3F5C9D /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_F97696F7218D974A5A27ADECFDC5EC3B /* View.swift */; };
 		BF_03B6AA77A056751773D0CF0A2FD7468D /* NotificationObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_0C278C1FD357B81D1D03A0D82D742BC8 /* NotificationObserver.swift */; };
@@ -14,6 +15,7 @@
 		BF_06550A8F0BC54A7A50650DF35832D0E1 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_DE7B230C8BB3873E66FBA966BAE3E24E /* WindowController.swift */; };
 		BF_07EF8487A25893BD954B0EACA15C9129 /* NSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_13BA46A71CF4D89CB1DBA75358A40940 /* NSMenu.swift */; };
 		BF_0812D66FE597423DD96979A92CC15FDF /* MinMax.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_7CBA1EFF21E4360C4537BBA247CDD022 /* MinMax.swift */; };
+		BF_08B3F7882C5BF1B268666211E99158DC /* AttenuatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_7AB603A11EE37CA320F76D76C3284384 /* AttenuatorParameter.swift */; };
 		BF_0C376545DE818008C45425A8974ED0EE /* CVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E83484AA1488D1C735AE4504D5F74DDA /* CVError.swift */; };
 		BF_0CCF66D898AF4F6DEDAD74956918E792 /* CoreTypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_CA1DCB35A1FE921F6CAEDE3704DB13B1 /* CoreTypeAliases.swift */; };
 		BF_0DE7E8A05F560F06B0397CB0D7BFC3F2 /* WaveformDrawingDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_BBD97CEF8D30D0D29FEF70D9671F164C /* WaveformDrawingDataProvider.swift */; };
@@ -39,10 +41,8 @@
 		BF_1F824AE9864A08DE2002535E90383F44 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_B72E7495E57F256C7D0FD080E52D57B2 /* MainMenu.swift */; };
 		BF_2047CA4E484B225859E014546402C551 /* MTLDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_269E7F13C22EB37B6B9861E43AFB25ED /* MTLDevice.swift */; };
 		BF_20C101FF4BAE8FA4514761E0FB6962C0 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_FC7210F8B0ED7139B53BAF5385F1FBC5 /* DisplayLink.swift */; };
-		BF_21215DE302653C134C6C9B4CB01062A0 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_BE0B9109FA899ABB8AFD908EF246F479 /* Logger.swift */; };
 		BF_212FF96CA05B00AAB887A0C99142EEB4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_F09091E9770DCAE578B4E27B73319F75 /* MainViewController.swift */; };
 		BF_2161737C4D37EF2FE8A11F4FFA31D3C3 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_6E5C8BCBE8D8B4916EE604E86688C35B /* EffectWindowController.swift */; };
-		BF_21FBDB3B7E0C20035A23E9367250020F /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_3EBDA897B2A44FAE2F282CE1077F9D04 /* AttenuatorView.swift */; };
 		BF_225AB76D31F9D74202AFAC437EC57FA6 /* VULevelMeter.DrawingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_ABB967BED252330B0BF37A18537D227C /* VULevelMeter.DrawingData.swift */; };
 		BF_22E69AB68BA03C94961823C973D23D2F /* DispatchQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_C53DC63CEA87C88B065A2BA57B70754A /* DispatchQueue.swift */; };
 		BF_246FD4B517E00B720FA7D582E01B6C1D /* BufferedAudioBus.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_1229DCF2845FC4B032DC7BB132829AE6 /* BufferedAudioBus.swift */; };
@@ -52,6 +52,7 @@
 		BF_289DC5C0E769410FBC7AB0F19290D3D1 /* EdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_D222379237DFD993B00DD11DA2B5E392 /* EdgeInsets.swift */; };
 		BF_2C6E5DE47959BBAB58F1BF999BA9FB57 /* GLKMatrix4.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_9E1C6FEBBC552FC2C276C728B29AAE49 /* GLKMatrix4.swift */; };
 		BF_2D91F6DC3605DF79A82ADB8984F8A31E /* SmartDispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A39CEE4E964A8C33413F63D015D2CB90 /* SmartDispatchSource.swift */; };
+		BF_2DC2B1C7FC302C551C79BAE6B9AC8B5D /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_4C154BA5F74540BD0CCE7F5CB785EFFC /* AttenuatorDSPKernel.swift */; };
 		BF_2E2C7DBB12B8E31734E7A8AF258F17DF /* DispatchSourceDisplayLinkRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_1C8ABC018AA8967565AFCBD8E8874588 /* DispatchSourceDisplayLinkRenderer.swift */; };
 		BF_2E75E255E7F1F7F21A621877A8450C7D /* SmartDispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A39CEE4E964A8C33413F63D015D2CB90 /* SmartDispatchSource.swift */; };
 		BF_2EDA51FC655B4043E23529373DBD5BF0 /* SmartDispatchSourceUserDataOr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_C4FD4A68461972A4388A46C06092D225 /* SmartDispatchSourceUserDataOr.swift */; };
@@ -60,18 +61,19 @@
 		BF_321C67E416ED67B3036CFC508EEC60DD /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A128AED426D0081A91E284660AB25FF7 /* Window.swift */; };
 		BF_3400491CDDCF2996BAD6D9B83C52AF00 /* CVError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E83484AA1488D1C735AE4504D5F74DDA /* CVError.swift */; };
 		BF_340E26B8EC732D06739393B375643A51 /* ControlIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_DF309308B97F236645E6FC0C7492F025 /* ControlIcon.swift */; };
-		BF_342A185B2A4FD3A1E17C9C77B232EBCC /* AttenuatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_33691044F08DE2804BACEEA76C3FAC2F /* AttenuatorViewController.swift */; };
 		BF_35A0388D5751206F4B803674724962D1 /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_4A705E3844178915507DD81A3715B3D7 /* NSViewController.swift */; };
 		BF_36757EA9C36776413362E9517280F9D7 /* SmartDispatchSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A39CEE4E964A8C33413F63D015D2CB90 /* SmartDispatchSource.swift */; };
+		BF_36A410846D84FB1A082D1829E614B065 /* AttenuatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_624B1CE3BECC9ABECFB75DA167E10E4C /* AttenuatorViewController.swift */; };
 		BF_37B259B52B30BBFB3E6E45E48B63E395 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_023EFBC8A97BDD366BBED44B1F814EC2 /* NSLayoutConstraint.swift */; };
 		BF_381B6D104A0311960B575A94A792FAAA /* TitlebarAccessoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_85C5D6D7B512D752C93835BD9650AB6C /* TitlebarAccessoryViewController.swift */; };
-		BF_3A5EB34D7AE72478C789A65F695D4C6E /* Attenuator.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_1D9DA26A64EF23C354DDC74DB1040008 /* Attenuator.swift */; };
 		BF_3A6FD847486C7F5274AF966AB2A9E40B /* SmartDispatchSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_D567F68D3261F70CF6B6E99923FA82CD /* SmartDispatchSourceType.swift */; };
 		BF_3B59FC25B53011F96549010204639A2A /* SmartDispatchSourceUserDataAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_8C7985C0D227FDE2B60886374D1AAF4A /* SmartDispatchSourceUserDataAdd.swift */; };
+		BF_3CF6F345288208729E3CA42FBB34E387 /* AttenuatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_7AB603A11EE37CA320F76D76C3284384 /* AttenuatorParameter.swift */; };
 		BF_3F3E225F882E1B9C240D73F369EAC734 /* SmartDispatchSourceTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_8509523C1F2B5AE100DB795F0F1CA851 /* SmartDispatchSourceTimer.swift */; };
 		BF_407C81A423DC4BD086DB9709A122265E /* ActionsBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_70BF5183151EB29B2E3B8D4962FC4079 /* ActionsBar.swift */; };
 		BF_425696A4CD7CC5A5E3ABFC94785C3DAD /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_FC7210F8B0ED7139B53BAF5385F1FBC5 /* DisplayLink.swift */; };
 		BF_42BF6F88ED1A0F9422903FB3F8FE2318 /* NumericTypesConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_C1694027842E491000EDD66763216BFD /* NumericTypesConversions.swift */; };
+		BF_4429BBA38BEF164F2972D4F577378AC8 /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_AA3E94FD68097264E81DA1619747E4BB /* AttenuatorView.swift */; };
 		BF_452675477679B2F91B9CE39AD5A19529 /* AttenuatorAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = FR_79A9DA8A1EF51436EDBA3B60C4725CE8 /* AttenuatorAU.appex */; };
 		BF_464138BCBBE2032620472590F13BFE30 /* NumericTypesConversions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_C1694027842E491000EDD66763216BFD /* NumericTypesConversions.swift */; };
 		BF_489D7C4F2D450B74F793EDF283D824DD /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_869BEB19BA5033EB3233623EB347E926 /* Menu.swift */; };
@@ -94,6 +96,7 @@
 		BF_562C69E7E4026D7216F02BAC12EC2DAF /* RuntimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_0BC6EFC359AEB772ACDA93CC5FA5DF52 /* RuntimeInfo.swift */; };
 		BF_581BB8E61B2635609DB267AD07CEE079 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_C313353CD5506A5DFFBE7391B50AAFB7 /* MainMenu.swift */; };
 		BF_590DF0C1D854B3841D935CAF87D0CA57 /* NSControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_76E692DCB136F901E303724703E26A71 /* NSControl.swift */; };
+		BF_5B105BBCFF7E1A191D8524DB94F25DFE /* AttenuatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_624B1CE3BECC9ABECFB75DA167E10E4C /* AttenuatorViewController.swift */; };
 		BF_5D3E25639A2535C7A677273A915BA414 /* GenericDisplayLinkRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_1E9922E5209A6C0E58E94623843BCE1B /* GenericDisplayLinkRenderer.swift */; };
 		BF_5F607C65250DE67D5436D714F2A9100C /* FailureReporting.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_AB9395FBACF9CBC0633E6348029B12D9 /* FailureReporting.swift */; };
 		BF_5FAC83796BF8E67DABEC77D52FD1C3AC /* FullContentWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_CC08C06ABFA6610791961A41A01128D8 /* FullContentWindowController.swift */; };
@@ -104,6 +107,7 @@
 		BF_6437E566A5248B9752810780E8B1567C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_8887A7F8950924331C44D360822EC8E7 /* Bundle.swift */; };
 		BF_669763B41FF6512AC15FF48B51640083 /* DispatchUntil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_7E869E7F1D9CB0D038773AD2D2DF0AA9 /* DispatchUntil.swift */; };
 		BF_66D9E55F4EED3E8B8714FD2B3DE02B3B /* CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_041DD4F5E8291907604CF3C0B1C05F01 /* CGRect.swift */; };
+		BF_680D375FD2AF1052D3068A4109489799 /* AttenuatorAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_5CD016A1B953E4477B93938828566376 /* AttenuatorAudioUnit.swift */; };
 		BF_6993806D82EF44087F698FA81A88E9C1 /* GenericDisplayLinkRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_1E9922E5209A6C0E58E94623843BCE1B /* GenericDisplayLinkRenderer.swift */; };
 		BF_6B5183B065F271B56126F0F63ABFE6D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_9B4241C2982DBAAF77DA82BB8DAC4989 /* ViewController.swift */; };
 		BF_6EA8F0219DBF8F5A233EB6B830830DE4 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E1E1C4C0F69F4B6C18702AF4324A858E /* Log.swift */; };
@@ -121,16 +125,13 @@
 		BF_7A6873FAC94855FF88A9DD23F54818AB /* SmartDispatchSourceTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_8509523C1F2B5AE100DB795F0F1CA851 /* SmartDispatchSourceTimer.swift */; };
 		BF_7B0D3FD033EA90F0A8043519113CD70B /* String.Index.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E4ADED2E5962552F415859115E6E6952 /* String.Index.swift */; };
 		BF_7C4903850F8472C09518502C4F79461E /* MainViewUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_7613720B274C652DA1A89D2CF8357E2D /* MainViewUIModel.swift */; };
-		BF_7CE2A934491BD3EBDF96A90E942C726B /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_3EBDA897B2A44FAE2F282CE1077F9D04 /* AttenuatorView.swift */; };
+		BF_7E6F53DE086E151DBFC9EF04E7E3398C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_93465C73251184D9FC68869056D610DA /* Logger.swift */; };
 		BF_80C26C13F2B93BC9517F3D1004FA4F4C /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_CD2AE98D35BD060246F1F54541D38AC5 /* Color.swift */; };
 		BF_81DC8A15B83C4DB6A1E370FC45AA13E5 /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FR_9DDA12F94599AF18D07F6AA8ECE557D6 /* VULevelMeter.Shaders.metal */; };
-		BF_838A58E5A8291A71C45AFA1C23B1F34D /* AttenuatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_BB604B68B4983CA779CB0937BF2A0141 /* AttenuatorParameter.swift */; };
-		BF_845A56746DFD5F7F689E2328DD7332C1 /* AttenuatorParameter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_BB604B68B4983CA779CB0937BF2A0141 /* AttenuatorParameter.swift */; };
 		BF_8498F1DB61D5A92068E4E66B4B922C47 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A07F6FFECB40988EF7C8BC3044DC5CD6 /* main.swift */; };
 		BF_85410F308B1124D462B6A0E423932D59 /* NSWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_F3FDB741E0EAE95919C5E9160BBAEE47 /* NSWindow.swift */; };
 		BF_866016CE025B12D7D2119E8CC3E66463 /* NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E68B8D958EBDBA41846A31B5D6D65648 /* NSView.swift */; };
 		BF_87313E95BC27AE1A9197AE5A704DA43C /* VULevelMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E2F74E8A2FFF7B2E43373478E0631010 /* VULevelMeter.swift */; };
-		BF_88A5DC91029C627D09A82FEAA834CDC0 /* AttenuatorAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_8935BC026452C57BDF73D3A06F9FCD6C /* AttenuatorAudioUnit.swift */; };
 		BF_89CB18CD8252A69B1A9A9D333D811485 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_8887A7F8950924331C44D360822EC8E7 /* Bundle.swift */; };
 		BF_8B1F8ECE0C5BB00C009A2FFF8D2328B5 /* AlternativeValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_9942D8407C68D2CA4867A52072384866 /* AlternativeValue.swift */; };
 		BF_8BCE337A5AB2013C310D196CB4916346 /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_190B0255F4F3DC4762D7ACA78B5CFAE8 /* BuildInfo.swift */; };
@@ -152,14 +153,14 @@
 		BF_9D224F0165B683FE77111B32E8C3F085 /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A128AED426D0081A91E284660AB25FF7 /* Window.swift */; };
 		BF_9FE256F459FD8BC4A69505536C34A2F0 /* Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_22CBD25E9732F5C6290A0CFACDFBF65E /* Functions.swift */; };
 		BF_9FECF2A0258F9709FAD0662A5B6BA2E1 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_D8DCEAF13621DE6EF8112BEFA80838FF /* StackView.swift */; };
-		BF_A0D320177BAE23EE5D613A0249F99ABD /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_BE0B9109FA899ABB8AFD908EF246F479 /* Logger.swift */; };
 		BF_A163917928B5D0820388400581F3EC46 /* MediaObjectPasteboardUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_D9ED8EEF993D0675F83758FFCC2AF7BF /* MediaObjectPasteboardUtility.swift */; };
 		BF_A17C00CDB9987DABBCB6D5517C6199B5 /* SmartDispatchSourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_D567F68D3261F70CF6B6E99923FA82CD /* SmartDispatchSourceType.swift */; };
-		BF_A326E49ABC6D95751B246FB87685B815 /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_73F72567A13269ADA860D7DA9F9BFB19 /* AttenuatorDSPKernel.swift */; };
 		BF_A35089E8FE94E5A2284608CC1549DEF1 /* ConstraintsSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_DD386BC8F34BB327373DD328A50124E2 /* ConstraintsSet.swift */; };
 		BF_A538876C382DFD0C400BD43488E2592C /* NSMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_CC8F9D339E2D278206F44C3EBF86B07C /* NSMenuItem.swift */; };
+		BF_A559726F5E4FCFB90A486F080A8D8556 /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_4C154BA5F74540BD0CCE7F5CB785EFFC /* AttenuatorDSPKernel.swift */; };
 		BF_A585C7500D3A6F9949FBB7B41ECA8637 /* NSStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E2B6F79B053B92C839FEF9422FC2FE0B /* NSStackView.swift */; };
 		BF_A7EEF0752E4A4566159B852D8560FDFA /* FullContentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_7EC5140CEB9F42780048E031DE6093E6 /* FullContentWindow.swift */; };
+		BF_AB0FF0332294DC94D5718677FA22E057 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_93465C73251184D9FC68869056D610DA /* Logger.swift */; };
 		BF_AC041BA5821BBFDA3157F5C1BB0DDF32 /* DispatchSourceDisplayLinkRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_1C8ABC018AA8967565AFCBD8E8874588 /* DispatchSourceDisplayLinkRenderer.swift */; };
 		BF_AD02C17FC9DEE066CF924FAEF775A871 /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_190B0255F4F3DC4762D7ACA78B5CFAE8 /* BuildInfo.swift */; };
 		BF_AE186B57D9BFBB5F7E561ACC01EEC7C7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E491E4BCF56D07C41617F99BC093FF7E /* Result.swift */; };
@@ -167,6 +168,7 @@
 		BF_B1051148D724A95620B7240171E669C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FR_1279F67FF9B7C970E255C82C5BF30477 /* Assets.xcassets */; };
 		BF_B547DF02D73061E9922CFE1039951D3E /* ObjCAssociation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_97E6167DCFF62112BFC77EAFC72AC04E /* ObjCAssociation.swift */; };
 		BF_B8C83A5DAA358DC56F2AC27C530F6657 /* DisplayLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_FC7210F8B0ED7139B53BAF5385F1FBC5 /* DisplayLink.swift */; };
+		BF_B92C73EB1792B2F7861BB18657DEA57A /* AttenuatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_AA3E94FD68097264E81DA1619747E4BB /* AttenuatorView.swift */; };
 		BF_BAD5D9FC8777E8135071080F28939D73 /* NSLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_023EFBC8A97BDD366BBED44B1F814EC2 /* NSLayoutConstraint.swift */; };
 		BF_BAE75516D2BB2BDEF400E6366E290BA0 /* SmartDispatchSourceUserDataOr.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_C4FD4A68461972A4388A46C06092D225 /* SmartDispatchSourceUserDataOr.swift */; };
 		BF_BC9BE7878ABB95D05AFFA627370D159E /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E0C78E53B4BEA8015F3AD51D4C915974 /* FileManager.swift */; };
@@ -189,10 +191,8 @@
 		BF_D1D5A75C781D61F35F19059D881AC95E /* NSView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_E68B8D958EBDBA41846A31B5D6D65648 /* NSView.swift */; };
 		BF_D4AFC3D421107CF97761A656AB5129F5 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_DE7B230C8BB3873E66FBA966BAE3E24E /* WindowController.swift */; };
 		BF_D5CE67842761639CFB0AA29F3F950C50 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_CBA81E20F5646F5C1966F3C273B82EF7 /* Dictionary.swift */; };
-		BF_D5FBCFB998630DAA88F0B5AD882CF4BC /* AttenuatorAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_8935BC026452C57BDF73D3A06F9FCD6C /* AttenuatorAudioUnit.swift */; };
 		BF_D6FBE9F3B6A0EBE3965F4378DA33A08C /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_66182E74B90F64D70B45A46AE7128AF4 /* String.swift */; };
 		BF_D7058952EA55FF941C082A8430AC0C37 /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_1A6A434BF8338AC7D8CC89B922D60835 /* PlaybackEngineContext.swift */; };
-		BF_D9FC041A04C06243A0DB897E4C14DBA3 /* AttenuatorDSPKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_73F72567A13269ADA860D7DA9F9BFB19 /* AttenuatorDSPKernel.swift */; };
 		BF_DBE86673F99D817BF6DCFB942649B44B /* VULevelMeter.DrawingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_ABB967BED252330B0BF37A18537D227C /* VULevelMeter.DrawingData.swift */; };
 		BF_DCE0112857724A1994CE0E9619D77FF8 /* NSMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_13BA46A71CF4D89CB1DBA75358A40940 /* NSMenu.swift */; };
 		BF_DF8EA8A7A78DA8CA5C865F3BAC5D3D4F /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_4CA38FC0266C6793A994432AAB07993A /* Button.swift */; };
@@ -211,7 +211,6 @@
 		BF_EBF7FAE2B3745967CFAAD1CB3E633ED6 /* NonRecursiveLocking.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_0B366386D0224D172F5BF507FA8BC9D5 /* NonRecursiveLocking.swift */; };
 		BF_F23C2DA28E37F9DBCBCFEAE6F0A6A8F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FR_1279F67FF9B7C970E255C82C5BF30477 /* Assets.xcassets */; };
 		BF_F35E114E3BF43D9B66804F96AC8C2AD3 /* NSToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_FF32A5B900B46A0D9B3F77550EDC29F2 /* NSToolbar.swift */; };
-		BF_F43E7828B04F492B8CC2EAB727C510EA /* AttenuatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_33691044F08DE2804BACEEA76C3FAC2F /* AttenuatorViewController.swift */; };
 		BF_F4D5E116B74FB767918CDF2E7EDA9B30 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A696C5B052196F364366A29A8F5BFD11 /* PlaybackEngine.swift */; };
 		BF_F4F42ABF327B101083580BD6B34B4ED4 /* VULevelMeter.Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = FR_9DDA12F94599AF18D07F6AA8ECE557D6 /* VULevelMeter.Shaders.metal */; };
 		BF_F5327395B502B168FD53A2CD64409E59 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = FR_A07F6FFECB40988EF7C8BC3044DC5CD6 /* main.swift */; };
@@ -262,19 +261,19 @@
 		FR_190B0255F4F3DC4762D7ACA78B5CFAE8 /* BuildInfo.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = BuildInfo.swift; path = BuildInfo.swift; sourceTree = "<group>"; };
 		FR_1A6A434BF8338AC7D8CC89B922D60835 /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = PlaybackEngineContext.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
 		FR_1C8ABC018AA8967565AFCBD8E8874588 /* DispatchSourceDisplayLinkRenderer.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = DispatchSourceDisplayLinkRenderer.swift; path = DispatchSourceDisplayLinkRenderer.swift; sourceTree = "<group>"; };
-		FR_1D9DA26A64EF23C354DDC74DB1040008 /* Attenuator.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Attenuator.swift; path = Attenuator.swift; sourceTree = "<group>"; };
 		FR_1E9922E5209A6C0E58E94623843BCE1B /* GenericDisplayLinkRenderer.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = GenericDisplayLinkRenderer.swift; path = GenericDisplayLinkRenderer.swift; sourceTree = "<group>"; };
 		FR_21B53FDA3E94E30D1856A001877E2FCE /* Extension-macOS.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; lastKnownFileType = text.xcconfig; name = "Extension-macOS.xcconfig"; path = "Extension-macOS.xcconfig"; sourceTree = "<group>"; };
 		FR_22CBD25E9732F5C6290A0CFACDFBF65E /* Functions.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Functions.swift; path = Functions.swift; sourceTree = "<group>"; };
 		FR_269E7F13C22EB37B6B9861E43AFB25ED /* MTLDevice.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MTLDevice.swift; path = MTLDevice.swift; sourceTree = "<group>"; };
 		FR_285806A82BB3011BF65F642B2827F867 /* LayoutPriority.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = LayoutPriority.swift; path = LayoutPriority.swift; sourceTree = "<group>"; };
-		FR_33691044F08DE2804BACEEA76C3FAC2F /* AttenuatorViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorViewController.swift; path = AttenuatorViewController.swift; sourceTree = "<group>"; };
 		FR_356D9B92BDFFB3F19DDD4DBD2C02EFA5 /* TitlebarViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = TitlebarViewController.swift; path = TitlebarViewController.swift; sourceTree = "<group>"; };
-		FR_3EBDA897B2A44FAE2F282CE1077F9D04 /* AttenuatorView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorView.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
 		FR_4A705E3844178915507DD81A3715B3D7 /* NSViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NSViewController.swift; path = NSViewController.swift; sourceTree = "<group>"; };
+		FR_4C154BA5F74540BD0CCE7F5CB785EFFC /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorDSPKernel.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
 		FR_4CA38FC0266C6793A994432AAB07993A /* Button.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Button.swift; path = Button.swift; sourceTree = "<group>"; };
 		FR_587460F29CA40D3A5FC76368BF95326D /* WaveformCacheUtility.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = WaveformCacheUtility.swift; path = WaveformCacheUtility.swift; sourceTree = "<group>"; };
+		FR_5CD016A1B953E4477B93938828566376 /* AttenuatorAudioUnit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorAudioUnit.swift; path = AttenuatorAudioUnit.swift; sourceTree = "<group>"; };
 		FR_610E35E0DBF83905FFF19B9F18A367B4 /* Application.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Application.swift; path = Application.swift; sourceTree = "<group>"; };
+		FR_624B1CE3BECC9ABECFB75DA167E10E4C /* AttenuatorViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorViewController.swift; path = AttenuatorViewController.swift; sourceTree = "<group>"; };
 		FR_6469E667412AC16DF003B894BFE39FD7 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MainToolbar.Event.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
 		FR_66182E74B90F64D70B45A46AE7128AF4 /* String.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = String.swift; path = String.swift; sourceTree = "<group>"; };
 		FR_697B5D8215B3239DC3F23A508A882F41 /* Attenuator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Attenuator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -282,10 +281,10 @@
 		FR_6E5C8BCBE8D8B4916EE604E86688C35B /* EffectWindowController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = EffectWindowController.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		FR_6EFD72D2E4FEECD5A564713F9DF1BF3E /* UnfairLock.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = UnfairLock.swift; path = UnfairLock.swift; sourceTree = "<group>"; };
 		FR_70BF5183151EB29B2E3B8D4962FC4079 /* ActionsBar.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ActionsBar.swift; path = ActionsBar.swift; sourceTree = "<group>"; };
-		FR_73F72567A13269ADA860D7DA9F9BFB19 /* AttenuatorDSPKernel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorDSPKernel.swift; path = AttenuatorDSPKernel.swift; sourceTree = "<group>"; };
 		FR_7613720B274C652DA1A89D2CF8357E2D /* MainViewUIModel.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MainViewUIModel.swift; path = MainViewUIModel.swift; sourceTree = "<group>"; };
 		FR_76E692DCB136F901E303724703E26A71 /* NSControl.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NSControl.swift; path = NSControl.swift; sourceTree = "<group>"; };
 		FR_79A9DA8A1EF51436EDBA3B60C4725CE8 /* AttenuatorAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AttenuatorAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_7AB603A11EE37CA320F76D76C3284384 /* AttenuatorParameter.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorParameter.swift; path = AttenuatorParameter.swift; sourceTree = "<group>"; };
 		FR_7CBA1EFF21E4360C4537BBA247CDD022 /* MinMax.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MinMax.swift; path = MinMax.swift; sourceTree = "<group>"; };
 		FR_7E869E7F1D9CB0D038773AD2D2DF0AA9 /* DispatchUntil.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = DispatchUntil.swift; path = DispatchUntil.swift; sourceTree = "<group>"; };
 		FR_7EC5140CEB9F42780048E031DE6093E6 /* FullContentWindow.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = FullContentWindow.swift; path = FullContentWindow.swift; sourceTree = "<group>"; };
@@ -295,8 +294,8 @@
 		FR_869BEB19BA5033EB3233623EB347E926 /* Menu.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Menu.swift; path = Menu.swift; sourceTree = "<group>"; };
 		FR_87FA8F9CC1E3A17DD2F66B1E260698C9 /* MediaItemView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MediaItemView.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
 		FR_8887A7F8950924331C44D360822EC8E7 /* Bundle.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Bundle.swift; path = Bundle.swift; sourceTree = "<group>"; };
-		FR_8935BC026452C57BDF73D3A06F9FCD6C /* AttenuatorAudioUnit.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorAudioUnit.swift; path = AttenuatorAudioUnit.swift; sourceTree = "<group>"; };
 		FR_8C7985C0D227FDE2B60886374D1AAF4A /* SmartDispatchSourceUserDataAdd.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = SmartDispatchSourceUserDataAdd.swift; path = SmartDispatchSourceUserDataAdd.swift; sourceTree = "<group>"; };
+		FR_93465C73251184D9FC68869056D610DA /* Logger.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Logger.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FR_9684E874661331877091455D4F22805F /* MainToolbar.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MainToolbar.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
 		FR_97E6167DCFF62112BFC77EAFC72AC04E /* ObjCAssociation.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = ObjCAssociation.swift; path = ObjCAssociation.swift; sourceTree = "<group>"; };
 		FR_9942D8407C68D2CA4867A52072384866 /* AlternativeValue.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AlternativeValue.swift; path = AlternativeValue.swift; sourceTree = "<group>"; };
@@ -314,12 +313,11 @@
 		FR_A696C5B052196F364366A29A8F5BFD11 /* PlaybackEngine.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = PlaybackEngine.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
 		FR_A6C4EAF10170671C0CC66A0AD8A289BC /* NSDictionary.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NSDictionary.swift; path = NSDictionary.swift; sourceTree = "<group>"; };
 		FR_A7FF5E7CCA340EEE27C49B7A2D3C1D11 /* MainViewController.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MainViewController.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FR_AA3E94FD68097264E81DA1619747E4BB /* AttenuatorView.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorView.swift; path = AttenuatorView.swift; sourceTree = "<group>"; };
 		FR_AB9395FBACF9CBC0633E6348029B12D9 /* FailureReporting.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = FailureReporting.swift; path = FailureReporting.swift; sourceTree = "<group>"; };
 		FR_ABB967BED252330B0BF37A18537D227C /* VULevelMeter.DrawingData.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = VULevelMeter.DrawingData.swift; path = VULevelMeter.DrawingData.swift; sourceTree = "<group>"; };
 		FR_B72E7495E57F256C7D0FD080E52D57B2 /* MainMenu.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MainMenu.swift; path = MainMenu.swift; sourceTree = "<group>"; };
-		FR_BB604B68B4983CA779CB0937BF2A0141 /* AttenuatorParameter.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = AttenuatorParameter.swift; path = AttenuatorParameter.swift; sourceTree = "<group>"; };
 		FR_BBD97CEF8D30D0D29FEF70D9671F164C /* WaveformDrawingDataProvider.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = WaveformDrawingDataProvider.swift; path = WaveformDrawingDataProvider.swift; sourceTree = "<group>"; };
-		FR_BE0B9109FA899ABB8AFD908EF246F479 /* Logger.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Logger.swift; path = Logger.swift; sourceTree = "<group>"; };
 		FR_C06621CB613DFA14910EBB557A516DEC /* AUHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FR_C09890F64B3057CBCCD8E37DC201894D /* MediaLibraryUtility.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = MediaLibraryUtility.swift; path = MediaLibraryUtility.swift; sourceTree = "<group>"; };
 		FR_C1694027842E491000EDD66763216BFD /* NumericTypesConversions.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = NumericTypesConversions.swift; path = NumericTypesConversions.swift; sourceTree = "<group>"; };
@@ -434,7 +432,6 @@
 		G_29A6692B1346260E2FC854F6E08EFFFB /* AttenuatorAU */ = {
 			isa = PBXGroup;
 			children = (
-				FR_1D9DA26A64EF23C354DDC74DB1040008 /* Attenuator.swift */,
 			);
 			name = AttenuatorAU;
 			path = AttenuatorAU;
@@ -445,7 +442,7 @@
 			children = (
 				G_1C5A9861B2AFEFBA8A9BA8A3A4936D45 /* Attenuator */,
 				G_29A6692B1346260E2FC854F6E08EFFFB /* AttenuatorAU */,
-				G_D0B10CE578ACEDBF6FB75C5BC91AE040 /* AttenuatorKit */,
+				G_9DB2ECD403DCA461EA91E46BDA32880D /* Common */,
 			);
 			name = SampleAUPlugin;
 			path = SampleAUPlugin;
@@ -678,6 +675,20 @@
 			path = Sources;
 			sourceTree = "<group>";
 		};
+		G_9DB2ECD403DCA461EA91E46BDA32880D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				FR_5CD016A1B953E4477B93938828566376 /* AttenuatorAudioUnit.swift */,
+				FR_4C154BA5F74540BD0CCE7F5CB785EFFC /* AttenuatorDSPKernel.swift */,
+				FR_7AB603A11EE37CA320F76D76C3284384 /* AttenuatorParameter.swift */,
+				FR_AA3E94FD68097264E81DA1619747E4BB /* AttenuatorView.swift */,
+				FR_624B1CE3BECC9ABECFB75DA167E10E4C /* AttenuatorViewController.swift */,
+				FR_93465C73251184D9FC68869056D610DA /* Logger.swift */,
+			);
+			name = Common;
+			path = Common;
+			sourceTree = "<group>";
+		};
 		G_A30B91DCE96C7861610BCD8A182ACF51 /* Reporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,20 +769,6 @@
 			);
 			name = SampleAUHost;
 			path = SampleAUHost;
-			sourceTree = "<group>";
-		};
-		G_D0B10CE578ACEDBF6FB75C5BC91AE040 /* AttenuatorKit */ = {
-			isa = PBXGroup;
-			children = (
-				FR_8935BC026452C57BDF73D3A06F9FCD6C /* AttenuatorAudioUnit.swift */,
-				FR_73F72567A13269ADA860D7DA9F9BFB19 /* AttenuatorDSPKernel.swift */,
-				FR_BB604B68B4983CA779CB0937BF2A0141 /* AttenuatorParameter.swift */,
-				FR_3EBDA897B2A44FAE2F282CE1077F9D04 /* AttenuatorView.swift */,
-				FR_33691044F08DE2804BACEEA76C3FAC2F /* AttenuatorViewController.swift */,
-				FR_BE0B9109FA899ABB8AFD908EF246F479 /* Logger.swift */,
-			);
-			name = AttenuatorKit;
-			path = AttenuatorKit;
 			sourceTree = "<group>";
 		};
 		G_DA65BF44C77188ED0D20CB7F3CB2BC31 /* Common */ = {
@@ -883,6 +880,7 @@
 				RBP_EED142C0CC1F602CAF6FA841D19079E8 /* Resources */,
 				CFBP_343DB71FECA1CCA03968818712435616 /* Embed App Extensions */,
 				SSBP_1C200BC0F29735A5418F2E5F51489819 /* Register Extension */,
+				SSBP_71B6CF9F51AF48741F093F21AC4A302D /* Verify Extension */,
 			);
 			buildRules = (
 			);
@@ -950,7 +948,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nCMD=\"pluginkit -v -a \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\"\necho Running: $CMD\n$CMD\n";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n# Due Not-In-Time/Too-Late Plug-In registration we have to manually do it.\nCMD=\"pluginkit -vr \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" || true\"\necho Running: $CMD\n$CMD\nCMD=\"pluginkit -va \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\"\necho Running: $CMD\n$CMD\n";
+		};
+		SSBP_71B6CF9F51AF48741F093F21AC4A302D /* Verify Extension */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Verify Extension";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n# Comment line below for AU Validation\nexit 0\n\nsleep .5\nCMD=\"auval -v aufx attr wlUA\"\necho Running: $CMD\n$CMD\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -971,12 +983,12 @@
 				BF_D7058952EA55FF941C082A8430AC0C37 /* PlaybackEngineContext.swift in Sources */,
 				BF_340E26B8EC732D06739393B375643A51 /* ControlIcon.swift in Sources */,
 				BF_F5327395B502B168FD53A2CD64409E59 /* main.swift in Sources */,
-				BF_D9FC041A04C06243A0DB897E4C14DBA3 /* AttenuatorDSPKernel.swift in Sources */,
-				BF_88A5DC91029C627D09A82FEAA834CDC0 /* AttenuatorAudioUnit.swift in Sources */,
-				BF_7CE2A934491BD3EBDF96A90E942C726B /* AttenuatorView.swift in Sources */,
-				BF_21215DE302653C134C6C9B4CB01062A0 /* Logger.swift in Sources */,
-				BF_838A58E5A8291A71C45AFA1C23B1F34D /* AttenuatorParameter.swift in Sources */,
-				BF_F43E7828B04F492B8CC2EAB727C510EA /* AttenuatorViewController.swift in Sources */,
+				BF_2DC2B1C7FC302C551C79BAE6B9AC8B5D /* AttenuatorDSPKernel.swift in Sources */,
+				BF_680D375FD2AF1052D3068A4109489799 /* AttenuatorAudioUnit.swift in Sources */,
+				BF_4429BBA38BEF164F2972D4F577378AC8 /* AttenuatorView.swift in Sources */,
+				BF_7E6F53DE086E151DBFC9EF04E7E3398C /* Logger.swift in Sources */,
+				BF_3CF6F345288208729E3CA42FBB34E387 /* AttenuatorParameter.swift in Sources */,
+				BF_36A410846D84FB1A082D1829E614B065 /* AttenuatorViewController.swift in Sources */,
 				BF_7B0D3FD033EA90F0A8043519113CD70B /* String.Index.swift in Sources */,
 				BF_BC9BE7878ABB95D05AFFA627370D159E /* FileManager.swift in Sources */,
 				BF_25DDC87F5A48C58643F195BA193445D4 /* String.swift in Sources */,
@@ -1059,13 +1071,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF_3A5EB34D7AE72478C789A65F695D4C6E /* Attenuator.swift in Sources */,
-				BF_A326E49ABC6D95751B246FB87685B815 /* AttenuatorDSPKernel.swift in Sources */,
-				BF_D5FBCFB998630DAA88F0B5AD882CF4BC /* AttenuatorAudioUnit.swift in Sources */,
-				BF_21FBDB3B7E0C20035A23E9367250020F /* AttenuatorView.swift in Sources */,
-				BF_A0D320177BAE23EE5D613A0249F99ABD /* Logger.swift in Sources */,
-				BF_845A56746DFD5F7F689E2328DD7332C1 /* AttenuatorParameter.swift in Sources */,
-				BF_342A185B2A4FD3A1E17C9C77B232EBCC /* AttenuatorViewController.swift in Sources */,
+				BF_A559726F5E4FCFB90A486F080A8D8556 /* AttenuatorDSPKernel.swift in Sources */,
+				BF_016B8D4022C471027C9E330F4B2937A5 /* AttenuatorAudioUnit.swift in Sources */,
+				BF_B92C73EB1792B2F7861BB18657DEA57A /* AttenuatorView.swift in Sources */,
+				BF_AB0FF0332294DC94D5718677FA22E057 /* Logger.swift in Sources */,
+				BF_08B3F7882C5BF1B268666211E99158DC /* AttenuatorParameter.swift in Sources */,
+				BF_5B105BBCFF7E1A191D8524DB94F25DFE /* AttenuatorViewController.swift in Sources */,
 				BF_E8E916A55A8E0695697048FEDF6E6812 /* String.Index.swift in Sources */,
 				BF_C867CF1C87B995F48859D398494ED3EA /* FileManager.swift in Sources */,
 				BF_D6FBE9F3B6A0EBE3965F4378DA33A08C /* String.swift in Sources */,
@@ -1230,6 +1241,7 @@
 			baseConfigurationReference = FR_21B53FDA3E94E30D1856A001877E2FCE /* Extension-macOS.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/AttenuatorAU/Extension.entitlements;
 				INFOPLIST_FILE = SampleAUPlugin/AttenuatorAU/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator.AttenuatorAU;
@@ -1243,6 +1255,7 @@
 			baseConfigurationReference = FR_21B53FDA3E94E30D1856A001877E2FCE /* Extension-macOS.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_ENTITLEMENTS = SampleAUPlugin/AttenuatorAU/Extension.entitlements;
 				INFOPLIST_FILE = SampleAUPlugin/AttenuatorAU/Info.plist;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.Attenuator.AttenuatorAU;

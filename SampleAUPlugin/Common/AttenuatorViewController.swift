@@ -66,6 +66,7 @@ open class AttenuatorViewController: AUViewController {
 extension AttenuatorViewController: AUAudioUnitFactory {
 
    public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
+      log.info(.controller, "Creating AudioUnit for component description: \(componentDescription)")
       let au = try AttenuatorAudioUnit(componentDescription: componentDescription, options: [])
       audioUnit = au
       DispatchQueue.main.async {
