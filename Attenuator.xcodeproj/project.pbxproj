@@ -949,7 +949,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\nCMD=\"pluginkit -vr \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" || true\"\necho Running: $CMD\n$CMD\nCMD=\"pluginkit -va \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\"\necho Running: $CMD\n$CMD\n";
+			shellScript = "[[ -r ~/.bashrc ]] && . ~/.bashrc\n# Due Not-In-Time/Too-Late Plug-In registration we have to manually do it.\nCMD=\"pluginkit -vr \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" || true\"\necho Running: $CMD\n$CMD\nCMD=\"pluginkit -va \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\"\"\necho Running: $CMD\n$CMD\n";
 		};
 		SSBP_71B6CF9F51AF48741F093F21AC4A302D /* Verify Extension */ = {
 			isa = PBXShellScriptBuildPhase;

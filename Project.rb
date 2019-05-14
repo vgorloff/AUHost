@@ -72,6 +72,7 @@ class Project < AbstractProject
       gen.setAsLaunchTarget(auHost, auExtension)
       gen.addToBuildScheme(attenuator, auExtension)
       script = <<DATA
+# Due Not-In-Time/Too-Late Plug-In registration we have to manually do it.
 CMD="pluginkit -vr \"$CODESIGNING_FOLDER_PATH/Contents/PlugIns/AttenuatorAU.appex\" || true"
 echo Running: $CMD
 $CMD
