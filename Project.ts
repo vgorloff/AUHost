@@ -15,7 +15,9 @@ class Project extends WL.AbstractProject {
    }
 
    build() {
-      console.log(this.projectFilePath)
+      let b = new WL.XcodeBuilder(this.projectFilePath)
+      b.build("AUHost-macOS")
+      b.build("Attenuator-macOS")
    }
 
 }
