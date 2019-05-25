@@ -20,4 +20,16 @@ class Project extends WL.AbstractProject {
       b.build("Attenuator-macOS")
    }
 
+   clean() {
+      WL.FileSystem.rmdirIfExists("/tmp/Attenuator.dst")
+      WL.FileSystem.rmdirIfExists(`${this.projectDirPath}/DerivedData`)
+      WL.FileSystem.rmdirIfExists(`${this.projectDirPath}/Build`)
+   }
+
+   ci() {
+      let b = new WL.XcodeBuilder(this.projectFilePath)
+      b.ci("AUHost-macOS")
+      b.ci("Attenuator-macOS")
+   }
+
 }

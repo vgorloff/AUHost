@@ -21,11 +21,6 @@ class Project < AbstractProject
       }
    end
 
-   def release()
-      XcodeBuilder.new(@projectFilePath).ci("AUHost-macOS")
-      XcodeBuilder.new(@projectFilePath).ci("Attenuator-macOS")
-   end
-
    def archive()
       XcodeBuilder.new(@projectFilePath).archive("AUHost-macOS")
       XcodeBuilder.new(@projectFilePath).archive("Attenuator-macOS")
