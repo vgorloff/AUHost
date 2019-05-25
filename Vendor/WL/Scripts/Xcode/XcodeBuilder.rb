@@ -33,10 +33,6 @@ class XcodeBuilder
       @exportPlistFilePath = File.join(Dir.tmpdir, "ruby-automation.#{SecureRandom.uuid}.xml")
    end
 
-   def build(schema)
-      AutomationProxy.xc_build(@projectFilePath, schema)
-   end
-
    def test(schema, configuration = nil)
       c = configuration.nil? ? "" : "-configuration #{configuration}"
       cmd = "#{@buildExecutable} -project \"#{@projectFilePath}\" -scheme \"#{schema}\" #{c} #{@derivedDataPath} test #{@commonArgsXCPretty}"
@@ -63,14 +59,6 @@ class XcodeBuilder
       if $?.exitstatus != 0
          raise "Archive failed with status: #{$?.exitstatus}"
       end
-   end
-
-   def clean(schema)
-      AutomationProxy.xc_clean(@projectFilePath, schema)
-   end
-
-   def ci(schema)
-      AutomationProxy.xc_ci(@projectFilePath, schema)
    end
 
    def self.validateBinary(path)
