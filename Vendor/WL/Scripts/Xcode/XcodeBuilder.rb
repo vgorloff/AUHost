@@ -15,7 +15,6 @@ end
 class XcodeBuilder
 
    def initialize(projectFilePath, buildRoot = ENV['PWD'])
-      require_relative '../Proxy/AutomationProxy.rb'
       require 'securerandom'
       require 'tmpdir'
       @isVerbodeMode = Environment.isDebug
