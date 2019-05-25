@@ -1,0 +1,6 @@
+{
+   "scripts": {
+      "build": "tsc",
+      "setup": "npm link @types/node wl-scripting"
+   }
+}
