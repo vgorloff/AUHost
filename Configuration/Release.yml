@@ -1,4 +1,3 @@
-name: Extension Registration Fix.
+name: Maintenance.
 description:
-   - Fixes previously broken Plug-In registration.
-   - See Docs/Troubleshooting.md
+   - Replaced Ruby with JS auutomation.
