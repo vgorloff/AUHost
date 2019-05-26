@@ -7,7 +7,7 @@
    },
    "scripts": {
       "build": "tsc",
-      "clean": "rm -rf ./node_modules/*",
+      "clean": "rm -rf ./node_modules/",
       "setup": "npm link @types/node wl-scripting"
    }
 }
