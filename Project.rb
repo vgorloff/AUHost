@@ -1,30 +1,10 @@
-MAIN_FILE = "#{ENV['AWL_SCRIPTS']}/Automation.rb".freeze
-if File.exist?(MAIN_FILE)
-   require MAIN_FILE
-else
-   Dir[File.dirname(__FILE__) + "/Vendor/WL/Scripts/**/*.rb"].each { |file| require file }
-end
+require "#{ENV['AWL_SCRIPTS']}/Automation.rb"
 
 class Project < AbstractProject
 
    def initialize(rootDirPath)
       super(rootDirPath)
       @projectFilePath = @rootDirPath + "/Attenuator.xcodeproj"
-   end
-
-   def clean()
-      XcodeBuilder.new(@projectFilePath).clean("AUHost-macOS")
-      XcodeBuilder.new(@projectFilePath).clean("Attenuator-macOS")
-   end
-
-   def build()
-      XcodeBuilder.new(@projectFilePath).build("AUHost-macOS")
-      XcodeBuilder.new(@projectFilePath).build("Attenuator-macOS")
-   end
-
-   def release()
-      XcodeBuilder.new(@projectFilePath).ci("AUHost-macOS")
-      XcodeBuilder.new(@projectFilePath).ci("Attenuator-macOS")
    end
 
    def archive()

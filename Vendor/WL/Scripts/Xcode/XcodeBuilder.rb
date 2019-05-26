@@ -15,7 +15,6 @@ end
 class XcodeBuilder
 
    def initialize(projectFilePath, buildRoot = ENV['PWD'])
-      require_relative '../Proxy/AutomationProxy.rb'
       require 'securerandom'
       require 'tmpdir'
       @isVerbodeMode = Environment.isDebug
@@ -31,10 +30,6 @@ class XcodeBuilder
          @commonArgsXCPretty = "| xcpretty --color --simple"
       end
       @exportPlistFilePath = File.join(Dir.tmpdir, "ruby-automation.#{SecureRandom.uuid}.xml")
-   end
-
-   def build(schema)
-      AutomationProxy.xc_build(@projectFilePath, schema)
    end
 
    def test(schema, configuration = nil)
@@ -63,14 +58,6 @@ class XcodeBuilder
       if $?.exitstatus != 0
          raise "Archive failed with status: #{$?.exitstatus}"
       end
-   end
-
-   def clean(schema)
-      AutomationProxy.xc_clean(@projectFilePath, schema)
-   end
-
-   def ci(schema)
-      AutomationProxy.xc_ci(@projectFilePath, schema)
    end
 
    def self.validateBinary(path)

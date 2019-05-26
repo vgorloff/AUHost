@@ -8,6 +8,8 @@ Developer.xcconfig
 /Build
 /DerivedData
 .tmp
+/node_modules
+/Project.js
 
 ## Package managers
 /Vendor/Carthage
