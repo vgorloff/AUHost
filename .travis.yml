@@ -5,7 +5,7 @@
 
 language: objective-c
 osx_image: xcode10.2
-install: gem install ffi
+install: npm install && npm run build
 script: make ci
 
 branches:
