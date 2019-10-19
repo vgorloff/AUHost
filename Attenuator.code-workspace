@@ -1,8 +1,14 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-   ],
-   "settings": {}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "*.xcodeproj": true,
+      "*-lock.json": true,
+      "node_modules": true
+    }
+  }
 }
