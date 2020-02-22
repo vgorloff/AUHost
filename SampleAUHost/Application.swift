@@ -7,12 +7,15 @@
 //
 
 import Cocoa
+import mcAppKit
 
 class Application: NSApplication {
 
-   private lazy var mediaLibraryBrowser = configure(NSMediaLibraryBrowserController.shared) {
-      $0.mediaLibraries = [.audio]
-   }
+   private lazy var mediaLibraryBrowser: NSMediaLibraryBrowserController = {
+      let result = NSMediaLibraryBrowserController.shared
+      result.mediaLibraries = [.audio]
+      return result
+   }()
    private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 420, height: 320),
                                                                    titleBarHeight: 30, titleBarLeadingOffset: 7)
    private lazy var appMenu = MainMenu()

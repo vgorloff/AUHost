@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import mcUIExtensions
 
 class MainToolbar: NSToolbar {
 

@@ -10,6 +10,7 @@ import Accelerate
 import AudioUnit
 import AVFoundation
 import Foundation
+import mcConcurrencyLocking
 
 struct AttenuatorDSPKernel {
 

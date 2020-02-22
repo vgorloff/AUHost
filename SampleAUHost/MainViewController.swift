@@ -10,6 +10,8 @@ import AVFoundation
 import Cocoa
 import CoreAudioKit
 import MediaLibrary
+import mcAppKit
+import mcUI
 
 // Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
 class MainViewController: ViewController {

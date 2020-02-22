@@ -8,6 +8,8 @@
 
 import Foundation
 import AppKit
+import mcAppKit
+import mcUI
 
 class TitlebarViewController: ViewController {
 
@@ -40,7 +42,7 @@ class TitlebarViewController: ViewController {
       let spacing: CGFloat = 7
 
       actionsBar.itemsSpacing = spacing
-      actionsBar.edgeInsets = EdgeInsets(horizontal: spacing, vertical: 3)
+      actionsBar.edgeInsets = NSEdgeInsets(horizontal: spacing, vertical: 3)
       actionsBar.setLeftItems(buttonPlay, buttonLoadAU)
       isHostTitleBar ? actionsBar.setRightItems(buttonReload, buttonLibrary) : actionsBar.setRightItems(buttonLibrary)
 
