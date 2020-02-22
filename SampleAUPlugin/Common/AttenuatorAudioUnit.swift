@@ -36,8 +36,12 @@ public class AttenuatorAudioUnit: AUAudioUnit {
 
    var eventHandler: ((Event) -> Void)?
 
-   public override var parameterTree: AUParameterTree {
-      return _parameterTree
+   public override var parameterTree: AUParameterTree? {
+      get {
+         return _parameterTree
+      } set {
+         fatalError()
+      }
    }
 
    public override var internalRenderBlock: AUInternalRenderBlock {

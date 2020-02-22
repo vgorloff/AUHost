@@ -8,6 +8,8 @@
 
 import AVFoundation
 import Cocoa
+import mcAppKit
+import mcUI
 
 class MainViewController: ViewController {
 
