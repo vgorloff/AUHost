@@ -8,6 +8,7 @@
 
 import AudioUnit
 import Cocoa
+import mcAppKit
 
 class AttenuatorView: NSView {
 
