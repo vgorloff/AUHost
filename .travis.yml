@@ -4,9 +4,9 @@
 # - Building Swift Project: https://docs.travis-ci.com/user/languages/objective-c/
 
 language: objective-c
-osx_image: xcode10.2
-install: npm install && npm run build
-script: make ci
+osx_image: xcode11.2
+install: nvm use v10.17.0 && ./Scripts/install.sh
+script: ./Scripts/ci.sh
 
 branches:
   only:
