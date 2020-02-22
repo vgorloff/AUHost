@@ -8,6 +8,8 @@
 
 import AVFoundation
 import CoreAudioKit
+import mcFoundation
+import mcConcurrencyLocking
 
 final class PlaybackEngine {
 

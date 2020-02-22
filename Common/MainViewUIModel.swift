@@ -10,6 +10,9 @@ import AppKit
 import AVFoundation
 import Foundation
 import MediaLibrary
+import mcFoundation
+import mcAppKit
+import mcMediaAU
 
 class MainViewUIModel {
 
