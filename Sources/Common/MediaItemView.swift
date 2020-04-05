@@ -9,11 +9,11 @@
 import Accelerate
 import AVFoundation
 import Cocoa
-import mcAppKit
 import mcMediaAU
-import mcFoundation
-import mcMedia
 import mcTypes
+import mcFoundation
+import mcAppKitMedia
+import mcMedia
 
 public final class MediaItemView: NSView {
    private var isHighlighted = false {
