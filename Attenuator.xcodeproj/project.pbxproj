@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		801C65C6243A7D990073ED5A /* mcMedia in Frameworks */ = {isa = PBXBuildFile; productRef = 801C65C5243A7D990073ED5A /* mcMedia */; };
 		801C65C8243A7E330073ED5A /* mcConcurrencyOC in Frameworks */ = {isa = PBXBuildFile; productRef = 801C65C7243A7E330073ED5A /* mcConcurrencyOC */; };
+		801C65CA243A7F080073ED5A /* MusicLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65C9243A7F080073ED5A /* MusicLibraryView.swift */; };
+		801C65CC243A8D8B0073ED5A /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */; };
 		80B9073A243A68F700D25F27 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072B243A68F700D25F27 /* MainMenu.swift */; };
 		80B9073B243A68F700D25F27 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072C243A68F700D25F27 /* EffectWindowController.swift */; };
 		80B9073C243A68F700D25F27 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072D243A68F700D25F27 /* main.swift */; };
@@ -31,6 +33,8 @@
 
 /* Begin PBXFileReference section */
 		800185ED2401E85600CAACA5 /* mc-concurrency-locking */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-concurrency-locking"; sourceTree = "<group>"; };
+		801C65C9243A7F080073ED5A /* MusicLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryView.swift; sourceTree = "<group>"; };
+		801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
 		806897B22401EB0B00EAAA3C /* mc-media-au */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-media-au"; sourceTree = "<group>"; };
 		809636FD2401E81300A1FF15 /* mc-media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-media"; sourceTree = "<group>"; };
 		80B9072B243A68F700D25F27 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 				80B9072D243A68F700D25F27 /* main.swift */,
 				80B9072B243A68F700D25F27 /* MainMenu.swift */,
 				80B9072F243A68F700D25F27 /* MainViewController.swift */,
+				801C65C9243A7F080073ED5A /* MusicLibraryView.swift */,
+				801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -290,6 +296,7 @@
 				80B9073B243A68F700D25F27 /* EffectWindowController.swift in Sources */,
 				80B90740243A68F700D25F27 /* MainViewUIModel.swift in Sources */,
 				80B90743243A68F700D25F27 /* MainToolbar.swift in Sources */,
+				801C65CC243A8D8B0073ED5A /* MusicLibrary.swift in Sources */,
 				80B90746243A68F700D25F27 /* ControlIcon.swift in Sources */,
 				80B90744243A68F700D25F27 /* MainToolbar.Event.swift in Sources */,
 				80B9073A243A68F700D25F27 /* MainMenu.swift in Sources */,
@@ -298,6 +305,7 @@
 				80B90747243A68F700D25F27 /* Application.swift in Sources */,
 				80B90742243A68F700D25F27 /* MediaItemView.swift in Sources */,
 				80B90745243A68F700D25F27 /* PlaybackEngineContext.swift in Sources */,
+				801C65CA243A7F080073ED5A /* MusicLibraryView.swift in Sources */,
 				80B90741243A68F700D25F27 /* TitlebarViewController.swift in Sources */,
 				80B9073D243A68F700D25F27 /* Logger.swift in Sources */,
 				80B9073E243A68F700D25F27 /* MainViewController.swift in Sources */,

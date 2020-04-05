@@ -11,12 +11,7 @@ import mcUIReusable
 
 class Application: NSApplication {
 
-   private lazy var mediaLibraryBrowser: NSMediaLibraryBrowserController = {
-      let result = NSMediaLibraryBrowserController.shared
-      result.mediaLibraries = [.audio]
-      return result
-   }()
-   private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 420, height: 320),
+   private lazy var windowController = FullContentWindowController(contentRect: CGRect(width: 500, height: 460),
                                                                    titleBarHeight: 30, titleBarLeadingOffset: 7)
    private lazy var appMenu = MainMenu()
    private lazy var viewController = MainViewController()
@@ -44,17 +39,11 @@ extension Application: NSApplicationDelegate {
          case .effect:
             self?.viewController.toggleEffect()
          case .library:
-            self?.mediaLibraryBrowser.togglePanel(nil)
+            self?.viewController.toggleSongs()
          case .play:
             self?.viewController.viewModel.togglePlay()
          case .reloadPlugIns:
             self?.viewController.viewModel.reloadEffects()
-         }
-      }
-      viewController.viewModel.mediaLibraryLoader.eventHandler = { [weak self] in
-         switch $0 {
-         case .mediaSourceChanged:
-            self?.mediaLibraryBrowser.isVisible = true
          }
       }
       viewController.viewModel.eventHandler = { [weak self] in
