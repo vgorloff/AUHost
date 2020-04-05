@@ -27,6 +27,7 @@ class MainViewController: ViewController {
    private lazy var scrollView2 = NSScrollView()
    private lazy var contentStackView = NSStackView().autolayoutView()
    private lazy var mainStackView = StackView(axis: .vertical).autolayoutView()
+   private lazy var libraryView = MusicLibraryView()
 
    let viewModel = MainViewUIModel()
 
@@ -126,6 +127,9 @@ extension MainViewController {
       mediaItemView.onCompleteDragWithObjects = { [weak self] in
          self?.viewModel.handlePastboard($0)
       }
+      libraryView.onSelected = { [weak self] item in
+         self?.viewModel.processFileAtURL(item.url)
+      }
    }
 
    func toggleEffect() {
@@ -143,6 +147,10 @@ extension MainViewController {
             self?.viewModel.effectWindowWillOpen(wc)
          }
       }
+   }
+   
+   func toggleSongs() {
+      libraryView.isHidden = !libraryView.isHidden
    }
 
    func handleEvent(_ event: MainViewUIModel.Event, _ state: MainViewUIModel.State) {
@@ -184,7 +192,7 @@ extension MainViewController {
 
       view.addSubview(mainStackView)
 
-      mainStackView.addArrangedSubviews(mediaItemView, contentStackView)
+      mainStackView.addArrangedSubviews(mediaItemView, contentStackView, libraryView)
       mainStackView.distribution = .fill
       mainStackView.spacing = 0
 
@@ -258,5 +266,7 @@ extension MainViewController {
 
       mediaItemView.heightAnchor.constraint(equalToConstant: 98).activate()
       constraints.activate()
+      
+      libraryView.heightAnchor.constraint(equalTo: contentStackView.heightAnchor, multiplier: 1 / 1.5).activate()
    }
 }

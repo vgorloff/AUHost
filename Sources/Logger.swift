@@ -10,7 +10,7 @@ import Foundation
 import mcFoundationLogging
 
 enum ModuleLogCategory: String, LogCategory {
-   case media, controller
+   case media, controller, view
 }
 
 let log = Log<ModuleLogCategory>(subsystem: "host")
