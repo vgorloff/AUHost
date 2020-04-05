@@ -7,7 +7,7 @@
 //
 
 import Cocoa
-import mcAppKit
+import mcUIReusable
 
 class Application: NSApplication {
 

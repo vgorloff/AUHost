@@ -19,7 +19,7 @@ class MainViewUIModel {
    struct State: OptionSet, CustomStringConvertible {
 
       let rawValue: Int
-      static let empty = State(rawValue: 0)
+      static let empty = State([])
       static let canPlayback = State(rawValue: 1 << 0)
       static let canOpenEffect = State(rawValue: 1 << 1)
 
@@ -206,9 +206,9 @@ extension MainViewUIModel {
          switch change {
          case .audioComponentRegistered:
             this.eventHandler?(.audioComponentsChanged, this.state)
-         case .audioComponentInstanceInvalidated(let au, _):
-            if au.component == this.selectedAUComponent?.audioComponent {
-               this.selectEffect(nil, completion: nil)
+         case .audioComponentInstanceInvalidated(let au):
+            if au.componentDescription == this.selectedAUComponent?.audioComponentDescription {
+               this.selectEffect(nil, completion: nil) // This execution branch seems working not correctly.
             } else {
                this.eventHandler?(.audioComponentsChanged, this.state)
             }

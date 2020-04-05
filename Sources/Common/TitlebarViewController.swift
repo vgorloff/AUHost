@@ -8,7 +8,7 @@
 
 import Foundation
 import AppKit
-import mcAppKit
+import mcUIReusable
 import mcUI
 
 class TitlebarViewController: ViewController {
