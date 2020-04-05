@@ -226,7 +226,7 @@
 		P_FACDA378012DE3A90A786E393CA9AF88 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = WaveLabs;
 				TargetAttributes = {
 					NT_95FE89DEDF299FCFA9AB1C71B49D4135 = {
