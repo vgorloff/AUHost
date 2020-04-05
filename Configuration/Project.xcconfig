@@ -10,7 +10,7 @@
 
 CURRENT_PROJECT_VERSION = $(APP_BUNDLE_VERSION)
 
-DEVELOPMENT_TEAM = E27KE6VTF6
+DEVELOPMENT_TEAM = TAGGGN65SW
 
 // You can use this file to override project settings (such as DEVELOPMENT_TEAM, File/Framework Search Paths, etc.)
 #include? "Developer.xcconfig"
