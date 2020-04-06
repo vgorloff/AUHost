@@ -216,7 +216,8 @@
 				80E502DA2401E2FF0075AD72 /* mc-shared-config */,
 			);
 			name = Vendor;
-			sourceTree = AWL_LIB_SRC;
+			path = node_modules;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
