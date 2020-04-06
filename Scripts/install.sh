@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+
 SrcDirPath=$(cd "$(dirname "$0")/../"; pwd)
 cd "$SrcDirPath"
 
