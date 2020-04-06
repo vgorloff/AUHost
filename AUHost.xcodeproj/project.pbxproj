@@ -259,7 +259,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CL_9A72FCD7FEC7348A2ECDC3AF3DB110BB /* Build configuration list for PBXProject "Attenuator" */;
+			buildConfigurationList = CL_9A72FCD7FEC7348A2ECDC3AF3DB110BB /* Build configuration list for PBXProject "AUHost" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -365,7 +365,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CL_9A72FCD7FEC7348A2ECDC3AF3DB110BB /* Build configuration list for PBXProject "Attenuator" */ = {
+		CL_9A72FCD7FEC7348A2ECDC3AF3DB110BB /* Build configuration list for PBXProject "AUHost" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BC_21673C41B8BFFE283A0227A74AD603D2 /* Debug */,
