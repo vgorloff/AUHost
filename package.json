@@ -1,13 +1,23 @@
 {
-   "dependencies": {
-      "wl-scripting": "^1.0.6",
-      "@types/node": "^12.0.2",
-      "ffi": "^2.3.0",
-      "typescript": "^3.4.5"
-   },
-   "scripts": {
-      "build": "tsc",
-      "clean": "rm -rf ./node_modules/*",
-      "setup": "npm link @types/node wl-scripting"
-   }
+  "dependencies": {
+    "mc-app-kit": "1.0.32",
+    "mc-app-kit-media": "1.0.32",
+    "mc-concurrency-locking": "1.0.32",
+    "mc-concurrency-oc": "1.0.32",
+    "mc-foundation": "1.0.32",
+    "mc-foundation-extensions": "1.0.32",
+    "mc-foundation-logging": "1.0.32",
+    "mc-foundation-observables": "1.0.32",
+    "mc-foundation-testability": "1.0.32",
+    "mc-media": "1.0.32",
+    "mc-media-au": "1.0.32",
+    "mc-media-extensions": "1.0.32",
+    "mc-runtime": "1.0.32",
+    "mc-shared-config": "1.0.32",
+    "mc-types": "1.0.32",
+    "mc-ui-core": "1.0.32",
+    "mc-ui-extensions": "1.0.32",
+    "mc-ui-reusable": "1.0.32",
+    "mc-math": "1.0.32"
+  }
 }

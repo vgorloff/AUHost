@@ -1,0 +1,404 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		801C65C6243A7D990073ED5A /* mcMedia in Frameworks */ = {isa = PBXBuildFile; productRef = 801C65C5243A7D990073ED5A /* mcMedia */; };
+		801C65C8243A7E330073ED5A /* mcConcurrencyOC in Frameworks */ = {isa = PBXBuildFile; productRef = 801C65C7243A7E330073ED5A /* mcConcurrencyOC */; };
+		801C65CA243A7F080073ED5A /* MusicLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65C9243A7F080073ED5A /* MusicLibraryView.swift */; };
+		801C65CC243A8D8B0073ED5A /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */; };
+		80B9073A243A68F700D25F27 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072B243A68F700D25F27 /* MainMenu.swift */; };
+		80B9073B243A68F700D25F27 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072C243A68F700D25F27 /* EffectWindowController.swift */; };
+		80B9073C243A68F700D25F27 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072D243A68F700D25F27 /* main.swift */; };
+		80B9073D243A68F700D25F27 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072E243A68F700D25F27 /* Logger.swift */; };
+		80B9073E243A68F700D25F27 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072F243A68F700D25F27 /* MainViewController.swift */; };
+		80B9073F243A68F700D25F27 /* PlaybackEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90731243A68F700D25F27 /* PlaybackEngine.swift */; };
+		80B90740243A68F700D25F27 /* MainViewUIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90732243A68F700D25F27 /* MainViewUIModel.swift */; };
+		80B90741243A68F700D25F27 /* TitlebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90733243A68F700D25F27 /* TitlebarViewController.swift */; };
+		80B90742243A68F700D25F27 /* MediaItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90734243A68F700D25F27 /* MediaItemView.swift */; };
+		80B90743243A68F700D25F27 /* MainToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90735243A68F700D25F27 /* MainToolbar.swift */; };
+		80B90744243A68F700D25F27 /* MainToolbar.Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90736243A68F700D25F27 /* MainToolbar.Event.swift */; };
+		80B90745243A68F700D25F27 /* PlaybackEngineContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90737243A68F700D25F27 /* PlaybackEngineContext.swift */; };
+		80B90746243A68F700D25F27 /* ControlIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90738243A68F700D25F27 /* ControlIcon.swift */; };
+		80B90747243A68F700D25F27 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90739243A68F700D25F27 /* Application.swift */; };
+		80B9074A243A690400D25F27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B90749243A690400D25F27 /* Assets.xcassets */; };
+		80B90760243A7C9100D25F27 /* mcAppKitMedia in Frameworks */ = {isa = PBXBuildFile; productRef = 80B9075F243A7C9100D25F27 /* mcAppKitMedia */; };
+		80B90763243A7D1B00D25F27 /* mcUIReusable in Frameworks */ = {isa = PBXBuildFile; productRef = 80B90762243A7D1B00D25F27 /* mcUIReusable */; };
+		80E502F42401E4950075AD72 /* mcMediaAU in Frameworks */ = {isa = PBXBuildFile; productRef = 80E502F32401E4950075AD72 /* mcMediaAU */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		800185ED2401E85600CAACA5 /* mc-concurrency-locking */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-concurrency-locking"; sourceTree = "<group>"; };
+		801C65C9243A7F080073ED5A /* MusicLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryView.swift; sourceTree = "<group>"; };
+		801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
+		806897B22401EB0B00EAAA3C /* mc-media-au */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-media-au"; sourceTree = "<group>"; };
+		809636FD2401E81300A1FF15 /* mc-media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-media"; sourceTree = "<group>"; };
+		80B9072B243A68F700D25F27 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		80B9072C243A68F700D25F27 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
+		80B9072D243A68F700D25F27 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		80B9072E243A68F700D25F27 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		80B9072F243A68F700D25F27 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		80B90731243A68F700D25F27 /* PlaybackEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngine.swift; sourceTree = "<group>"; };
+		80B90732243A68F700D25F27 /* MainViewUIModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewUIModel.swift; sourceTree = "<group>"; };
+		80B90733243A68F700D25F27 /* TitlebarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitlebarViewController.swift; sourceTree = "<group>"; };
+		80B90734243A68F700D25F27 /* MediaItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItemView.swift; sourceTree = "<group>"; };
+		80B90735243A68F700D25F27 /* MainToolbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.swift; sourceTree = "<group>"; };
+		80B90736243A68F700D25F27 /* MainToolbar.Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainToolbar.Event.swift; sourceTree = "<group>"; };
+		80B90737243A68F700D25F27 /* PlaybackEngineContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackEngineContext.swift; sourceTree = "<group>"; };
+		80B90738243A68F700D25F27 /* ControlIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlIcon.swift; sourceTree = "<group>"; };
+		80B90739243A68F700D25F27 /* Application.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		80B90749243A690400D25F27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		80B9074B243A695D00D25F27 /* package.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = package.json; sourceTree = "<group>"; };
+		80B9074C243A695D00D25F27 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		80B9075D243A7C8600D25F27 /* mc-app-kit-media */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-app-kit-media"; sourceTree = "<group>"; };
+		80B90761243A7D0900D25F27 /* mc-ui-reusable */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-ui-reusable"; sourceTree = "<group>"; };
+		80E502DC2401E2FF0075AD72 /* App-macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "App-macOS.xcconfig"; sourceTree = "<group>"; };
+		80E502DD2401E2FF0075AD72 /* Tests-tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Tests-tvOS.xcconfig"; sourceTree = "<group>"; };
+		80E502DE2401E2FF0075AD72 /* Framework-macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Framework-macOS.xcconfig"; sourceTree = "<group>"; };
+		80E502DF2401E2FF0075AD72 /* App-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "App-iOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E02401E2FF0075AD72 /* Tests-macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Tests-macOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E12401E2FF0075AD72 /* Framework-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Framework-iOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E22401E2FF0075AD72 /* Tool-macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Tool-macOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E32401E2FF0075AD72 /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
+		80E502E42401E2FF0075AD72 /* Tests-iOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Tests-iOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E52401E2FF0075AD72 /* Tests-watchOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Tests-watchOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E62401E2FF0075AD72 /* Extension-macOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Extension-macOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E72401E2FF0075AD72 /* App-tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "App-tvOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E82401E2FF0075AD72 /* App-watchOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "App-watchOS.xcconfig"; sourceTree = "<group>"; };
+		80E502E92401E2FF0075AD72 /* Framework-watchOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Framework-watchOS.xcconfig"; sourceTree = "<group>"; };
+		80E502EA2401E2FF0075AD72 /* Project.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+		80E502EB2401E2FF0075AD72 /* Framework-tvOS.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Framework-tvOS.xcconfig"; sourceTree = "<group>"; };
+		80E502F22401E48C0075AD72 /* mc-concurrency-oc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-concurrency-oc"; sourceTree = "<group>"; };
+		80ED95112401E8E300459919 /* mc-foundation-logging */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "mc-foundation-logging"; sourceTree = "<group>"; };
+		FR_841D6038D586FF02D462ABBC1060950B /* Version.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; path = Version.xcconfig; sourceTree = "<group>"; };
+		FR_C06621CB613DFA14910EBB557A516DEC /* AUHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AUHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FR_C5B3C62711608CAD1642BB7A813DC0A9 /* Project.xcconfig */ = {isa = PBXFileReference; explicitFileType = text.xcconfig; path = Project.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		80E502EE2401E3900075AD72 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80B90763243A7D1B00D25F27 /* mcUIReusable in Frameworks */,
+				80E502F42401E4950075AD72 /* mcMediaAU in Frameworks */,
+				80B90760243A7C9100D25F27 /* mcAppKitMedia in Frameworks */,
+				801C65C6243A7D990073ED5A /* mcMedia in Frameworks */,
+				801C65C8243A7E330073ED5A /* mcConcurrencyOC in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		80B90730243A68F700D25F27 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				80B90731243A68F700D25F27 /* PlaybackEngine.swift */,
+				80B90732243A68F700D25F27 /* MainViewUIModel.swift */,
+				80B90733243A68F700D25F27 /* TitlebarViewController.swift */,
+				80B90734243A68F700D25F27 /* MediaItemView.swift */,
+				80B90735243A68F700D25F27 /* MainToolbar.swift */,
+				80B90736243A68F700D25F27 /* MainToolbar.Event.swift */,
+				80B90737243A68F700D25F27 /* PlaybackEngineContext.swift */,
+				80B90738243A68F700D25F27 /* ControlIcon.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		80B90748243A690400D25F27 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				80B90749243A690400D25F27 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		80B9075E243A7C9100D25F27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80E502DA2401E2FF0075AD72 /* mc-shared-config */ = {
+			isa = PBXGroup;
+			children = (
+				80E502DB2401E2FF0075AD72 /* Configuration */,
+			);
+			path = "mc-shared-config";
+			sourceTree = "<group>";
+		};
+		80E502DB2401E2FF0075AD72 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				80E502DC2401E2FF0075AD72 /* App-macOS.xcconfig */,
+				80E502DD2401E2FF0075AD72 /* Tests-tvOS.xcconfig */,
+				80E502DE2401E2FF0075AD72 /* Framework-macOS.xcconfig */,
+				80E502DF2401E2FF0075AD72 /* App-iOS.xcconfig */,
+				80E502E02401E2FF0075AD72 /* Tests-macOS.xcconfig */,
+				80E502E12401E2FF0075AD72 /* Framework-iOS.xcconfig */,
+				80E502E22401E2FF0075AD72 /* Tool-macOS.xcconfig */,
+				80E502E32401E2FF0075AD72 /* Common.xcconfig */,
+				80E502E42401E2FF0075AD72 /* Tests-iOS.xcconfig */,
+				80E502E52401E2FF0075AD72 /* Tests-watchOS.xcconfig */,
+				80E502E62401E2FF0075AD72 /* Extension-macOS.xcconfig */,
+				80E502E72401E2FF0075AD72 /* App-tvOS.xcconfig */,
+				80E502E82401E2FF0075AD72 /* App-watchOS.xcconfig */,
+				80E502E92401E2FF0075AD72 /* Framework-watchOS.xcconfig */,
+				80E502EA2401E2FF0075AD72 /* Project.xcconfig */,
+				80E502EB2401E2FF0075AD72 /* Framework-tvOS.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		G_3021EFC7765F2F4055FE8FA519B59646 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FR_C06621CB613DFA14910EBB557A516DEC /* AUHost.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		G_4AD27EB67B947494EE1E1B33A1F3ABD8 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				FR_C5B3C62711608CAD1642BB7A813DC0A9 /* Project.xcconfig */,
+				FR_841D6038D586FF02D462ABBC1060950B /* Version.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		G_5948CC351BA9F1AB7B6EB87B90F159DA = {
+			isa = PBXGroup;
+			children = (
+				80B9074B243A695D00D25F27 /* package.json */,
+				80B9074C243A695D00D25F27 /* README.md */,
+				G_4AD27EB67B947494EE1E1B33A1F3ABD8 /* Configuration */,
+				80B90748243A690400D25F27 /* Resources */,
+				G_C90739D6E114E124833A088F7EE2AF9E /* Sources */,
+				G_F029FEE36E820A2FF491A885C1BDFA46 /* Vendor */,
+				G_3021EFC7765F2F4055FE8FA519B59646 /* Products */,
+				80B9075E243A7C9100D25F27 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		G_C90739D6E114E124833A088F7EE2AF9E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				80B90730243A68F700D25F27 /* Common */,
+				80B90739243A68F700D25F27 /* Application.swift */,
+				80B9072C243A68F700D25F27 /* EffectWindowController.swift */,
+				80B9072E243A68F700D25F27 /* Logger.swift */,
+				80B9072D243A68F700D25F27 /* main.swift */,
+				80B9072B243A68F700D25F27 /* MainMenu.swift */,
+				80B9072F243A68F700D25F27 /* MainViewController.swift */,
+				801C65C9243A7F080073ED5A /* MusicLibraryView.swift */,
+				801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		G_F029FEE36E820A2FF491A885C1BDFA46 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				80B90761243A7D0900D25F27 /* mc-ui-reusable */,
+				80B9075D243A7C8600D25F27 /* mc-app-kit-media */,
+				806897B22401EB0B00EAAA3C /* mc-media-au */,
+				80ED95112401E8E300459919 /* mc-foundation-logging */,
+				800185ED2401E85600CAACA5 /* mc-concurrency-locking */,
+				809636FD2401E81300A1FF15 /* mc-media */,
+				80E502F22401E48C0075AD72 /* mc-concurrency-oc */,
+				80E502DA2401E2FF0075AD72 /* mc-shared-config */,
+			);
+			name = Vendor;
+			path = node_modules;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		NT_95FE89DEDF299FCFA9AB1C71B49D4135 /* AUHost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CL_19D6E0D3FCF72FF90786F097CB96B9DD /* Build configuration list for PBXNativeTarget "AUHost" */;
+			buildPhases = (
+				SBP_EF769EAAC08127686370D94F89DA1AC2 /* Sources */,
+				RBP_FDF124685FC2CEDECCE2E2542CE0E6B3 /* Resources */,
+				80E502EE2401E3900075AD72 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AUHost;
+			packageProductDependencies = (
+				80E502F32401E4950075AD72 /* mcMediaAU */,
+				80B9075F243A7C9100D25F27 /* mcAppKitMedia */,
+				80B90762243A7D1B00D25F27 /* mcUIReusable */,
+				801C65C5243A7D990073ED5A /* mcMedia */,
+				801C65C7243A7E330073ED5A /* mcConcurrencyOC */,
+			);
+			productName = AUHost;
+			productReference = FR_C06621CB613DFA14910EBB557A516DEC /* AUHost.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		P_FACDA378012DE3A90A786E393CA9AF88 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1140;
+				ORGANIZATIONNAME = WaveLabs;
+				TargetAttributes = {
+					NT_95FE89DEDF299FCFA9AB1C71B49D4135 = {
+						LastSwiftMigration = 1140;
+					};
+				};
+			};
+			buildConfigurationList = CL_9A72FCD7FEC7348A2ECDC3AF3DB110BB /* Build configuration list for PBXProject "AUHost" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = G_5948CC351BA9F1AB7B6EB87B90F159DA;
+			productRefGroup = G_3021EFC7765F2F4055FE8FA519B59646 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				NT_95FE89DEDF299FCFA9AB1C71B49D4135 /* AUHost */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		RBP_FDF124685FC2CEDECCE2E2542CE0E6B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80B9074A243A690400D25F27 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		SBP_EF769EAAC08127686370D94F89DA1AC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80B9073B243A68F700D25F27 /* EffectWindowController.swift in Sources */,
+				80B90740243A68F700D25F27 /* MainViewUIModel.swift in Sources */,
+				80B90743243A68F700D25F27 /* MainToolbar.swift in Sources */,
+				801C65CC243A8D8B0073ED5A /* MusicLibrary.swift in Sources */,
+				80B90746243A68F700D25F27 /* ControlIcon.swift in Sources */,
+				80B90744243A68F700D25F27 /* MainToolbar.Event.swift in Sources */,
+				80B9073A243A68F700D25F27 /* MainMenu.swift in Sources */,
+				80B9073F243A68F700D25F27 /* PlaybackEngine.swift in Sources */,
+				80B9073C243A68F700D25F27 /* main.swift in Sources */,
+				80B90747243A68F700D25F27 /* Application.swift in Sources */,
+				80B90742243A68F700D25F27 /* MediaItemView.swift in Sources */,
+				80B90745243A68F700D25F27 /* PlaybackEngineContext.swift in Sources */,
+				801C65CA243A7F080073ED5A /* MusicLibraryView.swift in Sources */,
+				80B90741243A68F700D25F27 /* TitlebarViewController.swift in Sources */,
+				80B9073D243A68F700D25F27 /* Logger.swift in Sources */,
+				80B9073E243A68F700D25F27 /* MainViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BC_21673C41B8BFFE283A0227A74AD603D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FR_C5B3C62711608CAD1642BB7A813DC0A9 /* Project.xcconfig */;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		BC_2BE53FED6391DCF1333B2966588512C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80E502DC2401E2FF0075AD72 /* App-macOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App.entitlements;
+				DEPLOYMENT_LOCATION = YES;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AUHost;
+				PRODUCT_NAME = AUHost;
+			};
+			name = Release;
+		};
+		BC_CCBDFFED67340BEA7F2EF621F414F646 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80E502DC2401E2FF0075AD72 /* App-macOS.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App.entitlements;
+				DEPLOYMENT_LOCATION = YES;
+				INFOPLIST_FILE = Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = ua.com.wavelabs.AUHost;
+				PRODUCT_NAME = AUHost;
+			};
+			name = Debug;
+		};
+		BC_DFB86FFF0BED5FCA0AB63417A3F18130 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FR_C5B3C62711608CAD1642BB7A813DC0A9 /* Project.xcconfig */;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CL_19D6E0D3FCF72FF90786F097CB96B9DD /* Build configuration list for PBXNativeTarget "AUHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC_CCBDFFED67340BEA7F2EF621F414F646 /* Debug */,
+				BC_2BE53FED6391DCF1333B2966588512C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CL_9A72FCD7FEC7348A2ECDC3AF3DB110BB /* Build configuration list for PBXProject "AUHost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC_21673C41B8BFFE283A0227A74AD603D2 /* Debug */,
+				BC_DFB86FFF0BED5FCA0AB63417A3F18130 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		801C65C5243A7D990073ED5A /* mcMedia */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = mcMedia;
+		};
+		801C65C7243A7E330073ED5A /* mcConcurrencyOC */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = mcConcurrencyOC;
+		};
+		80B9075F243A7C9100D25F27 /* mcAppKitMedia */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = mcAppKitMedia;
+		};
+		80B90762243A7D1B00D25F27 /* mcUIReusable */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = mcUIReusable;
+		};
+		80E502F32401E4950075AD72 /* mcMediaAU */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = mcMediaAU;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = P_FACDA378012DE3A90A786E393CA9AF88 /* Project object */;
+}
