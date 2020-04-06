@@ -1,5 +1,8 @@
 #!/bin/bash
 
+set -e
+set -o pipefail
+
 source $(dirname "$0")/common.sh
 
 SrcDirPath=$(cd "$(dirname "$0")/../"; pwd)
