@@ -5,7 +5,7 @@
 
 language: objective-c
 osx_image: xcode11.2
-install: nvm use v10.17.0 && ./Scripts/install.sh
+install: node -v && nvm ls && ./Scripts/install.sh
 script: ./Scripts/ci.sh
 
 branches:
