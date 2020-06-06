@@ -20,4 +20,5 @@ Selecting **Preset** will activate corresponding **Factory** preset.
 
 ## Build system and Deployment target requirements
 
-- Xcode 11.4 (Swift 5.2)
+- Xcode 11.5
+

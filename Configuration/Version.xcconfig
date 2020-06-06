@@ -1,10 +1,2 @@
-//
-//  Version.xcconfig
-//  Attenuator
-//
-//  Created by Vlad Gorlov on 10/10/2016.
-//  Copyright © 2016 WaveLabs. All rights reserved.
-//
-
-APP_BUNDLE_VERSION=41
-APP_PROJECT_VERSION=1.2.3
+APP_BUNDLE_VERSION=42
+APP_PROJECT_VERSION=1.2.4
