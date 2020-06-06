@@ -52,7 +52,7 @@ extension Application: NSApplicationDelegate {
       }
       viewController.viewModel.mediaLibraryLoader.loadMediaLibrary()
       if #available(OSX 10.12, *) {
-         windowController.contentWindow.tabbingMode = .disallowed
+         windowController.content.window.tabbingMode = .disallowed
       }
       windowController.embedContent(viewController)
       windowController.embedTitleBarContent(titleBarController)
