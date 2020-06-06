@@ -1195,6 +1195,13 @@
 			remoteGlobalIDString = 045B85E55620CCAAC336378F;
 			remoteInfo = mcMediaExtensions_iOS;
 		};
+		555260DB77AEC40F05B92223 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF2E1D8B54DADE3AB44ADA38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF90CEBC8F0945B171BD6E0D;
+			remoteInfo = mcFoundationLogging_iOS;
+		};
 		55EFA0B73C1D47306AFE493D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CF2E1D8B54DADE3AB44ADA38 /* Project object */;
@@ -1460,6 +1467,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = CF90CEBC8F0945B171BD6E0D;
 			remoteInfo = mcFoundationLogging_iOS;
+		};
+		D2234BFB9BF97F9E7093D716 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CF2E1D8B54DADE3AB44ADA38 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE0310CB9D0D56BE9BF9D4D5;
+			remoteInfo = mcFoundationLogging_macOS;
 		};
 		D28153FCE69CA3D6DF4CD80D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3362,6 +3376,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				11F68B28C5897D1E4A2C312C /* PBXTargetDependency */,
 			);
 			name = mcAppKitMedia_iOS;
 			productName = mcAppKitMedia_iOS;
@@ -4003,6 +4018,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				F3E30E06EDB7CF9EC27FACD8 /* PBXTargetDependency */,
 			);
 			name = mcAppKitMedia_macOS;
 			productName = mcAppKitMedia_macOS;
@@ -6031,6 +6047,11 @@
 			target = EC4145873A80DB9C5F6F60E6 /* mcRuntime_macOS */;
 			targetProxy = B5B8B2AF00ED2079FD829CBD /* PBXContainerItemProxy */;
 		};
+		11F68B28C5897D1E4A2C312C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CF90CEBC8F0945B171BD6E0D /* mcFoundationLogging_iOS */;
+			targetProxy = 555260DB77AEC40F05B92223 /* PBXContainerItemProxy */;
+		};
 		143CAE96F34CE29D4D7F0623 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2479EDC55229D390BDE021EB /* mcConcurrencyLocking_iOS */;
@@ -6445,6 +6466,11 @@
 			isa = PBXTargetDependency;
 			target = 19C01787EEEB40AFB80C8668 /* mcTypes_iOS */;
 			targetProxy = 1A850FB8FC8225F15EE43351 /* PBXContainerItemProxy */;
+		};
+		F3E30E06EDB7CF9EC27FACD8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE0310CB9D0D56BE9BF9D4D5 /* mcFoundationLogging_macOS */;
+			targetProxy = D2234BFB9BF97F9E7093D716 /* PBXContainerItemProxy */;
 		};
 		F447AEA9880F2732C5B9A5AA /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
