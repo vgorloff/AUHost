@@ -1,0 +1,22 @@
+include:
+  - ../../../Projects/mc/templates.yml
+  - ../../../Projects/mc/mcAppScaffold/project.yml
+  - ../../../Projects/mc/mcUIReusable/project.yml
+  - ../../../Projects/mc/mcAppKitMedia/project.yml
+  - ../../../Projects/mc/mcFoundation/project.yml
+  - ../../../Projects/mc/mcMediaAU/project.yml
+  - ../../../Projects/mc/mcMedia/project.yml
+  - ../../../Projects/mc/mcMediaExtensions/project.yml
+  - ../../../Projects/mc/mcGraphicsExtensions/project.yml
+name: Shared
+aggregateTargets:
+  Shared:
+    targets:
+      - mcAppScaffold_macOS
+      - mcUIReusable_macOS
+      - mcAppKitMedia_macOS
+      - mcFoundation_macOS
+      - mcMediaAU_macOS
+      - mcMedia_macOS
+      - mcMediaExtensions_macOS
+      - mcGraphicsExtensions_macOS

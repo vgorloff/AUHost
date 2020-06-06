@@ -7,7 +7,6 @@
 //
 
 import AppKit
-import mcFoundation
 
 class EffectWindowController: NSWindowController {
 
@@ -47,6 +46,6 @@ extension EffectWindowController: NSWindowDelegate {
 extension EffectWindowController {
 
    private func setupUI() {
-      windowFrameAutosaveName = NSWindow.FrameAutosaveName(string(fromClass: EffectWindowController.self) + ":WindowFrame")
+      windowFrameAutosaveName = NSWindow.FrameAutosaveName(NSStringFromClass(EffectWindowController.self) + ":WindowFrame")
    }
 }

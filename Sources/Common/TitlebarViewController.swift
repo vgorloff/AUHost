@@ -59,7 +59,7 @@ class TitlebarViewController: ViewController {
    }
 
    override func setupLayout() {
-      LayoutConstraint.pin(to: .bounds, actionsBar).activate()
+      anchor.pin.toBounds(actionsBar).activate()
    }
 
    override func setupHandlers() {

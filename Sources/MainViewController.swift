@@ -124,6 +124,11 @@ extension MainViewController: NSTableViewDelegate {
 extension MainViewController {
 
    override func setupHandlers() {
+      tableEffects.delegate = self
+      tableEffects.dataSource = self
+
+      tablePresets.delegate = self
+      tablePresets.dataSource = self
       mediaItemView.onCompleteDragWithObjects = { [weak self] in
          self?.viewModel.handlePastboard($0)
       }
@@ -179,14 +184,6 @@ extension MainViewController {
 }
 
 extension MainViewController {
-
-   override func setupDataSource() {
-      tableEffects.delegate = self
-      tableEffects.dataSource = self
-
-      tablePresets.delegate = self
-      tablePresets.dataSource = self
-   }
 
    override func setupUI() {
 
@@ -258,7 +255,7 @@ extension MainViewController {
 
    override func setupLayout() {
 
-      LayoutConstraint.pin(to: .bounds, mainStackView).activate()
+      anchor.pin.toBounds(mainStackView).activate()
       var constraints: [NSLayoutConstraint] = []
 
       constraints += [contentStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 100),
