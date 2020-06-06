@@ -9,7 +9,6 @@
 import Accelerate
 import AVFoundation
 import Cocoa
-import mcMediaAU
 import mcTypes
 import mcFoundation
 import mcAppKitMedia
@@ -61,7 +60,7 @@ public final class MediaItemView: NSView {
       NSColor.white.setFill()
       dirtyRect.fill()
       (isHighlighted ? NSColor.keyboardFocusIndicatorColor : NSColor.gridColor).setStroke()
-      let borderWidth = isHighlighted ? 2.CGFloatValue : 1.CGFloatValue
+      let borderWidth = isHighlighted ? CGFloat(2) : CGFloat(1)
       NSBezierPath.defaultLineWidth = borderWidth
       NSBezierPath.stroke(bounds.insetBy(dx: 0.5 * borderWidth, dy: 0.5 * borderWidth))
 
