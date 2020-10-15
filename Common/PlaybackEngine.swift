@@ -183,6 +183,7 @@ final class PlaybackEngine {
       try sm.handleEvent(event: .Play)
    }
 
+   @available(OSX 10.12, *)
    func openEffectView(completionHandler: @escaping (NSViewController?) -> Void) {
       if let au = context.effect?.auAudioUnit {
          au.requestViewController(completionHandler: completionHandler)

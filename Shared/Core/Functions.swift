@@ -18,25 +18,25 @@ public struct c { // swiftlint:disable:this type_name
 }
 
 extension a {
-	public static func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
-		if let value = arg {
-			return closure(value)
-		}
-		return nil
-	}
+   public static func map<A, B>(arg: A?, closure: (A) -> B) -> B? {
+      if let value = arg {
+         return closure(value)
+      }
+      return nil
+   }
 }
 
 extension g {
-
+   
    public static func configure<T>(_ element: T, _ closure: (T) -> Void) -> T {
       closure(element)
       return element
    }
-
+   
    public static func configureEach<T>(_ elements: [T], _ closure: (T) -> Void) {
       elements.forEach { closure($0) }
    }
-
+   
 }
 
 // MARK: - Global
@@ -49,23 +49,23 @@ extension g {
    public static func pointerAddress(of object: AnyObject) -> Int {
       return unsafeBitCast(object, to: Int.self)
    }
-
+   
    /// Function for debug purpose which does nothing, but not stripped by compiler during optimization.
    public static func noop() {
    }
-
+   
    /// - returns: Time interval in seconds.
    /// - parameter closure: Code block to measure performance.
-   public static func benchmark(_ closure: (Void) -> Void) -> CFTimeInterval {
+   public static func benchmark(_ closure: () -> Void) -> CFTimeInterval {
       let startTime = CFAbsoluteTimeGetCurrent()
       closure()
       return CFAbsoluteTimeGetCurrent() - startTime
    }
-
+   
    public static func string(fromClass cls: AnyClass) -> String {
       return NSStringFromClass(cls)
    }
-
+   
 }
 
 public protocol MergeableType {
@@ -74,11 +74,11 @@ public protocol MergeableType {
 }
 
 extension c {
-
+   
    public static func merge<T: MergeableType>(_ existing: [T], with newElements: inout [T]) -> [T] {
       var insertedOrUpdated = [T]()
       var processed = [T]()
-
+      
       var iteratorEx = existing.makeIterator()
       var iteratorNew = newElements.makeIterator()
       var entityOrNilEx = iteratorEx.next()
@@ -102,16 +102,16 @@ extension c {
             entityOrNilEx = iteratorEx.next()
             entityOrNilNew = iteratorNew.next()
          }
-
+         
       } while (true)
-
+      
       // Continue inserting if there are still available new entries from server
       while let entityNew = entityOrNilNew {
          insertedOrUpdated.append(entityNew)
          entityOrNilNew = iteratorNew.next()
       }
       newElements = processed
-
+      
       return insertedOrUpdated
    }
 }

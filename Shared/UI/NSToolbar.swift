@@ -19,21 +19,20 @@ extension NSToolbar {
       var eventHandler: ((Event) -> Void)?
       var makeItemCallback: ((_ itemIdentifier: String, _ willBeInserted: Bool) -> NSToolbarItem?)?
 
-      func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: String,
-                   willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-         return makeItemCallback?(itemIdentifier, flag)
+      func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+         return makeItemCallback?(itemIdentifier.rawValue, flag)
       }
 
-      func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
-         return defaultItemIdentifiers
+      func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+         return defaultItemIdentifiers.map { NSToolbarItem.Identifier($0) }
       }
 
-      func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
-         return allowedItemIdentifiers
+      func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+         return allowedItemIdentifiers.map { NSToolbarItem.Identifier($0) }
       }
 
-      func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [String] {
-         return selectableItemIdentifiers
+      func toolbarSelectableItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+         return selectableItemIdentifiers.map { NSToolbarItem.Identifier($0) }
       }
 
       // MARK: Notifications

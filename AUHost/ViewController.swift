@@ -97,6 +97,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
       }
    }
 
+   @available(OSX 10.12, *)
    @IBAction private func actionToggleEffectView(_ sender: AnyObject?) {
       guard canOpenEffectView && effectWindowController == nil else {
          return
@@ -223,6 +224,7 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
 
    // MARK: - NSTableViewDelegate
 
+   @available(OSX 10.11, *)
    func tableViewSelectionDidChange(_ aNotification: Notification) {
       guard let tableView = aNotification.object as? NSTableView, tableView.selectedRow >= 0 else {
          return
@@ -257,7 +259,11 @@ class ViewController: NSViewController, NSTableViewDataSource, NSTableViewDelega
                      s.selectedAUComponent = component
                      if shouldReopenEffectView {
                         DispatchQueue.main.async { [weak self] in
-                           self?.actionToggleEffectView(nil)
+                           if #available(OSX 10.12, *) {
+                              self?.actionToggleEffectView(nil)
+                           } else {
+                              fatalError("unavailable")
+                           }
                         }
                      }
                   }

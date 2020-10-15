@@ -9,26 +9,26 @@
 import CoreGraphics
 
 public final class WaveformDrawingDataProvider {
-
-	public private(set) var points = [CGPoint]()
-	private var width: CGFloat = 0
-	private var height: CGFloat = 0
-	private var xOffset: CGFloat = 0
-	private var yOffset: CGFloat = 0
-
-	public func addVerticalLineAtXPosition(xPosition: CGFloat, valueMin: CGFloat, valueMax: CGFloat) {
+   
+   public private(set) var points = [CGPoint]()
+   private var width: CGFloat = 0
+   private var height: CGFloat = 0
+   private var xOffset: CGFloat = 0
+   private var yOffset: CGFloat = 0
+   
+   public func addVerticalLineAtXPosition(xPosition: CGFloat, valueMin: CGFloat, valueMax: CGFloat) {
       let middleY = 0.5 * height
       let halfAmplitude = middleY
       points.append(CGPoint(x: xPosition, y: yOffset + middleY - halfAmplitude * valueMin))
       points.append(CGPoint(x: xPosition, y: yOffset + middleY - halfAmplitude * valueMax))
-	}
-
-	public func reset(xOffset: CGFloat, yOffset: CGFloat, width: CGFloat, height: CGFloat) {
-		self.xOffset = xOffset
-		self.yOffset = yOffset
-		self.width = width
-		self.height = height
+   }
+   
+   public func reset(xOffset: CGFloat, yOffset: CGFloat, width: CGFloat, height: CGFloat) {
+      self.xOffset = xOffset
+      self.yOffset = yOffset
+      self.width = width
+      self.height = height
       points.removeAll(keepingCapacity: true)
-	}
-
+   }
+   
 }

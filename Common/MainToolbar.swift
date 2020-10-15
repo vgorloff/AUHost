@@ -24,8 +24,8 @@ class MainToolbar: NSToolbar {
       allowsUserCustomization = true
       autosavesConfiguration = true
       displayMode = .iconAndLabel
-      toolbarDelegate.allowedItemIdentifiers = [NSToolbarSpaceItemIdentifier, NSToolbarFlexibleSpaceItemIdentifier]
-      toolbarDelegate.defaultItemIdentifiers = Event.toolbarIDs + [NSToolbarFlexibleSpaceItemIdentifier]
+      toolbarDelegate.allowedItemIdentifiers = [NSToolbarItem.Identifier.space.rawValue, NSToolbarItem.Identifier.flexibleSpace.rawValue]
+      toolbarDelegate.defaultItemIdentifiers = Event.toolbarIDs + [NSToolbarItem.Identifier.flexibleSpace.rawValue]
       if showsReloadPlugInsItem == false {
          toolbarDelegate.defaultItemIdentifiers = toolbarDelegate.defaultItemIdentifiers.filter {
             $0 != Event.reloadPlugIns.itemIdentifier
@@ -42,7 +42,7 @@ class MainToolbar: NSToolbar {
    }
 
    private func makeToolbarItem(event: Event) -> NSToolbarItem {
-      let item = NSToolbarItem(itemIdentifier: event.itemIdentifier)
+      let item = NSToolbarItem(itemIdentifier: NSToolbarItem.Identifier(rawValue: event.itemIdentifier))
       item.target = self
       item.action = #selector(handle(toolbarItem:))
       item.label = event.label
@@ -56,7 +56,7 @@ class MainToolbar: NSToolbar {
    }
 
    @objc private func handle(toolbarItem: NSToolbarItem) {
-      guard let event = Event(stringValue: toolbarItem.itemIdentifier) else {
+      guard let event = Event(stringValue: toolbarItem.itemIdentifier.rawValue) else {
          return
       }
       eventHandler?(event)
@@ -85,8 +85,8 @@ extension MainToolbar.Event {
 
    var image: NSImage? {
       switch self {
-      case .reloadPlugIns: return NSImage(named: NSImageNameNetwork)
-      case .toggleMediaLibrary: return NSImage(named: NSImageNameFolder)
+      case .reloadPlugIns: return NSImage(named: NSImage.networkName)
+      case .toggleMediaLibrary: return NSImage(named: NSImage.folderName)
       }
    }
 

@@ -28,7 +28,7 @@ extension _SmartDispatchSourceType {
          dispatchSourceSuspendCount -= 1
       }
    }
-
+   
    func _suspend() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
@@ -36,7 +36,7 @@ extension _SmartDispatchSourceType {
       dispatchSourceInstance.suspend()
       dispatchSourceSuspendCount += 1
    }
-
+   
    func _cancel() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
@@ -45,7 +45,7 @@ extension _SmartDispatchSourceType {
          dispatchSourceInstance.cancel()
       }
    }
-
+   
    func _deinit() { // swiftlint:disable:this identifier_name
       guard let dispatchSourceInstance = dispatchSource else {
          return
@@ -63,64 +63,64 @@ extension _SmartDispatchSourceType {
 public protocol SmartDispatchSourceType: class {
    func resume()
    func suspend()
-   func setEventHandler(qos: DispatchQoS, flags: DispatchWorkItemFlags, handler: ((Void) -> Void)?)
+   func setEventHandler(qos: DispatchQoS, flags: DispatchWorkItemFlags, handler: (() -> Void)?)
 }
 
 public class SmartDispatchSource: _SmartDispatchSourceType, SmartDispatchSourceType, CustomReflectable {
-
+   
    fileprivate var dispatchSource: DispatchSourceProtocol?
    fileprivate var dispatchSourceSuspendCount = 1
-
+   
    public func setEventHandler(qos: DispatchQoS = .default, flags: DispatchWorkItemFlags = .inheritQoS,
-                               handler: ((Void) -> Void)?) {
+                               handler: (() -> Void)?) {
       dispatchSource?.setEventHandler(qos: qos, flags: flags, handler: handler)
    }
-
+   
    public func resume() {
       _resume()
    }
-
+   
    public func suspend() {
       _suspend()
    }
-
+   
    deinit {
       _deinit()
    }
-
-	public var customMirror: Mirror {
-      let children = DictionaryLiteral<String, Any>(dictionaryLiteral: ("dispatchSourceSuspendCount", dispatchSourceSuspendCount))
+   
+   public var customMirror: Mirror {
+      let children = KeyValuePairs<String, Any>(dictionaryLiteral: ("dispatchSourceSuspendCount", dispatchSourceSuspendCount))
       return Mirror(self, children: children)
    }
 }
 
 public final class SmartDispatchSourceTimer: SmartDispatchSource {
-
+   
    public init(flags: DispatchSource.TimerFlags = [], queue: DispatchQueue? = nil) {
       super.init()
       dispatchSource = DispatchSource.makeTimerSource(flags: flags, queue: queue)
    }
-
+   
    public func scheduleRepeating(deadline: DispatchTime, interval: DispatchTimeInterval,
                                  leeway: DispatchTimeInterval = .milliseconds(0)) {
       if let timer = dispatchSource as? DispatchSourceTimer {
-			timer.scheduleRepeating(deadline: deadline, interval: interval, leeway: leeway)
+         timer.schedule(deadline: deadline, repeating: interval, leeway: leeway)
       }
    }
-
+   
 }
 
 public final class SmartDispatchSourceUserDataAdd: SmartDispatchSource {
-	public init(queue: DispatchQueue? = nil) {
+   public init(queue: DispatchQueue? = nil) {
       super.init()
-		dispatchSource = DispatchSource.makeUserDataAddSource(queue: queue)
-	}
-	public func mergeData(value: UInt) {
-		guard let dispatchSourceInstance = dispatchSource as? DispatchSourceUserDataAdd else {
-			return
-		}
-		dispatchSourceInstance.add(data: value)
-	}
+      dispatchSource = DispatchSource.makeUserDataAddSource(queue: queue)
+   }
+   public func mergeData(value: UInt) {
+      guard let dispatchSourceInstance = dispatchSource as? DispatchSourceUserDataAdd else {
+         return
+      }
+      dispatchSourceInstance.add(data: value)
+   }
 }
 
 public final class SmartDispatchSourceUserDataOr: SmartDispatchSource {

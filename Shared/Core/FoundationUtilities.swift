@@ -9,13 +9,13 @@
 import Foundation
 
 extension Notification {
-
+   
    public class SmartObserver {
-
+      
       public typealias HandleNotificationBlock = ((Notification) -> Void)
       private var notificationObserver: NSObjectProtocol!
       private var notificationCallbackBlock: HandleNotificationBlock?
-
+      
       public init(forName name: Notification.Name, object: AnyObject? = nil,
                   queue: OperationQueue = OperationQueue.main, usingBlock: HandleNotificationBlock? = nil) {
          notificationCallbackBlock = usingBlock
@@ -24,12 +24,12 @@ extension Notification {
             self?.handleNotification($0)
          }
       }
-
+      
       deinit {
          notificationCallbackBlock = nil
          NotificationCenter.default.removeObserver(notificationObserver)
       }
-
+      
       /// Calls block which was passed as *usingBlock* parameter.
       /// Child classes may override to change default behaviour.
       /// - parameter notification: Notification to handle.
@@ -38,7 +38,7 @@ extension Notification {
             callbackBlock(notification)
          }
       }
-
+      
    }
-
+   
 }

@@ -7,14 +7,14 @@
 //
 
 public struct MinMax<T: Comparable> {
-	public var min: T
-	public var max: T
-	public init(min aMin: T, max aMax: T) {
-		min = aMin
-		max = aMax
-	}
-	public init(valueA: MinMax, valueB: MinMax) {
-		min = Swift.min(valueA.min, valueB.min)
-		max = Swift.max(valueA.max, valueB.max)
-	}
+   public var min: T
+   public var max: T
+   public init(min aMin: T, max aMax: T) {
+      min = aMin
+      max = aMax
+   }
+   public init(valueA: MinMax, valueB: MinMax) {
+      min = Swift.min(valueA.min, valueB.min)
+      max = Swift.max(valueA.max, valueB.max)
+   }
 }
