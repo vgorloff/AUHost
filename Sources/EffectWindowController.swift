@@ -7,6 +7,9 @@
 //
 
 import AppKit
+import mcRuntime
+
+private let log = Logger.getLogger(EffectWindowController.self)
 
 class EffectWindowController: NSWindowController {
 

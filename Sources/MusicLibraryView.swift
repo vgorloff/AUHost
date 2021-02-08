@@ -8,6 +8,10 @@
 
 import mcUIReusable
 import AppKit
+import mcRuntime
+import mcUI
+
+private let log = Logger.getLogger(MusicLibraryView.self)
 
 class MusicLibraryView: ScrollView {
    
@@ -35,8 +39,12 @@ class MusicLibraryView: ScrollView {
       tableView.intercellSpacing = CGSize(width: 3, height: 2)
       tableView.setContentHuggingPriority(.defaultHigh, for: .vertical)
       tableView.usesAlternatingRowBackgroundColors = true
-      
       tableView.addTableColumn(tableColumn)
+      if #available(OSX 11.0, *) {
+         tableView.style = .fullWidth
+      }
+      tableView.rowHeight = 24
+      tableView.usesAutomaticRowHeights = true
       
       tableColumn.title = "Songs"
       tableColumn.isEditable = false
@@ -56,13 +64,18 @@ extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
    }
    
    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-      let label = NSTextField()
+      let label = NSTextField().autolayoutView()
       label.isBezeled = false
       label.isEditable = false
       label.drawsBackground = false
       let component = library.items[row]
       label.stringValue = component.fullName
-      return label
+
+      let view = View()
+      view.addSubview(label)
+      anchor.withFormat("|-3-[*]-3-|", label).activate()
+      anchor.withFormat("V:|-2-[*]-2-|", label).activate()
+      return view
    }
    
    func tableViewSelectionDidChange(_ aNotification: Notification) {
@@ -70,7 +83,7 @@ extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
          return
       }
       let component = library.items[tableView.selectedRow]
-      log.debug(.view, component.fullName)
+      log.debug(component.fullName)
       onSelected?(component)
    }
 }
