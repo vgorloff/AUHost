@@ -38,8 +38,12 @@ class MusicLibraryView: ScrollView {
       tableView.intercellSpacing = CGSize(width: 3, height: 2)
       tableView.setContentHuggingPriority(.defaultHigh, for: .vertical)
       tableView.usesAlternatingRowBackgroundColors = true
-      
       tableView.addTableColumn(tableColumn)
+      if #available(OSX 11.0, *) {
+         tableView.style = .fullWidth
+      }
+      tableView.rowHeight = 24
+      tableView.usesAutomaticRowHeights = true
       
       tableColumn.title = "Songs"
       tableColumn.isEditable = false
