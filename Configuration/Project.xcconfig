@@ -1,6 +1,6 @@
 #include "Version.xcconfig"
 
-MCA_COPYRIGHT = Copyright © 2020 Volodymyr Gorlov. All rights reserved.
+MCA_COPYRIGHT = Copyright © 2018 Volodymyr Gorlov. All rights reserved.
 CURRENT_PROJECT_VERSION = $(APP_BUNDLE_VERSION:default=1)
 DYLIB_COMPATIBILITY_VERSION = $(CURRENT_PROJECT_VERSION)
 DYLIB_CURRENT_VERSION = $(CURRENT_PROJECT_VERSION)
