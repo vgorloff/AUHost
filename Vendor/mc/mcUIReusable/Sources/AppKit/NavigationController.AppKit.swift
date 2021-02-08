@@ -16,7 +16,7 @@ import mcUI
 // See also:
 // - https://github.com/bfolder/BFNavigationController/blob/master/BFNavigationController/BFNavigationController.m
 // - https://github.com/bfolder/BFNavigationController/blob/master/BFNavigationController/NSView%2BBFUtilities.m
-public class NavigationController: NSViewController {
+open class NavigationController: NSViewController {
 
    public private(set) lazy var navigationBar = NavigationBar(frame: CGRect.w100h100)
    private var containerView = View(frame: CGRect.w100h100)
@@ -205,6 +205,7 @@ extension NSViewController {
          return item
       } else {
          let item = NavigationItem()
+         item.title = title
          _navigationItem = item
          return item
       }

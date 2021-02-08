@@ -11,6 +11,14 @@ import AppKit
 
 open class StackView: NSStackView {
 
+   public var align: NSLayoutConstraint.Attribute {
+      get {
+         return alignment
+      } set {
+         alignment = newValue
+      }
+   }
+
    public var backgroundColor: NSColor? {
       @available(*, unavailable)
       get {

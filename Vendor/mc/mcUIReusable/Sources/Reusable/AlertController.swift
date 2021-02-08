@@ -6,8 +6,7 @@
 //  Copyright © 2018 Vlad Gorlov. All rights reserved.
 //
 
-#if canImport(UIKit)
-import mcFoundation
+#if !os(macOS)
 import mcFoundationObservables
 import mcTypes
 import mcUIExtensions

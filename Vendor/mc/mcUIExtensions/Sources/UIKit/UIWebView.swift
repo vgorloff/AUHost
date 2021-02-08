@@ -10,6 +10,7 @@
 import UIKit
 
 @available(tvOS, unavailable)
+@available(iOS, deprecated: 12.0, message: "Use WKWebView")
 extension UIWebView {
 
    public func clearContents() {

@@ -8,11 +8,18 @@
 
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
+import mcFoundationObservables
+import mcTypes
 
 open class TextView: NSTextView {
 
+   public var onTextDidChange = EventHandler<String>()
+
+   private var observers: [NotificationObserver] = []
+
    override public init(frame frameRect: NSRect, textContainer container: NSTextContainer?) {
       super.init(frame: frameRect, textContainer: container)
+      setupNotifications()
       setupUI()
       setupLayout()
       setupHandlers()
@@ -38,6 +45,14 @@ open class TextView: NSTextView {
    }
 
    @objc open dynamic func setupDefaults() {
+   }
+
+   private func setupNotifications() {
+      observers.append(NotificationObserver(name: NSText.didChangeNotification, object: self, queue: .main) { [weak self] _ in
+         if let this = self {
+            self?.onTextDidChange.fire(this.string)
+         }
+      })
    }
 }
 #endif

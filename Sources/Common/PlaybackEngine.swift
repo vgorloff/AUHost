@@ -10,6 +10,9 @@ import AVFoundation
 import CoreAudioKit
 import mcConcurrencyLocking
 import mcFoundation
+import mcRuntime
+
+private let log = Logger.getLogger(PlaybackEngine.self)
 
 final class PlaybackEngine {
 
@@ -178,13 +181,13 @@ extension PlaybackEngine {
             do {
                try self?.context.startPlayer()
             } catch {
-               log.error(.media, error)
+               log.error(error)
             }
          case .paused:
             do {
                try self?.context.scheduleFile()
             } catch {
-               log.error(.media, error)
+               log.error(error)
             }
          case .stopped, .updatingGraph:
             break
@@ -208,7 +211,7 @@ extension PlaybackEngine {
       context.filePlaybackCompleted = { [weak self] in guard let s = self else { return }
          let change = Change(event: .autostop, oldState: s.stateID, newState: .stopped)
          let message = "Playback stopped or file finished playing. Current state: \(change.oldState)"
-         log.debug(.media, message)
+         log.debug(message)
          if change.oldState == .playing {
             DispatchQueue.main.async { [weak self] in guard let s = self else { return }
                s.context.stop()
@@ -220,7 +223,7 @@ extension PlaybackEngine {
 
    private func notifyAboutChange(_ change: Change) {
       stateID = change.newState
-      log.debug(.media, "State changed: \(change.oldState) => \(change.newState)")
+      log.debug("State changed: \(change.oldState) => \(change.newState)")
       DispatchQueue.main.async {
          self.changeHandler?(change)
       }

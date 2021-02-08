@@ -15,7 +15,7 @@ public struct SettingsProperty<T> {
    public let defaultValue: T
    public let key: SettingsKey
 
-   public init(_ key: String, _ group: String? = nil, _ defaultValue: T) {
+   public init(_ key: String, group: String? = nil, _ defaultValue: T) {
       self.key = SettingsKey(key: key, group: group)
       self.defaultValue = defaultValue
    }
@@ -40,11 +40,14 @@ open class Settings {
    public init() {
    }
 
-   public func addObserver(forKey: SettingsKey, callback: @escaping () -> Void) {
+   public func addObserver(forKey: SettingsKey, fireWithInitialValue: Bool = true, callback: @escaping () -> Void) {
       let observer = KeyValueObserver<Any>.observeNew(object: Settings.defaults, keyPath: forKey.id) { (_: Any) in
          callback()
       }
       observers.append(observer)
+      if fireWithInitialValue {
+         callback()
+      }
    }
 
    public func addObserver<Context: AnyObject>(_ caller: Context, forKey: SettingsKey, fireWithInitialValue: Bool = true,
@@ -136,6 +139,14 @@ extension Settings {
 
    public static func data(forKey key: SettingsKey) -> Data? {
       return defaults.data(forKey: key.id)
+   }
+
+   public static func set(_ newValue: [String: Any]?, forKey key: SettingsKey) {
+      defaults.set(newValue, forKey: key.id)
+   }
+
+   public static func dictionary(forKey key: SettingsKey) -> [String: Any]? {
+      return defaults.dictionary(forKey: key.id)
    }
 
    public static func set<T>(_ newValue: [T]?, forKey key: SettingsKey) {

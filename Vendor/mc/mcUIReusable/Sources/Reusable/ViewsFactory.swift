@@ -6,8 +6,7 @@
 //  Copyright © 2018 Vlad Gorlov. All rights reserved.
 //
 
-#if canImport(UIKit) || targetEnvironment(macCatalyst)
-import mcFoundation
+#if !os(macOS)
 import mcUI
 import mcUIExtensions
 import UIKit

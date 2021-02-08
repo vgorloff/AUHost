@@ -25,12 +25,6 @@ extension NSRegularExpression {
       return numMatches > 0
    }
 
-   @available(swift, deprecated: 5.1, renamed: "asMatches.ranges()")
-   public func matches(in string: String, options: NSRegularExpression.MatchingOptions = [],
-                       range: Range<String.Index>? = nil) -> [[Range<String.Index>]] {
-      return asMatches.ranges(in: string, options: options, range: range)
-   }
-
    public var asMatches: RegularExpressionMatches {
       return RegularExpressionMatches(instance: self)
    }
@@ -39,7 +33,6 @@ extension NSRegularExpression {
 public class RegularExpressionMatches {
 
    public typealias Options = NSRegularExpression.MatchingOptions
-   public typealias StringRange = Range<String.Index>
 
    private let instance: NSRegularExpression
 
@@ -47,22 +40,22 @@ public class RegularExpressionMatches {
       self.instance = instance
    }
 
-   public func ranges(in string: String, options: Options = [], range: StringRange? = nil) -> [[StringRange]] {
+   public func ranges(in string: String, options: Options = [], range: Range<String.Index>? = nil) -> [[Range<String.Index>]] {
       let ranges = nsRanges(in: string, options: options, range: range)
-      var result: [[StringRange]] = []
+      var result: [[Range<String.Index>]] = []
       for item in ranges {
          result.append(string.asRanges.convert(nsRanges: item))
       }
       return result
    }
 
-   public func nsRanges(in string: String, options: Options = [], range: StringRange? = nil) -> [[NSRange]] {
+   public func nsRanges(in string: String, options: Options = [], range: Range<String.Index>? = nil) -> [[NSRange]] {
       let range = range.map { string.asRanges.nsRange(from: $0) } ?? string.asRanges.wholeStringNSRange
-      return nsRanges(in: string, options: options, range: range)
+      return nsRanges(in: string, options: options, nsRange: range)
    }
 
-   public func nsRanges(in string: String, options: Options = [], range: NSRange? = nil) -> [[NSRange]] {
-      let range = range ?? string.asRanges.wholeStringNSRange
+   public func nsRanges(in string: String, options: Options = [], nsRange: NSRange? = nil) -> [[NSRange]] {
+      let range = nsRange ?? string.asRanges.wholeStringNSRange
       let matches = instance.matches(in: string, options: options, range: range)
       let result = matches.map { $0.allRanges }
       return result

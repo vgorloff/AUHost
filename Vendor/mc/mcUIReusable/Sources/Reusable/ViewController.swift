@@ -47,7 +47,7 @@ open class ViewController: UIViewController {
    }
 
    public init() {
-      contentView = View()
+      contentView = View().autoresizingView()
       super.init(nibName: nil, bundle: nil)
    }
 

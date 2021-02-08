@@ -10,6 +10,8 @@ import Foundation
 
 public enum BuildInfo {
 
+   public static var srcRootDirectory: String? // Set it in the `main.swift`.
+
    public static var isDebug: Bool {
       #if DEBUG // Do not forget to add DEBUG to Compiler Flags
       return true
@@ -18,7 +20,7 @@ public enum BuildInfo {
       #endif
    }
 
-   public static var isProduction = false // This value can be overridden in `main.swift` file.
+   public static var isProduction = false // This value can be overridden in `main.swift` file. Usually it defined by `PRODUCTION` Compiler Flag.
 
    public static let isTestFlight = Bundle.main.appStoreReceiptURL?.lastPathComponent == "sandboxReceipt"
 
