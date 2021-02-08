@@ -14,6 +14,10 @@ Selecting **Preset** will activate corresponding **Factory** preset.
 
 <img src="https://raw.githubusercontent.com/vgorloff/AUHost/master/Media/Screenshot-MainWindow.png" height="460" alt="Screenshot: MainWindow">
 
+## Download
+
+Signed and Notarized binary can be found at [Releases](https://github.com/vgorloff/AUHost/releases/latest) page.
+
 ## Requirements (for building)
 
 - Xcode 12.4
