@@ -13,6 +13,9 @@ import mcTypes
 import mcFoundation
 import mcAppKitMedia
 import mcMedia
+import mcRuntime
+
+private let log = Logger.getLogger(MediaItemView.self)
 
 public final class MediaItemView: NSView {
    
@@ -22,7 +25,9 @@ public final class MediaItemView: NSView {
       }
    }
 
-   private let textDragAndDropMessage: NSString = "Drop media file here..."
+   private var hasError = false
+   private let textDragAndDropMessage = "Drop media file here..."
+   private let textErrorMessage = "Can't build waveform due failure 💣"
    private var textDragAndDropColor = AlternativeValue<NSColor>(NSColor.gray, altValue: NSColor.white)
    private let textDragAndDropFont = NSFont.labelFont(ofSize: 17)
    private let waveformColor = NSColor(hexString: "#51A2F3") ?? NSColor.red
@@ -67,7 +72,7 @@ public final class MediaItemView: NSView {
 
       textDragAndDropColor.isUsedAltValue = cachedWaveform() != nil
       drawWaveform()
-      drawTextMessage()
+      drawTextMessage(text: hasError ? textErrorMessage : textDragAndDropMessage)
    }
 }
 
@@ -158,15 +163,16 @@ extension MediaItemView {
       context.restoreGState()
    }
 
-   private func drawTextMessage() {
+   private func drawTextMessage(text: String) {
+      let nsString = text as NSString
       let paragraphStyle = NSMutableParagraphStyle()
       paragraphStyle.alignment = NSTextAlignment.center
       let attributes = [NSAttributedString.Key.paragraphStyle: paragraphStyle,
                         .foregroundColor: textDragAndDropColor.currentValue,
                         .font: textDragAndDropFont]
-      let textSize = textDragAndDropMessage.size(withAttributes: attributes)
+      let textSize = nsString.size(withAttributes: attributes)
       let offsetX = bounds.height - textSize.height
-      textDragAndDropMessage.draw(in: bounds.insetBy(dx: 8, dy: offsetX * 0.5), withAttributes: attributes)
+      nsString.draw(in: bounds.insetBy(dx: 8, dy: offsetX * 0.5), withAttributes: attributes)
    }
 
    private func rebuildWaveform() {
@@ -175,13 +181,16 @@ extension MediaItemView {
       }
       wfCache.buildWaveformForResolution(fileURL: mf as URL,
                                          resolution: UInt64(bounds.width * getScaleFactor())) { [weak self] result in
-         switch result {
-         case .failure(let error):
-            Swift.print(error)
-         case .success:
-            DispatchQueue.main.async { [weak self] in
-               self?.needsDisplay = true
+
+         DispatchQueue.main.async { [weak self] in
+            switch result {
+            case .failure(let error):
+               self?.hasError = true
+               log.error(error)
+            case .success:
+               self?.hasError = false
             }
+            self?.needsDisplay = true
          }
       }
    }
