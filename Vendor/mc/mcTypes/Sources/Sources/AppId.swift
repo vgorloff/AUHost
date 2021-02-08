@@ -11,25 +11,25 @@ import mcRuntime
 
 public class AppId {
 
+   public static var id: String?
+
    public static var shared = AppId()
 
-   private let baseComponent: String
+   private let defaultId: String
    private let separator = "-"
    private let keySeparator = "@"
 
    public init(id: String? = nil) {
       var baseComponent = id ?? Bundle.main.bundleIdentifier ?? "com.mc"
       baseComponent = baseComponent.replacingOccurrences(of: ".", with: separator)
-      self.baseComponent = baseComponent
+      self.defaultId = baseComponent
    }
-
-   public private(set) lazy var id = RuntimeInfo.isUnderTesting ? "test-\(baseComponent)" : baseComponent
 
    public func make(group: String? = nil, key: String) -> String {
       if let group = group {
-         return id + separator + group + keySeparator + key
+         return (Self.id ?? defaultId) + separator + group + keySeparator + key
       } else {
-         return id + keySeparator + key
+         return (Self.id ?? defaultId) + keySeparator + key
       }
    }
 

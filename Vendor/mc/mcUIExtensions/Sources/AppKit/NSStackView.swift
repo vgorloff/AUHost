@@ -29,10 +29,21 @@ extension NSStackView {
       }
    }
 
+   public func setArrangedSubviews(_ views: NSView...) {
+      setArrangedSubviews(views)
+   }
+
+   public func setArrangedSubviews(_ views: [NSView]) {
+      removeArrangedSubviews()
+      addArrangedSubviews(views)
+   }
+
    public func removeArrangedSubviews() {
       let views = arrangedSubviews
       views.forEach {
          removeArrangedSubview($0)
+         // See why this is needed: https://medium.com/inloopx/uistackview-lessons-learned-e5841205f650
+         $0.removeFromSuperview()
       }
    }
 

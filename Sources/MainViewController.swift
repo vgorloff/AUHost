@@ -12,16 +12,19 @@ import CoreAudioKit
 import MediaLibrary
 import mcUIReusable
 import mcUI
+import mcRuntime
+
+private let log = Logger.getLogger(MainViewController.self)
 
 // Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
 class MainViewController: ViewController {
 
    private lazy var mediaItemView = MediaItemView().autolayoutView()
-   private lazy var tableColumn1 = NSTableColumn()
+   private lazy var effectsTableColumn = NSTableColumn()
    private lazy var tableEffects = NSTableView()
    private lazy var clipView1 = NSClipView()
    private lazy var scrollView1 = NSScrollView()
-   private lazy var tableColumn2 = NSTableColumn()
+   private lazy var presetsTableColumn = NSTableColumn()
    private lazy var tablePresets = NSTableView()
    private lazy var clipView2 = NSClipView()
    private lazy var scrollView2 = NSScrollView()
@@ -51,7 +54,7 @@ extension MainViewController: NSTableViewDataSource {
    }
 
    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-      let label = NSTextField()
+      let label = NSTextField().autolayoutView()
       label.isBezeled = false
       label.isEditable = false
       label.drawsBackground = false
@@ -63,7 +66,6 @@ extension MainViewController: NSTableViewDataSource {
             let component = viewModel.availableEffects[row - 1]
             label.stringValue = component.name
          }
-         return label
       case tablePresets:
          if row == 0 {
             label.stringValue = "- Default Preset -"
@@ -71,10 +73,15 @@ extension MainViewController: NSTableViewDataSource {
             let preset = viewModel.availablePresets[row - 1]
             label.stringValue = preset.name
          }
-         return label
       default:
          fatalError("Unknown tableView: \(tableView)")
       }
+
+      let view = View()
+      view.addSubview(label)
+      anchor.withFormat("|-3-[*]-3-|", label).activate()
+      anchor.withFormat("V:|-2-[*]-2-|", label).activate()
+      return view
    }
 }
 
@@ -89,13 +96,13 @@ extension MainViewController: NSTableViewDelegate {
       case tableEffects:
          viewModel.closeEffectView()
          if tableView.selectedRow == 0 {
-            log.debug(.controller, "Clearing effect")
+            log.debug("Clearing effect")
             viewModel.selectEffect(nil, completion: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < viewModel.availableEffects.count {
                let component = viewModel.availableEffects[row]
-               log.debug(.controller, "Selecting effect: \"\(component.name)\"")
+               log.debug("Selecting effect: \"\(component.name)\"")
                viewModel.selectEffect(component) { [weak self] _ in
                   DispatchQueue.main.async {
                      self?.toggleEffect()
@@ -105,13 +112,13 @@ extension MainViewController: NSTableViewDelegate {
          }
       case tablePresets:
          if tableView.selectedRow == 0 {
-            log.debug(.controller, "Clearing preset")
+            log.debug("Clearing preset")
             viewModel.selectPreset(nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < viewModel.availablePresets.count {
                let preset = viewModel.availablePresets[row]
-               log.debug(.controller, "Selecting preset: \"\(preset.name)\"")
+               log.debug("Selecting preset: \"\(preset.name)\"")
                viewModel.selectPreset(preset)
             }
          }
@@ -208,7 +215,7 @@ extension MainViewController {
       clipView2.documentView = tablePresets
       clipView2.autoresizingMask = [.width, .height]
 
-      tablePresets.addTableColumn(tableColumn2)
+      tablePresets.addTableColumn(presetsTableColumn)
 
       tablePresets.allowsExpansionToolTips = true
       tablePresets.allowsMultipleSelection = false
@@ -219,9 +226,14 @@ extension MainViewController {
       tablePresets.isEnabled = false
       tablePresets.setContentHuggingPriority(.defaultHigh, for: .vertical)
       tablePresets.usesAlternatingRowBackgroundColors = true
+      if #available(OSX 11.0, *) {
+         tablePresets.style = .fullWidth
+      }
+      tablePresets.rowHeight = 24
+      tablePresets.usesAutomaticRowHeights = true
 
-      tableColumn2.title = "Presets"
-      tableColumn2.isEditable = false
+      presetsTableColumn.title = "Presets"
+      presetsTableColumn.isEditable = false
 
       scrollView2.contentView = clipView2
 
@@ -236,7 +248,7 @@ extension MainViewController {
       clipView1.documentView = tableEffects
       clipView1.autoresizingMask = [.width, .height]
 
-      tableEffects.addTableColumn(tableColumn1)
+      tableEffects.addTableColumn(effectsTableColumn)
 
       tableEffects.allowsExpansionToolTips = true
       tableEffects.allowsMultipleSelection = false
@@ -246,9 +258,14 @@ extension MainViewController {
       tableEffects.intercellSpacing = CGSize(width: 3, height: 2)
       tableEffects.setContentHuggingPriority(.defaultHigh, for: .vertical)
       tableEffects.usesAlternatingRowBackgroundColors = true
+      if #available(OSX 11.0, *) {
+         tableEffects.style = .fullWidth
+      }
+      tableEffects.rowHeight = 24
+      tableEffects.usesAutomaticRowHeights = true
 
-      tableColumn1.title = "Effects"
-      tableColumn1.isEditable = false
+      effectsTableColumn.title = "Effects"
+      effectsTableColumn.isEditable = false
 
       scrollView1.contentView = clipView1
    }

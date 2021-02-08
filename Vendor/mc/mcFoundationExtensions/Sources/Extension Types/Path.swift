@@ -35,4 +35,12 @@ public class Path {
    public func deletingLastComponent() -> String {
       return (path as NSString).deletingLastPathComponent
    }
+
+   public func deletingLastPathComponents(_ numberOfComponents: Int) -> String {
+      var result = path
+      for _ in 0 ..< numberOfComponents {
+         result = result.asPath.deletingLastComponent()
+      }
+      return result
+   }
 }

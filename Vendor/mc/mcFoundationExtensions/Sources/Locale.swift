@@ -44,4 +44,13 @@ extension Locale {
       // Seems `isoCountryCodes` already sorted. So, we skip sorting.
       return result
    }
+
+   public var is24HourDateFormat: Bool {
+      // See more about `j`: http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns
+      guard let dateFormat = DateFormatter.dateFormat(fromTemplate: "j", options: 0, locale: self) else {
+         assertionFailure()
+         return true
+      }
+      return !dateFormat.contains("a")
+   }
 }

@@ -63,5 +63,10 @@ extension UIColor {
          return light
       }
    }
+
+   @available(iOS 13.0, *)
+    public func withAppearance(_ appearance: UIUserInterfaceStyle) -> UIColor {
+        return resolvedColor(with: UITraitCollection(userInterfaceStyle: appearance))
+    }
 }
 #endif

@@ -64,6 +64,7 @@ open class ViewController: NSViewController {
       super.viewDidAppear()
       layoutUntil.fulfill()
       view.assertOnAmbiguityInSubviewsLayout()
+      onViewDidAppear(isAnimated: true)
    }
 
    override open func viewDidLoad() {
@@ -91,6 +92,10 @@ open class ViewController: NSViewController {
    }
 
    @objc open dynamic func setupAppearance(_: SystemAppearance) {
+   }
+
+   @objc open dynamic func onViewDidAppear(isAnimated: Bool) {
+      // Base class does nothing.
    }
 }
 #endif

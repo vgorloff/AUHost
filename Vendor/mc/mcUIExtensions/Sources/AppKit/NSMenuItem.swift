@@ -25,6 +25,12 @@ extension NSMenuItem {
       self.title = title
    }
 
+   public convenience init(title: String, submenu: NSMenu) {
+      self.init()
+      self.title = title
+      self.submenu = submenu
+   }
+
    public convenience init(submenu: NSMenu) {
       self.init()
       self.submenu = submenu

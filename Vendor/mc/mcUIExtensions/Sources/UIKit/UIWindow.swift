@@ -11,6 +11,19 @@ import Foundation
 import UIKit
 
 extension UIWindow {
+
+   // See also:
+   // - https://stackoverflow.com/questions/41144523/swap-rootviewcontroller-with-animation
+   func setRootViewControllerAnimated(_ viewController: UIViewController, animationDuration: TimeInterval = 0.3,
+                                      shouldMakeWindowKey: Bool = true) {
+      rootViewController = viewController
+      if shouldMakeWindowKey {
+         makeKeyAndVisible()
+      }
+      // Though `animations` is optional, the documentation tells us that it must not be nil.
+      UIView.transition(with: self, duration: animationDuration,
+                        options: .transitionCrossDissolve, animations: {}, completion: nil)
+   }
 }
 
 #endif

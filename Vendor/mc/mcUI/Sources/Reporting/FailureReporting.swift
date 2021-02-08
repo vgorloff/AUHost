@@ -34,6 +34,22 @@ extension FailureReporting {
          reportFailure(error: error)
       }
    }
+
+   public func tryReportingFailure(on: DispatchQueue, closure: () throws -> Void) {
+      do {
+         return try closure()
+      } catch {
+         on.async {
+            self.reportFailure(error: error)
+         }
+      }
+   }
+
+   public func reportFailure(error: Swift.Error, on: DispatchQueue) {
+      on.async {
+         self.reportFailure(error: error)
+      }
+   }
 }
 
 #if !os(macOS)

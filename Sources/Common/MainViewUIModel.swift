@@ -14,6 +14,9 @@ import mcAppKitMedia
 import mcMediaAU
 import mcMediaExtensions
 import mcFoundation
+import mcRuntime
+
+private let log = Logger.getLogger(MainViewUIModel.self)
 
 class MainViewUIModel {
 
@@ -101,7 +104,7 @@ extension MainViewUIModel {
             this.selectedAUComponent = nil
             this.eventHandler?(.didClearEffect, this.state)
          case .failure(let error):
-            log.error(.controller, error)
+            log.error(error)
             this.eventHandler?(.didSelectEffect(error), this.state)
          case .success(let effect):
             this.availablePresets = effect.auAudioUnit.factoryPresets ?? []
@@ -129,7 +132,7 @@ extension MainViewUIModel {
             break
          }
       } catch {
-         log.error(.controller, error)
+         log.error(error)
       }
    }
 
@@ -145,9 +148,9 @@ extension MainViewUIModel {
          if playbackEngine.stateID == .stopped {
             try playbackEngine.play()
          }
-         log.debug(.controller, "File assigned: \(url.absoluteString)")
+         log.debug("File assigned: \(url.absoluteString)")
       } catch {
-         log.error(.controller, error)
+         log.error(error)
       }
    }
 

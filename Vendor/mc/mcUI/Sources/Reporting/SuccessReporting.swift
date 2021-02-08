@@ -16,6 +16,14 @@ public protocol SuccessReporting {
    func reportSuccess(message: String)
 }
 
+extension SuccessReporting {
+   public func reportSuccess(message: String, on: DispatchQueue) {
+      on.async {
+         self.reportSuccess(message: message)
+      }
+   }
+}
+
 #if !os(macOS)
 extension SuccessReporting where Self: UIViewController {
 

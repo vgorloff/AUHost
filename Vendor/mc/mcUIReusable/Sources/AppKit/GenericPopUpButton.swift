@@ -36,6 +36,12 @@ open class GenericPopUpButton<T: Any & Equatable>: PopUpButton {
       }
    }
 
+   public func setItems(_ items: [(title: String, value: T)]) {
+      items.forEach {
+         addItem(withTitle: $0.title, value: $0.value)
+      }
+   }
+
    // MARK: -
 
    private func handleSelected() {

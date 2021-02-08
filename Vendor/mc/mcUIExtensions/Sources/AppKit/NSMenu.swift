@@ -20,6 +20,16 @@ extension NSMenu {
    }
 
    @discardableResult
+   public func addItem(title: String, keyEquivalent: String = "", modifiers: NSEvent.ModifierFlags? = nil, action: Selector) -> NSMenuItem {
+      let item = NSMenuItem(title: title, action: action, keyEquivalent: keyEquivalent)
+      if let modifiers = modifiers {
+         item.keyEquivalentModifierMask = modifiers
+      }
+      addItem(item)
+      return item
+   }
+
+   @discardableResult
    public func addItem(title: String, keyEquivalent: String = "", modifiers: NSEvent.ModifierFlags? = nil, handler: NSMenuItem.Handler?) -> NSMenuItem {
       let item = NSMenuItem(title: title, keyEquivalent: keyEquivalent, handler: handler)
       if let modifiers = modifiers {

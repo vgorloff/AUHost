@@ -21,12 +21,20 @@ public class _NSMutableAttributedStringAsComposable: InstanceHolder<NSMutableAtt
       instance.addAttribute(name, value: value, range: range ?? instance.wholeStringRange)
    }
 
+   public func setAttribute(_ name: NSAttributedString.Key, value: Any, range: UTF16Range? = nil) {
+      instance.setAttributes([name: value], range: range ?? instance.wholeStringRange)
+   }
+
    public func addParagraphStyle(_ paragraphStyle: NSParagraphStyle, range: UTF16Range? = nil) {
       addAttribute(.paragraphStyle, value: paragraphStyle, range: range)
    }
 
    public func addFont(_ font: NSMutableAttributedString.Font, range: UTF16Range? = nil) {
       addAttribute(.font, value: font, range: range)
+   }
+
+   public func setFont(_ font: NSMutableAttributedString.Font, range: UTF16Range? = nil) {
+      setAttribute(.font, value: font, range: range)
    }
 
    public func addForegroundColor(_ color: NSMutableAttributedString.Color, range: UTF16Range? = nil) {
@@ -43,6 +51,16 @@ public class _NSMutableAttributedStringAsComposable: InstanceHolder<NSMutableAtt
 
    public func addUnderlineColor(_ color: NSMutableAttributedString.Color, range: UTF16Range? = nil) {
       addAttribute(.underlineColor, value: color, range: range)
+   }
+
+   public func append(_ string: String) {
+      let str = NSAttributedString(string: string)
+      instance.append(str)
+   }
+
+   public func append(_ string: String, font: NSMutableAttributedString.Font) {
+      let str = NSAttributedString(string: string, attributes: [.font: font])
+      instance.append(str)
    }
 }
 

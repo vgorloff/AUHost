@@ -13,6 +13,30 @@ import UIKit
 
 extension UICollectionView {
 
+       public func registerCell<T: UICollectionViewCell>(_ type: T.Type, id: String? = nil) {
+        let id = id ?? type.reusableViewID
+        let nibName = NSStringFromClass(type).components(separatedBy: ".").last ?? ""
+        let bundle = Bundle(for: type)
+        if bundle.url(forResource: nibName, withExtension: "nib") != nil {
+            let nib = UINib(nibName: nibName, bundle: bundle)
+            register(nib, forCellWithReuseIdentifier: id)
+        } else {
+            register(type, forCellWithReuseIdentifier: id)
+        }
+    }
+
+    public func registerSupplementaryView<T: UICollectionReusableView>(_ type: T.Type, kind: String, id: String? = nil) {
+        let id = id ?? type.reusableViewID
+        let nibName = NSStringFromClass(type).components(separatedBy: ".").last ?? ""
+        let bundle = Bundle(for: type)
+        if bundle.url(forResource: nibName, withExtension: "nib") != nil {
+            let nib = UINib(nibName: nibName, bundle: bundle)
+            register(nib, forSupplementaryViewOfKind: kind, withReuseIdentifier: id)
+        } else {
+            register(type, forSupplementaryViewOfKind: kind, withReuseIdentifier: id)
+        }
+    }
+
    private struct Key {
       static var registeredTypes = "app.ui.registeredTypes"
    }
@@ -27,12 +51,24 @@ extension UICollectionView {
 
    /// Dequeues reusable cell with type autoregistration.
    public func dequeueReusableCell<T: UICollectionViewCell>(_ type: T.Type, indexPath: IndexPath) -> T {
+
+      func registerClassOrNib() {
+          let nibName = NSStringFromClass(type).components(separatedBy: ".").last ?? ""
+          let bundle = Bundle(for: type)
+          if bundle.url(forResource: nibName, withExtension: "nib") != nil {
+              let nib = UINib(nibName: nibName, bundle: bundle)
+              register(nib, forCellWithReuseIdentifier: id)
+          } else {
+              register(type, forCellWithReuseIdentifier: id)
+          }
+      }
+
       let id = type.reusableViewID
       var types = registeredTypes
       if !types.contains(id) {
          types.append(id)
          registeredTypes = types
-         register(type, forCellWithReuseIdentifier: id)
+         registerClassOrNib()
       }
       if let cell = dequeueReusableCell(withReuseIdentifier: id, for: indexPath) as? T {
          return cell

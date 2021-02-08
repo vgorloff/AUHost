@@ -15,7 +15,19 @@ public class EventHandler<Event> {
    public init() {
    }
 
-   public func setHandler<T: AnyObject>(_ caller: T, queue: DispatchQueue? = nil, _ handler: @escaping (T, Event) -> Void) {
+   public func setHandler(on queue: DispatchQueue? = nil, _ handler: @escaping (Event) -> Void) {
+      callback = { result in
+         if let queue = queue {
+            queue.async {
+               handler(result)
+            }
+         } else {
+            handler(result)
+         }
+      }
+   }
+
+   public func setHandler<T: AnyObject>(_ caller: T, on queue: DispatchQueue? = nil, _ handler: @escaping (T, Event) -> Void) {
       callback = { [weak caller] event in
          if let queue = queue {
             queue.async {
@@ -35,5 +47,11 @@ public class EventHandler<Event> {
 
    public func fire(_ event: Event) {
       callback?(event)
+   }
+
+   public func fire(_ event: Event, on queue: DispatchQueue) {
+      queue.async {
+         self.callback?(event)
+      }
    }
 }

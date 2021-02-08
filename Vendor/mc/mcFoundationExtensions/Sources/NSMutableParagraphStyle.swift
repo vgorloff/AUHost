@@ -19,4 +19,9 @@ extension NSMutableParagraphStyle {
       self.init()
       self.lineSpacing = lineSpacing
    }
+
+   public convenience init(paragraphSpacing: CGFloat) {
+      self.init()
+      self.paragraphSpacing = paragraphSpacing
+   }
 }

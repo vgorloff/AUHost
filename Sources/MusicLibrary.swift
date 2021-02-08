@@ -8,6 +8,9 @@
 
 import Foundation
 import iTunesLibrary
+import mcRuntime
+
+private let log = Logger.getLogger(MusicLibrary.self)
 
 struct MusicLibraryItem {
    let title: String
@@ -34,7 +37,7 @@ class MusicLibrary {
          items = items.sorted(by: { $0.artist < $1.artist })
          self.tunesLibrary = tunesLibrary
       } catch {
-         log.error(.media, error)
+         log.error(error)
       }
    }
 }

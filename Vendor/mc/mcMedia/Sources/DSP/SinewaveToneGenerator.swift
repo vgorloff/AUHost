@@ -77,15 +77,20 @@ extension SinewaveToneGenerator {
       DSP.vsmul(inputVector: &tmpBuffer2, inputScalar: amplitude, outputVector: &tmpBuffer1,
                 numberOfElements: UInt(numberOfFrames))
 
-      for outputChanneldata in ioData {
-         let sampleData = outputChanneldata.mFloatData
-         if audioFormat.isInterleaved == false {
-            sampleData?.moveInitialize(from: &tmpBuffer1, count: Int(numberOfFrames))
-         } else {
-            for frame in 0 ..< Int(numberOfFrames) {
-               for channelIndex in 0 ..< Int(audioFormat.channelCount) {
-                  let index = frame * Int(audioFormat.channelCount) + channelIndex
-                  sampleData?[index] = tmpBuffer1[frame]
+      tmpBuffer1.withUnsafeMutableBufferPointer { buffer in
+         guard let address = buffer.baseAddress else {
+            return
+         }
+         for outputChanneldata in ioData {
+            let sampleData = outputChanneldata.mFloatData
+            if audioFormat.isInterleaved == false {
+               sampleData?.moveInitialize(from: address, count: Int(numberOfFrames))
+            } else {
+               for frame in 0 ..< Int(numberOfFrames) {
+                  for channelIndex in 0 ..< Int(audioFormat.channelCount) {
+                     let index = frame * Int(audioFormat.channelCount) + channelIndex
+                     sampleData?[index] = tmpBuffer1[frame]
+                  }
                }
             }
          }

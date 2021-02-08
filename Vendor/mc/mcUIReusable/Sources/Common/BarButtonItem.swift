@@ -52,6 +52,7 @@ open class BarButtonItem {
    }
 
    public init(customView: NSView) {
+      customView.translatesAutoresizingMaskIntoConstraints = false
       view.addSubview(customView)
       LayoutConstraint().pin.toBounds(customView).activate()
    }

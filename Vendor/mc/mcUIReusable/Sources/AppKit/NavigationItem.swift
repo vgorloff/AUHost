@@ -11,6 +11,7 @@ import mcTypes
 import mcUI
 
 #if os(macOS)
+import AppKit
 
 public class NavigationItem {
 
@@ -33,6 +34,16 @@ public class NavigationItem {
 
    private(set) var view = NavigationItemView()
    private var _backBarButtonItem = BarButtonItem(title: "")
+
+   public var title: String? {
+      didSet {
+         if let title = title {
+            view.titleView = Label(title: title)
+         } else {
+            view.titleView = nil
+         }
+      }
+   }
 
    init() {
       view.translatesAutoresizingMaskIntoConstraints = true
@@ -79,20 +90,32 @@ public class NavigationItem {
 class NavigationItemView: View {
 
    fileprivate lazy var stackViewLeft = StackView()
+   fileprivate var titleView: NSView? {
+      didSet {
+         stackViewMiddle.removeArrangedSubviews()
+         if let titleView = titleView {
+            stackViewMiddle.addArrangedSubview(titleView)
+         }
+      }
+   }
+   fileprivate lazy var stackViewMiddle = StackView()
    fileprivate lazy var stackViewRight = StackView()
 
    override func setupUI() {
-      addSubviews(stackViewLeft, stackViewRight)
+      addSubviews(stackViewLeft, stackViewMiddle, stackViewRight)
       stackViewLeft.alignment = .centerY
       stackViewRight.alignment = .centerY
+      stackViewMiddle.alignment = .centerY
       stackViewLeft.spacing = 8
       stackViewRight.spacing = 8
+      stackViewMiddle.spacing = 8
       wantsLayer = true
    }
 
    override func setupLayout() {
-      anchor.pin.vertically(stackViewLeft, stackViewRight).activate()
-      anchor.withFormat("|-8-[*]-(>=8)-[*]-8-|", stackViewLeft, stackViewRight).activate()
+      anchor.pin.vertically(stackViewLeft, stackViewMiddle, stackViewRight).activate()
+      anchor.withFormat("|-8-[*]-(>=8)-[*]-(>=8)-[*]-8-|", stackViewLeft, stackViewMiddle, stackViewRight).activate()
+      anchor.center.x(stackViewMiddle).activate()
    }
 }
 

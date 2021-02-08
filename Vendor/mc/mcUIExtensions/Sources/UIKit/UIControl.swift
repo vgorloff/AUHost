@@ -27,6 +27,14 @@ extension UIControl {
       }
    }
 
+   public func setTouchDownHandler(_ handler: Handler?) {
+      addTarget(self, action: #selector(appUI_touchDown(_:)), for: .touchDown)
+      if let handler = handler {
+         ObjCAssociation.setCopyNonAtomic(value: handler, to: self, forKey: &Key.touchDown)
+      }
+   }
+
+
    // For macOS compatibility.
    public func setHandler<T: NSObject>(_ caller: T, _ handler: @escaping (T) -> Void) {
       setTouchUpInsideHandler { [weak caller] in guard let caller = caller else { return }
@@ -91,6 +99,7 @@ extension UIControl {
 
    private struct Key {
       static var touchUpInside = "app.ui.touchUpInsideHandler"
+      static var touchDown = "app.ui.touchDownHandler"
       static var valueChanged = "app.ui.valueChangedHandler"
       static var editingChanged = "app.ui.editingChangedHandler"
       static var editingDidBegin = "app.ui.editingDidBeginHandler"
@@ -106,6 +115,15 @@ extension UIControl {
       }
    }
 
+   @objc private func appUI_touchDown(_ sender: UIControl) {
+      guard sender == self else {
+         return
+      }
+      if let handler: Handler = ObjCAssociation.value(from: self, forKey: &Key.touchDown) {
+         handler()
+      }
+   }
+
    @objc private func appUI_valueChanged(_ sender: UIControl) {
       guard sender == self else {
          return
@@ -114,7 +132,7 @@ extension UIControl {
          handler()
       }
    }
-
+   
    @objc private func appUI_editingChanged(_ sender: UIControl) {
       guard sender == self else {
          return

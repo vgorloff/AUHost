@@ -8,8 +8,25 @@
 
 #if canImport(UIKit)
 import UIKit
+import mcRuntime
 
 open class StackView: UIStackView {
+
+   public var align: NSLayoutConstraint.Attribute {
+      @available(*, unavailable)
+      get {
+         fatalError()
+      } set {
+         switch newValue {
+         case .centerX, .centerY:
+            alignment = .center
+         case .leading:
+            alignment = .leading
+         default:
+            Assertion.shouldNeverHappen()
+         }
+      }
+   }
 
    override public init(frame: CGRect) {
       // Fix for wrong value of `layoutMarginsGuide` on iOS 10 https://stackoverflow.com/a/49255958/1418981

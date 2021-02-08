@@ -12,6 +12,11 @@ import mcTypes
 
 extension NSControl {
 
+   // Stub for iOS
+   public func setEditingChangedHandler(_ handler: (() -> Void)?) {
+      setHandler(handler)
+   }
+
    public func setHandler(_ handler: (() -> Void)?) {
       target = self
       action = #selector(appActionHandler(_:))
