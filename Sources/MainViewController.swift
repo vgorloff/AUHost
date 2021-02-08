@@ -12,6 +12,9 @@ import CoreAudioKit
 import MediaLibrary
 import mcUIReusable
 import mcUI
+import mcRuntime
+
+private let log = Logger.getLogger(MainViewController.self)
 
 // Links: [Developer Forums: MLMediaLibrary in Mavericks not working?](https://devforums.apple.com/message/1125821#1125821)
 class MainViewController: ViewController {
@@ -89,13 +92,13 @@ extension MainViewController: NSTableViewDelegate {
       case tableEffects:
          viewModel.closeEffectView()
          if tableView.selectedRow == 0 {
-            log.debug(.controller, "Clearing effect")
+            log.debug("Clearing effect")
             viewModel.selectEffect(nil, completion: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < viewModel.availableEffects.count {
                let component = viewModel.availableEffects[row]
-               log.debug(.controller, "Selecting effect: \"\(component.name)\"")
+               log.debug("Selecting effect: \"\(component.name)\"")
                viewModel.selectEffect(component) { [weak self] _ in
                   DispatchQueue.main.async {
                      self?.toggleEffect()
@@ -105,13 +108,13 @@ extension MainViewController: NSTableViewDelegate {
          }
       case tablePresets:
          if tableView.selectedRow == 0 {
-            log.debug(.controller, "Clearing preset")
+            log.debug("Clearing preset")
             viewModel.selectPreset(nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < viewModel.availablePresets.count {
                let preset = viewModel.availablePresets[row]
-               log.debug(.controller, "Selecting preset: \"\(preset.name)\"")
+               log.debug("Selecting preset: \"\(preset.name)\"")
                viewModel.selectPreset(preset)
             }
          }
