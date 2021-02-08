@@ -54,7 +54,7 @@ extension MainViewController: NSTableViewDataSource {
    }
 
    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-      let label = NSTextField()
+      let label = NSTextField().autolayoutView()
       label.isBezeled = false
       label.isEditable = false
       label.drawsBackground = false
@@ -66,7 +66,6 @@ extension MainViewController: NSTableViewDataSource {
             let component = viewModel.availableEffects[row - 1]
             label.stringValue = component.name
          }
-         return label
       case tablePresets:
          if row == 0 {
             label.stringValue = "- Default Preset -"
@@ -74,10 +73,15 @@ extension MainViewController: NSTableViewDataSource {
             let preset = viewModel.availablePresets[row - 1]
             label.stringValue = preset.name
          }
-         return label
       default:
          fatalError("Unknown tableView: \(tableView)")
       }
+
+      let view = View()
+      view.addSubview(label)
+      anchor.withFormat("|-3-[*]-3-|", label).activate()
+      anchor.withFormat("V:|-2-[*]-2-|", label).activate()
+      return view
    }
 }
 

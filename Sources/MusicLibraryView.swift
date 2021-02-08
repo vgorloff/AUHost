@@ -9,6 +9,7 @@
 import mcUIReusable
 import AppKit
 import mcRuntime
+import mcUI
 
 private let log = Logger.getLogger(MusicLibraryView.self)
 
@@ -63,13 +64,18 @@ extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
    }
    
    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-      let label = NSTextField()
+      let label = NSTextField().autolayoutView()
       label.isBezeled = false
       label.isEditable = false
       label.drawsBackground = false
       let component = library.items[row]
       label.stringValue = component.fullName
-      return label
+
+      let view = View()
+      view.addSubview(label)
+      anchor.withFormat("|-3-[*]-3-|", label).activate()
+      anchor.withFormat("V:|-2-[*]-2-|", label).activate()
+      return view
    }
    
    func tableViewSelectionDidChange(_ aNotification: Notification) {
