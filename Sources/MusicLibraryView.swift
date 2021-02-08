@@ -8,6 +8,9 @@
 
 import mcUIReusable
 import AppKit
+import mcRuntime
+
+private let log = Logger.getLogger(MusicLibraryView.self)
 
 class MusicLibraryView: ScrollView {
    
@@ -70,7 +73,7 @@ extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
          return
       }
       let component = library.items[tableView.selectedRow]
-      log.debug(.view, component.fullName)
+      log.debug(component.fullName)
       onSelected?(component)
    }
 }

@@ -9,6 +9,9 @@
 import AVFoundation
 import CoreAudioKit
 import mcFoundation
+import mcRuntime
+
+private let log = Logger.getLogger(PlaybackEngineContext.self)
 
 final class PlaybackEngineContext {
 
@@ -176,9 +179,9 @@ extension PlaybackEngineContext {
       statistics.append("File samplerate: \(file.fileFormat.sampleRate)")
       statistics.append("File playback offset: \(offset)")
       statistics.append("Frames to play: \(framesToPlay)")
-      log.debug(.media, statistics.joined(separator: "; "))
+      log.debug(statistics.joined(separator: "; "))
       guard framesToPlay > 0 else {
-         log.default(.media, "Nothing to play. Check value of 'playbackOffset' property.")
+         log.info("Nothing to play. Check value of 'playbackOffset' property.")
          return
       }
 
