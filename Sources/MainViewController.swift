@@ -20,11 +20,11 @@ private let log = Logger.getLogger(MainViewController.self)
 class MainViewController: ViewController {
 
    private lazy var mediaItemView = MediaItemView().autolayoutView()
-   private lazy var tableColumn1 = NSTableColumn()
+   private lazy var effectsTableColumn = NSTableColumn()
    private lazy var tableEffects = NSTableView()
    private lazy var clipView1 = NSClipView()
    private lazy var scrollView1 = NSScrollView()
-   private lazy var tableColumn2 = NSTableColumn()
+   private lazy var presetsTableColumn = NSTableColumn()
    private lazy var tablePresets = NSTableView()
    private lazy var clipView2 = NSClipView()
    private lazy var scrollView2 = NSScrollView()
@@ -211,7 +211,7 @@ extension MainViewController {
       clipView2.documentView = tablePresets
       clipView2.autoresizingMask = [.width, .height]
 
-      tablePresets.addTableColumn(tableColumn2)
+      tablePresets.addTableColumn(presetsTableColumn)
 
       tablePresets.allowsExpansionToolTips = true
       tablePresets.allowsMultipleSelection = false
@@ -222,9 +222,14 @@ extension MainViewController {
       tablePresets.isEnabled = false
       tablePresets.setContentHuggingPriority(.defaultHigh, for: .vertical)
       tablePresets.usesAlternatingRowBackgroundColors = true
+      if #available(OSX 11.0, *) {
+         tablePresets.style = .fullWidth
+      }
+      tablePresets.rowHeight = 24
+      tablePresets.usesAutomaticRowHeights = true
 
-      tableColumn2.title = "Presets"
-      tableColumn2.isEditable = false
+      presetsTableColumn.title = "Presets"
+      presetsTableColumn.isEditable = false
 
       scrollView2.contentView = clipView2
 
@@ -239,7 +244,7 @@ extension MainViewController {
       clipView1.documentView = tableEffects
       clipView1.autoresizingMask = [.width, .height]
 
-      tableEffects.addTableColumn(tableColumn1)
+      tableEffects.addTableColumn(effectsTableColumn)
 
       tableEffects.allowsExpansionToolTips = true
       tableEffects.allowsMultipleSelection = false
@@ -249,9 +254,14 @@ extension MainViewController {
       tableEffects.intercellSpacing = CGSize(width: 3, height: 2)
       tableEffects.setContentHuggingPriority(.defaultHigh, for: .vertical)
       tableEffects.usesAlternatingRowBackgroundColors = true
+      if #available(OSX 11.0, *) {
+         tableEffects.style = .fullWidth
+      }
+      tableEffects.rowHeight = 24
+      tableEffects.usesAutomaticRowHeights = true
 
-      tableColumn1.title = "Effects"
-      tableColumn1.isEditable = false
+      effectsTableColumn.title = "Effects"
+      effectsTableColumn.isEditable = false
 
       scrollView1.contentView = clipView1
    }
