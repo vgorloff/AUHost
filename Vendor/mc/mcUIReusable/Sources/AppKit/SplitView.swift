@@ -31,6 +31,7 @@ open class SplitView: NSSplitView {
 
    public init() {
       super.init(frame: NSRect())
+      translatesAutoresizingMaskIntoConstraints = false
       initializeView()
       notifySystemAppearanceDidChange()
       if #available(OSX 10.14, *) {

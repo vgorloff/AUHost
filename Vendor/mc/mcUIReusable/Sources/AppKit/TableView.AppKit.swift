@@ -16,6 +16,7 @@ open class TableView: NSTableView {
       intercellSpacing = CGSize(height: convertFromBacking(1))
       gridStyleMask = .solidHorizontalGridLineMask
       translatesAutoresizingMaskIntoConstraints = false
+      setupUI()
    }
 
    public required init?(coder: NSCoder) {
@@ -28,6 +29,10 @@ open class TableView: NSTableView {
       let newClipRect = CGRect(x: 0, y: 0, width: lastRowRect.size.width, height: lastRowRect.maxY)
       let finalClipRect = clipRect.intersection(newClipRect)
       super.drawGrid(inClipRect: finalClipRect)
+   }
+
+   @objc open dynamic func setupUI() {
+
    }
 }
 #endif

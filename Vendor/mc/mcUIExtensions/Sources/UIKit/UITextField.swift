@@ -11,6 +11,14 @@ import UIKit
 
 extension UITextField {
 
+   public var platformText: String? {
+      get {
+         return text
+      } set {
+         text = newValue
+      }
+   }
+
    public enum KeyboardPreset: Int {
       case email, name, familyName, id, phone
       case streetAddressLine1, streetAddressLine2, city, postalCode

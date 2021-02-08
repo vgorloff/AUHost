@@ -11,6 +11,11 @@ import UIKit
 
 extension UIStackView {
 
+   public convenience init(spacing: CGFloat) {
+      self.init()
+      self.spacing = spacing
+   }
+
    public convenience init(axis: NSLayoutConstraint.Axis, views: [UIView] = []) {
       self.init()
       self.axis = axis
@@ -25,6 +30,15 @@ extension UIStackView {
       subviews.forEach {
          addArrangedSubview($0)
       }
+   }
+
+   public func setArrangedSubviews(_ views: UIView...) {
+      setArrangedSubviews(views)
+   }
+
+   public func setArrangedSubviews(_ views: [UIView]) {
+      removeArrangedSubviews()
+      addArrangedSubviews(views)
    }
 
    public func removeArrangedSubviews() {

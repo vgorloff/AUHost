@@ -36,5 +36,5 @@ public struct AppVersion {
       }
    }
 
-   public static let fullVersion = version(style: .full(separator: "."))
+   public static let fullVersion = version(style: .full(separator: "x"))
 }

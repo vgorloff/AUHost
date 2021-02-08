@@ -27,13 +27,6 @@ public class __NSAnimationContextImplicitAnimations: InstanceHolder<NSAnimationC
       }, completionHandler: completion)
    }
 
-   public func run(animations: () -> Void, completion: @escaping () -> Void) {
-      instance.runAnimationGroup({
-         $0.allowsImplicitAnimation = true
-         animations()
-      }, completionHandler: completion)
-   }
-
    public func run(animations: () -> Void) {
       instance.runAnimationGroup({
          $0.allowsImplicitAnimation = true

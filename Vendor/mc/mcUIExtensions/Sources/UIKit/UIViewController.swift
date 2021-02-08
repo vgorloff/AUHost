@@ -12,9 +12,67 @@ import UIKit
 
 extension UIViewController {
 
-   public static func initFromNib<T: UIViewController>(_: T.Type) -> T {
-      let nibName = NSStringFromClass(T.self).components(separatedBy: ".").last ?? ""
-      return T(nibName: nibName, bundle: Bundle(for: T.self))
+
+    public static func fromStoryboard<T: UIViewController>(_ type: T.Type, storyboardName: String) -> T {
+        let bundle = Bundle(for: type)
+        let storyboard = UIStoryboard(name: storyboardName, bundle: bundle)
+        let objcStyleNibName = NSStringFromClass(type).components(separatedBy: ".").last ?? ""
+        let swiftStyleNibName = String(describing: type).components(separatedBy: ".").last ?? ""
+        if let vc = storyboard.instantiateViewController(withIdentifier: objcStyleNibName) as? T {
+            return vc
+        } else if let vc = storyboard.instantiateViewController(withIdentifier: swiftStyleNibName) as? T {
+            return vc
+        } else {
+            fatalError("Can't instantiate viewController for type \"\(String(describing: type))\".")
+        }
+    }
+
+   public static func fromStoryboard<T: UIViewController>(_ type: T.Type) -> T {
+        let bundle = Bundle(for: type)
+        if let name = storyboardName(type, bundle: bundle) {
+            let storyboard = UIStoryboard(name: name, bundle: bundle)
+            if let vc = storyboard.instantiateInitialViewController() as? T {
+                return vc
+            } else {
+                fatalError("Can't instantiate viewController for type \"\(String(describing: type))\".")
+            }
+        } else {
+            fatalError("Can't instantiate viewController for type \"\(String(describing: type))\".")
+        }
+    }
+
+
+   public static func storyboardName<T: UIViewController>(_ type: T.Type, bundle: Bundle) -> String? {
+        let objcStyleNibName = NSStringFromClass(type).components(separatedBy: ".").last ?? ""
+        let swiftStyleNibName = String(describing: type).components(separatedBy: ".").last ?? ""
+        if bundle.url(forResource: objcStyleNibName, withExtension: "storyboardc") != nil {
+            return objcStyleNibName
+        } else if bundle.url(forResource: swiftStyleNibName, withExtension: "storyboardc") != nil {
+            return swiftStyleNibName
+        } else {
+            return nil
+        }
+    }
+
+   public static func initFromNib<T: UIViewController>(_ type: T.Type) -> T {
+      let bundle = Bundle(for: type)
+        if let name = nibName(type, bundle: bundle) {
+            return T(nibName: name, bundle: bundle)
+        } else {
+            fatalError("Can't instantiate viewController for type \"\(String(describing: type))\".")
+        }
+   }
+
+   public static func nibName<T: UIViewController>(_ type: T.Type, bundle: Bundle) -> String? {
+        let objcStyleNibName = NSStringFromClass(type).components(separatedBy: ".").last ?? ""
+        let swiftStyleNibName = String(describing: type).components(separatedBy: ".").last ?? ""
+        if bundle.url(forResource: objcStyleNibName, withExtension: "nib") != nil {
+            return objcStyleNibName
+        } else if bundle.url(forResource: swiftStyleNibName, withExtension: "nib") != nil {
+            return swiftStyleNibName
+        } else {
+            return nil
+        }
    }
 
    public func child<T: UIViewController>(ofType: T.Type) -> T? {

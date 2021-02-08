@@ -6,7 +6,7 @@
 //  Copyright © 2020 Vlad Gorlov. All rights reserved.
 //
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
+#if os(macOS)
 import AppKit
 
 extension NSTextField {
@@ -24,6 +24,23 @@ extension NSTextField {
          return stringValue
       } set {
          stringValue = newValue
+      }
+   }
+
+   public var platformText: String? {
+      get {
+         return stringValue
+      } set {
+         stringValue = newValue ?? ""
+      }
+   }
+
+   // Just a stub
+   public var placeholder: String? {
+      get {
+         return nil
+      } set {
+
       }
    }
 }

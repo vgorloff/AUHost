@@ -189,6 +189,12 @@ extension StringRange {
       }
    }
 
+   public func replacingSubrange(_ subrange: Range<String.Index>, with: String) -> StringRange {
+      var result = StringRange(string: string, range: range, shouldEraseIndexesOnExactReplace: shouldEraseIndexesOnExactReplace)
+      result.replaceSubrange(subrange, with: with)
+      return result
+   }
+
    mutating func replaceSubrange(_ subrange: Range<String.Index>, with: String) {
       let lowerBound = subrange.lowerBound.utf16Offset(in: string)
       let upperBound = subrange.upperBound.utf16Offset(in: string)

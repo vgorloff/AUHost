@@ -1,5 +1,5 @@
 //
-//  Result.swift
+//  Res.swift
 //  WaveLabs
 //
 //  Created by Vlad Gorlov on 05/11/2016.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-public enum Result<T> {
+public enum Res<T> {
 
    case success(T)
    case failure(Swift.Error)
 
-   public typealias Completion = (Result<T>) -> Void
+   public typealias Completion = (Res<T>) -> Void
 
    public var error: Swift.Error? {
       switch self {
@@ -46,11 +46,11 @@ public enum Result<T> {
       }
    }
 
-   public func map<U>(_ transform: (T) throws -> U) -> Result<U> {
+   public func map<U>(_ transform: (T) throws -> U) -> Res<U> {
       return flatMap { .success(try transform($0)) }
    }
 
-   public func flatMap<U>(_ transform: (T) throws -> Result<U>) -> Result<U> {
+   public func flatMap<U>(_ transform: (T) throws -> Res<U>) -> Res<U> {
       switch self {
       case .success(let value):
          do {
@@ -59,6 +59,39 @@ public enum Result<T> {
             return .failure(error)
          }
       case .failure(let error): return .failure(error)
+      }
+   }
+
+   public func fire(on: DispatchQueue, _ completion: @escaping Completion) {
+      on.async {
+         completion(self)
+      }
+   }
+
+   public func fire(_ completion: @escaping Completion) {
+      completion(self)
+   }
+
+   public func fail<Target>(on: DispatchQueue, _ completion: @escaping (Res<Target>) -> Void) {
+      if let error = error {
+         on.async {
+            completion(.failure(error))
+         }
+      }
+   }
+
+   public func fail<Target>(_ completion: @escaping (Res<Target>) -> Void) {
+      if let error = error {
+         completion(.failure(error))
+      }
+   }
+
+   public var voidized: Res<Void> {
+      switch self {
+      case .failure(let error):
+         return .failure(error)
+      case .success:
+         return .success(())
       }
    }
 }

@@ -27,4 +27,16 @@ extension NSRange {
    public var isEmpty: Bool {
       return length <= 0
    }
+
+   public func shifted(by: Int) -> NSRange {
+      return NSRange(location: location + by, length: length)
+   }
+
+   public func shiftingEndIndex(by: Int) -> NSRange {
+      return NSRange(lowerBound: lowerBound, upperBound: upperBound + by)
+   }
+
+   public func shiftingStartIndex(by: Int) -> NSRange {
+      return NSRange(lowerBound: lowerBound + by, upperBound: upperBound)
+   }
 }

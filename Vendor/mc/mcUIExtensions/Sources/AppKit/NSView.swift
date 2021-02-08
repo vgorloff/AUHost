@@ -77,6 +77,7 @@ extension NSView {
       return recursiveSubviews.compactMap { $0 as? T }
    }
 
+   @available(macOS, deprecated: 10.14, message: "To draw, subclass NSView and implement -drawRect:; AppKit's automatic deferred display mechanism will call -drawRect: as necessary to display the view.")
    public func withFocus(drawingCalls: () -> Void) {
       lockFocus()
       drawingCalls()
@@ -171,6 +172,7 @@ extension NSView {
    public func layoutIfNeeded() {
       if needsLayout {
          layout()
+         layoutSubtreeIfNeeded()
       }
    }
 

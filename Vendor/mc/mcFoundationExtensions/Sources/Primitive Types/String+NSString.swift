@@ -73,12 +73,4 @@ extension String {
    public func nsRange(of searchString: String) -> NSRange {
       return (self as NSString).range(of: searchString)
    }
-
-   public func deletingLastPathComponents(_ numberOfComponents: Int) -> String {
-      var result = self
-      for _ in 0 ..< numberOfComponents {
-         result = result.asPath.deletingLastComponent()
-      }
-      return result
-   }
 }

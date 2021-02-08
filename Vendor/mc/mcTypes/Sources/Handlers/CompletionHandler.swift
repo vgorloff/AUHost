@@ -21,11 +21,27 @@ public class CompletionHandler {
       }
    }
 
+   public func setHandler(_ handler: @escaping () -> Void) {
+      callback = handler
+   }
+
    public func reset() {
       callback = nil
    }
 
    public func fire() {
       callback?()
+   }
+
+   public func fire(on queue: DispatchQueue) {
+      queue.async {
+         self.callback?()
+      }
+   }
+
+   public func fire(on queue: DispatchQueue, delay: TimeInterval) {
+       queue.asyncAfter(deadline: .now() + delay) {
+           self.callback?()
+       }
    }
 }

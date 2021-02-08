@@ -6,14 +6,15 @@
 //  Copyright © 2020 Vlad Gorlov. All rights reserved.
 //
 
-#if canImport(AppKit) && !targetEnvironment(macCatalyst)
+#if os(macOS)
 import AppKit
 
 extension NSButton {
 
    @available(OSX 10.12, *)
-   public convenience init(image: NSImage) {
+   public convenience init(image: NSImage, isBordered: Bool = true) {
       self.init(image: image, target: nil, action: nil)
+      self.isBordered = isBordered
    }
 
    @available(OSX 10.12, *)
@@ -27,7 +28,7 @@ extension NSButton {
       isBordered = false
    }
 
-   public convenience init(title: String) {
+   public convenience init(title: String, isBordered: Bool = true) {
       if #available(OSX 10.12, *) {
          self.init(title: title, target: nil, action: nil)
       } else {
@@ -35,6 +36,7 @@ extension NSButton {
          self.title = title
          bezelStyle = .rounded
       }
+      self.isBordered = isBordered
    }
 
    public convenience init(checkboxWithTitle: String) {
@@ -51,8 +53,7 @@ extension NSButton {
       @available(*, unavailable)
       get {
          .white
-      }
-      set {
+      } set {
          attributedTitle = NSAttributedString(string: title, attributes: [NSAttributedString.Key.foregroundColor: newValue])
       }
    }

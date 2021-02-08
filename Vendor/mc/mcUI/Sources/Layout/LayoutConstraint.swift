@@ -145,6 +145,17 @@ public class __LayoutConstraintCenter: InstanceHolder<LayoutConstraint> {
       return result
    }
 
+   public func y(verticalSpacing: CGFloat, _ views: LayoutConstraint.ViewType...) -> [NSLayoutConstraint] {
+      var result: [NSLayoutConstraint] = []
+      views.forEach { view in
+         if let container = view.superview {
+            result += [view.centerYAnchor.constraint(equalTo: container.centerYAnchor),
+                       view.topAnchor.constraint(greaterThanOrEqualTo: container.topAnchor, constant: verticalSpacing)]
+         }
+      }
+      return result
+   }
+
    public func x(viewA: LayoutConstraint.ViewType, viewB: LayoutConstraint.ViewType, multiplier: CGFloat = 1,
                  constant: CGFloat = 0) -> NSLayoutConstraint {
       return NSLayoutConstraint(item: viewA, attribute: .centerX, relatedBy: .equal, toItem: viewB, attribute: .centerX,
@@ -215,7 +226,6 @@ public struct LayoutConstraint {
 
    public enum Center {
       case both, vertically, horizontally
-      case verticalOffset(CGFloat)
    }
 }
 
@@ -355,9 +365,6 @@ extension LayoutConstraint {
       case .horizontally:
          result = [container.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                    view.leadingAnchor.constraint(greaterThanOrEqualTo: container.leadingAnchor)]
-      case .verticalOffset(let offset):
-         result = [container.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-                   view.topAnchor.constraint(greaterThanOrEqualTo: container.topAnchor, constant: offset)]
       }
       return result
    }

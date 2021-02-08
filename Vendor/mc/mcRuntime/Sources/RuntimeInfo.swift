@@ -18,16 +18,16 @@ public struct RuntimeInfo {
 
    public struct Constants {
 
+      public static let isBackdoorEnabled = "app.runtime.isBackdoorEnabled"
       public static let isLoggingEnabled = "app.runtime.isLoggingEnabled"
       public static let isTracingEnabled = "app.runtime.isTracingEnabled"
       public static let isNetworkTracingEnabled = "app.runtime.isNetworkTracingEnabled"
       public static let isInMemoryStore = "app.runtime.isInMemoryStore"
       public static let shouldAssertOnAmbiguousLayout = "app.runtime.shouldAssertOnAmbiguousLayout"
       public static let isPlaygroundTesting = "app.runtime.isPlaygroundTesting"
-
       public static let traceLogsDirPath = "app.runtime.traceLogsDirPath"
-
-      public static let isAssertionsDisabled = "app.runtime.isAssertionsDisabled"
+      public static let isAssertionsEnabled = "app.runtime.isAssertionsEnabled"
+      public static let isLocalApi = "app.runtime.isLocalApi"
    }
 }
 
@@ -46,6 +46,10 @@ extension RuntimeInfo {
 
    public static var isSimulator: Bool {
       return TARGET_OS_SIMULATOR != 0
+   }
+
+   public static var isUnderSwiftUIPreview: Bool {
+        return ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] != nil
    }
 
    public static let isInsidePlayground = (Bundle.main.bundleIdentifier ?? "").hasPrefix("com.apple.dt")
@@ -78,8 +82,16 @@ extension RuntimeInfo {
       isEnabled(variableName: Constants.isPlaygroundTesting)
    }()
 
-   public static let isAssertionsDisabled: Bool = {
-      isEnabled(variableName: Constants.isAssertionsDisabled)
+   public static let isAssertionsEnabled: Bool = {
+      isEnabled(variableName: Constants.isAssertionsEnabled)
+   }()
+
+   public static let isBackdoorEnabled: Bool = {
+      isEnabled(variableName: Constants.isBackdoorEnabled)
+   }()
+
+   public static let isLocalApi: Bool = {
+      isEnabled(variableName: Constants.isLocalApi)
    }()
 
    public static let isLocalRun: Bool = {
@@ -103,12 +115,17 @@ extension RuntimeInfo {
 
 extension RuntimeInfo {
 
-   private static func isEnabled(variableName: String, defaultValue: Bool = false) -> Bool {
+   public static func isEnabled(variableName: String, defaultValue: Bool = false) -> Bool {
       let variable = ProcessInfo.processInfo.environment[variableName]
       if let value = variable?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() {
          return value == "yes" || value == "true"
       } else {
          return defaultValue
       }
+   }
+
+   public static func stringValue(variableName: String) -> String? {
+      let variable = ProcessInfo.processInfo.environment[variableName]
+      return variable?.trimmingCharacters(in: .whitespacesAndNewlines)
    }
 }
