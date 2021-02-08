@@ -15,6 +15,7 @@ import mcAppKitMedia
 import mcMedia
 
 public final class MediaItemView: NSView {
+   
    private var isHighlighted = false {
       didSet {
          needsDisplay = true
@@ -57,7 +58,7 @@ public final class MediaItemView: NSView {
    }
 
    public override func draw(_ dirtyRect: NSRect) {
-      NSColor.white.setFill()
+      NSColor.textBackgroundColor.setFill()
       dirtyRect.fill()
       (isHighlighted ? NSColor.keyboardFocusIndicatorColor : NSColor.gridColor).setStroke()
       let borderWidth = isHighlighted ? CGFloat(2) : CGFloat(1)
