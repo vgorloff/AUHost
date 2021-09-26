@@ -1,22 +1,25 @@
 include:
   - ../../../Projects/mc/templates.yml
-  - ../../../Projects/mc/mcAppScaffold/project.yml
-  - ../../../Projects/mc/mcUIReusable/project.yml
-  - ../../../Projects/mc/mcAppKitMedia/project.yml
-  - ../../../Projects/mc/mcFoundation/project.yml
-  - ../../../Projects/mc/mcMediaAU/project.yml
-  - ../../../Projects/mc/mcMedia/project.yml
-  - ../../../Projects/mc/mcMediaExtensions/project.yml
-  - ../../../Projects/mc/mcGraphicsExtensions/project.yml
+  - ../../../Projects/mc/mcxAppScaffold/project.yml
+  - ../../../Projects/mc/mcxUIReusable/project.yml
+  - ../../../Projects/mc/mcxAppKitMedia/project.yml
+  - ../../../Projects/mc/mcxFoundation/project.yml
+  - ../../../Projects/mc/mcxMediaAU/project.yml
+  - ../../../Projects/mc/mcxMedia/project.yml
+  - ../../../Projects/mc/mcxMediaExtensions/project.yml
+  - ../../../Projects/mc/mcxGraphicsExtensions/project.yml
 name: Shared
+settings:
+  AWL_LIB_SRC: Vendor/mc
+  MACOSX_DEPLOYMENT_TARGET: 10.14
 aggregateTargets:
   Shared:
     targets:
-      - mcAppScaffold_macOS
-      - mcUIReusable_macOS
-      - mcAppKitMedia_macOS
-      - mcFoundation_macOS
-      - mcMediaAU_macOS
-      - mcMedia_macOS
-      - mcMediaExtensions_macOS
-      - mcGraphicsExtensions_macOS
+      - mcxAppScaffold
+      - mcxUIReusable
+      - mcxAppKitMedia
+      - mcxFoundation
+      - mcxMediaAU
+      - mcxMedia
+      - mcxMediaExtensions
+      - mcxGraphicsExtensions
