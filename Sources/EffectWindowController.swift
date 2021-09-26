@@ -7,7 +7,7 @@
 //
 
 import AppKit
-import mcRuntime
+import mcxRuntime
 
 private let log = Logger.getLogger(EffectWindowController.self)
 

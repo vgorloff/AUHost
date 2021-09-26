@@ -10,11 +10,11 @@ import AppKit
 import AVFoundation
 import Foundation
 import MediaLibrary
-import mcAppKitMedia
-import mcMediaAU
-import mcMediaExtensions
-import mcFoundation
-import mcRuntime
+import mcxAppKitMedia
+import mcxMediaAU
+import mcxMediaExtensions
+import mcxFoundation
+import mcxRuntime
 
 private let log = Logger.getLogger(MainViewUIModel.self)
 
@@ -148,7 +148,7 @@ extension MainViewUIModel {
          if playbackEngine.stateID == .stopped {
             try playbackEngine.play()
          }
-         log.debug("File assigned: \(url.absoluteString)")
+         log.verbose("File assigned: \(url.absoluteString)")
       } catch {
          log.error(error)
       }

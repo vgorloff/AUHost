@@ -6,10 +6,10 @@
 //  Copyright © 2020 WaveLabs. All rights reserved.
 //
 
-import mcUIReusable
 import AppKit
-import mcRuntime
-import mcUI
+import mcxUIReusable
+import mcxRuntime
+import mcxUI
 
 private let log = Logger.getLogger(MusicLibraryView.self)
 
@@ -83,7 +83,7 @@ extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
          return
       }
       let component = library.items[tableView.selectedRow]
-      log.debug(component.fullName)
+      log.verbose(component.fullName)
       onSelected?(component)
    }
 }

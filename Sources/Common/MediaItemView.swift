@@ -9,11 +9,11 @@
 import Accelerate
 import AVFoundation
 import Cocoa
-import mcTypes
-import mcFoundation
-import mcAppKitMedia
-import mcMedia
-import mcRuntime
+import mcxTypes
+import mcxFoundation
+import mcxAppKitMedia
+import mcxMedia
+import mcxRuntime
 
 private let log = Logger.getLogger(MediaItemView.self)
 
