@@ -230,7 +230,9 @@ extension MainViewController {
          tablePresets.style = .fullWidth
       }
       tablePresets.rowHeight = 24
-      tablePresets.usesAutomaticRowHeights = true
+      if #available(macOS 10.13, *) {
+         tablePresets.usesAutomaticRowHeights = true
+      }
 
       presetsTableColumn.title = "Presets"
       presetsTableColumn.isEditable = false
@@ -262,7 +264,9 @@ extension MainViewController {
          tableEffects.style = .fullWidth
       }
       tableEffects.rowHeight = 24
-      tableEffects.usesAutomaticRowHeights = true
+      if #available(macOS 10.13, *) {
+         tableEffects.usesAutomaticRowHeights = true
+      }
 
       effectsTableColumn.title = "Effects"
       effectsTableColumn.isEditable = false

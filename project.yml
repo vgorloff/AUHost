@@ -11,7 +11,7 @@ include:
 name: Shared
 settings:
   AWL_LIB_SRC: Vendor/mc
-  MACOSX_DEPLOYMENT_TARGET: 10.14
+  MACOSX_DEPLOYMENT_TARGET: 10.12
 aggregateTargets:
   Shared:
     targets:

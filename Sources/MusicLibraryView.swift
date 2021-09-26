@@ -44,7 +44,9 @@ class MusicLibraryView: ScrollView {
          tableView.style = .fullWidth
       }
       tableView.rowHeight = 24
-      tableView.usesAutomaticRowHeights = true
+      if #available(macOS 10.13, *) {
+         tableView.usesAutomaticRowHeights = true
+      }
       
       tableColumn.title = "Songs"
       tableColumn.isEditable = false
