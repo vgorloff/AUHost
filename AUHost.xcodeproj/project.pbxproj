@@ -29,6 +29,7 @@
 		80B4CCF0270101C200E969EE /* libmcxUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCDA270101B300E969EE /* libmcxUI.a */; };
 		80B4CCF1270101C200E969EE /* libmcxUIExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCDC270101B300E969EE /* libmcxUIExtensions.a */; };
 		80B4CCF2270101C200E969EE /* libmcxUIReusable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCDE270101B300E969EE /* libmcxUIReusable.a */; };
+		80B4CCF42701036600E969EE /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCF32701036600E969EE /* iTunesLibrary.framework */; };
 		80B9073A243A68F700D25F27 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072B243A68F700D25F27 /* MainMenu.swift */; };
 		80B9073B243A68F700D25F27 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072C243A68F700D25F27 /* EffectWindowController.swift */; };
 		80B9073C243A68F700D25F27 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072D243A68F700D25F27 /* main.swift */; };
@@ -198,6 +199,7 @@
 /* Begin PBXFileReference section */
 		801C65C9243A7F080073ED5A /* MusicLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryView.swift; sourceTree = "<group>"; };
 		801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
+		80B4CCF32701036600E969EE /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = System/Library/Frameworks/iTunesLibrary.framework; sourceTree = SDKROOT; };
 		80B9072B243A68F700D25F27 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		80B9072C243A68F700D25F27 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80B9072D243A68F700D25F27 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				80B4CCE3270101C200E969EE /* libmcxFoundation.a in Frameworks */,
 				80B4CCE1270101C200E969EE /* libmcxConcurrencyLocking.a in Frameworks */,
 				80B4CCE5270101C200E969EE /* libmcxFoundationLogging.a in Frameworks */,
+				80B4CCF42701036600E969EE /* iTunesLibrary.framework in Frameworks */,
 				80B4CCE4270101C200E969EE /* libmcxFoundationExtensions.a in Frameworks */,
 				80B4CCEC270101C200E969EE /* libmcxMediaExtensions.a in Frameworks */,
 			);
@@ -305,6 +308,7 @@
 		80FED992248BFB37005C565A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80B4CCF32701036600E969EE /* iTunesLibrary.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

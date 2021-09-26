@@ -1,5 +1,6 @@
 import Network
 
+@available(macOS 10.14, *)
 extension NWPath.Status: CustomStringConvertible {
    public var description: String {
       switch self {

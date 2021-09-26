@@ -10,6 +10,7 @@ import Foundation
 import mcxRuntime
 import UserNotifications
 
+@available(macOS 10.14, *)
 extension UNAuthorizationStatus: CustomStringConvertible {
 
    public var description: String {

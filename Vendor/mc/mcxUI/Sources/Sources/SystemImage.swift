@@ -9,6 +9,7 @@
 #if canImport(AppKit) && !targetEnvironment(macCatalyst)
 import AppKit
 
+@available(macOS 10.13, *)
 public enum SystemImage: String, CaseIterable {
 
    case actionTemplate
