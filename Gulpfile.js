@@ -19,7 +19,7 @@ function _run(cmd, cwd) {
 
 //~~~
 
-export class Version {
+class Version {
    #versionNumberKey = 'APP_PROJECT_VERSION';
    #buildNumberKey = 'APP_BUNDLE_VERSION';
    #filePath;
