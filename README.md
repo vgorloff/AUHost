@@ -20,4 +20,4 @@ Signed and Notarized binary can be found at [Releases](https://github.com/vgorlo
 
 ## Requirements (for building)
 
-- Xcode 12.4
+- Xcode 13
