@@ -4,8 +4,11 @@
 # - Building Swift Project: https://docs.travis-ci.com/user/languages/objective-c/
 
 language: objective-c
+cache:
+  yarn: true
 osx_image: xcode12.5
-install: node -v && yarn install && gem install xcpretty
+before_install: npm install --global yarn gulp-cli
+install: node -v && yarn install
 script: ./Scripts/ci.sh
 
 branches:
