@@ -16,18 +16,18 @@ struct MusicLibraryItem {
    let title: String
    let artist: String
    let url: URL
-   
+
    var fullName: String {
       return "\(artist): \(title)"
    }
 }
 
 class MusicLibrary {
-   
+
    private var tunesLibrary: ITLibrary?
-   
+
    private (set) var items: [MusicLibraryItem] = []
-   
+
    init() {
       do {
          let tunesLibrary = try ITLibrary(apiVersion: "1.0")

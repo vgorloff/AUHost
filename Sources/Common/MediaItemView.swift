@@ -18,7 +18,7 @@ import mcxRuntime
 private let log = Logger.getLogger(MediaItemView.self)
 
 public final class MediaItemView: NSView {
-   
+
    private var isHighlighted = false {
       didSet {
          needsDisplay = true
