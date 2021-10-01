@@ -1,0 +1,7 @@
+{
+   "name": "mca-oss-auhost",
+   "type": "module",
+   "dependencies": {
+      "gulp": "^4.0.2"
+   }
+}

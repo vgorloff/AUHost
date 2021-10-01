@@ -10,9 +10,9 @@ import AVFoundation
 import Cocoa
 import CoreAudioKit
 import MediaLibrary
-import mcUIReusable
-import mcUI
-import mcRuntime
+import mcxUIReusable
+import mcxUI
+import mcxRuntime
 
 private let log = Logger.getLogger(MainViewController.self)
 
@@ -96,13 +96,13 @@ extension MainViewController: NSTableViewDelegate {
       case tableEffects:
          viewModel.closeEffectView()
          if tableView.selectedRow == 0 {
-            log.debug("Clearing effect")
+            log.verbose("Clearing effect")
             viewModel.selectEffect(nil, completion: nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < viewModel.availableEffects.count {
                let component = viewModel.availableEffects[row]
-               log.debug("Selecting effect: \"\(component.name)\"")
+               log.verbose("Selecting effect: \"\(component.name)\"")
                viewModel.selectEffect(component) { [weak self] _ in
                   DispatchQueue.main.async {
                      self?.toggleEffect()
@@ -112,13 +112,13 @@ extension MainViewController: NSTableViewDelegate {
          }
       case tablePresets:
          if tableView.selectedRow == 0 {
-            log.debug("Clearing preset")
+            log.verbose("Clearing preset")
             viewModel.selectPreset(nil)
          } else {
             let row = tableView.selectedRow - 1
             if row < viewModel.availablePresets.count {
                let preset = viewModel.availablePresets[row]
-               log.debug("Selecting preset: \"\(preset.name)\"")
+               log.verbose("Selecting preset: \"\(preset.name)\"")
                viewModel.selectPreset(preset)
             }
          }
@@ -230,7 +230,9 @@ extension MainViewController {
          tablePresets.style = .fullWidth
       }
       tablePresets.rowHeight = 24
-      tablePresets.usesAutomaticRowHeights = true
+      if #available(macOS 10.13, *) {
+         tablePresets.usesAutomaticRowHeights = true
+      }
 
       presetsTableColumn.title = "Presets"
       presetsTableColumn.isEditable = false
@@ -262,7 +264,9 @@ extension MainViewController {
          tableEffects.style = .fullWidth
       }
       tableEffects.rowHeight = 24
-      tableEffects.usesAutomaticRowHeights = true
+      if #available(macOS 10.13, *) {
+         tableEffects.usesAutomaticRowHeights = true
+      }
 
       effectsTableColumn.title = "Effects"
       effectsTableColumn.isEditable = false

@@ -9,6 +9,27 @@
 /* Begin PBXBuildFile section */
 		801C65CA243A7F080073ED5A /* MusicLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65C9243A7F080073ED5A /* MusicLibraryView.swift */; };
 		801C65CC243A8D8B0073ED5A /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */; };
+		80B4CCDF270101C200E969EE /* libmcxAppKitMedia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCB8270101B300E969EE /* libmcxAppKitMedia.a */; };
+		80B4CCE0270101C200E969EE /* libmcxAppScaffold.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCBA270101B300E969EE /* libmcxAppScaffold.a */; };
+		80B4CCE1270101C200E969EE /* libmcxConcurrencyLocking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCBC270101B300E969EE /* libmcxConcurrencyLocking.a */; };
+		80B4CCE2270101C200E969EE /* libmcxConcurrencyOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCBE270101B300E969EE /* libmcxConcurrencyOC.a */; };
+		80B4CCE3270101C200E969EE /* libmcxFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC0270101B300E969EE /* libmcxFoundation.a */; };
+		80B4CCE4270101C200E969EE /* libmcxFoundationExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC2270101B300E969EE /* libmcxFoundationExtensions.a */; };
+		80B4CCE5270101C200E969EE /* libmcxFoundationLogging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC4270101B300E969EE /* libmcxFoundationLogging.a */; };
+		80B4CCE6270101C200E969EE /* libmcxFoundationObservables.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC6270101B300E969EE /* libmcxFoundationObservables.a */; };
+		80B4CCE7270101C200E969EE /* libmcxFoundationTestability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC8270101B300E969EE /* libmcxFoundationTestability.a */; };
+		80B4CCE8270101C200E969EE /* libmcxGraphicsExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCCA270101B300E969EE /* libmcxGraphicsExtensions.a */; };
+		80B4CCE9270101C200E969EE /* libmcxMath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCCC270101B300E969EE /* libmcxMath.a */; };
+		80B4CCEA270101C200E969EE /* libmcxMedia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCCE270101B300E969EE /* libmcxMedia.a */; };
+		80B4CCEB270101C200E969EE /* libmcxMediaAU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCD0270101B300E969EE /* libmcxMediaAU.a */; };
+		80B4CCEC270101C200E969EE /* libmcxMediaExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCD2270101B300E969EE /* libmcxMediaExtensions.a */; };
+		80B4CCED270101C200E969EE /* libmcxRuntime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCD4270101B300E969EE /* libmcxRuntime.a */; };
+		80B4CCEE270101C200E969EE /* libmcxTypes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCD6270101B300E969EE /* libmcxTypes.a */; };
+		80B4CCEF270101C200E969EE /* libmcxTypography.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCD8270101B300E969EE /* libmcxTypography.a */; };
+		80B4CCF0270101C200E969EE /* libmcxUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCDA270101B300E969EE /* libmcxUI.a */; };
+		80B4CCF1270101C200E969EE /* libmcxUIExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCDC270101B300E969EE /* libmcxUIExtensions.a */; };
+		80B4CCF2270101C200E969EE /* libmcxUIReusable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCDE270101B300E969EE /* libmcxUIReusable.a */; };
+		80B4CCF42701036600E969EE /* iTunesLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCF32701036600E969EE /* iTunesLibrary.framework */; };
 		80B9073A243A68F700D25F27 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072B243A68F700D25F27 /* MainMenu.swift */; };
 		80B9073B243A68F700D25F27 /* EffectWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072C243A68F700D25F27 /* EffectWindowController.swift */; };
 		80B9073C243A68F700D25F27 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B9072D243A68F700D25F27 /* main.swift */; };
@@ -23,196 +44,148 @@
 		80B90746243A68F700D25F27 /* ControlIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90738243A68F700D25F27 /* ControlIcon.swift */; };
 		80B90747243A68F700D25F27 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B90739243A68F700D25F27 /* Application.swift */; };
 		80B9074A243A690400D25F27 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B90749243A690400D25F27 /* Assets.xcassets */; };
-		80FED9C3248BFB37005C565A /* libmcAppKitMedia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9A6248BFB37005C565A /* libmcAppKitMedia.a */; };
-		80FED9C4248BFB37005C565A /* libmcAppScaffold.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED961248BF603005C565A /* libmcAppScaffold.a */; };
-		80FED9C5248BFB37005C565A /* libmcConcurrencyLocking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED965248BF603005C565A /* libmcConcurrencyLocking.a */; };
-		80FED9C6248BFB37005C565A /* libmcConcurrencyOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9AA248BFB37005C565A /* libmcConcurrencyOC.a */; };
-		80FED9C7248BFB37005C565A /* libmcFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9B2248BFB37005C565A /* libmcFoundation.a */; };
-		80FED9C8248BFB37005C565A /* libmcFoundationExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED969248BF603005C565A /* libmcFoundationExtensions.a */; };
-		80FED9C9248BFB37005C565A /* libmcFoundationLogging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED96D248BF603005C565A /* libmcFoundationLogging.a */; };
-		80FED9CA248BFB37005C565A /* libmcFoundationObservables.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED971248BF603005C565A /* libmcFoundationObservables.a */; };
-		80FED9CB248BFB37005C565A /* libmcFoundationTestability.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9AE248BFB37005C565A /* libmcFoundationTestability.a */; };
-		80FED9CC248BFB37005C565A /* libmcGraphicsExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED975248BF603005C565A /* libmcGraphicsExtensions.a */; };
-		80FED9CD248BFB37005C565A /* libmcMath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9B6248BFB37005C565A /* libmcMath.a */; };
-		80FED9CE248BFB37005C565A /* libmcMedia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9C2248BFB37005C565A /* libmcMedia.a */; };
-		80FED9CF248BFB37005C565A /* libmcMediaAU.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9BA248BFB37005C565A /* libmcMediaAU.a */; };
-		80FED9D0248BFB37005C565A /* libmcMediaExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED9BE248BFB37005C565A /* libmcMediaExtensions.a */; };
-		80FED9D1248BFB37005C565A /* libmcRuntime.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED979248BF603005C565A /* libmcRuntime.a */; };
-		80FED9D2248BFB37005C565A /* libmcTypes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED97D248BF603005C565A /* libmcTypes.a */; };
-		80FED9D3248BFB37005C565A /* libmcTypography.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED981248BF603005C565A /* libmcTypography.a */; };
-		80FED9D4248BFB37005C565A /* libmcUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED98D248BF603005C565A /* libmcUI.a */; };
-		80FED9D5248BFB37005C565A /* libmcUIExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED985248BF603005C565A /* libmcUIExtensions.a */; };
-		80FED9D6248BFB37005C565A /* libmcUIReusable.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80FED989248BF603005C565A /* libmcUIReusable.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		80FED95E248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCB7270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 99706185FA5F4D2E28B8738E;
-			remoteInfo = mcAppScaffold_iOS;
+			remoteGlobalIDString = 1C7CBC5C91F15EF4E29A5445;
+			remoteInfo = mcxAppKitMedia;
 		};
-		80FED960248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCB9270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 92585D10731373017F9F5CB7;
-			remoteInfo = mcAppScaffold_macOS;
+			remoteGlobalIDString = BDD991E211C7F0EE75EC15FE;
+			remoteInfo = mcxAppScaffold;
 		};
-		80FED962248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCBB270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = DE45CBA3602B89ED35C67536;
-			remoteInfo = mcConcurrencyLocking_iOS;
+			remoteGlobalIDString = 5F2784A2BB2DF88E9275D3B5;
+			remoteInfo = mcxConcurrencyLocking;
 		};
-		80FED964248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCBD270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = A3D15361A77D9ACEDB68B279;
-			remoteInfo = mcConcurrencyLocking_macOS;
+			remoteGlobalIDString = 702C7FF33F3E33646C3D3028;
+			remoteInfo = mcxConcurrencyOC;
 		};
-		80FED966248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCBF270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 8C43A767B5FFBCEA5FD81BCB;
-			remoteInfo = mcFoundationExtensions_iOS;
+			remoteGlobalIDString = BDE71BBC4B0CCE6739E5B190;
+			remoteInfo = mcxFoundation;
 		};
-		80FED968248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCC1270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = B1BECB85E82315FFD82A5569;
-			remoteInfo = mcFoundationExtensions_macOS;
+			remoteGlobalIDString = 9D41B563546C69B180C44676;
+			remoteInfo = mcxFoundationExtensions;
 		};
-		80FED96A248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCC3270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 10C974B67C0B750EE6366A96;
-			remoteInfo = mcFoundationLogging_iOS;
+			remoteGlobalIDString = 8CE6BCEA3B2433CB43A1D21D;
+			remoteInfo = mcxFoundationLogging;
 		};
-		80FED96C248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCC5270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 5662130C1E007D386606EDB0;
-			remoteInfo = mcFoundationLogging_macOS;
+			remoteGlobalIDString = 6FA6026DCB3D934147A567D9;
+			remoteInfo = mcxFoundationObservables;
 		};
-		80FED96E248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCC7270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = B111C7875B65B10AB1BCCAAF;
-			remoteInfo = mcFoundationObservables_iOS;
+			remoteGlobalIDString = C97AECEE577B0B89F615204B;
+			remoteInfo = mcxFoundationTestability;
 		};
-		80FED970248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCC9270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 208D29132DD9B51A70046AA7;
-			remoteInfo = mcFoundationObservables_macOS;
+			remoteGlobalIDString = E233720CFEF48B82526CBECA;
+			remoteInfo = mcxGraphicsExtensions;
 		};
-		80FED972248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCCB270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1A455D6DCCF27861B1B38E30;
-			remoteInfo = mcGraphicsExtensions_iOS;
+			remoteGlobalIDString = 98F87CD4F64B08846978BC79;
+			remoteInfo = mcxMath;
 		};
-		80FED974248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCCD270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = CE62E2CD798BC381FDBFAA09;
-			remoteInfo = mcGraphicsExtensions_macOS;
+			remoteGlobalIDString = 5C28F2DE96411708B28D88FB;
+			remoteInfo = mcxMedia;
 		};
-		80FED976248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCCF270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 4DBA5BCE0DDE9C0AC1117A0A;
-			remoteInfo = mcRuntime_iOS;
+			remoteGlobalIDString = 9A290E9AA4DAC10C04EA13E5;
+			remoteInfo = mcxMediaAU;
 		};
-		80FED978248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCD1270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = CBE79C50AA18DFBDD665FC84;
-			remoteInfo = mcRuntime_macOS;
+			remoteGlobalIDString = 1130F5DA5A4314A315B2A6E6;
+			remoteInfo = mcxMediaExtensions;
 		};
-		80FED97A248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCD3270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 38E108B22154C8760CAD419B;
-			remoteInfo = mcTypes_iOS;
+			remoteGlobalIDString = 3FC06CBCAA24E63BC06B65C3;
+			remoteInfo = mcxRuntime;
 		};
-		80FED97C248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCD5270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D09244D8DABA6A36E7BFCA01;
-			remoteInfo = mcTypes_macOS;
+			remoteGlobalIDString = 5DEDD2EBBF379EB69C1BD86C;
+			remoteInfo = mcxTypes;
 		};
-		80FED97E248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCD7270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = B1912F48DEF02D8C8C8EC410;
-			remoteInfo = mcTypography_iOS;
+			remoteGlobalIDString = E124C1C63F1495813B508676;
+			remoteInfo = mcxTypography;
 		};
-		80FED980248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCD9270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2B69D982E5329D658B03F54;
-			remoteInfo = mcTypography_macOS;
+			remoteGlobalIDString = 222CE7A9445541B36BA57AD1;
+			remoteInfo = mcxUI;
 		};
-		80FED982248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCDB270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = B6EA6C9F1ED183ECCDD8DC50;
-			remoteInfo = mcUIExtensions_iOS;
+			remoteGlobalIDString = 373ACC3891E662C5B9A064B0;
+			remoteInfo = mcxUIExtensions;
 		};
-		80FED984248BF603005C565A /* PBXContainerItemProxy */ = {
+		80B4CCDD270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = 1A94714A126250FEB34EFC7D;
-			remoteInfo = mcUIExtensions_macOS;
-		};
-		80FED986248BF603005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 22C415A4D94F7D2A797853AC;
-			remoteInfo = mcUIReusable_iOS;
-		};
-		80FED988248BF603005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0DD01EDA6E1EF7991C4343B8;
-			remoteInfo = mcUIReusable_macOS;
-		};
-		80FED98A248BF603005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7068891E4BA3BB06A13E1AAF;
-			remoteInfo = mcUI_iOS;
-		};
-		80FED98C248BF603005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 34463D5649D92182348A13DE;
-			remoteInfo = mcUI_macOS;
+			remoteGlobalIDString = C4A2C53C188E00C7895ED2AF;
+			remoteInfo = mcxUIReusable;
 		};
 		80FED98E248BF60C005C565A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -221,123 +194,12 @@
 			remoteGlobalIDString = 85CA98C059B40D950DCD0CC7;
 			remoteInfo = Shared;
 		};
-		80FED9A3248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AAFD3F911B1A5106B58F81BA;
-			remoteInfo = mcAppKitMedia_iOS;
-		};
-		80FED9A5248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C465C024372B153459CD7AE2;
-			remoteInfo = mcAppKitMedia_macOS;
-		};
-		80FED9A7248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F8F6F6DA60F9D730DF879D66;
-			remoteInfo = mcConcurrencyOC_iOS;
-		};
-		80FED9A9248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E7993C64D3696929858F4B38;
-			remoteInfo = mcConcurrencyOC_macOS;
-		};
-		80FED9AB248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3D6B671042DEED4380C165C5;
-			remoteInfo = mcFoundationTestability_iOS;
-		};
-		80FED9AD248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = A204176EAED482CB45997CBB;
-			remoteInfo = mcFoundationTestability_macOS;
-		};
-		80FED9AF248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 162B273DC3D4DDA1F581FAA5;
-			remoteInfo = mcFoundation_iOS;
-		};
-		80FED9B1248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 94A09449D4D61ED03365C4DF;
-			remoteInfo = mcFoundation_macOS;
-		};
-		80FED9B3248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 42BC349D601BC034EEBE7C01;
-			remoteInfo = mcMath_iOS;
-		};
-		80FED9B5248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = B918ABC83EE699C821952ECF;
-			remoteInfo = mcMath_macOS;
-		};
-		80FED9B7248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1D44CEFB6F14B419812AEAC0;
-			remoteInfo = mcMediaAU_iOS;
-		};
-		80FED9B9248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 24A11929474372309E11B4FB;
-			remoteInfo = mcMediaAU_macOS;
-		};
-		80FED9BB248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 5A9BCF68B319F1DB0C8093CA;
-			remoteInfo = mcMediaExtensions_iOS;
-		};
-		80FED9BD248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 85A3907B0110B49C0F4C3F32;
-			remoteInfo = mcMediaExtensions_macOS;
-		};
-		80FED9BF248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = AF75CC2312DAA90CFA73A8A7;
-			remoteInfo = mcMedia_iOS;
-		};
-		80FED9C1248BFB37005C565A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 477C7BC780D53F90E6D5D849;
-			remoteInfo = mcMedia_macOS;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		801C65C9243A7F080073ED5A /* MusicLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibraryView.swift; sourceTree = "<group>"; };
 		801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicLibrary.swift; sourceTree = "<group>"; };
+		80B4CCF32701036600E969EE /* iTunesLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iTunesLibrary.framework; path = System/Library/Frameworks/iTunesLibrary.framework; sourceTree = SDKROOT; };
 		80B9072B243A68F700D25F27 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		80B9072C243A68F700D25F27 /* EffectWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EffectWindowController.swift; sourceTree = "<group>"; };
 		80B9072D243A68F700D25F27 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -366,26 +228,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80FED9C3248BFB37005C565A /* libmcAppKitMedia.a in Frameworks */,
-				80FED9C4248BFB37005C565A /* libmcAppScaffold.a in Frameworks */,
-				80FED9C5248BFB37005C565A /* libmcConcurrencyLocking.a in Frameworks */,
-				80FED9C6248BFB37005C565A /* libmcConcurrencyOC.a in Frameworks */,
-				80FED9C7248BFB37005C565A /* libmcFoundation.a in Frameworks */,
-				80FED9C8248BFB37005C565A /* libmcFoundationExtensions.a in Frameworks */,
-				80FED9C9248BFB37005C565A /* libmcFoundationLogging.a in Frameworks */,
-				80FED9CA248BFB37005C565A /* libmcFoundationObservables.a in Frameworks */,
-				80FED9CB248BFB37005C565A /* libmcFoundationTestability.a in Frameworks */,
-				80FED9CC248BFB37005C565A /* libmcGraphicsExtensions.a in Frameworks */,
-				80FED9CD248BFB37005C565A /* libmcMath.a in Frameworks */,
-				80FED9CE248BFB37005C565A /* libmcMedia.a in Frameworks */,
-				80FED9CF248BFB37005C565A /* libmcMediaAU.a in Frameworks */,
-				80FED9D0248BFB37005C565A /* libmcMediaExtensions.a in Frameworks */,
-				80FED9D1248BFB37005C565A /* libmcRuntime.a in Frameworks */,
-				80FED9D2248BFB37005C565A /* libmcTypes.a in Frameworks */,
-				80FED9D3248BFB37005C565A /* libmcTypography.a in Frameworks */,
-				80FED9D4248BFB37005C565A /* libmcUI.a in Frameworks */,
-				80FED9D5248BFB37005C565A /* libmcUIExtensions.a in Frameworks */,
-				80FED9D6248BFB37005C565A /* libmcUIReusable.a in Frameworks */,
+				80B4CCF0270101C200E969EE /* libmcxUI.a in Frameworks */,
+				80B4CCEE270101C200E969EE /* libmcxTypes.a in Frameworks */,
+				80B4CCE2270101C200E969EE /* libmcxConcurrencyOC.a in Frameworks */,
+				80B4CCE7270101C200E969EE /* libmcxFoundationTestability.a in Frameworks */,
+				80B4CCE0270101C200E969EE /* libmcxAppScaffold.a in Frameworks */,
+				80B4CCEA270101C200E969EE /* libmcxMedia.a in Frameworks */,
+				80B4CCE8270101C200E969EE /* libmcxGraphicsExtensions.a in Frameworks */,
+				80B4CCE6270101C200E969EE /* libmcxFoundationObservables.a in Frameworks */,
+				80B4CCEF270101C200E969EE /* libmcxTypography.a in Frameworks */,
+				80B4CCF1270101C200E969EE /* libmcxUIExtensions.a in Frameworks */,
+				80B4CCEB270101C200E969EE /* libmcxMediaAU.a in Frameworks */,
+				80B4CCED270101C200E969EE /* libmcxRuntime.a in Frameworks */,
+				80B4CCE9270101C200E969EE /* libmcxMath.a in Frameworks */,
+				80B4CCF2270101C200E969EE /* libmcxUIReusable.a in Frameworks */,
+				80B4CCDF270101C200E969EE /* libmcxAppKitMedia.a in Frameworks */,
+				80B4CCE3270101C200E969EE /* libmcxFoundation.a in Frameworks */,
+				80B4CCE1270101C200E969EE /* libmcxConcurrencyLocking.a in Frameworks */,
+				80B4CCE5270101C200E969EE /* libmcxFoundationLogging.a in Frameworks */,
+				80B4CCF42701036600E969EE /* iTunesLibrary.framework in Frameworks */,
+				80B4CCE4270101C200E969EE /* libmcxFoundationExtensions.a in Frameworks */,
+				80B4CCEC270101C200E969EE /* libmcxMediaExtensions.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,46 +281,26 @@
 		80FED943248BF602005C565A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				80FED9A4248BFB37005C565A /* libmcAppKitMedia.a */,
-				80FED9A6248BFB37005C565A /* libmcAppKitMedia.a */,
-				80FED95F248BF603005C565A /* libmcAppScaffold.a */,
-				80FED961248BF603005C565A /* libmcAppScaffold.a */,
-				80FED963248BF603005C565A /* libmcConcurrencyLocking.a */,
-				80FED965248BF603005C565A /* libmcConcurrencyLocking.a */,
-				80FED9A8248BFB37005C565A /* libmcConcurrencyOC.a */,
-				80FED9AA248BFB37005C565A /* libmcConcurrencyOC.a */,
-				80FED967248BF603005C565A /* libmcFoundationExtensions.a */,
-				80FED969248BF603005C565A /* libmcFoundationExtensions.a */,
-				80FED96B248BF603005C565A /* libmcFoundationLogging.a */,
-				80FED96D248BF603005C565A /* libmcFoundationLogging.a */,
-				80FED96F248BF603005C565A /* libmcFoundationObservables.a */,
-				80FED971248BF603005C565A /* libmcFoundationObservables.a */,
-				80FED9AC248BFB37005C565A /* libmcFoundationTestability.a */,
-				80FED9AE248BFB37005C565A /* libmcFoundationTestability.a */,
-				80FED9B0248BFB37005C565A /* libmcFoundation.a */,
-				80FED9B2248BFB37005C565A /* libmcFoundation.a */,
-				80FED973248BF603005C565A /* libmcGraphicsExtensions.a */,
-				80FED975248BF603005C565A /* libmcGraphicsExtensions.a */,
-				80FED9B4248BFB37005C565A /* libmcMath.a */,
-				80FED9B6248BFB37005C565A /* libmcMath.a */,
-				80FED9B8248BFB37005C565A /* libmcMediaAU.a */,
-				80FED9BA248BFB37005C565A /* libmcMediaAU.a */,
-				80FED9BC248BFB37005C565A /* libmcMediaExtensions.a */,
-				80FED9BE248BFB37005C565A /* libmcMediaExtensions.a */,
-				80FED9C0248BFB37005C565A /* libmcMedia.a */,
-				80FED9C2248BFB37005C565A /* libmcMedia.a */,
-				80FED977248BF603005C565A /* libmcRuntime.a */,
-				80FED979248BF603005C565A /* libmcRuntime.a */,
-				80FED97B248BF603005C565A /* libmcTypes.a */,
-				80FED97D248BF603005C565A /* libmcTypes.a */,
-				80FED97F248BF603005C565A /* libmcTypography.a */,
-				80FED981248BF603005C565A /* libmcTypography.a */,
-				80FED983248BF603005C565A /* libmcUIExtensions.a */,
-				80FED985248BF603005C565A /* libmcUIExtensions.a */,
-				80FED987248BF603005C565A /* libmcUIReusable.a */,
-				80FED989248BF603005C565A /* libmcUIReusable.a */,
-				80FED98B248BF603005C565A /* libmcUI.a */,
-				80FED98D248BF603005C565A /* libmcUI.a */,
+				80B4CCB8270101B300E969EE /* libmcxAppKitMedia.a */,
+				80B4CCBA270101B300E969EE /* libmcxAppScaffold.a */,
+				80B4CCBC270101B300E969EE /* libmcxConcurrencyLocking.a */,
+				80B4CCBE270101B300E969EE /* libmcxConcurrencyOC.a */,
+				80B4CCC0270101B300E969EE /* libmcxFoundation.a */,
+				80B4CCC2270101B300E969EE /* libmcxFoundationExtensions.a */,
+				80B4CCC4270101B300E969EE /* libmcxFoundationLogging.a */,
+				80B4CCC6270101B300E969EE /* libmcxFoundationObservables.a */,
+				80B4CCC8270101B300E969EE /* libmcxFoundationTestability.a */,
+				80B4CCCA270101B300E969EE /* libmcxGraphicsExtensions.a */,
+				80B4CCCC270101B300E969EE /* libmcxMath.a */,
+				80B4CCCE270101B300E969EE /* libmcxMedia.a */,
+				80B4CCD0270101B300E969EE /* libmcxMediaAU.a */,
+				80B4CCD2270101B300E969EE /* libmcxMediaExtensions.a */,
+				80B4CCD4270101B300E969EE /* libmcxRuntime.a */,
+				80B4CCD6270101B300E969EE /* libmcxTypes.a */,
+				80B4CCD8270101B300E969EE /* libmcxTypography.a */,
+				80B4CCDA270101B300E969EE /* libmcxUI.a */,
+				80B4CCDC270101B300E969EE /* libmcxUIExtensions.a */,
+				80B4CCDE270101B300E969EE /* libmcxUIReusable.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -465,6 +308,7 @@
 		80FED992248BFB37005C565A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				80B4CCF32701036600E969EE /* iTunesLibrary.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -578,284 +422,144 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		80FED95F248BF603005C565A /* libmcAppScaffold.a */ = {
+		80B4CCB8270101B300E969EE /* libmcxAppKitMedia.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcAppScaffold.a;
-			remoteRef = 80FED95E248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxAppKitMedia.a;
+			remoteRef = 80B4CCB7270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED961248BF603005C565A /* libmcAppScaffold.a */ = {
+		80B4CCBA270101B300E969EE /* libmcxAppScaffold.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcAppScaffold.a;
-			remoteRef = 80FED960248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxAppScaffold.a;
+			remoteRef = 80B4CCB9270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED963248BF603005C565A /* libmcConcurrencyLocking.a */ = {
+		80B4CCBC270101B300E969EE /* libmcxConcurrencyLocking.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcConcurrencyLocking.a;
-			remoteRef = 80FED962248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxConcurrencyLocking.a;
+			remoteRef = 80B4CCBB270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED965248BF603005C565A /* libmcConcurrencyLocking.a */ = {
+		80B4CCBE270101B300E969EE /* libmcxConcurrencyOC.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcConcurrencyLocking.a;
-			remoteRef = 80FED964248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxConcurrencyOC.a;
+			remoteRef = 80B4CCBD270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED967248BF603005C565A /* libmcFoundationExtensions.a */ = {
+		80B4CCC0270101B300E969EE /* libmcxFoundation.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcFoundationExtensions.a;
-			remoteRef = 80FED966248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxFoundation.a;
+			remoteRef = 80B4CCBF270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED969248BF603005C565A /* libmcFoundationExtensions.a */ = {
+		80B4CCC2270101B300E969EE /* libmcxFoundationExtensions.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcFoundationExtensions.a;
-			remoteRef = 80FED968248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxFoundationExtensions.a;
+			remoteRef = 80B4CCC1270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED96B248BF603005C565A /* libmcFoundationLogging.a */ = {
+		80B4CCC4270101B300E969EE /* libmcxFoundationLogging.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcFoundationLogging.a;
-			remoteRef = 80FED96A248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxFoundationLogging.a;
+			remoteRef = 80B4CCC3270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED96D248BF603005C565A /* libmcFoundationLogging.a */ = {
+		80B4CCC6270101B300E969EE /* libmcxFoundationObservables.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcFoundationLogging.a;
-			remoteRef = 80FED96C248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxFoundationObservables.a;
+			remoteRef = 80B4CCC5270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED96F248BF603005C565A /* libmcFoundationObservables.a */ = {
+		80B4CCC8270101B300E969EE /* libmcxFoundationTestability.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcFoundationObservables.a;
-			remoteRef = 80FED96E248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxFoundationTestability.a;
+			remoteRef = 80B4CCC7270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED971248BF603005C565A /* libmcFoundationObservables.a */ = {
+		80B4CCCA270101B300E969EE /* libmcxGraphicsExtensions.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcFoundationObservables.a;
-			remoteRef = 80FED970248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxGraphicsExtensions.a;
+			remoteRef = 80B4CCC9270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED973248BF603005C565A /* libmcGraphicsExtensions.a */ = {
+		80B4CCCC270101B300E969EE /* libmcxMath.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcGraphicsExtensions.a;
-			remoteRef = 80FED972248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxMath.a;
+			remoteRef = 80B4CCCB270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED975248BF603005C565A /* libmcGraphicsExtensions.a */ = {
+		80B4CCCE270101B300E969EE /* libmcxMedia.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcGraphicsExtensions.a;
-			remoteRef = 80FED974248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxMedia.a;
+			remoteRef = 80B4CCCD270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED977248BF603005C565A /* libmcRuntime.a */ = {
+		80B4CCD0270101B300E969EE /* libmcxMediaAU.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcRuntime.a;
-			remoteRef = 80FED976248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxMediaAU.a;
+			remoteRef = 80B4CCCF270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED979248BF603005C565A /* libmcRuntime.a */ = {
+		80B4CCD2270101B300E969EE /* libmcxMediaExtensions.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcRuntime.a;
-			remoteRef = 80FED978248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxMediaExtensions.a;
+			remoteRef = 80B4CCD1270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED97B248BF603005C565A /* libmcTypes.a */ = {
+		80B4CCD4270101B300E969EE /* libmcxRuntime.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcTypes.a;
-			remoteRef = 80FED97A248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxRuntime.a;
+			remoteRef = 80B4CCD3270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED97D248BF603005C565A /* libmcTypes.a */ = {
+		80B4CCD6270101B300E969EE /* libmcxTypes.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcTypes.a;
-			remoteRef = 80FED97C248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxTypes.a;
+			remoteRef = 80B4CCD5270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED97F248BF603005C565A /* libmcTypography.a */ = {
+		80B4CCD8270101B300E969EE /* libmcxTypography.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcTypography.a;
-			remoteRef = 80FED97E248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxTypography.a;
+			remoteRef = 80B4CCD7270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED981248BF603005C565A /* libmcTypography.a */ = {
+		80B4CCDA270101B300E969EE /* libmcxUI.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcTypography.a;
-			remoteRef = 80FED980248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxUI.a;
+			remoteRef = 80B4CCD9270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED983248BF603005C565A /* libmcUIExtensions.a */ = {
+		80B4CCDC270101B300E969EE /* libmcxUIExtensions.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcUIExtensions.a;
-			remoteRef = 80FED982248BF603005C565A /* PBXContainerItemProxy */;
+			path = libmcxUIExtensions.a;
+			remoteRef = 80B4CCDB270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		80FED985248BF603005C565A /* libmcUIExtensions.a */ = {
+		80B4CCDE270101B300E969EE /* libmcxUIReusable.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = libmcUIExtensions.a;
-			remoteRef = 80FED984248BF603005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED987248BF603005C565A /* libmcUIReusable.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcUIReusable.a;
-			remoteRef = 80FED986248BF603005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED989248BF603005C565A /* libmcUIReusable.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcUIReusable.a;
-			remoteRef = 80FED988248BF603005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED98B248BF603005C565A /* libmcUI.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcUI.a;
-			remoteRef = 80FED98A248BF603005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED98D248BF603005C565A /* libmcUI.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcUI.a;
-			remoteRef = 80FED98C248BF603005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9A4248BFB37005C565A /* libmcAppKitMedia.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcAppKitMedia.a;
-			remoteRef = 80FED9A3248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9A6248BFB37005C565A /* libmcAppKitMedia.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcAppKitMedia.a;
-			remoteRef = 80FED9A5248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9A8248BFB37005C565A /* libmcConcurrencyOC.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcConcurrencyOC.a;
-			remoteRef = 80FED9A7248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9AA248BFB37005C565A /* libmcConcurrencyOC.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcConcurrencyOC.a;
-			remoteRef = 80FED9A9248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9AC248BFB37005C565A /* libmcFoundationTestability.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcFoundationTestability.a;
-			remoteRef = 80FED9AB248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9AE248BFB37005C565A /* libmcFoundationTestability.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcFoundationTestability.a;
-			remoteRef = 80FED9AD248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9B0248BFB37005C565A /* libmcFoundation.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcFoundation.a;
-			remoteRef = 80FED9AF248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9B2248BFB37005C565A /* libmcFoundation.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcFoundation.a;
-			remoteRef = 80FED9B1248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9B4248BFB37005C565A /* libmcMath.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMath.a;
-			remoteRef = 80FED9B3248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9B6248BFB37005C565A /* libmcMath.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMath.a;
-			remoteRef = 80FED9B5248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9B8248BFB37005C565A /* libmcMediaAU.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMediaAU.a;
-			remoteRef = 80FED9B7248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9BA248BFB37005C565A /* libmcMediaAU.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMediaAU.a;
-			remoteRef = 80FED9B9248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9BC248BFB37005C565A /* libmcMediaExtensions.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMediaExtensions.a;
-			remoteRef = 80FED9BB248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9BE248BFB37005C565A /* libmcMediaExtensions.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMediaExtensions.a;
-			remoteRef = 80FED9BD248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9C0248BFB37005C565A /* libmcMedia.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMedia.a;
-			remoteRef = 80FED9BF248BFB37005C565A /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80FED9C2248BFB37005C565A /* libmcMedia.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcMedia.a;
-			remoteRef = 80FED9C1248BFB37005C565A /* PBXContainerItemProxy */;
+			path = libmcxUIReusable.a;
+			remoteRef = 80B4CCDD270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

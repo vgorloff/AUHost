@@ -6,10 +6,10 @@
 //  Copyright © 2020 WaveLabs. All rights reserved.
 //
 
-import mcUIReusable
 import AppKit
-import mcRuntime
-import mcUI
+import mcxUIReusable
+import mcxRuntime
+import mcxUI
 
 private let log = Logger.getLogger(MusicLibraryView.self)
 
@@ -44,7 +44,9 @@ class MusicLibraryView: ScrollView {
          tableView.style = .fullWidth
       }
       tableView.rowHeight = 24
-      tableView.usesAutomaticRowHeights = true
+      if #available(macOS 10.13, *) {
+         tableView.usesAutomaticRowHeights = true
+      }
       
       tableColumn.title = "Songs"
       tableColumn.isEditable = false
@@ -83,7 +85,7 @@ extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
          return
       }
       let component = library.items[tableView.selectedRow]
-      log.debug(component.fullName)
+      log.verbose(component.fullName)
       onSelected?(component)
    }
 }
