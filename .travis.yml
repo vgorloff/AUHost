@@ -5,10 +5,11 @@
 
 language: objective-c
 osx_image: xcode12.5
-install: node -v && nvm ls && ./Scripts/install.sh
+install: node -v && yarn install && gem install xcpretty
 script: ./Scripts/ci.sh
 
 branches:
-  only:
-  - master
-  - /^release\/.*$/
+   only:
+      - master
+      - /^release\/.*$/
+      - develop
