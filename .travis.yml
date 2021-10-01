@@ -4,7 +4,7 @@
 # - Building Swift Project: https://docs.travis-ci.com/user/languages/objective-c/
 
 language: objective-c
-osx_image: xcode11.2
+osx_image: xcode12.5
 install: node -v && nvm ls && ./Scripts/install.sh
 script: ./Scripts/ci.sh
 
