@@ -1,13 +1,11 @@
 include:
-  - ../../../Projects/mc/templates.yml
-  - ../../../Projects/mc/mcxAppScaffold/project.yml
-  - ../../../Projects/mc/mcxUIReusable/project.yml
-  - ../../../Projects/mc/mcxAppKitMedia/project.yml
-  - ../../../Projects/mc/mcxFoundation/project.yml
-  - ../../../Projects/mc/mcxMediaAU/project.yml
-  - ../../../Projects/mc/mcxMedia/project.yml
-  - ../../../Projects/mc/mcxMediaExtensions/project.yml
-  - ../../../Projects/mc/mcxGraphicsExtensions/project.yml
+  - Vendor/mc/mcxUIReusable/project.yml
+  - Vendor/mc/mcxAppKitMedia/project.yml
+  - Vendor/mc/mcxFoundation/project.yml
+  - Vendor/mc/mcxMediaAU/project.yml
+  - Vendor/mc/mcxMedia/project.yml
+  - Vendor/mc/mcxMediaExtensions/project.yml
+  - Vendor/mc/mcxGraphicsExtensions/project.yml
 name: Shared
 settings:
   AWL_LIB_SRC: Vendor/mc
@@ -15,7 +13,6 @@ settings:
 aggregateTargets:
   Shared:
     targets:
-      - mcxAppScaffold
       - mcxUIReusable
       - mcxAppKitMedia
       - mcxFoundation

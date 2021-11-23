@@ -14,5 +14,5 @@ script: ./Scripts/ci.sh
 branches:
    only:
       - master
-      - /^release\/.*$/
       - develop
+      - /^release\/.*$/

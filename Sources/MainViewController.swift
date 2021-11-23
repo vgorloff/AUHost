@@ -160,7 +160,7 @@ extension MainViewController {
          }
       }
    }
-   
+
    func toggleSongs() {
       libraryView.isHidden = !libraryView.isHidden
    }
@@ -284,7 +284,7 @@ extension MainViewController {
 
       mediaItemView.heightAnchor.constraint(equalToConstant: 98).activate()
       constraints.activate()
-      
+
       libraryView.heightAnchor.constraint(equalTo: contentStackView.heightAnchor, multiplier: 1 / 1.5).activate()
    }
 }

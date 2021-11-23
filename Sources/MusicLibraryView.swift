@@ -14,23 +14,23 @@ import mcxUI
 private let log = Logger.getLogger(MusicLibraryView.self)
 
 class MusicLibraryView: ScrollView {
-   
+
    private var library = MusicLibrary()
-   
+
    private lazy var clipView = NSClipView()
    private lazy var tableView = NSTableView()
    private lazy var tableColumn = NSTableColumn()
-   
+
    var onSelected: ((MusicLibraryItem) -> Void)?
-   
+
    override func setupUI() {
       clipView.documentView = tableView
       clipView.autoresizingMask = [.width, .height]
-      
+
       contentView = clipView
-      
+
       autohidesScrollers = true
-      
+
       tableView.allowsExpansionToolTips = true
       tableView.allowsMultipleSelection = false
       tableView.autosaveTableColumns = false
@@ -47,24 +47,23 @@ class MusicLibraryView: ScrollView {
       if #available(macOS 10.13, *) {
          tableView.usesAutomaticRowHeights = true
       }
-      
+
       tableColumn.title = "Songs"
       tableColumn.isEditable = false
    }
-   
+
    override func setupHandlers() {
       tableView.delegate = self
       tableView.dataSource = self
    }
 }
 
-
 extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
-   
+
    func numberOfRows(in tableView: NSTableView) -> Int {
       return library.items.count
    }
-   
+
    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
       let label = NSTextField().autolayoutView()
       label.isBezeled = false
@@ -79,7 +78,7 @@ extension MusicLibraryView: NSTableViewDelegate, NSTableViewDataSource {
       anchor.withFormat("V:|-2-[*]-2-|", label).activate()
       return view
    }
-   
+
    func tableViewSelectionDidChange(_ aNotification: Notification) {
       guard tableView.selectedRow >= 0 else {
          return
