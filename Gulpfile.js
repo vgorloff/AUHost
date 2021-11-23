@@ -5,6 +5,7 @@ import gulp from 'gulp';
 import os from 'os';
 import url from 'url';
 import plist from 'plist';
+import glob from 'glob';
 
 const rootDirPath = path.dirname(url.fileURLToPath(import.meta.url));
 
@@ -139,7 +140,68 @@ function notarizationHistory() {
    _run(cmd);
 }
 
+function makeStandalone() {
+   const projectPath = `${rootDirPath}/Shared.xcodeproj/project.pbxproj`;
+   const vendorDirPath = `${rootDirPath}/Vendor`;
+   const vendorPath = `${vendorDirPath}/mc`;
+   const regex = /mc-shared\/\w+\/Sources/g;
+
+   const contents = fs.readFileSync(projectPath).toString();
+   const matches = contents.match(regex);
+
+   if (matches == undefined) {
+      console.log('➔ Nothing to do!');
+      return;
+   }
+   if (fs.existsSync(vendorPath)) {
+      fs.rmdirSync(vendorPath, { recursive: true, force: true });
+   }
+   fs.mkdirSync(vendorPath, { recursive: true });
+   for (const match of matches) {
+      const from = `${vendorDirPath}/${match}`;
+      const to = vendorPath + match.replace('mc-shared', '');
+      const swiftFiles = glob
+         .sync(`${from}/**/*.swift`)
+         .concat(glob.sync(`${from}/**/*.h`))
+         .concat(glob.sync(`${from}/**/*.m`));
+      for (const file of swiftFiles) {
+         const contents = fs.readFileSync(file).toString();
+         if (contents.includes('MCA-OSS-AUH')) {
+            const dstName = path.join(to, file.replace(from, ''));
+            const dstDir = path.dirname(dstName);
+            fs.mkdirSync(dstDir, { recursive: true });
+            // console.log(`➔ Copying '${file}' to '${dstName}'`);
+            fs.copyFileSync(file, dstName);
+         }
+      }
+
+      const fromSpec = from.replace('/Sources', '/project.yml');
+      const toSpec = to.replace('/Sources', '/project.yml');
+      fs.mkdirSync(to, { recursive: true });
+      fs.copyFileSync(fromSpec, toSpec);
+   }
+   fs.copyFileSync(`${vendorDirPath}/mc-shared/templates.yml`, `${vendorPath}/templates.yml`);
+}
+
 //~~~
+
+gulp.task('default', (cb) => {
+   console.log('✅ Available tasks:');
+   cp.execSync('gulp -T', { stdio: 'inherit' });
+   cb();
+});
+
+gulp.task('gen', (cb) => {
+   _run(`xcodegen --spec project-shared.yml`);
+   cb();
+});
+
+gulp.task('st', (cb) => {
+   _run(`xcodegen --spec project-shared.yml`);
+   makeStandalone();
+   _run(`xcodegen --spec project.yml`);
+   cb();
+});
 
 gulp.task('note-subm', (cb) => {
    notarizationSubmit();
@@ -148,12 +210,6 @@ gulp.task('note-subm', (cb) => {
 
 gulp.task('note-hist', (cb) => {
    notarizationHistory();
-   cb();
-});
-
-gulp.task('default', (cb) => {
-   console.log('✅ Available tasks:');
-   cp.execSync('gulp -T', { stdio: 'inherit' });
    cb();
 });
 

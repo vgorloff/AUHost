@@ -10,9 +10,7 @@
 		801C65CA243A7F080073ED5A /* MusicLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65C9243A7F080073ED5A /* MusicLibraryView.swift */; };
 		801C65CC243A8D8B0073ED5A /* MusicLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801C65CB243A8D8B0073ED5A /* MusicLibrary.swift */; };
 		80B4CCDF270101C200E969EE /* libmcxAppKitMedia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCB8270101B300E969EE /* libmcxAppKitMedia.a */; };
-		80B4CCE0270101C200E969EE /* libmcxAppScaffold.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCBA270101B300E969EE /* libmcxAppScaffold.a */; };
 		80B4CCE1270101C200E969EE /* libmcxConcurrencyLocking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCBC270101B300E969EE /* libmcxConcurrencyLocking.a */; };
-		80B4CCE2270101C200E969EE /* libmcxConcurrencyOC.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCBE270101B300E969EE /* libmcxConcurrencyOC.a */; };
 		80B4CCE3270101C200E969EE /* libmcxFoundation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC0270101B300E969EE /* libmcxFoundation.a */; };
 		80B4CCE4270101C200E969EE /* libmcxFoundationExtensions.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC2270101B300E969EE /* libmcxFoundationExtensions.a */; };
 		80B4CCE5270101C200E969EE /* libmcxFoundationLogging.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 80B4CCC4270101B300E969EE /* libmcxFoundationLogging.a */; };
@@ -53,13 +51,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 1C7CBC5C91F15EF4E29A5445;
 			remoteInfo = mcxAppKitMedia;
-		};
-		80B4CCB9270101B300E969EE /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 80FED942248BF602005C565A /* Shared.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = BDD991E211C7F0EE75EC15FE;
-			remoteInfo = mcxAppScaffold;
 		};
 		80B4CCBB270101B300E969EE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -230,9 +221,7 @@
 			files = (
 				80B4CCF0270101C200E969EE /* libmcxUI.a in Frameworks */,
 				80B4CCEE270101C200E969EE /* libmcxTypes.a in Frameworks */,
-				80B4CCE2270101C200E969EE /* libmcxConcurrencyOC.a in Frameworks */,
 				80B4CCE7270101C200E969EE /* libmcxFoundationTestability.a in Frameworks */,
-				80B4CCE0270101C200E969EE /* libmcxAppScaffold.a in Frameworks */,
 				80B4CCEA270101C200E969EE /* libmcxMedia.a in Frameworks */,
 				80B4CCE8270101C200E969EE /* libmcxGraphicsExtensions.a in Frameworks */,
 				80B4CCE6270101C200E969EE /* libmcxFoundationObservables.a in Frameworks */,
@@ -282,7 +271,6 @@
 			isa = PBXGroup;
 			children = (
 				80B4CCB8270101B300E969EE /* libmcxAppKitMedia.a */,
-				80B4CCBA270101B300E969EE /* libmcxAppScaffold.a */,
 				80B4CCBC270101B300E969EE /* libmcxConcurrencyLocking.a */,
 				80B4CCBE270101B300E969EE /* libmcxConcurrencyOC.a */,
 				80B4CCC0270101B300E969EE /* libmcxFoundation.a */,
@@ -427,13 +415,6 @@
 			fileType = archive.ar;
 			path = libmcxAppKitMedia.a;
 			remoteRef = 80B4CCB7270101B300E969EE /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		80B4CCBA270101B300E969EE /* libmcxAppScaffold.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libmcxAppScaffold.a;
-			remoteRef = 80B4CCB9270101B300E969EE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		80B4CCBC270101B300E969EE /* libmcxConcurrencyLocking.a */ = {

@@ -2,6 +2,7 @@
    "name": "mca-oss-auhost",
    "type": "module",
    "dependencies": {
+      "glob": "^7.2.0",
       "gulp": "^4.0.2",
       "plist": "^3.0.4"
    }

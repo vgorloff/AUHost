@@ -14,6 +14,7 @@ import mcxFoundation
 import mcxAppKitMedia
 import mcxMedia
 import mcxRuntime
+import mcxGraphicsExtensions
 
 private let log = Logger.getLogger(MediaItemView.self)
 
