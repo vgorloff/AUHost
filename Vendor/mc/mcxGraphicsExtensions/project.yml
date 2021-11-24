@@ -1,0 +1,14 @@
+include:
+  - ../templates.yml
+  - ../mcxRuntime/project.yml
+  - ../mcxTypes/project.yml
+  - ../mcxTypography/project.yml
+name: mcxGraphicsExtensions
+targets:
+  mcxGraphicsExtensions:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxRuntime
+      - target: mcxTypes
+      - target: mcxTypography

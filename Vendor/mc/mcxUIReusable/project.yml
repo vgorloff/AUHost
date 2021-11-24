@@ -1,0 +1,14 @@
+include:
+  - ../templates.yml
+  - ../mcxGraphicsExtensions/project.yml
+  - ../mcxTypes/project.yml
+  - ../mcxUIExtensions/project.yml
+name: mcxUIReusable
+targets:
+  mcxUIReusable:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxGraphicsExtensions
+      - target: mcxTypes
+      - target: mcxUIExtensions

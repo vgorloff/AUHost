@@ -1,0 +1,12 @@
+include:
+  - ../templates.yml
+  - ../mcxRuntime/project.yml
+  - ../mcxConcurrencyLocking/project.yml
+name: mcxFoundationLogging
+targets:
+  mcxFoundationLogging:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxRuntime
+      - target: mcxConcurrencyLocking

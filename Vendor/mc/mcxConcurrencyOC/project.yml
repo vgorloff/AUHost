@@ -1,0 +1,9 @@
+include:
+  - ../templates.yml
+name: mcxConcurrencyOC
+targets:
+  mcxConcurrencyOC:
+    templates:
+       - mcLib
+    settings:
+      SWIFT_OBJC_BRIDGING_HEADER: "$AWL_LIB_SRC/mcxConcurrencyOC/Sources/include/mcConcurrencyOC.h"

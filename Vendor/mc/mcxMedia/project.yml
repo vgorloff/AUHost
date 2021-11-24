@@ -1,0 +1,18 @@
+include:
+  - ../templates.yml
+  - ../mcxMath/project.yml
+  - ../mcxFoundation/project.yml
+  - ../mcxFoundationLogging/project.yml
+  - ../mcxMediaExtensions/project.yml
+  - ../mcxConcurrencyOC/project.yml
+name: mcxMedia
+targets:
+  mcxMedia:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxMath
+      - target: mcxFoundation
+      - target: mcxFoundationLogging
+      - target: mcxMediaExtensions
+      - target: mcxConcurrencyOC

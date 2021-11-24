@@ -1,0 +1,12 @@
+include:
+  - ../templates.yml
+  - ../mcxRuntime/project.yml
+  - ../mcxFoundationExtensions/project.yml
+name: mcxFoundationTestability
+targets:
+  mcxFoundationTestability:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxRuntime
+      - target: mcxFoundationExtensions

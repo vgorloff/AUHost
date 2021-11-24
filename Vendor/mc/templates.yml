@@ -1,0 +1,20 @@
+targetTemplates:
+
+  mcLib:
+    platform: macOS
+    type: library.static
+    sources:
+      # - path: ${target_name}/project.yml
+      #   buildPhase: none
+      #   group: Vendor/${target_name}
+      - path: ${target_name}/Sources
+        group: Vendor/${target_name}
+        # excludes:
+        #   - project.yml
+        #   - modules
+    settings:
+      #>> See: Building a Cross-Platform Framework | Dave DeLong: https://davedelong.com/blog/2018/11/15/building-a-crossplatform-framework/
+      SUPPORTED_PLATFORMS: iphonesimulator iphoneos watchos watchsimulator appletvos appletvsimulator macosx
+      SDKROOT:
+      LD_RUNPATH_SEARCH_PATHS: $(inherited)
+      #<<

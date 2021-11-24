@@ -1,0 +1,10 @@
+include:
+  - ../templates.yml
+  - ../mcxFoundationTestability/project.yml
+name: mcxMediaExtensions
+targets:
+  mcxMediaExtensions:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxFoundationTestability

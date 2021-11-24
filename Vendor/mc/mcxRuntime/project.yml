@@ -1,0 +1,7 @@
+include:
+  - ../templates.yml
+name: mcxRuntime
+targets:
+  mcxRuntime:
+    templates:
+       - mcLib

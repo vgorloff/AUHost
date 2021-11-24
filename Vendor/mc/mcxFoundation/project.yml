@@ -1,0 +1,16 @@
+include:
+  - ../templates.yml
+  - ../mcxTypes/project.yml
+  - ../mcxFoundationExtensions/project.yml
+  - ../mcxFoundationLogging/project.yml
+  - ../mcxFoundationObservables/project.yml
+name: mcxFoundation
+targets:
+  mcxFoundation:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxTypes
+      - target: mcxFoundationObservables
+      - target: mcxFoundationLogging
+      - target: mcxFoundationExtensions

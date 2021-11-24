@@ -1,0 +1,18 @@
+include:
+  - ../templates.yml
+  - ../mcxTypes/project.yml
+  - ../mcxRuntime/project.yml
+  - ../mcxFoundationExtensions/project.yml
+  - ../mcxFoundationObservables/project.yml
+  - ../mcxUI/project.yml
+name: mcxUIExtensions
+targets:
+  mcxUIExtensions:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxTypes
+      - target: mcxRuntime
+      - target: mcxFoundationExtensions
+      - target: mcxFoundationObservables
+      - target: mcxUI

@@ -1,0 +1,10 @@
+include:
+  - ../templates.yml
+  - ../mcxTypes/project.yml
+name: mcxFoundationExtensions
+targets:
+  mcxFoundationExtensions:
+    templates:
+       - mcLib
+    dependencies:
+     - target: mcxTypes

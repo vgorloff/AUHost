@@ -1,0 +1,10 @@
+include:
+  - ../templates.yml
+  - ../mcxFoundationLogging/project.yml
+name: mcxAppKitMedia
+targets:
+  mcxAppKitMedia:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxFoundationLogging

@@ -1,0 +1,10 @@
+include:
+  - ../templates.yml
+  - ../mcxRuntime/project.yml
+name: mcxTypes
+targets:
+  mcxTypes:
+    templates:
+       - mcLib
+    dependencies:
+      - target: mcxRuntime

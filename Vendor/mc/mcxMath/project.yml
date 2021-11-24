@@ -1,0 +1,7 @@
+include:
+  - ../templates.yml
+name: mcxMath
+targets:
+  mcxMath:
+    templates:
+       - mcLib

@@ -1,0 +1,7 @@
+include:
+  - ../templates.yml
+name: mcxConcurrencyLocking
+targets:
+  mcxConcurrencyLocking:
+    templates:
+       - mcLib
